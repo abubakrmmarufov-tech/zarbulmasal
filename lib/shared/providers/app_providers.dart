@@ -91,6 +91,34 @@ final selectedLevelProvider = StateProvider<int?>((ref) => null);
 
 final searchQueryProvider = StateProvider<String>((ref) => '');
 
+enum DisplayLanguage { tajik, persian }
+
+final displayLanguageProvider =
+    StateNotifierProvider<DisplayLanguageNotifier, DisplayLanguage>((ref) {
+  return DisplayLanguageNotifier();
+});
+
+class DisplayLanguageNotifier extends StateNotifier<DisplayLanguage> {
+  DisplayLanguageNotifier() : super(DisplayLanguage.tajik) {
+    _loadLanguage();
+  }
+
+  Future<void> _loadLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final lang = prefs.getString(AppConstants.prefsLanguage) ?? 'tj';
+    state = lang == 'fa' ? DisplayLanguage.persian : DisplayLanguage.tajik;
+  }
+
+  Future<void> setLanguage(DisplayLanguage lang) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(
+      AppConstants.prefsLanguage,
+      lang == DisplayLanguage.persian ? 'fa' : 'tj',
+    );
+    state = lang;
+  }
+}
+
 final categoriesProvider = Provider<List<Category>>((ref) {
   return seedCategories;
 });

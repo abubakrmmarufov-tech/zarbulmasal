@@ -26,6 +26,7 @@ class AppScaffold extends ConsumerWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: NavigationBar(
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         selectedIndex: selectedIndex,
         onDestinationSelected: (index) {
           switch (index) {
@@ -65,7 +66,7 @@ class AppScaffold extends ConsumerWidget {
           NavigationDestination(
             icon: Icon(Icons.favorite_outline),
             selectedIcon: Icon(Icons.favorite),
-            label: 'Дӯстдошта',
+            label: 'Дӯст',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),

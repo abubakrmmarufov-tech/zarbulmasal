@@ -5,6 +5,7 @@ import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/cultural_header.dart';
+import '../../shared/widgets/pamir_silhouette.dart';
 
 class QuizScreen extends ConsumerStatefulWidget {
   const QuizScreen({super.key});
@@ -19,6 +20,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   int? _selectedAnswer;
   bool _answered = false;
   int _correctCount = 0;
+  List<String>? _currentOptions;
 
   @override
   void initState() {
@@ -35,6 +37,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
       _selectedAnswer = null;
       _answered = false;
       _correctCount = 0;
+      _currentOptions = null;
     });
   }
 
@@ -63,7 +66,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     }
 
     final currentProverb = _quizProverbs[_currentIndex];
-    final options = _getAnswerOptions(currentProverb, allProverbs);
+    final options = _currentOptions ??= _getAnswerOptions(currentProverb, allProverbs);
     final isLast = _currentIndex == _quizProverbs.length - 1;
 
     return Scaffold(
@@ -72,6 +75,10 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
           CulturalHeader(
             title: 'Квиз',
             subtitle: 'Савол ${_currentIndex + 1} аз ${_quizProverbs.length}',
+          ),
+          PamirSilhouette(
+            height: 28,
+            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -239,6 +246,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                               _currentIndex++;
                               _selectedAnswer = null;
                               _answered = false;
+                              _currentOptions = null;
                             });
                           }
                         },

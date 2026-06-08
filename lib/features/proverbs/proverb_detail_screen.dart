@@ -7,6 +7,8 @@ import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/cultural_header.dart';
 import '../../shared/widgets/section_card.dart';
 import '../../shared/widgets/tajik_badge.dart';
+import '../../shared/widgets/pamir_silhouette.dart';
+import '../../shared/widgets/textile_divider.dart';
 import '../../core/theme/app_colors.dart';
 
 class ProverbDetailScreen extends ConsumerWidget {
@@ -121,6 +123,10 @@ class ProverbDetailScreen extends ConsumerWidget {
               ),
             ),
           ),
+          PamirSilhouette(
+            height: 28,
+            darkMode: Theme.of(context).brightness == Brightness.dark,
+          ),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
@@ -202,6 +208,11 @@ class ProverbDetailScreen extends ConsumerWidget {
                       ),
                       TajikBadge.verified(isVerified: isVerified),
                     ],
+                  ),
+
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: TextileDivider(height: 20),
                   ),
 
                   const SizedBox(height: 24),

@@ -5,6 +5,8 @@ import '../../core/theme/app_colors.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/proverb_card.dart';
 import '../../shared/widgets/cultural_header.dart';
+import '../../shared/widgets/pamir_silhouette.dart';
+import '../../shared/widgets/tajik_pattern_divider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -50,6 +52,11 @@ class HomeScreen extends ConsumerWidget {
           const CulturalHeader(
             title: 'Зарбулмасал',
             subtitle: 'Ҳикмати ҳазорсолаи тоҷик',
+          ),
+          // Pamir mountain silhouette accent below header
+          PamirSilhouette(
+            height: 32,
+            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: SafeArea(
@@ -120,6 +127,10 @@ class HomeScreen extends ConsumerWidget {
                     ProverbCard(
                       proverb: dailyProverb,
                       onTap: () => context.push('/proverb/${dailyProverb.id}'),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: TajikPatternDivider(),
                     ),
                     const SizedBox(height: 24),
                     Padding(

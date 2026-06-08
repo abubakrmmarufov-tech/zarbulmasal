@@ -13,6 +13,7 @@ class SettingsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final themeMode = ref.watch(themeModeProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
 
     return Scaffold(
       body: Column(
@@ -92,19 +93,32 @@ class SettingsScreen extends ConsumerWidget {
                           ),
                         ),
                         title: const Text('Забон'),
-                        subtitle: const Text('Тоҷикӣ / Форсӣ'),
-                        trailing: Icon(
-                          Icons.chevron_right,
-                          color: colorScheme.onSurfaceVariant,
+                        subtitle: Text(
+                          displayLang == DisplayLanguage.persian ? 'Форсӣ' : 'Тоҷикӣ',
                         ),
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Интихоби забон дар версияи оянда!'),
-                              duration: Duration(seconds: 2),
+                        trailing: SegmentedButton<DisplayLanguage>(
+                          segments: const [
+                            ButtonSegment(
+                              value: DisplayLanguage.tajik,
+                              label: Text('Тоҷ'),
                             ),
-                          );
-                        },
+                            ButtonSegment(
+                              value: DisplayLanguage.persian,
+                              label: Text('Форс'),
+                            ),
+                          ],
+                          selected: {displayLang},
+                          onSelectionChanged: (selected) {
+                            ref.read(displayLanguageProvider.notifier)
+                                .setLanguage(selected.first);
+                          },
+                          style: ButtonStyle(
+                            visualDensity: VisualDensity.compact,
+                            textStyle: WidgetStatePropertyAll(
+                              theme.textTheme.labelSmall,
+                            ),
+                          ),
+                        ),
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(20),
@@ -155,22 +169,7 @@ class SettingsScreen extends ConsumerWidget {
                           Icons.chevron_right,
                           color: colorScheme.onSurfaceVariant,
                         ),
-                        onTap: () {
-                          showAboutDialog(
-                            context: context,
-                            applicationName: AppConstants.appName,
-                            applicationVersion: '1.0.0',
-                            applicationLegalese: '2026 Зарбулмасал',
-                            children: [
-                              const SizedBox(height: 16),
-                              Text(
-                                'Зарбулмасал — барнома барои омӯзиш, фаҳмиш ва '
-                                'нигоҳдории мақолҳои тоҷикӣ.',
-                                style: theme.textTheme.bodyMedium,
-                              ),
-                            ],
-                          );
-                        },
+                        onTap: () => _showAboutCard(context, theme, colorScheme),
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(20),
@@ -197,6 +196,71 @@ class SettingsScreen extends ConsumerWidget {
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 24),
+
+                // Contact section
+                Text(
+                  'Пешниҳодҳо',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: AppColors.accentGold,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.all(18),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: colorScheme.outline.withValues(alpha: 0.15),
+                    ),
+                    color: colorScheme.surface,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.email_outlined, color: colorScheme.primary, size: 22),
+                          const SizedBox(width: 8),
+                          Text(
+                            'Тамос',
+                            style: theme.textTheme.titleMedium,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 14),
+                      Text(
+                        'Агар шумо пешниҳодҳо ё таклифҳо доред, ба мо нависед:',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          height: 1.7,
+                          color: colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        decoration: BoxDecoration(
+                          color: AppColors.accentGold.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: AppColors.accentGold.withValues(alpha: 0.3),
+                          ),
+                        ),
+                        child: SelectableText(
+                          'abubakrmmarufov@gmail.com',
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            fontFamily: 'NotoSans',
+                            color: AppColors.accentGold,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -239,9 +303,9 @@ class SettingsScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 14),
                       Text(
-                        'Мақолҳои ин барнома бояд аз сарчашмаҳои боэътимоди тоҷикӣ, '
-                        'аз китобҳои зарбулмасал, фолклори тоҷик ё захираҳои фарҳангии '
-                        'тоҷикӣ гирифта шаванд.',
+                        'Мақолҳои ин барнома аз сарчашмаҳои боэътимоди тоҷикӣ, '
+                        'аз китобҳои зарбулмасал, фолклори тоҷик ва захираҳои фарҳангии '
+                        'тоҷикӣ гирифта шудаанд.',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           height: 1.7,
                           color: colorScheme.onSurface,
@@ -250,29 +314,10 @@ class SettingsScreen extends ConsumerWidget {
                       const SizedBox(height: 10),
                       Text(
                         'Агар шумо сарчашмаи дурусти тоҷикиро медонед, лутфан '
-                        'моҳиматро хабар диҳед.',
+                        'пешниҳодҳоятонро ба мо фиристед.',
                         style: theme.textTheme.bodyMedium?.copyWith(
                           height: 1.7,
                           color: colorScheme.onSurface,
-                        ),
-                      ),
-                      const SizedBox(height: 14),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                          color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Text(
-                          'Proverbs should come from verified Tajik cultural sources such as '
-                          'Tajik proverb books, folklore collections, or reliable cultural resources. '
-                          'If you know a verified source, please contribute.',
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: colorScheme.onSurfaceVariant,
-                            fontStyle: FontStyle.italic,
-                            height: 1.5,
-                          ),
                         ),
                       ),
                     ],
@@ -312,6 +357,59 @@ class SettingsScreen extends ConsumerWidget {
                 const SizedBox(height: 24),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showAboutCard(BuildContext context, ThemeData theme, ColorScheme colorScheme) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        title: Row(
+          children: [
+            const Text(AppConstants.appName),
+            const Spacer(),
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Зарбулмасал — барнома барои омӯзиш, фаҳмиш ва '
+              'нигоҳдории мақолҳои тоҷикӣ.',
+              style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Версия 1.0.0', style: theme.textTheme.bodySmall),
+                  const SizedBox(height: 4),
+                  Text('2026 Зарбулмасал', style: theme.textTheme.bodySmall),
+                ],
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Закрыть'),
           ),
         ],
       ),

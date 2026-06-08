@@ -5,6 +5,7 @@ import '../../data/seed/seed_categories.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/cultural_header.dart';
+import '../../shared/widgets/pamir_silhouette.dart';
 
 class CategoriesScreen extends ConsumerWidget {
   const CategoriesScreen({super.key});
@@ -66,6 +67,10 @@ class CategoriesScreen extends ConsumerWidget {
                     ),
                   )
                 : null,
+          ),
+          PamirSilhouette(
+            height: 28,
+            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: GridView.builder(

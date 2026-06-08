@@ -13,7 +13,7 @@ const List<Proverb> seedProverbs = [
     level: 1,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '2',
@@ -26,7 +26,7 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '3',
@@ -39,7 +39,7 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '4',
@@ -52,7 +52,7 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '5',
@@ -65,7 +65,7 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '6',
@@ -78,7 +78,7 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '7',
@@ -91,7 +91,7 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '8',
@@ -104,7 +104,7 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '9',
@@ -117,7 +117,7 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '10',
@@ -130,7 +130,7 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '11',
@@ -143,7 +143,7 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '12',
@@ -156,7 +156,7 @@ const List<Proverb> seedProverbs = [
     level: 1,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '13',
@@ -169,7 +169,7 @@ const List<Proverb> seedProverbs = [
     level: 1,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '14',
@@ -182,7 +182,7 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '15',
@@ -195,7 +195,7 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '16',
@@ -208,7 +208,7 @@ const List<Proverb> seedProverbs = [
     level: 1,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '17',
@@ -221,7 +221,7 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '18',
@@ -234,7 +234,7 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '19',
@@ -247,7 +247,7 @@ const List<Proverb> seedProverbs = [
     level: 1,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
   Proverb(
     id: '20',
@@ -260,7 +260,7 @@ const List<Proverb> seedProverbs = [
     level: 1,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.unverified,
-    sourceNote: 'Сарчашма номаълум. Лозим аст аз тахсини Tajik专家组.',
+    sourceNote: 'Сарчашма номаълум.',
   ),
 
   // === 150 VERIFIED TAJIK PROVERBS FROM SOURCE BOOKS ===
@@ -1567,7 +1567,7 @@ const List<Proverb> seedProverbs = [
   Proverb(
     id: '121',
     tajikCyrillic: 'Бой аз фарбеҳӣ меноладу камбағал аз лоғарӣ.',
-    persianText: 'IPE از فربهی میماند و فقیر از لاغری.',
+    persianText: 'هر کس به اندازه حال خود نام می‌گیرد.',
     simpleExplanationTj: 'Бой — аз зиёдӣ, камбағал — аз камӣ.',
     meaningTj: 'Ҳарду — аз ҳолати худ.',
     exampleSentenceTj: 'Бой аз фарбеҳӣ меноладу камбағал аз лоғарӣ — ба ҳолат фикр кун.',
@@ -1593,7 +1593,7 @@ const List<Proverb> seedProverbs = [
   Proverb(
     id: '123',
     tajikCyrillic: 'Қарздор — ғамдор.',
-    persianText: 'IPE — غمگین.',
+    persianText: 'وام‌دار — غمگین.',
     simpleExplanationTj: 'Қарздор — ҳамеша дар ғам.',
     meaningTj: 'Қарздорӣ — ба ғам меорад.',
     exampleSentenceTj: 'Қарздор — ғамдор — ба қарздорӣ эҳтиёт бош.',
@@ -1827,7 +1827,7 @@ const List<Proverb> seedProverbs = [
   Proverb(
     id: '141',
     tajikCyrillic: 'Харро бо зин асп намешавад.',
-    persianText: 'IPE را با اسبِ زین‌دار نمیشود مقایسه کرد.',
+    persianText: 'گراز را با اسبِ زین‌دار نمی‌توان مقایسه کرد.',
     simpleExplanationTj: 'Хар — бо аси зин — муқоиса намешавад.',
     meaningTj: 'Ҳар чиз — барои худ арзиш дорад.',
     exampleSentenceTj: 'Харро бо зин асп намешавад — ҳар кас барои худ кор мекунад.',
@@ -2061,7 +2061,7 @@ const List<Proverb> seedProverbs = [
   Proverb(
     id: '159',
     tajikCyrillic: 'Нодонро панд гуфтан — об дар ҳован кӯфтан.',
-    persianText: 'IPE را پند دادن آب در هاون کوبیدن است.',
+    persianText: 'نادان را پند دادن آب در هاون کوبیدن است.',
     simpleExplanationTj: 'Нодонро панд — кор барои нест.',
     meaningTj: 'Ба нодон — панд нагуф.',
     exampleSentenceTj: 'Нодонро панд гуфтан — об дар ҳован кӯфтан — ба нодон панд нагуф.',
