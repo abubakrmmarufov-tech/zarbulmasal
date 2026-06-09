@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../data/seed/seed_categories.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../core/theme/app_colors.dart';
@@ -43,13 +44,16 @@ class CategoriesScreen extends ConsumerWidget {
     final categories = seedCategories;
     final proverbs = ref.watch(proverbsProvider);
     final selectedCategory = ref.watch(selectedCategoryProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
+
+    final subtitle = '$categories.length ${AppTranslations.get('categories_subtitle', displayLang)}';
 
     return Scaffold(
       body: Column(
         children: [
           CulturalHeader(
-            title: 'Гурӯҳҳо',
-            subtitle: '${categories.length} гурӯҳи мақолҳо',
+            title: AppTranslations.get('categories_title', displayLang),
+            subtitle: subtitle,
             trailing: selectedCategory != null
                 ? Container(
                     width: 36,
@@ -160,7 +164,7 @@ class CategoriesScreen extends ConsumerWidget {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Text(
-                                '$proverbCount мақол',
+                                '$proverbCount ${AppTranslations.get('levels_proverbs', displayLang)}',
                                 style: TextStyle(
                                   fontFamily: 'NotoSans',
                                   fontSize: 12,

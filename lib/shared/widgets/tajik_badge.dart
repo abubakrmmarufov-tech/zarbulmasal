@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../core/l10n/app_translations.dart';
+import '../providers/app_providers.dart';
 
 class TajikBadge extends StatelessWidget {
   final IconData? icon;
@@ -48,10 +50,15 @@ class TajikBadge extends StatelessWidget {
     Key? key,
     required bool isTraditional,
     required Color primaryColor,
+    DisplayLanguage displayLanguage = DisplayLanguage.tajik,
   }) {
+    final text = AppTranslations.get(
+      isTraditional ? 'badges_traditional' : 'badges_modern',
+      displayLanguage,
+    );
     return TajikBadge(
       key: key,
-      text: isTraditional ? 'Анъанавӣ' : 'Адабӣ',
+      text: text,
       backgroundColor: isTraditional
           ? primaryColor.withValues(alpha: 0.12)
           : Colors.grey.withValues(alpha: 0.12),
@@ -62,11 +69,16 @@ class TajikBadge extends StatelessWidget {
   factory TajikBadge.verified({
     Key? key,
     required bool isVerified,
+    DisplayLanguage displayLanguage = DisplayLanguage.tajik,
   }) {
+    final text = AppTranslations.get(
+      isVerified ? 'badges_verified' : 'badges_unverified',
+      displayLanguage,
+    );
     return TajikBadge(
       key: key,
       icon: isVerified ? Icons.verified : Icons.help_outline,
-      text: isVerified ? 'Тасдиқшуда' : 'Номаълум',
+      text: text,
       backgroundColor: isVerified
           ? Colors.green.withValues(alpha: 0.12)
           : Colors.amber.withValues(alpha: 0.12),

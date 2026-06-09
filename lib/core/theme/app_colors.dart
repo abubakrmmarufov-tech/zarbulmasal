@@ -28,6 +28,13 @@ class AppColors {
   static const Color errorDark = Color(0xFFF87171);
   static const Color tertiaryGoldDark = Color(0xFFD4A843);    // warm gold for dark mode tertiary
 
+  // Tajik cultural palette — Phase 2 additions
+  static const Color tajikFlagRed = Color(0xFFCE1126);
+  static const Color tajikFlagGreen = Color(0xFF2E7D32);
+  static const Color tajikGold = Color(0xFFB8860B);
+  static const Color tajikNavy = Color(0xFF1A237E);
+  static const Color atlasGold = Color(0xFFD4AF37);
+
   // Tajik cultural category colors
   static const Color categoryRed = Color(0xFFB91C1C);
   static const Color categoryGreen = Color(0xFF166534);

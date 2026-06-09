@@ -11,14 +11,23 @@ class ZarbulmasalApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
 
-    return MaterialApp.router(
-      title: AppConstants.appName,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: themeMode,
-      routerConfig: appRouter,
+    final locale = displayLang == DisplayLanguage.persian
+        ? const Locale('fa')
+        : const Locale('tg');
+
+    return Localizations.override(
+      context: context,
+      locale: locale,
+      child: MaterialApp.router(
+        title: AppConstants.appName,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: themeMode,
+        routerConfig: appRouter,
+      ),
     );
   }
 }

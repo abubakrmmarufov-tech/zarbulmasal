@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/proverb.dart';
 import '../../data/models/category.dart';
 import '../../data/seed/seed_categories.dart';
+import '../../core/l10n/app_translations.dart';
 import '../providers/app_providers.dart';
 
 class ProverbCard extends ConsumerWidget {
@@ -57,6 +58,14 @@ class ProverbCard extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
     final isTraditional = proverb.type == ProverbType.traditional;
     final accentColor = const Color(0xFFD97706);
+    final displayLang = ref.watch(displayLanguageProvider);
+    final isPersian = displayLang == DisplayLanguage.persian;
+    final primaryText = isPersian ? proverb.persianText : proverb.tajikCyrillic;
+    final secondaryText = isPersian ? proverb.tajikCyrillic : proverb.persianText;
+    final primaryDir = isPersian ? TextDirection.rtl : TextDirection.ltr;
+    final levelName = isPersian
+        ? AppTranslations.get('badges_level', displayLang, [proverb.level.toString()])
+        : 'Сатҳ ${proverb.level}';
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -73,7 +82,6 @@ class ProverbCard extends ConsumerWidget {
         child: IntrinsicHeight(
           child: Row(
             children: [
-              // Gold accent bar
               Container(
                 width: 4,
                 decoration: BoxDecoration(
@@ -95,7 +103,7 @@ class ProverbCard extends ConsumerWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              proverb.tajikCyrillic,
+                              primaryText,
                               style: TextStyle(
                                 fontFamily: 'NotoSerif',
                                 fontSize: 18,
@@ -103,6 +111,7 @@ class ProverbCard extends ConsumerWidget {
                                 height: 1.6,
                                 color: colorScheme.onSurface,
                               ),
+                              textDirection: primaryDir,
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -132,7 +141,7 @@ class ProverbCard extends ConsumerWidget {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        proverb.persianText,
+                        secondaryText,
                         style: TextStyle(
                           fontFamily: 'NotoSans',
                           fontSize: 15,
@@ -140,6 +149,7 @@ class ProverbCard extends ConsumerWidget {
                           height: 1.5,
                           color: colorScheme.onSurfaceVariant,
                         ),
+                        textDirection: isPersian ? TextDirection.ltr : TextDirection.rtl,
                       ),
                       const SizedBox(height: 14),
                       Wrap(
@@ -176,7 +186,7 @@ class ProverbCard extends ConsumerWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
-                              'Сатҳ ${proverb.level}',
+                              levelName,
                               style: TextStyle(
                                 fontFamily: 'NotoSans',
                                 fontSize: 12,
@@ -194,7 +204,10 @@ class ProverbCard extends ConsumerWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
-                              isTraditional ? 'Анъанавӣ' : 'Адабӣ',
+                              AppTranslations.get(
+                                isTraditional ? 'badges_traditional' : 'badges_modern',
+                                displayLang,
+                              ),
                               style: TextStyle(
                                 fontFamily: 'NotoSans',
                                 fontSize: 12,

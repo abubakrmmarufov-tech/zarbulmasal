@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/constants/app_constants.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/widgets/cultural_header.dart';
@@ -18,17 +18,16 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
-          const CulturalHeader(
-            title: 'Танзимот',
-            subtitle: 'Танзимоти барнома',
+          CulturalHeader(
+            title: AppTranslations.get('settings_title', displayLang),
+            subtitle: AppTranslations.get('settings_subtitle', displayLang),
           ),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                // Display section
                 Text(
-                  'Намоиш',
+                  AppTranslations.get('settings_display', displayLang),
                   style: theme.textTheme.titleMedium?.copyWith(
                     color: AppColors.accentGold,
                     fontWeight: FontWeight.w600,
@@ -61,9 +60,11 @@ class SettingsScreen extends ConsumerWidget {
                             size: 22,
                           ),
                         ),
-                        title: const Text('Режими торик'),
+                        title: Text(AppTranslations.get('settings_dark_mode', displayLang)),
                         subtitle: Text(
-                          themeMode == ThemeMode.dark ? 'Фаъол' : 'Гайрифаъол',
+                          themeMode == ThemeMode.dark
+                              ? AppTranslations.get('settings_active', displayLang)
+                              : AppTranslations.get('settings_inactive', displayLang),
                         ),
                         trailing: Switch(
                           value: themeMode == ThemeMode.dark,
@@ -73,8 +74,8 @@ class SettingsScreen extends ConsumerWidget {
                           activeTrackColor: AppColors.accentGold.withValues(alpha: 0.5),
                           activeThumbColor: AppColors.accentGold,
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                         ),
                       ),
                       Divider(height: 1, indent: 72, endIndent: 16, color: colorScheme.outline.withValues(alpha: 0.1)),
@@ -92,25 +93,30 @@ class SettingsScreen extends ConsumerWidget {
                             size: 22,
                           ),
                         ),
-                        title: const Text('Забон'),
+                        title: Text(AppTranslations.get('settings_language', displayLang)),
                         subtitle: Text(
                           displayLang == DisplayLanguage.persian ? 'Форсӣ' : 'Тоҷикӣ',
                         ),
                         trailing: SegmentedButton<DisplayLanguage>(
-                          segments: const [
+                          segments: [
                             ButtonSegment(
                               value: DisplayLanguage.tajik,
-                              label: Text('Тоҷ'),
+                              label: Text(
+                                displayLang == DisplayLanguage.tajik ? 'Тоҷ' : 'Тоҷ',
+                                style: const TextStyle(fontSize: 12),
+                              ),
                             ),
                             ButtonSegment(
                               value: DisplayLanguage.persian,
-                              label: Text('Форс'),
+                              label: Text(
+                                displayLang == DisplayLanguage.persian ? 'Форс' : 'Форс',
+                                style: const TextStyle(fontSize: 12),
+                              ),
                             ),
                           ],
                           selected: {displayLang},
                           onSelectionChanged: (selected) {
-                            ref.read(displayLanguageProvider.notifier)
-                                .setLanguage(selected.first);
+                            ref.read(displayLanguageProvider.notifier).setLanguage(selected.first);
                           },
                           style: ButtonStyle(
                             visualDensity: VisualDensity.compact,
@@ -131,9 +137,8 @@ class SettingsScreen extends ConsumerWidget {
 
                 const SizedBox(height: 24),
 
-                // Info section
                 Text(
-                  'Маълумот',
+                  AppTranslations.get('settings_info', displayLang),
                   style: theme.textTheme.titleMedium?.copyWith(
                     color: AppColors.accentGold,
                     fontWeight: FontWeight.w600,
@@ -164,16 +169,14 @@ class SettingsScreen extends ConsumerWidget {
                             size: 22,
                           ),
                         ),
-                        title: const Text('Дар бораи барнома'),
+                        title: Text(AppTranslations.get('settings_about', displayLang)),
                         trailing: Icon(
                           Icons.chevron_right,
                           color: colorScheme.onSurfaceVariant,
                         ),
-                        onTap: () => _showAboutCard(context, theme, colorScheme),
+                        onTap: () => _showAboutCard(context, theme, colorScheme, displayLang),
                         shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(20),
-                          ),
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                         ),
                       ),
                       Divider(height: 1, indent: 72, endIndent: 16, color: colorScheme.outline.withValues(alpha: 0.1)),
@@ -191,8 +194,12 @@ class SettingsScreen extends ConsumerWidget {
                             size: 22,
                           ),
                         ),
-                        title: const Text('Мақолҳо'),
-                        subtitle: Text('${ref.watch(proverbsProvider).length} мақол'),
+                        title: Text(AppTranslations.get('home_proverbs', displayLang)),
+                        subtitle: Text(AppTranslations.get(
+                          'settings_proverbs_count',
+                          displayLang,
+                          [ref.watch(proverbsProvider).length.toString()],
+                        )),
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(20),
@@ -205,9 +212,8 @@ class SettingsScreen extends ConsumerWidget {
 
                 const SizedBox(height: 24),
 
-                // Contact section
                 Text(
-                  'Пешниҳодҳо',
+                  AppTranslations.get('settings_contact', displayLang),
                   style: theme.textTheme.titleMedium?.copyWith(
                     color: AppColors.accentGold,
                     fontWeight: FontWeight.w600,
@@ -231,14 +237,14 @@ class SettingsScreen extends ConsumerWidget {
                           Icon(Icons.email_outlined, color: colorScheme.primary, size: 22),
                           const SizedBox(width: 8),
                           Text(
-                            'Тамос',
+                            AppTranslations.get('settings_contact_title', displayLang),
                             style: theme.textTheme.titleMedium,
                           ),
                         ],
                       ),
                       const SizedBox(height: 14),
                       Text(
-                        'Агар шумо пешниҳодҳо ё таклифҳо доред, ба мо нависед:',
+                        AppTranslations.get('settings_contact_text', displayLang),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           height: 1.7,
                           color: colorScheme.onSurface,
@@ -270,9 +276,8 @@ class SettingsScreen extends ConsumerWidget {
 
                 const SizedBox(height: 24),
 
-                // Source section
                 Text(
-                  'Дар бораи сарчашма',
+                  AppTranslations.get('settings_source', displayLang),
                   style: theme.textTheme.titleMedium?.copyWith(
                     color: AppColors.accentGold,
                     fontWeight: FontWeight.w600,
@@ -296,16 +301,14 @@ class SettingsScreen extends ConsumerWidget {
                           Icon(Icons.info_outline, color: colorScheme.primary, size: 22),
                           const SizedBox(width: 8),
                           Text(
-                            'Сарчашмаи мақолҳо',
+                            AppTranslations.get('settings_source_title', displayLang),
                             style: theme.textTheme.titleMedium,
                           ),
                         ],
                       ),
                       const SizedBox(height: 14),
                       Text(
-                        'Мақолҳои ин барнома аз сарчашмаҳои боэътимоди тоҷикӣ, '
-                        'аз китобҳои зарбулмасал, фолклори тоҷик ва захираҳои фарҳангии '
-                        'тоҷикӣ гирифта шудаанд.',
+                        AppTranslations.get('settings_source_text', displayLang),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           height: 1.7,
                           color: colorScheme.onSurface,
@@ -313,8 +316,7 @@ class SettingsScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'Агар шумо сарчашмаи дурусти тоҷикиро медонед, лутфан '
-                        'пешниҳодҳоятонро ба мо фиристед.',
+                        AppTranslations.get('settings_source_text2', displayLang),
                         style: theme.textTheme.bodyMedium?.copyWith(
                           height: 1.7,
                           color: colorScheme.onSurface,
@@ -328,9 +330,9 @@ class SettingsScreen extends ConsumerWidget {
                 Center(
                   child: Column(
                     children: [
-                      const Text(
-                        AppConstants.appName,
-                        style: TextStyle(
+                      Text(
+                        AppTranslations.get('app_name', displayLang),
+                        style: const TextStyle(
                           fontFamily: 'NotoSerif',
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -339,14 +341,21 @@ class SettingsScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Версия 1.0.0',
+                        AppTranslations.get('settings_version', displayLang),
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Мақолҳои тоҷикӣ — мероси фарҳангӣ',
+                        AppTranslations.get('settings_year', displayLang),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        AppTranslations.get('settings_tagline', displayLang),
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
@@ -363,14 +372,14 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-  void _showAboutCard(BuildContext context, ThemeData theme, ColorScheme colorScheme) {
+  void _showAboutCard(BuildContext context, ThemeData theme, ColorScheme colorScheme, DisplayLanguage displayLang) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         title: Row(
           children: [
-            const Text(AppConstants.appName),
+            Text(AppTranslations.get('app_name', displayLang)),
             const Spacer(),
             IconButton(
               icon: const Icon(Icons.close),
@@ -383,8 +392,7 @@ class SettingsScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Зарбулмасал — барнома барои омӯзиш, фаҳмиш ва '
-              'нигоҳдории мақолҳои тоҷикӣ.',
+              AppTranslations.get('settings_about_text', displayLang),
               style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
             ),
             const SizedBox(height: 16),
@@ -398,9 +406,9 @@ class SettingsScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Версия 1.0.0', style: theme.textTheme.bodySmall),
+                  Text(AppTranslations.get('settings_version', displayLang), style: theme.textTheme.bodySmall),
                   const SizedBox(height: 4),
-                  Text('2026 Зарбулмасал', style: theme.textTheme.bodySmall),
+                  Text(AppTranslations.get('settings_year', displayLang), style: theme.textTheme.bodySmall),
                 ],
               ),
             ),
@@ -409,7 +417,7 @@ class SettingsScreen extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Закрыть'),
+            child: Text(AppTranslations.get('settings_close', displayLang)),
           ),
         ],
       ),
