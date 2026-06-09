@@ -262,7 +262,7 @@ class SettingsScreen extends ConsumerWidget {
                           ),
                         ),
                         child: SelectableText(
-                          'abubakrmmarufov@gmail.com',
+                          'Telegram: @imarufov',
                           style: theme.textTheme.bodyLarge?.copyWith(
                             fontFamily: 'NotoSans',
                             color: AppColors.accentGold,
