@@ -2,6 +2,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 
+const _splashImageAsset = 'assets/images/splash_countdown.png';
+
 class SplashScreen extends StatefulWidget {
   final Widget child;
 
@@ -19,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _fadeAnimation;
   late Animation<double> _glowAnimation;
   late Animation<double> _scaleAnimation;
+  bool _didPrecacheSplashImage = false;
   bool _showSplash = true;
 
   @override
@@ -40,9 +43,10 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 600),
     );
 
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _fadeController, curve: Curves.easeIn),
-    );
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _fadeController, curve: Curves.easeIn));
 
     _scaleAnimation = Tween<double>(begin: 0.75, end: 1.0).animate(
       CurvedAnimation(parent: _scaleController, curve: Curves.easeOutBack),
@@ -67,6 +71,14 @@ class _SplashScreenState extends State<SplashScreen>
         setState(() => _showSplash = false);
       }
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_didPrecacheSplashImage) return;
+    _didPrecacheSplashImage = true;
+    precacheImage(const AssetImage(_splashImageAsset), context);
   }
 
   @override
@@ -102,12 +114,8 @@ class _SplashContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgTop = isDark
-        ? const Color(0xFF1C0F05)
-        : const Color(0xFFFFF8F0);
-    final bgBottom = isDark
-        ? const Color(0xFF0D0702)
-        : const Color(0xFFFAF0E0);
+    final bgTop = isDark ? const Color(0xFF1C0F05) : const Color(0xFFFFF8F0);
+    final bgBottom = isDark ? const Color(0xFF0D0702) : const Color(0xFFFAF0E0);
     final textColor = isDark
         ? const Color(0xFFF5EFE0)
         : const Color(0xFF1C1917);
@@ -132,112 +140,131 @@ class _SplashContent extends StatelessWidget {
                 ),
               ),
               child: SafeArea(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Spacer(flex: 2),
-                    CustomPaint(
-                      size: const Size(280, 280),
-                      painter: _TextilePatternPainter(isDark: isDark),
-                    ),
-                    AnimatedBuilder(
-                      animation: glowAnimation,
-                      builder: (context, child) {
-                        final glow = glowAnimation.value.clamp(0.0, 1.0);
-                        return Container(
-                          width: 140,
-                          height: 140,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.accentGold
-                                    .withValues(alpha: 0.35 * glow),
-                                blurRadius: 30 * glow,
-                                spreadRadius: 8 * glow,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final imageSize = math.min(
+                      math.min(
+                        constraints.maxWidth * 0.72,
+                        constraints.maxHeight * 0.48,
+                      ),
+                      340.0,
+                    );
+
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Spacer(flex: 2),
+                        AnimatedBuilder(
+                          animation: glowAnimation,
+                          builder: (context, child) {
+                            final glow = glowAnimation.value.clamp(0.0, 1.0);
+
+                            return SizedBox(
+                              width: imageSize + 96,
+                              height: imageSize + 96,
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Container(
+                                    width: imageSize + 72,
+                                    height: imageSize + 72,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      gradient: RadialGradient(
+                                        colors: [
+                                          AppColors.accentGold.withValues(
+                                            alpha: 0.34 * glow,
+                                          ),
+                                          AppColors.accentGold.withValues(
+                                            alpha: 0.12 * glow,
+                                          ),
+                                          Colors.transparent,
+                                        ],
+                                        stops: const [0.0, 0.48, 1.0],
+                                      ),
+                                    ),
+                                  ),
+                                  Transform.scale(
+                                    scale: scaleAnimation.value.clamp(0.0, 1.0),
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(32),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: AppColors.accentGold
+                                                .withValues(alpha: 0.26 * glow),
+                                            blurRadius: 44,
+                                            spreadRadius: 4,
+                                          ),
+                                          BoxShadow(
+                                            color: Colors.black.withValues(
+                                              alpha: isDark ? 0.44 : 0.18,
+                                            ),
+                                            blurRadius: 28,
+                                            offset: const Offset(0, 14),
+                                          ),
+                                        ],
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(30),
+                                        child: Image.asset(
+                                          _splashImageAsset,
+                                          width: imageSize,
+                                          height: imageSize,
+                                          fit: BoxFit.cover,
+                                          filterQuality: FilterQuality.high,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              BoxShadow(
-                                color: AppColors.accentGold
-                                    .withValues(alpha: 0.12 * glow),
-                                blurRadius: 60 * glow,
-                                spreadRadius: 20 * glow,
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 18),
+                        Transform.scale(
+                          scale: scaleAnimation.value.clamp(0.0, 1.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                'Зарбулмасал',
+                                style: TextStyle(
+                                  fontFamily: 'NotoSerif',
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: textColor,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                'Ҳикмати ҳазорсолаи тоҷик',
+                                style: TextStyle(
+                                  fontFamily: 'NotoSans',
+                                  fontSize: 16,
+                                  color: subtitleColor,
+                                  letterSpacing: 0.5,
+                                ),
                               ),
                             ],
                           ),
-                          child: Transform.scale(
-                            scale: scaleAnimation.value.clamp(0.0, 1.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    AppColors.accentGold,
-                                    AppColors.accentGold.withValues(alpha: 0.7),
-                                  ],
-                                ),
-                                border: Border.all(
-                                  color: Colors.white.withValues(alpha: 0.3),
-                                  width: 3,
-                                ),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'З',
-                                  style: TextStyle(
-                                    fontFamily: 'NotoSerif',
-                                    fontSize: 72,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    height: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 32),
-                    Transform.scale(
-                      scale: scaleAnimation.value.clamp(0.0, 1.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Зарбулмасал',
-                            style: TextStyle(
-                              fontFamily: 'NotoSerif',
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              color: textColor,
-                              letterSpacing: 1,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'Ҳикмати ҳазорсолаи тоҷик',
-                            style: TextStyle(
-                              fontFamily: 'NotoSans',
-                              fontSize: 16,
-                              color: subtitleColor,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(flex: 3),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 32),
-                      child: CustomPaint(
-                        size: const Size(200, 12),
-                        painter: _OrnamentPainter(
-                          color: AppColors.accentGold.withValues(alpha: isDark ? 0.4 : 0.3),
                         ),
-                      ),
-                    ),
-                  ],
+                        const Spacer(flex: 3),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 32),
+                          child: CustomPaint(
+                            size: const Size(200, 12),
+                            painter: _OrnamentPainter(
+                              color: AppColors.accentGold.withValues(
+                                alpha: isDark ? 0.4 : 0.3,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
             ),
@@ -246,79 +273,6 @@ class _SplashContent extends StatelessWidget {
       },
     );
   }
-}
-
-class _TextilePatternPainter extends CustomPainter {
-  final bool isDark;
-
-  _TextilePatternPainter({required this.isDark});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = AppColors.accentGold.withValues(alpha: isDark ? 0.04 : 0.06)
-      ..strokeWidth = 1.5
-      ..style = PaintingStyle.stroke;
-
-    final center = Offset(size.width / 2, size.height / 2);
-    const radius = 120.0;
-
-    for (int i = 1; i <= 6; i++) {
-      final r = radius * (i / 6);
-      _drawDashedCircle(canvas, center, r, paint);
-    }
-
-    for (int i = 0; i < 8; i++) {
-      final angle = (i * math.pi / 4);
-      final end = Offset(
-        center.dx + radius * math.cos(angle),
-        center.dy + radius * math.sin(angle),
-      );
-      canvas.drawLine(center, end, paint);
-    }
-
-    final diamondPaint = Paint()
-      ..color = AppColors.accentGold.withValues(alpha: isDark ? 0.05 : 0.08)
-      ..style = PaintingStyle.fill;
-
-    for (int i = 0; i < 8; i++) {
-      final angle = (i * math.pi / 4) + (math.pi / 8);
-      final r = radius * 0.65;
-      final x = center.dx + r * math.cos(angle);
-      final y = center.dy + r * math.sin(angle);
-
-      final path = Path();
-      path.moveTo(x, y - 8);
-      path.lineTo(x + 6, y);
-      path.lineTo(x, y + 8);
-      path.lineTo(x - 6, y);
-      path.close();
-      canvas.drawPath(path, diamondPaint);
-    }
-  }
-
-  void _drawDashedCircle(Canvas canvas, Offset center, double radius, Paint paint) {
-    const dashCount = 60;
-    const gapRatio = 0.5;
-    final dashAngle = (2 * math.pi) / dashCount;
-    final gapAngle = dashAngle * gapRatio;
-
-    for (int i = 0; i < dashCount; i++) {
-      final startAngle = i * (dashAngle + gapAngle);
-      final sweepAngle = dashAngle * (1 - gapRatio);
-
-      final path = Path();
-      path.addArc(
-        Rect.fromCircle(center: center, radius: radius),
-        startAngle,
-        sweepAngle,
-      );
-      canvas.drawPath(path, paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 class _OrnamentPainter extends CustomPainter {
@@ -345,7 +299,11 @@ class _OrnamentPainter extends CustomPainter {
     canvas.drawPath(diamondPath, paint..style = PaintingStyle.fill);
 
     canvas.drawLine(Offset(0, centerY), Offset(centerX - 12, centerY), paint);
-    canvas.drawLine(Offset(centerX + 12, centerY), Offset(size.width, centerY), paint);
+    canvas.drawLine(
+      Offset(centerX + 12, centerY),
+      Offset(size.width, centerY),
+      paint,
+    );
 
     final dotPaint = Paint()
       ..color = color
