@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../core/constants/app_constants.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/cultural_header.dart';
+import '../../shared/widgets/pamir_silhouette.dart';
 
 class LevelsScreen extends ConsumerWidget {
   const LevelsScreen({super.key});
@@ -16,41 +18,23 @@ class LevelsScreen extends ConsumerWidget {
     return const Color(0xFF7C2D12);
   }
 
-  String _getLevelDescription(int level) {
-    switch (level) {
-      case 1: return 'Мақолҳои оддӣ барои оғоз';
-      case 2: return 'Мақолҳои осон';
-      case 3: return 'Мақолҳои асосӣ';
-      case 4: return 'Мақолҳои содда';
-      case 5: return 'Мақолҳои миёна';
-      case 6: return 'Мақолҳои мураккал';
-      case 7: return 'Мақолҳои хуби қавӣ';
-      case 8: return 'Мақолҳои бисёр мураккал';
-      case 9: return 'Мақолҳои усто';
-      case 10: return 'Мақолҳои олимӣ';
-      default: return '';
-    }
-  }
-
-  String _getProgressionLabel(int level) {
-    if (level <= 3) return 'Оғоз';
-    if (level <= 6) return 'Миёна';
-    if (level <= 9) return 'Продвинута';
-    return 'Олим';
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final selectedLevel = ref.watch(selectedLevelProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
 
     return Scaffold(
       body: Column(
         children: [
-          const CulturalHeader(
-            title: 'Сатҳҳо',
-            subtitle: 'Аз оғоз то олим — 10 сатҳ',
+          CulturalHeader(
+            title: AppTranslations.get('levels_title', displayLang),
+            subtitle: AppTranslations.get('levels_subtitle', displayLang),
+          ),
+          PamirSilhouette(
+            height: 28,
+            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: ListView.builder(
@@ -60,6 +44,23 @@ class LevelsScreen extends ConsumerWidget {
                 final level = index + 1;
                 final isSelected = selectedLevel == level;
                 final color = _getLevelColor(level);
+                final isPersian = displayLang == DisplayLanguage.persian;
+
+                final levelName = isPersian
+                    ? AppConstants.getLevelNameFa(level)
+                    : AppConstants.getLevelName(level);
+                final levelDesc = AppTranslations.get('level_desc_$level', displayLang);
+
+                String progressionKey;
+                if (level <= 3) {
+                  progressionKey = 'progression_beginner';
+                } else if (level <= 6) {
+                  progressionKey = 'progression_intermediate';
+                } else if (level <= 9) {
+                  progressionKey = 'progression_advanced';
+                } else {
+                  progressionKey = 'progression_master';
+                }
 
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 12),
@@ -125,7 +126,7 @@ class LevelsScreen extends ConsumerWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        AppConstants.getLevelName(level),
+                                        levelName,
                                         style: TextStyle(
                                           fontFamily: 'NotoSerif',
                                           fontSize: 17,
@@ -141,7 +142,7 @@ class LevelsScreen extends ConsumerWidget {
                                           borderRadius: BorderRadius.circular(10),
                                         ),
                                         child: Text(
-                                          _getProgressionLabel(level),
+                                          AppTranslations.get(progressionKey, displayLang),
                                           style: TextStyle(
                                             fontFamily: 'NotoSans',
                                             fontSize: 11,
@@ -154,7 +155,7 @@ class LevelsScreen extends ConsumerWidget {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    _getLevelDescription(level),
+                                    levelDesc,
                                     style: TextStyle(
                                       fontFamily: 'NotoSans',
                                       fontSize: 14,

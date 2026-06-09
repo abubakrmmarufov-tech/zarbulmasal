@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/category.dart';
 import '../../data/models/proverb.dart';
 import '../../data/seed/seed_categories.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/cultural_header.dart';
 import '../../shared/widgets/section_card.dart';
@@ -58,21 +59,23 @@ class ProverbDetailScreen extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
     final proverbs = ref.watch(proverbsProvider);
     final favorites = ref.watch(favoritesProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
+    final isPersian = displayLang == DisplayLanguage.persian;
 
     if (proverbs.isEmpty) {
       return Scaffold(
         body: Column(
           children: [
-            const CulturalHeader(
-              title: 'Мақол',
-              subtitle: 'Ҳоло мақол дастрас нест',
+            CulturalHeader(
+              title: AppTranslations.get('proverbs_title', displayLang),
+              subtitle: AppTranslations.get('detail_loading', displayLang),
             ),
             Expanded(
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Text(
-                    'Рӯйхати мақолҳо холӣ аст.',
+                    AppTranslations.get('detail_no_proverbs', displayLang),
                     style: theme.textTheme.titleMedium?.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
@@ -98,12 +101,19 @@ class ProverbDetailScreen extends ConsumerWidget {
       seedCategories.indexWhere((c) => c.id == proverb.categoryId),
     );
 
+    final primaryText = isPersian ? proverb.persianText : proverb.tajikCyrillic;
+    final secondaryText = isPersian ? proverb.tajikCyrillic : proverb.persianText;
+    final subtitle = isPersian ? proverb.tajikCyrillic : proverb.persianText;
+    final levelBadge = isPersian
+        ? AppTranslations.get('badges_level', displayLang, [proverb.level.toString()])
+        : 'Сатҳ ${proverb.level}';
+
     return Scaffold(
       body: Column(
         children: [
           CulturalHeader(
-            title: 'Мақол',
-            subtitle: proverb.tajikCyrillic,
+            title: AppTranslations.get('proverbs_title', displayLang),
+            subtitle: subtitle,
             trailing: Container(
               width: 44,
               height: 44,
@@ -133,7 +143,6 @@ class ProverbDetailScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Main proverb card
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(28),
@@ -161,7 +170,7 @@ class ProverbDetailScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          proverb.tajikCyrillic,
+                          primaryText,
                           style: TextStyle(
                             fontFamily: 'NotoSerif',
                             fontSize: 22,
@@ -170,10 +179,11 @@ class ProverbDetailScreen extends ConsumerWidget {
                             color: colorScheme.onSurface,
                           ),
                           textAlign: TextAlign.center,
+                          textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          proverb.persianText,
+                          secondaryText,
                           style: TextStyle(
                             fontFamily: 'NotoSans',
                             fontSize: 17,
@@ -182,13 +192,13 @@ class ProverbDetailScreen extends ConsumerWidget {
                             color: colorScheme.onSurfaceVariant,
                           ),
                           textAlign: TextAlign.center,
+                          textDirection: isPersian ? TextDirection.ltr : TextDirection.rtl,
                         ),
                       ],
                     ),
                   ),
 
                   const SizedBox(height: 16),
-                  // Badges row
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
@@ -199,14 +209,18 @@ class ProverbDetailScreen extends ConsumerWidget {
                         accentColor: categoryColor,
                       ),
                       TajikBadge.level(
-                        text: 'Сатҳ ${proverb.level}',
+                        text: levelBadge,
                         accentColor: AppColors.accentGold,
                       ),
                       TajikBadge.type(
                         isTraditional: isTraditional,
                         primaryColor: AppColors.accentGold,
+                        displayLanguage: displayLang,
                       ),
-                      TajikBadge.verified(isVerified: isVerified),
+                      TajikBadge.verified(
+                        isVerified: isVerified,
+                        displayLanguage: displayLang,
+                      ),
                     ],
                   ),
 
@@ -216,9 +230,8 @@ class ProverbDetailScreen extends ConsumerWidget {
                   ),
 
                   const SizedBox(height: 24),
-                  // Шарҳи оддӣ section
                   SectionCard(
-                    title: 'Шарҳи оддӣ',
+                    title: AppTranslations.get('detail_simple_explanation', displayLang),
                     icon: Icons.menu_book,
                     accentColor: AppColors.accentGold,
                     child: Text(
@@ -233,9 +246,8 @@ class ProverbDetailScreen extends ConsumerWidget {
                   ),
 
                   const SizedBox(height: 16),
-                  // Маъно section
                   SectionCard(
-                    title: 'Маъно',
+                    title: AppTranslations.get('detail_meaning', displayLang),
                     icon: Icons.lightbulb_outline,
                     accentColor: const Color(0xFF166534),
                     child: Text(
@@ -250,9 +262,8 @@ class ProverbDetailScreen extends ConsumerWidget {
                   ),
 
                   const SizedBox(height: 16),
-                  // Мисол section
                   SectionCard(
-                    title: 'Мисол',
+                    title: AppTranslations.get('detail_example', displayLang),
                     icon: Icons.format_quote,
                     accentColor: const Color(0xFFC2410C),
                     child: Row(
@@ -276,7 +287,6 @@ class ProverbDetailScreen extends ConsumerWidget {
                     ),
                   ),
 
-                  // Source note
                   if (proverb.sourceNote.isNotEmpty) ...[
                     const SizedBox(height: 16),
                     Container(

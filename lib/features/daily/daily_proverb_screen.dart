@@ -4,10 +4,13 @@ import 'package:go_router/go_router.dart';
 import '../../data/models/category.dart';
 import '../../data/models/proverb.dart';
 import '../../data/seed/seed_categories.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/cultural_header.dart';
 import '../../shared/widgets/section_card.dart';
 import '../../shared/widgets/tajik_badge.dart';
+import '../../shared/widgets/pamir_silhouette.dart';
+import '../../shared/widgets/tajik_pattern_divider.dart';
 import '../../core/theme/app_colors.dart';
 
 class DailyProverbScreen extends ConsumerWidget {
@@ -53,21 +56,25 @@ class DailyProverbScreen extends ConsumerWidget {
     final dailyProverb = ref.watch(dailyProverbProvider);
     final now = DateTime.now();
     final favorites = ref.watch(favoritesProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
+    final isPersian = displayLang == DisplayLanguage.persian;
+
+    final dateStr = '${now.day} ${AppTranslations.getMonthName(now.month, displayLang)}, ${now.year}';
 
     if (dailyProverb == null) {
       return Scaffold(
         body: Column(
           children: [
             CulturalHeader(
-              title: 'Мақоли рӯз',
-              subtitle: '${now.day} ${_getMonthName(now.month)}, ${now.year}',
+              title: AppTranslations.get('daily_title', displayLang),
+              subtitle: dateStr,
             ),
             Expanded(
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Text(
-                    'Ҳоло мақоле барои имрӯз дастрас нест.',
+                    AppTranslations.get('daily_not_available', displayLang),
                     style: theme.textTheme.titleMedium?.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
@@ -88,12 +95,15 @@ class DailyProverbScreen extends ConsumerWidget {
       seedCategories.indexWhere((c) => c.id == dailyProverb.categoryId),
     );
 
+    final primaryText = isPersian ? dailyProverb.persianText : dailyProverb.tajikCyrillic;
+    final secondaryText = isPersian ? dailyProverb.tajikCyrillic : dailyProverb.persianText;
+
     return Scaffold(
       body: Column(
         children: [
           CulturalHeader(
-            title: 'Мақоли рӯз',
-            subtitle: '${now.day} ${_getMonthName(now.month)}, ${now.year}',
+            title: AppTranslations.get('daily_title', displayLang),
+            subtitle: dateStr,
             trailing: Container(
               width: 44,
               height: 44,
@@ -113,16 +123,22 @@ class DailyProverbScreen extends ConsumerWidget {
               ),
             ),
           ),
+          PamirSilhouette(
+            height: 28,
+            darkMode: Theme.of(context).brightness == Brightness.dark,
+          ),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Source badge row
                   Row(
                     children: [
-                      TajikBadge.verified(isVerified: isVerified),
+                      TajikBadge.verified(
+                        isVerified: isVerified,
+                        displayLanguage: displayLang,
+                      ),
                       const SizedBox(width: 8),
                       TajikBadge.category(
                         text: category.nameTj,
@@ -134,7 +150,6 @@ class DailyProverbScreen extends ConsumerWidget {
 
                   const SizedBox(height: 20),
 
-                  // Main proverb card
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(32),
@@ -179,7 +194,7 @@ class DailyProverbScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          dailyProverb.tajikCyrillic,
+                          primaryText,
                           style: TextStyle(
                             fontFamily: 'NotoSerif',
                             fontSize: 22,
@@ -188,10 +203,11 @@ class DailyProverbScreen extends ConsumerWidget {
                             color: colorScheme.onSurface,
                           ),
                           textAlign: TextAlign.center,
+                          textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
                         ),
                         const SizedBox(height: 14),
                         Text(
-                          dailyProverb.persianText,
+                          secondaryText,
                           style: TextStyle(
                             fontFamily: 'NotoSans',
                             fontSize: 17,
@@ -200,16 +216,21 @@ class DailyProverbScreen extends ConsumerWidget {
                             color: colorScheme.onSurfaceVariant,
                           ),
                           textAlign: TextAlign.center,
+                          textDirection: isPersian ? TextDirection.ltr : TextDirection.rtl,
                         ),
                       ],
                     ),
                   ),
 
+                  const SizedBox(height: 16),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: TajikPatternDivider(),
+                  ),
                   const SizedBox(height: 24),
 
-                  // Шарҳи оддӣ
                   SectionCard(
-                    title: 'Шарҳи оддӣ',
+                    title: AppTranslations.get('detail_simple_explanation', displayLang),
                     icon: Icons.menu_book,
                     accentColor: AppColors.accentGold,
                     child: Text(
@@ -225,9 +246,8 @@ class DailyProverbScreen extends ConsumerWidget {
 
                   const SizedBox(height: 16),
 
-                  // Маъно
                   SectionCard(
-                    title: 'Маъно',
+                    title: AppTranslations.get('detail_meaning', displayLang),
                     icon: Icons.lightbulb_outline,
                     accentColor: const Color(0xFF166534),
                     child: Text(
@@ -243,9 +263,8 @@ class DailyProverbScreen extends ConsumerWidget {
 
                   const SizedBox(height: 16),
 
-                  // Мисол
                   SectionCard(
-                    title: 'Мисол',
+                    title: AppTranslations.get('detail_example', displayLang),
                     icon: Icons.format_quote,
                     accentColor: const Color(0xFFC2410C),
                     child: Row(
@@ -269,7 +288,6 @@ class DailyProverbScreen extends ConsumerWidget {
                     ),
                   ),
 
-                  // Source note
                   if (dailyProverb.sourceNote.isNotEmpty) ...[
                     const SizedBox(height: 16),
                     Container(
@@ -310,7 +328,7 @@ class DailyProverbScreen extends ConsumerWidget {
                     child: ElevatedButton.icon(
                       onPressed: () => context.push('/proverb/${dailyProverb.id}'),
                       icon: const Icon(Icons.arrow_forward),
-                      label: const Text('Бештар бинед'),
+                      label: Text(AppTranslations.get('btn_see_more', displayLang)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.accentGold,
                       ),
@@ -324,10 +342,5 @@ class DailyProverbScreen extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  String _getMonthName(int month) {
-    const months = ['', 'Январ', 'Феврал', 'Март', 'Апрел', 'Май', 'Июн', 'Июл', 'Август', 'Сентябр', 'Октябр', 'Ноябр', 'Декабр'];
-    return months[month];
   }
 }

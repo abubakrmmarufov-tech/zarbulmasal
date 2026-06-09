@@ -19,8 +19,26 @@ class AppConstants {
     'Олим',
   ];
 
+  static const List<String> levelNamesFa = [
+    'مبتدی',
+    'آسان',
+    'پایه',
+    'عادی',
+    'متوسط',
+    'بالاتر از متوسط',
+    'پیشرفته',
+    'متخصص',
+    'استاد',
+    'دانشمند',
+  ];
+
   static String getLevelName(int level) {
     if (level < 1 || level > 10) return 'Номаълум';
     return levelNames[level - 1];
+  }
+
+  static String getLevelNameFa(int level) {
+    if (level < 1 || level > 10) return 'نامشخص';
+    return levelNamesFa[level - 1];
   }
 }

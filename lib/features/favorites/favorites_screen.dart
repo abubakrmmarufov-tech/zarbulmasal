@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/proverb_card.dart';
 import '../../shared/widgets/cultural_header.dart';
@@ -14,13 +15,14 @@ class FavoritesScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final favorites = ref.watch(favoritesListProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
 
     return Scaffold(
       body: Column(
         children: [
-          const CulturalHeader(
-            title: 'Дӯстдошта',
-            subtitle: 'Мақолҳои шумо',
+          CulturalHeader(
+            title: AppTranslations.get('nav_favorites', displayLang),
+            subtitle: AppTranslations.get('home_proverbs', displayLang),
           ),
           PamirSilhouette(
             height: 28,
@@ -32,6 +34,11 @@ class FavoritesScreen extends ConsumerWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        PamirSilhouette(
+                          height: 48,
+                          darkMode: Theme.of(context).brightness == Brightness.dark,
+                        ),
+                        const SizedBox(height: 8),
                         Icon(
                           Icons.favorite_border,
                           size: 80,
@@ -39,14 +46,14 @@ class FavoritesScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'Мақоли дӯстдошта нест',
+                          AppTranslations.get('empty_no_favorites', displayLang),
                           style: theme.textTheme.titleMedium?.copyWith(
                             color: colorScheme.onSurfaceVariant,
                           ),
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Рӯи мақол нишонаи дилро пахш кунед',
+                          AppTranslations.get('empty_no_favorites_hint', displayLang),
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
                           ),
@@ -54,7 +61,7 @@ class FavoritesScreen extends ConsumerWidget {
                         const SizedBox(height: 24),
                         ElevatedButton(
                           onPressed: () => context.go('/proverbs'),
-                          child: const Text('Мақолҳоро бинед'),
+                          child: Text(AppTranslations.get('home_proverbs', displayLang)),
                         ),
                       ],
                     ),

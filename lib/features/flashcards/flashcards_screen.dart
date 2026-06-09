@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../core/theme/app_colors.dart';
-import '../../shared/widgets/cultural_header.dart';
+import '../../shared/widgets/pamir_silhouette.dart';
 
 class FlashcardsScreen extends ConsumerStatefulWidget {
   const FlashcardsScreen({super.key});
@@ -37,10 +39,24 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final displayLang = ref.watch(displayLanguageProvider);
+    final isPersian = displayLang == DisplayLanguage.persian;
 
     if (_flashcards.isEmpty) {
-      return const Scaffold(
-        body: CulturalHeader(title: 'Флешкортҳо', subtitle: 'Загрузка...'),
+      return Scaffold(
+        body: Column(
+          children: [
+            _buildTopBar(context, displayLang),
+            Expanded(
+              child: Center(
+                child: Text(
+                  AppTranslations.get('flashcards_loading', displayLang),
+                  style: theme.textTheme.titleMedium,
+                ),
+              ),
+            ),
+          ],
+        ),
       );
     }
 
@@ -51,9 +67,10 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
     return Scaffold(
       body: Column(
         children: [
-          CulturalHeader(
-            title: 'Флешкортҳо',
-            subtitle: 'Карта ${_currentIndex + 1} аз ${_flashcards.length}',
+          _buildTopBar(context, displayLang),
+          PamirSilhouette(
+            height: 24,
+            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: Padding(
@@ -106,7 +123,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     ),
                                     const SizedBox(height: 16),
                                     Text(
-                                      'Маъно',
+                                      AppTranslations.get('flashcards_meaning', displayLang),
                                       style: TextStyle(
                                         fontFamily: 'NotoSans',
                                         fontSize: 14,
@@ -128,7 +145,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     ),
                                     const SizedBox(height: 24),
                                     Text(
-                                      'Шарҳ',
+                                      AppTranslations.get('flashcards_explanation', displayLang),
                                       style: TextStyle(
                                         fontFamily: 'NotoSans',
                                         fontSize: 14,
@@ -157,12 +174,14 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                           color: colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
                                         ),
                                         const SizedBox(width: 6),
-                                        Text(
-                                          'Тез клик кунед барои пинҳон кардан',
-                                          style: TextStyle(
-                                            fontFamily: 'NotoSans',
-                                            fontSize: 13,
-                                            color: colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+                                        Flexible(
+                                          child: Text(
+                                            AppTranslations.get('flashcards_tap_to_hide', displayLang),
+                                            style: TextStyle(
+                                              fontFamily: 'NotoSans',
+                                              fontSize: 13,
+                                              color: colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -180,7 +199,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                   ),
                                   const SizedBox(height: 16),
                                   Text(
-                                    proverb.tajikCyrillic,
+                                    isPersian ? proverb.persianText : proverb.tajikCyrillic,
                                     style: TextStyle(
                                       fontFamily: 'NotoSerif',
                                       fontSize: 22,
@@ -189,10 +208,11 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                       color: colorScheme.onSurface,
                                     ),
                                     textAlign: TextAlign.center,
+                                    textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
                                   ),
                                   const SizedBox(height: 14),
                                   Text(
-                                    proverb.persianText,
+                                    isPersian ? proverb.tajikCyrillic : proverb.persianText,
                                     style: TextStyle(
                                       fontFamily: 'NotoSans',
                                       fontSize: 17,
@@ -201,6 +221,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                       color: colorScheme.onSurfaceVariant,
                                     ),
                                     textAlign: TextAlign.center,
+                                    textDirection: isPersian ? TextDirection.ltr : TextDirection.rtl,
                                   ),
                                   const SizedBox(height: 28),
                                   SizedBox(
@@ -208,7 +229,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     child: ElevatedButton.icon(
                                       onPressed: () => setState(() => _showMeaning = true),
                                       icon: const Icon(Icons.visibility),
-                                      label: const Text('Нишон додани маъно'),
+                                      label: Text(AppTranslations.get('btn_show_meaning', displayLang)),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: AppColors.accentGold,
                                       ),
@@ -235,7 +256,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     });
                                   },
                             icon: const Icon(Icons.arrow_back),
-                            label: const Text('Қаблӣ'),
+                            label: Text(AppTranslations.get('btn_previous', displayLang)),
                           ),
                         ),
                       ),
@@ -253,7 +274,11 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     });
                                   },
                             icon: Icon(isLast ? Icons.replay : Icons.arrow_forward),
-                            label: Text(isLast ? 'Оғоз' : 'Баъдӣ'),
+                            label: Text(
+                              isLast
+                                  ? AppTranslations.get('btn_start_over', displayLang)
+                                  : AppTranslations.get('btn_next', displayLang),
+                            ),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.accentGold,
                             ),
@@ -267,6 +292,67 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTopBar(BuildContext context, DisplayLanguage displayLang) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final cardOf = AppTranslations.get(
+      'flashcards_card_of',
+      displayLang,
+      [(_currentIndex + 1).toString(), _flashcards.isEmpty ? '0' : _flashcards.length.toString()],
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            colorScheme.primary.withValues(alpha: 0.12),
+            colorScheme.primary.withValues(alpha: 0.04),
+          ],
+        ),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          child: Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => context.go('/'),
+                tooltip: AppTranslations.get('btn_back_home', displayLang),
+              ),
+              const SizedBox(width: 4),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      AppTranslations.get('flashcards_title', displayLang),
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontFamily: 'NotoSerif',
+                        fontWeight: FontWeight.w600,
+                        color: colorScheme.onSurface,
+                      ),
+                    ),
+                    Text(
+                      cardOf,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

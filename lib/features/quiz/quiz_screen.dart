@@ -1,10 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../data/models/proverb.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../core/theme/app_colors.dart';
-import '../../shared/widgets/cultural_header.dart';
 import '../../shared/widgets/pamir_silhouette.dart';
 
 class QuizScreen extends ConsumerStatefulWidget {
@@ -58,10 +59,23 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final allProverbs = ref.watch(proverbsProvider);
+    final displayLang = ref.watch(displayLanguageProvider);
 
     if (_quizProverbs.isEmpty) {
-      return const Scaffold(
-        body: CulturalHeader(title: 'Квиз', subtitle: 'Загрузка...'),
+      return Scaffold(
+        body: Column(
+          children: [
+            _buildTopBar(context, displayLang),
+            Expanded(
+              child: Center(
+                child: Text(
+                  AppTranslations.get('quiz_loading', displayLang),
+                  style: theme.textTheme.titleMedium,
+                ),
+              ),
+            ),
+          ],
+        ),
       );
     }
 
@@ -72,12 +86,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     return Scaffold(
       body: Column(
         children: [
-          CulturalHeader(
-            title: 'Квиз',
-            subtitle: 'Савол ${_currentIndex + 1} аз ${_quizProverbs.length}',
-          ),
+          _buildTopBar(context, displayLang),
           PamirSilhouette(
-            height: 28,
+            height: 24,
             darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
@@ -93,7 +104,6 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Proverb question card
                   Container(
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
@@ -148,9 +158,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
 
                   const SizedBox(height: 20),
                   Text(
-                    'Маънои дурустро интихоб кунед:',
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontSize: 15,
+                    AppTranslations.get('quiz_choose_meaning', displayLang),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontSize: 15,
                       color: colorScheme.onSurface,
                     ),
                   ),
@@ -240,7 +250,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (isLast) {
-                            _showResults(context);
+                            _showResults(context, displayLang);
                           } else {
                             setState(() {
                               _currentIndex++;
@@ -250,7 +260,11 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                             });
                           }
                         },
-                        child: Text(isLast ? 'Натиҷаро бинед' : 'Саволи нав'),
+                        child: Text(
+                          isLast
+                              ? AppTranslations.get('btn_see_results', displayLang)
+                              : AppTranslations.get('btn_next_question', displayLang),
+                        ),
                       ),
                     ),
                   ],
@@ -264,13 +278,66 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     );
   }
 
-  void _showResults(BuildContext context) {
+  Widget _buildTopBar(BuildContext context, DisplayLanguage displayLang) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            colorScheme.primary.withValues(alpha: 0.12),
+            colorScheme.primary.withValues(alpha: 0.04),
+          ],
+        ),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          child: Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => context.go('/'),
+                tooltip: AppTranslations.get('btn_back_home', displayLang),
+              ),
+              const SizedBox(width: 4),
+              Expanded(
+                child: Text(
+                  AppTranslations.get('quiz_title', displayLang),
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontFamily: 'NotoSerif',
+                    fontWeight: FontWeight.w600,
+                    color: colorScheme.onSurface,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showResults(BuildContext context, DisplayLanguage displayLang) {
     final theme = Theme.of(context);
     final percent = (_correctCount / _quizProverbs.length * 100).round();
 
+    String feedbackKey;
+    if (percent >= 80) {
+      feedbackKey = 'quiz_excellent';
+    } else if (percent >= 50) {
+      feedbackKey = 'quiz_good';
+    } else {
+      feedbackKey = 'quiz_needs_work';
+    }
+
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -282,7 +349,10 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              '$_correctCount аз ${_quizProverbs.length} дуруст',
+              AppTranslations.get('quiz_correct_of', displayLang, [
+                _correctCount.toString(),
+                _quizProverbs.length.toString(),
+              ]),
               style: theme.textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
@@ -297,22 +367,25 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              percent >= 80 ? 'Аъло!' : percent >= 50 ? 'Хуб!' : 'Кобили қабул.',
+              AppTranslations.get(feedbackKey, displayLang),
               style: theme.textTheme.titleMedium,
             ),
           ],
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Бозгашт'),
+            onPressed: () {
+              Navigator.pop(ctx);
+              context.go('/');
+            },
+            child: Text(AppTranslations.get('btn_return', displayLang)),
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(ctx);
               _loadQuestions();
             },
-            child: const Text('Квизи нав'),
+            child: Text(AppTranslations.get('btn_new_quiz', displayLang)),
           ),
         ],
       ),

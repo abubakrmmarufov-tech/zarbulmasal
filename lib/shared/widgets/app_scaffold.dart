@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/l10n/app_translations.dart';
+import '../providers/app_providers.dart';
 
 class AppScaffold extends ConsumerWidget {
   final Widget child;
@@ -22,6 +24,15 @@ class AppScaffold extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = _getSelectedIndex(context);
+    final displayLang = ref.watch(displayLanguageProvider);
+
+    final labels = [
+      AppTranslations.get('nav_home', displayLang),
+      AppTranslations.get('nav_proverbs', displayLang),
+      AppTranslations.get('nav_categories', displayLang),
+      AppTranslations.get('nav_favorites', displayLang),
+      AppTranslations.get('nav_settings', displayLang),
+    ];
 
     return Scaffold(
       body: child,
@@ -47,31 +58,31 @@ class AppScaffold extends ConsumerWidget {
               break;
           }
         },
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Асосӣ',
+            icon: const Icon(Icons.home_outlined),
+            selectedIcon: const Icon(Icons.home),
+            label: labels[0],
           ),
           NavigationDestination(
-            icon: Icon(Icons.format_quote_outlined),
-            selectedIcon: Icon(Icons.format_quote),
-            label: 'Мақолҳо',
+            icon: const Icon(Icons.format_quote_outlined),
+            selectedIcon: const Icon(Icons.format_quote),
+            label: labels[1],
           ),
           NavigationDestination(
-            icon: Icon(Icons.category_outlined),
-            selectedIcon: Icon(Icons.category),
-            label: 'Гурӯҳҳо',
+            icon: const Icon(Icons.category_outlined),
+            selectedIcon: const Icon(Icons.category),
+            label: labels[2],
           ),
           NavigationDestination(
-            icon: Icon(Icons.favorite_outline),
-            selectedIcon: Icon(Icons.favorite),
-            label: 'Дӯст',
+            icon: const Icon(Icons.favorite_outline),
+            selectedIcon: const Icon(Icons.favorite),
+            label: labels[3],
           ),
           NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings),
-            label: 'Танзимот',
+            icon: const Icon(Icons.settings_outlined),
+            selectedIcon: const Icon(Icons.settings),
+            label: labels[4],
           ),
         ],
       ),

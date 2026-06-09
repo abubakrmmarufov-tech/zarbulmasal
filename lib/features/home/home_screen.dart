@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/l10n/app_translations.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/proverb_card.dart';
@@ -15,24 +16,31 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final displayLang = ref.watch(displayLanguageProvider);
     final dailyProverb = ref.watch(dailyProverbProvider);
     final proverbs = ref.watch(proverbsProvider);
     final recentProverbs = proverbs.take(3).toList();
+
+    final proverbCount = AppTranslations.get(
+      'proverb_count_label',
+      displayLang,
+      [proverbs.length.toString()],
+    );
 
     if (dailyProverb == null) {
       return Scaffold(
         body: Column(
           children: [
-            const CulturalHeader(
-              title: 'Зарбулмасал',
-              subtitle: 'Ҳикмати ҳазорсолаи тоҷик',
+            CulturalHeader(
+              title: AppTranslations.get('app_name', displayLang),
+              subtitle: AppTranslations.get('app_tagline', displayLang),
             ),
             Expanded(
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Text(
-                    'Ҳоло мақоле дастрас нест.',
+                    AppTranslations.get('home_no_daily', displayLang),
                     style: theme.textTheme.titleMedium?.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
@@ -49,11 +57,10 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
-          const CulturalHeader(
-            title: 'Зарбулмасал',
-            subtitle: 'Ҳикмати ҳазорсолаи тоҷик',
+          CulturalHeader(
+            title: AppTranslations.get('app_name', displayLang),
+            subtitle: AppTranslations.get('app_tagline', displayLang),
           ),
-          // Pamir mountain silhouette accent below header
           PamirSilhouette(
             height: 32,
             darkMode: Theme.of(context).brightness == Brightness.dark,
@@ -71,7 +78,7 @@ class HomeScreen extends ConsumerWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Салом!',
+                            AppTranslations.get('home_greeting', displayLang),
                             style: theme.textTheme.headlineMedium?.copyWith(
                               color: colorScheme.onSurface,
                             ),
@@ -87,7 +94,7 @@ class HomeScreen extends ConsumerWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
-                              '${proverbs.length} мақол',
+                              proverbCount,
                               style: theme.textTheme.labelMedium?.copyWith(
                                 color: colorScheme.onPrimaryContainer,
                                 fontWeight: FontWeight.w600,
@@ -101,7 +108,7 @@ class HomeScreen extends ConsumerWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        'Имрӯз як мақоли навро омӯз.',
+                        AppTranslations.get('home_subtitle', displayLang),
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
@@ -115,7 +122,7 @@ class HomeScreen extends ConsumerWidget {
                           const Icon(Icons.today, size: 20, color: AppColors.accentGold),
                           const SizedBox(width: 8),
                           Text(
-                            'Мақоли рӯз',
+                            AppTranslations.get('home_daily_proverb', displayLang),
                             style: theme.textTheme.titleLarge?.copyWith(
                               color: colorScheme.onSurface,
                             ),
@@ -136,7 +143,7 @@ class HomeScreen extends ConsumerWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        'Квиз ва Флешкортҳо',
+                        AppTranslations.get('home_quick_actions', displayLang),
                         style: theme.textTheme.titleLarge?.copyWith(
                           color: colorScheme.onSurface,
                         ),
@@ -150,8 +157,8 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.quiz,
-                              label: 'Квиз',
-                              description: 'Санҷиши дониш',
+                              label: AppTranslations.get('quiz_title', displayLang),
+                              description: AppTranslations.get('quiz_desc', displayLang),
                               gradientColors: const [Color(0xFFB91C1C), Color(0xFF9A3412)],
                               onTap: () => context.push('/quiz'),
                             ),
@@ -160,8 +167,8 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.style,
-                              label: 'Флешкортҳо',
-                              description: 'Флешкортҳо',
+                              label: AppTranslations.get('flashcards_title', displayLang),
+                              description: AppTranslations.get('flashcards_desc', displayLang),
                               gradientColors: const [Color(0xFF166534), Color(0xFF14532D)],
                               onTap: () => context.push('/flashcards'),
                             ),
@@ -177,8 +184,8 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.leaderboard,
-                              label: 'Сатҳҳо',
-                              description: 'Аз оғоз то олим',
+                              label: AppTranslations.get('levels_title', displayLang),
+                              description: AppTranslations.get('levels_desc', displayLang),
                               gradientColors: const [Color(0xFFD97706), Color(0xFFB45309)],
                               onTap: () => context.push('/levels'),
                             ),
@@ -187,8 +194,8 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.auto_stories,
-                              label: 'Мақоли рӯз',
-                              description: 'Мундариҷа',
+                              label: AppTranslations.get('daily_title', displayLang),
+                              description: AppTranslations.get('daily_desc', displayLang),
                               gradientColors: const [Color(0xFFC2410C), Color(0xFF9A3412)],
                               onTap: () => context.push('/daily'),
                             ),
@@ -202,7 +209,7 @@ class HomeScreen extends ConsumerWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Мақолҳо',
+                            AppTranslations.get('home_proverbs', displayLang),
                             style: theme.textTheme.titleLarge?.copyWith(
                               color: colorScheme.onSurface,
                             ),
@@ -210,7 +217,7 @@ class HomeScreen extends ConsumerWidget {
                           const Spacer(),
                           TextButton(
                             onPressed: () => context.go('/proverbs'),
-                            child: const Text('Ҳамаро бинед'),
+                            child: Text(AppTranslations.get('btn_see_all', displayLang)),
                           ),
                         ],
                       ),
