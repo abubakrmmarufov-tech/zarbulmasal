@@ -4,6 +4,7 @@ import 'core/theme/app_theme.dart';
 import 'core/constants/app_constants.dart';
 import 'router/app_router.dart';
 import 'shared/providers/app_providers.dart';
+import 'shared/widgets/splash_screen.dart';
 
 class ZarbulmasalApp extends ConsumerWidget {
   const ZarbulmasalApp({super.key});
@@ -17,17 +18,19 @@ class ZarbulmasalApp extends ConsumerWidget {
         ? const Locale('fa')
         : const Locale('tg');
 
-    return Localizations.override(
-      context: context,
+    return MaterialApp.router(
+      title: AppConstants.appName,
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: themeMode,
       locale: locale,
-      child: MaterialApp.router(
-        title: AppConstants.appName,
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: themeMode,
-        routerConfig: appRouter,
-      ),
+      routerConfig: appRouter,
+      builder: (context, child) {
+        return SplashScreen(
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
     );
   }
 }
