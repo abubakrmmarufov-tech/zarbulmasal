@@ -21,12 +21,6 @@ class HomeScreen extends ConsumerWidget {
     final proverbs = ref.watch(proverbsProvider);
     final recentProverbs = proverbs.take(3).toList();
 
-    final proverbCount = AppTranslations.get(
-      'proverb_count_label',
-      displayLang,
-      [proverbs.length.toString()],
-    );
-
     if (dailyProverb == null) {
       return Scaffold(
         body: Column(
@@ -75,33 +69,11 @@ class HomeScreen extends ConsumerWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Text(
-                            AppTranslations.get('home_greeting', displayLang),
-                            style: theme.textTheme.headlineMedium?.copyWith(
-                              color: colorScheme.onSurface,
-                            ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              color: colorScheme.primaryContainer.withValues(alpha: 0.6),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Text(
-                              proverbCount,
-                              style: theme.textTheme.labelMedium?.copyWith(
-                                color: colorScheme.onPrimaryContainer,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
+                      child: Text(
+                        AppTranslations.get('home_greeting', displayLang),
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                          color: colorScheme.onSurface,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -119,10 +91,17 @@ class HomeScreen extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
-                          const Icon(Icons.today, size: 20, color: AppColors.accentGold),
+                          const Icon(
+                            Icons.today,
+                            size: 20,
+                            color: AppColors.accentGold,
+                          ),
                           const SizedBox(width: 8),
                           Text(
-                            AppTranslations.get('home_daily_proverb', displayLang),
+                            AppTranslations.get(
+                              'home_daily_proverb',
+                              displayLang,
+                            ),
                             style: theme.textTheme.titleLarge?.copyWith(
                               color: colorScheme.onSurface,
                             ),
@@ -157,9 +136,18 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.quiz,
-                              label: AppTranslations.get('quiz_title', displayLang),
-                              description: AppTranslations.get('quiz_desc', displayLang),
-                              gradientColors: const [Color(0xFFB91C1C), Color(0xFF9A3412)],
+                              label: AppTranslations.get(
+                                'quiz_title',
+                                displayLang,
+                              ),
+                              description: AppTranslations.get(
+                                'quiz_desc',
+                                displayLang,
+                              ),
+                              gradientColors: const [
+                                Color(0xFFB91C1C),
+                                Color(0xFF9A3412),
+                              ],
                               onTap: () => context.push('/quiz'),
                             ),
                           ),
@@ -167,9 +155,18 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.style,
-                              label: AppTranslations.get('flashcards_title', displayLang),
-                              description: AppTranslations.get('flashcards_desc', displayLang),
-                              gradientColors: const [Color(0xFF166534), Color(0xFF14532D)],
+                              label: AppTranslations.get(
+                                'flashcards_title',
+                                displayLang,
+                              ),
+                              description: AppTranslations.get(
+                                'flashcards_desc',
+                                displayLang,
+                              ),
+                              gradientColors: const [
+                                Color(0xFF166534),
+                                Color(0xFF14532D),
+                              ],
                               onTap: () => context.push('/flashcards'),
                             ),
                           ),
@@ -184,9 +181,18 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.leaderboard,
-                              label: AppTranslations.get('levels_title', displayLang),
-                              description: AppTranslations.get('levels_desc', displayLang),
-                              gradientColors: const [Color(0xFFD97706), Color(0xFFB45309)],
+                              label: AppTranslations.get(
+                                'levels_title',
+                                displayLang,
+                              ),
+                              description: AppTranslations.get(
+                                'levels_desc',
+                                displayLang,
+                              ),
+                              gradientColors: const [
+                                Color(0xFFD97706),
+                                Color(0xFFB45309),
+                              ],
                               onTap: () => context.push('/levels'),
                             ),
                           ),
@@ -194,9 +200,18 @@ class HomeScreen extends ConsumerWidget {
                           Expanded(
                             child: _QuickActionCard(
                               icon: Icons.auto_stories,
-                              label: AppTranslations.get('daily_title', displayLang),
-                              description: AppTranslations.get('daily_desc', displayLang),
-                              gradientColors: const [Color(0xFFC2410C), Color(0xFF9A3412)],
+                              label: AppTranslations.get(
+                                'daily_title',
+                                displayLang,
+                              ),
+                              description: AppTranslations.get(
+                                'daily_desc',
+                                displayLang,
+                              ),
+                              gradientColors: const [
+                                Color(0xFFC2410C),
+                                Color(0xFF9A3412),
+                              ],
                               onTap: () => context.push('/daily'),
                             ),
                           ),
@@ -217,7 +232,9 @@ class HomeScreen extends ConsumerWidget {
                           const Spacer(),
                           TextButton(
                             onPressed: () => context.go('/proverbs'),
-                            child: Text(AppTranslations.get('btn_see_all', displayLang)),
+                            child: Text(
+                              AppTranslations.get('btn_see_all', displayLang),
+                            ),
                           ),
                         ],
                       ),
@@ -260,9 +277,7 @@ class _QuickActionCard extends StatelessWidget {
     return Card(
       margin: EdgeInsets.zero,
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(20),
