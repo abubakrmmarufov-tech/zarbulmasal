@@ -1,17 +1,40 @@
-# zarbulmasal
+# Зарбулмасал
 
-A new Flutter project.
+**Зарбулмасал** is a Tajik proverb learning app built with Flutter.
 
-## Getting Started
+The app helps users read, understand, memorize, and practice Tajik proverbs through a clean mobile-friendly interface.
 
-This project is a starting point for a Flutter application.
+## Live App
 
-A few resources to get you started if this is your first Flutter project:
+https://abubakrmmarufov-tech.github.io/zarbulmasal/
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+First load may take a few seconds.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+
+* Tajik proverb collection
+* Tajik and Persian language support
+* Categories and levels
+* Quiz mode
+* Flashcards
+* Favorites
+* Daily proverb
+* Tajik-style UI design
+* Works on Android and web
+
+## Contact
+
+If you have suggestions or find mistakes, contact me on Telegram:
+
+**@imarufov**
+
+## Tech Stack
+
+* Flutter
+* Dart
+* GitHub Pages
+* Android build support
+
+## Status
+
+This project is still under development.
