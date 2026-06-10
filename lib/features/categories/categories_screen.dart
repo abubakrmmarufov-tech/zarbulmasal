@@ -13,27 +13,48 @@ class CategoriesScreen extends ConsumerWidget {
 
   IconData _getIconData(String iconName) {
     switch (iconName) {
-      case 'school': return Icons.school;
-      case 'lightbulb': return Icons.lightbulb;
-      case 'hourglass_bottom': return Icons.hourglass_bottom;
-      case 'family_restroom': return Icons.family_restroom;
-      case 'favorite': return Icons.favorite;
-      case 'work': return Icons.work;
-      case 'attach_money': return Icons.attach_money;
-      case 'verified': return Icons.verified;
-      case 'favorite_border': return Icons.favorite_border;
-      case 'auto_stories': return Icons.auto_stories;
-      case 'mosque': return Icons.mosque;
-      case 'shield': return Icons.shield;
-      case 'schedule': return Icons.schedule;
-      case 'volume_off': return Icons.volume_off;
-      case 'emoji_people': return Icons.emoji_people;
-      case 'weekend': return Icons.weekend;
-      case 'home': return Icons.home;
-      case 'thumb_up': return Icons.thumb_up;
-      case 'psychology': return Icons.psychology;
-      case 'emoji_events': return Icons.emoji_events;
-      default: return Icons.book;
+      case 'school':
+        return Icons.school;
+      case 'lightbulb':
+        return Icons.lightbulb;
+      case 'hourglass_bottom':
+        return Icons.hourglass_bottom;
+      case 'family_restroom':
+        return Icons.family_restroom;
+      case 'favorite':
+        return Icons.favorite;
+      case 'work':
+        return Icons.work;
+      case 'attach_money':
+        return Icons.attach_money;
+      case 'verified':
+        return Icons.verified;
+      case 'favorite_border':
+        return Icons.favorite_border;
+      case 'auto_stories':
+        return Icons.auto_stories;
+      case 'mosque':
+        return Icons.mosque;
+      case 'shield':
+        return Icons.shield;
+      case 'schedule':
+        return Icons.schedule;
+      case 'volume_off':
+        return Icons.volume_off;
+      case 'emoji_people':
+        return Icons.emoji_people;
+      case 'weekend':
+        return Icons.weekend;
+      case 'home':
+        return Icons.home;
+      case 'thumb_up':
+        return Icons.thumb_up;
+      case 'psychology':
+        return Icons.psychology;
+      case 'emoji_events':
+        return Icons.emoji_events;
+      default:
+        return Icons.book;
     }
   }
 
@@ -46,14 +67,11 @@ class CategoriesScreen extends ConsumerWidget {
     final selectedCategory = ref.watch(selectedCategoryProvider);
     final displayLang = ref.watch(displayLanguageProvider);
 
-    final subtitle = '$categories.length ${AppTranslations.get('categories_subtitle', displayLang)}';
-
     return Scaffold(
       body: Column(
         children: [
           CulturalHeader(
             title: AppTranslations.get('categories_title', displayLang),
-            subtitle: subtitle,
             trailing: selectedCategory != null
                 ? Container(
                     width: 36,
@@ -64,9 +82,14 @@ class CategoriesScreen extends ConsumerWidget {
                     ),
                     child: IconButton(
                       onPressed: () {
-                        ref.read(selectedCategoryProvider.notifier).state = null;
+                        ref.read(selectedCategoryProvider.notifier).state =
+                            null;
                       },
-                      icon: const Icon(Icons.clear, color: Colors.white, size: 18),
+                      icon: const Icon(
+                        Icons.clear,
+                        color: Colors.white,
+                        size: 18,
+                      ),
                       padding: EdgeInsets.zero,
                     ),
                   )
@@ -88,7 +111,9 @@ class CategoriesScreen extends ConsumerWidget {
               itemCount: categories.length,
               itemBuilder: (context, index) {
                 final category = categories[index];
-                final proverbCount = proverbs.where((p) => p.categoryId == category.id).length;
+                final proverbCount = proverbs
+                    .where((p) => p.categoryId == category.id)
+                    .length;
                 final isSelected = selectedCategory == category.id;
                 final color = AppColors.getCategoryColor(index);
 
@@ -158,7 +183,10 @@ class CategoriesScreen extends ConsumerWidget {
                             ),
                             const SizedBox(height: 6),
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 4,
+                              ),
                               decoration: BoxDecoration(
                                 color: color.withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(12),
