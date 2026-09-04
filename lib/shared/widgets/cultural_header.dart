@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CulturalHeader extends StatelessWidget {
   final String title;
   final String? subtitle;
   final Widget? trailing;
-  final bool useGradient;
+  final bool useGradient; // Kept for API compatibility, but we use solid + motif
   final double minHeight;
 
   const CulturalHeader({
@@ -13,46 +14,51 @@ class CulturalHeader extends StatelessWidget {
     this.subtitle,
     this.trailing,
     this.useGradient = true,
-    this.minHeight = 140,
+    this.minHeight = 120,
   });
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
+    // Editorial style backgrounds
+    final bgColor = isDark ? theme.colorScheme.surface : theme.scaffoldBackgroundColor;
+    final textColor = isDark ? theme.colorScheme.onSurface : theme.colorScheme.primary;
 
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(minHeight: minHeight),
       decoration: BoxDecoration(
-        gradient: useGradient
-            ? LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: isDark
-                    ? [
-                        const Color(0xFF2D1F0E),
-                        const Color(0xFF3D2A12),
-                        const Color(0xFF4A3018),
-                      ]
-                    : [
-                        const Color(0xFFC2410C),
-                        const Color(0xFFB91C1C),
-                        const Color(0xFF9A3412),
-                      ],
-              )
-            : null,
-        color: useGradient
-            ? null
-            : (isDark ? const Color(0xFF2D1F0E) : const Color(0xFFB91C1C)),
+        color: bgColor,
+        // Subtle bottom border instead of full ornament
+        border: Border(
+          bottom: BorderSide(
+            color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05),
+            width: 1,
+          ),
+        ),
       ),
       child: SafeArea(
         bottom: false,
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+        child: Stack(
+          children: [
+            // Subtle Motif background
+            Positioned(
+              right: -20,
+              top: -20,
+              child: Icon(
+                Icons.spa_rounded, // Subtle Pamir/Adras inspired organic shape
+                size: 140,
+                color: isDark 
+                    ? theme.colorScheme.tertiary.withValues(alpha: 0.03) 
+                    : theme.colorScheme.primary.withValues(alpha: 0.03),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Column(
@@ -60,65 +66,39 @@ class CulturalHeader extends StatelessWidget {
                       children: [
                         Text(
                           title,
-                        style: const TextStyle(
-                          fontFamily: 'NotoSerif',
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          letterSpacing: 0.5,
-                        ),
+                          style: GoogleFonts.notoSerif(
+                            fontSize: 32,
+                            fontWeight: FontWeight.w600,
+                            color: textColor,
+                            letterSpacing: -0.5,
+                          ),
                         ),
                         if (subtitle != null) ...[
-                          const SizedBox(height: 4),
+                          const SizedBox(height: 8),
                           Text(
                             subtitle!,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontFamily: 'NotoSans',
+                            style: GoogleFonts.notoSans(
                               fontSize: 15,
-                              color: Colors.white.withValues(alpha: 0.8),
-                              height: 1.4,
+                              color: isDark 
+                                  ? Colors.white.withValues(alpha: 0.6) 
+                                  : Colors.black.withValues(alpha: 0.6),
+                              height: 1.5,
                             ),
                           ),
                         ],
                       ],
                     ),
                   ),
-                  trailing != null ? trailing! : const SizedBox.shrink(),
+                  if (trailing != null) ...[
+                    const SizedBox(width: 16),
+                    trailing!,
+                  ],
                 ],
               ),
-              const SizedBox(height: 16),
-              // Atlas textile-inspired decorative border
-              _buildOrnamentLine(isDark),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildOrnamentLine(bool isDark) {
-    return Container(
-      height: 3,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2),
-        gradient: LinearGradient(
-          colors: isDark
-              ? [
-                  Colors.transparent,
-                  const Color(0xFFD4A843),
-                  const Color(0xFFF5DEB3),
-                  const Color(0xFFD4A843),
-                  Colors.transparent,
-                ]
-              : [
-                  Colors.transparent,
-                  Colors.white.withValues(alpha: 0.3),
-                  Colors.white,
-                  Colors.white.withValues(alpha: 0.3),
-                  Colors.transparent,
-                ],
+            ),
+          ],
         ),
       ),
     );

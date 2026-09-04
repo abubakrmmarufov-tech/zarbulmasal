@@ -1,3 +1,5 @@
+import 'package:google_fonts/google_fonts.dart';
+
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
@@ -229,8 +231,7 @@ class _SplashContent extends StatelessWidget {
                             children: [
                               Text(
                                 'Зарбулмасал',
-                                style: TextStyle(
-                                  fontFamily: 'NotoSerif',
+                                style: GoogleFonts.notoSerif(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
                                   color: textColor,
@@ -240,8 +241,7 @@ class _SplashContent extends StatelessWidget {
                               const SizedBox(height: 8),
                               Text(
                                 'Ҳикмати ҳазорсолаи тоҷик',
-                                style: TextStyle(
-                                  fontFamily: 'NotoSans',
+                                style: GoogleFonts.notoSans(
                                   fontSize: 16,
                                   color: subtitleColor,
                                   letterSpacing: 0.5,

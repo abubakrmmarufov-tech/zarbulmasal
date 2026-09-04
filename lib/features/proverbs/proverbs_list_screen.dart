@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/proverb_card.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 import '../../shared/widgets/tajik_pattern_divider.dart';
 
 class ProverbsListScreen extends ConsumerWidget {
@@ -99,10 +98,6 @@ class ProverbsListScreen extends ConsumerWidget {
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      PamirSilhouette(
-                        height: 48,
-                        darkMode: Theme.of(context).brightness == Brightness.dark,
-                      ),
                       const SizedBox(height: 8),
                       Icon(
                         Icons.search_off,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../data/models/category.dart';
 import '../../data/models/proverb.dart';
 import '../../data/seed/seed_categories.dart';
@@ -8,9 +9,9 @@ import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/cultural_header.dart';
 import '../../shared/widgets/section_card.dart';
 import '../../shared/widgets/tajik_badge.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 import '../../shared/widgets/textile_divider.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/theme/design_system.dart';
 
 class ProverbDetailScreen extends ConsumerWidget {
   final String proverbId;
@@ -133,10 +134,6 @@ class ProverbDetailScreen extends ConsumerWidget {
               ),
             ),
           ),
-          PamirSilhouette(
-            height: 28,
-            darkMode: Theme.of(context).brightness == Brightness.dark,
-          ),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
@@ -145,49 +142,42 @@ class ProverbDetailScreen extends ConsumerWidget {
                 children: [
                   Container(
                     width: double.infinity,
-                    padding: const EdgeInsets.all(28),
+                    padding: const EdgeInsets.all(32),
                     decoration: BoxDecoration(
+                      color: theme.cardColor,
                       borderRadius: BorderRadius.circular(24),
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          colorScheme.primary.withValues(alpha: 0.08),
-                          colorScheme.primary.withValues(alpha: 0.03),
-                        ],
-                      ),
+                      boxShadow: DesignSystem.softShadow(theme.brightness == Brightness.dark),
                       border: Border.all(
-                        color: AppColors.accentGold.withValues(alpha: 0.2),
-                        width: 1,
+                        color: theme.brightness == Brightness.dark
+                            ? Colors.white.withValues(alpha: 0.05)
+                            : colorScheme.primary.withValues(alpha: 0.1),
                       ),
                     ),
                     child: Column(
                       children: [
                         Icon(
                           Icons.format_quote,
-                          size: 48,
-                          color: AppColors.accentGold.withValues(alpha: 0.7),
+                          size: 40,
+                          color: colorScheme.primary.withValues(alpha: 0.3),
                         ),
                         const SizedBox(height: 16),
                         Text(
                           primaryText,
-                          style: TextStyle(
-                            fontFamily: 'NotoSerif',
-                            fontSize: 22,
-                            height: 1.7,
+                          style: GoogleFonts.notoSerif(
+                            fontSize: 24,
+                            height: 1.6,
                             fontWeight: FontWeight.w600,
                             color: colorScheme.onSurface,
+                            letterSpacing: -0.5,
                           ),
                           textAlign: TextAlign.center,
                           textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 20),
                         Text(
                           secondaryText,
-                          style: TextStyle(
-                            fontFamily: 'NotoSans',
-                            fontSize: 17,
-                            fontStyle: FontStyle.italic,
+                          style: GoogleFonts.notoSans(
+                            fontSize: 16,
                             height: 1.6,
                             color: colorScheme.onSurfaceVariant,
                           ),

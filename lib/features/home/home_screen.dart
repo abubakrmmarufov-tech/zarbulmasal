@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../core/theme/app_colors.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/proverb_card.dart';
 import '../../shared/widgets/cultural_header.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 import '../../shared/widgets/tajik_pattern_divider.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -54,10 +54,6 @@ class HomeScreen extends ConsumerWidget {
           CulturalHeader(
             title: AppTranslations.get('app_name', displayLang),
             subtitle: AppTranslations.get('app_tagline', displayLang),
-          ),
-          PamirSilhouette(
-            height: 32,
-            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: SafeArea(
@@ -144,10 +140,7 @@ class HomeScreen extends ConsumerWidget {
                                 'quiz_desc',
                                 displayLang,
                               ),
-                              gradientColors: const [
-                                Color(0xFFB91C1C),
-                                Color(0xFF9A3412),
-                              ],
+                              tintColor: const Color(0xFFB91C1C),
                               onTap: () => context.push('/quiz'),
                             ),
                           ),
@@ -163,10 +156,7 @@ class HomeScreen extends ConsumerWidget {
                                 'flashcards_desc',
                                 displayLang,
                               ),
-                              gradientColors: const [
-                                Color(0xFF166534),
-                                Color(0xFF14532D),
-                              ],
+                              tintColor: const Color(0xFF166534),
                               onTap: () => context.push('/flashcards'),
                             ),
                           ),
@@ -189,10 +179,7 @@ class HomeScreen extends ConsumerWidget {
                                 'levels_desc',
                                 displayLang,
                               ),
-                              gradientColors: const [
-                                Color(0xFFD97706),
-                                Color(0xFFB45309),
-                              ],
+                              tintColor: const Color(0xFFD97706),
                               onTap: () => context.push('/levels'),
                             ),
                           ),
@@ -208,10 +195,7 @@ class HomeScreen extends ConsumerWidget {
                                 'daily_desc',
                                 displayLang,
                               ),
-                              gradientColors: const [
-                                Color(0xFFC2410C),
-                                Color(0xFF9A3412),
-                              ],
+                              tintColor: const Color(0xFFC2410C),
                               onTap: () => context.push('/daily'),
                             ),
                           ),
@@ -261,70 +245,76 @@ class _QuickActionCard extends StatelessWidget {
   final IconData icon;
   final String label;
   final String description;
-  final List<Color> gradientColors;
+  final Color tintColor;
   final VoidCallback onTap;
 
   const _QuickActionCard({
     required this.icon,
     required this.label,
     required this.description,
-    required this.gradientColors,
+    required this.tintColor,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.zero,
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                gradientColors[0].withValues(alpha: 0.12),
-                gradientColors[1].withValues(alpha: 0.06),
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.cardColor,
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: isDark ? [] : [
+          BoxShadow(
+            color: tintColor.withValues(alpha: 0.05),
+            blurRadius: 16,
+            offset: const Offset(0, 4),
+          )
+        ],
+        border: Border.all(
+          color: isDark ? Colors.white.withValues(alpha: 0.05) : tintColor.withValues(alpha: 0.1),
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(24),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: tintColor.withValues(alpha: 0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(icon, size: 28, color: tintColor),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  label,
+                  style: GoogleFonts.notoSerif(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: theme.colorScheme.onSurface,
+                    letterSpacing: -0.3,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  description,
+                  style: GoogleFonts.notoSans(
+                    fontSize: 13,
+                    color: theme.colorScheme.onSurfaceVariant,
+                    height: 1.4,
+                  ),
+                ),
               ],
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: gradientColors[0].withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(icon, size: 28, color: gradientColors[0]),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                label,
-                style: TextStyle(
-                  fontFamily: 'NotoSerif',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: gradientColors[0],
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                description,
-                style: TextStyle(
-                  fontFamily: 'NotoSans',
-                  fontSize: 12,
-                  color: gradientColors[0].withValues(alpha: 0.7),
-                ),
-              ),
-            ],
           ),
         ),
       ),

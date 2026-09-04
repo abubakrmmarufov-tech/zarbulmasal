@@ -1,3 +1,5 @@
+import 'package:google_fonts/google_fonts.dart';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +8,6 @@ import '../../data/models/proverb.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../core/theme/app_colors.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 
 class QuizScreen extends ConsumerStatefulWidget {
   const QuizScreen({super.key});
@@ -87,10 +88,6 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
       body: Column(
         children: [
           _buildTopBar(context, displayLang),
-          PamirSilhouette(
-            height: 24,
-            darkMode: Theme.of(context).brightness == Brightness.dark,
-          ),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16),
@@ -131,8 +128,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                         const SizedBox(height: 14),
                         Text(
                           currentProverb.tajikCyrillic,
-                          style: TextStyle(
-                            fontFamily: 'NotoSerif',
+                          style: GoogleFonts.notoSerif(
                             fontSize: 20,
                             height: 1.6,
                             fontWeight: FontWeight.w600,
@@ -143,8 +139,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                         const SizedBox(height: 10),
                         Text(
                           currentProverb.persianText,
-                          style: TextStyle(
-                            fontFamily: 'NotoSans',
+                          style: GoogleFonts.notoSans(
                             fontSize: 16,
                             fontStyle: FontStyle.italic,
                             height: 1.5,
@@ -225,8 +220,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                                 Expanded(
                                   child: Text(
                                     option,
-                                    style: TextStyle(
-                                      fontFamily: 'NotoSans',
+                                    style: GoogleFonts.notoSans(
                                       fontSize: 16,
                                       height: 1.5,
                                       color: textColor ?? colorScheme.onSurface,
@@ -358,8 +352,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
             const SizedBox(height: 8),
             Text(
               '$percent%',
-              style: const TextStyle(
-                fontFamily: 'NotoSerif',
+              style: GoogleFonts.notoSerif(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
                 color: AppColors.accentGold,

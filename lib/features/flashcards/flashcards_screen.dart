@@ -1,3 +1,5 @@
+import 'package:google_fonts/google_fonts.dart';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../core/theme/app_colors.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 
 class FlashcardsScreen extends ConsumerStatefulWidget {
   const FlashcardsScreen({super.key});
@@ -68,10 +69,6 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
       body: Column(
         children: [
           _buildTopBar(context, displayLang),
-          PamirSilhouette(
-            height: 24,
-            darkMode: Theme.of(context).brightness == Brightness.dark,
-          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -124,8 +121,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     const SizedBox(height: 16),
                                     Text(
                                       AppTranslations.get('flashcards_meaning', displayLang),
-                                      style: TextStyle(
-                                        fontFamily: 'NotoSans',
+                                      style: GoogleFonts.notoSans(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w600,
                                         color: colorScheme.onSurfaceVariant,
@@ -134,8 +130,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     const SizedBox(height: 10),
                                     Text(
                                       proverb.meaningTj,
-                                      style: TextStyle(
-                                        fontFamily: 'NotoSerif',
+                                      style: GoogleFonts.notoSerif(
                                         fontSize: 18,
                                         height: 1.7,
                                         fontWeight: FontWeight.w600,
@@ -146,8 +141,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     const SizedBox(height: 24),
                                     Text(
                                       AppTranslations.get('flashcards_explanation', displayLang),
-                                      style: TextStyle(
-                                        fontFamily: 'NotoSans',
+                                      style: GoogleFonts.notoSans(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w600,
                                         color: colorScheme.onSurfaceVariant,
@@ -156,8 +150,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                     const SizedBox(height: 10),
                                     Text(
                                       proverb.simpleExplanationTj,
-                                      style: TextStyle(
-                                        fontFamily: 'NotoSans',
+                                      style: GoogleFonts.notoSans(
                                         fontSize: 16,
                                         height: 1.7,
                                         color: colorScheme.onSurface,
@@ -177,8 +170,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                         Flexible(
                                           child: Text(
                                             AppTranslations.get('flashcards_tap_to_hide', displayLang),
-                                            style: TextStyle(
-                                              fontFamily: 'NotoSans',
+                                            style: GoogleFonts.notoSans(
                                               fontSize: 13,
                                               color: colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
                                             ),
@@ -200,8 +192,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                   const SizedBox(height: 16),
                                   Text(
                                     isPersian ? proverb.persianText : proverb.tajikCyrillic,
-                                    style: TextStyle(
-                                      fontFamily: 'NotoSerif',
+                                    style: GoogleFonts.notoSerif(
                                       fontSize: 22,
                                       height: 1.7,
                                       fontWeight: FontWeight.w600,
@@ -213,8 +204,7 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                   const SizedBox(height: 14),
                                   Text(
                                     isPersian ? proverb.tajikCyrillic : proverb.persianText,
-                                    style: TextStyle(
-                                      fontFamily: 'NotoSans',
+                                    style: GoogleFonts.notoSans(
                                       fontSize: 17,
                                       fontStyle: FontStyle.italic,
                                       height: 1.5,

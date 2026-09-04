@@ -1,3 +1,5 @@
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -5,7 +7,6 @@ import '../../core/l10n/app_translations.dart';
 import '../../core/constants/app_constants.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/cultural_header.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 
 class LevelsScreen extends ConsumerWidget {
   const LevelsScreen({super.key});
@@ -31,10 +32,6 @@ class LevelsScreen extends ConsumerWidget {
           CulturalHeader(
             title: AppTranslations.get('levels_title', displayLang),
             subtitle: AppTranslations.get('levels_subtitle', displayLang),
-          ),
-          PamirSilhouette(
-            height: 28,
-            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: ListView.builder(
@@ -109,8 +106,7 @@ class LevelsScreen extends ConsumerWidget {
                               child: Center(
                                 child: Text(
                                   '$level',
-                                  style: TextStyle(
-                                    fontFamily: 'NotoSerif',
+                                  style: GoogleFonts.notoSerif(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: color,
@@ -127,8 +123,7 @@ class LevelsScreen extends ConsumerWidget {
                                     children: [
                                       Text(
                                         levelName,
-                                        style: TextStyle(
-                                          fontFamily: 'NotoSerif',
+                                        style: GoogleFonts.notoSerif(
                                           fontSize: 17,
                                           fontWeight: FontWeight.w600,
                                           color: colorScheme.onSurface,
@@ -143,8 +138,7 @@ class LevelsScreen extends ConsumerWidget {
                                         ),
                                         child: Text(
                                           AppTranslations.get(progressionKey, displayLang),
-                                          style: TextStyle(
-                                            fontFamily: 'NotoSans',
+                                          style: GoogleFonts.notoSans(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w600,
                                             color: color,
@@ -156,8 +150,7 @@ class LevelsScreen extends ConsumerWidget {
                                   const SizedBox(height: 4),
                                   Text(
                                     levelDesc,
-                                    style: TextStyle(
-                                      fontFamily: 'NotoSans',
+                                    style: GoogleFonts.notoSans(
                                       fontSize: 14,
                                       color: colorScheme.onSurfaceVariant,
                                     ),

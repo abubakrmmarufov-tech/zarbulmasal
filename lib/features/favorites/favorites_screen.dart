@@ -5,7 +5,6 @@ import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/proverb_card.dart';
 import '../../shared/widgets/cultural_header.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 
 class FavoritesScreen extends ConsumerWidget {
   const FavoritesScreen({super.key});
@@ -24,20 +23,12 @@ class FavoritesScreen extends ConsumerWidget {
             title: AppTranslations.get('nav_favorites', displayLang),
             subtitle: AppTranslations.get('home_proverbs', displayLang),
           ),
-          PamirSilhouette(
-            height: 28,
-            darkMode: Theme.of(context).brightness == Brightness.dark,
-          ),
           Expanded(
             child: favorites.isEmpty
                 ? Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        PamirSilhouette(
-                          height: 48,
-                          darkMode: Theme.of(context).brightness == Brightness.dark,
-                        ),
                         const SizedBox(height: 8),
                         Icon(
                           Icons.favorite_border,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../data/models/proverb.dart';
 import '../../data/models/category.dart';
 import '../../data/seed/seed_categories.dart';
 import '../../core/l10n/app_translations.dart';
 import '../providers/app_providers.dart';
+import '../../core/theme/design_system.dart';
 
 class ProverbCard extends ConsumerWidget {
   final Proverb proverb;
@@ -56,10 +58,11 @@ class ProverbCard extends ConsumerWidget {
     final category = _getCategory(proverb.categoryId);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final isTraditional = proverb.type == ProverbType.traditional;
-    final accentColor = const Color(0xFFD97706);
+    final isDark = theme.brightness == Brightness.dark;
+    
     final displayLang = ref.watch(displayLanguageProvider);
     final isPersian = displayLang == DisplayLanguage.persian;
+    
     final primaryText = isPersian ? proverb.persianText : proverb.tajikCyrillic;
     final secondaryText = isPersian ? proverb.tajikCyrillic : proverb.persianText;
     final primaryDir = isPersian ? TextDirection.rtl : TextDirection.ltr;
@@ -67,164 +70,119 @@ class ProverbCard extends ConsumerWidget {
         ? AppTranslations.get('badges_level', displayLang, [proverb.level.toString()])
         : 'Сатҳ ${proverb.level}';
 
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: BorderSide(
-          color: accentColor.withValues(alpha: 0.12),
-          width: 1,
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      decoration: BoxDecoration(
+        color: theme.cardColor,
+        borderRadius: BorderRadius.circular(DesignSystem.radiusM),
+        boxShadow: DesignSystem.softShadow(isDark),
+        border: Border.all(
+          color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05),
         ),
       ),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(20),
-        child: IntrinsicHeight(
-          child: Row(
+        borderRadius: BorderRadius.circular(DesignSystem.radiusM),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 4,
-                decoration: BoxDecoration(
-                  color: accentColor,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      primaryText,
+                      style: GoogleFonts.notoSerif(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        height: 1.5,
+                        color: colorScheme.onSurface,
+                        letterSpacing: -0.2,
+                      ),
+                      textDirection: primaryDir,
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 16),
+                  GestureDetector(
+                    onTap: () => ref.read(favoritesProvider.notifier).toggle(proverb.id),
+                    child: Icon(
+                      isFavorite ? Icons.bookmark : Icons.bookmark_border,
+                      color: isFavorite ? colorScheme.primary : colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
+                      size: 24,
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              primaryText,
-                              style: TextStyle(
-                                fontFamily: 'NotoSerif',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                height: 1.6,
-                                color: colorScheme.onSurface,
-                              ),
-                              textDirection: primaryDir,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: isFavorite
-                                  ? Colors.red.withValues(alpha: 0.1)
-                                  : colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                ref.read(favoritesProvider.notifier).toggle(proverb.id);
-                              },
-                              icon: Icon(
-                                isFavorite ? Icons.favorite : Icons.favorite_border,
-                                color: isFavorite ? Colors.red : colorScheme.onSurfaceVariant,
-                                size: 20,
-                              ),
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        secondaryText,
-                        style: TextStyle(
-                          fontFamily: 'NotoSans',
-                          fontSize: 15,
-                          fontStyle: FontStyle.italic,
-                          height: 1.5,
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                        textDirection: isPersian ? TextDirection.ltr : TextDirection.rtl,
-                      ),
-                      const SizedBox(height: 14),
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: colorScheme.primaryContainer,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(_getIconData(category.iconName), size: 14, color: colorScheme.onPrimaryContainer),
-                                const SizedBox(width: 5),
-                                Text(
-                                  category.nameTj,
-                                  style: TextStyle(
-                                    fontFamily: 'NotoSans',
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: colorScheme.onPrimaryContainer,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: colorScheme.secondaryContainer,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Text(
-                              levelName,
-                              style: TextStyle(
-                                fontFamily: 'NotoSans',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: colorScheme.onSecondaryContainer,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: isTraditional
-                                  ? accentColor.withValues(alpha: 0.1)
-                                  : Colors.grey.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Text(
-                              AppTranslations.get(
-                                isTraditional ? 'badges_traditional' : 'badges_modern',
-                                displayLang,
-                              ),
-                              style: TextStyle(
-                                fontFamily: 'NotoSans',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: isTraditional ? accentColor : Colors.grey.shade600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+              const SizedBox(height: 12),
+              Text(
+                secondaryText,
+                style: GoogleFonts.notoSans(
+                  fontSize: 15,
+                  height: 1.5,
+                  color: colorScheme.onSurfaceVariant,
                 ),
+                textDirection: isPersian ? TextDirection.ltr : TextDirection.rtl,
+              ),
+              const SizedBox(height: 24),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _Badge(
+                    icon: _getIconData(category.iconName),
+                    label: category.nameTj,
+                    color: colorScheme.primary,
+                  ),
+                  _Badge(
+                    icon: Icons.stairs,
+                    label: levelName,
+                    color: colorScheme.tertiary,
+                  ),
+                ],
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _Badge extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  const _Badge({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(DesignSystem.radiusS),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 14, color: color),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: GoogleFonts.notoSans(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: color,
+            ),
+          ),
+        ],
       ),
     );
   }

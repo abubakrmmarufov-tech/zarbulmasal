@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../data/models/category.dart';
 import '../../data/models/proverb.dart';
 import '../../data/seed/seed_categories.dart';
 import '../../core/l10n/app_translations.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/design_system.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/cultural_header.dart';
 import '../../shared/widgets/section_card.dart';
 import '../../shared/widgets/tajik_badge.dart';
-import '../../shared/widgets/pamir_silhouette.dart';
 import '../../shared/widgets/tajik_pattern_divider.dart';
-import '../../core/theme/app_colors.dart';
 
 class DailyProverbScreen extends ConsumerWidget {
   const DailyProverbScreen({super.key});
@@ -54,12 +55,9 @@ class DailyProverbScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final dailyProverb = ref.watch(dailyProverbProvider);
-    final now = DateTime.now();
     final favorites = ref.watch(favoritesProvider);
     final displayLang = ref.watch(displayLanguageProvider);
     final isPersian = displayLang == DisplayLanguage.persian;
-
-    final dateStr = '${now.day} ${AppTranslations.getMonthName(now.month, displayLang)}, ${now.year}';
 
     if (dailyProverb == null) {
       return Scaffold(
@@ -67,14 +65,14 @@ class DailyProverbScreen extends ConsumerWidget {
           children: [
             CulturalHeader(
               title: AppTranslations.get('daily_title', displayLang),
-              subtitle: dateStr,
+              subtitle: AppTranslations.get('daily_subtitle', displayLang),
             ),
             Expanded(
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Text(
-                    AppTranslations.get('daily_not_available', displayLang),
+                    AppTranslations.get('home_no_daily', displayLang),
                     style: theme.textTheme.titleMedium?.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
@@ -88,8 +86,8 @@ class DailyProverbScreen extends ConsumerWidget {
       );
     }
 
-    final category = _getCategory(dailyProverb.categoryId);
     final isFavorite = favorites.contains(dailyProverb.id);
+    final category = _getCategory(dailyProverb.categoryId);
     final isVerified = dailyProverb.sourceStatus == SourceStatus.verified;
     final categoryColor = AppColors.getCategoryColor(
       seedCategories.indexWhere((c) => c.id == dailyProverb.categoryId),
@@ -97,18 +95,19 @@ class DailyProverbScreen extends ConsumerWidget {
 
     final primaryText = isPersian ? dailyProverb.persianText : dailyProverb.tajikCyrillic;
     final secondaryText = isPersian ? dailyProverb.tajikCyrillic : dailyProverb.persianText;
+    final subtitle = isPersian ? dailyProverb.tajikCyrillic : dailyProverb.persianText;
 
     return Scaffold(
       body: Column(
         children: [
           CulturalHeader(
             title: AppTranslations.get('daily_title', displayLang),
-            subtitle: dateStr,
+            subtitle: subtitle,
             trailing: Container(
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.15),
+                color: theme.colorScheme.primary.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: IconButton(
@@ -116,16 +115,12 @@ class DailyProverbScreen extends ConsumerWidget {
                   ref.read(favoritesProvider.notifier).toggle(dailyProverb.id);
                 },
                 icon: Icon(
-                  isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: isFavorite ? Colors.red.shade300 : Colors.white,
+                  isFavorite ? Icons.bookmark : Icons.bookmark_border,
+                  color: isFavorite ? theme.colorScheme.primary : theme.colorScheme.onSurfaceVariant,
                 ),
                 padding: EdgeInsets.zero,
               ),
             ),
-          ),
-          PamirSilhouette(
-            height: 28,
-            darkMode: Theme.of(context).brightness == Brightness.dark,
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -154,18 +149,13 @@ class DailyProverbScreen extends ConsumerWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.all(32),
                     decoration: BoxDecoration(
+                      color: theme.cardColor,
                       borderRadius: BorderRadius.circular(24),
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          AppColors.accentGold.withValues(alpha: 0.1),
-                          AppColors.accentGold.withValues(alpha: 0.03),
-                        ],
-                      ),
+                      boxShadow: DesignSystem.softShadow(theme.brightness == Brightness.dark),
                       border: Border.all(
-                        color: AppColors.accentGold.withValues(alpha: 0.25),
-                        width: 1,
+                        color: theme.brightness == Brightness.dark
+                            ? Colors.white.withValues(alpha: 0.05)
+                            : AppColors.accentGold.withValues(alpha: 0.1),
                       ),
                     ),
                     child: Column(
@@ -175,43 +165,41 @@ class DailyProverbScreen extends ConsumerWidget {
                           children: [
                             Icon(
                               Icons.format_quote,
-                              size: 36,
-                              color: AppColors.accentGold.withValues(alpha: 0.5),
+                              size: 28,
+                              color: AppColors.accentGold.withValues(alpha: 0.4),
                             ),
                             const SizedBox(width: 8),
                             Icon(
                               Icons.auto_awesome,
-                              size: 28,
+                              size: 24,
                               color: AppColors.accentGold.withValues(alpha: 0.7),
                             ),
                             const SizedBox(width: 8),
                             Icon(
                               Icons.format_quote,
-                              size: 36,
-                              color: AppColors.accentGold.withValues(alpha: 0.5),
+                              size: 28,
+                              color: AppColors.accentGold.withValues(alpha: 0.4),
                             ),
                           ],
                         ),
                         const SizedBox(height: 20),
                         Text(
                           primaryText,
-                          style: TextStyle(
-                            fontFamily: 'NotoSerif',
-                            fontSize: 22,
-                            height: 1.7,
+                          style: GoogleFonts.notoSerif(
+                            fontSize: 24,
+                            height: 1.6,
                             fontWeight: FontWeight.w600,
                             color: colorScheme.onSurface,
+                            letterSpacing: -0.5,
                           ),
                           textAlign: TextAlign.center,
                           textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
                         ),
-                        const SizedBox(height: 14),
+                        const SizedBox(height: 16),
                         Text(
                           secondaryText,
-                          style: TextStyle(
-                            fontFamily: 'NotoSans',
-                            fontSize: 17,
-                            fontStyle: FontStyle.italic,
+                          style: GoogleFonts.notoSans(
+                            fontSize: 16,
                             height: 1.6,
                             color: colorScheme.onSurfaceVariant,
                           ),
