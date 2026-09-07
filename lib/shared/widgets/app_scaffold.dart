@@ -35,7 +35,9 @@ class AppScaffold extends ConsumerWidget {
     ];
 
     return Scaffold(
-      body: child,
+      body: SafeArea(
+        child: child,
+      ),
       bottomNavigationBar: NavigationBar(
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         selectedIndex: selectedIndex,
