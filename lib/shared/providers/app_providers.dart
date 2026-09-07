@@ -24,8 +24,9 @@ void _debugLog({
   );
 }
 
-final themeModeProvider =
-    StateNotifierProvider<ThemeModeNotifier, ThemeMode>((ref) {
+final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((
+  ref,
+) {
   return ThemeModeNotifier();
 });
 
@@ -36,13 +37,25 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 
   Future<void> _loadTheme() async {
     // #region agent log
-    _debugLog(runId: 'run2', hypothesisId: 'H4', location: 'app_providers.dart:20', message: 'theme load start', data: {'initialState': state.name});
+    _debugLog(
+      runId: 'run2',
+      hypothesisId: 'H4',
+      location: 'app_providers.dart:20',
+      message: 'theme load start',
+      data: {'initialState': state.name},
+    );
     // #endregion
     final prefs = await SharedPreferences.getInstance();
     final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
     state = isDark ? ThemeMode.dark : ThemeMode.light;
     // #region agent log
-    _debugLog(runId: 'run2', hypothesisId: 'H4', location: 'app_providers.dart:25', message: 'theme load complete', data: {'storedIsDark': isDark, 'finalState': state.name});
+    _debugLog(
+      runId: 'run2',
+      hypothesisId: 'H4',
+      location: 'app_providers.dart:25',
+      message: 'theme load complete',
+      data: {'storedIsDark': isDark, 'finalState': state.name},
+    );
     // #endregion
   }
 
@@ -54,10 +67,11 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   }
 }
 
-final favoritesProvider =
-    StateNotifierProvider<FavoritesNotifier, Set<String>>((ref) {
-  return FavoritesNotifier();
-});
+final favoritesProvider = StateNotifierProvider<FavoritesNotifier, Set<String>>(
+  (ref) {
+    return FavoritesNotifier();
+  },
+);
 
 class FavoritesNotifier extends StateNotifier<Set<String>> {
   FavoritesNotifier() : super({}) {
@@ -95,8 +109,8 @@ enum DisplayLanguage { tajik, persian }
 
 final displayLanguageProvider =
     StateNotifierProvider<DisplayLanguageNotifier, DisplayLanguage>((ref) {
-  return DisplayLanguageNotifier();
-});
+      return DisplayLanguageNotifier();
+    });
 
 class DisplayLanguageNotifier extends StateNotifier<DisplayLanguage> {
   DisplayLanguageNotifier() : super(DisplayLanguage.tajik) {
@@ -136,7 +150,8 @@ final filteredProverbsProvider = Provider<List<Proverb>>((ref) {
   return proverbs.where((p) {
     final matchesCategory = category == null || p.categoryId == category;
     final matchesLevel = level == null || p.level == level;
-    final matchesQuery = query.isEmpty ||
+    final matchesQuery =
+        query.isEmpty ||
         p.tajikCyrillic.toLowerCase().contains(query) ||
         p.persianText.toLowerCase().contains(query) ||
         p.meaningTj.toLowerCase().contains(query);
@@ -153,7 +168,18 @@ final favoritesListProvider = Provider<List<Proverb>>((ref) {
 final dailyProverbProvider = Provider<Proverb?>((ref) {
   final proverbs = ref.watch(proverbsProvider);
   final now = DateTime.now();
-  _debugLog(runId: 'run2', hypothesisId: 'H1', location: 'app_providers.dart:104', message: 'daily proverb evaluate', data: {'count': proverbs.length, 'year': now.year, 'month': now.month, 'day': now.day});
+  _debugLog(
+    runId: 'run2',
+    hypothesisId: 'H1',
+    location: 'app_providers.dart:104',
+    message: 'daily proverb evaluate',
+    data: {
+      'count': proverbs.length,
+      'year': now.year,
+      'month': now.month,
+      'day': now.day,
+    },
+  );
 
   if (proverbs.isEmpty) {
     return null;

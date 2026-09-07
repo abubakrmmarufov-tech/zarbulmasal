@@ -1,90 +1,107 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../providers/app_providers.dart';
 
 class AppScaffold extends ConsumerWidget {
   final Widget child;
-
-  const AppScaffold({
-    super.key,
-    required this.child,
-  });
-
-  int _getSelectedIndex(BuildContext context) {
-    final location = GoRouterState.of(context).uri.path;
-    if (location.startsWith('/proverb')) return 1;
-    if (location == '/categories') return 2;
-    if (location == '/favorites') return 3;
-    if (location == '/settings') return 4;
-    return 0;
-  }
-
+  const AppScaffold({super.key, required this.child});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIndex = _getSelectedIndex(context);
-    final displayLang = ref.watch(displayLanguageProvider);
-
-    final labels = [
-      AppTranslations.get('nav_home', displayLang),
-      AppTranslations.get('nav_proverbs', displayLang),
-      AppTranslations.get('nav_categories', displayLang),
-      AppTranslations.get('nav_favorites', displayLang),
-      AppTranslations.get('nav_settings', displayLang),
+    final path = GoRouterState.of(context).uri.path;
+    final lang = ref.watch(displayLanguageProvider);
+    final colors = Theme.of(context).colorScheme;
+    const routes = ['/', '/proverbs', '/categories', '/favorites', '/settings'];
+    const keys = [
+      'nav_home',
+      'nav_proverbs',
+      'nav_categories',
+      'nav_favorites',
+      'nav_settings',
     ];
-
+    const icons = [
+      Icons.home_outlined,
+      Icons.menu_book_outlined,
+      Icons.format_list_bulleted,
+      Icons.bookmark_outline,
+      Icons.tune,
+    ];
+    final selected = routes.indexOf(path);
     return Scaffold(
       body: child,
-      bottomNavigationBar: NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (index) {
-          switch (index) {
-            case 0:
-              context.go('/');
-              break;
-            case 1:
-              context.go('/proverbs');
-              break;
-            case 2:
-              context.go('/categories');
-              break;
-            case 3:
-              context.go('/favorites');
-              break;
-            case 4:
-              context.go('/settings');
-              break;
-          }
-        },
-        destinations: [
-          NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
-            label: labels[0],
+      bottomNavigationBar: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colors.surface,
+          border: Border(top: BorderSide(color: colors.outline)),
+        ),
+        child: SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (var i = 0; i < routes.length; i++)
+                  Expanded(
+                    child: Semantics(
+                      selected: selected == i,
+                      button: true,
+                      label: AppTranslations.get(keys[i], lang),
+                      child: Tooltip(
+                        excludeFromSemantics: true,
+                        message: AppTranslations.get(keys[i], lang),
+                        child: InkWell(
+                          onTap: () => context.go(routes[i]),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 9,
+                              horizontal: 2,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  height: 2,
+                                  width: 18,
+                                  color: selected == i
+                                      ? colors.primary
+                                      : Colors.transparent,
+                                ),
+                                const SizedBox(height: 7),
+                                ExcludeSemantics(
+                                  child: Icon(
+                                    icons[i],
+                                    size: 22,
+                                    color: selected == i
+                                        ? colors.primary
+                                        : colors.onSurfaceVariant,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                ExcludeSemantics(
+                                  child: Text(
+                                    AppTranslations.get(keys[i], lang),
+                                    textAlign: TextAlign.center,
+                                    style: QalamTypography.navLabel(
+                                      color: selected == i
+                                          ? colors.primary
+                                          : colors.onSurfaceVariant,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           ),
-          NavigationDestination(
-            icon: const Icon(Icons.format_quote_outlined),
-            selectedIcon: const Icon(Icons.format_quote),
-            label: labels[1],
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.category_outlined),
-            selectedIcon: const Icon(Icons.category),
-            label: labels[2],
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.favorite_outline),
-            selectedIcon: const Icon(Icons.favorite),
-            label: labels[3],
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.settings_outlined),
-            selectedIcon: const Icon(Icons.settings),
-            label: labels[4],
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -1,0 +1,232 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zarbulmasal/core/constants/app_constants.dart';
+import 'package:zarbulmasal/core/l10n/app_translations.dart';
+import 'package:zarbulmasal/data/seed/seed_categories.dart';
+import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
+import 'package:zarbulmasal/shared/providers/app_providers.dart';
+
+Future<void> preferencesLoaded() async {
+  await SharedPreferences.getInstance();
+  await Future<void>.delayed(Duration.zero);
+}
+
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  setUp(() => SharedPreferences.setMockInitialValues({}));
+
+  test(
+    'catalog keeps unique identifiers, valid categories and both scripts',
+    () {
+      final ids = seedProverbs.map((p) => p.id).toSet();
+      final categories = seedCategories.map((c) => c.id).toSet();
+      expect(ids.length, seedProverbs.length);
+      expect(seedProverbs, isNotEmpty);
+      for (final proverb in seedProverbs) {
+        expect(categories, contains(proverb.categoryId));
+        expect(proverb.level, inInclusiveRange(1, 10));
+        expect(proverb.tajikCyrillic, matches(RegExp(r'[А-Яа-яӢӣҚқҒғҲҳҶҷӮӯ]')));
+        expect(proverb.persianText, matches(RegExp(r'[\u0600-\u06ff]')));
+        expect(proverb.meaningTj, isNotEmpty);
+      }
+    },
+  );
+
+  test('copyWith preserves original content and provenance', () {
+    final original = seedProverbs.first;
+    final updated = original.copyWith(level: 10, id: 'copy');
+    expect(original.level, isNot(10));
+    expect(updated.id, 'copy');
+    expect(updated.tajikCyrillic, original.tajikCyrillic);
+    expect(updated.persianText, original.persianText);
+    expect(updated.sourceNote, original.sourceNote);
+    expect(updated.sourceStatus, original.sourceStatus);
+  });
+
+  test('search finds Cyrillic, Persian and meanings and combines filters', () {
+    final container = ProviderContainer();
+    addTearDown(container.dispose);
+    final target = seedProverbs.first;
+    expect(container.read(filteredProverbsProvider), seedProverbs);
+    for (final query in [
+      target.tajikCyrillic.toUpperCase(),
+      target.persianText,
+      target.meaningTj,
+    ]) {
+      container.read(searchQueryProvider.notifier).state = query;
+      expect(container.read(filteredProverbsProvider), contains(target));
+    }
+    container.read(searchQueryProvider.notifier).state = '';
+    container.read(selectedCategoryProvider.notifier).state = target.categoryId;
+    container.read(selectedLevelProvider.notifier).state = target.level;
+    final combined = container.read(filteredProverbsProvider);
+    expect(combined, contains(target));
+    expect(
+      combined.every(
+        (p) => p.categoryId == target.categoryId && p.level == target.level,
+      ),
+      isTrue,
+    );
+    container.read(searchQueryProvider.notifier).state =
+        'no-such-proverb-83971';
+    expect(container.read(filteredProverbsProvider), isEmpty);
+    container.read(searchQueryProvider.notifier).state = '';
+    container.read(selectedCategoryProvider.notifier).state = null;
+    container.read(selectedLevelProvider.notifier).state = null;
+    expect(
+      container.read(filteredProverbsProvider).length,
+      seedProverbs.length,
+    );
+  });
+
+  test(
+    'favorites add/remove immutably and survive provider recreation',
+    () async {
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
+      container.read(favoritesProvider);
+      await preferencesLoaded();
+      final before = container.read(favoritesProvider);
+      await container
+          .read(favoritesProvider.notifier)
+          .toggle(seedProverbs.first.id);
+      expect(before, isEmpty);
+      expect(
+        container.read(favoritesProvider),
+        contains(seedProverbs.first.id),
+      );
+      expect(container.read(favoritesListProvider), [seedProverbs.first]);
+      final recreated = ProviderContainer();
+      addTearDown(recreated.dispose);
+      recreated.read(favoritesProvider);
+      await preferencesLoaded();
+      expect(recreated.read(favoritesListProvider), [seedProverbs.first]);
+      expect(
+        recreated
+            .read(favoritesProvider.notifier)
+            .isFavorite(seedProverbs.first.id),
+        isTrue,
+      );
+      await recreated
+          .read(favoritesProvider.notifier)
+          .toggle(seedProverbs.first.id);
+      expect(recreated.read(favoritesProvider), isEmpty);
+      expect(
+        (await SharedPreferences.getInstance()).getStringList(
+          AppConstants.prefsFavorites,
+        ),
+        isEmpty,
+      );
+    },
+  );
+
+  test('stale saved identifiers do not fabricate proverb content', () async {
+    SharedPreferences.setMockInitialValues({
+      AppConstants.prefsFavorites: ['deleted-id', seedProverbs.last.id],
+    });
+    final container = ProviderContainer();
+    addTearDown(container.dispose);
+    container.read(favoritesProvider);
+    await preferencesLoaded();
+    expect(container.read(favoritesListProvider), [seedProverbs.last]);
+  });
+
+  test('language selection survives restart in both directions', () async {
+    final notifier = DisplayLanguageNotifier();
+    addTearDown(notifier.dispose);
+    await preferencesLoaded();
+    expect(notifier.state, DisplayLanguage.tajik);
+    await notifier.setLanguage(DisplayLanguage.persian);
+    expect(
+      (await SharedPreferences.getInstance()).getString(
+        AppConstants.prefsLanguage,
+      ),
+      'fa',
+    );
+    final recreated = DisplayLanguageNotifier();
+    addTearDown(recreated.dispose);
+    await preferencesLoaded();
+    expect(recreated.state, DisplayLanguage.persian);
+    await recreated.setLanguage(DisplayLanguage.tajik);
+    expect(recreated.state, DisplayLanguage.tajik);
+    expect(
+      (await SharedPreferences.getInstance()).getString(
+        AppConstants.prefsLanguage,
+      ),
+      'tj',
+    );
+  });
+
+  test('light/dark theme survives restart and toggles back', () async {
+    final notifier = ThemeModeNotifier();
+    addTearDown(notifier.dispose);
+    await preferencesLoaded();
+    expect(notifier.state, ThemeMode.light);
+    await notifier.toggleTheme();
+    expect(notifier.state, ThemeMode.dark);
+    final recreated = ThemeModeNotifier();
+    addTearDown(recreated.dispose);
+    await preferencesLoaded();
+    expect(recreated.state, ThemeMode.dark);
+    await recreated.toggleTheme();
+    expect(recreated.state, ThemeMode.light);
+    expect(
+      (await SharedPreferences.getInstance()).getBool(
+        AppConstants.prefsDarkMode,
+      ),
+      isFalse,
+    );
+  });
+
+  test(
+    'daily content is real, consistent today and handles an empty catalog',
+    () {
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
+      final daily = container.read(dailyProverbProvider);
+      expect(seedProverbs, contains(daily));
+      container.invalidate(dailyProverbProvider);
+      expect(container.read(dailyProverbProvider), daily);
+      final empty = ProviderContainer(
+        overrides: [proverbsProvider.overrideWithValue([])],
+      );
+      addTearDown(empty.dispose);
+      expect(empty.read(dailyProverbProvider), isNull);
+      expect(empty.read(filteredProverbsProvider), isEmpty);
+    },
+  );
+
+  test(
+    'both translation catalogs contain all interface keys and interpolate',
+    () {
+      expect(AppTranslations.fa.keys.toSet(), AppTranslations.tj.keys.toSet());
+      expect(
+        AppTranslations.get('app_name', DisplayLanguage.tajik),
+        'Зарбулмасал',
+      );
+      expect(
+        AppTranslations.get('app_name', DisplayLanguage.persian),
+        'ضرب‌المثل',
+      );
+      for (final language in DisplayLanguage.values) {
+        final result = AppTranslations.get('quiz_correct_of', language, [
+          '3',
+          '5',
+        ]);
+        expect(result, contains('3'));
+        expect(result, contains('5'));
+        expect(result, isNot(contains(r'${')));
+        for (final key in AppTranslations.tj.keys) {
+          expect(
+            AppTranslations.get(key, language),
+            isNotEmpty,
+            reason: '$language / $key',
+          );
+        }
+      }
+    },
+  );
+}

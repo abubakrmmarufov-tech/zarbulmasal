@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="tg" dir="ltr">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -18,21 +18,32 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Зарбулмасал (Zarbulmasal) — мақолҳои тоҷикӣ барои хониш, омӯзиш ва ёдгирӣ.">
+  <meta name="application-name" content="Зарбулмасал">
+  <meta name="color-scheme" content="light dark">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="zarbulmasal">
+  <meta name="apple-mobile-web-app-title" content="Зарбулмасал">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>zarbulmasal</title>
+  <title>Зарбулмасал</title>
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#202720">
+  <style>
+    html, body { margin: 0; background: #F3F0E7; }
+    #opening { min-height: 100vh; display: grid; place-content: center; text-align: center; color: #202720; font-family: Georgia, serif; }
+    #opening strong { font-size: 72px; font-weight: 400; color: #A43D2F; }
+    #opening p { font-size: 20px; }
+    @media (prefers-color-scheme: dark) { html, body { background: #181E1B; } #opening { color: #F3F0E7; } }
+  </style>
 </head>
 <body>
+  <div id="opening" role="status" aria-label="Зарбулмасал"><strong>З</strong><p>Зарбулмасал</p></div>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
