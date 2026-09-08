@@ -4,7 +4,11 @@ const List<Category> seedCategories = [
   Category(id: 'ilm', nameTj: 'Илм', iconName: 'school'),
   Category(id: 'hikmat', nameTj: 'Ҳикмат', iconName: 'lightbulb'),
   Category(id: 'sabr', nameTj: 'Сабр', iconName: 'hourglass_bottom'),
-  Category(id: 'padaru_modar', nameTj: 'Падару модар', iconName: 'family_restroom'),
+  Category(
+    id: 'padaru_modar',
+    nameTj: 'Падару модар',
+    iconName: 'family_restroom',
+  ),
   Category(id: 'dusti', nameTj: 'Дӯстӣ', iconName: 'favorite'),
   Category(id: 'mehnat', nameTj: 'Меҳнат', iconName: 'work'),
   Category(id: 'pul', nameTj: 'Пул', iconName: 'attach_money'),

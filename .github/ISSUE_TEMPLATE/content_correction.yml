@@ -1,0 +1,49 @@
+name: Proverb or translation correction
+description: Propose a spelling, translation, meaning, attribution, or source correction.
+title: "[Content]: "
+labels: []
+body:
+  - type: input
+    id: proverb
+    attributes:
+      label: Proverb and catalog ID
+      description: Include the displayed text and its ID if known.
+    validations:
+      required: true
+  - type: dropdown
+    id: field
+    attributes:
+      label: Field to correct
+      options:
+        - Tajik Cyrillic
+        - Persian script
+        - Meaning or explanation
+        - Example
+        - Source or attribution
+        - Category or level
+        - Multiple fields
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current content
+    validations:
+      required: true
+  - type: textarea
+    id: corrected
+    attributes:
+      label: Proposed correction
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Supporting source
+      description: Link or cite a credible published Tajik language or cultural source.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context

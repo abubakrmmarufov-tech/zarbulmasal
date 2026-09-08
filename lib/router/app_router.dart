@@ -17,10 +17,7 @@ final appRouter = GoRouter(
     ShellRoute(
       builder: (context, state, child) => AppScaffold(child: child),
       routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => const HomeScreen(),
-        ),
+        GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
         GoRoute(
           path: '/proverbs',
           builder: (context, state) => const ProverbsListScreen(),
@@ -46,14 +43,8 @@ final appRouter = GoRouter(
         return ProverbDetailScreen(proverbId: id);
       },
     ),
-    GoRoute(
-      path: '/levels',
-      builder: (context, state) => const LevelsScreen(),
-    ),
-    GoRoute(
-      path: '/quiz',
-      builder: (context, state) => const QuizScreen(),
-    ),
+    GoRoute(path: '/levels', builder: (context, state) => const LevelsScreen()),
+    GoRoute(path: '/quiz', builder: (context, state) => const QuizScreen()),
     GoRoute(
       path: '/flashcards',
       builder: (context, state) => const FlashcardsScreen(),

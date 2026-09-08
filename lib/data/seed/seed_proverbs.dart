@@ -6,9 +6,11 @@ const List<Proverb> seedProverbs = [
     id: '1',
     tajikCyrillic: 'Аз калтакалос калонтарро боварӣ доштан осон аст.',
     persianText: 'از کلاغ سیاهتر ایمان آوردن آسان است.',
-    simpleExplanationTj: 'Ин маънои онро дорад, ки бовар кардан ба чизе, ки барои ҳамма маълум аст, осон аст.',
+    simpleExplanationTj:
+        'Ин маънои онро дорад, ки бовар кардан ба чизе, ки барои ҳамма маълум аст, осон аст.',
     meaningTj: 'Боварӣ ба чизе, ки ҳамма медонанд, осон аст.',
-    exampleSentenceTj: 'Вай гуфт, ки об ҳалқашон мекунад — ин осон буд, зеро ҳама медонанд.',
+    exampleSentenceTj:
+        'Вай гуфт, ки об ҳалқашон мекунад — ин осон буд, зеро ҳама медонанд.',
     categoryId: 'ilm',
     level: 1,
     type: ProverbType.modernCustom,
@@ -45,9 +47,11 @@ const List<Proverb> seedProverbs = [
     id: '4',
     tajikCyrillic: 'Меҳнат бобати некуашро мекунад.',
     persianText: 'تلاش نان او را میسازد.',
-    simpleExplanationTj: 'Касе, ки зиёд кор мекунад, зиндагии хубашро ба даст меорад.',
+    simpleExplanationTj:
+        'Касе, ки зиёд кор мекунад, зиндагии хубашро ба даст меорад.',
     meaningTj: 'Меҳнат кардан ба зиндагии неку оварда мерасонад.',
-    exampleSentenceTj: 'Субҳидам ва кор кардам — меҳнат бобати некуашро мекунад.',
+    exampleSentenceTj:
+        'Субҳидам ва кор кардам — меҳнат бобати некуашро мекунад.',
     categoryId: 'mehnat',
     level: 2,
     type: ProverbType.modernCustom,
@@ -71,9 +75,11 @@ const List<Proverb> seedProverbs = [
     id: '6',
     tajikCyrillic: 'Падаратро намеёбӣ, вале калтакалосро меёбӣ.',
     persianText: 'پدرت را نمییابی، اما کلاغ سیاه را میابی.',
-    simpleExplanationTj: 'Баъзе чизҳоро гум карда, баъзе чизҳои камбаро ёфтан мумкин аст.',
+    simpleExplanationTj:
+        'Баъзе чизҳоро гум карда, баъзе чизҳои камбаро ёфтан мумкин аст.',
     meaningTj: 'Гум кардани чизи муҳим ва ёфтани чизи ноҳишавӣ.',
-    exampleSentenceTj: 'Китоби қадимамро гум кардам — падаратро намеёбӣ, вале калтакалосро меёбӣ.',
+    exampleSentenceTj:
+        'Китоби қадимамро гум кардам — падаратро намеёбӣ, вале калтакалосро меёбӣ.',
     categoryId: 'zindagi',
     level: 4,
     type: ProverbType.modernCustom,
@@ -125,7 +131,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'زمان همه چیز را میشکند.',
     simpleExplanationTj: 'Вақт ҳама чизҳоро тағир медиҳад.',
     meaningTj: 'Бо гузашти вақт, ҳама чизҳо дигаргун мешаванд.',
-    exampleSentenceTj: 'Дӯстӣ фаромӯш мешавад — вақт ҳамма чизро шикаста медиҳад.',
+    exampleSentenceTj:
+        'Дӯстӣ фаромӯш мешавад — вақт ҳамма чизро шикаста медиҳад.',
     categoryId: 'vaqt',
     level: 3,
     type: ProverbType.modernCustom,
@@ -177,7 +184,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'صبر کلید موفقیت است.',
     simpleExplanationTj: 'Касе, ки сабр мекунад, охир муваффақ мешавад.',
     meaningTj: 'Бо сабр кардан ба ҳар чиз расидан мумкин аст.',
-    exampleSentenceTj: 'Танҳо кор кун ва сабр кун — сабр калиди муваффақият аст.',
+    exampleSentenceTj:
+        'Танҳо кор кун ва сабр кун — сабр калиди муваффақият аст.',
     categoryId: 'sabr',
     level: 2,
     type: ProverbType.modernCustom,
@@ -190,7 +198,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'عشق همه چیز را شفا میدهد.',
     simpleExplanationTj: 'Муҳаббат қувваи бузург дорад.',
     meaningTj: 'Муҳаббат метавонад ҳар дардро шифо диҳад.',
-    exampleSentenceTj: 'Вақте ки танҳо будам, муҳаббат ҳама чизро шифо медиҳад.',
+    exampleSentenceTj:
+        'Вақте ки танҳо будам, муҳаббат ҳама чизро шифо медиҳад.',
     categoryId: 'muhabbat',
     level: 2,
     type: ProverbType.modernCustom,
@@ -229,7 +238,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'پول همه چیز را نمیکند، اما بیپول هیچ چیز نیست.',
     simpleExplanationTj: 'Пул муҳим аст, вале ягона чиз нест.',
     meaningTj: 'Пул лозим аст, вале ягона мақсад нест.',
-    exampleSentenceTj: 'Пул ҳамма чизро намекунад — вале бепул зиндагӣ душвор аст.',
+    exampleSentenceTj:
+        'Пул ҳамма чизро намекунад — вале бепул зиндагӣ душвор аст.',
     categoryId: 'pul',
     level: 4,
     type: ProverbType.modernCustom,
@@ -270,7 +280,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'مثال مادر یار و مثال وطن دیگری نیست.',
     simpleExplanationTj: 'Модар ва Ватан ягона ва беҳамтонанд.',
     meaningTj: 'Модарро ҳимоя кун, зеро Ватан ҳам ҳамон қadar арзиш дорад.',
-    exampleSentenceTj: 'Вай барои Ватан кор мекард — мисли модар ёру мисли Ватан диёре нест.',
+    exampleSentenceTj:
+        'Вай барои Ватан кор мекард — мисли модар ёру мисли Ватан диёре нест.',
     categoryId: 'padaru_modar',
     level: 3,
     type: ProverbType.traditional,
@@ -283,7 +294,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'پرنده را به بالهایش ارزش دهند، آدمی را به کارش.',
     simpleExplanationTj: 'Паррандаро аз парвозаш, одамро аз кораш мешиносанд.',
     meaningTj: 'Арзиши инсон ба кораш аст, на ба суханиаш.',
-    exampleSentenceTj: 'Ин одамро ба кораш баҳо диҳед — паррандаро бо парвозаш баҳо диҳанд.',
+    exampleSentenceTj:
+        'Ин одамро ба кораш баҳо диҳед — паррандаро бо парвозаш баҳо диҳанд.',
     categoryId: 'mehnat',
     level: 3,
     type: ProverbType.traditional,
@@ -296,7 +308,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'آفتاب گرما دارد و مادر مهربانی.',
     simpleExplanationTj: 'Офтоб ҷисмонро гарм мекунад, модар дилро.',
     meaningTj: 'Модар ҳам гармӣ медиҳад — барои ҳаёт муҳим аст.',
-    exampleSentenceTj: 'Офтобро дар тобистон эҳс кун — офтоб гармӣ дораду модар меҳр.',
+    exampleSentenceTj:
+        'Офтобро дар тобистон эҳс кун — офтоб гармӣ дораду модар меҳр.',
     categoryId: 'padaru_modar',
     level: 2,
     type: ProverbType.traditional,
@@ -348,7 +361,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'به یک جوان سی هنر کم است.',
     simpleExplanationTj: 'Ҷавонашро чил ҳунар кам аст.',
     meaningTj: 'Ҷавонон бояд ҳар чиз омӯзанд, зеро вақт зиёд доранд.',
-    exampleSentenceTj: 'Ба як ҷавон чил ҳунар кам — ҷавонон бояд бисёр омӯзанд.',
+    exampleSentenceTj:
+        'Ба як ҷавон чил ҳунар кам — ҷавонон бояд бисёр омӯзанд.',
     categoryId: 'omuzish',
     level: 3,
     type: ProverbType.traditional,
@@ -361,7 +375,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'انسان با زبانش نه، با عملش سخن میگوید.',
     simpleExplanationTj: 'Чизи ҳақиқӣ — амал, на сухан.',
     meaningTj: 'Ба ҳар кӣ гуфтугӯ кун, ба амалаш нигаҳ кун.',
-    exampleSentenceTj: 'Инсон бо забонаш не — бо амалаш сухан гӯяд. Ба кор нигаҳ кун.',
+    exampleSentenceTj:
+        'Инсон бо забонаш не — бо амалаш сухан гӯяд. Ба кор нигаҳ кун.',
     categoryId: 'hikmat',
     level: 4,
     type: ProverbType.traditional,
@@ -400,7 +415,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'تلاش سرشار میکند، تنبلی خراب میکند.',
     simpleExplanationTj: 'Меҳнат оварда мерасонад, танбалӣ вайрон мекунад.',
     meaningTj: 'Меҳнат ба фаровонӣ меорад, танбалӣ ба вайронӣ.',
-    exampleSentenceTj: 'Кор кун — меҳнат фаровон мекунад, танбалӣ вайрон мекунад.',
+    exampleSentenceTj:
+        'Кор кун — меҳнат фаровон мекунад, танбалӣ вайрон мекунад.',
     categoryId: 'mehnat',
     level: 2,
     type: ProverbType.traditional,
@@ -478,7 +494,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'هنر از ملک و میراث پدر بهتر است.',
     simpleExplanationTj: 'Ҳунар аз молу мулк ва мероси падар беҳтар аст.',
     meaningTj: 'Ҳунар — сарвати воқеӣ, ки ҳеҷ кас гирифта наметавонад.',
-    exampleSentenceTj: 'Ба фарзандонат ҳунар омӯз — ҳунар аз мулку мероси падар беҳ.',
+    exampleSentenceTj:
+        'Ба фарзандонат ҳунар омӯз — ҳунар аз мулку мероси падар беҳ.',
     categoryId: 'omuzish',
     level: 4,
     type: ProverbType.traditional,
@@ -489,9 +506,11 @@ const List<Proverb> seedProverbs = [
     id: '38',
     tajikCyrillic: 'Дониш омӯхтан — бо сӯзан чоҳ кандан.',
     persianText: 'دانش آموختن چوان کردن با سوزن چاه است.',
-    simpleExplanationTj: 'Омӯхтан — кор ва сабр лозим, ҳамон тавр ки бо сӯзан чоҳ кандан.',
+    simpleExplanationTj:
+        'Омӯхтан — кор ва сабр лозим, ҳамон тавр ки бо сӯзан чоҳ кандан.',
     meaningTj: 'Барои дониш бояд сабр ва меҳнат кард.',
-    exampleSentenceTj: 'Дониш омӯхтан — бо сӯзан чоҳ кандан. Сабр кун, то бароӣ.',
+    exampleSentenceTj:
+        'Дониш омӯхтан — бо сӯзан чоҳ кандан. Сабр кун, то бароӣ.',
     categoryId: 'ilm',
     level: 5,
     type: ProverbType.traditional,
@@ -504,7 +523,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'طلا در آتش، آدم در تلاش شناخته میشود.',
     simpleExplanationTj: 'Тилло дар оташ санҷида мешавад, одам дар меҳнат.',
     meaningTj: 'Инсон дар кор ва меҳнат худро нишон медиҳад.',
-    exampleSentenceTj: 'Тилло дар оташ маълум мешавад — одамро дар меҳнат шинос.',
+    exampleSentenceTj:
+        'Тилло дар оташ маълум мешавад — одамро дар меҳнат шинос.',
     categoryId: 'mehnat',
     level: 4,
     type: ProverbType.traditional,
@@ -569,7 +589,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'زبان سرخ سر سبز را میخورد.',
     simpleExplanationTj: 'Забони бад — ҳар чизро нест мекунад.',
     meaningTj: 'Сухани бад метавонад ҳар чизро вайрон кунад.',
-    exampleSentenceTj: 'Забони сурх сари сабзро мехӯрад — бо забонатон дуруст сӯхтагор кун.',
+    exampleSentenceTj:
+        'Забони сурх сари сабзро мехӯрад — бо забонатон дуруст сӯхтагор кун.',
     categoryId: 'odob',
     level: 4,
     type: ProverbType.traditional,
@@ -595,12 +616,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'دهان بسته صد طلاست.',
     simpleExplanationTj: 'Касе, ки хомӯш мемонад, ганҷ дорад.',
     meaningTj: 'Хомӯшӣ ва сабр — тилло аст.',
-    exampleSentenceTj: 'Даҳони пӯшида сад тилло — баъзе вақтҳо хомӯшӣ беҳтар аст.',
+    exampleSentenceTj:
+        'Даҳони пӯшида сад тилло — баъзе вақтҳо хомӯшӣ беҳтар аст.',
     categoryId: 'xomushhi',
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '47',
@@ -608,7 +631,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'با حلوا گفتن دهان شیرین نمیشود.',
     simpleExplanationTj: 'Барои даҳон ширин кардан — бояд ҳалво хӯрд.',
     meaningTj: 'Барои чизе ба даст овардан, бояд кор кард.',
-    exampleSentenceTj: 'Бо ҳалво гуфтан даҳон ширин намешавад — барои ҳар чиз бояд кор кун.',
+    exampleSentenceTj:
+        'Бо ҳалво гуфтан даҳон ширин намешавад — барои ҳар чиз бояд кор кун.',
     categoryId: 'mehnat',
     level: 4,
     type: ProverbType.traditional,
@@ -634,7 +658,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'سخن خوب مار را از لانهاش بیرون میآورد.',
     simpleExplanationTj: 'Як сухани нек метавонад ҳатто морро ҳам берун кунад.',
     meaningTj: 'Сухани нек қувваи бузург дорад.',
-    exampleSentenceTj: 'Сухани хуб морро аз хонааш мебарорад — бо ҳар кас нек сӯхтагор кун.',
+    exampleSentenceTj:
+        'Сухани хуб морро аз хонааш мебарорад — бо ҳар кас нек сӯхтагор кун.',
     categoryId: 'dusti',
     level: 4,
     type: ProverbType.traditional,
@@ -645,14 +670,16 @@ const List<Proverb> seedProverbs = [
     id: '50',
     tajikCyrillic: 'Аз пашша фил масоз.',
     persianText: 'از پشه فیل میشود خمیر کرد.',
-    simpleExplanationTj: 'Як чизи хурд метавонад чизи бузург ба ягон кор оварад.',
+    simpleExplanationTj:
+        'Як чизи хурд метавонад чизи бузург ба ягон кор оварад.',
     meaningTj: 'Аз чизи хурд ҳам метавонад кор барояд.',
     exampleSentenceTj: 'Аз пашша фил масоз — ҳар чиз метавонад суд оварад.',
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '51',
@@ -660,12 +687,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'سر را بده و شیر را نه.',
     simpleExplanationTj: 'Сар — барои кор, сирро на.',
     meaningTj: 'Барои кор сарф мекунад, вале барои корҳои беҳуда не.',
-    exampleSentenceTj: 'Сарро деҳу сирро не — барои кор сарф кун, барои беҳуда не.',
+    exampleSentenceTj:
+        'Сарро деҳу сирро не — барои кор сарф кун, барои беҳуда не.',
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '52',
@@ -678,7 +707,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '53',
@@ -686,7 +716,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'در را گفتم، دیوار شنید.',
     simpleExplanationTj: 'Сухан барои ҳар кӣ гӯянд, барои дигарон ҳам мерасад.',
     meaningTj: 'Сухане, ки ба як кас гӯӣ, ба ҳама мерасад.',
-    exampleSentenceTj: 'Дарро гуфтам, девор шунав — бовар кун, ҳар чи гӯӣ, ба ҳама мерасад.',
+    exampleSentenceTj:
+        'Дарро гуфтам, девор шунав — бовар кун, ҳар чи гӯӣ, ба ҳама мерасад.',
     categoryId: 'odob',
     level: 5,
     type: ProverbType.traditional,
@@ -743,7 +774,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '58',
@@ -751,12 +783,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'حقیقت را پنهان کردن نمیشود.',
     simpleExplanationTj: 'Ҳақиқат — чизе, ки пинҳон намешавад.',
     meaningTj: 'Ростӣ — ҳамеша берун меояд.',
-    exampleSentenceTj: 'Ҳақиқатро пинҳон карда намешавад — охир ҳама ошкор мешавад.',
+    exampleSentenceTj:
+        'Ҳақиқатро пинҳон карда намешавад — охир ҳама ошкор мешавад.',
     categoryId: 'rostqavli',
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '59',
@@ -782,7 +816,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '61',
@@ -821,7 +856,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '64',
@@ -829,12 +865,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'هنر داشته باش، خار نمیشوی.',
     simpleExplanationTj: 'Ҳунарманд — ҳар ҷо обрӯ дорад.',
     meaningTj: 'Ҳунар — роҳ ба обрӯ ва некунӣ.',
-    exampleSentenceTj: 'Ҳунар дошта бошӣ, хор намешавӣ — барои обрӯ ҳунар омӯз.',
+    exampleSentenceTj:
+        'Ҳунар дошта бошӣ, хор намешавӣ — барои обрӯ ҳунар омӯз.',
     categoryId: 'muvaffaqiyat',
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '65',
@@ -881,12 +919,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'بدون تلاش گنج به دست نمیآید.',
     simpleExplanationTj: 'Ганҷ — бе меҳнат муяссар не.',
     meaningTj: 'Барои ба даст овардан бояд кор кард.',
-    exampleSentenceTj: 'Бе меҳнат ганҷ муяссар намешавад — барои ҳар чиз бояд кор кун.',
+    exampleSentenceTj:
+        'Бе меҳнат ганҷ муяссар намешавад — барои ҳар чиз бояд кор кун.',
     categoryId: 'mehnat',
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '69',
@@ -912,7 +952,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '71',
@@ -920,7 +961,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'هر چیزی که بکاری، همان را درو میکنی.',
     simpleExplanationTj: 'Кишт — барои давон.',
     meaningTj: 'Барои ҳар коре, ки кунӣ, оқибати худро мебинед.',
-    exampleSentenceTj: 'Ҳар чизе, ки коштӣ, ҳамонро медаравӣ — нек кун, нек бинед.',
+    exampleSentenceTj:
+        'Ҳар чизе, ки коштӣ, ҳамонро медаравӣ — нек кун, нек бинед.',
     categoryId: 'hikmat',
     level: 4,
     type: ProverbType.traditional,
@@ -938,7 +980,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '73',
@@ -959,7 +1002,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'زمین را آب خراب میکند، آدمی را حرف.',
     simpleExplanationTj: 'Одам — ба гап вайрон мешавад.',
     meaningTj: 'Гапи бад — аз об ҳам бадтар.',
-    exampleSentenceTj: 'Заминро об вайрон мекунад, одамро гап — бо забонатон дуруст сӯхтагор кун.',
+    exampleSentenceTj:
+        'Заминро об вайрон мекунад, одамро гап — бо забонатон дуруст сӯхтагор кун.',
     categoryId: 'odob',
     level: 5,
     type: ProverbType.traditional,
@@ -977,7 +1021,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '76',
@@ -1016,7 +1061,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '79',
@@ -1055,7 +1101,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '82',
@@ -1107,7 +1154,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '86',
@@ -1115,7 +1163,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'عقل مادر به بچه، عقل بچه به کوچه.',
     simpleExplanationTj: 'Модар — ба бача, бача — ба кӯча.',
     meaningTj: 'Модар ба фарзанд ақл медиҳад, фарзанд ба ҷомеа.',
-    exampleSentenceTj: 'Ҳуши оча ба бача, ҳуши бача ба кӯча — модар ақл медиҳад.',
+    exampleSentenceTj:
+        'Ҳуши оча ба бача, ҳуши бача ба кӯча — модар ақл медиҳад.',
     categoryId: 'padaru_modar',
     level: 5,
     type: ProverbType.traditional,
@@ -1128,7 +1177,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'دخترم، به تو میگویم؛ عروسم، تو بشنو.',
     simpleExplanationTj: 'Ба духтар мегӯяд, вале ба келин шунавон мекунад.',
     meaningTj: 'Панд ба ҳама — ба духтару келин.',
-    exampleSentenceTj: 'Духтарам, ба ту мегӯям; келинам, ту шунав — ин панд ба ҳама аст.',
+    exampleSentenceTj:
+        'Духтарам, ба ту мегӯям; келинам, ту шунав — ин панд ба ҳама аст.',
     categoryId: 'oila',
     level: 5,
     type: ProverbType.traditional,
@@ -1141,12 +1191,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'به جنگ زن و شوهر، آستانه پل شده.',
     simpleExplanationTj: 'Ҷанги зану шавҳар — барои ҳама ошкор.',
     meaningTj: 'Ҷанги дохилӣ — барои берун ошкор.',
-    exampleSentenceTj: 'Ба ҷанги зану шавҳар остона хандидааст — дар ҷанг набошед.',
+    exampleSentenceTj:
+        'Ба ҷанги зану шавҳар остона хандидааст — дар ҷанг набошед.',
     categoryId: 'oila',
     level: 6,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '89',
@@ -1159,7 +1211,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '90',
@@ -1167,7 +1220,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'فرزند عزیز، ادبش عزیزتر.',
     simpleExplanationTj: 'Фарзанд — азиз, вале одоб — аз ҳама азизтар.',
     meaningTj: 'Ба фарзанд — адаб омӯз, на танҳо муҳаббат.',
-    exampleSentenceTj: 'Фарзанд азиз, одобаш азизтар — барои фарзанд адаб омӯз.',
+    exampleSentenceTj:
+        'Фарзанд азиз, одобаш азизтар — барои фарзанд адаб омӯз.',
     categoryId: 'padaru_modar',
     level: 3,
     type: ProverbType.traditional,
@@ -1180,7 +1234,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'وطن از آستانه شروع میشود.',
     simpleExplanationTj: 'Ватан — аз хона ва остона.',
     meaningTj: 'Ватан — аввал хона, баъд кишвар.',
-    exampleSentenceTj: 'Ватан аз остона сар мешавад — аввал хонаатро нигаҳ дор.',
+    exampleSentenceTj:
+        'Ватан аз остона сар мешавад — аввал хонаатро нигаҳ дор.',
     categoryId: 'zindagi',
     level: 4,
     type: ProverbType.traditional,
@@ -1198,7 +1253,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '93',
@@ -1219,12 +1275,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'بدون وطن، آدم بلبل بیچمن است.',
     simpleExplanationTj: 'Одам бе Ватан — монанди булбули бе чаман.',
     meaningTj: 'Ватан — чонии инсон.',
-    exampleSentenceTj: 'Бе Ватан одам булбули бе чаман аст — Ватанро ҳимоя кун.',
+    exampleSentenceTj:
+        'Бе Ватан одам булбули бе чаман аст — Ватанро ҳимоя кун.',
     categoryId: 'zindagi',
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '95',
@@ -1245,7 +1303,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'دوست را در روز سخت بشناس.',
     simpleExplanationTj: 'Дӯст — дар рӯзи сахт нишон медиҳад.',
     meaningTj: 'Дӯсти воқеӣ — дар вақти душвор маълум мешавад.',
-    exampleSentenceTj: 'Дӯстро дар рӯзи сахт шиносанд — дар вақти душвор бишин.',
+    exampleSentenceTj:
+        'Дӯстро дар рӯзи сахт шиносанд — дар вақти душвор бишин.',
     categoryId: 'dusti',
     level: 3,
     type: ProverbType.traditional,
@@ -1258,7 +1317,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'دوست نادان از دشمن دانا بدتر است.',
     simpleExplanationTj: 'Дӯсти нодон — аз душмани доно бадтар.',
     meaningTj: 'Дӯстро дуруст интихоб кун.',
-    exampleSentenceTj: 'Дӯсти нодон аз душмани доно бадтар аст — дуруст интихоб кун.',
+    exampleSentenceTj:
+        'Дӯсти нодон аз душмани доно бадтар аст — дуруст интихоб кун.',
     categoryId: 'dusti',
     level: 5,
     type: ProverbType.traditional,
@@ -1276,7 +1336,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '99',
@@ -1289,7 +1350,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '100',
@@ -1310,12 +1372,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'همنشینت را بگو تا تو را بشناسم.',
     simpleExplanationTj: 'Ҳамнишинат — барои шиносони ту.',
     meaningTj: 'Дӯст — аз ҳамнишинат.',
-    exampleSentenceTj: 'Ҳамнишинатро гӯй, то туро бишиносам — дӯстон нишондиҳандаи инсон.',
+    exampleSentenceTj:
+        'Ҳамнишинатро гӯй, то туро бишиносам — дӯстон нишондиҳандаи инсон.',
     categoryId: 'dusti',
     level: 6,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '102',
@@ -1323,7 +1387,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'با نیکان بنشین، نیک شو.',
     simpleExplanationTj: 'Бо некон шино — ба нек ша.',
     meaningTj: 'Дӯстон — ба ту таъсир мекунанд.',
-    exampleSentenceTj: 'Бо некон нишинӣ, нек шавӣ — дуруст дӯстонро интихоб кун.',
+    exampleSentenceTj:
+        'Бо некон нишинӣ, нек шавӣ — дуруст дӯстонро интихоб кун.',
     categoryId: 'dusti',
     level: 3,
     type: ProverbType.traditional,
@@ -1367,7 +1432,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '106',
@@ -1388,12 +1454,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'آدم نیک از سخنانش معلوم است.',
     simpleExplanationTj: 'Одам — аз гапҳояш маълум.',
     meaningTj: 'Ба гапҳо — одамро бишно.',
-    exampleSentenceTj: 'Одами нек аз суханаш маълум — ба сухани ҳар кас гӯш диҳ.',
+    exampleSentenceTj:
+        'Одами нек аз суханаш маълум — ба сухани ҳар кас гӯш диҳ.',
     categoryId: 'hikmat',
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '108',
@@ -1414,7 +1482,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'هیچکس دمِ خارش را کج نمیگوید.',
     simpleExplanationTj: 'Ҳар кӣ — ба худ камбағал.',
     meaningTj: 'Ҳеҷ кас — айби худро пинҳон мекунад.',
-    exampleSentenceTj: 'Ҳеҷ кас думи харашро каҷ намегӯяд — аз берун нигаҳ кун.',
+    exampleSentenceTj:
+        'Ҳеҷ кас думи харашро каҷ намегӯяд — аз берун нигаҳ кун.',
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
@@ -1427,7 +1496,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'کَل اگر طبیب بودی، سر خود دوا میزد.',
     simpleExplanationTj: 'Кал — барои дигарон табиб, вале барои худ не.',
     meaningTj: 'Ҳар кӣ — барои дигарон панд, барои худ не.',
-    exampleSentenceTj: 'Кал агар табиб будӣ, сари худ даво тамудӣ — барои худ кам мебинад.',
+    exampleSentenceTj:
+        'Кал агар табиб будӣ, сари худ даво тамудӣ — барои худ кам мебинад.',
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
@@ -1438,14 +1508,16 @@ const List<Proverb> seedProverbs = [
     id: '111',
     tajikCyrillic: 'Айби худ кӯр, айби мардум дурбин.',
     persianText: 'عیب خود کور، عیب مردم دوربین.',
-    simpleExplanationTj: 'Айби худро намебинам — айби дигаронро дуруст мебинам.',
+    simpleExplanationTj:
+        'Айби худро намебинам — айби дигаронро дуруст мебинам.',
     meaningTj: 'Ба худ — кам нигаҳ кун, ба дигарон — бисёр.',
     exampleSentenceTj: 'Айби худ кӯр, айби мардум дурбин — ба худ нигаҳ кун.',
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '112',
@@ -1453,7 +1525,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'چاه دیگران را مکن که خودت میفتی.',
     simpleExplanationTj: 'Ба дигарон бадӣ накн — барои худ бад мешавад.',
     meaningTj: 'Барои дигарон чоҳ кашидан — ба худ афтодан.',
-    exampleSentenceTj: 'Чоҳи дигаронро макан, ки худ меафтӣ — барои дигарон бадӣ накн.',
+    exampleSentenceTj:
+        'Чоҳи дигаронро макан, ки худ меафтӣ — барои дигарон бадӣ накн.',
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
@@ -1466,7 +1539,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'درِ کسی را با مشت نزن که درِ تو را با لگد میزنند.',
     simpleExplanationTj: 'Ба дигарон бадӣ накн — барои худ бад мешавад.',
     meaningTj: 'Ҷавоби бадӣ — бад.',
-    exampleSentenceTj: 'Дари касеро ба мушт назан, ки даратро бо лагад мезананд — нек бош.',
+    exampleSentenceTj:
+        'Дари касеро ба мушт назан, ки даратро бо лагад мезананд — нек бош.',
     categoryId: 'odob',
     level: 5,
     type: ProverbType.traditional,
@@ -1479,12 +1553,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'صد در بسته، یک در باز.',
     simpleExplanationTj: 'Сад дараш — баста, як — кушода.',
     meaningTj: 'Барои меҳмон — кушода, барои хуúd — баста.',
-    exampleSentenceTj: 'Сад дари баста, як дари кушода — барои меҳмон омода бош.',
+    exampleSentenceTj:
+        'Сад дари баста, як дари кушода — барои меҳмон омода бош.',
     categoryId: 'odob',
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '115',
@@ -1492,7 +1568,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'یک گل، صد خریدار.',
     simpleExplanationTj: 'Як чизи хуб — барои ҳама ҷалб.',
     meaningTj: 'Чизи хуб — барои ҳама ҷалбкунанда.',
-    exampleSentenceTj: 'Як гулу сад харидор — барои ҳунар ва дониш ҳама талош мекунанд.',
+    exampleSentenceTj:
+        'Як гулу сад харидор — барои ҳунар ва дониш ҳама талош мекунанд.',
     categoryId: 'hikmat',
     level: 4,
     type: ProverbType.traditional,
@@ -1510,7 +1587,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '117',
@@ -1557,12 +1635,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'درخت پُربار سر خم میکند.',
     simpleExplanationTj: 'Дарахти пурбор — сар хам мекунад.',
     meaningTj: 'Калонтарон — пуртаҷриба — сархез нестанд.',
-    exampleSentenceTj: 'Дарахти пурбор сар хам мекунад — калонтаронро эҳтиром кун.',
+    exampleSentenceTj:
+        'Дарахти пурбор сар хам мекунад — калонтаронро эҳтиром кун.',
     categoryId: 'ehtirom',
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '121',
@@ -1570,7 +1650,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'هر کس به اندازه حال خود نام می‌گیرد.',
     simpleExplanationTj: 'Бой — аз зиёдӣ, камбағал — аз камӣ.',
     meaningTj: 'Ҳарду — аз ҳолати худ.',
-    exampleSentenceTj: 'Бой аз фарбеҳӣ меноладу камбағал аз лоғарӣ — ба ҳолат фикр кун.',
+    exampleSentenceTj:
+        'Бой аз фарбеҳӣ меноладу камбағал аз лоғарӣ — ба ҳолат фикр кун.',
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
@@ -1588,7 +1669,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '123',
@@ -1614,7 +1696,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '125',
@@ -1627,7 +1710,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '126',
@@ -1679,7 +1763,8 @@ const List<Proverb> seedProverbs = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '130',
@@ -1692,7 +1777,8 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '131',
@@ -1757,7 +1843,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '136',
@@ -1765,7 +1852,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'کلاغ به کلاغ چشم نمیکاشد.',
     simpleExplanationTj: 'Қарға — ба қарға — монанд.',
     meaningTj: 'Ҳамс — ба ҳамс — бадӣ намекунад.',
-    exampleSentenceTj: 'Қарға ба қарға чашм намеканад — ба монандаш бадӣ намекунад.',
+    exampleSentenceTj:
+        'Қарға ба қарға чашм намеканад — ба монандаш бадӣ намекунад.',
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
@@ -1778,12 +1866,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'گرگزاده آخر گرگ میشود.',
     simpleExplanationTj: 'Гургзода — дар охир гург.',
     meaningTj: 'Табиат — тағир намешавад.',
-    exampleSentenceTj: 'Гургзода оқибат гург шавад — табиатро тағир додан душвор.',
+    exampleSentenceTj:
+        'Гургзода оқибат гург шавад — табиатро тағир додан душвор.',
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '138',
@@ -1791,12 +1881,14 @@ const List<Proverb> seedProverbs = [
     persianText: 'سگِ عَکَس میزند، کاروان میرود.',
     simpleExplanationTj: 'Саг — барои корвон ғамхор не.',
     meaningTj: 'Барои корҳои калон — ба сухани хурд гӯш надоз.',
-    exampleSentenceTj: 'Саг аккос мезанад, корвон мегузарад — ба хурдҳо фикр накун.',
+    exampleSentenceTj:
+        'Саг аккос мезанад, корвон мегузарад — ба хурдҳо фикр накун.',
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '139',
@@ -1822,7 +1914,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '141',
@@ -1830,7 +1923,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'گراز را با اسبِ زین‌دار نمی‌توان مقایسه کرد.',
     simpleExplanationTj: 'Хар — бо аси зин — муқоиса намешавад.',
     meaningTj: 'Ҳар чиз — барои худ арзиш дорад.',
-    exampleSentenceTj: 'Харро бо зин асп намешавад — ҳар кас барои худ кор мекунад.',
+    exampleSentenceTj:
+        'Харро бо зин асп намешавад — ҳар кас барои худ кор мекунад.',
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
@@ -1861,7 +1955,8 @@ const List<Proverb> seedProverbs = [
     level: 6,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '144',
@@ -1908,7 +2003,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'آهن را در گرمایش میکوبند.',
     simpleExplanationTj: 'Оҳан — дар вақти гарм — осон кор мешавад.',
     meaningTj: 'Дар вақти мувофиқ — корро осон кардан мумкин.',
-    exampleSentenceTj: 'Оҳанро дар гармиаш мекӯбанд — дар вақти мувофиқ кор кун.',
+    exampleSentenceTj:
+        'Оҳанро дар гармиаш мекӯбанд — дар вақти мувофиқ кор кун.',
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
@@ -1947,7 +2043,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'با یک دست دو هندوانه بر نمیداری.',
     simpleExplanationTj: 'Як даст — ду тарбуз — намешавад.',
     meaningTj: 'Барои ду кор — ду даст лозим.',
-    exampleSentenceTj: 'Бо як даст ду тарбуз бардошта намешавад — барои ҳар кор омода бош.',
+    exampleSentenceTj:
+        'Бо як даст ду тарбуз бардошта намешавад — барои ҳар кор омода бош.',
     categoryId: 'hikmat',
     level: 3,
     type: ProverbType.traditional,
@@ -1965,7 +2062,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '152',
@@ -1978,7 +2076,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '153',
@@ -1986,7 +2085,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'درخت را در نهالی صاف میکنند.',
     simpleExplanationTj: 'Дарахт — дар нав — рост.',
     meaningTj: 'Фарзанд — дар кӯдакӣ — тарбия.',
-    exampleSentenceTj: 'Дарахтро дар навниҳолӣ рост мекунанд — барои фарзанд тарбия кун.',
+    exampleSentenceTj:
+        'Дарахтро дар навниҳолӣ рост мекунанд — барои фарзанд тарбия кун.',
     categoryId: 'padaru_modar',
     level: 5,
     type: ProverbType.traditional,
@@ -2012,7 +2112,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'بزرگ را احترام کن، کوچک را عزت.',
     simpleExplanationTj: 'Калон — ҳурмат, хурд — иззат.',
     meaningTj: 'Ба калону хурд — эҳтиром.',
-    exampleSentenceTj: 'Калонро ҳурмат кун, хурдро иззат — ба ҳама эҳтиром кун.',
+    exampleSentenceTj:
+        'Калонро ҳурмат кун, хурдро иззат — ба ҳама эҳтиром кун.',
     categoryId: 'ehtirom',
     level: 2,
     type: ProverbType.traditional,
@@ -2030,7 +2131,8 @@ const List<Proverb> seedProverbs = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '157',
@@ -2043,7 +2145,8 @@ const List<Proverb> seedProverbs = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '158',
@@ -2056,7 +2159,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '159',
@@ -2064,7 +2168,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'نادان را پند دادن آب در هاون کوبیدن است.',
     simpleExplanationTj: 'Нодонро панд — кор барои нест.',
     meaningTj: 'Ба нодон — панд нагуф.',
-    exampleSentenceTj: 'Нодонро панд гуфтан — об дар ҳован кӯфтан — ба нодон панд нагуф.',
+    exampleSentenceTj:
+        'Нодонро панд гуфтан — об дар ҳован кӯфтан — ба нодон панд нагуф.',
     categoryId: 'ilm',
     level: 6,
     type: ProverbType.traditional,
@@ -2082,7 +2187,8 @@ const List<Proverb> seedProverbs = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.verified,
-    sourceNote: 'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceNote:
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
   ),
   Proverb(
     id: '161',
@@ -2142,7 +2248,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'اول خودت را ببین، بعد دیگران را.',
     simpleExplanationTj: 'Пеш — худро бино, баъд — дигаронро.',
     meaningTj: 'Пеш аз танқид — худро бино.',
-    exampleSentenceTj: 'Аввал худро бин, баъд дигаронро — пеш аз танқид худро бино.',
+    exampleSentenceTj:
+        'Аввал худро бин, баъд дигаронро — пеш аз танқид худро бино.',
     categoryId: 'hikmat',
     level: 4,
     type: ProverbType.traditional,
@@ -2181,7 +2288,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'چاهِ کسی را مکن که خودت میفتی.',
     simpleExplanationTj: 'Барои дигарон чоҳ кашидан — ба худ афтодан.',
     meaningTj: 'Барои дигарон бадӣ накн.',
-    exampleSentenceTj: 'Чоҳи касро макан, ки худ меафтӣ — барои дигарон бадӣ накн.',
+    exampleSentenceTj:
+        'Чоҳи касро макан, ки худ меафтӣ — барои дигарон бадӣ накн.',
     categoryId: 'hikmat',
     level: 4,
     type: ProverbType.traditional,
@@ -2207,7 +2315,8 @@ const List<Proverb> seedProverbs = [
     persianText: 'دوست در روز سخت معلوم میشود.',
     simpleExplanationTj: 'Дӯст — дар вақти сахт маълум.',
     meaningTj: 'Дӯсти воқеӣ — дар вақти душвор.',
-    exampleSentenceTj: 'Дӯст дар рӯзи сахт маълум мешавад — дар вақти сахт бишин.',
+    exampleSentenceTj:
+        'Дӯст дар рӯзи сахт маълум мешавад — дар вақти сахт бишин.',
     categoryId: 'dusti',
     level: 2,
     type: ProverbType.traditional,

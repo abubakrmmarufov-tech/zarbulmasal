@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Use Zarbulmasal online
+    url: https://abubakrmmarufov-tech.github.io/zarbulmasal/
+    about: Open the current web application.
+  - name: General feedback
+    url: https://t.me/imarufov
+    about: Contact the maintainer on Telegram.
