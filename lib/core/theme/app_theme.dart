@@ -43,7 +43,7 @@ class AppTheme {
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: <TargetPlatform, PageTransitionsBuilder>{
           TargetPlatform.android: QalamPageTransitions(),
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
           TargetPlatform.macOS: QalamPageTransitions(),
           TargetPlatform.windows: QalamPageTransitions(),
           TargetPlatform.linux: QalamPageTransitions(),
