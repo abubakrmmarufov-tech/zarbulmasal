@@ -159,6 +159,25 @@ class AppTranslations {
     'app_name': 'Зарбулмасал',
     'app_tagline': 'Ҳикмати ҳазорсолаи тоҷик',
     'proverb_count_label': '\${0} мақол',
+    // Onboarding
+    'settings_show_guide': 'Роҳнамои хусусиятҳо',
+    'settings_show_guide_hint': 'Роҳнамои кӯтоҳро дубора бинед',
+    'onboarding_home_title': 'Ҳикмати рӯз',
+    'onboarding_home_description': 'Мақоли рӯзро бихонед ва бо машқҳо омӯзед.',
+    'onboarding_search_title': 'Мақолҳо ва ҷустуҷӯ',
+    'onboarding_search_description': 'Ҳар мақолро зуд пайдо кунед.',
+    'onboarding_favorites_title': 'Маҳфузот',
+    'onboarding_favorites_description':
+        'Мақолҳои писандидаро барои баъд маҳфуз кунед.',
+    'onboarding_settings_title': 'Танзимот',
+    'onboarding_settings_description':
+        'Забон, намоиш ва ин роҳнаморо идора кунед.',
+    'onboarding_next': 'Баъдӣ',
+    'onboarding_skip': 'Гузаштан',
+    'onboarding_finish': 'Оғоз!',
+    'route_error_title': 'Саҳифа ёфт нашуд',
+    'route_error_description': 'Ин саҳифа дастрас нест.',
+    'copy_unavailable': 'Нусхабардорӣ дастрас нест',
   };
 
   static const Map<String, String> fa = {
@@ -317,6 +336,26 @@ class AppTranslations {
     'app_name': 'ضرب‌المثل',
     'app_tagline': 'حکمت هزارساله تاجیکی',
     'proverb_count_label': '\${0} ضرب‌المثل',
+    // Onboarding
+    'settings_show_guide': 'راهنمای ویژگی‌ها',
+    'settings_show_guide_hint': 'راهنمای کوتاه را دوباره ببینید',
+    'onboarding_home_title': 'حکمت روز',
+    'onboarding_home_description':
+        'ضرب‌المثل روز را بخوانید و با تمرین‌ها یاد بگیرید.',
+    'onboarding_search_title': 'ضرب‌المثل‌ها و جستجو',
+    'onboarding_search_description': 'هر ضرب‌المثلی را سریع پیدا کنید.',
+    'onboarding_favorites_title': 'ذخیره‌ها',
+    'onboarding_favorites_description':
+        'ضرب‌المثل‌های دلخواه را برای بعد ذخیره کنید.',
+    'onboarding_settings_title': 'تنظیمات',
+    'onboarding_settings_description':
+        'زبان، نمایش و این راهنما را مدیریت کنید.',
+    'onboarding_next': 'بعدی',
+    'onboarding_skip': 'رد شدن',
+    'onboarding_finish': 'شروع!',
+    'route_error_title': 'صفحه پیدا نشد',
+    'route_error_description': 'این صفحه در دسترس نیست.',
+    'copy_unavailable': 'کپی در دسترس نیست',
   };
 
   static String get(

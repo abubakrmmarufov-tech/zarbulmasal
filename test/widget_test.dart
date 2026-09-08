@@ -16,6 +16,7 @@ import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
+import 'package:zarbulmasal/shared/widgets/onboarding_overlay.dart';
 
 class TestApp {
   final ProviderContainer container;
@@ -27,12 +28,14 @@ Future<TestApp> openApp(
   WidgetTester tester, {
   String route = '/',
   double width = 390,
+  double height = 844,
   double scale = 1,
   DisplayLanguage language = DisplayLanguage.tajik,
   bool dark = false,
+  bool onboardingComplete = true,
   List<Proverb>? catalog,
 }) async {
-  tester.view.physicalSize = Size(width, 844);
+  tester.view.physicalSize = Size(width, height);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
@@ -41,6 +44,7 @@ Future<TestApp> openApp(
         ? 'fa'
         : 'tj',
     AppConstants.prefsDarkMode: dark,
+    AppConstants.prefsOnboardingComplete: onboardingComplete,
   });
   final container = ProviderContainer(
     overrides: [
@@ -49,6 +53,7 @@ Future<TestApp> openApp(
   );
   final router = GoRouter(
     initialLocation: route,
+    errorBuilder: buildRouteErrorPage,
     routes: appRouter.configuration.routes,
   );
   addTearDown(container.dispose);
@@ -86,6 +91,107 @@ Future<TestApp> openApp(
 }
 
 void main() {
+  testWidgets('first launch tour fits a small phone and persists completion', (
+    tester,
+  ) async {
+    await openApp(
+      tester,
+      width: 320,
+      height: 568,
+      scale: 1.3,
+      onboardingComplete: false,
+    );
+
+    expect(find.byType(OnboardingOverlay), findsOneWidget);
+    expect(find.text('Ҳикмати рӯз'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+
+    for (final title in ['Мақолҳо ва ҷустуҷӯ', 'Маҳфузот', 'Танзимот']) {
+      await tester.tap(find.text('Баъдӣ'));
+      await tester.pumpAndSettle();
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('onboarding-tooltip')),
+          matching: find.text(title),
+        ),
+        findsOneWidget,
+      );
+      expect(tester.takeException(), isNull);
+    }
+
+    await tester.tap(find.text('Оғоз!'));
+    await tester.pumpAndSettle();
+    expect(find.byType(OnboardingOverlay), findsNothing);
+    expect(
+      (await SharedPreferences.getInstance()).getBool(
+        AppConstants.prefsOnboardingComplete,
+      ),
+      isTrue,
+    );
+  });
+
+  testWidgets('tour can be skipped and launched again from settings', (
+    tester,
+  ) async {
+    final app = await openApp(tester, onboardingComplete: false);
+    await tester.tap(find.text('Гузаштан'));
+    await tester.pumpAndSettle();
+    expect(find.byType(OnboardingOverlay), findsNothing);
+    expect(
+      (await SharedPreferences.getInstance()).getBool(
+        AppConstants.prefsOnboardingComplete,
+      ),
+      isTrue,
+    );
+
+    app.router.go('/settings');
+    await tester.pumpAndSettle();
+    final replay = find.text('Роҳнамои хусусиятҳо');
+    await tester.scrollUntilVisible(
+      replay,
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.tap(replay);
+    await tester.pumpAndSettle();
+    expect(app.router.routeInformationProvider.value.uri.path, '/');
+    expect(find.byType(OnboardingOverlay), findsOneWidget);
+    expect(find.text('Ҳикмати рӯз'), findsOneWidget);
+  });
+
+  testWidgets('system back dismisses and remembers the first-launch tour', (
+    tester,
+  ) async {
+    await openApp(tester, onboardingComplete: false);
+    expect(find.byType(OnboardingOverlay), findsOneWidget);
+
+    await tester.binding.handlePopRoute();
+    await tester.pumpAndSettle();
+
+    expect(find.byType(OnboardingOverlay), findsNothing);
+    expect(
+      (await SharedPreferences.getInstance()).getBool(
+        AppConstants.prefsOnboardingComplete,
+      ),
+      isTrue,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets(
+    'returning users do not see onboarding and unknown routes are native',
+    (tester) async {
+      final app = await openApp(tester);
+      expect(find.byType(OnboardingOverlay), findsNothing);
+
+      app.router.go('/not-a-zarbulmasal-route');
+      await tester.pumpAndSettle();
+      expect(find.text('Саҳифа ёфт нашуд'), findsOneWidget);
+      expect(find.text("Couldn't load object"), findsNothing);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
   testWidgets(
     'reading copies real content and back handles pushed and direct routes',
     (tester) async {

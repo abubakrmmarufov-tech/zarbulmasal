@@ -43,16 +43,24 @@ class QalamReadingPage extends ConsumerWidget {
               tooltip: tr('copy_proverb'),
               icon: const Icon(Icons.copy_outlined, size: 21),
               onPressed: () async {
-                await Clipboard.setData(
-                  ClipboardData(
-                    text:
-                        '${p.tajikCyrillic}\n${p.persianText}\n\n${p.meaningTj}',
-                  ),
-                );
-                if (context.mounted) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(tr('copied'))));
+                try {
+                  await Clipboard.setData(
+                    ClipboardData(
+                      text:
+                          '${p.tajikCyrillic}\n${p.persianText}\n\n${p.meaningTj}',
+                    ),
+                  );
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text(tr('copied'))));
+                  }
+                } catch (_) {
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(tr('copy_unavailable'))),
+                    );
+                  }
                 }
               },
             ),

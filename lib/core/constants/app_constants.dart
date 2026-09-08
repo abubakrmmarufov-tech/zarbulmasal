@@ -5,6 +5,7 @@ class AppConstants {
   static const String prefsDarkMode = 'dark_mode';
   static const String prefsFavorites = 'favorites';
   static const String prefsLanguage = 'display_language';
+  static const String prefsOnboardingComplete = 'onboarding_complete';
 
   static const List<String> levelNames = [
     'Оғоз',

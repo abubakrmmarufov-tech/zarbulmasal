@@ -122,6 +122,13 @@ class SettingsScreen extends ConsumerWidget {
                       contact: true,
                     ),
                   ),
+                  QalamSettingRow(
+                    title: tr('settings_show_guide'),
+                    subtitle: tr('settings_show_guide_hint'),
+                    trailing: const Icon(Icons.play_arrow_outlined, size: 20),
+                    onTap: () =>
+                        ref.read(onboardingCompleteProvider.notifier).reset(),
+                  ),
                   const SizedBox(height: 48),
                   Text(
                     tr('app_name'),
