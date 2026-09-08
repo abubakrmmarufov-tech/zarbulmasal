@@ -30,9 +30,7 @@ class AppScaffold extends ConsumerWidget {
     ];
     final selected = routes.indexOf(path);
     return Scaffold(
-      body: SafeArea(
-        child: child,
-      ),
+      body: SafeArea(child: child),
       bottomNavigationBar: DecoratedBox(
         decoration: BoxDecoration(
           color: colors.surface,
