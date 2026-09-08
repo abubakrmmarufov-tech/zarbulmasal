@@ -41,7 +41,7 @@ class AppTheme {
     );
     return base.copyWith(
       pageTransitionsTheme: const PageTransitionsTheme(
-        builders: {
+        builders: <TargetPlatform, PageTransitionsBuilder>{
           TargetPlatform.android: QalamPageTransitions(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
           TargetPlatform.macOS: QalamPageTransitions(),
