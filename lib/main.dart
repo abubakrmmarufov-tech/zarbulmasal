@@ -4,9 +4,5 @@ import 'app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    const ProviderScope(
-      child: ZarbulmasalApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: ZarbulmasalApp()));
 }

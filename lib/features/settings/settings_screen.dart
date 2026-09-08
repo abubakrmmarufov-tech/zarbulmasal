@@ -1,425 +1,297 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
-import '../../core/theme/app_colors.dart';
-import '../../shared/widgets/cultural_header.dart';
 
+/// Personal reading preferences and the collection's publication information.
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colors = Theme.of(context).colorScheme;
     final themeMode = ref.watch(themeModeProvider);
-    final displayLang = ref.watch(displayLanguageProvider);
-
+    final language = ref.watch(displayLanguageProvider);
+    final isPersian = language == DisplayLanguage.persian;
+    final count = ref.watch(proverbsProvider).length;
+    String tr(String key) => AppTranslations.get(key, language);
     return Scaffold(
-      body: Column(
-        children: [
-          CulturalHeader(
-            title: AppTranslations.get('settings_title', displayLang),
-            subtitle: AppTranslations.get('settings_subtitle', displayLang),
-          ),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                Text(
-                  AppTranslations.get('settings_display', displayLang),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    color: AppColors.accentGold,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: colorScheme.outline.withValues(alpha: 0.15),
-                    ),
-                    color: colorScheme.surface,
-                  ),
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Icon(
-                            themeMode == ThemeMode.dark
-                                ? Icons.dark_mode
-                                : Icons.light_mode,
-                            color: colorScheme.primary,
-                            size: 22,
-                          ),
-                        ),
-                        title: Text(AppTranslations.get('settings_dark_mode', displayLang)),
-                        subtitle: Text(
-                          themeMode == ThemeMode.dark
-                              ? AppTranslations.get('settings_active', displayLang)
-                              : AppTranslations.get('settings_inactive', displayLang),
-                        ),
-                        trailing: Switch(
-                          value: themeMode == ThemeMode.dark,
-                          onChanged: (_) {
-                            ref.read(themeModeProvider.notifier).toggleTheme();
-                          },
-                          activeTrackColor: AppColors.accentGold.withValues(alpha: 0.5),
-                          activeThumbColor: AppColors.accentGold,
-                        ),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                        ),
-                      ),
-                      Divider(height: 1, indent: 72, endIndent: 16, color: colorScheme.outline.withValues(alpha: 0.1)),
-                      ListTile(
-                        leading: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Icon(
-                            Icons.language,
-                            color: colorScheme.primary,
-                            size: 22,
-                          ),
-                        ),
-                        title: Text(AppTranslations.get('settings_language', displayLang)),
-                        subtitle: Text(
-                          displayLang == DisplayLanguage.persian ? 'Форсӣ' : 'Тоҷикӣ',
-                        ),
-                        trailing: SegmentedButton<DisplayLanguage>(
-                          segments: [
-                            ButtonSegment(
-                              value: DisplayLanguage.tajik,
-                              label: Text(
-                                displayLang == DisplayLanguage.tajik ? 'Тоҷ' : 'Тоҷ',
-                                style: const TextStyle(fontSize: 12),
-                              ),
-                            ),
-                            ButtonSegment(
-                              value: DisplayLanguage.persian,
-                              label: Text(
-                                displayLang == DisplayLanguage.persian ? 'Форс' : 'Форс',
-                                style: const TextStyle(fontSize: 12),
-                              ),
-                            ),
-                          ],
-                          selected: {displayLang},
-                          onSelectionChanged: (selected) {
-                            ref.read(displayLanguageProvider.notifier).setLanguage(selected.first);
-                          },
-                          style: ButtonStyle(
-                            visualDensity: VisualDensity.compact,
-                            textStyle: WidgetStatePropertyAll(
-                              theme.textTheme.labelSmall,
-                            ),
-                          ),
-                        ),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            bottom: Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                Text(
-                  AppTranslations.get('settings_info', displayLang),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    color: AppColors.accentGold,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: colorScheme.outline.withValues(alpha: 0.15),
-                    ),
-                    color: colorScheme.surface,
-                  ),
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Icon(
-                            Icons.info_outline,
-                            color: colorScheme.primary,
-                            size: 22,
-                          ),
-                        ),
-                        title: Text(AppTranslations.get('settings_about', displayLang)),
-                        trailing: Icon(
-                          Icons.chevron_right,
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                        onTap: () => _showAboutCard(context, theme, colorScheme, displayLang),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                        ),
-                      ),
-                      Divider(height: 1, indent: 72, endIndent: 16, color: colorScheme.outline.withValues(alpha: 0.1)),
-                      ListTile(
-                        leading: Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Icon(
-                            Icons.format_quote,
-                            color: colorScheme.primary,
-                            size: 22,
-                          ),
-                        ),
-                        title: Text(AppTranslations.get('home_proverbs', displayLang)),
-                        subtitle: Text(AppTranslations.get(
-                          'settings_proverbs_count',
-                          displayLang,
-                          [ref.watch(proverbsProvider).length.toString()],
-                        )),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            bottom: Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                Text(
-                  AppTranslations.get('settings_contact', displayLang),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    color: AppColors.accentGold,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.all(18),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: colorScheme.outline.withValues(alpha: 0.15),
-                    ),
-                    color: colorScheme.surface,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.email_outlined, color: colorScheme.primary, size: 22),
-                          const SizedBox(width: 8),
-                          Text(
-                            AppTranslations.get('settings_contact_title', displayLang),
-                            style: theme.textTheme.titleMedium,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 14),
-                      Text(
-                        AppTranslations.get('settings_contact_text', displayLang),
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          height: 1.7,
-                          color: colorScheme.onSurface,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                        decoration: BoxDecoration(
-                          color: AppColors.accentGold.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: AppColors.accentGold.withValues(alpha: 0.3),
-                          ),
-                        ),
-                        child: SelectableText(
-                          'Telegram: @imarufov',
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                            fontFamily: 'NotoSans',
-                            color: AppColors.accentGold,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                Text(
-                  AppTranslations.get('settings_source', displayLang),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    color: AppColors.accentGold,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.all(18),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: colorScheme.outline.withValues(alpha: 0.15),
-                    ),
-                    color: colorScheme.surface,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.info_outline, color: colorScheme.primary, size: 22),
-                          const SizedBox(width: 8),
-                          Text(
-                            AppTranslations.get('settings_source_title', displayLang),
-                            style: theme.textTheme.titleMedium,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 14),
-                      Text(
-                        AppTranslations.get('settings_source_text', displayLang),
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          height: 1.7,
-                          color: colorScheme.onSurface,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        AppTranslations.get('settings_source_text2', displayLang),
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          height: 1.7,
-                          color: colorScheme.onSurface,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 32),
-                Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        AppTranslations.get('app_name', displayLang),
-                        style: const TextStyle(
-                          fontFamily: 'NotoSerif',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.accentGold,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        AppTranslations.get('settings_version', displayLang),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        AppTranslations.get('settings_year', displayLang),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        AppTranslations.get('settings_tagline', displayLang),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 24),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showAboutCard(BuildContext context, ThemeData theme, ColorScheme colorScheme, DisplayLanguage displayLang) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        title: Row(
-          children: [
-            Text(AppTranslations.get('app_name', displayLang)),
-            const Spacer(),
-            IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              AppTranslations.get('settings_about_text', displayLang),
-              style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
-                borderRadius: BorderRadius.circular(12),
+      body: SafeArea(
+        bottom: false,
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: QalamPageHeader(
+                eyebrow: isPersian ? '۰۵ / ترجیح‌ها' : '05 / ИНТИХОБ',
+                title: tr('settings_title'),
+                subtitle: tr('settings_subtitle'),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(
+                QalamSpacing.pageH,
+                24,
+                QalamSpacing.pageH,
+                48,
+              ),
+              sliver: SliverList.list(
                 children: [
-                  Text(AppTranslations.get('settings_version', displayLang), style: theme.textTheme.bodySmall),
-                  const SizedBox(height: 4),
-                  Text(AppTranslations.get('settings_year', displayLang), style: theme.textTheme.bodySmall),
+                  _SectionLabel(title: tr('settings_display')),
+                  QalamSettingRow(
+                    title: tr('settings_dark_mode'),
+                    subtitle: tr(
+                      themeMode == ThemeMode.dark
+                          ? 'settings_active'
+                          : 'settings_inactive',
+                    ),
+                    trailing: Switch(
+                      value: themeMode == ThemeMode.dark,
+                      onChanged: (_) =>
+                          ref.read(themeModeProvider.notifier).toggleTheme(),
+                    ),
+                  ),
+                  const SizedBox(height: 34),
+                  _SectionLabel(title: tr('settings_language')),
+                  _LanguageRow(
+                    title: 'Тоҷикӣ',
+                    subtitle: isPersian ? 'خط سیریلیک' : 'Хатти кириллӣ',
+                    selected: language == DisplayLanguage.tajik,
+                    direction: TextDirection.ltr,
+                    onTap: () => ref
+                        .read(displayLanguageProvider.notifier)
+                        .setLanguage(DisplayLanguage.tajik),
+                  ),
+                  _LanguageRow(
+                    title: 'فارسی',
+                    subtitle: isPersian ? 'خط فارسی' : 'Хатти форсӣ',
+                    selected: isPersian,
+                    direction: TextDirection.rtl,
+                    onTap: () => ref
+                        .read(displayLanguageProvider.notifier)
+                        .setLanguage(DisplayLanguage.persian),
+                  ),
+                  const SizedBox(height: 36),
+                  _SectionLabel(title: tr('settings_info')),
+                  QalamSettingRow(
+                    title: tr('settings_about'),
+                    trailing: const Icon(Icons.arrow_forward, size: 20),
+                    onTap: () => _showInformation(
+                      context,
+                      language,
+                      title: tr('app_name'),
+                      paragraphs: [
+                        tr('settings_about_text'),
+                        tr('settings_version'),
+                        tr('settings_year'),
+                      ],
+                    ),
+                  ),
+                  QalamSettingRow(
+                    title: tr('home_proverbs'),
+                    subtitle: AppTranslations.get(
+                      'settings_proverbs_count',
+                      language,
+                      ['$count'],
+                    ),
+                  ),
+                  QalamSettingRow(
+                    title: tr('settings_source'),
+                    trailing: const Icon(Icons.arrow_forward, size: 20),
+                    onTap: () => _showInformation(
+                      context,
+                      language,
+                      title: tr('settings_source_title'),
+                      paragraphs: [
+                        isPersian
+                            ? 'این مجموعه شامل ضرب‌المثل‌های سنتی و متن‌های آموزشی معاصر است. یادداشت منبع و وضعیت بررسی در صفحهٔ هر متن نمایش داده می‌شود.'
+                            : 'Маҷмӯа мақолҳои анъанавӣ ва матнҳои таълимии муосирро дар бар мегирад. Сарчашма ва ҳолати санҷиш дар саҳифаи ҳар матн нишон дода мешаванд.',
+                        tr('settings_source_text2'),
+                      ],
+                    ),
+                  ),
+                  QalamSettingRow(
+                    title: tr('settings_contact'),
+                    subtitle: 'Telegram · @imarufov',
+                    trailing: const Icon(Icons.arrow_forward, size: 20),
+                    onTap: () => _showInformation(
+                      context,
+                      language,
+                      title: tr('settings_contact_title'),
+                      paragraphs: [tr('settings_contact_text')],
+                      contact: true,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  Text(
+                    tr('app_name'),
+                    style: QalamTypography.sectionTitle(
+                      color: colors.primary,
+                      fontSize: 25,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    tr('settings_tagline'),
+                    style: QalamTypography.bodySecondary(
+                      color: colors.onSurfaceVariant,
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  Text(
+                    tr('settings_version'),
+                    style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                  ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _showInformation(
+    BuildContext context,
+    DisplayLanguage language, {
+    required String title,
+    required List<String> paragraphs,
+    bool contact = false,
+  }) {
+    final colors = Theme.of(context).colorScheme;
+    showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        scrollable: true,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+        title: Text(
+          title,
+          style: QalamTypography.sectionTitle(
+            color: colors.onSurface,
+            fontSize: 25,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            for (final paragraph in paragraphs)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18),
+                child: Text(
+                  paragraph,
+                  style: QalamTypography.body(
+                    color: colors.onSurfaceVariant,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            if (contact)
+              SelectableText(
+                'Telegram: @imarufov',
+                textDirection: TextDirection.ltr,
+                style: QalamTypography.body(
+                  color: colors.primary,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+          ],
+        ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(AppTranslations.get('settings_close', displayLang)),
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(AppTranslations.get('settings_close', language)),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _SectionLabel extends StatelessWidget {
+  final String title;
+  const _SectionLabel({required this.title});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(bottom: 8),
+    child: Text(
+      title.toUpperCase(),
+      style: QalamTypography.eyebrow(
+        color: Theme.of(context).colorScheme.primary,
+        fontSize: 11,
+      ),
+    ),
+  );
+}
+
+class _LanguageRow extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final bool selected;
+  final TextDirection direction;
+  final VoidCallback onTap;
+  const _LanguageRow({
+    required this.title,
+    required this.subtitle,
+    required this.selected,
+    required this.direction,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Semantics(
+      selected: selected,
+      inMutuallyExclusiveGroup: true,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 96),
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(color: colors.outlineVariant)),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        textDirection: direction,
+                        style: QalamTypography.sectionTitle(
+                          color: selected ? colors.primary : colors.onSurface,
+                          fontSize: 27,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        subtitle,
+                        style: QalamTypography.meta(
+                          color: colors.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Icon(
+                  selected
+                      ? Icons.radio_button_checked
+                      : Icons.radio_button_unchecked,
+                  size: 24,
+                  color: selected ? colors.primary : colors.onSurfaceVariant,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

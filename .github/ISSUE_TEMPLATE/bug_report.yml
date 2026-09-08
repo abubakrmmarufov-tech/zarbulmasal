@@ -1,0 +1,59 @@
+name: Bug report
+description: Report behavior that is broken or different from what you expected.
+title: "[Bug]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for helping improve Zarbulmasal.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Tap ...
+        3. See ...
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Android
+        - Web
+        - Both
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version or commit
+      placeholder: 1.0.0 or commit SHA
+  - type: textarea
+    id: environment
+    attributes:
+      label: Device and environment
+      description: Include device, OS or browser, screen size, and selected writing system.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or logs
+      description: Remove private information before attaching files.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched for an existing issue that reports the same problem.
+          required: true
+        - label: This report does not contain credentials or private user data.
+          required: true
