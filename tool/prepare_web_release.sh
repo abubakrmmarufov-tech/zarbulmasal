@@ -50,13 +50,23 @@ done
 build_id="$(hash_file "$release_manifest" | cut -c1-20)"
 
 export ZARBULMASAL_BUILD_ID="$build_id"
-for target in "$bootstrap" "$worker"; do
-  perl -0pi -e 's/__ZARBULMASAL_BUILD_ID__/$ENV{ZARBULMASAL_BUILD_ID}/g' "$target"
-done
+perl -0pi -e \
+  's{(?<=build=)(?:__ZARBULMASAL_BUILD_ID__|[0-9a-f]{20})(?=&variant=)}{$ENV{ZARBULMASAL_BUILD_ID}}g' \
+  "$bootstrap"
+perl -0pi -e \
+  's{(WORKER_URL\.searchParams\.get\('\''build'\''\) \|\|\s*'\'')(?:__ZARBULMASAL_BUILD_ID__|[0-9a-f]{20})('\'')}{${1}$ENV{ZARBULMASAL_BUILD_ID}${2}}g' \
+  "$worker"
 
 if grep -R -F "$placeholder" "$bootstrap" "$worker" >/dev/null; then
   echo 'Offline cache build identifier replacement failed.' >&2
   exit 1
 fi
+
+for target in "$bootstrap" "$worker"; do
+  if ! grep -F "$build_id" "$target" >/dev/null; then
+    echo "Offline cache build identifier missing from $target." >&2
+    exit 1
+  fi
+done
 
 echo "Prepared web release cache $build_id"
