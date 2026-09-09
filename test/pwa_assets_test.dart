@@ -59,12 +59,14 @@ void main() {
       );
       addTearDown(() => directory.deleteSync(recursive: true));
       File('${directory.path}/main.dart.js').writeAsStringSync('same app');
-      File(
-        '${directory.path}/flutter_bootstrap.js',
-      ).writeAsStringSync('const id = "__ZARBULMASAL_BUILD_ID__";');
-      File(
-        '${directory.path}/qalam_service_worker.js',
-      ).writeAsStringSync('const id = "__ZARBULMASAL_BUILD_ID__";');
+      File('${directory.path}/flutter_bootstrap.js').writeAsStringSync(
+        'const worker = "qalam_service_worker.js?build='
+        '__ZARBULMASAL_BUILD_ID__&variant=full";',
+      );
+      File('${directory.path}/qalam_service_worker.js').writeAsStringSync(
+        "const BUILD_ID = WORKER_URL.searchParams.get('build') || "
+        "'__ZARBULMASAL_BUILD_ID__';",
+      );
       File('${directory.path}/manifest.json').writeAsStringSync(asset);
 
       final result = Process.runSync('bash', [
@@ -81,5 +83,46 @@ void main() {
       prepareWithAsset('version one'),
       isNot(prepareWithAsset('version two')),
     );
+  });
+
+  test('rerunning release preparation rewrites an injected cache ID', () {
+    final directory = Directory.systemTemp.createTempSync(
+      'zarbulmasal-release-rerun-',
+    );
+    addTearDown(() => directory.deleteSync(recursive: true));
+    final bootstrap = File('${directory.path}/flutter_bootstrap.js')
+      ..writeAsStringSync(
+        'const worker = "qalam_service_worker.js?build='
+        '__ZARBULMASAL_BUILD_ID__&variant=full";',
+      );
+    final worker = File('${directory.path}/qalam_service_worker.js')
+      ..writeAsStringSync(
+        "const BUILD_ID = WORKER_URL.searchParams.get('build') || "
+        "'__ZARBULMASAL_BUILD_ID__';",
+      );
+    File('${directory.path}/main.dart.js').writeAsStringSync('same app');
+    final manifest = File('${directory.path}/manifest.json')
+      ..writeAsStringSync('version one');
+
+    String prepare() {
+      final result = Process.runSync('bash', [
+        'tool/prepare_web_release.sh',
+        directory.path,
+      ]);
+      expect(result.exitCode, 0, reason: '${result.stdout}\n${result.stderr}');
+      return RegExp(
+        r'[a-f0-9]{20}',
+      ).firstMatch(result.stdout.toString())!.group(0)!;
+    }
+
+    final firstId = prepare();
+    manifest.writeAsStringSync('version two');
+    final secondId = prepare();
+
+    expect(secondId, isNot(firstId));
+    expect(bootstrap.readAsStringSync(), contains(secondId));
+    expect(worker.readAsStringSync(), contains(secondId));
+    expect(bootstrap.readAsStringSync(), isNot(contains(firstId)));
+    expect(worker.readAsStringSync(), isNot(contains(firstId)));
   });
 }
