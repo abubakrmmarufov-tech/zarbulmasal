@@ -39,6 +39,7 @@ class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final proverbs = ref.watch(filteredProverbsProvider);
+    final availableLevels = ref.watch(availableLevelsProvider);
     final level = ref.watch(selectedLevelProvider);
     final category = ref.watch(selectedCategoryProvider);
     final query = ref.watch(searchQueryProvider);
@@ -122,13 +123,15 @@ class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
                 child: Row(
                   children: [
                     _LevelTab(
+                      key: const ValueKey('level-filter-all'),
                       label: tr('proverbs_all_levels'),
                       selected: level == null,
                       onTap: () =>
                           ref.read(selectedLevelProvider.notifier).state = null,
                     ),
-                    for (var value = 1; value <= 10; value++)
+                    for (final value in availableLevels)
                       _LevelTab(
+                        key: ValueKey('level-filter-$value'),
                         label: '$value'.padLeft(2, '0'),
                         selected: level == value,
                         onTap: () =>
@@ -200,6 +203,7 @@ class _LevelTab extends StatelessWidget {
   final bool selected;
   final VoidCallback onTap;
   const _LevelTab({
+    super.key,
     required this.label,
     required this.selected,
     required this.onTap,

@@ -27,13 +27,50 @@ void main() {
       expect(seedProverbs, isNotEmpty);
       for (final proverb in seedProverbs) {
         expect(categories, contains(proverb.categoryId));
-        expect(proverb.level, inInclusiveRange(1, 10));
+        expect(proverb.level, inInclusiveRange(1, 6));
         expect(proverb.tajikCyrillic, matches(RegExp(r'[А-Яа-яӢӣҚқҒғҲҳҶҷӮӯ]')));
         expect(proverb.persianText, matches(RegExp(r'[\u0600-\u06ff]')));
         expect(proverb.meaningTj, isNotEmpty);
       }
     },
   );
+
+  test('available levels are derived from real catalog content', () {
+    final container = ProviderContainer();
+    addTearDown(container.dispose);
+
+    final availableLevels = container.read(availableLevelsProvider);
+
+    expect(availableLevels, [1, 2, 3, 4, 5, 6]);
+    for (final level in availableLevels) {
+      expect(seedProverbs.any((proverb) => proverb.level == level), isTrue);
+    }
+    expect(availableLevels, isNot(contains(anyOf(7, 8, 9, 10))));
+  });
+
+  test('available levels are sorted, unique, bounded, and immutable', () {
+    final sparseCatalog = [
+      seedProverbs[0].copyWith(id: 'level-6-a', level: 6),
+      seedProverbs[1].copyWith(id: 'level-2', level: 2),
+      seedProverbs[2].copyWith(id: 'level-6-b', level: 6),
+      seedProverbs[3].copyWith(id: 'invalid-low', level: 0),
+      seedProverbs[4].copyWith(id: 'invalid-high', level: 11),
+    ];
+    final sparse = ProviderContainer(
+      overrides: [proverbsProvider.overrideWithValue(sparseCatalog)],
+    );
+    addTearDown(sparse.dispose);
+
+    final available = sparse.read(availableLevelsProvider);
+    expect(available, [2, 6]);
+    expect(() => available.add(4), throwsUnsupportedError);
+
+    final empty = ProviderContainer(
+      overrides: [proverbsProvider.overrideWithValue(const [])],
+    );
+    addTearDown(empty.dispose);
+    expect(empty.read(availableLevelsProvider), isEmpty);
+  });
 
   test('copyWith preserves original content and provenance', () {
     final original = seedProverbs.first;
@@ -181,6 +218,20 @@ void main() {
     );
   });
 
+  test('onboarding completion survives provider recreation', () async {
+    final first = ProviderContainer();
+    first.read(onboardingCompleteProvider);
+    await preferencesLoaded();
+    await first.read(onboardingCompleteProvider.notifier).complete();
+    first.dispose();
+
+    final recreated = ProviderContainer();
+    addTearDown(recreated.dispose);
+    recreated.read(onboardingCompleteProvider);
+    await preferencesLoaded();
+    expect(recreated.read(onboardingCompleteProvider), isTrue);
+  });
+
   test(
     'daily content is real, consistent today and handles an empty catalog',
     () {
@@ -212,12 +263,11 @@ void main() {
         'ضرب‌المثل',
       );
       for (final language in DisplayLanguage.values) {
-        final result = AppTranslations.get('quiz_correct_of', language, [
-          '3',
-          '5',
-        ]);
-        expect(result, contains('3'));
-        expect(result, contains('5'));
+        final result = AppTranslations.get('quiz_correct_of', language, [3, 5]);
+        final expectedThree = language == DisplayLanguage.persian ? '۳' : '3';
+        final expectedFive = language == DisplayLanguage.persian ? '۵' : '5';
+        expect(result, contains(expectedThree));
+        expect(result, contains(expectedFive));
         expect(result, isNot(contains(r'${')));
         for (final key in AppTranslations.tj.keys) {
           expect(
@@ -227,6 +277,10 @@ void main() {
           );
         }
       }
+      expect(
+        AppTranslations.get('levels_subtitle', DisplayLanguage.persian, [6]),
+        '۶ سطح موجود',
+      );
     },
   );
 }

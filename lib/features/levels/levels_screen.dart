@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/widgets/empty_state.dart';
 
 class LevelsScreen extends ConsumerWidget {
   const LevelsScreen({super.key});
@@ -11,6 +12,7 @@ class LevelsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selected = ref.watch(selectedLevelProvider);
+    final availableLevels = ref.watch(availableLevelsProvider);
     final language = ref.watch(displayLanguageProvider);
     final isPersian = language == DisplayLanguage.persian;
     return Scaffold(
@@ -36,7 +38,9 @@ class LevelsScreen extends ConsumerWidget {
               child: QalamPageHeader(
                 eyebrow: isPersian ? '۰۳ / فصل‌ها' : '03 / БОБҲО',
                 title: AppTranslations.get('levels_title', language),
-                subtitle: AppTranslations.get('levels_subtitle', language),
+                subtitle: AppTranslations.get('levels_subtitle', language, [
+                  availableLevels.length,
+                ]),
               ),
             ),
             if (selected != null)
@@ -58,31 +62,42 @@ class LevelsScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-            SliverPadding(
-              padding: const EdgeInsets.fromLTRB(
-                QalamSpacing.pageH,
-                0,
-                QalamSpacing.pageH,
-                48,
+            if (availableLevels.isEmpty)
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: EmptyState(
+                  icon: Icons.menu_book_outlined,
+                  title: AppTranslations.get('levels_none', language),
+                  subtitle: AppTranslations.get('levels_none_hint', language),
+                ),
+              )
+            else
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  0,
+                  QalamSpacing.pageH,
+                  48,
+                ),
+                sliver: SliverList.builder(
+                  itemCount: availableLevels.length,
+                  itemBuilder: (context, index) {
+                    final level = availableLevels[index];
+                    return QalamLevelCard(
+                      level: level,
+                      isSelected: selected == level,
+                      onTap: () {
+                        ref.read(selectedCategoryProvider.notifier).state =
+                            null;
+                        ref.read(searchQueryProvider.notifier).state = '';
+                        ref.read(selectedLevelProvider.notifier).state =
+                            selected == level ? null : level;
+                        context.go('/proverbs');
+                      },
+                    );
+                  },
+                ),
               ),
-              sliver: SliverList.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  final level = index + 1;
-                  return QalamLevelCard(
-                    level: level,
-                    isSelected: selected == level,
-                    onTap: () {
-                      ref.read(selectedCategoryProvider.notifier).state = null;
-                      ref.read(searchQueryProvider.notifier).state = '';
-                      ref.read(selectedLevelProvider.notifier).state =
-                          selected == level ? null : level;
-                      context.go('/proverbs');
-                    },
-                  );
-                },
-              ),
-            ),
           ],
         ),
       ),

@@ -106,6 +106,20 @@ final proverbsProvider = Provider<List<Proverb>>((ref) {
   return seedProverbs;
 });
 
+final availableLevelsProvider = Provider<List<int>>((ref) {
+  final levels =
+      ref
+          .watch(proverbsProvider)
+          .map((proverb) => proverb.level)
+          .where(
+            (level) => level > 0 && level <= AppConstants.levelNames.length,
+          )
+          .toSet()
+          .toList()
+        ..sort();
+  return List<int>.unmodifiable(levels);
+});
+
 final filteredProverbsProvider = Provider<List<Proverb>>((ref) {
   final proverbs = ref.watch(proverbsProvider);
   final category = ref.watch(selectedCategoryProvider);

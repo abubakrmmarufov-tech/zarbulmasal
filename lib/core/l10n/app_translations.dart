@@ -105,9 +105,11 @@ class AppTranslations {
     'empty_no_daily_proverb': 'Ҳоло мақоле барои имрӯз дастрас нест.',
     // Levels
     'levels_title': 'Сатҳҳо',
-    'levels_subtitle': 'Аз оғоз то олим — 10 сатҳ',
+    'levels_subtitle': 'Дастрас: \${0} сатҳ',
     'levels_level': 'Сатҳ \${0}',
     'levels_proverbs': 'мақол',
+    'levels_none': 'Ҳоло сатҳе дастрас нест.',
+    'levels_none_hint': 'Пас аз илова шудани мақолҳо сатҳҳо пайдо мешаванд.',
     // Categories
     'categories_title': 'Гурӯҳҳо',
     'categories_subtitle': 'Гурӯҳҳои мақолҳо',
@@ -137,7 +139,7 @@ class AppTranslations {
     // Quick action descriptions
     'quiz_desc': 'Санҷиши дониш',
     'flashcards_desc': 'Флешкортҳо',
-    'levels_desc': 'Аз оғоз то олим',
+    'levels_desc': 'Сатҳҳои дастрас аз рӯйи мундариҷа',
     'daily_desc': 'Мундариҷа',
     // Level descriptions
     'level_desc_1': 'Мақолҳои оддӣ барои оғоз',
@@ -146,9 +148,9 @@ class AppTranslations {
     'level_desc_4': 'Мақолҳои содда',
     'level_desc_5': 'Мақолҳои миёна',
     'level_desc_6': 'Мақолҳои мураккал',
-    'level_desc_7': 'Мақолҳои хуби қавӣ',
-    'level_desc_8': 'Мақолҳои бисёр мураккал',
-    'level_desc_9': 'Мақолҳои усто',
+    'level_desc_7': 'Мақолҳои пешрафта',
+    'level_desc_8': 'Мақолҳои коршиносӣ',
+    'level_desc_9': 'Мақолҳои устодӣ',
     'level_desc_10': 'Мақолҳои олимӣ',
     // Progression labels
     'progression_beginner': 'Оғоз',
@@ -282,9 +284,12 @@ class AppTranslations {
     'empty_no_daily_proverb': 'ضرب‌المثلی برای امروز موجود نیست.',
     // Levels
     'levels_title': 'سطوح',
-    'levels_subtitle': 'از مبتدی تا دانشمند — ۱۰ سطح',
+    'levels_subtitle': '\${0} سطح موجود',
     'levels_level': 'سطح \${0}',
     'levels_proverbs': 'ضرب‌المثل',
+    'levels_none': 'در حال حاضر سطحی موجود نیست.',
+    'levels_none_hint':
+        'پس از افزوده‌شدن ضرب‌المثل‌ها، سطوح نمایش داده می‌شوند.',
     // Categories
     'categories_title': 'دسته‌ها',
     'categories_subtitle': 'دسته‌بندی ضرب‌المثل‌ها',
@@ -314,7 +319,7 @@ class AppTranslations {
     // Quick action descriptions
     'quiz_desc': 'آزمون دانش',
     'flashcards_desc': 'فلش‌کارت‌ها',
-    'levels_desc': 'از مبتدی تا دانشمند',
+    'levels_desc': 'سطوح موجود بر پایهٔ محتوا',
     'daily_desc': 'محتوا',
     // Level descriptions
     'level_desc_1': 'ضرب‌المثل‌های ساده برای شروع',
@@ -323,8 +328,8 @@ class AppTranslations {
     'level_desc_4': 'ضرب‌المثل‌های ساده',
     'level_desc_5': 'ضرب‌المثل‌های متوسط',
     'level_desc_6': 'ضرب‌المثل‌های پیچیده',
-    'level_desc_7': 'ضرب‌المثل‌های خوب و قوی',
-    'level_desc_8': 'ضرب‌المثل‌های بسیار پیچیده',
+    'level_desc_7': 'ضرب‌المثل‌های پیشرفته',
+    'level_desc_8': 'ضرب‌المثل‌های تخصصی',
     'level_desc_9': 'ضرب‌المثل‌های استادانه',
     'level_desc_10': 'ضرب‌المثل‌های دانشگاهی',
     // Progression labels
@@ -366,9 +371,20 @@ class AppTranslations {
     final map = lang == DisplayLanguage.persian ? fa : tj;
     String result = map[key] ?? tj[key] ?? key;
     for (int i = 0; i < args.length; i++) {
-      result = result.replaceAll('\${$i}', args[i].toString());
+      result = result.replaceAll('\${$i}', _formatArgument(args[i], lang));
     }
     return result;
+  }
+
+  static String _formatArgument(Object argument, DisplayLanguage language) {
+    final value = argument.toString();
+    if (language != DisplayLanguage.persian) return value;
+    const western = '0123456789';
+    const persian = '۰۱۲۳۴۵۶۷۸۹';
+    return value.split('').map((character) {
+      final index = western.indexOf(character);
+      return index < 0 ? character : persian[index];
+    }).join();
   }
 
   static const List<String> monthNamesTj = [

@@ -36,7 +36,7 @@ documentation, and code:
 
 ## What is included
 
-- 170 entries across 20 categories and 10 levels: traditional Tajik proverbs
+- 170 entries across 20 categories and 6 data-derived levels: traditional Tajik proverbs
   and clearly labeled contemporary learning texts
 - Tajik Cyrillic and Persian-script reading modes with correct text direction
 - Search, category filters, level filters, saved proverbs, and daily reading
@@ -85,6 +85,17 @@ For the web app:
 flutter run -d chrome
 ```
 
+### Install on iPhone or iPad
+
+1. Open the [live app](https://abubakrmmarufov-tech.github.io/zarbulmasal/) in Safari.
+2. Tap Safari's **Share** button.
+3. Choose **Add to Home Screen**.
+4. Confirm with **Add**.
+5. Launch Зарбулмасал from the new Home Screen icon.
+
+Open the site online once before relying on the installed app offline so its
+application shell, catalog, fonts, and other required resources can be cached.
+
 ## Quality checks
 
 ```sh
@@ -93,6 +104,7 @@ flutter analyze
 flutter test --coverage
 flutter build apk --release
 flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run
+bash tool/prepare_web_release.sh
 ```
 
 The regression suite covers routes at 360, 390, and 430 logical pixels, both

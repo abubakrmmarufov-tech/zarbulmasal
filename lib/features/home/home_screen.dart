@@ -14,6 +14,7 @@ class HomeScreen extends ConsumerWidget {
     final daily = ref.watch(dailyProverbProvider);
     final proverbs = ref.watch(proverbsProvider);
     final categories = ref.watch(categoriesProvider);
+    final availableLevels = ref.watch(availableLevelsProvider);
     String tr(String key) => AppTranslations.get(key, lang);
     return Scaffold(
       body: SafeArea(
@@ -108,7 +109,9 @@ class HomeScreen extends ConsumerWidget {
                     QalamSectionLink(
                       number: '03',
                       title: tr('levels_title'),
-                      subtitle: tr('levels_subtitle'),
+                      subtitle: AppTranslations.get('levels_subtitle', lang, [
+                        availableLevels.length,
+                      ]),
                       onTap: () => context.push('/levels'),
                     ),
                   ],

@@ -2,6 +2,7 @@
   "name": "Зарбулмасал",
   "short_name": "Зарбулмасал",
   "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "background_color": "#F3F0E7",
   "theme_color": "#202720",
