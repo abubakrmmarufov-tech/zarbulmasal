@@ -114,27 +114,23 @@ states. GitHub Actions runs the same checks and deploys the web build from `main
 
 ## Install on Android
 
-For device testing, download `zarbulmasal-device-test-apk` from a successful
-[Quality & Pages workflow run](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml).
-Note the following delivery details:
+Public direct-download APK assets are available from the [Latest Release](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/latest) without requiring a GitHub account or archive extraction:
 
-1. **Authentication**: GitHub requires signing into a GitHub account to download
-   workflow run artifacts; direct mobile browser downloads without a login will
-   redirect to the GitHub sign-in page.
-2. **ZIP archive extraction**: GitHub bundles workflow artifacts in a `.zip` file.
-   Extract the archive to access `app-release.apk` before opening it with the
-   Android Package Installer.
-3. **Signing identity and updates**: Builds generated on GitHub Actions use an
-   ephemeral debug signing identity. Because each virtual machine creates a new key,
-   updating an existing device test build with an APK from a different CI run may
-   trigger `INSTALL_FAILED_UPDATE_INCOMPATIBLE`. If updating fails, uninstall the
-   previous test version first (note that this resets locally saved preferences).
-4. **Per-architecture builds**: For reduced download sizes on physical hardware,
-   build architecture-specific packages with `flutter build apk --release --split-per-abi`
-   (approximately 20 MB on ARM64 devices versus ~53.8 MB for the universal APK).
+- **Recommended for modern phones (ARM64, ~20 MB)**:  
+  [Download app-arm64-v8a-release.apk](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/download/v1.0.1/app-arm64-v8a-release.apk)
+- **Universal compatibility APK (~53.8 MB)**:  
+  [Download app-release.apk](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/download/v1.0.1/app-release.apk)
 
-A permanent production signing key and Play Store / GitHub Release distribution
-will replace ephemeral debug signing for official releases.
+### Installation instructions:
+1. Tap the download link above in your Android browser (Chrome, Samsung Internet, Firefox, etc.).
+2. When prompted by Android ("File might be harmful"), tap **Download anyway**.
+3. Open the downloaded `.apk` file. If prompted, enable **Install unknown apps** for your browser.
+4. Tap **Install** (or **Update**).
+
+### Delivery and signing notes:
+- **Direct download**: Release assets are standalone `.apk` binaries hosted on GitHub Releases, requiring no GitHub login and no `.zip` archive extraction.
+- **Signing identity**: Pre-release builds use development signing until repository release secrets (`KEYSTORE_BASE64`, etc.) are configured. Upgrading between builds signed with differing keys requires uninstalling the prior build first.
+- **Workflow artifacts (CI)**: CI workflow runs also upload test APKs to the [Quality & Pages action runs](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml), which require a GitHub login and extract from `.zip`.
 
 ## Contributing
 

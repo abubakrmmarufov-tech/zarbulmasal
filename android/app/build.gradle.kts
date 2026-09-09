@@ -23,10 +23,40 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            val keystorePath = project.findProperty("KEYSTORE_PATH") as? String
+                ?: System.getenv("KEYSTORE_PATH")
+            val keystorePassword = project.findProperty("KEYSTORE_PASSWORD") as? String
+                ?: System.getenv("KEYSTORE_PASSWORD")
+            val keyAlias = project.findProperty("KEY_ALIAS") as? String
+                ?: System.getenv("KEY_ALIAS")
+            val keyPassword = project.findProperty("KEY_PASSWORD") as? String
+                ?: System.getenv("KEY_PASSWORD")
+
+            if (!keystorePath.isNullOrEmpty() && file(keystorePath).exists() &&
+                !keystorePassword.isNullOrEmpty() &&
+                !keyAlias.isNullOrEmpty() &&
+                !keyPassword.isNullOrEmpty()
+            ) {
+                storeFile = file(keystorePath)
+                storePassword = keystorePassword
+                this.keyAlias = keyAlias
+                this.keyPassword = keyPassword
+            } else {
+                // Fall back to debug signing when release credentials are not provided
+                val debugConfig = getByName("debug")
+                storeFile = debugConfig.storeFile
+                storePassword = debugConfig.storePassword
+                this.keyAlias = debugConfig.keyAlias
+                this.keyPassword = debugConfig.keyPassword
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // Device-test builds use the debug key until production signing is set up.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
