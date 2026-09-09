@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zarbulmasal/core/constants/app_constants.dart';
 import 'package:zarbulmasal/core/l10n/app_translations.dart';
+import 'package:zarbulmasal/data/models/proverb.dart';
 import 'package:zarbulmasal/data/seed/seed_categories.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
@@ -31,6 +32,10 @@ void main() {
         expect(proverb.tajikCyrillic, matches(RegExp(r'[А-Яа-яӢӣҚқҒғҲҳҶҷӮӯ]')));
         expect(proverb.persianText, matches(RegExp(r'[\u0600-\u06ff]')));
         expect(proverb.meaningTj, isNotEmpty);
+        expect(proverb.simpleExplanationTj, isNotEmpty);
+        expect(proverb.exampleSentenceTj, isNotEmpty);
+        expect(proverb.sourceStatus, SourceStatus.verified);
+        expect(proverb.sourceNote, isNot(equals('Сарчашма номаълум.')));
       }
     },
   );
