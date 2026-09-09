@@ -57,10 +57,10 @@ class AppTranslations {
     'quiz_excellent': 'Аъло!',
     'quiz_good': 'Хуб!',
     'quiz_needs_work': 'Кобили қабул.',
-    'quiz_loading': 'Загрузка...',
+    'quiz_loading': 'Боргирӣ...',
     // Flashcards
     'flashcards_title': 'Флешкортҳо',
-    'flashcards_loading': 'Загрузка...',
+    'flashcards_loading': 'Боргирӣ...',
     'flashcards_card_of': 'Карта \${0} аз \${1}',
     'flashcards_meaning': 'Маъно',
     'flashcards_explanation': 'Шарҳ',
@@ -92,7 +92,7 @@ class AppTranslations {
     'settings_year': '2026 Зарбулмасал',
     'settings_tagline': 'Мақолҳои тоҷикӣ — мероси фарҳангӣ',
     'settings_active': 'Фаъол',
-    'settings_inactive': 'Гайрифаъол',
+    'settings_inactive': 'Ғайрифаъол',
     'settings_about_text':
         'Зарбулмасал — барнома барои омӯзиш, фаҳмиш ва '
         'нигоҳдории мақолҳои тоҷикӣ.',
@@ -155,7 +155,7 @@ class AppTranslations {
     // Progression labels
     'progression_beginner': 'Оғоз',
     'progression_intermediate': 'Миёна',
-    'progression_advanced': 'Продвинута',
+    'progression_advanced': 'Пешрафта',
     'progression_master': 'Олим',
     // App
     'app_name': 'Зарбулмасал',

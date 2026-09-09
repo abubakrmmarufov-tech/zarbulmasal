@@ -283,4 +283,49 @@ void main() {
       );
     },
   );
+
+  test(
+    'translations preserve authentic Tajik terminology and diacritic integrity',
+    () {
+      expect(
+        AppTranslations.get('progression_advanced', DisplayLanguage.tajik),
+        'Пешрафта',
+      );
+      expect(
+        AppTranslations.get('progression_advanced', DisplayLanguage.persian),
+        'پیشرفته',
+      );
+      expect(
+        AppTranslations.get('quiz_loading', DisplayLanguage.tajik),
+        'Боргирӣ...',
+      );
+      expect(
+        AppTranslations.get('flashcards_loading', DisplayLanguage.tajik),
+        'Боргирӣ...',
+      );
+      expect(
+        AppTranslations.get('settings_inactive', DisplayLanguage.tajik),
+        'Ғайрифаъол',
+      );
+
+      // Verify no Russian loanword relics remain in Tajik translations
+      for (final entry in AppTranslations.tj.entries) {
+        expect(
+          entry.value,
+          isNot(contains('Загрузка')),
+          reason: 'Key ${entry.key} contains Russian loanword Загрузка',
+        );
+        expect(
+          entry.value,
+          isNot(contains('Продвинута')),
+          reason: 'Key ${entry.key} contains Russian loanword Продвинута',
+        );
+        expect(
+          entry.value,
+          isNot(contains('Гайрифаъол')),
+          reason: 'Key ${entry.key} contains missing diacritic Гайрифаъол',
+        );
+      }
+    },
+  );
 }

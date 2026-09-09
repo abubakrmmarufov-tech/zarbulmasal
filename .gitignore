@@ -54,5 +54,5 @@ xcuserdata
 
 # Generated local verification artifacts
 coverage/
-output/playwright/
+output/
 .playwright-cli/

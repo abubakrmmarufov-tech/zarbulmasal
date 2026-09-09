@@ -115,13 +115,26 @@ states. GitHub Actions runs the same checks and deploys the web build from `main
 ## Install on Android
 
 For device testing, download `zarbulmasal-device-test-apk` from a successful
-[Quality & Pages workflow run](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml),
-extract the ZIP, and open `app-release.apk` on the phone. Android may ask you to
-allow installation from the browser or file manager used to open it.
+[Quality & Pages workflow run](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml).
+Note the following delivery details:
 
-The current APK uses the repository's debug signing key. It is suitable for
-direct device testing. A production signing key is required before publishing
-through Google Play or presenting the APK as an official release.
+1. **Authentication**: GitHub requires signing into a GitHub account to download
+   workflow run artifacts; direct mobile browser downloads without a login will
+   redirect to the GitHub sign-in page.
+2. **ZIP archive extraction**: GitHub bundles workflow artifacts in a `.zip` file.
+   Extract the archive to access `app-release.apk` before opening it with the
+   Android Package Installer.
+3. **Signing identity and updates**: Builds generated on GitHub Actions use an
+   ephemeral debug signing identity. Because each virtual machine creates a new key,
+   updating an existing device test build with an APK from a different CI run may
+   trigger `INSTALL_FAILED_UPDATE_INCOMPATIBLE`. If updating fails, uninstall the
+   previous test version first (note that this resets locally saved preferences).
+4. **Per-architecture builds**: For reduced download sizes on physical hardware,
+   build architecture-specific packages with `flutter build apk --release --split-per-abi`
+   (approximately 20 MB on ARM64 devices versus ~53.8 MB for the universal APK).
+
+A permanent production signing key and Play Store / GitHub Release distribution
+will replace ephemeral debug signing for official releases.
 
 ## Contributing
 
