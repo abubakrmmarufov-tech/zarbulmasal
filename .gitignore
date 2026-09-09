@@ -11,13 +11,13 @@
 
 # Flutter/Dart
 .dart_tool/
+.kotlin/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
 build/
-docs/
 
 # Android
 android/.gradle/
@@ -25,7 +25,6 @@ android/app/build/
 android/.project
 android/.classpath
 android/captures/
-android/gradle/
 android/gradlew
 android/gradlew.bat
 
@@ -52,3 +51,8 @@ xcuserdata
 .env
 .env.local
 .env.*.local
+
+# Generated local verification artifacts
+coverage/
+output/playwright/
+.playwright-cli/

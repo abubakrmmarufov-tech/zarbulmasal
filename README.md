@@ -1,40 +1,133 @@
-# Зарбулмасал
+<div align="center">
+  <img src="assets/branding/zarbulmasal_icon.png" alt="Zarbulmasal app icon" width="112">
+  <h1>Зарбулмасал</h1>
+  <p><strong>Zarbulmasal · ضرب‌المثل</strong></p>
+  <p>A calm, editorial home for Tajik proverbs, language, memory, and discovery.</p>
+  <p>
+    <a href="https://abubakrmmarufov-tech.github.io/zarbulmasal/">Open the web app</a>
+    ·
+    <a href="CONTRIBUTING.md">Contribute</a>
+    ·
+    <a href="https://github.com/abubakrmmarufov-tech/zarbulmasal/issues">Report an issue</a>
+  </p>
+</div>
 
-**Зарбулмасал** is a Tajik proverb learning app built with Flutter.
+[![Quality](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml/badge.svg)](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml)
+[![Flutter](https://img.shields.io/badge/Flutter-3.47.2-02569B?logo=flutter&logoColor=white)](https://flutter.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-A43D2F.svg)](LICENSE)
 
-The app helps users read, understand, memorize, and practice Tajik proverbs through a clean mobile-friendly interface.
+Zarbulmasal is an open-source Flutter application for reading, understanding,
+remembering, and practising Tajik proverbs. The complete catalog ships with the
+app, so the main reading and learning experience works without an account or a
+network connection.
 
-## Live App
+## Product identity
 
-https://abubakrmmarufov-tech.github.io/zarbulmasal/
+These names are intentional and should stay consistent across the app, stores,
+documentation, and code:
 
-First load may take a few seconds.
+| Context | Canonical name |
+| --- | --- |
+| Tajik Cyrillic product name | **Зарбулмасал** |
+| Latin project name | **Zarbulmasal** |
+| Persian-script interface name | **ضرب‌المثل** |
+| Repository and Dart package | `zarbulmasal` |
+| Android application ID | `com.zarbulmasal.zarbulmasal` |
 
-## Features
+## What is included
 
-* Tajik proverb collection
-* Tajik and Persian language support
-* Categories and levels
-* Quiz mode
-* Flashcards
-* Favorites
-* Daily proverb
-* Tajik-style UI design
-* Works on Android and web
+- 170 entries across 20 categories and 6 data-derived levels: traditional Tajik proverbs
+  and clearly labeled contemporary learning texts
+- Tajik Cyrillic and Persian-script reading modes with correct text direction
+- Search, category filters, level filters, saved proverbs, and daily reading
+- Meaning, explanation, example, source, and verification metadata
+- Quizzes, answer feedback, scoring, and replay
+- Swipeable flashcards with reveal and session progress
+- Light and dark themes, large-text support, and reduced-motion behavior
+- Android and installable web builds with offline reopening after first load
 
-## Contact
+## Design and architecture
 
-If you have suggestions or find mistakes, contact me on Telegram:
+The Qalam design system in `lib/core/design_system/` uses warm paper, deep ink,
+vermilion accents, book-like margins, restrained rules, and a multilingual type
+system built from Noto Sans, Noto Serif, and Noto Naskh Arabic. Font files and
+their licenses are bundled locally.
 
-**@imarufov**
+GoRouter owns the ten application destinations. Riverpod manages filters, daily
+selection, favorites, quizzes, flashcards, language, and theme. SharedPreferences
+persists favorites, writing-system choice, and theme. The proverb catalog remains
+local and available offline; quiz scores and flashcard sessions remain local to
+the current session.
 
-## Tech Stack
+```text
+lib/
+├── core/       design system, theme, localization, constants
+├── data/       proverb models and the bundled catalog
+├── features/   home, discovery, reading, learning, saved items, settings
+├── router/     route definitions and navigation behavior
+└── shared/     providers and cross-feature widgets
+```
 
-* Flutter
-* Dart
-* GitHub Pages
-* Android build support
+## Run locally
 
-## Status
+Install Flutter 3.47.2, then run:
 
-This project is still under development.
+```sh
+git clone https://github.com/abubakrmmarufov-tech/zarbulmasal.git
+cd zarbulmasal
+flutter pub get
+flutter run
+```
+
+For the web app:
+
+```sh
+flutter run -d chrome
+```
+
+### Install on iPhone or iPad
+
+1. Open the [live app](https://abubakrmmarufov-tech.github.io/zarbulmasal/) in Safari.
+2. Tap Safari's **Share** button.
+3. Choose **Add to Home Screen**.
+4. Confirm with **Add**.
+5. Launch Зарбулмасал from the new Home Screen icon.
+
+Open the site online once before relying on the installed app offline so its
+application shell, catalog, fonts, and other required resources can be cached.
+
+## Quality checks
+
+```sh
+dart format --output=none --set-exit-if-changed lib test
+flutter analyze
+flutter test --coverage
+flutter build apk --release
+flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run
+bash tool/prepare_web_release.sh
+```
+
+The regression suite covers routes at 360, 390, and 430 logical pixels, both
+writing systems, large text, dark mode, filtering, reading, clipboard behavior,
+favorites, persisted preferences, quizzes, flashcards, and empty or invalid
+states. GitHub Actions runs the same checks and deploys the web build from `main`.
+
+## Install on Android
+
+For device testing, download `zarbulmasal-device-test-apk` from a successful
+[Quality & Pages workflow run](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml),
+extract the ZIP, and open `app-release.apk` on the phone. Android may ask you to
+allow installation from the browser or file manager used to open it.
+
+The current APK uses the repository's debug signing key. It is suitable for
+direct device testing. A production signing key is required before publishing
+through Google Play or presenting the APK as an official release.
+
+## Contributing
+
+Bug fixes, interface improvements, translations, and well-sourced proverb
+corrections are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a
+pull request. Security reports should follow [SECURITY.md](SECURITY.md).
+
+Zarbulmasal is available under the [MIT License](LICENSE). For general feedback,
+contact [@imarufov](https://t.me/imarufov) on Telegram.

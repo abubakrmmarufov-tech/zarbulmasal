@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest an improvement to the product or contributor experience.
+title: "[Feature]: "
+labels: []
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: User need
+      description: What should a reader or learner be able to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed experience
+      description: Explain the flow or behavior you would add.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Share any simpler approaches you considered.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched for an existing request for this feature.
+          required: true
+        - label: This proposal preserves the app's cultural and learning focus.
+          required: true

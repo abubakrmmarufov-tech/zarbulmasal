@@ -1,138 +1,234 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
-import '../../shared/widgets/proverb_card.dart';
-import '../../shared/widgets/tajik_pattern_divider.dart';
+import '../../shared/widgets/empty_state.dart';
 
-class ProverbsListScreen extends ConsumerWidget {
+class ProverbsListScreen extends ConsumerStatefulWidget {
   const ProverbsListScreen({super.key});
+  @override
+  ConsumerState<ProverbsListScreen> createState() => _ProverbsListScreenState();
+}
+
+class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
+  late final TextEditingController _searchController;
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController(
+      text: ref.read(searchQueryProvider),
+    );
+  }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final proverbs = ref.watch(filteredProverbsProvider);
-    final selectedCategory = ref.watch(selectedCategoryProvider);
-    final selectedLevel = ref.watch(selectedLevelProvider);
-    final displayLang = ref.watch(displayLanguageProvider);
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
+  void _clear() {
+    _searchController.clear();
+    ref.read(searchQueryProvider.notifier).state = '';
+    ref.read(selectedCategoryProvider.notifier).state = null;
+    ref.read(selectedLevelProvider.notifier).state = null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    final proverbs = ref.watch(filteredProverbsProvider);
+    final availableLevels = ref.watch(availableLevelsProvider);
+    final level = ref.watch(selectedLevelProvider);
+    final category = ref.watch(selectedCategoryProvider);
+    final query = ref.watch(searchQueryProvider);
+    final lang = ref.watch(displayLanguageProvider);
+    final categories = ref.watch(categoriesProvider);
+    String tr(String key) => AppTranslations.get(key, lang);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppTranslations.get('proverbs_title', displayLang)),
-        actions: [
-          IconButton(
-            onPressed: () {
-              ref.read(selectedCategoryProvider.notifier).state = null;
-              ref.read(selectedLevelProvider.notifier).state = null;
-              ref.read(searchQueryProvider.notifier).state = '';
-            },
-            icon: const Icon(Icons.filter_list_off),
-            tooltip: AppTranslations.get('btn_clear_filters', displayLang),
-          ),
-        ],
+      body: SafeArea(
+        bottom: false,
+        child: CustomScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          slivers: [
+            SliverToBoxAdapter(
+              child: QalamPageHeader(
+                eyebrow: tr('home_edition'),
+                title: tr('proverbs_title'),
+                subtitle: '${tr('proverbs_found')} / ${proverbs.length}',
+                showRule: false,
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: TextField(
+                  controller: _searchController,
+                  textDirection: lang == DisplayLanguage.persian
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+                  textInputAction: TextInputAction.search,
+                  onChanged: (value) =>
+                      ref.read(searchQueryProvider.notifier).state = value,
+                  decoration: InputDecoration(
+                    hintText: tr('proverbs_search_hint'),
+                    prefixIcon: const Icon(Icons.search),
+                    suffixIcon: query.isEmpty
+                        ? null
+                        : IconButton(
+                            tooltip: tr('btn_clear_filters'),
+                            icon: const Icon(Icons.close),
+                            onPressed: () {
+                              _searchController.clear();
+                              ref.read(searchQueryProvider.notifier).state = '';
+                            },
+                          ),
+                  ),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        tr('levels_title'),
+                        style: QalamTypography.eyebrow(
+                          color: colors.onSurfaceVariant,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () => context.go('/categories'),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(tr('categories_title')),
+                          const SizedBox(width: 8),
+                          const Icon(Icons.tune, size: 18),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Row(
+                  children: [
+                    _LevelTab(
+                      key: const ValueKey('level-filter-all'),
+                      label: tr('proverbs_all_levels'),
+                      selected: level == null,
+                      onTap: () =>
+                          ref.read(selectedLevelProvider.notifier).state = null,
+                    ),
+                    for (final value in availableLevels)
+                      _LevelTab(
+                        key: ValueKey('level-filter-$value'),
+                        label: '$value'.padLeft(2, '0'),
+                        selected: level == value,
+                        onTap: () =>
+                            ref.read(selectedLevelProvider.notifier).state =
+                                level == value ? null : value,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            if (category != null || query.isNotEmpty || level != null)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
+                  child: Wrap(
+                    spacing: 12,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      if (category != null &&
+                          categories.any((c) => c.id == category))
+                        Text(
+                          QalamCategoryTile.nameFor(
+                            categories.firstWhere((c) => c.id == category),
+                            lang,
+                          ),
+                          style: QalamTypography.label(color: colors.primary),
+                        ),
+                      TextButton.icon(
+                        onPressed: _clear,
+                        icon: const Icon(Icons.close, size: 16),
+                        label: Text(tr('btn_clear_filters')),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            if (proverbs.isEmpty)
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: EmptyState(
+                  icon: Icons.search_off,
+                  title: tr('proverbs_no_results'),
+                  subtitle: tr('proverbs_change_filters'),
+                  action: OutlinedButton(
+                    onPressed: _clear,
+                    child: Text(tr('btn_clear_filters')),
+                  ),
+                ),
+              )
+            else
+              SliverList.builder(
+                itemCount: proverbs.length,
+                itemBuilder: (context, index) => QalamProverbCard(
+                  key: ValueKey(proverbs[index].id),
+                  proverb: proverbs[index],
+                  onTap: () => context.push('/proverb/${proverbs[index].id}'),
+                ),
+              ),
+            const SliverToBoxAdapter(child: SizedBox(height: 32)),
+          ],
+        ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-            child: TextField(
-              onChanged: (value) {
-                ref.read(searchQueryProvider.notifier).state = value;
-              },
-              decoration: InputDecoration(
-                hintText: AppTranslations.get('proverbs_search_hint', displayLang),
-                prefixIcon: const Icon(Icons.search),
+    );
+  }
+}
+
+class _LevelTab extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+  const _LevelTab({
+    super.key,
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Semantics(
+      selected: selected,
+      child: Material(
+        color: selected ? colors.onSurface : Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            child: Text(
+              label,
+              style: QalamTypography.label(
+                color: selected ? colors.surface : colors.onSurface,
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: TajikPatternDivider(),
-          ),
-          const SizedBox(height: 8),
-          SizedBox(
-            height: 52,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: FilterChip(
-                    label: Text(
-                      AppTranslations.get('proverbs_all_levels', displayLang),
-                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                    ),
-                    selected: selectedLevel == null && selectedCategory == null,
-                    onSelected: (_) {
-                      ref.read(selectedCategoryProvider.notifier).state = null;
-                      ref.read(selectedLevelProvider.notifier).state = null;
-                    },
-                  ),
-                ),
-                ...List.generate(10, (i) {
-                  final level = i + 1;
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: FilterChip(
-                      label: Text(
-                        AppTranslations.get('badges_level', displayLang, [level.toString()]),
-                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                      ),
-                      selected: selectedLevel == level,
-                      onSelected: (_) {
-                        ref.read(selectedLevelProvider.notifier).state =
-                            selectedLevel == level ? null : level;
-                      },
-                    ),
-                  );
-                }),
-              ],
-            ),
-          ),
-          const SizedBox(height: 4),
-          Expanded(
-            child: proverbs.isEmpty
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 8),
-                      Icon(
-                        Icons.search_off,
-                        size: 64,
-                        color: colorScheme.onSurfaceVariant,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        AppTranslations.get('empty_no_proverbs_found', displayLang),
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        AppTranslations.get('empty_change_filters', displayLang),
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-                        ),
-                      ),
-                    ],
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    itemCount: proverbs.length,
-                    itemBuilder: (context, index) {
-                      final proverb = proverbs[index];
-                      return ProverbCard(
-                        proverb: proverb,
-                        onTap: () => context.push('/proverb/${proverb.id}'),
-                      );
-                    },
-                  ),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -1,321 +1,218 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
-import '../../core/theme/app_colors.dart';
 import '../../shared/providers/app_providers.dart';
-import '../../shared/widgets/proverb_card.dart';
-import '../../shared/widgets/cultural_header.dart';
-import '../../shared/widgets/tajik_pattern_divider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final displayLang = ref.watch(displayLanguageProvider);
-    final dailyProverb = ref.watch(dailyProverbProvider);
+    final colors = Theme.of(context).colorScheme;
+    final lang = ref.watch(displayLanguageProvider);
+    final daily = ref.watch(dailyProverbProvider);
     final proverbs = ref.watch(proverbsProvider);
-    final recentProverbs = proverbs.take(3).toList();
-
-    if (dailyProverb == null) {
-      return Scaffold(
-        body: Column(
-          children: [
-            CulturalHeader(
-              title: AppTranslations.get('app_name', displayLang),
-              subtitle: AppTranslations.get('app_tagline', displayLang),
-            ),
-            Expanded(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Text(
-                    AppTranslations.get('home_no_daily', displayLang),
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
+    final categories = ref.watch(categoriesProvider);
+    final availableLevels = ref.watch(availableLevelsProvider);
+    String tr(String key) => AppTranslations.get(key, lang);
     return Scaffold(
-      body: Column(
-        children: [
-          CulturalHeader(
-            title: AppTranslations.get('app_name', displayLang),
-            subtitle: AppTranslations.get('app_tagline', displayLang),
-          ),
-          Expanded(
-            child: SafeArea(
-              top: false,
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.only(top: 20, bottom: 24),
+      body: SafeArea(
+        bottom: false,
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 18, 24, 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        AppTranslations.get('home_greeting', displayLang),
-                        style: theme.textTheme.headlineMedium?.copyWith(
-                          color: colorScheme.onSurface,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        AppTranslations.get('home_subtitle', displayLang),
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.today,
-                            size: 20,
-                            color: AppColors.accentGold,
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            AppTranslations.get(
-                              'home_daily_proverb',
-                              displayLang,
-                            ),
-                            style: theme.textTheme.titleLarge?.copyWith(
-                              color: colorScheme.onSurface,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            tr('app_name'),
+                            style: QalamTypography.label(
+                              color: colors.onSurface,
+                              fontSize: 17,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Text(
+                          'З / ض',
+                          style: QalamTypography.heroProverb(
+                            color: colors.primary,
+                            fontSize: 22,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 10),
-                    ProverbCard(
-                      proverb: dailyProverb,
-                      onTap: () => context.push('/proverb/${dailyProverb.id}'),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: TajikPatternDivider(),
-                    ),
+                    const SizedBox(height: 18),
+                    const Divider(),
                     const SizedBox(height: 24),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        AppTranslations.get('home_quick_actions', displayLang),
-                        style: theme.textTheme.titleLarge?.copyWith(
-                          color: colorScheme.onSurface,
-                        ),
+                    Text(
+                      tr('home_headline'),
+                      style: QalamTypography.pageTitle(
+                        color: colors.onSurface,
+                        fontSize: 46,
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: _QuickActionCard(
-                              icon: Icons.quiz,
-                              label: AppTranslations.get(
-                                'quiz_title',
-                                displayLang,
-                              ),
-                              description: AppTranslations.get(
-                                'quiz_desc',
-                                displayLang,
-                              ),
-                              tintColor: const Color(0xFFB91C1C),
-                              onTap: () => context.push('/quiz'),
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _QuickActionCard(
-                              icon: Icons.style,
-                              label: AppTranslations.get(
-                                'flashcards_title',
-                                displayLang,
-                              ),
-                              description: AppTranslations.get(
-                                'flashcards_desc',
-                                displayLang,
-                              ),
-                              tintColor: const Color(0xFF166534),
-                              onTap: () => context.push('/flashcards'),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: _QuickActionCard(
-                              icon: Icons.leaderboard,
-                              label: AppTranslations.get(
-                                'levels_title',
-                                displayLang,
-                              ),
-                              description: AppTranslations.get(
-                                'levels_desc',
-                                displayLang,
-                              ),
-                              tintColor: const Color(0xFFD97706),
-                              onTap: () => context.push('/levels'),
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _QuickActionCard(
-                              icon: Icons.auto_stories,
-                              label: AppTranslations.get(
-                                'daily_title',
-                                displayLang,
-                              ),
-                              description: AppTranslations.get(
-                                'daily_desc',
-                                displayLang,
-                              ),
-                              tintColor: const Color(0xFFC2410C),
-                              onTap: () => context.push('/daily'),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Text(
-                            AppTranslations.get('home_proverbs', displayLang),
-                            style: theme.textTheme.titleLarge?.copyWith(
-                              color: colorScheme.onSurface,
-                            ),
-                          ),
-                          const Spacer(),
-                          TextButton(
-                            onPressed: () => context.go('/proverbs'),
-                            child: Text(
-                              AppTranslations.get('btn_see_all', displayLang),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    ...recentProverbs.map(
-                      (proverb) => ProverbCard(
-                        proverb: proverb,
-                        onTap: () => context.push('/proverb/${proverb.id}'),
+                    const SizedBox(height: 16),
+                    Text(
+                      tr('app_tagline'),
+                      style: QalamTypography.bodySecondary(
+                        color: colors.onSurfaceVariant,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _QuickActionCard extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String description;
-  final Color tintColor;
-  final VoidCallback onTap;
-
-  const _QuickActionCard({
-    required this.icon,
-    required this.label,
-    required this.description,
-    required this.tintColor,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: isDark ? [] : [
-          BoxShadow(
-            color: tintColor.withValues(alpha: 0.05),
-            blurRadius: 16,
-            offset: const Offset(0, 4),
-          )
-        ],
-        border: Border.all(
-          color: isDark ? Colors.white.withValues(alpha: 0.05) : tintColor.withValues(alpha: 0.1),
-        ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(24),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: tintColor.withValues(alpha: 0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(icon, size: 28, color: tintColor),
+            if (daily != null)
+              SliverToBoxAdapter(
+                child: QalamDailyHero(
+                  proverb: daily,
+                  onOpen: () => context.push('/daily'),
                 ),
-                const SizedBox(height: 16),
-                Text(
-                  label,
-                  style: GoogleFonts.notoSerif(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: theme.colorScheme.onSurface,
-                    letterSpacing: -0.3,
-                  ),
+              ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 36, 24, 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '01 / ${tr('home_learning')}',
+                      style: QalamTypography.eyebrow(color: colors.primary),
+                    ),
+                    const SizedBox(height: 14),
+                    Text(
+                      tr('home_learn'),
+                      style: QalamTypography.sectionTitle(
+                        color: colors.onSurface,
+                        fontSize: 29,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    QalamSectionLink(
+                      number: '01',
+                      title: tr('quiz_title'),
+                      subtitle: tr('quiz_desc'),
+                      onTap: () => context.push('/quiz'),
+                    ),
+                    QalamSectionLink(
+                      number: '02',
+                      title: tr('flashcards_title'),
+                      subtitle: tr('flashcards_desc'),
+                      onTap: () => context.push('/flashcards'),
+                    ),
+                    QalamSectionLink(
+                      number: '03',
+                      title: tr('levels_title'),
+                      subtitle: AppTranslations.get('levels_subtitle', lang, [
+                        availableLevels.length,
+                      ]),
+                      onTap: () => context.push('/levels'),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  description,
-                  style: GoogleFonts.notoSans(
-                    fontSize: 13,
-                    color: theme.colorScheme.onSurfaceVariant,
-                    height: 1.4,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            SliverToBoxAdapter(
+              child: Container(
+                color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '02 / ${tr('categories_title')}',
+                      style: QalamTypography.eyebrow(color: colors.primary),
+                    ),
+                    const SizedBox(height: 22),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '${categories.length}',
+                          style: QalamTypography.pageTitle(
+                            color: colors.onSurface,
+                            fontSize: 72,
+                          ),
+                        ),
+                        const SizedBox(width: 18),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Text(
+                              tr('categories_subtitle'),
+                              style: QalamTypography.sectionTitle(
+                                color: colors.onSurface,
+                                fontSize: 23,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    for (final category in categories.take(3))
+                      QalamSectionLink(
+                        number: '${categories.indexOf(category) + 1}'.padLeft(
+                          2,
+                          '0',
+                        ),
+                        title: QalamCategoryTile.nameFor(category, lang),
+                        subtitle:
+                            AppTranslations.get('proverb_count_label', lang, [
+                              proverbs
+                                  .where((p) => p.categoryId == category.id)
+                                  .length,
+                            ]),
+                        onTap: () {
+                          ref.read(selectedCategoryProvider.notifier).state =
+                              category.id;
+                          ref.read(selectedLevelProvider.notifier).state = null;
+                          ref.read(searchQueryProvider.notifier).state = '';
+                          context.go('/proverbs');
+                        },
+                      ),
+                    const SizedBox(height: 12),
+                    TextButton(
+                      onPressed: () => context.go('/categories'),
+                      child: Text(tr('btn_see_all')),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: QalamPageHeader(
+                eyebrow: '03 / ${tr('home_explore')}',
+                title: tr('home_proverbs'),
+                subtitle: AppTranslations.get('proverb_count_label', lang, [
+                  proverbs.length,
+                ]),
+                showRule: false,
+              ),
+            ),
+            SliverList.builder(
+              itemCount: proverbs.take(3).length,
+              itemBuilder: (context, index) => QalamProverbCard(
+                proverb: proverbs[index],
+                onTap: () => context.push('/proverb/${proverbs[index].id}'),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 24, 24, 40),
+                child: OutlinedButton(
+                  onPressed: () => context.go('/proverbs'),
+                  child: Text(tr('btn_see_all')),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

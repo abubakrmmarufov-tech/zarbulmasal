@@ -5,6 +5,7 @@ class AppConstants {
   static const String prefsDarkMode = 'dark_mode';
   static const String prefsFavorites = 'favorites';
   static const String prefsLanguage = 'display_language';
+  static const String prefsOnboardingComplete = 'onboarding_complete';
 
   static const List<String> levelNames = [
     'Оғоз',
@@ -13,8 +14,8 @@ class AppConstants {
     'Нормалӣ',
     'Миёна',
     'Аз миёна баланд',
-    'Продвинута',
-    'Эксперт',
+    'Пешрафта',
+    'Коршинос',
     'Усто',
     'Олим',
   ];
@@ -33,12 +34,12 @@ class AppConstants {
   ];
 
   static String getLevelName(int level) {
-    if (level < 1 || level > 10) return 'Номаълум';
+    if (level < 1 || level > levelNames.length) return 'Номаълум';
     return levelNames[level - 1];
   }
 
   static String getLevelNameFa(int level) {
-    if (level < 1 || level > 10) return 'نامشخص';
+    if (level < 1 || level > levelNamesFa.length) return 'نامشخص';
     return levelNamesFa[level - 1];
   }
 }

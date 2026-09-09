@@ -1,344 +1,159 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'app_colors.dart';
+import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
+import '../design_system/design_system.dart';
 
 class AppTheme {
   AppTheme._();
+  static ThemeData get lightTheme => _build(false);
+  static ThemeData get darkTheme => _build(true);
 
-  static TextTheme _buildTextTheme(TextTheme base) {
-    return base.copyWith(
-      displayLarge: GoogleFonts.notoSerif(
-        fontSize: 34,
-        fontWeight: FontWeight.bold,
-      ),
-      displayMedium: GoogleFonts.notoSerif(
-        fontSize: 30,
-        fontWeight: FontWeight.bold,
-      ),
-      displaySmall: GoogleFonts.notoSerif(
-        fontSize: 26,
-        fontWeight: FontWeight.bold,
-      ),
-      headlineLarge: GoogleFonts.notoSerif(
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-      ),
-      headlineMedium: GoogleFonts.notoSerif(
-        fontSize: 22,
-        fontWeight: FontWeight.w600,
-      ),
-      headlineSmall: GoogleFonts.notoSerif(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-      ),
-      titleLarge: GoogleFonts.notoSerif(
-        fontSize: 22,
-        fontWeight: FontWeight.w500,
-      ),
-      titleMedium: GoogleFonts.notoSans(
-        fontSize: 18,
-        fontWeight: FontWeight.w500,
-      ),
-      titleSmall: GoogleFonts.notoSans(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-      ),
-      bodyLarge: GoogleFonts.notoSans(
-        fontSize: 18,
-        fontWeight: FontWeight.normal,
-      ),
-      bodyMedium: GoogleFonts.notoSans(
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-      ),
-      bodySmall: GoogleFonts.notoSans(
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      labelLarge: GoogleFonts.notoSans(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-      ),
-      labelMedium: GoogleFonts.notoSans(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
-      labelSmall: GoogleFonts.notoSans(
-        fontSize: 13,
-        fontWeight: FontWeight.w500,
-      ),
+  static ThemeData _build(bool dark) {
+    final ink = dark ? QalamColors.paperText : QalamColors.ink;
+    final muted = dark ? QalamColors.paperTextSoft : QalamColors.inkSoft;
+    final paper = dark ? QalamColors.inkBg : QalamColors.paper;
+    final rule = dark ? QalamColors.hairlineDark : QalamColors.hairline;
+    final accent = dark ? QalamColors.antiqueGoldSoft : QalamColors.burgundy;
+    final base = ThemeData(
+      brightness: dark ? Brightness.dark : Brightness.light,
+      useMaterial3: true,
+      fontFamily: QalamTypography.sans,
+      fontFamilyFallback: QalamTypography.fallback,
     );
-  }
-
-  static ThemeData get lightTheme {
-    final base = ThemeData.light(useMaterial3: true);
-    return base.copyWith(
-      brightness: Brightness.light,
-      colorScheme: const ColorScheme.light(
-        primary: AppColors.primaryLight,
-        onPrimary: Colors.white,
-        secondary: AppColors.secondary,
-        onSecondary: Colors.white,
-        tertiary: AppColors.accentGold,
-        surface: AppColors.surfaceLight,
-        onSurface: AppColors.textPrimaryLight,
-        error: AppColors.error,
-        onError: Colors.white,
-      ),
-      scaffoldBackgroundColor: AppColors.backgroundLight,
-      cardColor: AppColors.cardLight,
-      dividerColor: AppColors.dividerLight,
-      textTheme: _buildTextTheme(base.textTheme),
-      appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.primaryLight,
-        foregroundColor: Colors.white,
-        elevation: 2,
-        shadowColor: Colors.black26,
-        centerTitle: true,
-        titleTextStyle: GoogleFonts.notoSerif(
-          fontSize: 22,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
-        ),
-      ),
-      cardTheme: CardThemeData(
-        color: AppColors.cardLight,
-        elevation: 2.5,
-        shadowColor: Colors.black.withValues(alpha: 0.08),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: AppColors.accentGold.withValues(alpha: 0.15),
-            width: 1,
-          ),
-        ),
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryLight,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
-          minimumSize: const Size(0, 52),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          textStyle: GoogleFonts.notoSans(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.primaryLight,
-          side: const BorderSide(color: AppColors.primaryLight, width: 1.5),
-          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
-          minimumSize: const Size(0, 52),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: AppColors.primaryLight,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          textStyle: GoogleFonts.notoSans(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: AppColors.cardLight,
-        hintStyle: GoogleFonts.notoSans(
-          fontSize: 16,
-          color: AppColors.textSecondaryLight,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.dividerLight),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.dividerLight),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.primaryLight, width: 2),
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.cardLight,
-        selectedItemColor: AppColors.primaryLight,
-        unselectedItemColor: AppColors.textSecondaryLight,
-        type: BottomNavigationBarType.fixed,
-        elevation: 8,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedLabelStyle: GoogleFonts.notoSans(fontSize: 12, fontWeight: FontWeight.w600),
-        unselectedLabelStyle: GoogleFonts.notoSans(fontSize: 12),
-      ),
-      chipTheme: ChipThemeData(
-        backgroundColor: AppColors.surfaceLight,
-        labelStyle: GoogleFonts.notoSans(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: AppColors.textPrimaryLight,
-        ),
-        secondaryLabelStyle: GoogleFonts.notoSans(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: const BorderSide(color: AppColors.dividerLight),
-        ),
-      ),
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: AppColors.primaryLight,
-        linearTrackColor: AppColors.dividerLight,
-      ),
+    final scheme =
+        ColorScheme.fromSeed(
+          seedColor: QalamColors.burgundy,
+          brightness: base.brightness,
+        ).copyWith(
+          primary: accent,
+          onPrimary: dark ? QalamColors.ink : QalamColors.paperHigh,
+          secondary: dark ? const Color(0xFFACC7A9) : QalamColors.forest,
+          surface: paper,
+          onSurface: ink,
+          onSurfaceVariant: muted,
+          surfaceContainerHighest: dark
+              ? QalamColors.inkCardHigh
+              : QalamColors.paperLow,
+          outline: rule,
+          outlineVariant: rule,
+          error: dark ? const Color(0xFFF3AA9D) : QalamColors.danger,
+        );
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(3),
     );
-  }
-
-  static ThemeData get darkTheme {
-    final base = ThemeData.dark(useMaterial3: true);
     return base.copyWith(
-      brightness: Brightness.dark,
-      colorScheme: const ColorScheme.dark(
-        primary: AppColors.primaryDarkMode,
-        onPrimary: Color(0xFF1A0800),
-        secondary: AppColors.secondaryDarkMode,
-        onSecondary: Color(0xFF1A0800),
-        tertiary: AppColors.tertiaryGoldDark,
-        surface: AppColors.surfaceDarkMode,
-        onSurface: AppColors.textPrimaryDark,
-        error: AppColors.errorDark,
-        onError: Color(0xFF1A0800),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: QalamPageTransitions(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.macOS: QalamPageTransitions(),
+          TargetPlatform.windows: QalamPageTransitions(),
+          TargetPlatform.linux: QalamPageTransitions(),
+        },
       ),
-      scaffoldBackgroundColor: AppColors.backgroundDark,
-      cardColor: AppColors.cardDark,
-      dividerColor: AppColors.dividerDark,
-      textTheme: _buildTextTheme(base.textTheme),
+      colorScheme: scheme,
+      scaffoldBackgroundColor: paper,
+      dividerColor: rule,
+      splashFactory: InkRipple.splashFactory,
+      textTheme: base.textTheme.copyWith(
+        displayLarge: QalamTypography.pageTitle(color: ink, fontSize: 56),
+        displayMedium: QalamTypography.pageTitle(color: ink, fontSize: 48),
+        displaySmall: QalamTypography.pageTitle(color: ink),
+        headlineLarge: QalamTypography.sectionTitle(color: ink, fontSize: 32),
+        headlineMedium: QalamTypography.sectionTitle(color: ink, fontSize: 28),
+        headlineSmall: QalamTypography.sectionTitle(color: ink),
+        titleLarge: QalamTypography.sectionTitle(color: ink, fontSize: 22),
+        titleMedium: QalamTypography.label(color: ink, fontSize: 17),
+        titleSmall: QalamTypography.label(color: ink, fontSize: 15),
+        bodyLarge: QalamTypography.body(color: ink, fontSize: 18),
+        bodyMedium: QalamTypography.body(color: ink),
+        bodySmall: QalamTypography.bodySecondary(color: muted),
+        labelLarge: QalamTypography.label(color: ink, fontSize: 14),
+        labelMedium: QalamTypography.label(color: ink),
+        labelSmall: QalamTypography.meta(color: muted),
+      ),
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.surfaceDarkMode,
-        foregroundColor: AppColors.textPrimaryDark,
+        backgroundColor: paper,
+        foregroundColor: ink,
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
-        centerTitle: true,
-        titleTextStyle: GoogleFonts.notoSerif(
-          fontSize: 22,
-          fontWeight: FontWeight.w600,
-          color: AppColors.textPrimaryDark,
-        ),
-      ),
-      cardTheme: CardThemeData(
-        color: AppColors.cardDark,
-        elevation: 4,
-        shadowColor: Colors.black.withValues(alpha: 0.3),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: AppColors.tertiaryGoldDark.withValues(alpha: 0.2),
-            width: 1,
-          ),
-        ),
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        scrolledUnderElevation: 0,
+        centerTitle: false,
+        titleTextStyle: QalamTypography.label(color: ink, fontSize: 15),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryDarkMode,
-          foregroundColor: Colors.black,
-          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
-          minimumSize: const Size(0, 52),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+          backgroundColor: scheme.primary,
+          foregroundColor: scheme.onPrimary,
+          elevation: 0,
+          minimumSize: const Size(48, 52),
+          shape: shape,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          textStyle: QalamTypography.label(
+            color: scheme.onPrimary,
+            fontSize: 14,
           ),
-          textStyle: GoogleFonts.notoSans(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+        ),
+      ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          minimumSize: const Size(48, 52),
+          shape: shape,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.primaryDarkMode,
-          side: const BorderSide(color: AppColors.primaryDarkMode, width: 1.5),
-          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
-          minimumSize: const Size(0, 52),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          foregroundColor: ink,
+          minimumSize: const Size(48, 52),
+          shape: shape,
+          side: BorderSide(color: ink),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: AppColors.primaryDarkMode,
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          textStyle: GoogleFonts.notoSans(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+          foregroundColor: accent,
+          minimumSize: const Size(48, 48),
+          shape: shape,
+        ),
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          minimumSize: const Size(48, 48),
+          foregroundColor: ink,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: AppColors.surfaceDark,
-        hintStyle: GoogleFonts.notoSans(
-          fontSize: 16,
-          color: AppColors.textSecondaryDark,
+        filled: false,
+        hintStyle: QalamTypography.body(color: muted),
+        border: UnderlineInputBorder(borderSide: BorderSide(color: rule)),
+        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: ink)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: accent, width: 2),
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.dividerDark),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.dividerDark),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.primaryDarkMode, width: 2),
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.surfaceDarkMode,
-        selectedItemColor: AppColors.primaryDarkMode,
-        unselectedItemColor: AppColors.textSecondaryDark,
-        type: BottomNavigationBarType.fixed,
-        elevation: 8,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedLabelStyle: GoogleFonts.notoSans(fontSize: 12, fontWeight: FontWeight.w600),
-        unselectedLabelStyle: GoogleFonts.notoSans(fontSize: 12),
+      dividerTheme: DividerThemeData(color: rule, space: 1, thickness: 1),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: accent,
+        linearTrackColor: rule,
       ),
-      chipTheme: ChipThemeData(
-        backgroundColor: AppColors.surfaceDarkMode,
-        labelStyle: GoogleFonts.notoSans(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: AppColors.textPrimaryDark,
-        ),
-        secondaryLabelStyle: GoogleFonts.notoSans(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: const Color(0xFF1A0800),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: const BorderSide(color: AppColors.dividerDark),
-        ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: paper,
+        surfaceTintColor: Colors.transparent,
+        shape: shape,
+        elevation: 0,
       ),
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: AppColors.tertiaryGoldDark,
-        linearTrackColor: AppColors.dividerDark,
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: ink,
+        contentTextStyle: QalamTypography.body(color: paper, fontSize: 14),
+        behavior: SnackBarBehavior.floating,
+      ),
+      cardTheme: CardThemeData(color: paper, elevation: 0, shape: shape),
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: paper,
+        shape: shape,
+        surfaceTintColor: Colors.transparent,
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart' show debugPrint, kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,24 +7,9 @@ import '../../data/models/category.dart';
 import '../../data/seed/seed_categories.dart';
 import '../../data/seed/seed_proverbs.dart';
 
-void _debugLog({
-  required String runId,
-  required String hypothesisId,
-  required String location,
-  required String message,
-  required Map<String, Object?> data,
-}) {
-  if (!kDebugMode) {
-    return;
-  }
-
-  debugPrint(
-    '[zarbulmasal][$runId][$hypothesisId] $location: $message ${data.isEmpty ? '' : data}',
-  );
-}
-
-final themeModeProvider =
-    StateNotifierProvider<ThemeModeNotifier, ThemeMode>((ref) {
+final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((
+  ref,
+) {
   return ThemeModeNotifier();
 });
 
@@ -35,15 +19,9 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   }
 
   Future<void> _loadTheme() async {
-    // #region agent log
-    _debugLog(runId: 'run2', hypothesisId: 'H4', location: 'app_providers.dart:20', message: 'theme load start', data: {'initialState': state.name});
-    // #endregion
     final prefs = await SharedPreferences.getInstance();
     final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
     state = isDark ? ThemeMode.dark : ThemeMode.light;
-    // #region agent log
-    _debugLog(runId: 'run2', hypothesisId: 'H4', location: 'app_providers.dart:25', message: 'theme load complete', data: {'storedIsDark': isDark, 'finalState': state.name});
-    // #endregion
   }
 
   Future<void> toggleTheme() async {
@@ -54,10 +32,11 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   }
 }
 
-final favoritesProvider =
-    StateNotifierProvider<FavoritesNotifier, Set<String>>((ref) {
-  return FavoritesNotifier();
-});
+final favoritesProvider = StateNotifierProvider<FavoritesNotifier, Set<String>>(
+  (ref) {
+    return FavoritesNotifier();
+  },
+);
 
 class FavoritesNotifier extends StateNotifier<Set<String>> {
   FavoritesNotifier() : super({}) {
@@ -95,8 +74,8 @@ enum DisplayLanguage { tajik, persian }
 
 final displayLanguageProvider =
     StateNotifierProvider<DisplayLanguageNotifier, DisplayLanguage>((ref) {
-  return DisplayLanguageNotifier();
-});
+      return DisplayLanguageNotifier();
+    });
 
 class DisplayLanguageNotifier extends StateNotifier<DisplayLanguage> {
   DisplayLanguageNotifier() : super(DisplayLanguage.tajik) {
@@ -127,6 +106,20 @@ final proverbsProvider = Provider<List<Proverb>>((ref) {
   return seedProverbs;
 });
 
+final availableLevelsProvider = Provider<List<int>>((ref) {
+  final levels =
+      ref
+          .watch(proverbsProvider)
+          .map((proverb) => proverb.level)
+          .where(
+            (level) => level > 0 && level <= AppConstants.levelNames.length,
+          )
+          .toSet()
+          .toList()
+        ..sort();
+  return List<int>.unmodifiable(levels);
+});
+
 final filteredProverbsProvider = Provider<List<Proverb>>((ref) {
   final proverbs = ref.watch(proverbsProvider);
   final category = ref.watch(selectedCategoryProvider);
@@ -136,7 +129,8 @@ final filteredProverbsProvider = Provider<List<Proverb>>((ref) {
   return proverbs.where((p) {
     final matchesCategory = category == null || p.categoryId == category;
     final matchesLevel = level == null || p.level == level;
-    final matchesQuery = query.isEmpty ||
+    final matchesQuery =
+        query.isEmpty ||
         p.tajikCyrillic.toLowerCase().contains(query) ||
         p.persianText.toLowerCase().contains(query) ||
         p.meaningTj.toLowerCase().contains(query);
@@ -153,7 +147,6 @@ final favoritesListProvider = Provider<List<Proverb>>((ref) {
 final dailyProverbProvider = Provider<Proverb?>((ref) {
   final proverbs = ref.watch(proverbsProvider);
   final now = DateTime.now();
-  _debugLog(runId: 'run2', hypothesisId: 'H1', location: 'app_providers.dart:104', message: 'daily proverb evaluate', data: {'count': proverbs.length, 'year': now.year, 'month': now.month, 'day': now.day});
 
   if (proverbs.isEmpty) {
     return null;
@@ -162,3 +155,33 @@ final dailyProverbProvider = Provider<Proverb?>((ref) {
   final index = (now.year * 365 + now.month * 31 + now.day) % proverbs.length;
   return proverbs[index];
 });
+
+// ── Onboarding ──────────────────────────────────────────────────────────
+
+final onboardingCompleteProvider =
+    StateNotifierProvider<OnboardingNotifier, bool?>((ref) {
+      return OnboardingNotifier();
+    });
+
+class OnboardingNotifier extends StateNotifier<bool?> {
+  OnboardingNotifier() : super(null) {
+    _load();
+  }
+
+  Future<void> _load() async {
+    final prefs = await SharedPreferences.getInstance();
+    state = prefs.getBool(AppConstants.prefsOnboardingComplete) ?? false;
+  }
+
+  Future<void> complete() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(AppConstants.prefsOnboardingComplete, true);
+    state = true;
+  }
+
+  Future<void> reset() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(AppConstants.prefsOnboardingComplete, false);
+    state = false;
+  }
+}

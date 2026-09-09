@@ -4,11 +4,30 @@ class AppTranslations {
   AppTranslations._();
 
   static const Map<String, String> tj = {
+    'home_headline': 'Як рӯз.\nЯк ҳикмат.',
+    'home_edition': 'ДАФТАРИ ҲИКМАТ',
+    'home_learn': 'Хонед. Дар ёд доред.',
+    'home_explore': 'Аз ганҷина',
+    'home_learning': 'Омӯзиш',
+    'home_read': 'Бихонед',
+    'bookmark_add': 'Маҳфуз кардан',
+    'bookmark_remove': 'Аз маҳфузот баровардан',
+    'favorites_title': 'Маҳфузот',
+    'favorites_count': 'мақоли маҳфуз',
+    'favorites_empty': 'Саҳифаи аввал ҳанӯз холист.',
+    'favorites_empty_hint':
+        'Мақолеро, ки ба дил наздик аст, маҳфуз кунед. Он ҳамеша дар ин ҷо хоҳад буд.',
+    'proverbs_found': 'Дар ганҷина',
+    'copy_proverb': 'Нусхаи матн',
+    'copied': 'Матн нусха шуд',
+    'reading_script': 'Хатти хониш',
+    'back': 'Бозгашт',
+    'source_unverified': 'Сарчашма тасдиқ нашудааст',
     // Navigation
     'nav_home': 'Асосӣ',
     'nav_proverbs': 'Мақолҳо',
     'nav_categories': 'Гурӯҳҳо',
-    'nav_favorites': 'Дӯст',
+    'nav_favorites': 'Маҳфуз',
     'nav_settings': 'Танзимот',
     // Buttons
     'btn_back_home': 'Бозгашт ба асос',
@@ -32,9 +51,9 @@ class AppTranslations {
     'home_no_daily': 'Ҳоло мақоле дастрас нест.',
     // Quiz
     'quiz_title': 'Квиз',
-    'quiz_question_of': 'Савол ${0} аз ${1}',
+    'quiz_question_of': 'Савол \${0} аз \${1}',
     'quiz_choose_meaning': 'Маънои дурустро интихоб кунед:',
-    'quiz_correct_of': '${0} аз ${1} дуруст',
+    'quiz_correct_of': '\${0} аз \${1} дуруст',
     'quiz_excellent': 'Аъло!',
     'quiz_good': 'Хуб!',
     'quiz_needs_work': 'Кобили қабул.',
@@ -42,11 +61,11 @@ class AppTranslations {
     // Flashcards
     'flashcards_title': 'Флешкортҳо',
     'flashcards_loading': 'Загрузка...',
-    'flashcards_card_of': 'Карта ${0} аз ${1}',
+    'flashcards_card_of': 'Карта \${0} аз \${1}',
     'flashcards_meaning': 'Маъно',
     'flashcards_explanation': 'Шарҳ',
     'flashcards_tap_to_hide': 'Тез клик кунед барои пинҳон кардан',
-    'flashcards_tap_to_show': 'Барои пинҳон кардан клик кунед',
+    'flashcards_tap_to_show': 'Барои дидани маъно ламс кунед',
     // Settings
     'settings_title': 'Танзимот',
     'settings_subtitle': 'Танзимоти барнома',
@@ -55,7 +74,7 @@ class AppTranslations {
     'settings_language': 'Забон',
     'settings_info': 'Маълумот',
     'settings_about': 'Дар бораи барнома',
-    'settings_proverbs_count': '${0} мақол',
+    'settings_proverbs_count': '\${0} мақол',
     'settings_source': 'Дар бораи сарчашма',
     'settings_source_title': 'Сарчашмаи мақолҳо',
     'settings_source_text':
@@ -67,7 +86,8 @@ class AppTranslations {
         'пешниҳодҳоятонро ба мо фиристед.',
     'settings_contact': 'Пешниҳодҳо',
     'settings_contact_title': 'Тамос',
-    'settings_contact_text': 'Агар шумо пешниҳодҳо ё таклифҳо доред, ба мо дар Telegram нависед: @imarufov',
+    'settings_contact_text':
+        'Агар шумо пешниҳодҳо ё таклифҳо доред, ба мо дар Telegram нависед: @imarufov',
     'settings_version': 'Версия 1.0.0',
     'settings_year': '2026 Зарбулмасал',
     'settings_tagline': 'Мақолҳои тоҷикӣ — мероси фарҳангӣ',
@@ -76,7 +96,7 @@ class AppTranslations {
     'settings_about_text':
         'Зарбулмасал — барнома барои омӯзиш, фаҳмиш ва '
         'нигоҳдории мақолҳои тоҷикӣ.',
-    'settings_close': 'Закрыть',
+    'settings_close': 'Пӯшидан',
     // Empty states
     'empty_no_favorites': 'Ҳоло ягон мақол дӯст дошта нашудааст.',
     'empty_no_favorites_hint': 'Мақолҳоро ба даст бигиред.',
@@ -85,9 +105,11 @@ class AppTranslations {
     'empty_no_daily_proverb': 'Ҳоло мақоле барои имрӯз дастрас нест.',
     // Levels
     'levels_title': 'Сатҳҳо',
-    'levels_subtitle': 'Аз оғоз то олим — 10 сатҳ',
-    'levels_level': 'Сатҳ ${0}',
+    'levels_subtitle': 'Дастрас: \${0} сатҳ',
+    'levels_level': 'Сатҳ \${0}',
     'levels_proverbs': 'мақол',
+    'levels_none': 'Ҳоло сатҳе дастрас нест.',
+    'levels_none_hint': 'Пас аз илова шудани мақолҳо сатҳҳо пайдо мешаванд.',
     // Categories
     'categories_title': 'Гурӯҳҳо',
     'categories_subtitle': 'Гурӯҳҳои мақолҳо',
@@ -113,11 +135,11 @@ class AppTranslations {
     'badges_modern': 'Адабӣ',
     'badges_verified': 'Тасдиқшуда',
     'badges_unverified': 'Номаълум',
-    'badges_level': 'Сатҳ ${0}',
+    'badges_level': 'Сатҳ \${0}',
     // Quick action descriptions
     'quiz_desc': 'Санҷиши дониш',
     'flashcards_desc': 'Флешкортҳо',
-    'levels_desc': 'Аз оғоз то олим',
+    'levels_desc': 'Сатҳҳои дастрас аз рӯйи мундариҷа',
     'daily_desc': 'Мундариҷа',
     // Level descriptions
     'level_desc_1': 'Мақолҳои оддӣ барои оғоз',
@@ -126,9 +148,9 @@ class AppTranslations {
     'level_desc_4': 'Мақолҳои содда',
     'level_desc_5': 'Мақолҳои миёна',
     'level_desc_6': 'Мақолҳои мураккал',
-    'level_desc_7': 'Мақолҳои хуби қавӣ',
-    'level_desc_8': 'Мақолҳои бисёр мураккал',
-    'level_desc_9': 'Мақолҳои усто',
+    'level_desc_7': 'Мақолҳои пешрафта',
+    'level_desc_8': 'Мақолҳои коршиносӣ',
+    'level_desc_9': 'Мақолҳои устодӣ',
     'level_desc_10': 'Мақолҳои олимӣ',
     // Progression labels
     'progression_beginner': 'Оғоз',
@@ -138,10 +160,48 @@ class AppTranslations {
     // App
     'app_name': 'Зарбулмасал',
     'app_tagline': 'Ҳикмати ҳазорсолаи тоҷик',
-    'proverb_count_label': '${0} мақол',
+    'proverb_count_label': '\${0} мақол',
+    // Onboarding
+    'settings_show_guide': 'Роҳнамои хусусиятҳо',
+    'settings_show_guide_hint': 'Роҳнамои кӯтоҳро дубора бинед',
+    'onboarding_home_title': 'Ҳикмати рӯз',
+    'onboarding_home_description': 'Мақоли рӯзро бихонед ва бо машқҳо омӯзед.',
+    'onboarding_search_title': 'Мақолҳо ва ҷустуҷӯ',
+    'onboarding_search_description': 'Ҳар мақолро зуд пайдо кунед.',
+    'onboarding_favorites_title': 'Маҳфузот',
+    'onboarding_favorites_description':
+        'Мақолҳои писандидаро барои баъд маҳфуз кунед.',
+    'onboarding_settings_title': 'Танзимот',
+    'onboarding_settings_description':
+        'Забон, намоиш ва ин роҳнаморо идора кунед.',
+    'onboarding_next': 'Баъдӣ',
+    'onboarding_skip': 'Гузаштан',
+    'onboarding_finish': 'Оғоз!',
+    'route_error_title': 'Саҳифа ёфт нашуд',
+    'route_error_description': 'Ин саҳифа дастрас нест.',
+    'copy_unavailable': 'Нусхабардорӣ дастрас нест',
   };
 
   static const Map<String, String> fa = {
+    'home_headline': 'یک روز.\nیک حکمت.',
+    'home_edition': 'دفتر حکمت',
+    'home_learn': 'بخوانید. به یاد بسپارید.',
+    'home_explore': 'از گنجینه',
+    'home_learning': 'یادگیری',
+    'home_read': 'بخوانید',
+    'bookmark_add': 'ذخیره کردن',
+    'bookmark_remove': 'حذف از ذخیره‌ها',
+    'favorites_title': 'ذخیره‌ها',
+    'favorites_count': 'ضرب‌المثل ذخیره‌شده',
+    'favorites_empty': 'صفحهٔ اول هنوز خالی است.',
+    'favorites_empty_hint':
+        'ضرب‌المثلی را که دوست دارید ذخیره کنید. همیشه اینجا خواهد بود.',
+    'proverbs_found': 'در گنجینه',
+    'copy_proverb': 'کپی متن',
+    'copied': 'متن کپی شد',
+    'reading_script': 'خط خواندن',
+    'back': 'بازگشت',
+    'source_unverified': 'منبع تأیید نشده است',
     // Navigation
     'nav_home': 'خانه',
     'nav_proverbs': 'ضرب‌المثل‌ها',
@@ -170,9 +230,9 @@ class AppTranslations {
     'home_no_daily': 'ضرب‌المثلی در حال حاضر موجود نیست.',
     // Quiz
     'quiz_title': 'کوئیز',
-    'quiz_question_of': 'سؤال ${0} از ${1}',
+    'quiz_question_of': 'سؤال \${0} از \${1}',
     'quiz_choose_meaning': 'معنی صحیح را انتخاب کنید:',
-    'quiz_correct_of': '${0} از ${1} درست',
+    'quiz_correct_of': '\${0} از \${1} درست',
     'quiz_excellent': 'عالی!',
     'quiz_good': 'خوب!',
     'quiz_needs_work': 'قابل قبول.',
@@ -180,11 +240,11 @@ class AppTranslations {
     // Flashcards
     'flashcards_title': 'فلش‌کارت‌ها',
     'flashcards_loading': 'بارگذاری...',
-    'flashcards_card_of': 'کارت ${0} از ${1}',
+    'flashcards_card_of': 'کارت \${0} از \${1}',
     'flashcards_meaning': 'معنی',
     'flashcards_explanation': 'توضیح',
     'flashcards_tap_to_hide': 'برای پنهان کردن سریع کلیک کنید',
-    'flashcards_tap_to_show': 'برای پنهان کردن کلیک کنید',
+    'flashcards_tap_to_show': 'برای دیدن معنی لمس کنید',
     // Settings
     'settings_title': 'تنظیمات',
     'settings_subtitle': 'تنظیمات برنامه',
@@ -193,7 +253,7 @@ class AppTranslations {
     'settings_language': 'زبان',
     'settings_info': 'اطلاعات',
     'settings_about': 'درباره برنامه',
-    'settings_proverbs_count': '${0} ضرب‌المثل',
+    'settings_proverbs_count': '\${0} ضرب‌المثل',
     'settings_source': 'درباره منابع',
     'settings_source_title': 'منابع ضرب‌المثل‌ها',
     'settings_source_text':
@@ -205,14 +265,15 @@ class AppTranslations {
         'پیشنهادهایتان را برای ما ارسال کنید.',
     'settings_contact': 'پیشنهادها',
     'settings_contact_title': 'تماس',
-    'settings_contact_text': 'اگر پیشنهاد یا انتقادی دارید، به ما در Telegram بنویسید: @imarufov',
+    'settings_contact_text':
+        'اگر پیشنهاد یا انتقادی دارید، به ما در Telegram بنویسید: @imarufov',
     'settings_version': 'نسخه 1.0.0',
-    'settings_year': '2026 زرابول‌ماسال',
+    'settings_year': '2026 ضرب‌المثل',
     'settings_tagline': 'ضرب‌المثل‌های تاجیکی — میراث فرهنگی',
     'settings_active': 'فعال',
     'settings_inactive': 'غیرفعال',
     'settings_about_text':
-        'زرابول‌ماسال — برنامه‌ای برای آموزش، درک و '
+        'ضرب‌المثل — برنامه‌ای برای آموزش، درک و '
         'حفظ ضرب‌المثل‌های تاجیکی.',
     'settings_close': 'بستن',
     // Empty states
@@ -223,9 +284,12 @@ class AppTranslations {
     'empty_no_daily_proverb': 'ضرب‌المثلی برای امروز موجود نیست.',
     // Levels
     'levels_title': 'سطوح',
-    'levels_subtitle': 'از مبتدی تا دانشمند — ۱۰ سطح',
-    'levels_level': 'سطح ${0}',
+    'levels_subtitle': '\${0} سطح موجود',
+    'levels_level': 'سطح \${0}',
     'levels_proverbs': 'ضرب‌المثل',
+    'levels_none': 'در حال حاضر سطحی موجود نیست.',
+    'levels_none_hint':
+        'پس از افزوده‌شدن ضرب‌المثل‌ها، سطوح نمایش داده می‌شوند.',
     // Categories
     'categories_title': 'دسته‌ها',
     'categories_subtitle': 'دسته‌بندی ضرب‌المثل‌ها',
@@ -251,11 +315,11 @@ class AppTranslations {
     'badges_modern': 'ادبی',
     'badges_verified': 'تأیید شده',
     'badges_unverified': 'نامشخص',
-    'badges_level': 'سطح ${0}',
+    'badges_level': 'سطح \${0}',
     // Quick action descriptions
     'quiz_desc': 'آزمون دانش',
     'flashcards_desc': 'فلش‌کارت‌ها',
-    'levels_desc': 'از مبتدی تا دانشمند',
+    'levels_desc': 'سطوح موجود بر پایهٔ محتوا',
     'daily_desc': 'محتوا',
     // Level descriptions
     'level_desc_1': 'ضرب‌المثل‌های ساده برای شروع',
@@ -264,8 +328,8 @@ class AppTranslations {
     'level_desc_4': 'ضرب‌المثل‌های ساده',
     'level_desc_5': 'ضرب‌المثل‌های متوسط',
     'level_desc_6': 'ضرب‌المثل‌های پیچیده',
-    'level_desc_7': 'ضرب‌المثل‌های خوب و قوی',
-    'level_desc_8': 'ضرب‌المثل‌های بسیار پیچیده',
+    'level_desc_7': 'ضرب‌المثل‌های پیشرفته',
+    'level_desc_8': 'ضرب‌المثل‌های تخصصی',
     'level_desc_9': 'ضرب‌المثل‌های استادانه',
     'level_desc_10': 'ضرب‌المثل‌های دانشگاهی',
     // Progression labels
@@ -274,32 +338,91 @@ class AppTranslations {
     'progression_advanced': 'پیشرفته',
     'progression_master': 'دانشمند',
     // App
-    'app_name': 'زرابول‌ماسال',
+    'app_name': 'ضرب‌المثل',
     'app_tagline': 'حکمت هزارساله تاجیکی',
-    'proverb_count_label': '${0} ضرب‌المثل',
+    'proverb_count_label': '\${0} ضرب‌المثل',
+    // Onboarding
+    'settings_show_guide': 'راهنمای ویژگی‌ها',
+    'settings_show_guide_hint': 'راهنمای کوتاه را دوباره ببینید',
+    'onboarding_home_title': 'حکمت روز',
+    'onboarding_home_description':
+        'ضرب‌المثل روز را بخوانید و با تمرین‌ها یاد بگیرید.',
+    'onboarding_search_title': 'ضرب‌المثل‌ها و جستجو',
+    'onboarding_search_description': 'هر ضرب‌المثلی را سریع پیدا کنید.',
+    'onboarding_favorites_title': 'ذخیره‌ها',
+    'onboarding_favorites_description':
+        'ضرب‌المثل‌های دلخواه را برای بعد ذخیره کنید.',
+    'onboarding_settings_title': 'تنظیمات',
+    'onboarding_settings_description':
+        'زبان، نمایش و این راهنما را مدیریت کنید.',
+    'onboarding_next': 'بعدی',
+    'onboarding_skip': 'رد شدن',
+    'onboarding_finish': 'شروع!',
+    'route_error_title': 'صفحه پیدا نشد',
+    'route_error_description': 'این صفحه در دسترس نیست.',
+    'copy_unavailable': 'کپی در دسترس نیست',
   };
 
-  static String get(String key, DisplayLanguage lang, [List<Object> args = const []]) {
+  static String get(
+    String key,
+    DisplayLanguage lang, [
+    List<Object> args = const [],
+  ]) {
     final map = lang == DisplayLanguage.persian ? fa : tj;
     String result = map[key] ?? tj[key] ?? key;
     for (int i = 0; i < args.length; i++) {
-      result = result.replaceAll('\${$i}', args[i].toString());
+      result = result.replaceAll('\${$i}', _formatArgument(args[i], lang));
     }
     return result;
   }
 
+  static String _formatArgument(Object argument, DisplayLanguage language) {
+    final value = argument.toString();
+    if (language != DisplayLanguage.persian) return value;
+    const western = '0123456789';
+    const persian = '۰۱۲۳۴۵۶۷۸۹';
+    return value.split('').map((character) {
+      final index = western.indexOf(character);
+      return index < 0 ? character : persian[index];
+    }).join();
+  }
+
   static const List<String> monthNamesTj = [
-    '', 'Январ', 'Феврал', 'Март', 'Апрел', 'Май', 'Июн',
-    'Июл', 'Август', 'Сентябр', 'Октябр', 'Ноябр', 'Декабр',
+    '',
+    'Январ',
+    'Феврал',
+    'Март',
+    'Апрел',
+    'Май',
+    'Июн',
+    'Июл',
+    'Август',
+    'Сентябр',
+    'Октябр',
+    'Ноябр',
+    'Декабр',
   ];
 
   static const List<String> monthNamesFa = [
-    '', 'ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن',
-    'ژوئیه', 'اوت', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر',
+    '',
+    'ژانویه',
+    'فوریه',
+    'مارس',
+    'آوریل',
+    'مه',
+    'ژوئن',
+    'ژوئیه',
+    'اوت',
+    'سپتامبر',
+    'اکتبر',
+    'نوامبر',
+    'دسامبر',
   ];
 
   static String getMonthName(int month, DisplayLanguage lang) {
     if (month < 1 || month > 12) return '';
-    return lang == DisplayLanguage.persian ? monthNamesFa[month] : monthNamesTj[month];
+    return lang == DisplayLanguage.persian
+        ? monthNamesFa[month]
+        : monthNamesTj[month];
   }
 }
