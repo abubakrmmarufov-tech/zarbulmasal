@@ -1,6 +1,11 @@
 enum ProverbType { traditional, modernCustom }
 
-enum SourceStatus { verified, unverified }
+enum SourceStatus {
+  unverified,
+  bookAttested,
+  pageVerified,
+  needsReview,
+}
 
 class Proverb {
   final String id;
@@ -14,6 +19,8 @@ class Proverb {
   final ProverbType type;
   final SourceStatus sourceStatus;
   final String sourceNote;
+  final String? canonicalId;
+  final List<String> variants;
 
   const Proverb({
     required this.id,
@@ -27,7 +34,11 @@ class Proverb {
     required this.type,
     required this.sourceStatus,
     required this.sourceNote,
+    this.canonicalId,
+    this.variants = const [],
   });
+
+  bool get isCanonical => canonicalId == null;
 
   Proverb copyWith({
     String? id,
@@ -41,6 +52,8 @@ class Proverb {
     ProverbType? type,
     SourceStatus? sourceStatus,
     String? sourceNote,
+    String? canonicalId,
+    List<String>? variants,
   }) {
     return Proverb(
       id: id ?? this.id,
@@ -54,6 +67,9 @@ class Proverb {
       type: type ?? this.type,
       sourceStatus: sourceStatus ?? this.sourceStatus,
       sourceNote: sourceNote ?? this.sourceNote,
+      canonicalId: canonicalId ?? this.canonicalId,
+      variants: variants ?? this.variants,
     );
   }
 }
+
