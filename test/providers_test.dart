@@ -34,7 +34,14 @@ void main() {
         expect(proverb.meaningTj, isNotEmpty);
         expect(proverb.simpleExplanationTj, isNotEmpty);
         expect(proverb.exampleSentenceTj, isNotEmpty);
-        expect(proverb.sourceStatus, SourceStatus.verified);
+        expect(
+          proverb.sourceStatus,
+          anyOf(
+            SourceStatus.bookAttested,
+            SourceStatus.pageVerified,
+            SourceStatus.needsReview,
+          ),
+        );
         expect(proverb.sourceNote, isNot(equals('Сарчашма номаълум.')));
       }
     },

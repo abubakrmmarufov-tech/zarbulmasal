@@ -22,21 +22,66 @@ class OnboardingOverlay extends StatefulWidget {
 }
 
 class _OnboardingOverlayState extends State<OnboardingOverlay>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   int _currentStep = 0;
   bool _finishing = false;
   bool _hasStarted = false;
+  Rect? _targetRect;
   late AnimationController _anim;
   late Animation<double> _fade;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _anim = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
     _fade = CurvedAnimation(parent: _anim, curve: Curves.easeOut);
+    _scheduleTargetMeasurement();
+  }
+
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    _scheduleTargetMeasurement();
+  }
+
+  void _scheduleTargetMeasurement() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _measureTarget();
+    });
+  }
+
+  void _measureTarget() {
+    if (_currentStep >= widget.steps.length) return;
+    final step = widget.steps[_currentStep];
+    final renderObject = step.targetKey?.currentContext?.findRenderObject();
+    if (renderObject is RenderBox &&
+        renderObject.hasSize &&
+        renderObject.attached) {
+      final pos = renderObject.localToGlobal(Offset.zero);
+      final rect = pos & renderObject.size;
+      if (_targetRect != rect) {
+        setState(() {
+          _targetRect = rect;
+        });
+      }
+    } else {
+      // Re-try on next frame if layout has not yet completed
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        final ro = step.targetKey?.currentContext?.findRenderObject();
+        if (ro is RenderBox && ro.hasSize && ro.attached) {
+          final pos = ro.localToGlobal(Offset.zero);
+          setState(() {
+            _targetRect = pos & ro.size;
+          });
+        }
+      });
+    }
   }
 
   @override
@@ -52,17 +97,23 @@ class _OnboardingOverlayState extends State<OnboardingOverlay>
       _hasStarted = true;
       _anim.forward();
     }
+    _scheduleTargetMeasurement();
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _anim.dispose();
     super.dispose();
   }
 
   void _next() {
     if (_currentStep < widget.steps.length - 1) {
-      setState(() => _currentStep++);
+      setState(() {
+        _currentStep++;
+        _targetRect = null;
+      });
+      _scheduleTargetMeasurement();
     } else {
       _finish();
     }
@@ -88,18 +139,23 @@ class _OnboardingOverlayState extends State<OnboardingOverlay>
     final safePadding = MediaQuery.of(context).padding;
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
 
-    // Target rectangle — if no GlobalKey or if the key's context is null,
-    // center the spotlight in the screen.
-    Rect target = Rect.fromCenter(
-      center: Offset(size.width / 2, size.height / 2),
-      width: 120,
-      height: 48,
-    );
+    // Derive target rectangle from measured bounds or current RenderBox
+    Rect target;
     final renderObject = step.targetKey?.currentContext?.findRenderObject();
-    if (renderObject is RenderBox && renderObject.hasSize) {
-      final box = renderObject;
-      final pos = box.localToGlobal(Offset.zero);
-      target = pos & box.size;
+    if (renderObject is RenderBox &&
+        renderObject.hasSize &&
+        renderObject.attached) {
+      final pos = renderObject.localToGlobal(Offset.zero);
+      target = pos & renderObject.size;
+    } else if (_targetRect != null) {
+      target = _targetRect!;
+    } else {
+      _scheduleTargetMeasurement();
+      target = Rect.fromCenter(
+        center: Offset(size.width / 2, size.height / 2),
+        width: 120,
+        height: 48,
+      );
     }
 
     // Tooltip positioning: below or above the spotlight

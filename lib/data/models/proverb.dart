@@ -1,11 +1,6 @@
 enum ProverbType { traditional, modernCustom }
 
-enum SourceStatus {
-  unverified,
-  bookAttested,
-  pageVerified,
-  needsReview,
-}
+enum SourceStatus { unverified, bookAttested, pageVerified, needsReview }
 
 class Proverb {
   final String id;
@@ -72,4 +67,3 @@ class Proverb {
     );
   }
 }
-

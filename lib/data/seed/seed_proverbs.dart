@@ -1202,6 +1202,7 @@ const List<Proverb> seedProverbs = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.bookAttested,
     sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    canonicalId: '98',
   ),
   Proverb(
     id: '98',
@@ -1219,6 +1220,7 @@ const List<Proverb> seedProverbs = [
     sourceStatus: SourceStatus.bookAttested,
     sourceNote:
         'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    variants: ['Дӯсти нодон аз душмани доно бадтар аст.'],
   ),
   Proverb(
     id: '99',

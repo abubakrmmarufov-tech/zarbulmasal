@@ -141,8 +141,7 @@ class AppTranslations {
     'badges_level': 'Сатҳ \${0}',
     'source_book_attested':
         'Дар китоби зикршуда омадааст (саҳифа тафтиш нашудааст)',
-    'source_needs_review':
-        'Сарчашма ва матн ниёз ба баррасии иловагӣ дорад',
+    'source_needs_review': 'Сарчашма ва матн ниёз ба баррасии иловагӣ дорад',
     'source_page_verified': 'Матн ва саҳифа аз китоб тасдиқ шудааст',
     'reading_tajik_explanation': 'Шарҳи тоҷикӣ',
     // Quick action descriptions
@@ -368,10 +367,8 @@ class AppTranslations {
     'badges_needs_review': 'نیاز به بررسی',
     'badges_unverified': 'نامشخص',
     'badges_level': 'سطح \${0}',
-    'source_book_attested':
-        'در کتاب ذکرشده آمده است (صفحه بررسی نشده)',
-    'source_needs_review':
-        'منبع و متن نیاز به بررسی تکمیلی دارد',
+    'source_book_attested': 'در کتاب ذکرشده آمده است (صفحه بررسی نشده)',
+    'source_needs_review': 'منبع و متن نیاز به بررسی تکمیلی دارد',
     'source_page_verified': 'متن و صفحه از کتاب تأیید شده است',
     'reading_tajik_explanation': 'توضیح تاجیکی (خط سیریلیک)',
     // Quick action descriptions

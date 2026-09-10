@@ -206,6 +206,10 @@ class QalamReadingPage extends ConsumerWidget {
                         title: tr('detail_meaning'),
                         text: p.meaningTj,
                         emphasis: true,
+                        scriptBadge: persian
+                            ? tr('reading_tajik_explanation')
+                            : null,
+                        textDirection: TextDirection.ltr,
                       ),
                     ),
                   if (p.simpleExplanationTj.isNotEmpty)
@@ -214,6 +218,10 @@ class QalamReadingPage extends ConsumerWidget {
                         number: '02',
                         title: tr('detail_simple_explanation'),
                         text: p.simpleExplanationTj,
+                        scriptBadge: persian
+                            ? tr('reading_tajik_explanation')
+                            : null,
+                        textDirection: TextDirection.ltr,
                       ),
                     ),
                   if (p.exampleSentenceTj.isNotEmpty)
@@ -222,6 +230,19 @@ class QalamReadingPage extends ConsumerWidget {
                         number: '03',
                         title: tr('detail_example'),
                         text: p.exampleSentenceTj,
+                        scriptBadge: persian
+                            ? tr('reading_tajik_explanation')
+                            : null,
+                        textDirection: TextDirection.ltr,
+                      ),
+                    ),
+                  if (p.variants.isNotEmpty)
+                    SliverToBoxAdapter(
+                      child: _ReadingSection(
+                        number: '04',
+                        title: persian ? 'گونه‌های دیگر' : 'Шаклҳои дигар',
+                        text: p.variants.join('\n\n'),
+                        textDirection: TextDirection.ltr,
                       ),
                     ),
                   SliverToBoxAdapter(
@@ -240,12 +261,15 @@ class QalamReadingPage extends ConsumerWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            tr(
-                              p.sourceStatus == SourceStatus.verified
-                                  ? 'badges_verified'
-                                  : 'source_unverified',
-                            ),
+                            tr(_sourceStatusKey(p.sourceStatus)),
                             style: QalamTypography.bodySecondary(
+                              color: colors.onSurfaceVariant,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            tr(_sourceStatusDescKey(p.sourceStatus)),
+                            style: QalamTypography.meta(
                               color: colors.onSurfaceVariant,
                             ),
                           ),
@@ -253,7 +277,7 @@ class QalamReadingPage extends ConsumerWidget {
                             const SizedBox(height: 8),
                             Text(
                               p.sourceNote,
-                              textDirection: TextDirection.ltr,
+                              textDirection: _detectDirection(p.sourceNote),
                               style: QalamTypography.bodySecondary(
                                 color: colors.onSurfaceVariant,
                               ),
@@ -268,6 +292,38 @@ class QalamReadingPage extends ConsumerWidget {
             ),
     );
   }
+
+  static String _sourceStatusKey(SourceStatus status) {
+    switch (status) {
+      case SourceStatus.pageVerified:
+        return 'badges_page_verified';
+      case SourceStatus.bookAttested:
+        return 'badges_book_attested';
+      case SourceStatus.needsReview:
+        return 'badges_needs_review';
+      case SourceStatus.unverified:
+        return 'badges_unverified';
+    }
+  }
+
+  static String _sourceStatusDescKey(SourceStatus status) {
+    switch (status) {
+      case SourceStatus.pageVerified:
+        return 'source_page_verified';
+      case SourceStatus.bookAttested:
+        return 'source_book_attested';
+      case SourceStatus.needsReview:
+        return 'source_needs_review';
+      case SourceStatus.unverified:
+        return 'source_unverified';
+    }
+  }
+
+  static TextDirection _detectDirection(String text) {
+    return RegExp(r'[\u0600-\u06FF]').hasMatch(text)
+        ? TextDirection.rtl
+        : TextDirection.ltr;
+  }
 }
 
 class _ReadingSection extends StatelessWidget {
@@ -275,30 +331,53 @@ class _ReadingSection extends StatelessWidget {
   final String title;
   final String text;
   final bool emphasis;
+  final String? scriptBadge;
+  final TextDirection? textDirection;
+
   const _ReadingSection({
     required this.number,
     required this.title,
     required this.text,
     this.emphasis = false,
+    this.scriptBadge,
+    this.textDirection,
   });
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final direction =
+        textDirection ??
+        (RegExp(r'[\u0600-\u06FF]').hasMatch(text)
+            ? TextDirection.rtl
+            : TextDirection.ltr);
+
     return Container(
       color: emphasis ? colors.surfaceContainerHighest : null,
       padding: const EdgeInsets.fromLTRB(24, 28, 24, 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            '$number / $title',
-            style: QalamTypography.eyebrow(color: colors.primary),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  '$number / $title',
+                  style: QalamTypography.eyebrow(color: colors.primary),
+                ),
+              ),
+              if (scriptBadge != null)
+                Text(
+                  scriptBadge!,
+                  style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                ),
+            ],
           ),
           const SizedBox(height: 18),
           SelectableText(
             text,
             semanticsLabel: text,
-            textDirection: TextDirection.ltr,
+            textDirection: direction,
             style: emphasis
                 ? QalamTypography.heroProverb(
                     color: colors.onSurface,

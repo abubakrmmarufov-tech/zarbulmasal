@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -6,6 +5,7 @@ import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
+import 'quiz_engine.dart';
 
 class QuizScreen extends ConsumerStatefulWidget {
   const QuizScreen({super.key});
@@ -16,11 +16,10 @@ class QuizScreen extends ConsumerStatefulWidget {
 
 class _QuizScreenState extends ConsumerState<QuizScreen> {
   int _currentIndex = 0;
-  List<Proverb> _quizProverbs = [];
+  List<QuizQuestion> _quizQuestions = [];
   int? _selectedAnswer;
   bool _answered = false;
   int _correctCount = 0;
-  List<String>? _currentOptions;
   final _scroll = ScrollController();
 
   @override
@@ -36,28 +35,19 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   }
 
   void _loadQuestions() {
-    final shuffled = List<Proverb>.from(ref.read(proverbsProvider))
-      ..shuffle(Random());
+    final catalog = ref.read(proverbsProvider);
+    final questions = QuizEngine.generateQuiz(
+      catalog: catalog,
+      questionCount: 5,
+    );
     setState(() {
-      _quizProverbs = shuffled.take(5).toList();
+      _quizQuestions = questions;
       _currentIndex = 0;
       _selectedAnswer = null;
       _answered = false;
       _correctCount = 0;
-      _currentOptions = null;
     });
     if (_scroll.hasClients) _scroll.jumpTo(0);
-  }
-
-  List<String> _getAnswerOptions(Proverb proverb, List<Proverb> all) {
-    final others =
-        all
-            .map((p) => p.meaningTj)
-            .toSet()
-            .where((meaning) => meaning != proverb.meaningTj)
-            .toList()
-          ..shuffle(Random());
-    return [proverb.meaningTj, ...others.take(3)]..shuffle(Random());
   }
 
   void _back() => context.canPop() ? context.pop() : context.go('/');
@@ -71,7 +61,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     final all = ref.watch(proverbsProvider);
     final lang = ref.watch(displayLanguageProvider);
     final persian = lang == DisplayLanguage.persian;
-    final empty = _quizProverbs.isEmpty;
+    final empty = _quizQuestions.isEmpty;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -131,11 +121,12 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
     bool persian,
     List<Proverb> all,
   ) {
-    final proverb = _quizProverbs[_currentIndex];
-    final options = _currentOptions ??= _getAnswerOptions(proverb, all);
+    final currentQ = _quizQuestions[_currentIndex];
+    final proverb = currentQ.proverb;
+    final options = currentQ.options;
     final selectedCorrect =
         _selectedAnswer != null &&
-        options[_selectedAnswer!] == proverb.meaningTj;
+        _selectedAnswer == currentQ.correctOptionIndex;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -156,7 +147,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 child: Text(
                   AppTranslations.get('quiz_question_of', lang, [
                     '${_currentIndex + 1}',
-                    '${_quizProverbs.length}',
+                    '${_quizQuestions.length}',
                   ]),
                   style: QalamTypography.meta(color: colors.onSurfaceVariant),
                 ),
@@ -166,7 +157,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
         ),
         const SizedBox(height: 12),
         LinearProgressIndicator(
-          value: (_currentIndex + 1) / _quizProverbs.length,
+          value: (_currentIndex + 1) / _quizQuestions.length,
           color: colors.primary,
           backgroundColor: colors.outlineVariant,
           minHeight: 2,
@@ -205,7 +196,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
             correctLabel: _text('Ҷавоби дуруст', 'پاسخ درست', lang),
             incorrectLabel: _text('Ҷавоби нодуруст', 'پاسخ نادرست', lang),
             isSelected: _selectedAnswer == entry.key,
-            isCorrect: entry.value == proverb.meaningTj,
+            isCorrect: entry.key == currentQ.correctOptionIndex,
             revealed: _answered,
             textDirection: TextDirection.ltr,
             onTap: _answered
@@ -213,7 +204,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 : () => setState(() {
                     _selectedAnswer = entry.key;
                     _answered = true;
-                    if (entry.value == proverb.meaningTj) _correctCount++;
+                    if (entry.key == currentQ.correctOptionIndex) {
+                      _correctCount++;
+                    }
                   }),
           ),
         ),
@@ -238,21 +231,20 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
-              if (_currentIndex == _quizProverbs.length - 1) {
+              if (_currentIndex == _quizQuestions.length - 1) {
                 _showResults(lang);
               } else {
                 setState(() {
                   _currentIndex++;
                   _selectedAnswer = null;
                   _answered = false;
-                  _currentOptions = null;
                 });
                 _scroll.jumpTo(0);
               }
             },
             child: Text(
               AppTranslations.get(
-                _currentIndex == _quizProverbs.length - 1
+                _currentIndex == _quizQuestions.length - 1
                     ? 'btn_see_results'
                     : 'btn_next_question',
                 lang,
@@ -265,7 +257,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   }
 
   void _showResults(DisplayLanguage lang) {
-    final percent = (_correctCount / _quizProverbs.length * 100).round();
+    final percent = (_correctCount / _quizQuestions.length * 100).round();
     final feedback = percent >= 80
         ? 'quiz_excellent'
         : percent >= 50
@@ -309,7 +301,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 Text(
                   AppTranslations.get('quiz_correct_of', lang, [
                     '$_correctCount',
-                    '${_quizProverbs.length}',
+                    '${_quizQuestions.length}',
                   ]),
                   style: QalamTypography.sectionTitle(
                     color: colors.onSurface,

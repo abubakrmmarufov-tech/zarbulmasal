@@ -111,7 +111,6 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
                     children: [
                       for (var i = 0; i < routes.length; i++)
                         Expanded(
-                          key: navKeys[i],
                           child: Semantics(
                             selected: selected == i,
                             button: true,
@@ -120,6 +119,7 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
                               excludeFromSemantics: true,
                               message: AppTranslations.get(keys[i], lang),
                               child: InkWell(
+                                key: navKeys[i],
                                 onTap: () => context.go(routes[i]),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
