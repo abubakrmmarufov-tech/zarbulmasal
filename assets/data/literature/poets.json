@@ -1,0 +1,316 @@
+[
+  {
+    "id": "rudaki",
+    "canonicalName": "Абӯабдуллоҳи Рӯдакӣ",
+    "canonicalNamePersian": "ابوعبدالله رودکی",
+    "aliases": [],
+    "birthYear": "~858",
+    "deathYear": "~941",
+    "birthPlace": "Панҷруд, Панҷакент",
+    "literaryPeriod": "Адабиёти классикии форсу тоҷик (асри IX-X)",
+    "biographyTj": "Абӯабдуллоҳ Ҷаъфар ибни Муҳаммад — шоири бузурги тоҷик, ки ӯро 'Одамушшуаро' ва 'Султони шоирон' меноманд. Дар деҳаи Панҷруди ноҳияи Панҷакент таваллуд шудааст. Ӯ муассиси адабиёти классикии форсу тоҷик буда, дар дарбори Сомониён фаъолият кардааст. 22 сентябр Рӯзи Рӯдакӣ — ҷашни расмии давлатӣ мебошад.",
+    "biographyFa": null,
+    "biographySource": "Ахтарони адаб, ҷилди 1, Адиб, 2008; Осори Рӯдакӣ, таҳияи А. Мирзоев, 1958",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Одамушшуаро",
+      "Султони шоирон"
+    ],
+    "educationGrades": [
+      "4",
+      "5",
+      "8",
+      "10"
+    ],
+    "rights": {
+      "authorDeathYear": "~941",
+      "status": "publicDomain",
+      "reasoning": "Author died ~941 CE. Over 1080 years have passed, far exceeding Tajikistan's 50-year post mortem auctoris term.",
+      "rightsSource": "Law No. 726, Art. 17, 19",
+      "fullTextAllowed": true,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "nasir_khusraw",
+    "canonicalName": "Носири Хусрав",
+    "canonicalNamePersian": "ناصر خسرو",
+    "aliases": [],
+    "birthYear": "1004",
+    "deathYear": "~1077",
+    "birthPlace": "Қубодиён, Хатлон",
+    "literaryPeriod": "Адабиёти классикии форсу тоҷик (асри XI)",
+    "biographyTj": "Абӯмуъин Носир ибни Хусрав ибни Ҳорис — шоир, файласуф, сайёҳ ва мутафаккири бузурги тоҷик. Дар Қубодиёни Хатлон таваллуд шудааст. Муаллифи 'Сафарнома', 'Рӯшноинома', 'Саодатнома' ва маҷмӯаи қасидаҳои фалсафӣ мебошад.",
+    "biographyFa": null,
+    "biographySource": "Ахтарони адаб, Адиб, 2010; Сафарнома, Ирфон, 1970",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Ҳуҷҷати Хуросон"
+    ],
+    "educationGrades": [
+      "8",
+      "10"
+    ],
+    "rights": {
+      "authorDeathYear": "~1077",
+      "status": "publicDomain",
+      "reasoning": "Author died ~1077 CE. Over 930 years have passed.",
+      "rightsSource": "Law No. 726, Art. 17, 19",
+      "fullTextAllowed": true,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "kamol_khujandi",
+    "canonicalName": "Камоли Хуҷандӣ",
+    "canonicalNamePersian": "کمال خجندی",
+    "aliases": [],
+    "birthYear": "~1320",
+    "deathYear": "~1400",
+    "birthPlace": "Хуҷанд, Суғд",
+    "literaryPeriod": "Адабиёти классикии форсу тоҷик (асри XIV)",
+    "biographyTj": "Камолиддин Масъуди Хуҷандӣ — шоири бузурги ғазалсарои тоҷик, ки дар Хуҷанд таваллуд шудааст. Дар санъати ғазал бо Ҳофизи Шерозӣ баробар шумурда мешавад. Соли 2020 ба муносибати 700-солагии ӯ ҷашни байналмилалӣ бо дастгирии ЮНЕСКО баргузор шуд.",
+    "biographyFa": null,
+    "biographySource": "Девони Камоли Хуҷандӣ, Адиб, 2015; Девон дар 2 ҷилд, Ношир, 2020",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "8",
+      "10"
+    ],
+    "rights": {
+      "authorDeathYear": "~1400",
+      "status": "publicDomain",
+      "reasoning": "Author died ~1400 CE. Over 620 years have passed.",
+      "rightsSource": "Law No. 726, Art. 17, 19",
+      "fullTextAllowed": true,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "tursunzoda",
+    "canonicalName": "Мирзо Турсунзода",
+    "canonicalNamePersian": "میرزا تورسون‌زاده",
+    "aliases": [],
+    "birthYear": "1911",
+    "deathYear": "1977",
+    "birthPlace": "Қаратоғ, Ҳисор",
+    "literaryPeriod": "Адабиёти тоҷики советӣ (асри XX)",
+    "biographyTj": "Мирзо Турсунзода — шоири бузурги тоҷик, Қаҳрамони Тоҷикистон (2001). Раиси Иттифоқи нависандагони Тоҷикистон (1946-1977). Лауреати Ҷоизаи Ленин (1960). Тасвираш дар асъори 1-сомонӣ нақш бастааст. Муаллифи достонҳои 'Ҳасани аробакаш', 'Қиссаи Ҳиндустон', 'Садои Осиё', 'Ҷони ширин'.",
+    "biographyFa": null,
+    "biographySource": "Куллиёт дар 6 ҷилд, Дониш (АМИТ), 2025; Куллиёт дар 4 ҷилд, Ирфон, 1971-1985",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Қаҳрамони Тоҷикистон",
+      "Лауреати Ҷоизаи Ленин"
+    ],
+    "educationGrades": [
+      "4",
+      "7",
+      "11"
+    ],
+    "rights": {
+      "authorDeathYear": "1977",
+      "status": "excerptOnly",
+      "reasoning": "Author died Sept 24, 1977. Under Art. 17, 50-year term runs through Dec 31, 2027. Enters public domain Jan 1, 2028.",
+      "rightsSource": "Law No. 726, Art. 17",
+      "fullTextAllowed": false,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "qanoat",
+    "canonicalName": "Муъмин Қаноат",
+    "canonicalNamePersian": "مؤمن قناعت",
+    "aliases": [],
+    "birthYear": "1932",
+    "deathYear": "2018",
+    "birthPlace": "Курговад, Дарвоз",
+    "literaryPeriod": "Адабиёти тоҷик (асри XX-XXI)",
+    "biographyTj": "Муъминшо Қаноатов — шоири халқии Тоҷикистон, Лауреати Ҷоизаи Давлатии ИҶШС (1977). Раиси Иттифоқи нависандагони Тоҷикистон (1977-1991). Муаллифи достонҳои 'Сурӯши Сталинград', 'Модарнома', 'Тоҷикистон — исми ман', 'Масъуднома', 'Достони оташ'.",
+    "biographyFa": null,
+    "biographySource": "Як чаман сухан, Ахтарони адаб ҷ.47, Адиб, 2014; Куллиёт, Адиб, 2012",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Шоири халқии Тоҷикистон",
+      "Лауреати Ҷоизаи Давлатии ИҶШС"
+    ],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "authorDeathYear": "2018",
+      "status": "excerptOnly",
+      "reasoning": "Author died May 18, 2018. 50-year term runs through Dec 31, 2068.",
+      "rightsSource": "Law No. 726, Art. 17",
+      "fullTextAllowed": false,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "loiq_sherali",
+    "canonicalName": "Лоиқ Шералӣ",
+    "canonicalNamePersian": "لایق شیرعلی",
+    "aliases": [],
+    "birthYear": "1941",
+    "deathYear": "2000",
+    "birthPlace": "Мазори Шариф, Панҷакент",
+    "literaryPeriod": "Адабиёти тоҷик (нимаи дуюми асри XX)",
+    "biographyTj": "Лоиқ Шералӣ — маҳбубтарин шоири лирикии муосири тоҷик, Шоири халқии Тоҷикистон (1991). Лауреати Ҷоизаи давлатии Рӯдакӣ (1978). Эҳёгари ғазал ва рубоӣ барои мавзӯъҳои муосири ватан, модар ва забони модарӣ.",
+    "biographyFa": null,
+    "biographySource": "Куллиёт дар 2 ҷилд, Адиб, 2008; Як чаман сухан, Адиб, 2014",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Шоири халқии Тоҷикистон",
+      "Лауреати Ҷоизаи Рӯдакӣ"
+    ],
+    "educationGrades": [
+      "5",
+      "7",
+      "9",
+      "11"
+    ],
+    "rights": {
+      "authorDeathYear": "2000",
+      "status": "excerptOnly",
+      "reasoning": "Author died June 30, 2000. 50-year term runs through Dec 31, 2050.",
+      "rightsSource": "Law No. 726, Art. 17",
+      "fullTextAllowed": false,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "bozor_sobir",
+    "canonicalName": "Бозор Собир",
+    "canonicalNamePersian": "بازار صابر",
+    "aliases": [],
+    "birthYear": "1938",
+    "deathYear": "2018",
+    "birthPlace": "Суфиён, Файзобод",
+    "literaryPeriod": "Адабиёти муосири тоҷик (асри XX-XXI)",
+    "biographyTj": "Бозор Собир — шоири халқии Тоҷикистон, устоди шеъри нав (шеъри сафед). Лауреати Ҷоизаи давлатии Рӯдакӣ (1979). Муаллифи маҷмӯаҳои 'Гули хор', 'Теғи Сино', 'Забони модарӣ', 'Лолаи сиёҳ'.",
+    "biographyFa": null,
+    "biographySource": "Як чаман сухан, Адиб, 2014; Хуни қалам, Адиб, 2010",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Шоири халқии Тоҷикистон",
+      "Лауреати Ҷоизаи Рӯдакӣ"
+    ],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "authorDeathYear": "2018",
+      "status": "excerptOnly",
+      "reasoning": "Author died May 1, 2018. 50-year term runs through Dec 31, 2068.",
+      "rightsSource": "Law No. 726, Art. 17",
+      "fullTextAllowed": false,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "gulnazar_keldi",
+    "canonicalName": "Гулназар Келдӣ",
+    "canonicalNamePersian": "گل‌نظر کلدی",
+    "aliases": [],
+    "birthYear": "1945",
+    "deathYear": "2020",
+    "birthPlace": "Дардар, Айнӣ, Суғд",
+    "literaryPeriod": "Адабиёти тоҷик (нимаи дуюми асри XX — ибтидои XXI)",
+    "biographyTj": "Гулназар Келдӣ — шоири халқии Тоҷикистон (1995), муаллифи матни Суруди миллии Ҷумҳурии Тоҷикистон (1994). Лауреати Ҷоизаи давлатии Рӯдакӣ (1995). Сармуҳаррири ҳафтаномаи 'Адабиёт ва санъат'.",
+    "biographyFa": null,
+    "biographySource": "Се кулчаи танӯрӣ, Адиб, 1995; Оғӯши саршор, Адиб, 2011",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Шоири халқии Тоҷикистон",
+      "Лауреати Ҷоизаи Рӯдакӣ",
+      "Муаллифи Суруди миллӣ"
+    ],
+    "educationGrades": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "rights": {
+      "authorDeathYear": "2020",
+      "status": "excerptOnly",
+      "reasoning": "National Anthem text exempt under Art. 8. Other works protected until Dec 31, 2070.",
+      "rightsSource": "Law No. 726, Art. 8, 17",
+      "fullTextAllowed": false,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "gulrukhsor",
+    "canonicalName": "Гулрухсор",
+    "canonicalNamePersian": "گلرخسار",
+    "aliases": [
+      "Гулрухсор Сафиева"
+    ],
+    "birthYear": "1947",
+    "deathYear": null,
+    "birthPlace": "Яхч, Нуробод",
+    "literaryPeriod": "Адабиёти муосири тоҷик",
+    "biographyTj": "Гулрухсор Сафиева — шоири халқии Тоҷикистон (1999), Лауреати Ҷоизаи давлатии Рӯдакӣ (2003). Бузургтарин шоираи занони Тоҷикистони муосир. Муаллифи романи 'Занони Сабзбаҳор' (1988) ва маҷмӯаҳои зиёди шеър.",
+    "biographyFa": null,
+    "biographySource": "Мунтахаби ашъор, Адиб, 2006; Ҷовидона, Адиб, 2009",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Шоири халқии Тоҷикистон",
+      "Лауреати Ҷоизаи Рӯдакӣ"
+    ],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "authorDeathYear": null,
+      "status": "excerptOnly",
+      "reasoning": "Living author (b. 1947). Full copyright protection active for life + 50 years.",
+      "rightsSource": "Law No. 726, Art. 17",
+      "fullTextAllowed": false,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  },
+  {
+    "id": "farzona",
+    "canonicalName": "Фарзона",
+    "canonicalNamePersian": "فرزانه",
+    "aliases": [
+      "Иноят Юнусовна Хоҷаева"
+    ],
+    "birthYear": "1964",
+    "deathYear": null,
+    "birthPlace": "Хуҷанд, Суғд",
+    "literaryPeriod": "Адабиёти муосири тоҷик",
+    "biographyTj": "Фарзона (Иноят Юнусовна Хоҷаева) — шоири халқии Тоҷикистон (2001), Лауреати Ҷоизаи давлатии Рӯдакӣ (2008). Баландтарин овози ирфонию лирикии шеъри муосири форсу тоҷик. Шеъри ӯ дар Тоҷикистон, Эрон ва Афғонистон маъруф аст.",
+    "biographyFa": null,
+    "biographySource": "Қатрае аз Мӯлиён дар 3 ҷилд, Ношир, 2003; Дарёи сӯзон, Адиб, 2014",
+    "majorWorkIds": [],
+    "officialTitles": [
+      "Шоири халқии Тоҷикистон",
+      "Лауреати Ҷоизаи Рӯдакӣ"
+    ],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "authorDeathYear": null,
+      "status": "excerptOnly",
+      "reasoning": "Living author (b. 1964). Full copyright protection active for life + 50 years.",
+      "rightsSource": "Law No. 726, Art. 17",
+      "fullTextAllowed": false,
+      "excerptAllowed": true,
+      "permissionReference": null
+    }
+  }
+]

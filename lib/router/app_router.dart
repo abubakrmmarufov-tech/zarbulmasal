@@ -11,6 +11,7 @@ import '../features/quiz/quiz_screen.dart';
 import '../features/flashcards/flashcards_screen.dart';
 import '../features/daily/daily_proverb_screen.dart';
 import '../features/settings/settings_screen.dart';
+import '../features/literature/presentation/presentation.dart';
 import '../shared/widgets/app_scaffold.dart';
 import '../core/design_system/design_system.dart';
 import '../core/l10n/app_translations.dart';
@@ -61,6 +62,45 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/daily',
       builder: (context, state) => const DailyProverbScreen(),
+    ),
+    // Literature Feature routes
+    GoRoute(
+      path: '/literature',
+      builder: (context, state) => const LiteratureHubScreen(),
+    ),
+    GoRoute(
+      path: '/literature/poets',
+      builder: (context, state) => const PoetsListScreen(),
+    ),
+    GoRoute(
+      path: '/literature/poet/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+        return PoetDetailScreen(poetId: id);
+      },
+    ),
+    GoRoute(
+      path: '/literature/works',
+      builder: (context, state) => const WorksListScreen(),
+    ),
+    GoRoute(
+      path: '/literature/work/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+        return PoemReaderScreen(workId: id);
+      },
+    ),
+    GoRoute(
+      path: '/literature/school',
+      builder: (context, state) => const SchoolCanonScreen(),
+    ),
+    GoRoute(
+      path: '/literature/oral',
+      builder: (context, state) => const OralHeritageScreen(),
+    ),
+    GoRoute(
+      path: '/literature/search',
+      builder: (context, state) => const LiteratureSearchScreen(),
     ),
   ],
 );

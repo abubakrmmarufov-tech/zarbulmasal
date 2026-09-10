@@ -31,6 +31,11 @@ flutter:
     - assets/fonts/NotoSans-OFL.txt
     - assets/fonts/NotoSerif-OFL.txt
     - assets/fonts/NotoNaskhArabic-OFL.txt
+    - assets/data/literature/poets.json
+    - assets/data/literature/works.json
+    - assets/data/literature/sources.json
+    - assets/data/literature/school_canon.json
+    - assets/data/literature/oral_heritage.json
   fonts:
     - family: NotoSans
       fonts:

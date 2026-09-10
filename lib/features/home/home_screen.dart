@@ -15,6 +15,7 @@ class HomeScreen extends ConsumerWidget {
     final proverbs = ref.watch(proverbsProvider);
     final categories = ref.watch(categoriesProvider);
     final availableLevels = ref.watch(availableLevelsProvider);
+    final isPersian = lang == DisplayLanguage.persian;
     String tr(String key) => AppTranslations.get(key, lang);
     return Scaffold(
       body: SafeArea(
@@ -116,6 +117,16 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: QalamLiteratureCard(
+                onTap: () => context.push('/literature'),
+                title: 'Мероси адабӣ',
+                subtitle: isPersian
+                    ? 'گنجینه شعر و حکمت تاجیک'
+                    : 'Ганҷинаи шеър ва ҳикмати тоҷик',
+                sectionLabel: '01 / АДАБИЁТ',
               ),
             ),
             SliverToBoxAdapter(
