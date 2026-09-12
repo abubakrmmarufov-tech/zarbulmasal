@@ -178,9 +178,11 @@ class LiteraryWork {
 
   /// A work is displayable only when verified AND rights permit full text.
   bool get isDisplayable =>
-      verification.finalStatus == VerificationStatus.approved &&
+      verification.isFullyVerified &&
+      rights.status.allowsFullText &&
       rights.fullTextAllowed &&
-      textStatus == TextStatus.verified;
+      textStatus == TextStatus.verified &&
+      (hasTajikText || hasPersianText);
 
   /// Whether this work can be shown as an excerpt.
   bool get isExcerptDisplayable =>

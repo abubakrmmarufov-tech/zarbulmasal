@@ -1,5 +1,5 @@
-import 'verification_record.dart';
 import 'rights_record.dart';
+import 'verification_record.dart';
 
 /// Folklore genres of the Tajik oral literary tradition.
 enum OralHeritageType {
@@ -82,12 +82,14 @@ class OralHeritageEntry {
   });
 
   /// Whether this folklore entry has passed full verification audit.
-  bool get isVerified =>
-      verification.finalStatus == VerificationStatus.approved;
+  bool get isVerified => verification.isFullyVerified;
 
   /// Whether this entry is both verified and cleared for full-text display.
   bool get isDisplayable =>
-      isVerified && rights.status.allowsFullText && rights.fullTextAllowed;
+      isVerified &&
+      rights.status.allowsFullText &&
+      rights.fullTextAllowed &&
+      text.trim().isNotEmpty;
 
   /// Formatted source citation.
   String get citation {

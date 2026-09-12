@@ -126,6 +126,77 @@ void main() {
           excerptAllowed: true,
         ),
         verification: VerificationRecord(
+          primarySourceChecked: true,
+          secondSourceChecked: true,
+          titleChecked: true,
+          authorshipChecked: true,
+          pageChecked: true,
+          textLineByLineChecked: true,
+          scriptChecked: true,
+          copyrightChecked: true,
+          finalStatus: VerificationStatus.approved,
+        ),
+      );
+      const partialApproval = LiteraryWork(
+        id: 'partial-approval',
+        authorId: 'rudaki',
+        title: 'Partial approval',
+        textTajik: 'Unverified text',
+        textStatus: TextStatus.verified,
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'Public domain',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          finalStatus: VerificationStatus.approved,
+        ),
+      );
+      const contradictoryRights = LiteraryWork(
+        id: 'contradictory-rights',
+        authorId: 'rudaki',
+        title: 'Contradictory rights',
+        textTajik: 'Blocked text',
+        textStatus: TextStatus.verified,
+        rights: RightsRecord(
+          status: RightsStatus.blocked,
+          reasoning: 'Blocked',
+          fullTextAllowed: true,
+          excerptAllowed: false,
+        ),
+        verification: VerificationRecord(
+          primarySourceChecked: true,
+          secondSourceChecked: true,
+          titleChecked: true,
+          authorshipChecked: true,
+          pageChecked: true,
+          textLineByLineChecked: true,
+          scriptChecked: true,
+          copyrightChecked: true,
+          finalStatus: VerificationStatus.approved,
+        ),
+      );
+      const missingText = LiteraryWork(
+        id: 'missing-text',
+        authorId: 'rudaki',
+        title: 'Missing text',
+        textStatus: TextStatus.verified,
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'Public domain',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          primarySourceChecked: true,
+          secondSourceChecked: true,
+          titleChecked: true,
+          authorshipChecked: true,
+          pageChecked: true,
+          textLineByLineChecked: true,
+          scriptChecked: true,
+          copyrightChecked: true,
           finalStatus: VerificationStatus.approved,
         ),
       );
@@ -148,7 +219,13 @@ void main() {
       final scopedContainer = ProviderContainer(
         overrides: [
           literaryWorksProvider.overrideWith(
-            (ref) async => const [approved, rejected],
+            (ref) async => const [
+              approved,
+              rejected,
+              partialApproval,
+              contradictoryRights,
+              missingText,
+            ],
           ),
         ],
       );
@@ -171,6 +248,81 @@ void main() {
           publisher: 'Publisher',
           year: '1980',
           verification: VerificationRecord(
+            primarySourceChecked: true,
+            secondSourceChecked: true,
+            titleChecked: true,
+            authorshipChecked: true,
+            pageChecked: true,
+            textLineByLineChecked: true,
+            scriptChecked: true,
+            copyrightChecked: true,
+            finalStatus: VerificationStatus.approved,
+          ),
+          rights: RightsRecord(
+            status: RightsStatus.folklore,
+            reasoning: 'Traditional folklore',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+        );
+        const partialApproval = OralHeritageEntry(
+          id: 'partial-approval',
+          text: 'Unverified folklore',
+          type: OralHeritageType.maqol,
+          collectionSource: 'Collection',
+          publisher: 'Publisher',
+          year: '1980',
+          verification: VerificationRecord(
+            finalStatus: VerificationStatus.approved,
+          ),
+          rights: RightsRecord(
+            status: RightsStatus.folklore,
+            reasoning: 'Traditional folklore',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+        );
+        const contradictoryRights = OralHeritageEntry(
+          id: 'contradictory-rights',
+          text: 'Blocked folklore',
+          type: OralHeritageType.maqol,
+          collectionSource: 'Collection',
+          publisher: 'Publisher',
+          year: '1980',
+          verification: VerificationRecord(
+            primarySourceChecked: true,
+            secondSourceChecked: true,
+            titleChecked: true,
+            authorshipChecked: true,
+            pageChecked: true,
+            textLineByLineChecked: true,
+            scriptChecked: true,
+            copyrightChecked: true,
+            finalStatus: VerificationStatus.approved,
+          ),
+          rights: RightsRecord(
+            status: RightsStatus.blocked,
+            reasoning: 'Blocked',
+            fullTextAllowed: true,
+            excerptAllowed: false,
+          ),
+        );
+        const missingText = OralHeritageEntry(
+          id: 'missing-text',
+          text: '   ',
+          type: OralHeritageType.maqol,
+          collectionSource: 'Collection',
+          publisher: 'Publisher',
+          year: '1980',
+          verification: VerificationRecord(
+            primarySourceChecked: true,
+            secondSourceChecked: true,
+            titleChecked: true,
+            authorshipChecked: true,
+            pageChecked: true,
+            textLineByLineChecked: true,
+            scriptChecked: true,
+            copyrightChecked: true,
             finalStatus: VerificationStatus.approved,
           ),
           rights: RightsRecord(
@@ -200,7 +352,13 @@ void main() {
         final scopedContainer = ProviderContainer(
           overrides: [
             literatureRepositoryProvider.overrideWith(
-              (ref) => _OralRepository(const [cleared, unknownRights]),
+              (ref) => _OralRepository(const [
+                cleared,
+                unknownRights,
+                partialApproval,
+                contradictoryRights,
+                missingText,
+              ]),
             ),
           ],
         );
