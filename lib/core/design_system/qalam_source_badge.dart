@@ -47,10 +47,7 @@ class QalamSourceBadge extends StatelessWidget {
         children: [
           Icon(Icons.check_circle_outline, size: 14, color: colors.primary),
           const SizedBox(width: 6),
-          Text(
-            label,
-            style: QalamTypography.meta(color: colors.primary),
-          ),
+          Text(label, style: QalamTypography.meta(color: colors.primary)),
         ],
       ),
     );

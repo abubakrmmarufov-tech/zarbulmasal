@@ -17,7 +17,10 @@ enum WorkType {
   /// Parses a string into [WorkType] matching camelCase, snake_case, or kebab-case.
   static WorkType fromString(String? value) {
     if (value == null || value.trim().isEmpty) return WorkType.other;
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final type in WorkType.values) {
       if (type.name.toLowerCase() == normalized) return type;
     }
@@ -38,7 +41,10 @@ enum TextStatus {
   /// Parses a string into [TextStatus]. Defaults to [needsReview].
   static TextStatus fromString(String? value) {
     if (value == null || value.trim().isEmpty) return TextStatus.needsReview;
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final status in TextStatus.values) {
       if (status.name.toLowerCase() == normalized) return status;
     }
@@ -54,8 +60,13 @@ enum ScriptSource {
 
   /// Parses a string into [ScriptSource]. Defaults to [tajikCyrillic].
   static ScriptSource fromString(String? value) {
-    if (value == null || value.trim().isEmpty) return ScriptSource.tajikCyrillic;
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    if (value == null || value.trim().isEmpty) {
+      return ScriptSource.tajikCyrillic;
+    }
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final s in ScriptSource.values) {
       if (s.name.toLowerCase() == normalized) return s;
     }
@@ -71,8 +82,13 @@ enum EditorialTransformation {
 
   /// Parses a string into [EditorialTransformation]. Defaults to [none].
   static EditorialTransformation fromString(String? value) {
-    if (value == null || value.trim().isEmpty) return EditorialTransformation.none;
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    if (value == null || value.trim().isEmpty) {
+      return EditorialTransformation.none;
+    }
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final t in EditorialTransformation.values) {
       if (t.name.toLowerCase() == normalized) return t;
     }
@@ -168,14 +184,14 @@ class LiteraryWork {
 
   /// Whether this work can be shown as an excerpt.
   bool get isExcerptDisplayable =>
-      rights.excerptAllowed &&
-      textStatus != TextStatus.blocked;
+      rights.excerptAllowed && textStatus != TextStatus.blocked;
 
   /// Whether verified Tajik Cyrillic text is present.
   bool get hasTajikText => textTajik != null && textTajik!.trim().isNotEmpty;
 
   /// Whether verified Persian Arabic text is present.
-  bool get hasPersianText => textPersian != null && textPersian!.trim().isNotEmpty;
+  bool get hasPersianText =>
+      textPersian != null && textPersian!.trim().isNotEmpty;
 
   /// Creates a [LiteraryWork] from a JSON map.
   factory LiteraryWork.fromJson(Map<String, dynamic> json) {
@@ -199,15 +215,19 @@ class LiteraryWork {
       textStatus: TextStatus.fromString(
         (json['textStatus'] ?? json['text_status']) as String?,
       ),
-      editorial: EditorialTransformation.fromString(json['editorial'] as String?),
-      editorialNotes: (json['editorialNotes'] ?? json['editorial_notes']) as String?,
+      editorial: EditorialTransformation.fromString(
+        json['editorial'] as String?,
+      ),
+      editorialNotes:
+          (json['editorialNotes'] ?? json['editorial_notes']) as String?,
       primarySource: primaryJson is Map<String, dynamic>
           ? SourceEdition.fromJson(primaryJson)
           : null,
       secondarySource: secondaryJson is Map<String, dynamic>
           ? SourceEdition.fromJson(secondaryJson)
           : null,
-      textMatchResult: (json['textMatchResult'] ?? json['text_match_result']) as String?,
+      textMatchResult:
+          (json['textMatchResult'] ?? json['text_match_result']) as String?,
       variantNotes: (json['variantNotes'] ?? json['variant_notes']) as String?,
       rights: rightsJson is Map<String, dynamic>
           ? RightsRecord.fromJson(rightsJson)

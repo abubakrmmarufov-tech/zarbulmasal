@@ -42,7 +42,7 @@ class SourcePanel extends ConsumerWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.12),
+                color: Colors.black.withValues(alpha: 0.12),
                 blurRadius: 16,
                 offset: const Offset(0, -4),
               ),
@@ -64,7 +64,10 @@ class SourcePanel extends ConsumerWidget {
               ),
               // Header
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 8,
+                ),
                 child: Row(
                   children: [
                     Icon(
@@ -132,7 +135,7 @@ class SourcePanel extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: colors.surfaceContainerHighest.withOpacity(0.5),
+              color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
               border: Border.all(color: colors.outlineVariant, width: 0.5),
               borderRadius: BorderRadius.circular(4),
             ),
@@ -215,7 +218,11 @@ class SourcePanel extends ConsumerWidget {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      const Icon(Icons.check_circle, size: 14, color: QalamColors.forest),
+                      const Icon(
+                        Icons.check_circle,
+                        size: 14,
+                        color: QalamColors.forest,
+                      ),
                       const SizedBox(width: 6),
                       Text(
                         isPersian
@@ -234,7 +241,9 @@ class SourcePanel extends ConsumerWidget {
             isPersian
                 ? 'منبع چاپی هنوز ثبت نشده است.'
                 : 'Сарчашмаи чопӣ ҳанӯз ба қайд гирифта нашудааст.',
-            style: QalamTypography.bodySecondary(color: colors.onSurfaceVariant),
+            style: QalamTypography.bodySecondary(
+              color: colors.onSurfaceVariant,
+            ),
           ),
         ],
       ],
@@ -252,13 +261,15 @@ class SourcePanel extends ConsumerWidget {
         _buildSectionHeader(
           context,
           icon: Icons.auto_stories,
-          title: isPersian ? 'منبع دوم (مقابله)' : 'Сарчашмаи дуввум (Муқобала)',
+          title: isPersian
+              ? 'منبع دوم (مقابله)'
+              : 'Сарчашмаи дуввум (Муқобала)',
         ),
         const SizedBox(height: 12),
         Container(
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: colors.surfaceContainerHighest.withOpacity(0.5),
+            color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
             border: Border.all(color: colors.outlineVariant, width: 0.5),
             borderRadius: BorderRadius.circular(4),
           ),
@@ -329,8 +340,8 @@ class SourcePanel extends ConsumerWidget {
     final statusText = isApproved
         ? (isPersian ? 'تأیید شده' : 'Тасдиқшуда')
         : (isRejected
-            ? (isPersian ? 'رد شده' : 'Радшуда')
-            : (isPersian ? 'در حال بررسی' : 'Дар баррасӣ'));
+              ? (isPersian ? 'رد شده' : 'Радшуда')
+              : (isPersian ? 'در حال بررسی' : 'Дар баррасӣ'));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -346,9 +357,12 @@ class SourcePanel extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: statusColor.withOpacity(0.12),
+                color: statusColor.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(4),
-                border: Border.all(color: statusColor.withOpacity(0.4), width: 0.5),
+                border: Border.all(
+                  color: statusColor.withValues(alpha: 0.4),
+                  width: 0.5,
+                ),
               ),
               child: Text(
                 statusText,
@@ -368,7 +382,9 @@ class SourcePanel extends ConsumerWidget {
           ),
         ],
         _buildCheckItem(
-          isPersian ? 'منبع اصلی چاپی بررسی شد' : 'Сарчашмаи асосии чопӣ санҷида шуд',
+          isPersian
+              ? 'منبع اصلی چاپی بررسی شد'
+              : 'Сарчашмаи асосии чопӣ санҷида шуд',
           ver.primarySourceChecked,
           colors,
         ),
@@ -378,32 +394,44 @@ class SourcePanel extends ConsumerWidget {
           colors,
         ),
         _buildCheckItem(
-          isPersian ? 'عنوان در نسخهٔ اصل تأیید شد' : 'Номи асар дар нашри аслӣ тасдиқ шуд',
+          isPersian
+              ? 'عنوان در نسخهٔ اصل تأیید شد'
+              : 'Номи асар дар нашри аслӣ тасдиқ шуд',
           ver.titleChecked,
           colors,
         ),
         _buildCheckItem(
-          isPersian ? 'انتساب به مؤلف محرز شد' : 'Муаллифи асар муайян ва тасдиқ шуд',
+          isPersian
+              ? 'انتساب به مؤلف محرز شد'
+              : 'Муаллифи асар муайян ва тасдиқ шуд',
           ver.authorshipChecked,
           colors,
         ),
         _buildCheckItem(
-          isPersian ? 'صفحات کتاب چاپی مستند شد' : 'Саҳифаҳои нашри чопӣ дақиқ шуд',
+          isPersian
+              ? 'صفحات کتاب چاپی مستند شد'
+              : 'Саҳифаҳои нашри чопӣ дақиқ шуд',
           ver.pageChecked,
           colors,
         ),
         _buildCheckItem(
-          isPersian ? 'متن بیت‌به‌بیت مقابله شد' : 'Матн мисраъ ба мисраъ муқобала шуд',
+          isPersian
+              ? 'متن بیت‌به‌بیت مقابله شد'
+              : 'Матн мисраъ ба мисраъ муқобала шуд',
           ver.textLineByLineChecked,
           colors,
         ),
         _buildCheckItem(
-          isPersian ? 'رسم‌الخط و اعراب بررسی شد' : 'Имло, аломатҳо ва хат тасдиқ шуд',
+          isPersian
+              ? 'رسم‌الخط و اعراب بررسی شد'
+              : 'Имло, аломатҳо ва хат тасдиқ шуд',
           ver.scriptChecked,
           colors,
         ),
         _buildCheckItem(
-          isPersian ? 'حقوق مؤلف مطابق قانون بررسی شد' : 'Ҳуқуқи муаллиф тибқи қонунгузорӣ тасдиқ шуд',
+          isPersian
+              ? 'حقوق مؤلف مطابق قانون بررسی شد'
+              : 'Ҳуқуқи муаллиф тибқи қонунгузорӣ тасдиқ шуд',
           ver.copyrightChecked,
           colors,
         ),
@@ -412,7 +440,7 @@ class SourcePanel extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: QalamColors.danger.withOpacity(0.08),
+              color: QalamColors.danger.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
@@ -440,13 +468,15 @@ class SourcePanel extends ConsumerWidget {
         _buildSectionHeader(
           context,
           icon: Icons.gavel_outlined,
-          title: isPersian ? 'وضعیت حقوقی و کپی‌رایت' : 'Ҳуқуқи муаллиф ва мақом',
+          title: isPersian
+              ? 'وضعیت حقوقی و کپی‌رایت'
+              : 'Ҳуқуқи муаллиф ва мақом',
         ),
         const SizedBox(height: 12),
         Container(
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            color: colors.surfaceContainerHighest.withOpacity(0.5),
+            color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
             border: Border.all(color: colors.outlineVariant, width: 0.5),
             borderRadius: BorderRadius.circular(4),
           ),
@@ -464,8 +494,12 @@ class SourcePanel extends ConsumerWidget {
                   Expanded(
                     child: Text(
                       isPublic
-                          ? (isPersian ? 'مالکیت عمومی (Public Domain)' : 'Моликияти умумӣ (Public Domain)')
-                          : (isPersian ? 'دارای کپی‌رایت / تحت حفاظت' : 'Ҳифзшуда / Таҳти ҳимоя'),
+                          ? (isPersian
+                                ? 'مالکیت عمومی (Public Domain)'
+                                : 'Моликияти умумӣ (Public Domain)')
+                          : (isPersian
+                                ? 'دارای کپی‌رایت / تحت حفاظت'
+                                : 'Ҳифзшуда / Таҳти ҳимоя'),
                       style: QalamTypography.label(
                         color: isPublic ? QalamColors.forest : colors.primary,
                         fontSize: 14,
@@ -521,16 +555,17 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildSectionHeader(BuildContext context, {required IconData icon, required String title}) {
+  Widget _buildSectionHeader(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+  }) {
     final colors = Theme.of(context).colorScheme;
     return Row(
       children: [
         Icon(icon, size: 16, color: colors.primary),
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: QalamTypography.eyebrow(color: colors.primary),
-        ),
+        Text(title, style: QalamTypography.eyebrow(color: colors.primary)),
       ],
     );
   }
@@ -587,9 +622,9 @@ class SourcePanel extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: tagColor.withOpacity(0.08),
+        color: tagColor.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(3),
-        border: Border.all(color: tagColor.withOpacity(0.3), width: 0.5),
+        border: Border.all(color: tagColor.withValues(alpha: 0.3), width: 0.5),
       ),
       child: Text(
         '$label: ${allowed ? "✓" : "—"}',

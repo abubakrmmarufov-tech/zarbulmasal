@@ -13,7 +13,10 @@ enum OralHeritageType {
   /// Parses a string into [OralHeritageType] matching camelCase, snake_case, or kebab-case.
   static OralHeritageType fromString(String? value) {
     if (value == null || value.trim().isEmpty) return OralHeritageType.other;
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final type in OralHeritageType.values) {
       if (type.name.toLowerCase() == normalized) return type;
     }
@@ -74,7 +77,8 @@ class OralHeritageEntry {
   });
 
   /// Whether this folklore entry has passed full verification audit.
-  bool get isVerified => verification.finalStatus == VerificationStatus.approved;
+  bool get isVerified =>
+      verification.finalStatus == VerificationStatus.approved;
 
   /// Formatted source citation.
   String get citation {
@@ -99,7 +103,9 @@ class OralHeritageEntry {
       textPersian: (json['textPersian'] ?? json['text_persian']) as String?,
       type: OralHeritageType.fromString((json['type']) as String?),
       region: (json['region']) as String?,
-      collectionSource: (json['collectionSource'] ?? json['collection_source'] ?? '') as String,
+      collectionSource:
+          (json['collectionSource'] ?? json['collection_source'] ?? '')
+              as String,
       collector: (json['collector']) as String?,
       publisher: (json['publisher'] ?? '') as String,
       year: (json['year'] ?? '').toString(),

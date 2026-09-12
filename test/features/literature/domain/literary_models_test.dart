@@ -10,10 +10,22 @@ import 'package:zarbulmasal/features/literature/domain/verification_record.dart'
 void main() {
   group('RightsRecord and RightsStatus', () {
     test('RightsStatus fromString handles case and format variations', () {
-      expect(RightsStatus.fromString('publicDomain'), RightsStatus.publicDomain);
-      expect(RightsStatus.fromString('public_domain'), RightsStatus.publicDomain);
-      expect(RightsStatus.fromString('PUBLIC_DOMAIN'), RightsStatus.publicDomain);
-      expect(RightsStatus.fromString('permission_granted'), RightsStatus.permissionGranted);
+      expect(
+        RightsStatus.fromString('publicDomain'),
+        RightsStatus.publicDomain,
+      );
+      expect(
+        RightsStatus.fromString('public_domain'),
+        RightsStatus.publicDomain,
+      );
+      expect(
+        RightsStatus.fromString('PUBLIC_DOMAIN'),
+        RightsStatus.publicDomain,
+      );
+      expect(
+        RightsStatus.fromString('permission_granted'),
+        RightsStatus.permissionGranted,
+      );
       expect(RightsStatus.fromString('excerpt_only'), RightsStatus.excerptOnly);
       expect(RightsStatus.fromString('folklore'), RightsStatus.folklore);
       expect(RightsStatus.fromString('blocked'), RightsStatus.blocked);
@@ -59,7 +71,10 @@ void main() {
       expect(serialized['status'], 'publicDomain');
       expect(serialized['fullTextAllowed'], isTrue);
 
-      final copy = record.copyWith(status: RightsStatus.blocked, fullTextAllowed: false);
+      final copy = record.copyWith(
+        status: RightsStatus.blocked,
+        fullTextAllowed: false,
+      );
       expect(copy.status, RightsStatus.blocked);
       expect(copy.fullTextAllowed, isFalse);
       expect(copy.authorDeathYear, '941');
@@ -68,11 +83,26 @@ void main() {
 
   group('VerificationRecord and VerificationStatus', () {
     test('VerificationStatus fromString parsing', () {
-      expect(VerificationStatus.fromString('approved'), VerificationStatus.approved);
-      expect(VerificationStatus.fromString('rejected'), VerificationStatus.rejected);
-      expect(VerificationStatus.fromString('needs_review'), VerificationStatus.needsReview);
-      expect(VerificationStatus.fromString('needsReview'), VerificationStatus.needsReview);
-      expect(VerificationStatus.fromString('unknown'), VerificationStatus.needsReview);
+      expect(
+        VerificationStatus.fromString('approved'),
+        VerificationStatus.approved,
+      );
+      expect(
+        VerificationStatus.fromString('rejected'),
+        VerificationStatus.rejected,
+      );
+      expect(
+        VerificationStatus.fromString('needs_review'),
+        VerificationStatus.needsReview,
+      );
+      expect(
+        VerificationStatus.fromString('needsReview'),
+        VerificationStatus.needsReview,
+      );
+      expect(
+        VerificationStatus.fromString('unknown'),
+        VerificationStatus.needsReview,
+      );
     });
 
     test('isFullyVerified requires all 8 checks and approved status', () {
@@ -210,7 +240,10 @@ void main() {
 
       final serialized = author.toJson();
       expect(serialized['id'], 'rudaki');
-      expect((serialized['rights'] as Map<String, dynamic>)['status'], 'publicDomain');
+      expect(
+        (serialized['rights'] as Map<String, dynamic>)['status'],
+        'publicDomain',
+      );
 
       final copy = author.copyWith(biographyTj: 'Навшуда');
       expect(copy.biographyTj, 'Навшуда');
@@ -224,54 +257,63 @@ void main() {
       expect(WorkType.fromString('rubai'), WorkType.rubai);
       expect(TextStatus.fromString('verified'), TextStatus.verified);
       expect(TextStatus.fromString('needs_review'), TextStatus.needsReview);
-      expect(ScriptSource.fromString('persian_arabic'), ScriptSource.persianArabic);
-      expect(EditorialTransformation.fromString('none'), EditorialTransformation.none);
+      expect(
+        ScriptSource.fromString('persian_arabic'),
+        ScriptSource.persianArabic,
+      );
+      expect(
+        EditorialTransformation.fromString('none'),
+        EditorialTransformation.none,
+      );
     });
 
-    test('Displayability logic enforces rights, verification, and textStatus', () {
-      const rightsAllowed = RightsRecord(
-        status: RightsStatus.publicDomain,
-        reasoning: 'PD',
-        fullTextAllowed: true,
-        excerptAllowed: true,
-      );
-      const verifiedRecord = VerificationRecord(
-        primarySourceChecked: true,
-        secondSourceChecked: true,
-        titleChecked: true,
-        authorshipChecked: true,
-        pageChecked: true,
-        textLineByLineChecked: true,
-        scriptChecked: true,
-        copyrightChecked: true,
-        finalStatus: VerificationStatus.approved,
-      );
+    test(
+      'Displayability logic enforces rights, verification, and textStatus',
+      () {
+        const rightsAllowed = RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'PD',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        );
+        const verifiedRecord = VerificationRecord(
+          primarySourceChecked: true,
+          secondSourceChecked: true,
+          titleChecked: true,
+          authorshipChecked: true,
+          pageChecked: true,
+          textLineByLineChecked: true,
+          scriptChecked: true,
+          copyrightChecked: true,
+          finalStatus: VerificationStatus.approved,
+        );
 
-      const unverifiedWork = LiteraryWork(
-        id: 'w1',
-        authorId: 'rudaki',
-        title: 'Бӯи ҷӯи Мӯлиён',
-        rights: rightsAllowed,
-        verification: VerificationRecord(),
-        textStatus: TextStatus.needsReview,
-      );
-      expect(unverifiedWork.isDisplayable, isFalse);
-      expect(unverifiedWork.isExcerptDisplayable, isTrue);
+        const unverifiedWork = LiteraryWork(
+          id: 'w1',
+          authorId: 'rudaki',
+          title: 'Бӯи ҷӯи Мӯлиён',
+          rights: rightsAllowed,
+          verification: VerificationRecord(),
+          textStatus: TextStatus.needsReview,
+        );
+        expect(unverifiedWork.isDisplayable, isFalse);
+        expect(unverifiedWork.isExcerptDisplayable, isTrue);
 
-      final verifiedWork = unverifiedWork.copyWith(
-        verification: verifiedRecord,
-        textStatus: TextStatus.verified,
-        textTajik: 'Бӯи ҷӯи Мӯлиён ояд ҳаме...',
-      );
-      expect(verifiedWork.isDisplayable, isTrue);
-      expect(verifiedWork.hasTajikText, isTrue);
+        final verifiedWork = unverifiedWork.copyWith(
+          verification: verifiedRecord,
+          textStatus: TextStatus.verified,
+          textTajik: 'Бӯи ҷӯи Мӯлиён ояд ҳаме...',
+        );
+        expect(verifiedWork.isDisplayable, isTrue);
+        expect(verifiedWork.hasTajikText, isTrue);
 
-      final blockedWork = verifiedWork.copyWith(
-        textStatus: TextStatus.blocked,
-      );
-      expect(blockedWork.isDisplayable, isFalse);
-      expect(blockedWork.isExcerptDisplayable, isFalse);
-    });
+        final blockedWork = verifiedWork.copyWith(
+          textStatus: TextStatus.blocked,
+        );
+        expect(blockedWork.isDisplayable, isFalse);
+        expect(blockedWork.isExcerptDisplayable, isFalse);
+      },
+    );
 
     test('LiteraryWork fromJson / toJson roundtrip', () {
       final json = {
@@ -302,9 +344,7 @@ void main() {
           'fullTextAllowed': true,
           'excerptAllowed': true,
         },
-        'verification': {
-          'final_status': 'needs_review',
-        },
+        'verification': {'final_status': 'needs_review'},
       };
 
       final work = LiteraryWork.fromJson(json);
@@ -318,7 +358,10 @@ void main() {
       final serialized = work.toJson();
       expect(serialized['type'], 'ghazal');
       expect(serialized['scriptSource'], 'both');
-      expect((serialized['primarySource'] as Map<String, dynamic>)['city'], 'Душанбе');
+      expect(
+        (serialized['primarySource'] as Map<String, dynamic>)['city'],
+        'Душанбе',
+      );
     });
   });
 
@@ -353,11 +396,20 @@ void main() {
 
   group('OralHeritageEntry', () {
     test('OralHeritageType fromString parsing', () {
-      expect(OralHeritageType.fromString('zarbulmasal'), OralHeritageType.zarbulmasal);
+      expect(
+        OralHeritageType.fromString('zarbulmasal'),
+        OralHeritageType.zarbulmasal,
+      );
       expect(OralHeritageType.fromString('maqol'), OralHeritageType.maqol);
       expect(OralHeritageType.fromString('chiston'), OralHeritageType.chiston);
-      expect(OralHeritageType.fromString('dubayti_khalqi'), OralHeritageType.dubaytiKhalqi);
-      expect(OralHeritageType.fromString('rubai_khalqi'), OralHeritageType.rubaiKhalqi);
+      expect(
+        OralHeritageType.fromString('dubayti_khalqi'),
+        OralHeritageType.dubaytiKhalqi,
+      );
+      expect(
+        OralHeritageType.fromString('rubai_khalqi'),
+        OralHeritageType.rubaiKhalqi,
+      );
       expect(OralHeritageType.fromString('afsona'), OralHeritageType.afsona);
       expect(OralHeritageType.fromString('unknown'), OralHeritageType.other);
     });

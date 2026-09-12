@@ -120,7 +120,8 @@ class SourceEdition {
   factory SourceEdition.fromJson(Map<String, dynamic> json) {
     return SourceEdition(
       bookTitle: (json['bookTitle'] ?? json['book_title'] ?? '') as String,
-      authorAsPrinted: (json['authorAsPrinted'] ?? json['author_as_printed']) as String?,
+      authorAsPrinted:
+          (json['authorAsPrinted'] ?? json['author_as_printed']) as String?,
       editor: (json['editor']) as String?,
       volume: (json['volume'])?.toString(),
       edition: (json['edition'])?.toString(),
@@ -130,11 +131,15 @@ class SourceEdition {
       isbn: (json['isbn']) as String?,
       pageStart: _parseInt(json['pageStart'] ?? json['page_start']),
       pageEnd: _parseInt(json['pageEnd'] ?? json['page_end']),
-      sourceInstitution: (json['sourceInstitution'] ?? json['source_institution']) as String?,
+      sourceInstitution:
+          (json['sourceInstitution'] ?? json['source_institution']) as String?,
       sourceType: (json['sourceType'] ?? json['source_type'] ?? '') as String,
-      sourceReference: (json['sourceReference'] ?? json['source_reference']) as String?,
+      sourceReference:
+          (json['sourceReference'] ?? json['source_reference']) as String?,
       accessDate: (json['accessDate'] ?? json['access_date']) as String?,
-      sourceImageVerified: _parseBool(json['sourceImageVerified'] ?? json['source_image_verified']),
+      sourceImageVerified: _parseBool(
+        json['sourceImageVerified'] ?? json['source_image_verified'],
+      ),
     );
   }
 
@@ -235,23 +240,23 @@ class SourceEdition {
 
   @override
   int get hashCode => Object.hash(
-        bookTitle,
-        authorAsPrinted,
-        editor,
-        volume,
-        edition,
-        publisher,
-        city,
-        year,
-        isbn,
-        pageStart,
-        pageEnd,
-        sourceInstitution,
-        sourceType,
-        sourceReference,
-        accessDate,
-        sourceImageVerified,
-      );
+    bookTitle,
+    authorAsPrinted,
+    editor,
+    volume,
+    edition,
+    publisher,
+    city,
+    year,
+    isbn,
+    pageStart,
+    pageEnd,
+    sourceInstitution,
+    sourceType,
+    sourceReference,
+    accessDate,
+    sourceImageVerified,
+  );
 
   @override
   String toString() {

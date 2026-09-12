@@ -53,9 +53,7 @@ class QalamPoetCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     dates,
-                    style: QalamTypography.meta(
-                      color: colors.primary,
-                    ),
+                    style: QalamTypography.meta(color: colors.primary),
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -70,17 +68,9 @@ class QalamPoetCard extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             if (isPublicDomain)
-              Icon(
-                Icons.public,
-                size: 16,
-                color: colors.onSurfaceVariant,
-              ),
+              Icon(Icons.public, size: 16, color: colors.onSurfaceVariant),
             const SizedBox(width: 4),
-            Icon(
-              Icons.chevron_right,
-              size: 20,
-              color: colors.onSurfaceVariant,
-            ),
+            Icon(Icons.chevron_right, size: 20, color: colors.onSurfaceVariant),
           ],
         ),
       ),

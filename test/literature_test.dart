@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:go_router/go_router.dart';
 import 'helpers/test_helper.dart'; // We created this
 
 void main() {
-  testWidgets('Literature Hub Screen renders and navigates to sections', (tester) async {
-    final app = await openApp(tester, route: '/');
-    
+  testWidgets('Literature Hub Screen renders and navigates to sections', (
+    tester,
+  ) async {
+    await openApp(tester, route: '/');
+
     final hubFinder = find.text('Мероси адабӣ');
     await tester.scrollUntilVisible(hubFinder, 300);
     expect(hubFinder, findsOneWidget);

@@ -94,19 +94,14 @@ class WorksListScreen extends ConsumerWidget {
                 }
 
                 return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final work = works[index];
-                      return _WorkListItem(work: work);
-                    },
-                    childCount: works.length,
-                  ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final work = works[index];
+                    return _WorkListItem(work: work);
+                  }, childCount: works.length),
                 );
               },
             ),
-            const SliverToBoxAdapter(
-              child: SizedBox(height: 32),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 32)),
           ],
         ),
       ),
@@ -127,14 +122,17 @@ class _WorkListItem extends ConsumerWidget {
     final authorAsync = ref.watch(authorByIdProvider(work.authorId));
     final author = authorAsync.valueOrNull;
 
-    final title = (isPersian && work.titlePersian != null && work.titlePersian!.isNotEmpty)
+    final title =
+        (isPersian &&
+            work.titlePersian != null &&
+            work.titlePersian!.isNotEmpty)
         ? work.titlePersian!
         : work.title;
 
     final authorName = author != null
         ? ((isPersian && author.canonicalNamePersian != null)
-            ? author.canonicalNamePersian!
-            : author.canonicalName)
+              ? author.canonicalNamePersian!
+              : author.canonicalName)
         : work.authorId;
 
     return InkWell(
@@ -188,13 +186,13 @@ class _WorkListItem extends ConsumerWidget {
             ),
             const SizedBox(width: 12),
             if (work.verification.finalStatus == VerificationStatus.approved)
-              const Icon(Icons.check_circle_outline, size: 16, color: QalamColors.forest),
+              const Icon(
+                Icons.check_circle_outline,
+                size: 16,
+                color: QalamColors.forest,
+              ),
             const SizedBox(width: 8),
-            Icon(
-              Icons.chevron_right,
-              size: 20,
-              color: colors.onSurfaceVariant,
-            ),
+            Icon(Icons.chevron_right, size: 20, color: colors.onSurfaceVariant),
           ],
         ),
       ),

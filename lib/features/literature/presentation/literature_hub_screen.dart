@@ -66,7 +66,9 @@ class LiteratureHubScreen extends ConsumerWidget {
                 // Page Header
                 SliverToBoxAdapter(
                   child: QalamPageHeader(
-                    eyebrow: isPersian ? 'گنجینهٔ ادب تاجیک' : 'ГАНҶИНАИ АДАБИ ТОҶИК',
+                    eyebrow: isPersian
+                        ? 'گنجینهٔ ادب تاجیک'
+                        : 'ГАНҶИНАИ АДАБИ ТОҶИК',
                     title: AppTranslations.get('lit_title', lang),
                     subtitle: isPersian
                         ? 'گنجینهٔ شعر و حکمت تاجیک با استناد به نسخه‌های چاپی و معتبر'
@@ -86,10 +88,8 @@ class LiteratureHubScreen extends ConsumerWidget {
                         child: Center(child: CircularProgressIndicator()),
                       ),
                       error: (_, _) => const SizedBox.shrink(),
-                      data: (work) => _DailyVerseCard(
-                        work: work,
-                        isPersian: isPersian,
-                      ),
+                      data: (work) =>
+                          _DailyVerseCard(work: work, isPersian: isPersian),
                     ),
                   ),
                 ),
@@ -105,9 +105,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                       children: [
                         Text(
                           isPersian ? 'بخش‌های گنجینه' : 'БАХШҲОИ ГАНҶИНА',
-                          style: QalamTypography.eyebrow(
-                            color: colors.primary,
-                          ),
+                          style: QalamTypography.eyebrow(color: colors.primary),
                         ),
                         const SizedBox(height: 12),
                         // 01: Poets
@@ -150,9 +148,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
-                const SliverToBoxAdapter(
-                  child: SizedBox(height: 48),
-                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 48)),
               ],
             ),
           ),
@@ -167,10 +163,7 @@ class _DailyVerseCard extends ConsumerWidget {
   final LiteraryWork? work;
   final bool isPersian;
 
-  const _DailyVerseCard({
-    required this.work,
-    required this.isPersian,
-  });
+  const _DailyVerseCard({required this.work, required this.isPersian});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -178,16 +171,16 @@ class _DailyVerseCard extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
-    final accentColor =
-        isDark ? QalamColors.antiqueGoldSoft : QalamColors.burgundySoft;
-    final mutedColor =
-        isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
+    final accentColor = isDark
+        ? QalamColors.antiqueGoldSoft
+        : QalamColors.burgundySoft;
+    final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
 
     if (work == null) {
       return Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: colors.surfaceContainerHighest.withOpacity(0.5),
+          color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
           border: Border.all(color: colors.outlineVariant, width: 0.5),
         ),
@@ -225,15 +218,15 @@ class _DailyVerseCard extends ConsumerWidget {
     final author = authorAsync.valueOrNull;
     final authorName = author != null
         ? ((isPersian && author.canonicalNamePersian != null)
-            ? author.canonicalNamePersian!
-            : author.canonicalName)
+              ? author.canonicalNamePersian!
+              : author.canonicalName)
         : work!.authorId;
 
     final verseText = (work!.incipit != null && work!.incipit!.isNotEmpty)
         ? '«${work!.incipit}»'
         : (isPersian && work!.titlePersian != null
-            ? work!.titlePersian!
-            : work!.title);
+              ? work!.titlePersian!
+              : work!.title);
 
     return Material(
       color: bg,

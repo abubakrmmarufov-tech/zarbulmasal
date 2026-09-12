@@ -43,15 +43,18 @@ void main() {
       expect(firstSource.city, isNotEmpty);
     });
 
-    test('loadSchoolCanon loads official curriculum entries from assets', () async {
-      final canon = await repository.loadSchoolCanon();
-      expect(canon, isNotEmpty);
-      expect(canon.length, greaterThanOrEqualTo(20));
+    test(
+      'loadSchoolCanon loads official curriculum entries from assets',
+      () async {
+        final canon = await repository.loadSchoolCanon();
+        expect(canon, isNotEmpty);
+        expect(canon.length, greaterThanOrEqualTo(20));
 
-      final rudakiCanon = canon.where((c) => c.authorId == 'rudaki').toList();
-      expect(rudakiCanon, isNotEmpty);
-      expect(rudakiCanon.every((c) => c.isMandatory), isTrue);
-    });
+        final rudakiCanon = canon.where((c) => c.authorId == 'rudaki').toList();
+        expect(rudakiCanon, isNotEmpty);
+        expect(rudakiCanon.every((c) => c.isMandatory), isTrue);
+      },
+    );
 
     test('loadOralHeritage loads folklore oral heritage from assets', () async {
       final folklore = await repository.loadOralHeritage();
@@ -60,19 +63,19 @@ void main() {
     });
 
     group('getApprovedWorks', () {
-      final approvedWork = LiteraryWork(
+      final approvedWork = const LiteraryWork(
         id: 'approved-1',
         authorId: 'rudaki',
         title: 'Бӯи ҷӯи Мӯлиён',
         textTajik: 'Бӯи ҷӯи Мӯлиён ояд ҳаме',
         textStatus: TextStatus.verified,
-        rights: const RightsRecord(
+        rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
           fullTextAllowed: true,
           excerptAllowed: true,
         ),
-        verification: const VerificationRecord(
+        verification: VerificationRecord(
           primarySourceChecked: true,
           secondSourceChecked: true,
           titleChecked: true,
@@ -85,34 +88,34 @@ void main() {
         ),
       );
 
-      final unverifiedWork = LiteraryWork(
+      final unverifiedWork = const LiteraryWork(
         id: 'unverified-1',
         authorId: 'rudaki',
         title: 'Шеъри тасдиқнашуда',
         textStatus: TextStatus.needsReview,
-        rights: const RightsRecord(
+        rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
           fullTextAllowed: true,
           excerptAllowed: true,
         ),
-        verification: const VerificationRecord(
+        verification: VerificationRecord(
           finalStatus: VerificationStatus.needsReview,
         ),
       );
 
-      final blockedWork = LiteraryWork(
+      final blockedWork = const LiteraryWork(
         id: 'blocked-1',
         authorId: 'contemporary',
         title: 'Шеъри масдудшуда',
         textStatus: TextStatus.blocked,
-        rights: const RightsRecord(
+        rights: RightsRecord(
           status: RightsStatus.blocked,
           reasoning: 'Blocked content',
           fullTextAllowed: false,
           excerptAllowed: false,
         ),
-        verification: const VerificationRecord(
+        verification: VerificationRecord(
           finalStatus: VerificationStatus.rejected,
         ),
       );
@@ -142,19 +145,19 @@ void main() {
     });
 
     group('getDailyVerse', () {
-      final work1 = LiteraryWork(
+      final work1 = const LiteraryWork(
         id: 'work-1',
         authorId: 'rudaki',
         title: 'Work 1',
         textTajik: 'Text 1',
         textStatus: TextStatus.verified,
-        rights: const RightsRecord(
+        rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
           fullTextAllowed: true,
           excerptAllowed: true,
         ),
-        verification: const VerificationRecord(
+        verification: VerificationRecord(
           primarySourceChecked: true,
           secondSourceChecked: true,
           titleChecked: true,
@@ -167,19 +170,19 @@ void main() {
         ),
       );
 
-      final work2 = LiteraryWork(
+      final work2 = const LiteraryWork(
         id: 'work-2',
         authorId: 'rudaki',
         title: 'Work 2',
         textTajik: 'Text 2',
         textStatus: TextStatus.verified,
-        rights: const RightsRecord(
+        rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
           fullTextAllowed: true,
           excerptAllowed: true,
         ),
-        verification: const VerificationRecord(
+        verification: VerificationRecord(
           primarySourceChecked: true,
           secondSourceChecked: true,
           titleChecked: true,
@@ -192,18 +195,18 @@ void main() {
         ),
       );
 
-      final unapprovedWork = LiteraryWork(
+      final unapprovedWork = const LiteraryWork(
         id: 'work-unapproved',
         authorId: 'rudaki',
         title: 'Unapproved',
         textStatus: TextStatus.needsReview,
-        rights: const RightsRecord(
+        rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
           fullTextAllowed: true,
           excerptAllowed: true,
         ),
-        verification: const VerificationRecord(
+        verification: VerificationRecord(
           finalStatus: VerificationStatus.needsReview,
         ),
       );
@@ -214,10 +217,9 @@ void main() {
       });
 
       test('returns null when no works in list are approved', () {
-        final result = repository.getDailyVerse(
-          DateTime(2026, 9, 10),
-          [unapprovedWork],
-        );
+        final result = repository.getDailyVerse(DateTime(2026, 9, 10), [
+          unapprovedWork,
+        ]);
         expect(result, isNull);
       });
 
@@ -227,7 +229,10 @@ void main() {
         final dateSameDayDifferentTime = DateTime(2026, 9, 10, 23, 59);
 
         final result1 = repository.getDailyVerse(date, works);
-        final result2 = repository.getDailyVerse(dateSameDayDifferentTime, works);
+        final result2 = repository.getDailyVerse(
+          dateSameDayDifferentTime,
+          works,
+        );
 
         expect(result1, isNotNull);
         expect(result1!.id, isIn(['work-1', 'work-2']));
@@ -249,14 +254,17 @@ void main() {
     });
 
     group('Helper lookup methods', () {
-      test('getAuthorById finds existing author and null for missing', () async {
-        final rudaki = await repository.getAuthorById('rudaki');
-        expect(rudaki, isNotNull);
-        expect(rudaki!.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
+      test(
+        'getAuthorById finds existing author and null for missing',
+        () async {
+          final rudaki = await repository.getAuthorById('rudaki');
+          expect(rudaki, isNotNull);
+          expect(rudaki!.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
 
-        final unknown = await repository.getAuthorById('non-existent');
-        expect(unknown, isNull);
-      });
+          final unknown = await repository.getAuthorById('non-existent');
+          expect(unknown, isNull);
+        },
+      );
 
       test('getCanonByAuthor returns canon entries for given author', () async {
         final canon = await repository.getCanonByAuthor('rudaki');

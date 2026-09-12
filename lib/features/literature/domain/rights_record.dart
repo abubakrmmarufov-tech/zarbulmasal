@@ -17,7 +17,10 @@ enum RightsStatus {
     if (value == null || value.trim().isEmpty) {
       return RightsStatus.unknown;
     }
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final status in RightsStatus.values) {
       if (status.name.toLowerCase() == normalized) {
         return status;
@@ -75,15 +78,22 @@ class RightsRecord {
   /// Creates a [RightsRecord] from a JSON map.
   factory RightsRecord.fromJson(Map<String, dynamic> json) {
     return RightsRecord(
-      authorDeathYear: (json['authorDeathYear'] ?? json['author_death_year'])?.toString(),
+      authorDeathYear: (json['authorDeathYear'] ?? json['author_death_year'])
+          ?.toString(),
       status: RightsStatus.fromString(
         (json['status'] ?? json['rights_status']) as String?,
       ),
       reasoning: (json['reasoning'] ?? '') as String,
       rightsSource: (json['rightsSource'] ?? json['rights_source']) as String?,
-      fullTextAllowed: _parseBool(json['fullTextAllowed'] ?? json['full_text_allowed']),
-      excerptAllowed: _parseBool(json['excerptAllowed'] ?? json['excerpt_allowed']),
-      permissionReference: (json['permissionReference'] ?? json['permission_reference']) as String?,
+      fullTextAllowed: _parseBool(
+        json['fullTextAllowed'] ?? json['full_text_allowed'],
+      ),
+      excerptAllowed: _parseBool(
+        json['excerptAllowed'] ?? json['excerpt_allowed'],
+      ),
+      permissionReference:
+          (json['permissionReference'] ?? json['permission_reference'])
+              as String?,
     );
   }
 
@@ -142,14 +152,14 @@ class RightsRecord {
 
   @override
   int get hashCode => Object.hash(
-        authorDeathYear,
-        status,
-        reasoning,
-        rightsSource,
-        fullTextAllowed,
-        excerptAllowed,
-        permissionReference,
-      );
+    authorDeathYear,
+    status,
+    reasoning,
+    rightsSource,
+    fullTextAllowed,
+    excerptAllowed,
+    permissionReference,
+  );
 
   @override
   String toString() {

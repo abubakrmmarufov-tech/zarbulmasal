@@ -43,7 +43,9 @@ class PoemReaderScreen extends ConsumerWidget {
         error: (err, _) => Center(
           child: EmptyState(
             icon: Icons.error_outline,
-            title: isPersian ? 'خطا در بارگیری اثر' : 'Хато ҳангоми боргирии асар',
+            title: isPersian
+                ? 'خطا در بارگیری اثر'
+                : 'Хато ҳангоми боргирии асар',
             subtitle: err.toString(),
             action: OutlinedButton(
               onPressed: () => qalamBack(context),
@@ -53,9 +55,9 @@ class PoemReaderScreen extends ConsumerWidget {
         ),
         data: (works) {
           final work = works.cast<LiteraryWork?>().firstWhere(
-                (w) => w?.id == workId,
-                orElse: () => null,
-              );
+            (w) => w?.id == workId,
+            orElse: () => null,
+          );
 
           if (work == null) {
             return Center(
@@ -94,25 +96,30 @@ class _PoemReaderContent extends ConsumerWidget {
     final authorAsync = ref.watch(authorByIdProvider(work.authorId));
     final author = authorAsync.valueOrNull;
 
-    final isFavorited =
-        ref.watch(literaryFavoritesProvider).contains(work.id);
+    final isFavorited = ref.watch(literaryFavoritesProvider).contains(work.id);
 
-    final title = (isPersian && work.titlePersian != null && work.titlePersian!.isNotEmpty)
+    final title =
+        (isPersian &&
+            work.titlePersian != null &&
+            work.titlePersian!.isNotEmpty)
         ? work.titlePersian!
         : work.title;
 
     final authorName = author != null
         ? ((isPersian && author.canonicalNamePersian != null)
-            ? author.canonicalNamePersian!
-            : author.canonicalName)
+              ? author.canonicalNamePersian!
+              : author.canonicalName)
         : work.authorId;
 
     final displayText = (isPersian && work.hasPersianText)
         ? work.textPersian!
         : (work.hasTajikText ? work.textTajik! : (work.textPersian ?? ''));
 
-    final isRtl = isPersian || (work.scriptSource == ScriptSource.persianArabic && !work.hasTajikText);
-    final hasVerifiedText = work.textStatus == TextStatus.verified && displayText.trim().isNotEmpty;
+    final isRtl =
+        isPersian ||
+        (work.scriptSource == ScriptSource.persianArabic && !work.hasTajikText);
+    final hasVerifiedText =
+        work.textStatus == TextStatus.verified && displayText.trim().isNotEmpty;
 
     return Column(
       children: [
@@ -136,10 +143,10 @@ class _PoemReaderContent extends ConsumerWidget {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              color: colors.primary.withOpacity(0.08),
+                              color: colors.primary.withValues(alpha: 0.08),
                               borderRadius: BorderRadius.circular(4),
                               border: Border.all(
-                                color: colors.primary.withOpacity(0.3),
+                                color: colors.primary.withValues(alpha: 0.3),
                                 width: 0.5,
                               ),
                             ),
@@ -153,7 +160,8 @@ class _PoemReaderContent extends ConsumerWidget {
                           ),
                           const SizedBox(width: 10),
                           QalamSourceBadge(
-                            isVerified: work.verification.finalStatus ==
+                            isVerified:
+                                work.verification.finalStatus ==
                                 VerificationStatus.approved,
                             label: isPersian
                                 ? 'متن تأیید شده است'
@@ -204,8 +212,9 @@ class _PoemReaderContent extends ConsumerWidget {
                       if (hasVerifiedText) ...[
                         SelectableText(
                           displayText,
-                          textDirection:
-                              isRtl ? TextDirection.rtl : TextDirection.ltr,
+                          textDirection: isRtl
+                              ? TextDirection.rtl
+                              : TextDirection.ltr,
                           textAlign: isRtl ? TextAlign.right : TextAlign.left,
                           style: QalamTypography.heroProverb(
                             color: colors.onSurface,
@@ -217,7 +226,9 @@ class _PoemReaderContent extends ConsumerWidget {
                         Container(
                           padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: colors.surfaceContainerHighest.withOpacity(0.5),
+                            color: colors.surfaceContainerHighest.withValues(
+                              alpha: 0.5,
+                            ),
                             border: Border.all(
                               color: colors.outlineVariant,
                               width: 0.5,
@@ -287,7 +298,9 @@ class _PoemReaderContent extends ConsumerWidget {
                         Container(
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
-                            color: colors.surfaceContainerHighest.withOpacity(0.3),
+                            color: colors.surfaceContainerHighest.withValues(
+                              alpha: 0.3,
+                            ),
                             borderRadius: BorderRadius.circular(4),
                             border: Border.all(
                               color: colors.outlineVariant,
@@ -341,14 +354,20 @@ class _PoemReaderContent extends ConsumerWidget {
                 // Bookmark button
                 IconButton(
                   tooltip: isFavorited
-                      ? (isPersian ? 'حذف از نشان‌شده‌ها' : 'Аз маҳфуз баровардан')
+                      ? (isPersian
+                            ? 'حذف از نشان‌شده‌ها'
+                            : 'Аз маҳфуз баровардан')
                       : (isPersian ? 'نشان کردن' : 'Маҳфуз кардан'),
                   icon: Icon(
                     isFavorited ? Icons.bookmark : Icons.bookmark_border,
-                    color: isFavorited ? colors.primary : colors.onSurfaceVariant,
+                    color: isFavorited
+                        ? colors.primary
+                        : colors.onSurfaceVariant,
                   ),
                   onPressed: () {
-                    ref.read(literaryFavoritesProvider.notifier).toggle(work.id);
+                    ref
+                        .read(literaryFavoritesProvider.notifier)
+                        .toggle(work.id);
                   },
                 ),
                 // Share button (only if rights permit full text)

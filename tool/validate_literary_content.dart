@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -22,8 +24,8 @@ void main() {
   final poets = jsonDecode(poetsFile.readAsStringSync()) as List;
   final works = jsonDecode(worksFile.readAsStringSync()) as List;
   final sources = jsonDecode(sourcesFile.readAsStringSync()) as List;
-  final canon = jsonDecode(canonFile.readAsStringSync()) as List;
-  final oral = jsonDecode(oralFile.readAsStringSync()) as List;
+  jsonDecode(canonFile.readAsStringSync()) as List;
+  jsonDecode(oralFile.readAsStringSync()) as List;
 
   int approved = 0;
   int rejected = 0;
@@ -91,7 +93,9 @@ void main() {
     if (verification['finalStatus'] == 'approved') {
       approved++;
       if (textStatus != 'verified') {
-        print("Violation: Approved work does not have verified textStatus: ${work['id']}");
+        print(
+          "Violation: Approved work does not have verified textStatus: ${work['id']}",
+        );
         exit(1);
       }
       if (work['primarySource'] == null) {
@@ -99,10 +103,12 @@ void main() {
         exit(1);
       }
       if (rights['status'] == 'unknown' || rights['status'] == 'blocked') {
-        print("Violation: Approved work has unknown/blocked rights: ${work['id']}");
+        print(
+          "Violation: Approved work has unknown/blocked rights: ${work['id']}",
+        );
         exit(1);
       }
-      
+
       final primary = work['primarySource'];
       if (primary['pageStart'] == null) {
         missingPage++;

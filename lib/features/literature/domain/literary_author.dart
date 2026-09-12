@@ -89,19 +89,31 @@ class LiteraryAuthor {
     final rightsJson = json['rights'];
     return LiteraryAuthor(
       id: (json['id'] ?? '') as String,
-      canonicalName: (json['canonicalName'] ?? json['canonical_name'] ?? '') as String,
-      canonicalNamePersian: (json['canonicalNamePersian'] ?? json['canonical_name_persian']) as String?,
+      canonicalName:
+          (json['canonicalName'] ?? json['canonical_name'] ?? '') as String,
+      canonicalNamePersian:
+          (json['canonicalNamePersian'] ?? json['canonical_name_persian'])
+              as String?,
       aliases: _parseStringList(json['aliases']),
       birthYear: (json['birthYear'] ?? json['birth_year'])?.toString(),
       deathYear: (json['deathYear'] ?? json['death_year'])?.toString(),
       birthPlace: (json['birthPlace'] ?? json['birth_place']) as String?,
-      literaryPeriod: (json['literaryPeriod'] ?? json['literary_period'] ?? '') as String,
-      biographyTj: (json['biographyTj'] ?? json['biography_tj'] ?? '') as String,
+      literaryPeriod:
+          (json['literaryPeriod'] ?? json['literary_period'] ?? '') as String,
+      biographyTj:
+          (json['biographyTj'] ?? json['biography_tj'] ?? '') as String,
       biographyFa: (json['biographyFa'] ?? json['biography_fa']) as String?,
-      biographySource: (json['biographySource'] ?? json['biography_source'] ?? '') as String,
-      majorWorkIds: _parseStringList(json['majorWorkIds'] ?? json['major_work_ids']),
-      officialTitles: _parseStringList(json['officialTitles'] ?? json['official_titles']),
-      educationGrades: _parseStringList(json['educationGrades'] ?? json['education_grades']),
+      biographySource:
+          (json['biographySource'] ?? json['biography_source'] ?? '') as String,
+      majorWorkIds: _parseStringList(
+        json['majorWorkIds'] ?? json['major_work_ids'],
+      ),
+      officialTitles: _parseStringList(
+        json['officialTitles'] ?? json['official_titles'],
+      ),
+      educationGrades: _parseStringList(
+        json['educationGrades'] ?? json['education_grades'],
+      ),
       rights: rightsJson is Map<String, dynamic>
           ? RightsRecord.fromJson(rightsJson)
           : const RightsRecord(

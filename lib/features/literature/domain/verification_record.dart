@@ -13,7 +13,10 @@ enum VerificationStatus {
     if (value == null || value.trim().isEmpty) {
       return VerificationStatus.needsReview;
     }
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final status in VerificationStatus.values) {
       if (status.name.toLowerCase() == normalized) {
         return status;
@@ -96,18 +99,32 @@ class VerificationRecord {
     return VerificationRecord(
       verifiedBy: (json['verifiedBy'] ?? json['verified_by']) as String?,
       verifiedDate: (json['verifiedDate'] ?? json['verified_date']) as String?,
-      primarySourceChecked: _parseBool(json['primarySourceChecked'] ?? json['primary_source_checked']),
-      secondSourceChecked: _parseBool(json['secondSourceChecked'] ?? json['second_source_checked']),
-      titleChecked: _parseBool(json['titleChecked'] ?? json['title_checked']),
-      authorshipChecked: _parseBool(json['authorshipChecked'] ?? json['authorship_checked']),
-      pageChecked: _parseBool(json['pageChecked'] ?? json['page_checked']),
-      textLineByLineChecked: _parseBool(json['textLineByLineChecked'] ?? json['text_line_by_line_checked']),
-      scriptChecked: _parseBool(json['scriptChecked'] ?? json['script_checked']),
-      copyrightChecked: _parseBool(json['copyrightChecked'] ?? json['copyright_checked']),
-      finalStatus: VerificationStatus.fromString(
-        (json['finalStatus'] ?? json['final_status'] ?? json['status']) as String?,
+      primarySourceChecked: _parseBool(
+        json['primarySourceChecked'] ?? json['primary_source_checked'],
       ),
-      rejectionReason: (json['rejectionReason'] ?? json['rejection_reason']) as String?,
+      secondSourceChecked: _parseBool(
+        json['secondSourceChecked'] ?? json['second_source_checked'],
+      ),
+      titleChecked: _parseBool(json['titleChecked'] ?? json['title_checked']),
+      authorshipChecked: _parseBool(
+        json['authorshipChecked'] ?? json['authorship_checked'],
+      ),
+      pageChecked: _parseBool(json['pageChecked'] ?? json['page_checked']),
+      textLineByLineChecked: _parseBool(
+        json['textLineByLineChecked'] ?? json['text_line_by_line_checked'],
+      ),
+      scriptChecked: _parseBool(
+        json['scriptChecked'] ?? json['script_checked'],
+      ),
+      copyrightChecked: _parseBool(
+        json['copyrightChecked'] ?? json['copyright_checked'],
+      ),
+      finalStatus: VerificationStatus.fromString(
+        (json['finalStatus'] ?? json['final_status'] ?? json['status'])
+            as String?,
+      ),
+      rejectionReason:
+          (json['rejectionReason'] ?? json['rejection_reason']) as String?,
     );
   }
 
@@ -152,7 +169,8 @@ class VerificationRecord {
       titleChecked: titleChecked ?? this.titleChecked,
       authorshipChecked: authorshipChecked ?? this.authorshipChecked,
       pageChecked: pageChecked ?? this.pageChecked,
-      textLineByLineChecked: textLineByLineChecked ?? this.textLineByLineChecked,
+      textLineByLineChecked:
+          textLineByLineChecked ?? this.textLineByLineChecked,
       scriptChecked: scriptChecked ?? this.scriptChecked,
       copyrightChecked: copyrightChecked ?? this.copyrightChecked,
       finalStatus: finalStatus ?? this.finalStatus,
@@ -186,19 +204,19 @@ class VerificationRecord {
 
   @override
   int get hashCode => Object.hash(
-        verifiedBy,
-        verifiedDate,
-        primarySourceChecked,
-        secondSourceChecked,
-        titleChecked,
-        authorshipChecked,
-        pageChecked,
-        textLineByLineChecked,
-        scriptChecked,
-        copyrightChecked,
-        finalStatus,
-        rejectionReason,
-      );
+    verifiedBy,
+    verifiedDate,
+    primarySourceChecked,
+    secondSourceChecked,
+    titleChecked,
+    authorshipChecked,
+    pageChecked,
+    textLineByLineChecked,
+    scriptChecked,
+    copyrightChecked,
+    finalStatus,
+    rejectionReason,
+  );
 
   @override
   String toString() {

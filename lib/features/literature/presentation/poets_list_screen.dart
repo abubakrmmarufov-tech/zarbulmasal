@@ -80,7 +80,9 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                           )
                         : null,
                     filled: true,
-                    fillColor: colors.surfaceContainerHighest.withOpacity(0.4),
+                    fillColor: colors.surfaceContainerHighest.withValues(
+                      alpha: 0.4,
+                    ),
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 16,
                       vertical: 12,
@@ -92,7 +94,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
                       borderSide: BorderSide(
-                        color: colors.outlineVariant.withOpacity(0.6),
+                        color: colors.outlineVariant.withValues(alpha: 0.6),
                       ),
                     ),
                   ),
@@ -118,16 +120,20 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
               data: (authors) {
                 final filtered = authors.where((author) {
                   if (_filterQuery.isEmpty) return true;
-                  final matchName =
-                      author.canonicalName.toLowerCase().contains(_filterQuery);
-                  final matchFa = author.canonicalNamePersian
-                          ?.toLowerCase()
-                          .contains(_filterQuery) ??
+                  final matchName = author.canonicalName.toLowerCase().contains(
+                    _filterQuery,
+                  );
+                  final matchFa =
+                      author.canonicalNamePersian?.toLowerCase().contains(
+                        _filterQuery,
+                      ) ??
                       false;
-                  final matchPeriod =
-                      author.literaryPeriod.toLowerCase().contains(_filterQuery);
-                  final matchAliases = author.aliases
-                      .any((a) => a.toLowerCase().contains(_filterQuery));
+                  final matchPeriod = author.literaryPeriod
+                      .toLowerCase()
+                      .contains(_filterQuery);
+                  final matchAliases = author.aliases.any(
+                    (a) => a.toLowerCase().contains(_filterQuery),
+                  );
                   return matchName || matchFa || matchPeriod || matchAliases;
                 }).toList();
 
@@ -147,28 +153,24 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 }
 
                 return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final poet = filtered[index];
-                      final name = (isPersian && poet.canonicalNamePersian != null)
-                          ? poet.canonicalNamePersian!
-                          : poet.canonicalName;
-                      return QalamPoetCard(
-                        name: name,
-                        dates: poet.lifespan,
-                        period: poet.literaryPeriod,
-                        isPublicDomain: poet.isPublicDomain,
-                        onTap: () => context.push('/literature/poet/${poet.id}'),
-                      );
-                    },
-                    childCount: filtered.length,
-                  ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final poet = filtered[index];
+                    final name =
+                        (isPersian && poet.canonicalNamePersian != null)
+                        ? poet.canonicalNamePersian!
+                        : poet.canonicalName;
+                    return QalamPoetCard(
+                      name: name,
+                      dates: poet.lifespan,
+                      period: poet.literaryPeriod,
+                      isPublicDomain: poet.isPublicDomain,
+                      onTap: () => context.push('/literature/poet/${poet.id}'),
+                    );
+                  }, childCount: filtered.length),
                 );
               },
             ),
-            const SliverToBoxAdapter(
-              child: SizedBox(height: 32),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 32)),
           ],
         ),
       ),

@@ -61,12 +61,20 @@ class SchoolCanonEntry {
       authorId: (json['authorId'] ?? json['author_id'] ?? '') as String,
       grade: (json['grade'] ?? '').toString(),
       subject: (json['subject'] ?? '') as String,
-      textbookTitle: (json['textbookTitle'] ?? json['textbook_title'] ?? '') as String,
-      textbookAuthors: (json['textbookAuthors'] ?? json['textbook_authors'] ?? '') as String,
-      textbookPublisher: (json['textbookPublisher'] ?? json['textbook_publisher'] ?? '') as String,
-      textbookYear: (json['textbookYear'] ?? json['textbook_year'] ?? '').toString(),
-      curriculumType: (json['curriculumType'] ?? json['curriculum_type'] ?? 'mandatory') as String,
-      sourceEvidence: (json['sourceEvidence'] ?? json['source_evidence'] ?? '') as String,
+      textbookTitle:
+          (json['textbookTitle'] ?? json['textbook_title'] ?? '') as String,
+      textbookAuthors:
+          (json['textbookAuthors'] ?? json['textbook_authors'] ?? '') as String,
+      textbookPublisher:
+          (json['textbookPublisher'] ?? json['textbook_publisher'] ?? '')
+              as String,
+      textbookYear: (json['textbookYear'] ?? json['textbook_year'] ?? '')
+          .toString(),
+      curriculumType:
+          (json['curriculumType'] ?? json['curriculum_type'] ?? 'mandatory')
+              as String,
+      sourceEvidence:
+          (json['sourceEvidence'] ?? json['source_evidence'] ?? '') as String,
     );
   }
 

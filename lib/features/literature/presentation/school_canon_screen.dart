@@ -55,7 +55,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
             // Header
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۳ / برنامهٔ مکتبی' : '03 / БАРНОМАИ МАКТАБӢ',
+                eyebrow: isPersian
+                    ? '۰۳ / برنامهٔ مکتبی'
+                    : '03 / БАРНОМАИ МАКТАБӢ',
                 title: AppTranslations.get('lit_school', lang),
                 subtitle: isPersian
                     ? 'آثار و شاعران مصوب برنامهٔ درسی وزارت معارف برای صنف‌های ۴ تا ۱۱'
@@ -95,7 +97,10 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
 
                 // Extract all unique grades and sort them
                 final grades = entries.map((e) => e.grade).toSet().toList()
-                  ..sort((a, b) => (int.tryParse(a) ?? 0).compareTo(int.tryParse(b) ?? 0));
+                  ..sort(
+                    (a, b) =>
+                        (int.tryParse(a) ?? 0).compareTo(int.tryParse(b) ?? 0),
+                  );
 
                 final filteredEntries = _selectedGrade == null
                     ? entries
@@ -107,7 +112,10 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                   grouped.putIfAbsent(entry.grade, () => []).add(entry);
                 }
                 final sortedGrades = grouped.keys.toList()
-                  ..sort((a, b) => (int.tryParse(a) ?? 0).compareTo(int.tryParse(b) ?? 0));
+                  ..sort(
+                    (a, b) =>
+                        (int.tryParse(a) ?? 0).compareTo(int.tryParse(b) ?? 0),
+                  );
 
                 return SliverMainAxisGroup(
                   slivers: [
@@ -122,7 +130,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                         child: Row(
                           children: [
                             ChoiceChip(
-                              label: Text(isPersian ? 'همهٔ صنف‌ها' : 'Ҳамаи синфҳо'),
+                              label: Text(
+                                isPersian ? 'همهٔ صنف‌ها' : 'Ҳамаи синфҳо',
+                              ),
                               selected: _selectedGrade == null,
                               onSelected: (selected) {
                                 if (selected) {
@@ -185,27 +195,22 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                         ),
                       ),
                       SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            final entry = grouped[grade]![index];
-                            final author = authorsMap[entry.authorId];
-                            return _CanonEntryCard(
-                              entry: entry,
-                              author: author,
-                              isPersian: isPersian,
-                            );
-                          },
-                          childCount: grouped[grade]!.length,
-                        ),
+                        delegate: SliverChildBuilderDelegate((context, index) {
+                          final entry = grouped[grade]![index];
+                          final author = authorsMap[entry.authorId];
+                          return _CanonEntryCard(
+                            entry: entry,
+                            author: author,
+                            isPersian: isPersian,
+                          );
+                        }, childCount: grouped[grade]!.length),
                       ),
                     ],
                   ],
                 );
               },
             ),
-            const SliverToBoxAdapter(
-              child: SizedBox(height: 48),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 48)),
           ],
         ),
       ),
@@ -230,8 +235,8 @@ class _CanonEntryCard extends StatelessWidget {
 
     final authorName = author != null
         ? ((isPersian && author!.canonicalNamePersian != null)
-            ? author!.canonicalNamePersian!
-            : author!.canonicalName)
+              ? author!.canonicalNamePersian!
+              : author!.canonicalName)
         : entry.authorId;
 
     final isMandatory = entry.isMandatory;
@@ -245,10 +250,7 @@ class _CanonEntryCard extends StatelessWidget {
         }
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 16,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(color: colors.outlineVariant, width: 0.5),
@@ -269,10 +271,13 @@ class _CanonEntryCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: isMandatory
-                        ? QalamColors.forest.withOpacity(0.1)
+                        ? QalamColors.forest.withValues(alpha: 0.1)
                         : colors.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(3),
                   ),
@@ -281,7 +286,9 @@ class _CanonEntryCard extends StatelessWidget {
                         ? (isPersian ? 'حتماً' : 'Ҳатмӣ')
                         : (isPersian ? 'توصیه‌شده' : 'Тавсияшаванда'),
                     style: QalamTypography.meta(
-                      color: isMandatory ? QalamColors.forest : colors.onSurfaceVariant,
+                      color: isMandatory
+                          ? QalamColors.forest
+                          : colors.onSurfaceVariant,
                       fontSize: 10,
                     ),
                   ),
@@ -303,11 +310,7 @@ class _CanonEntryCard extends StatelessWidget {
             // Textbook details
             Row(
               children: [
-                Icon(
-                  Icons.menu_book,
-                  size: 14,
-                  color: colors.onSurfaceVariant,
-                ),
+                Icon(Icons.menu_book, size: 14, color: colors.onSurfaceVariant),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(

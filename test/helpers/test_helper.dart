@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zarbulmasal/core/constants/app_constants.dart';
-import 'package:zarbulmasal/core/design_system/qalam_choice.dart';
-import 'package:zarbulmasal/core/design_system/qalam_category_tile.dart';
-import 'package:zarbulmasal/core/design_system/qalam_level_card.dart';
 import 'package:zarbulmasal/data/models/proverb.dart';
-import 'package:zarbulmasal/data/seed/seed_categories.dart';
-import 'package:zarbulmasal/core/design_system/qalam_flash_card.dart';
-import 'package:zarbulmasal/core/l10n/app_translations.dart';
 import 'package:zarbulmasal/core/theme/app_theme.dart';
-import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
-import 'package:zarbulmasal/shared/widgets/onboarding_overlay.dart';
 
 class TestApp {
   final ProviderContainer container;
@@ -94,4 +85,3 @@ Future<TestApp> openApp(
   await tester.pumpAndSettle();
   return TestApp(container, router);
 }
-

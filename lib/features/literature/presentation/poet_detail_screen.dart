@@ -135,10 +135,10 @@ class _PoetDetailContent extends ConsumerWidget {
                           vertical: 3,
                         ),
                         decoration: BoxDecoration(
-                          color: QalamColors.forest.withOpacity(0.1),
+                          color: QalamColors.forest.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(3),
                           border: Border.all(
-                            color: QalamColors.forest.withOpacity(0.3),
+                            color: QalamColors.forest.withValues(alpha: 0.3),
                             width: 0.5,
                           ),
                         ),
@@ -235,7 +235,9 @@ class _PoetDetailContent extends ConsumerWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: colors.surfaceContainerHighest.withOpacity(0.6),
+                          color: colors.surfaceContainerHighest.withValues(
+                            alpha: 0.6,
+                          ),
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(
                             color: colors.outlineVariant,
@@ -279,7 +281,9 @@ class _PoetDetailContent extends ConsumerWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: colors.surfaceContainerHighest.withOpacity(0.4),
+                    color: colors.surfaceContainerHighest.withValues(
+                      alpha: 0.4,
+                    ),
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(
                       color: colors.outlineVariant,
@@ -290,7 +294,9 @@ class _PoetDetailContent extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        isPersian ? 'منبع استناد زندگینامه:' : 'Сарчашмаи истинод:',
+                        isPersian
+                            ? 'منبع استناد زندگینامه:'
+                            : 'Сарчашмаи истинод:',
                         style: QalamTypography.meta(color: colors.primary),
                       ),
                       const SizedBox(height: 4),
@@ -309,7 +315,11 @@ class _PoetDetailContent extends ConsumerWidget {
                   const SizedBox(height: 24),
                   Row(
                     children: [
-                      Icon(Icons.school_outlined, size: 18, color: colors.primary),
+                      Icon(
+                        Icons.school_outlined,
+                        size: 18,
+                        color: colors.primary,
+                      ),
                       const SizedBox(width: 8),
                       Text(
                         isPersian ? 'برنامهٔ درسی مکتب:' : 'Барномаи таълимӣ:',
@@ -373,7 +383,9 @@ class _PoetDetailContent extends ConsumerWidget {
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: colors.surfaceContainerHighest.withOpacity(0.3),
+                      color: colors.surfaceContainerHighest.withValues(
+                        alpha: 0.3,
+                      ),
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(
                         color: colors.outlineVariant,
@@ -408,82 +420,77 @@ class _PoetDetailContent extends ConsumerWidget {
             }
 
             return SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final work = works[index];
-                  final workTitle = (isPersian && work.titlePersian != null)
-                      ? work.titlePersian!
-                      : work.title;
+              delegate: SliverChildBuilderDelegate((context, index) {
+                final work = works[index];
+                final workTitle = (isPersian && work.titlePersian != null)
+                    ? work.titlePersian!
+                    : work.title;
 
-                  return InkWell(
-                    onTap: () => context.push('/literature/work/${work.id}'),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 14,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: colors.outlineVariant,
-                            width: 0.5,
-                          ),
+                return InkWell(
+                  onTap: () => context.push('/literature/work/${work.id}'),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 14,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: colors.outlineVariant,
+                          width: 0.5,
                         ),
                       ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  workTitle,
-                                  style: QalamTypography.sectionTitle(
-                                    color: colors.onSurface,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                                if (work.incipit != null) ...[
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    '«${work.incipit}»',
-                                    style: QalamTypography.bodySecondary(
-                                      color: colors.onSurfaceVariant,
-                                      fontSize: 13,
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              ],
-                            ),
-                          ),
-                          if (work.verification.finalStatus ==
-                              VerificationStatus.approved)
-                            const Icon(
-                              Icons.check_circle_outline,
-                              size: 16,
-                              color: QalamColors.forest,
-                            ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            Icons.chevron_right,
-                            size: 18,
-                            color: colors.onSurfaceVariant,
-                          ),
-                        ],
-                      ),
                     ),
-                  );
-                },
-                childCount: works.length,
-              ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                workTitle,
+                                style: QalamTypography.sectionTitle(
+                                  color: colors.onSurface,
+                                  fontSize: 17,
+                                ),
+                              ),
+                              if (work.incipit != null) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  '«${work.incipit}»',
+                                  style: QalamTypography.bodySecondary(
+                                    color: colors.onSurfaceVariant,
+                                    fontSize: 13,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                        if (work.verification.finalStatus ==
+                            VerificationStatus.approved)
+                          const Icon(
+                            Icons.check_circle_outline,
+                            size: 16,
+                            color: QalamColors.forest,
+                          ),
+                        const SizedBox(width: 8),
+                        Icon(
+                          Icons.chevron_right,
+                          size: 18,
+                          color: colors.onSurfaceVariant,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }, childCount: works.length),
             );
           },
         ),
-        const SliverToBoxAdapter(
-          child: SizedBox(height: 48),
-        ),
+        const SliverToBoxAdapter(child: SizedBox(height: 48)),
       ],
     );
   }

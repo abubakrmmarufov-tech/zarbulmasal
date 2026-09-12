@@ -27,10 +27,10 @@ class QalamLiteratureCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
-    final mutedColor =
-        isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
-    final accentColor =
-        isDark ? QalamColors.antiqueGoldSoft : QalamColors.burgundySoft;
+    final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
+    final accentColor = isDark
+        ? QalamColors.antiqueGoldSoft
+        : QalamColors.burgundySoft;
 
     return Padding(
       padding: const EdgeInsets.symmetric(

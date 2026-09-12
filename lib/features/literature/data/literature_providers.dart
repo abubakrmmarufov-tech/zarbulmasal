@@ -10,22 +10,21 @@ final literatureRepositoryProvider = Provider<LiteratureRepository>((ref) {
 });
 
 /// Loads all verified literary authors.
-final literaryAuthorsProvider =
-    FutureProvider<List<LiteraryAuthor>>((ref) async {
+final literaryAuthorsProvider = FutureProvider<List<LiteraryAuthor>>((
+  ref,
+) async {
   final repository = ref.watch(literatureRepositoryProvider);
   return repository.loadAuthors();
 });
 
 /// Loads all registered literary works.
-final literaryWorksProvider =
-    FutureProvider<List<LiteraryWork>>((ref) async {
+final literaryWorksProvider = FutureProvider<List<LiteraryWork>>((ref) async {
   final repository = ref.watch(literatureRepositoryProvider);
   return repository.loadWorks();
 });
 
 /// Filters literary works to only those approved and safe for display.
-final approvedWorksProvider =
-    FutureProvider<List<LiteraryWork>>((ref) async {
+final approvedWorksProvider = FutureProvider<List<LiteraryWork>>((ref) async {
   final repository = ref.watch(literatureRepositoryProvider);
   final works = await ref.watch(literaryWorksProvider.future);
   return repository.getApprovedWorks(works);
@@ -39,22 +38,21 @@ final dailyVerseProvider = FutureProvider<LiteraryWork?>((ref) async {
 });
 
 /// Loads the official school curriculum literary canon entries.
-final schoolCanonProvider =
-    FutureProvider<List<SchoolCanonEntry>>((ref) async {
+final schoolCanonProvider = FutureProvider<List<SchoolCanonEntry>>((ref) async {
   final repository = ref.watch(literatureRepositoryProvider);
   return repository.loadSchoolCanon();
 });
 
 /// Loads verified oral heritage and folklore entries.
-final oralHeritageProvider =
-    FutureProvider<List<OralHeritageEntry>>((ref) async {
+final oralHeritageProvider = FutureProvider<List<OralHeritageEntry>>((
+  ref,
+) async {
   final repository = ref.watch(literatureRepositoryProvider);
   return repository.loadOralHeritage();
 });
 
 /// Loads bibliographical source editions.
-final sourceEditionsProvider =
-    FutureProvider<List<SourceEdition>>((ref) async {
+final sourceEditionsProvider = FutureProvider<List<SourceEdition>>((ref) async {
   final repository = ref.watch(literatureRepositoryProvider);
   return repository.loadSources();
 });
@@ -130,20 +128,23 @@ class LiteraryFavoritesNotifier extends StateNotifier<Set<String>> {
 /// Provider for managing bookmarked literary work IDs backed by SharedPreferences.
 final literaryFavoritesProvider =
     StateNotifierProvider<LiteraryFavoritesNotifier, Set<String>>((ref) {
-  return LiteraryFavoritesNotifier();
-});
+      return LiteraryFavoritesNotifier();
+    });
 
 /// Convenience provider returning the list of approved works that are favorited.
-final literaryFavoriteWorksProvider =
-    FutureProvider<List<LiteraryWork>>((ref) async {
+final literaryFavoriteWorksProvider = FutureProvider<List<LiteraryWork>>((
+  ref,
+) async {
   final approved = await ref.watch(approvedWorksProvider.future);
   final favorites = ref.watch(literaryFavoritesProvider);
   return approved.where((w) => favorites.contains(w.id)).toList();
 });
 
 /// Convenience family provider for looking up an author by [id].
-final authorByIdProvider =
-    FutureProvider.family<LiteraryAuthor?, String>((ref, id) async {
+final authorByIdProvider = FutureProvider.family<LiteraryAuthor?, String>((
+  ref,
+  id,
+) async {
   final authors = await ref.watch(literaryAuthorsProvider.future);
   for (final author in authors) {
     if (author.id == id) return author;
@@ -152,15 +153,19 @@ final authorByIdProvider =
 });
 
 /// Convenience family provider for finding works by [authorId].
-final worksByAuthorProvider =
-    FutureProvider.family<List<LiteraryWork>, String>((ref, authorId) async {
-  final works = await ref.watch(literaryWorksProvider.future);
-  return works.where((w) => w.authorId == authorId).toList();
-});
+final worksByAuthorProvider = FutureProvider.family<List<LiteraryWork>, String>(
+  (ref, authorId) async {
+    final works = await ref.watch(literaryWorksProvider.future);
+    return works.where((w) => w.authorId == authorId).toList();
+  },
+);
 
 /// Convenience family provider for finding school canon entries by [authorId].
 final schoolCanonByAuthorProvider =
-    FutureProvider.family<List<SchoolCanonEntry>, String>((ref, authorId) async {
-  final canon = await ref.watch(schoolCanonProvider.future);
-  return canon.where((entry) => entry.authorId == authorId).toList();
-});
+    FutureProvider.family<List<SchoolCanonEntry>, String>((
+      ref,
+      authorId,
+    ) async {
+      final canon = await ref.watch(schoolCanonProvider.future);
+      return canon.where((entry) => entry.authorId == authorId).toList();
+    });

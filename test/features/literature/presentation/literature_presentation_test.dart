@@ -101,9 +101,7 @@ const testOralEntry = OralHeritageEntry(
   publisher: 'Дониш',
   year: '1980',
   page: '42',
-  verification: VerificationRecord(
-    finalStatus: VerificationStatus.approved,
-  ),
+  verification: VerificationRecord(finalStatus: VerificationStatus.approved),
 );
 
 Future<void> pumpTestApp(
@@ -121,13 +119,17 @@ Future<void> pumpTestApp(
   addTearDown(tester.view.resetDevicePixelRatio);
 
   SharedPreferences.setMockInitialValues({
-    AppConstants.prefsLanguage: language == DisplayLanguage.persian ? 'fa' : 'tj',
+    AppConstants.prefsLanguage: language == DisplayLanguage.persian
+        ? 'fa'
+        : 'tj',
     AppConstants.prefsOnboardingComplete: true,
   });
 
   final container = ProviderContainer(
     overrides: [
-      onboardingCompleteProvider.overrideWith((ref) => OnboardingNotifier()..state = true),
+      onboardingCompleteProvider.overrideWith(
+        (ref) => OnboardingNotifier()..state = true,
+      ),
       literaryAuthorsProvider.overrideWith((ref) => Future.value(authors)),
       literaryWorksProvider.overrideWith((ref) => Future.value(works)),
       approvedWorksProvider.overrideWith(
@@ -141,20 +143,18 @@ Future<void> pumpTestApp(
       authorByIdProvider.overrideWith(
         (ref, id) => Future.value(
           authors.cast<LiteraryAuthor?>().firstWhere(
-                (a) => a?.id == id,
-                orElse: () => null,
-              ),
+            (a) => a?.id == id,
+            orElse: () => null,
+          ),
         ),
       ),
       worksByAuthorProvider.overrideWith(
-        (ref, id) => Future.value(
-          works.where((w) => w.authorId == id).toList(),
-        ),
+        (ref, id) =>
+            Future.value(works.where((w) => w.authorId == id).toList()),
       ),
       schoolCanonByAuthorProvider.overrideWith(
-        (ref, id) => Future.value(
-          canon.where((c) => c.authorId == id).toList(),
-        ),
+        (ref, id) =>
+            Future.value(canon.where((c) => c.authorId == id).toList()),
       ),
     ],
   );
@@ -182,36 +182,41 @@ Future<void> pumpTestApp(
 
 void main() {
   group('Literature Feature Presentation & Navigation', () {
-    testWidgets('Home screen includes QalamLiteratureCard that navigates to /literature',
-        (tester) async {
-      await pumpTestApp(tester, route: '/');
+    testWidgets(
+      'Home screen includes QalamLiteratureCard that navigates to /literature',
+      (tester) async {
+        await pumpTestApp(tester, route: '/');
 
-      expect(find.byType(QalamLiteratureCard), findsOneWidget);
-      expect(find.text('Мероси адабӣ'), findsOneWidget);
+        expect(find.byType(QalamLiteratureCard), findsOneWidget);
+        expect(find.text('Мероси адабӣ'), findsOneWidget);
 
-      await tester.tap(find.byType(QalamLiteratureCard));
-      await tester.pumpAndSettle();
+        await tester.tap(find.byType(QalamLiteratureCard));
+        await tester.pumpAndSettle();
 
-      expect(find.byType(LiteratureHubScreen), findsOneWidget);
-    });
+        expect(find.byType(LiteratureHubScreen), findsOneWidget);
+      },
+    );
 
-    testWidgets('LiteratureHubScreen renders header, daily verse card and 4 section links',
-        (tester) async {
-      await pumpTestApp(tester, route: '/literature');
+    testWidgets(
+      'LiteratureHubScreen renders header, daily verse card and 4 section links',
+      (tester) async {
+        await pumpTestApp(tester, route: '/literature');
 
-      expect(find.byType(LiteratureHubScreen), findsOneWidget);
-      expect(find.text('Мероси адабӣ'), findsWidgets);
-      expect(find.text('БАЙТИ РӮЗ'), findsOneWidget);
-      expect(find.text('«Бӯи ҷӯи Мӯлиён ояд ҳаме»'), findsOneWidget);
+        expect(find.byType(LiteratureHubScreen), findsOneWidget);
+        expect(find.text('Мероси адабӣ'), findsWidgets);
+        expect(find.text('БАЙТИ РӮЗ'), findsOneWidget);
+        expect(find.text('«Бӯи ҷӯи Мӯлиён ояд ҳаме»'), findsOneWidget);
 
-      expect(find.text('Шоирон'), findsOneWidget);
-      expect(find.text('Шеърҳо'), findsOneWidget);
-      expect(find.text('Барномаи мактабӣ'), findsOneWidget);
-      expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
-    });
+        expect(find.text('Шоирон'), findsOneWidget);
+        expect(find.text('Шеърҳо'), findsOneWidget);
+        expect(find.text('Барномаи мактабӣ'), findsOneWidget);
+        expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
+      },
+    );
 
-    testWidgets('Tapping Poets link in Hub navigates to PoetsListScreen',
-        (tester) async {
+    testWidgets('Tapping Poets link in Hub navigates to PoetsListScreen', (
+      tester,
+    ) async {
       await pumpTestApp(tester, route: '/literature');
 
       await tester.tap(find.text('Шоирон'));
@@ -222,8 +227,9 @@ void main() {
       expect(find.byType(QalamPoetCard), findsOneWidget);
     });
 
-    testWidgets('PoetsListScreen search filters authors by name',
-        (tester) async {
+    testWidgets('PoetsListScreen search filters authors by name', (
+      tester,
+    ) async {
       await pumpTestApp(
         tester,
         route: '/literature/poets',
@@ -255,8 +261,9 @@ void main() {
       expect(find.text('Абулқосим Фирдавсӣ'), findsOneWidget);
     });
 
-    testWidgets('Tapping a poet card navigates to PoetDetailScreen',
-        (tester) async {
+    testWidgets('Tapping a poet card navigates to PoetDetailScreen', (
+      tester,
+    ) async {
       await pumpTestApp(tester, route: '/literature/poets');
 
       await tester.tap(find.byType(QalamPoetCard));
@@ -269,8 +276,7 @@ void main() {
       expect(find.text('Одамушшуаро'), findsOneWidget);
     });
 
-    testWidgets('PoetDetailScreen renders works by author',
-        (tester) async {
+    testWidgets('PoetDetailScreen renders works by author', (tester) async {
       await pumpTestApp(tester, route: '/literature/poet/rudaki');
 
       expect(find.byType(PoetDetailScreen), findsOneWidget);
@@ -282,87 +288,103 @@ void main() {
       expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
     });
 
-    testWidgets('WorksListScreen renders list of approved works and navigates to reader',
-        (tester) async {
-      await pumpTestApp(tester, route: '/literature/works');
+    testWidgets(
+      'WorksListScreen renders list of approved works and navigates to reader',
+      (tester) async {
+        await pumpTestApp(tester, route: '/literature/works');
 
-      expect(find.byType(WorksListScreen), findsOneWidget);
-      expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
+        expect(find.byType(WorksListScreen), findsOneWidget);
+        expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
 
-      await tester.tap(find.text('Бӯи ҷӯи Мӯлиён'));
-      await tester.pumpAndSettle();
+        await tester.tap(find.text('Бӯи ҷӯи Мӯлиён'));
+        await tester.pumpAndSettle();
 
-      expect(find.byType(PoemReaderScreen), findsOneWidget);
-    });
+        expect(find.byType(PoemReaderScreen), findsOneWidget);
+      },
+    );
 
-    testWidgets('PoemReaderScreen renders poem title, author, text and QalamSourceBadge',
-        (tester) async {
-      await pumpTestApp(
-        tester,
-        route: '/literature/work/rudaki-boyi-juyi-muliyon',
-      );
+    testWidgets(
+      'PoemReaderScreen renders poem title, author, text and QalamSourceBadge',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/rudaki-boyi-juyi-muliyon',
+        );
 
-      expect(find.byType(PoemReaderScreen), findsOneWidget);
-      expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
-      expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
-      expect(find.text('Матн санҷида шудааст'), findsOneWidget);
-      expect(find.byType(QalamSourceBadge), findsOneWidget);
-      expect(find.textContaining('Бӯи ҷӯи Мӯлиён ояд ҳаме'), findsWidgets);
-    });
+        expect(find.byType(PoemReaderScreen), findsOneWidget);
+        expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
+        expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
+        expect(find.text('Матн санҷида шудааст'), findsOneWidget);
+        expect(find.byType(QalamSourceBadge), findsOneWidget);
+        expect(find.textContaining('Бӯи ҷӯи Мӯлиён ояд ҳаме'), findsWidgets);
+      },
+    );
 
-    testWidgets('PoemReaderScreen Source button opens SourcePanel bottom sheet',
-        (tester) async {
-      await pumpTestApp(
-        tester,
-        route: '/literature/work/rudaki-boyi-juyi-muliyon',
-      );
+    testWidgets(
+      'PoemReaderScreen Source button opens SourcePanel bottom sheet',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/rudaki-boyi-juyi-muliyon',
+        );
 
-      final sourceButton = find.widgetWithText(OutlinedButton, 'Манбаъ');
-      expect(sourceButton, findsOneWidget);
+        final sourceButton = find.widgetWithText(OutlinedButton, 'Манбаъ');
+        expect(sourceButton, findsOneWidget);
 
-      await tester.tap(sourceButton);
-      await tester.pumpAndSettle();
+        await tester.tap(sourceButton);
+        await tester.pumpAndSettle();
 
-      expect(find.byType(SourcePanel), findsOneWidget);
-      expect(find.text('Сарчашма ва санҷиш'), findsOneWidget);
-      expect(find.text('Осори Рӯдакӣ'), findsOneWidget);
-      expect(find.text('Тасдиқшуда'), findsOneWidget);
+        expect(find.byType(SourcePanel), findsOneWidget);
+        expect(find.text('Сарчашма ва санҷиш'), findsOneWidget);
+        expect(find.text('Осори Рӯдакӣ'), findsOneWidget);
+        expect(find.text('Тасдиқшуда'), findsOneWidget);
 
-      final panelScrollable = find.descendant(
-        of: find.byType(SourcePanel),
-        matching: find.byType(Scrollable),
-      );
-      await tester.scrollUntilVisible(
-        find.text('Моликияти умумӣ (Public Domain)'),
-        300,
-        scrollable: panelScrollable.first,
-      );
-      expect(find.text('Моликияти умумӣ (Public Domain)'), findsOneWidget);
-    });
+        final panelScrollable = find.descendant(
+          of: find.byType(SourcePanel),
+          matching: find.byType(Scrollable),
+        );
+        await tester.scrollUntilVisible(
+          find.text('Моликияти умумӣ (Public Domain)'),
+          300,
+          scrollable: panelScrollable.first,
+        );
+        expect(find.text('Моликияти умумӣ (Public Domain)'), findsOneWidget);
+      },
+    );
 
-    testWidgets('SchoolCanonScreen displays entries grouped by grade',
-        (tester) async {
+    testWidgets('SchoolCanonScreen displays entries grouped by grade', (
+      tester,
+    ) async {
       await pumpTestApp(tester, route: '/literature/school');
 
       expect(find.byType(SchoolCanonScreen), findsOneWidget);
       expect(find.text('Барномаи мактабӣ'), findsOneWidget);
       expect(find.text('СИНФИ 5'), findsOneWidget);
-      expect(find.text('Адабиёти тоҷик (Синфи 5) (2018) — Маориф'), findsOneWidget);
+      expect(
+        find.text('Адабиёти тоҷик (Синфи 5) (2018) — Маориф'),
+        findsOneWidget,
+      );
       expect(find.text('Ҳатмӣ'), findsOneWidget);
     });
 
-    testWidgets('OralHeritageScreen displays entries with genre tags and citation',
-        (tester) async {
-      await pumpTestApp(tester, route: '/literature/oral');
+    testWidgets(
+      'OralHeritageScreen displays entries with genre tags and citation',
+      (tester) async {
+        await pumpTestApp(tester, route: '/literature/oral');
 
-      expect(find.byType(OralHeritageScreen), findsOneWidget);
-      expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
-      expect(find.text('Офтобро ба домон пӯшида намешавад.'), findsOneWidget);
-      expect(find.textContaining('Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ'), findsOneWidget);
-    });
+        expect(find.byType(OralHeritageScreen), findsOneWidget);
+        expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
+        expect(find.text('Офтобро ба домон пӯшида намешавад.'), findsOneWidget);
+        expect(
+          find.textContaining('Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ'),
+          findsOneWidget,
+        );
+      },
+    );
 
-    testWidgets('LiteratureSearchScreen searches across authors and works',
-        (tester) async {
+    testWidgets('LiteratureSearchScreen searches across authors and works', (
+      tester,
+    ) async {
       await pumpTestApp(tester, route: '/literature/search');
 
       expect(find.byType(LiteratureSearchScreen), findsOneWidget);

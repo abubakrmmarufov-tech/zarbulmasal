@@ -132,22 +132,14 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
                 }
 
                 return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final entry = filtered[index];
-                      return _OralEntryCard(
-                        entry: entry,
-                        isPersian: isPersian,
-                      );
-                    },
-                    childCount: filtered.length,
-                  ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    final entry = filtered[index];
+                    return _OralEntryCard(entry: entry, isPersian: isPersian);
+                  }, childCount: filtered.length),
                 );
               },
             ),
-            const SliverToBoxAdapter(
-              child: SizedBox(height: 48),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 48)),
           ],
         ),
       ),
@@ -178,16 +170,14 @@ class _OralEntryCard extends StatelessWidget {
   final OralHeritageEntry entry;
   final bool isPersian;
 
-  const _OralEntryCard({
-    required this.entry,
-    required this.isPersian,
-  });
+  const _OralEntryCard({required this.entry, required this.isPersian});
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    final displayText = (isPersian &&
+    final displayText =
+        (isPersian &&
             entry.textPersian != null &&
             entry.textPersian!.isNotEmpty)
         ? entry.textPersian!
@@ -212,15 +202,12 @@ class _OralEntryCard extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 3,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: colors.primary.withOpacity(0.08),
+                  color: colors.primary.withValues(alpha: 0.08),
                   borderRadius: BorderRadius.circular(3),
                   border: Border.all(
-                    color: colors.primary.withOpacity(0.3),
+                    color: colors.primary.withValues(alpha: 0.3),
                     width: 0.5,
                   ),
                 ),
