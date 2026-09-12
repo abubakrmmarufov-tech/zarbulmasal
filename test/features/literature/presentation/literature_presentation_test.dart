@@ -102,6 +102,12 @@ const testOralEntry = OralHeritageEntry(
   year: '1980',
   page: '42',
   verification: VerificationRecord(finalStatus: VerificationStatus.approved),
+  rights: RightsRecord(
+    status: RightsStatus.folklore,
+    reasoning: 'Traditional folklore cleared for publication.',
+    fullTextAllowed: true,
+    excerptAllowed: true,
+  ),
 );
 
 Future<void> pumpTestApp(
@@ -259,6 +265,15 @@ void main() {
 
       expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsNothing);
       expect(find.text('Абулқосим Фирдавсӣ'), findsOneWidget);
+
+      await tester.tap(find.byIcon(Icons.clear));
+      await tester.pumpAndSettle();
+
+      expect(
+        tester.widget<TextField>(find.byType(TextField)).controller!.text,
+        isEmpty,
+      );
+      expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
     });
 
     testWidgets('Tapping a poet card navigates to PoetDetailScreen', (
@@ -352,6 +367,25 @@ void main() {
       },
     );
 
+    testWidgets(
+      'PoemReaderScreen rejects a direct link to an unapproved work',
+      (tester) async {
+        final blockedWork = testWorkRudaki.copyWith(
+          verification: const VerificationRecord(
+            finalStatus: VerificationStatus.rejected,
+          ),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${blockedWork.id}',
+          works: [blockedWork],
+        );
+
+        expect(find.text('Асар ёфт нашуд'), findsOneWidget);
+        expect(find.textContaining('Бӯи ҷӯи Мӯлиён ояд ҳаме'), findsNothing);
+      },
+    );
+
     testWidgets('SchoolCanonScreen displays entries grouped by grade', (
       tester,
     ) async {
@@ -389,6 +423,8 @@ void main() {
 
       expect(find.byType(LiteratureSearchScreen), findsOneWidget);
       expect(find.text('Пешниҳодҳои ҷустуҷӯ:'), findsOneWidget);
+      expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
+      expect(find.text('Саъдӣ'), findsNothing);
 
       await tester.enterText(find.byType(TextField), 'Мӯлиён');
       await tester.pumpAndSettle();

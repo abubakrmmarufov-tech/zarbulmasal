@@ -36,7 +36,7 @@ class _LiteratureSearchScreenState
     final isPersian = lang == DisplayLanguage.persian;
 
     final authorsAsync = ref.watch(literaryAuthorsProvider);
-    final worksAsync = ref.watch(literaryWorksProvider);
+    final worksAsync = ref.watch(approvedWorksProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -74,7 +74,11 @@ class _LiteratureSearchScreenState
         ],
       ),
       body: _query.isEmpty
-          ? _buildEmptyPrompt(context, isPersian)
+          ? _buildEmptyPrompt(
+              context,
+              isPersian,
+              authorsAsync.valueOrNull ?? const [],
+            )
           : _buildSearchResults(
               context,
               authorsAsync.valueOrNull ?? [],
@@ -84,11 +88,18 @@ class _LiteratureSearchScreenState
     );
   }
 
-  Widget _buildEmptyPrompt(BuildContext context, bool isPersian) {
+  Widget _buildEmptyPrompt(
+    BuildContext context,
+    bool isPersian,
+    List<LiteraryAuthor> authors,
+  ) {
     final colors = Theme.of(context).colorScheme;
-    final suggestions = isPersian
-        ? ['رودکی', 'ناصر خسرو', 'سعدی', 'حافظ', 'خیام', 'عینی']
-        : ['Рӯдакӣ', 'Носири Хусрав', 'Саъдӣ', 'Ҳофиз', 'Хайём', 'Айнӣ'];
+    final suggestions = authors.take(6).map((author) {
+      if (isPersian && author.canonicalNamePersian != null) {
+        return author.canonicalNamePersian!;
+      }
+      return author.canonicalName;
+    }).toList();
 
     return Padding(
       padding: const EdgeInsets.all(24),

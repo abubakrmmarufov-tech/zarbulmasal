@@ -6,6 +6,15 @@ import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
 import 'package:zarbulmasal/features/literature/data/literature_repository.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 
+class _OralRepository extends LiteratureRepository {
+  _OralRepository(this.entries);
+
+  final List<OralHeritageEntry> entries;
+
+  @override
+  Future<List<OralHeritageEntry>> loadOralHeritage() async => entries;
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -102,6 +111,105 @@ void main() {
       );
       expect(works, isEmpty);
     });
+
+    test('worksByAuthorProvider excludes unapproved works', () async {
+      const approved = LiteraryWork(
+        id: 'approved',
+        authorId: 'rudaki',
+        title: 'Approved',
+        textTajik: 'Approved text',
+        textStatus: TextStatus.verified,
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'Public domain',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          finalStatus: VerificationStatus.approved,
+        ),
+      );
+      const rejected = LiteraryWork(
+        id: 'rejected',
+        authorId: 'rudaki',
+        title: 'Rejected',
+        textTajik: 'Rejected text',
+        textStatus: TextStatus.verified,
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'Public domain',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          finalStatus: VerificationStatus.rejected,
+        ),
+      );
+      final scopedContainer = ProviderContainer(
+        overrides: [
+          literaryWorksProvider.overrideWith(
+            (ref) async => const [approved, rejected],
+          ),
+        ],
+      );
+      addTearDown(scopedContainer.dispose);
+
+      final works = await scopedContainer.read(
+        worksByAuthorProvider('rudaki').future,
+      );
+      expect(works.map((work) => work.id), ['approved']);
+    });
+
+    test(
+      'oralHeritageProvider requires verification and rights clearance',
+      () async {
+        const cleared = OralHeritageEntry(
+          id: 'cleared',
+          text: 'Cleared folklore',
+          type: OralHeritageType.maqol,
+          collectionSource: 'Collection',
+          publisher: 'Publisher',
+          year: '1980',
+          verification: VerificationRecord(
+            finalStatus: VerificationStatus.approved,
+          ),
+          rights: RightsRecord(
+            status: RightsStatus.folklore,
+            reasoning: 'Traditional folklore',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+        );
+        const unknownRights = OralHeritageEntry(
+          id: 'unknown-rights',
+          text: 'Uncleared folklore',
+          type: OralHeritageType.maqol,
+          collectionSource: 'Collection',
+          publisher: 'Publisher',
+          year: '1980',
+          verification: VerificationRecord(
+            finalStatus: VerificationStatus.approved,
+          ),
+          rights: RightsRecord(
+            status: RightsStatus.unknown,
+            reasoning: 'Not reviewed',
+            fullTextAllowed: false,
+            excerptAllowed: false,
+          ),
+        );
+        final scopedContainer = ProviderContainer(
+          overrides: [
+            literatureRepositoryProvider.overrideWith(
+              (ref) => _OralRepository(const [cleared, unknownRights]),
+            ),
+          ],
+        );
+        addTearDown(scopedContainer.dispose);
+
+        final entries = await scopedContainer.read(oralHeritageProvider.future);
+        expect(entries.map((entry) => entry.id), ['cleared']);
+      },
+    );
   });
 
   group('dailyVerseProvider with approved works override', () {

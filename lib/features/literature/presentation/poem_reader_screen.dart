@@ -21,7 +21,7 @@ class PoemReaderScreen extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
-    final worksAsync = ref.watch(literaryWorksProvider);
+    final worksAsync = ref.watch(approvedWorksProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -118,8 +118,7 @@ class _PoemReaderContent extends ConsumerWidget {
     final isRtl =
         isPersian ||
         (work.scriptSource == ScriptSource.persianArabic && !work.hasTajikText);
-    final hasVerifiedText =
-        work.textStatus == TextStatus.verified && displayText.trim().isNotEmpty;
+    final hasVerifiedText = work.isDisplayable && displayText.trim().isNotEmpty;
 
     return Column(
       children: [

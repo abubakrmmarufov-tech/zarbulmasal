@@ -48,7 +48,8 @@ final oralHeritageProvider = FutureProvider<List<OralHeritageEntry>>((
   ref,
 ) async {
   final repository = ref.watch(literatureRepositoryProvider);
-  return repository.loadOralHeritage();
+  final entries = await repository.loadOralHeritage();
+  return entries.where((entry) => entry.isDisplayable).toList();
 });
 
 /// Loads bibliographical source editions.
@@ -155,7 +156,7 @@ final authorByIdProvider = FutureProvider.family<LiteraryAuthor?, String>((
 /// Convenience family provider for finding works by [authorId].
 final worksByAuthorProvider = FutureProvider.family<List<LiteraryWork>, String>(
   (ref, authorId) async {
-    final works = await ref.watch(literaryWorksProvider.future);
+    final works = await ref.watch(approvedWorksProvider.future);
     return works.where((w) => w.authorId == authorId).toList();
   },
 );

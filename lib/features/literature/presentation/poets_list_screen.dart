@@ -16,7 +16,14 @@ class PoetsListScreen extends ConsumerStatefulWidget {
 }
 
 class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
+  final TextEditingController _filterController = TextEditingController();
   String _filterQuery = '';
+
+  @override
+  void dispose() {
+    _filterController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +66,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
                 child: TextField(
+                  controller: _filterController,
                   onChanged: (val) {
                     setState(() {
                       _filterQuery = val.trim().toLowerCase();
@@ -73,6 +81,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                         ? IconButton(
                             icon: const Icon(Icons.clear, size: 18),
                             onPressed: () {
+                              _filterController.clear();
                               setState(() {
                                 _filterQuery = '';
                               });

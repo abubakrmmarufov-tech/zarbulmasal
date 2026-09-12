@@ -1,4 +1,5 @@
 import 'verification_record.dart';
+import 'rights_record.dart';
 
 /// Folklore genres of the Tajik oral literary tradition.
 enum OralHeritageType {
@@ -62,6 +63,9 @@ class OralHeritageEntry {
   /// Verification and audit record confirming source fidelity.
   final VerificationRecord verification;
 
+  /// Copyright and publication clearance for this recorded entry.
+  final RightsRecord rights;
+
   const OralHeritageEntry({
     required this.id,
     required this.text,
@@ -74,11 +78,16 @@ class OralHeritageEntry {
     required this.year,
     this.page,
     required this.verification,
+    required this.rights,
   });
 
   /// Whether this folklore entry has passed full verification audit.
   bool get isVerified =>
       verification.finalStatus == VerificationStatus.approved;
+
+  /// Whether this entry is both verified and cleared for full-text display.
+  bool get isDisplayable =>
+      isVerified && rights.status.allowsFullText && rights.fullTextAllowed;
 
   /// Formatted source citation.
   String get citation {
@@ -113,6 +122,14 @@ class OralHeritageEntry {
       verification: verificationJson is Map<String, dynamic>
           ? VerificationRecord.fromJson(verificationJson)
           : const VerificationRecord(),
+      rights: json['rights'] is Map<String, dynamic>
+          ? RightsRecord.fromJson(json['rights'] as Map<String, dynamic>)
+          : const RightsRecord(
+              status: RightsStatus.unknown,
+              reasoning: 'Missing rights payload',
+              fullTextAllowed: false,
+              excerptAllowed: false,
+            ),
     );
   }
 
@@ -130,6 +147,7 @@ class OralHeritageEntry {
       'year': year,
       'page': page,
       'verification': verification.toJson(),
+      'rights': rights.toJson(),
     };
   }
 
@@ -146,6 +164,7 @@ class OralHeritageEntry {
     String? year,
     String? page,
     VerificationRecord? verification,
+    RightsRecord? rights,
   }) {
     return OralHeritageEntry(
       id: id ?? this.id,
@@ -159,6 +178,7 @@ class OralHeritageEntry {
       year: year ?? this.year,
       page: page ?? this.page,
       verification: verification ?? this.verification,
+      rights: rights ?? this.rights,
     );
   }
 

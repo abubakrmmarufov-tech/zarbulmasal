@@ -13,7 +13,7 @@ WORKS:
 - approved full text: 0
 - excerpt-only: 0
 - rejected: 0
-- needs review: 1 (Бӯйи ҷӯйи Мӯлиён)
+- researched/backlogged: 1 (Бӯйи ҷӯйи Мӯлиён; not yet in the catalog)
 
 SOURCE QUALITY:
 - Tier A count: 1 (Ашъори Рӯдакӣ, 2008)
@@ -93,7 +93,7 @@ FOR EVERY INCLUDED POET:
     - copyright status: excerptOnly
 
 FOR EVERY PUBLISHED FULL POEM:
-(None published. 1 work added as `needs_review` pending physical book scan collation to obtain page numbers).
+(None published. 1 work remains in the research backlog pending physical book scan collation to obtain page numbers; it is not present in `works.json`.)
 
 REJECTED MATERIAL:
 - No web-sourced poems were adopted. All unverified transcriptions were rejected or deferred to `needs_review` due to the lack of physical book scans for manual verification, honoring the strict `FAIL CLOSED` policy.
