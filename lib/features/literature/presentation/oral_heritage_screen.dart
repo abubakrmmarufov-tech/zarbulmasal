@@ -105,7 +105,9 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
                     title: isPersian
                         ? 'خطا در بارگیری میراث شفاهی'
                         : 'Хато ҳангоми боргирӣ',
-                    subtitle: isPersian ? 'اطلاعات میراث شفاهی بارگیری نشد. لطفاً دوباره تلاش کنید.' : 'Маълумоти мероси шифоҳӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
+                    subtitle: isPersian
+                        ? 'اطلاعات میراث شفاهی بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                        : 'Маълумоти мероси шифоҳӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(oralHeritageProvider),
                       child: Text(
