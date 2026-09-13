@@ -124,6 +124,9 @@ release workflow in the [Android Downloads Portal](https://abubakrmmarufov-tech.
 only after production signing secrets are configured and the current release
 artifacts pass package, signature, ABI, alignment, and checksum checks:
 
+Until those checks pass, the public deployment intentionally has no Android
+portal or download links.
+
 - [Android Portal & Direct APK Downloads](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
   - **ARM64-v8a** (~20 MB, recommended for modern phones)
   - **ARMv7a** (~18 MB, for 32-bit devices)

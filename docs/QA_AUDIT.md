@@ -2,7 +2,7 @@
 
 Date: 2026-09-13
 Environment: Flutter 3.47.2, Dart 3.13.2, Android SDK 36.1.0, Chrome for Testing 153.0.8010.12  
-Branch: `main` (`544dae3`, with preserved user-staged historical download artifacts)
+Branch: `main` (`e19f049`, with preserved user-staged historical download artifacts)
 
 ---
 
@@ -23,7 +23,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
 
 | Branch | Latest Commit / SHA | Role / Relationship | Status |
 | --- | --- | --- | --- |
-| `origin/main` | `544dae3` | Default production branch containing the Qalam redesign, hardened release gates, CSP fix, and phone QA harness | **CURRENT DEFAULT** |
+| `origin/main` | `e19f049` | Default production branch containing the Qalam redesign, hardened release gates, CSP fix, phone QA harness, and fail-closed Android publishing | **CURRENT DEFAULT** |
 | `origin/latest-design` | `3328686` | Historical feature branch for Qalam redesign and onboarding | Superseded and merged into `main` |
 | `origin/optimize-pwa-9718348651884350021` | `553e3b5` (PR #2) | Historical branch for PWA Safari optimizations | Superseded by PR #3 (`3b8c0ed`) and PR #5 (`e2e8935`) |
 | `origin/release/final-pwa` | `3b8c0ed` (PR #3) | Production PWA release integration | Merged into `main` via PR #3 |

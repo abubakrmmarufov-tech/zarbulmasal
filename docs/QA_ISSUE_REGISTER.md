@@ -1,6 +1,6 @@
 # QA Issue Register
 
-Baseline: `544dae3` (`main`), 2026-09-13. Existing user-staged download artifacts were preserved.
+Baseline: `e19f049` (`main`), 2026-09-13. Existing user-staged download artifacts were preserved.
 
 Status values: OPEN, PARTIAL, FIXED/VERIFIED, UNVERIFIED.
 
