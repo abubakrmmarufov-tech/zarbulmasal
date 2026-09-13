@@ -294,6 +294,26 @@ void main() {
       expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
     });
 
+    testWidgets('PoetsListScreen hides unnamed import placeholders', (
+      tester,
+    ) async {
+      await pumpTestApp(
+        tester,
+        route: '/literature/poets',
+        authors: [
+          testAuthorRudaki,
+          testAuthorRudaki.copyWith(
+            id: 'unresolved-author',
+            canonicalName: 'Unknown',
+          ),
+        ],
+      );
+
+      expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
+      expect(find.text('Unknown'), findsNothing);
+      expect(find.byType(QalamPoetCard), findsOneWidget);
+    });
+
     testWidgets('Tapping a poet card navigates to PoetDetailScreen', (
       tester,
     ) async {

@@ -139,6 +139,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
               ),
               data: (authors) {
                 final filtered = authors.where((author) {
+                  if (!author.hasCanonicalName) return false;
                   if (_filterQuery.isEmpty) return true;
                   final matchName = author.canonicalName.toLowerCase().contains(
                     _filterQuery,

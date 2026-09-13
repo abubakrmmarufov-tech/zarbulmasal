@@ -28,7 +28,9 @@ class LiteratureHubScreen extends ConsumerWidget {
     final poetsAsync = ref.watch(literaryAuthorsProvider);
     final worksAsync = ref.watch(approvedWorksProvider);
 
-    final poetsCount = poetsAsync.valueOrNull?.length ?? 0;
+    final poetsCount =
+        poetsAsync.valueOrNull?.where((poet) => poet.hasCanonicalName).length ??
+        0;
     final worksCount = worksAsync.valueOrNull?.length ?? 0;
     final formattedPoetsCount = AppTranslations.formatNumber(poetsCount, lang);
     final formattedWorksCount = AppTranslations.formatNumber(worksCount, lang);
@@ -141,6 +143,16 @@ class LiteratureHubScreen extends ConsumerWidget {
                           style: QalamTypography.eyebrow(color: colors.primary),
                         ),
                         const SizedBox(height: 12),
+                        QalamSectionLink(
+                          number: '00',
+                          title: isPersian
+                              ? 'تاریخ مردم تاجیک'
+                              : 'Таърихи халқи тоҷик',
+                          subtitle: isPersian
+                              ? 'نام‌ها، دولت‌ها و شعرهای کتاب‌های صنف‌های ۵ تا ۱۱'
+                              : 'Номҳо, давлатҳо ва шеърҳои китобҳои синфҳои 5–11',
+                          onTap: () => context.push('/history'),
+                        ),
                         // 01: Poets
                         QalamSectionLink(
                           number: '01',

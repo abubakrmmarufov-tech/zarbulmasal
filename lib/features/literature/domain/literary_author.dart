@@ -71,6 +71,16 @@ class LiteraryAuthor {
   /// Whether the author is deceased.
   bool get isDeceased => deathYear != null && deathYear!.trim().isNotEmpty;
 
+  /// Whether this record has a name safe to show as a public-facing author.
+  ///
+  /// Import pipelines may retain an unresolved placeholder while provenance
+  /// work is in progress. Such records stay available for internal review but
+  /// must not appear as if "Unknown" were a verified poet.
+  bool get hasCanonicalName {
+    final name = canonicalName.trim().toLowerCase();
+    return name.isNotEmpty && name != 'unknown';
+  }
+
   /// Formatted lifespan representation (e.g. "858 – 941", "1947 – ҳоло").
   String get lifespan {
     final b = birthYear?.trim() ?? '';
