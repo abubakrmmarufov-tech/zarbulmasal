@@ -65,6 +65,7 @@ class _LiteratureSearchScreenState
         actions: [
           if (_query.isNotEmpty)
             IconButton(
+              tooltip: isPersian ? 'پاک کردن جستجو' : 'Пок кардани ҷустуҷӯ',
               icon: const Icon(Icons.clear),
               onPressed: () {
                 _controller.clear();

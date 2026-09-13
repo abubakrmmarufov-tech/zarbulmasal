@@ -86,6 +86,7 @@ class SourcePanel extends ConsumerWidget {
                       ),
                     ),
                     IconButton(
+                      tooltip: isPersian ? 'بستن' : 'Бастан',
                       icon: const Icon(Icons.close, size: 20),
                       onPressed: () => Navigator.of(context).pop(),
                     ),

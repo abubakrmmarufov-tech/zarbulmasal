@@ -79,6 +79,9 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                     prefixIcon: const Icon(Icons.search, size: 20),
                     suffixIcon: _filterQuery.isNotEmpty
                         ? IconButton(
+                            tooltip: isPersian
+                                ? 'پاک کردن جستجو'
+                                : 'Пок кардани ҷустуҷӯ',
                             icon: const Icon(Icons.clear, size: 18),
                             onPressed: () {
                               _filterController.clear();
