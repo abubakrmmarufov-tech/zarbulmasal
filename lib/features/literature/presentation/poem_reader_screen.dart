@@ -395,7 +395,19 @@ class _PoemReaderContent extends ConsumerWidget {
                             ),
                           );
                         }
-                      } catch (_) {}
+                      } catch (_) {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                isPersian
+                                    ? 'کپی در دسترس نیست'
+                                    : 'Нусхабардорӣ дастрас нест',
+                              ),
+                            ),
+                          );
+                        }
+                      }
                     },
                   ),
                 ],

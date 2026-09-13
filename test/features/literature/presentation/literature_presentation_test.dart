@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
@@ -281,6 +282,7 @@ void main() {
 
       expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsNothing);
       expect(find.text('Абулқосим Фирдавсӣ'), findsOneWidget);
+      expect(find.byTooltip('Пок кардани ҷустуҷӯ'), findsOneWidget);
 
       await tester.tap(find.byIcon(Icons.clear));
       await tester.pumpAndSettle();
@@ -369,6 +371,7 @@ void main() {
         expect(find.text('Сарчашма ва санҷиш'), findsOneWidget);
         expect(find.text('Осори Рӯдакӣ'), findsOneWidget);
         expect(find.text('Тасдиқшуда'), findsOneWidget);
+        expect(find.byTooltip('Бастан'), findsOneWidget);
 
         final panelScrollable = find.descendant(
           of: find.byType(SourcePanel),
@@ -446,6 +449,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
+      expect(find.byTooltip('Пок кардани ҷустуҷӯ'), findsOneWidget);
     });
   });
 
@@ -543,5 +547,29 @@ void main() {
         expect(find.text('مالکیت عمومی (Public Domain)'), findsOneWidget);
       },
     );
+
+    testWidgets('PoemReaderScreen reports clipboard failures', (tester) async {
+      final messenger =
+          TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+      messenger.setMockMethodCallHandler(SystemChannels.platform, (call) {
+        if (call.method == 'Clipboard.setData') {
+          throw PlatformException(code: 'clipboard_unavailable');
+        }
+        return null;
+      });
+      addTearDown(
+        () => messenger.setMockMethodCallHandler(SystemChannels.platform, null),
+      );
+
+      await pumpTestApp(
+        tester,
+        route: '/literature/work/rudaki-boyi-juyi-muliyon',
+      );
+
+      await tester.tap(find.byIcon(Icons.copy_outlined));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Нусхабардорӣ дастрас нест'), findsOneWidget);
+    });
   });
 }
