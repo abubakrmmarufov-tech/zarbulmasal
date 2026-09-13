@@ -44,11 +44,13 @@ class PoetDetailScreen extends ConsumerWidget {
       ),
       body: authorAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, _) => Center(
+        error: (_, _) => Center(
           child: EmptyState(
             icon: Icons.error_outline,
             title: isPersian ? 'خطا در بارگیری' : 'Хато ҳангоми боргирӣ',
-            subtitle: err.toString(),
+            subtitle: isPersian
+                ? 'اطلاعات شاعر بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                : 'Маълумоти шоир бор нашуд. Лутфан дубора кӯшиш кунед.',
             action: OutlinedButton(
               onPressed: () => ref.invalidate(authorByIdProvider(poetId)),
               child: Text(isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан'),
@@ -352,7 +354,7 @@ class _PoetDetailContent extends ConsumerWidget {
               ),
             ),
           ),
-          error: (err, _) => SliverToBoxAdapter(
+          error: (_, _) => SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: EmptyState(
@@ -360,7 +362,9 @@ class _PoetDetailContent extends ConsumerWidget {
                 title: isPersian
                     ? 'خطا در بارگیری آثار'
                     : 'Хато ҳангоми боргирии осор',
-                subtitle: err.toString(),
+                subtitle: isPersian
+                    ? 'آثار شاعر بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                    : 'Осори шоир бор нашуд. Лутфан дубора кӯшиш кунед.',
                 action: OutlinedButton(
                   onPressed: () =>
                       ref.invalidate(worksByAuthorProvider(poet.id)),

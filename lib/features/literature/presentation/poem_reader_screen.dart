@@ -40,13 +40,15 @@ class PoemReaderScreen extends ConsumerWidget {
       ),
       body: worksAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, _) => Center(
+        error: (_, _) => Center(
           child: EmptyState(
             icon: Icons.error_outline,
             title: isPersian
                 ? 'خطا در بارگیری اثر'
                 : 'Хато ҳангоми боргирии асар',
-            subtitle: err.toString(),
+            subtitle: isPersian
+                ? 'متن اثر بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                : 'Матни асар бор нашуд. Лутфан дубора кӯшиш кунед.',
             action: OutlinedButton(
               onPressed: () => qalamBack(context),
               child: Text(isPersian ? 'بازگشت' : 'Бозгашт'),

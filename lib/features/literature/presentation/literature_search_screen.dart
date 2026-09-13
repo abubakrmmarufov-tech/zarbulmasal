@@ -82,7 +82,9 @@ class _LiteratureSearchScreenState
                 title: isPersian
                     ? 'خطا در بارگیری جستجو'
                     : 'Хато ҳангоми боргирии ҷустуҷӯ',
-                subtitle: (authorsAsync.error ?? worksAsync.error).toString(),
+                subtitle: isPersian
+                    ? 'داده‌های جستجو بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                    : 'Маълумоти ҷустуҷӯ бор нашуд. Лутфан дубора кӯшиш кунед.',
                 action: OutlinedButton(
                   onPressed: () {
                     ref.invalidate(literaryAuthorsProvider);

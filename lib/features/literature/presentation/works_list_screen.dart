@@ -53,14 +53,16 @@ class WorksListScreen extends ConsumerWidget {
               loading: () => const SliverFillRemaining(
                 child: Center(child: CircularProgressIndicator()),
               ),
-              error: (err, _) => SliverFillRemaining(
+              error: (_, _) => SliverFillRemaining(
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
                     title: isPersian
                         ? 'خطا در بارگیری آثار'
                         : 'Хато ҳангоми боргирии асарҳо',
-                    subtitle: err.toString(),
+                    subtitle: isPersian
+                        ? 'داده‌های آثار بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                        : 'Маълумоти осор бор нашуд. Лутфан дубора кӯшиш кунед.',
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(approvedWorksProvider),
                       child: Text(

@@ -69,14 +69,16 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
               loading: () => const SliverFillRemaining(
                 child: Center(child: CircularProgressIndicator()),
               ),
-              error: (err, _) => SliverFillRemaining(
+              error: (_, _) => SliverFillRemaining(
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
                     title: isPersian
                         ? 'خطا در بارگیری برنامهٔ درسی'
                         : 'Хато ҳангоми боргирии барнома',
-                    subtitle: err.toString(),
+                    subtitle: isPersian
+                        ? 'برنامهٔ درسی بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                        : 'Барномаи таълимӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(schoolCanonProvider),
                       child: Text(

@@ -115,14 +115,16 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
               loading: () => const SliverFillRemaining(
                 child: Center(child: CircularProgressIndicator()),
               ),
-              error: (err, _) => SliverFillRemaining(
+              error: (_, _) => SliverFillRemaining(
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
                     title: isPersian
                         ? 'خطا در بارگیری شاعران'
                         : 'Хато ҳангоми боргирии шоирон',
-                    subtitle: err.toString(),
+                    subtitle: isPersian
+                        ? 'داده‌های شاعران بارگیری نشد. لطفاً دوباره تلاش کنید.'
+                        : 'Маълумоти шоирон бор нашуд. Лутфан дубора кӯшиш кунед.',
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(literaryAuthorsProvider),
                       child: Text(
