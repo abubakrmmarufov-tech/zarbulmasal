@@ -73,7 +73,28 @@ class _LiteratureSearchScreenState
             ),
         ],
       ),
-      body: _query.isEmpty
+      body: (authorsAsync.isLoading || worksAsync.isLoading)
+          ? const Center(child: CircularProgressIndicator())
+          : (authorsAsync.hasError || worksAsync.hasError)
+          ? Center(
+              child: EmptyState(
+                icon: Icons.error_outline,
+                title: isPersian
+                    ? 'خطا در بارگیری جستجو'
+                    : 'Хато ҳангоми боргирии ҷустуҷӯ',
+                subtitle: (authorsAsync.error ?? worksAsync.error).toString(),
+                action: OutlinedButton(
+                  onPressed: () {
+                    ref.invalidate(literaryAuthorsProvider);
+                    ref.invalidate(approvedWorksProvider);
+                  },
+                  child: Text(
+                    isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                  ),
+                ),
+              ),
+            )
+          : _query.isEmpty
           ? _buildEmptyPrompt(
               context,
               isPersian,

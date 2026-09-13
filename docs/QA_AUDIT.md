@@ -1,8 +1,8 @@
 # Zarbulmasal QA Audit & Release Verification Record
 
-Date: 2026-09-09  
+Date: 2026-09-13
 Environment: Flutter 3.47.2, Dart 3.13.2, Android SDK 36.1.0, Chrome for Testing 153.0.8010.12  
-Branch: `qa/zarbulmasal-release-audit` (tracking `origin/main` at `3746466`)
+Branch: `main` (`e87d1f6`, with uncommitted QA fixes and preserved user-staged download artifacts)
 
 ---
 
@@ -10,12 +10,12 @@ Branch: `qa/zarbulmasal-release-audit` (tracking `origin/main` at `3746466`)
 
 A comprehensive, evidence-grounded quality assurance audit and end-to-end verification pass was conducted for **Зарбулмасал (Zarbulmasal)**.
 
-- **Feature Catalog**: 149 book-attested traditional proverbs plus 1 needs-review modern entry (IDs 21–170) across 20 categories and 6 data-derived difficulty levels; 20 earlier unknown-source entries remain quarantined.
+- **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage contains 171 authors and 1,466 imported work candidates, all quarantined pending provenance review.
 - **Platforms Verified**:
-  - Android (Universal APK, split-per-ABI APKs, release Android App Bundle).
-  - Web/PWA (Production build with atomic offline service worker caching, Safari iOS Home Screen compatibility).
+  - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
+  - Local Web/PWA release build with atomic offline service worker caching; the live Android portal deployment is currently 404.
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
-- **Quality Checks**: Static analysis (0 issues), unit & widget test suite (74 tests passing), Playwright E2E tests (online/offline, 0 console errors, 0 failed requests).
+- **Quality Checks**: Static analysis (0 issues), Flutter unit/widget suite (153 tests passing), local browser smoke coverage across navigation, persistence, quiz, flashcards, Persian RTL, and dark mode.
 
 ---
 
@@ -61,21 +61,21 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
 2. **Authentication Blocker**: GitHub Actions artifacts **strictly require a logged-in GitHub account** to download. When an unauthenticated mobile user opens the workflow run link, GitHub redirects to `https://github.com/login?return_to=...`. For regular users without a GitHub account, the download fails completely.
 3. **Archive Packaging**: GitHub Actions packages artifacts as a `.zip` archive (`zarbulmasal-device-test-apk.zip`). Mobile Android browsers do not automatically unzip or install `.zip` files; tapping the archive opens a file manager or archive viewer rather than the Android Package Installer.
 4. **Signing Identity Mismatch Across CI Runs**:
-   - `android/app/build.gradle.kts` uses `signingConfigs.getByName("debug")` when release secrets are absent.
-   - CI builds run on ephemeral `ubuntu-latest` virtual machines where Gradle generates a fresh `debug.keystore` on every run.
-   - If a user previously installed an APK from Run A, installing an APK from Run B causes Android OS to reject the installation with `INSTALL_FAILED_UPDATE_INCOMPATIBLE` ("App not installed: The package conflicts with an existing package by the same name").
+   - Historical pre-v2.0.0 builds used `signingConfigs.getByName("debug")` when release secrets were absent.
+   - CI builds run on ephemeral `ubuntu-latest` virtual machines where that fallback could generate a fresh `debug.keystore` on every run.
+   - Current `main` fails closed when release secrets are absent; the historical incompatibility remains relevant for previously distributed test builds.
 5. **OS Compatibility & Permissions**:
    - `minSdk`: 24 (Android 7.0 Nougat+), requiring Android 7.0+.
    - `targetSdk`: 36 (Android 16), `compileSdk`: 36.
    - Permissions: 0 permissions requested (fully privacy-respecting and safe).
    - Alignment: 4-byte zipalign verified OK on all APKs.
    - Signatures: APK Signature Scheme v2 verified OK on all APKs.
-   - Versioning: `versionCode` bumped to 2 (`1.0.1+2`) to support in-place package upgrades.
+   - Versioning: current source is `2.0.0+2004`, above the historical public `versionCode 2002`.
 
 ### Incident Verdict
 Marked **UNVERIFIED**. Due to the absence of the user friend phone model, Android OS version, download URL, and logcat/error screenshot, no single root cause can be empirically asserted as the sole cause of that specific incident. However, the three delivery obstacles identified above (GitHub login requirement, ZIP packaging, and ephemeral debug key signature mismatches) collectively explain why a friend attempting to download from GitHub Actions would experience download or installation failure.
 
-### Verified Android Artifact Matrix (v1.0.1+2)
+### Historical Android Artifact Matrix (v1.0.1+2)
 
 | Artifact | Type | File Size | SHA-256 Digest | Signature | Zipalign |
 | --- | --- | --- | --- | --- | --- |
@@ -110,14 +110,13 @@ Marked **UNVERIFIED**. Due to the absence of the user friend phone model, Androi
 
 ## 6. End-to-End QA Pass After Fixes
 
-1. `dart format --output=none --set-exit-if-changed lib test`: **PASS** (0 files changed).
+1. `dart format --output=none --set-exit-if-changed lib test tool/validate_literature_json.dart tool/validate_literary_content.dart`: **PASS** (0 files changed).
 2. `flutter analyze`: **PASS** (No issues found).
-3. `flutter test --coverage`: **PASS** (All 59 unit, provider, widget, accessibility, and PWA tests passing).
-4. `flutter build apk --release`: **PASS** (Universal APK: 53.8 MB, versionCode 2, versionName 1.0.1).
-5. `flutter build apk --release --split-per-abi`: **PASS** (ARM64: 20.0 MB, ARMv7: 17.4 MB, x86_64: 21.5 MB).
-6. `flutter build appbundle --release`: **PASS** (AAB: 52.8 MB).
-7. `flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run`: **PASS**.
-8. `bash tool/prepare_web_release.sh`: **PASS** (Deterministic build cache generated and injected).
+3. `flutter test --coverage`: **PASS** (153 tests passing).
+4. Current source `flutter build apk --release --target-platform android-arm64`: **EXPECTED FAIL-CLOSED** without signing secrets (`Release signing config missing`). No unsigned release artifact is produced.
+5. Current source `flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run`: **PASS**.
+6. Current source `bash tool/prepare_web_release.sh`: **PASS** (deterministic build cache generated and injected).
+7. Current staged APKs were independently inspected for package ID, ABI, signing certificate, checksums, and zip alignment; their identity is historical v1.1.0 and does not match the current v2.0.0 source release.
 
 ---
 
@@ -127,7 +126,7 @@ Marked **UNVERIFIED**. Due to the absence of the user friend phone model, Androi
 `android/app/build.gradle.kts` and `.github/workflows/ci.yml` have been configured to support production release signing via repository secrets:
 - When repository secrets are defined, `.github/workflows/ci.yml` decodes `KEYSTORE_BASE64` to `/tmp/release.keystore` and exports `KEYSTORE_PATH`.
 - Gradle reads `KEYSTORE_PATH`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, and `KEY_PASSWORD` to sign release builds.
-- When release secrets are not configured, Gradle safely falls back to local development debug signing so builds never fail.
+   - When release secrets are not configured, current Gradle configuration fails the release build instead of producing a distributable debug-signed package.
 
 ### Required Repository Secrets
 To enable persistent signing across CI builds, the repository owner must configure the following four GitHub repository secrets (`Settings > Secrets and variables > Actions`):
@@ -158,16 +157,16 @@ base64 -i release.keystore | pbcopy  # Paste into GitHub Secrets as KEYSTORE_BAS
 
 ---
 
-## 9. Public Direct-Download Distribution Verification
+## 9. Public Direct-Download Distribution Verification (historical)
 
 To resolve the download obstacles identified in pre-release distribution (GitHub authentication wall and `.zip` archive wrapping):
-- A public GitHub Release (`v1.0.1`) is published with standalone `.apk` assets.
-- Both the ARM64 split APK (`app-arm64-v8a-release.apk`) and the universal APK (`app-release.apk`) are directly downloadable by unauthenticated mobile users.
-- URLs verified via unauthenticated HTTP GET (returning HTTP 302 redirect to GitHub release asset storage with `content-type: application/vnd.android.package-archive`).
+- A public GitHub Release (`v1.0.1`) was published with standalone `.apk` assets.
+- Historical direct-download URLs were previously verified for the v1.0.1 release.
+- Those historical URLs were verified via unauthenticated HTTP GET. The current GitHub Pages deployment was rechecked on 2026-09-13 and its `/android/` and `/downloads/` paths return HTTP 404; the current source contains the portal, while APK files are added only after a signed CI build passes staging.
 
 ## Update 2026-09-13
 - **Literary Heritage**: Added 171 poets and 1,466 quarantined poems currently under manual review.
-- Fixed CSP, signing config, and FavoritesNotifier race conditions.
+- Fixed the release-signing fallback, FavoritesNotifier initialization race, literature-hub navigation gaps, and silent Daily Verse empty/error states. CSP and live deployment remain separately unverified.
 
 ---
 
@@ -177,12 +176,13 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 - **Target Release**: Zarbulmasal v2.0.0 (`version: 2.0.0+2004`)
 - **Android Upgrade Continuity**:
   - `v1.0.1` ARM64 release package: `versionCode 2002`, signing certificate SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`.
-  - `v2.0.0` base `versionCode` set to `2004` (ARMv7: 3004, ARM64: 4004, Universal: 2004), guaranteeing clean in-place upgrade without `INSTALL_FAILED_VERSION_DOWNGRADE`.
+  - `v2.0.0` base `versionCode` is set to `2004` (ARMv7: 3004, ARM64: 4004, Universal: 2004), so a correctly signed current build is eligible for an in-place upgrade without `INSTALL_FAILED_VERSION_DOWNGRADE`.
   - CI workflow (`.github/workflows/ci.yml`) updated to verify package ID `com.zarbulmasal.zarbulmasal` and signing certificate digest before publishing.
 - **GitHub Pages Android Portal**:
-  - Direct downloads portal at `web/android/index.html` restored.
+  - Direct downloads portal at `web/android/index.html` is present in source and in the locally prepared web artifact.
   - Staging script `tool/prepare_android_downloads.sh` integrates split APKs (`zarbulmasal-arm64-v8a.apk`, `zarbulmasal-armeabi-v7a.apk`, `zarbulmasal-universal.apk`) and checksum manifest directly into GitHub Pages deployment.
-  - Resolves the 404 error on `/zarbulmasal/android/`.
+  - The live `/zarbulmasal/android/` URL was checked on 2026-09-13 and currently returns 404; deployment is still open.
+  - The staged APKs in the current index are historical v1.1.0 artifacts, not verified v2.0.0 outputs, and must not be published as the current release.
 - **Static Analysis & Literature Presentation Polish**:
   - `flutter analyze` 0 warnings: resolved unused `poetsCount`, `worksCount`, `canonCount` variables in `literature_hub_screen.dart`.
   - Subtitle interpolation in Literature Hub: displays formatted poets count (`171 шоир` / `۱۷۱ شاعر`) and authentic review status when works are awaiting collation (`Ғазалҳо, қасидаҳо ва рубоиҳои дар ҳоли тасдиқ ва муқобала`).
@@ -236,7 +236,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
    - Created `web/android/index.html` featuring responsive Qalam styling, SHA-256 verification hashes, architecture guide, and direct download buttons for ARM64, ARMv7, and Universal APKs.
    - Created `tool/prepare_android_downloads.sh` to stage APKs into `build/web/downloads/` and copy `index.html` to `build/web/android/`.
    - Added automated tests in `test/android_distribution_test.dart` and `test/pwa_assets_test.dart`.
-9. **Verification Result & Revision**: Verified via `test/android_distribution_test.dart` and `bash tool/prepare_web_release.sh` generating `build/web/android/index.html` (PASS).
+9. **Verification Result & Revision**: Package and local staging checks pass; live HTTP verification is still open because the deployed `/android/` URL returns 404. Source revision `main` / `2.0.0+2004`.
 
 #### DEF-203: Dead Code Warnings & Static Analysis Failures in Literature Hub
 1. **ID & Severity**: `DEF-203` — **Medium** (Code Quality & Build Reliability)
@@ -329,4 +329,3 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
    - Replaced icon with `Icons.copy_outlined` in `PoemReaderScreen`.
    - Added widget tests in `literature_presentation_test.dart` and `providers_test.dart`.
 9. **Verification Result & Revision**: Verified across all 150 tests in `flutter test` (PASS).
-

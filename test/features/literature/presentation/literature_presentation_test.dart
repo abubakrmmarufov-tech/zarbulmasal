@@ -207,7 +207,7 @@ void main() {
     );
 
     testWidgets(
-      'LiteratureHubScreen renders header, daily verse card and 4 section links',
+      'LiteratureHubScreen renders header, daily verse card and section links',
       (tester) async {
         await pumpTestApp(tester, route: '/literature');
 
@@ -218,8 +218,23 @@ void main() {
 
         expect(find.text('Шоирон'), findsOneWidget);
         expect(find.text('Шеърҳо'), findsOneWidget);
+        expect(find.text('Барномаи мактабӣ'), findsOneWidget);
+        expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
+        expect(find.text('Ҷустуҷӯ'), findsOneWidget);
       },
     );
+
+    testWidgets('Hub labels empty oral heritage as unavailable', (
+      tester,
+    ) async {
+      await pumpTestApp(tester, route: '/literature', oral: const []);
+
+      final disabledLinks = find.byWidgetPredicate(
+        (widget) => widget is QalamSectionLink && widget.onTap == null,
+      );
+      expect(disabledLinks, findsOneWidget);
+      expect(find.byIcon(Icons.hourglass_empty), findsOneWidget);
+    });
 
     testWidgets('Tapping Poets link in Hub navigates to PoetsListScreen', (
       tester,
@@ -435,6 +450,16 @@ void main() {
   });
 
   group('Literature Feature Persian Language Parity', () {
+    testWidgets('Home literature card uses Persian title and section label', (
+      tester,
+    ) async {
+      await pumpTestApp(tester, route: '/', language: DisplayLanguage.persian);
+
+      expect(find.text('میراث ادبی'), findsOneWidget);
+      expect(find.text('۰۱ / ادبیات'), findsOneWidget);
+      expect(find.text('Мероси адабӣ'), findsNothing);
+    });
+
     testWidgets(
       'LiteratureHubScreen in Persian mode renders Persian title, formatted poet count, and search button',
       (tester) async {

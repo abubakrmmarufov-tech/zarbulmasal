@@ -35,6 +35,11 @@ void main() {
   int missingSecondSource = 0;
   int missingPage = 0;
   int missingRights = 0;
+  int pendingMissingSecondSource = 0;
+  int pendingMissingPage = 0;
+  int pendingMissingTextAudit = 0;
+  int pendingMissingScriptAudit = 0;
+  int pendingIncompleteSource = 0;
 
   final poetIds = <String>{};
   final workIds = <String>{};
@@ -80,14 +85,62 @@ void main() {
       exit(1);
     }
 
-    final verification = work['verification'] ?? {};
+    final verification = work['verification'];
     final rights = work['rights'];
     final textStatus = work['textStatus'];
+
+    if (verification is! Map ||
+        verification['finalStatus'] is! String ||
+        verification['finalStatus'].toString().trim().isEmpty) {
+      print("Violation: Work has invalid verification record: ${work['id']}");
+      exit(1);
+    }
 
     if (rights == null) {
       missingRights++;
       print("Violation: Work missing rights record: ${work['id']}");
       exit(1);
+    }
+
+    if (rights is! Map ||
+        rights['status'] is! String ||
+        rights['reasoning'] is! String ||
+        rights['reasoning'].toString().trim().isEmpty) {
+      print("Violation: Work has incomplete rights record: ${work['id']}");
+      exit(1);
+    }
+
+    final primary = work['primarySource'];
+    if (primary is! Map ||
+        primary['bookTitle'] is! String ||
+        primary['bookTitle'].toString().trim().isEmpty ||
+        primary['sourceType'] is! String ||
+        primary['sourceType'].toString().trim().isEmpty) {
+      print("Violation: Work has incomplete primary source: ${work['id']}");
+      exit(1);
+    }
+
+    final hasPage = primary['pageStart'] is int;
+    final hasSecondSource = work['secondarySource'] is Map;
+    final hasPublisher =
+        primary['publisher'] is String &&
+        primary['publisher'].toString().trim().isNotEmpty;
+    final hasCity =
+        primary['city'] is String &&
+        primary['city'].toString().trim().isNotEmpty;
+    final isPending = verification['finalStatus'] == 'needsReview';
+
+    if (isPending) {
+      needsReview++;
+      if (!hasPage) pendingMissingPage++;
+      if (!hasSecondSource) pendingMissingSecondSource++;
+      if (verification['textLineByLineChecked'] != true) {
+        pendingMissingTextAudit++;
+      }
+      if (verification['scriptChecked'] != true) {
+        pendingMissingScriptAudit++;
+      }
+      if (!hasPublisher || !hasCity) pendingIncompleteSource++;
     }
 
     if (verification['finalStatus'] == 'approved') {
@@ -102,6 +155,12 @@ void main() {
         print("Violation: Approved work missing primarySource: ${work['id']}");
         exit(1);
       }
+      if (!hasPublisher || !hasCity) {
+        print(
+          "Violation: Approved work has incomplete source citation: ${work['id']}",
+        );
+        exit(1);
+      }
       if (rights['status'] == 'unknown' || rights['status'] == 'blocked') {
         print(
           "Violation: Approved work has unknown/blocked rights: ${work['id']}",
@@ -109,17 +168,22 @@ void main() {
         exit(1);
       }
 
-      final primary = work['primarySource'];
-      if (primary['pageStart'] == null) {
+      if (!hasPage) {
         missingPage++;
       }
-      if (work['secondarySource'] == null) {
+      if (!hasSecondSource) {
         missingSecondSource++;
+      }
+      if (verification['textLineByLineChecked'] != true ||
+          verification['scriptChecked'] != true ||
+          verification['secondSourceChecked'] != true) {
+        print(
+          "Violation: Approved work has incomplete verification checks: ${work['id']}",
+        );
+        exit(1);
       }
     } else if (verification['finalStatus'] == 'rejected') {
       rejected++;
-    } else {
-      needsReview++;
     }
   }
 
@@ -136,6 +200,11 @@ EXCERPT ONLY AUTHORS: $excerptOnly
 MISSING SECOND SOURCE: $missingSecondSource
 MISSING PAGE NUMBER: $missingPage
 MISSING RIGHTS EVIDENCE: $missingRights
+PENDING MISSING SECOND SOURCE: $pendingMissingSecondSource
+PENDING MISSING PAGE NUMBER: $pendingMissingPage
+PENDING MISSING LINE AUDIT: $pendingMissingTextAudit
+PENDING MISSING SCRIPT AUDIT: $pendingMissingScriptAudit
+PENDING INCOMPLETE SOURCE DETAILS: $pendingIncompleteSource
 ''');
 
   print('Validation Passed.');

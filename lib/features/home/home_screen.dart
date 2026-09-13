@@ -122,11 +122,11 @@ class HomeScreen extends ConsumerWidget {
             SliverToBoxAdapter(
               child: QalamLiteratureCard(
                 onTap: () => context.push('/literature'),
-                title: 'Мероси адабӣ',
+                title: isPersian ? 'میراث ادبی' : 'Мероси адабӣ',
                 subtitle: isPersian
                     ? 'گنجینه شعر و حکمت تاجیک'
                     : 'Ганҷинаи шеър ва ҳикмати тоҷик',
-                sectionLabel: '01 / АДАБИЁТ',
+                sectionLabel: isPersian ? '۰۱ / ادبیات' : '01 / АДАБИЁТ',
               ),
             ),
             SliverToBoxAdapter(

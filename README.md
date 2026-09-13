@@ -116,7 +116,7 @@ states. GitHub Actions runs the same checks and deploys the web build from `main
 
 ## Install on Android
 
-Direct-download APKs for Android devices (Android 7.0+) are available from the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/):
+Direct-download APKs for Android devices (Android 7.0+) are staged by the release workflow in the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/) after the current prepared web artifact is deployed:
 
 - [Android Portal & Direct APK Downloads](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
   - **ARM64-v8a** (~20 MB, recommended for modern phones)

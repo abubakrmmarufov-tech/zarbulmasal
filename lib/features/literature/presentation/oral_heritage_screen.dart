@@ -106,6 +106,12 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
                         ? 'خطا در بارگیری میراث شفاهی'
                         : 'Хато ҳангоми боргирӣ',
                     subtitle: err.toString(),
+                    action: OutlinedButton(
+                      onPressed: () => ref.invalidate(oralHeritageProvider),
+                      child: Text(
+                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                      ),
+                    ),
                   ),
                 ),
               ),

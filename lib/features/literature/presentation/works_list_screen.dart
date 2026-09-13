@@ -61,6 +61,12 @@ class WorksListScreen extends ConsumerWidget {
                         ? 'خطا در بارگیری آثار'
                         : 'Хато ҳангоми боргирии асарҳо',
                     subtitle: err.toString(),
+                    action: OutlinedButton(
+                      onPressed: () => ref.invalidate(approvedWorksProvider),
+                      child: Text(
+                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                      ),
+                    ),
                   ),
                 ),
               ),

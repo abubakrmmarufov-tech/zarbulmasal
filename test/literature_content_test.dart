@@ -109,5 +109,29 @@ void main() {
         }
       }
     });
+
+    test('Pending works never claim verified full-text publication', () {
+      for (final work in works) {
+        final verification = work['verification'] as Map<String, dynamic>;
+        if (verification['finalStatus'] != 'approved') {
+          expect(
+            work['textStatus'],
+            isNot(equals('verified')),
+            reason: 'Pending work ${work['id']} must not claim verified text',
+          );
+          expect(
+            verification['textLineByLineChecked'],
+            isNot(true),
+            reason: 'Pending work ${work['id']} needs a real text audit',
+          );
+          expect(
+            (work['rights'] as Map<String, dynamic>)['fullTextAllowed'],
+            isFalse,
+            reason:
+                'Pending work ${work['id']} must not claim full-text clearance',
+          );
+        }
+      }
+    });
   });
 }

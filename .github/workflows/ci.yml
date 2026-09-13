@@ -34,7 +34,22 @@ jobs:
         run: flutter pub get
 
       - name: Check formatting
-        run: dart format --output=none --set-exit-if-changed lib test
+        run: >-
+          dart format --output=none --set-exit-if-changed
+          lib test tool/validate_literature_json.dart
+          tool/validate_literary_content.dart
+
+      - name: Validate literature JSON
+        run: dart run tool/validate_literature_json.dart
+
+      - name: Validate literary content
+        run: dart run tool/validate_literary_content.dart
+
+      - name: Exercise literature asset pipeline
+        run: python3 tool/literature_pipeline/scripts/build_assets.py
+
+      - name: Test literature asset pipeline
+        run: python3 tool/literature_pipeline/scripts/test_build_assets.py
 
       - name: Analyze
         run: flutter analyze
@@ -44,7 +59,7 @@ jobs:
 
       - name: Build Android APK for CI
         if: github.ref != 'refs/heads/main' || github.event_name == 'pull_request'
-        run: flutter build apk --release --target-platform android-arm64
+        run: flutter build apk --debug --target-platform android-arm64
 
       - name: Build signed public Android APKs
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

@@ -3,21 +3,24 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('Android release can upgrade the public v1.0.1 package', () {
-    final pubspec = File('pubspec.yaml').readAsStringSync();
-    final versionMatch = RegExp(
-      r'^version:\s+([^+\s]+)\+(\d+)\s*$',
-      multiLine: true,
-    ).firstMatch(pubspec);
+  test(
+    'Current Android release version can upgrade the public v1.0.1 package',
+    () {
+      final pubspec = File('pubspec.yaml').readAsStringSync();
+      final versionMatch = RegExp(
+        r'^version:\s+([^+\s]+)\+(\d+)\s*$',
+        multiLine: true,
+      ).firstMatch(pubspec);
 
-    expect(versionMatch, isNotNull);
-    expect(versionMatch!.group(1), '2.0.0');
-    expect(
-      int.parse(versionMatch.group(2)!),
-      greaterThan(2002),
-      reason: 'The published v1.0.1 APK uses Android versionCode 2002.',
-    );
-  });
+      expect(versionMatch, isNotNull);
+      expect(versionMatch!.group(1), '2.0.0');
+      expect(
+        int.parse(versionMatch.group(2)!),
+        greaterThan(2002),
+        reason: 'The published v1.0.1 APK uses Android versionCode 2002.',
+      );
+    },
+  );
 
   test('the shared website provides direct standalone Android downloads', () {
     final page = File('web/android/index.html');
@@ -44,6 +47,12 @@ void main() {
     final pullRequestBuild = workflow.substring(
       workflow.indexOf('- name: Build Android APK for CI'),
       workflow.indexOf('- name: Build signed public Android APKs'),
+    );
+    expect(
+      pullRequestBuild,
+      contains('flutter build apk --debug'),
+      reason:
+          'Pull-request APK validation must not require production signing secrets.',
     );
     expect(
       pullRequestBuild,

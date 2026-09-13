@@ -50,8 +50,8 @@ class PoetDetailScreen extends ConsumerWidget {
             title: isPersian ? 'خطا در بارگیری' : 'Хато ҳангоми боргирӣ',
             subtitle: err.toString(),
             action: OutlinedButton(
-              onPressed: () => qalamBack(context),
-              child: Text(isPersian ? 'بازگشت' : 'Бозгашт'),
+              onPressed: () => ref.invalidate(authorByIdProvider(poetId)),
+              child: Text(isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан'),
             ),
           ),
         ),
@@ -355,7 +355,20 @@ class _PoetDetailContent extends ConsumerWidget {
           error: (err, _) => SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Text('Хато: $err'),
+              child: EmptyState(
+                icon: Icons.error_outline,
+                title: isPersian
+                    ? 'خطا در بارگیری آثار'
+                    : 'Хато ҳангоми боргирии осор',
+                subtitle: err.toString(),
+                action: OutlinedButton(
+                  onPressed: () =>
+                      ref.invalidate(worksByAuthorProvider(poet.id)),
+                  child: Text(
+                    isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                  ),
+                ),
+              ),
             ),
           ),
           data: (works) {

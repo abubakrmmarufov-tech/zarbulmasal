@@ -123,6 +123,12 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                         ? 'خطا در بارگیری شاعران'
                         : 'Хато ҳангоми боргирии шоирон',
                     subtitle: err.toString(),
+                    action: OutlinedButton(
+                      onPressed: () => ref.invalidate(literaryAuthorsProvider),
+                      child: Text(
+                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                      ),
+                    ),
                   ),
                 ),
               ),

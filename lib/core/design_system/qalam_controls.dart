@@ -84,7 +84,7 @@ class QalamSectionLink extends StatelessWidget {
   final String number;
   final String title;
   final String subtitle;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   const QalamSectionLink({
     super.key,
     required this.number,
@@ -95,6 +95,10 @@ class QalamSectionLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final enabled = onTap != null;
+    final contentColor = enabled
+        ? colors.onSurface
+        : colors.onSurfaceVariant.withValues(alpha: 0.65);
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -107,7 +111,14 @@ class QalamSectionLink extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(number, style: QalamTypography.meta(color: colors.primary)),
+              Text(
+                number,
+                style: QalamTypography.meta(
+                  color: enabled
+                      ? colors.primary
+                      : colors.onSurfaceVariant.withValues(alpha: 0.65),
+                ),
+              ),
               const SizedBox(width: 20),
               Expanded(
                 child: Column(
@@ -116,22 +127,24 @@ class QalamSectionLink extends StatelessWidget {
                     Text(
                       title,
                       style: QalamTypography.sectionTitle(
-                        color: colors.onSurface,
+                        color: contentColor,
                         fontSize: 23,
                       ),
                     ),
                     const SizedBox(height: 6),
                     Text(
                       subtitle,
-                      style: QalamTypography.bodySecondary(
-                        color: colors.onSurfaceVariant,
-                      ),
+                      style: QalamTypography.bodySecondary(color: contentColor),
                     ),
                   ],
                 ),
               ),
               const SizedBox(width: 12),
-              const Icon(Icons.arrow_forward, size: 22),
+              Icon(
+                enabled ? Icons.arrow_forward : Icons.hourglass_empty,
+                size: 22,
+                color: contentColor,
+              ),
             ],
           ),
         ),

@@ -60,8 +60,8 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                     : '03 / БАРНОМАИ МАКТАБӢ',
                 title: AppTranslations.get('lit_school', lang),
                 subtitle: isPersian
-                    ? 'آثار و شاعران مصوب برنامهٔ درسی وزارت معارف برای صنف‌های ۴ تا ۱۱'
-                    : 'Осор ва шоирони барномаи таълимии Вазорати маориф ва илми ҶТ барои синфҳои 4–11',
+                    ? 'آثار و شاعران مصوب برنامهٔ درسی وزارت معارف برای صنف‌های ۱ تا ۱۱'
+                    : 'Осор ва шоирони барномаи таълимии Вазорати маориф ва илми ҶТ барои синфҳои 1–11',
               ),
             ),
             // Content
@@ -77,6 +77,12 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                         ? 'خطا در بارگیری برنامهٔ درسی'
                         : 'Хато ҳангоми боргирии барнома',
                     subtitle: err.toString(),
+                    action: OutlinedButton(
+                      onPressed: () => ref.invalidate(schoolCanonProvider),
+                      child: Text(
+                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -185,7 +191,7 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                               ),
                               const Spacer(),
                               Text(
-                                '${grouped[grade]!.length} ${isPersian ? "اثر/مؤلف" : "мавзӯъ"}',
+                                '${grouped[grade]!.length} ${isPersian ? "اثر" : "асар"}',
                                 style: QalamTypography.meta(
                                   color: colors.onSurfaceVariant,
                                 ),
