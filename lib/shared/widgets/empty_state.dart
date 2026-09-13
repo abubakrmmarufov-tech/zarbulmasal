@@ -29,7 +29,9 @@ class EmptyState extends StatelessWidget {
               title,
               style: QalamTypography.sectionTitle(
                 color: colors.onSurface,
-                fontSize: 29,
+                // Long localized empty-state messages should read as a
+                // supporting heading on compact phones, not as a hero title.
+                fontSize: 24,
               ),
             ),
             if (subtitle != null) ...[
