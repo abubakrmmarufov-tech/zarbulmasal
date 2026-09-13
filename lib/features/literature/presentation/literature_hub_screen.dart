@@ -101,9 +101,9 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '01',
                           title: AppTranslations.get('lit_poets', lang),
                           subtitle: isPersian
-                              ? 'زندگینامه و آثار ۱۷۸ شاعر و ادیب بزرگ'
-                              : 'Зиндагинома ва осори 178 шоир ва адиби бузург',
-                          onTap: () => context.push('/poets'),
+                              ? 'زندگینامه و آثار ۱۷۱ شاعر و ادیب بزرگ'
+                              : 'Зиндагинома ва осори 171 шоир ва адиби бузург',
+                          onTap: () => context.push('/literature/poets'),
                         ),
                         // 02: Works / Poems
                         QalamSectionLink(
@@ -112,7 +112,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                           subtitle: isPersian
                               ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده (۱۴۶۶ اثر)'
                               : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда (1466 асар)',
-                          onTap: () => context.push('/poems'),
+                          onTap: () => context.push('/literature/works'),
                         ),
                         // 03: Oral Heritage
                         QalamSectionLink(

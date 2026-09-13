@@ -310,36 +310,7 @@ class _PoetDetailContent extends ConsumerWidget {
                     ],
                   ),
                 ),
-                // Education / School Canon mentions
-                if (poet.educationGrades.isNotEmpty) ...[
-                  const SizedBox(height: 24),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.school_outlined,
-                        size: 18,
-                        color: colors.primary,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        isPersian ? 'برنامهٔ درسی مکتب:' : 'Барномаи таълимӣ:',
-                        style: QalamTypography.meta(color: colors.primary),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          poet.educationGrades
-                              .map((g) => isPersian ? 'صنف $g' : 'Синфи $g')
-                              .join(', '),
-                          style: QalamTypography.label(
-                            color: colors.onSurface,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+
                 const SizedBox(height: 28),
                 const Divider(height: 1),
                 const SizedBox(height: 24),
