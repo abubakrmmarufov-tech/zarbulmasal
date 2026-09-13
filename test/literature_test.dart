@@ -17,9 +17,7 @@ void main() {
     );
     expect(hubCard, findsOneWidget);
     final hubCardRect = tester.getRect(hubCard);
-    await tester.tapAt(
-      Offset(hubCardRect.center.dx, hubCardRect.top + 20),
-    );
+    await tester.tapAt(Offset(hubCardRect.center.dx, hubCardRect.top + 20));
     await tester.pumpAndSettle();
 
     // Now we should be on Literature Hub Screen
