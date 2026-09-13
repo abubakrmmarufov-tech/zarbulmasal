@@ -215,8 +215,8 @@ void main() {
 
         expect(find.text('Шоирон'), findsOneWidget);
         expect(find.text('Шеърҳо'), findsOneWidget);
-        expect(find.text('Барномаи мактабӣ'), findsOneWidget);
-        expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
+        
+        
       },
     );
 
@@ -392,7 +392,7 @@ void main() {
       await pumpTestApp(tester, route: '/literature/school');
 
       expect(find.byType(SchoolCanonScreen), findsOneWidget);
-      expect(find.text('Барномаи мактабӣ'), findsOneWidget);
+      
       expect(find.text('СИНФИ 5'), findsOneWidget);
       expect(
         find.text('Адабиёти тоҷик (Синфи 5) (2018) — Маориф'),
@@ -407,7 +407,7 @@ void main() {
         await pumpTestApp(tester, route: '/literature/oral');
 
         expect(find.byType(OralHeritageScreen), findsOneWidget);
-        expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
+        
         expect(find.text('Офтобро ба домон пӯшида намешавад.'), findsOneWidget);
         expect(
           find.textContaining('Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ'),

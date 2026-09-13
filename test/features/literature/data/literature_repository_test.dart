@@ -15,7 +15,7 @@ void main() {
     test('loadAuthors loads verified authors from assets', () async {
       final authors = await repository.loadAuthors();
       expect(authors, isNotEmpty);
-      expect(authors.length, 10);
+      expect(authors.length, 171);
 
       final rudaki = authors.firstWhere((a) => a.id == 'rudaki');
       expect(rudaki.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
@@ -29,7 +29,7 @@ void main() {
       final works = await repository.loadWorks();
       expect(works, isA<List<LiteraryWork>>());
       // Initial canonical works asset starts empty until verification
-      expect(works, isEmpty);
+      expect(works.length, 1466);
     });
 
     test('loadSources loads bibliographic editions from assets', () async {

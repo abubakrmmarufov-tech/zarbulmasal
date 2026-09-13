@@ -24,6 +24,13 @@ class LiteratureHubScreen extends ConsumerWidget {
     final oralAsync = ref.watch(oralHeritageProvider);
 
     final oralCount = oralAsync.valueOrNull?.length ?? 0;
+    final poetsAsync = ref.watch(literaryAuthorsProvider);
+    final worksAsync = ref.watch(approvedWorksProvider);
+    final schoolCanonAsync = ref.watch(schoolCanonProvider);
+
+    final poetsCount = poetsAsync.valueOrNull?.length ?? 0;
+    final worksCount = worksAsync.valueOrNull?.length ?? 0;
+    final canonCount = schoolCanonAsync.valueOrNull?.length ?? 0;
 
     return Scaffold(
       body: CustomScrollView(
@@ -101,8 +108,8 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '01',
                           title: AppTranslations.get('lit_poets', lang),
                           subtitle: isPersian
-                              ? 'زندگینامه و آثار ۱۷۱ شاعر و ادیب بزرگ'
-                              : 'Зиндагинома ва осори 171 шоир ва адиби бузург',
+                              ? 'زندگینامه و آثار  شاعر و ادیب بزرگ'
+                              : 'Зиндагинома ва осори  шоир ва адиби бузург',
                           onTap: () => context.push('/literature/poets'),
                         ),
                         // 02: Works / Poems
@@ -110,8 +117,8 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '02',
                           title: AppTranslations.get('lit_poems', lang),
                           subtitle: isPersian
-                              ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده (۱۴۶۶ اثر)'
-                              : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда (1466 асар)',
+                              ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده ( اثر)'
+                              : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда ( асар)',
                           onTap: () => context.push('/literature/works'),
                         ),
                         // 03: Oral Heritage

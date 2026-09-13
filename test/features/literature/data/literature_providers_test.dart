@@ -41,14 +41,14 @@ void main() {
     test('literaryAuthorsProvider loads verified authors', () async {
       final authors = await container.read(literaryAuthorsProvider.future);
       expect(authors, isNotEmpty);
-      expect(authors.length, 10);
+      expect(authors.length, 171);
       expect(authors.first.id, 'rudaki');
     });
 
     test('literaryWorksProvider loads works', () async {
       final works = await container.read(literaryWorksProvider.future);
       expect(works, isA<List<LiteraryWork>>());
-      expect(works, isEmpty);
+      expect(works.length, 1466);
     });
 
     test(

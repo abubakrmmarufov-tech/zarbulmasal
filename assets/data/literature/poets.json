@@ -328,7 +328,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "455f0420-3834-48f0-86b9-7da673a2a684",
@@ -345,7 +351,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "d1abb54a-9804-4baf-b238-fd2203d7673e",
@@ -362,7 +374,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "1a55efdd-6a1f-43b8-834f-94af060b4329",
@@ -379,7 +397,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "3853d79b-0951-44c3-a5db-229649fa30b6",
@@ -396,7 +420,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "d48ec80f-951d-4dfd-b65a-6e409561a712",
@@ -413,7 +443,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "282f4c69-1d14-4be2-89d3-d21f867e4964",
@@ -430,7 +466,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "1c82210c-343c-4499-9639-93f0a766b5f7",
@@ -447,7 +489,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
@@ -464,7 +512,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "92753b88-1d31-4f79-aae4-5d36c83ab4a1",
@@ -481,7 +535,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "6e223a11-a2df-4298-bb14-2911af2da37d",
@@ -498,7 +558,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ab679c6b-ce9a-4e85-bf3b-81a8bed84623",
@@ -515,7 +581,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "5ff997ff-991d-4d18-ba6e-8acaa7a15058",
@@ -532,7 +604,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "732f0989-b849-4856-a0dd-ba2f64f1c9a0",
@@ -549,7 +627,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "69d27d87-439e-4efe-a14f-a1196aa8471f",
@@ -566,7 +650,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
@@ -583,7 +673,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "5fc69b51-c38a-4427-a362-5c8a14bca835",
@@ -600,7 +696,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
@@ -617,7 +719,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
@@ -634,7 +742,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
@@ -651,7 +765,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "f09073cb-33b4-4fcc-abf8-75959350245c",
@@ -668,7 +788,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ef5a57a2-8949-43dd-85eb-8ceaf78335f3",
@@ -685,7 +811,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a7feaa09-c83f-44f2-a69e-0a46ba957dbc",
@@ -702,7 +834,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "400b9785-ae80-4957-a653-d65c72cdbf79",
@@ -719,7 +857,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "8e7316a8-5101-4fd2-8a83-0a883a8da9fb",
@@ -736,7 +880,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "310a8288-d554-4b9c-9ad1-3273b1edce85",
@@ -753,7 +903,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "be19709e-c3af-460d-80b9-4c67046e8be3",
@@ -770,7 +926,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "9ab32712-ce1d-4054-a7cc-163ca4a8f11f",
@@ -787,7 +949,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "b299ac33-ad0c-4e9e-8bb3-aabfd19b8126",
@@ -804,7 +972,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "9a3f7c2a-a41d-4064-9ea7-766941c9ae35",
@@ -821,7 +995,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
@@ -838,7 +1018,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
@@ -855,7 +1041,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "e948618d-0c4c-484b-b60b-c1658bc51d57",
@@ -872,7 +1064,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ac759bd8-fe4e-4ef3-9e2f-30226a014707",
@@ -889,7 +1087,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "da1e1d82-ceeb-4a9e-9e42-251b9b05d20c",
@@ -906,7 +1110,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "92a7c4fa-3191-4301-ba53-8087ce7ef3d8",
@@ -923,7 +1133,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "afc28bbb-ebba-4669-9715-a10cbbe7400a",
@@ -940,7 +1156,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "cef7fd49-54c8-4e46-9361-123cc52de5eb",
@@ -957,7 +1179,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "6b080d51-336b-48ba-92cd-85fe29149e0d",
@@ -974,7 +1202,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "79b50923-ea65-4554-b65d-bbf3ee49f35c",
@@ -991,7 +1225,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a6b5eb18-39e9-4fdf-b492-e5956a553436",
@@ -1008,7 +1248,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "da5e2975-a8e2-44ce-a30c-0e5d98f73844",
@@ -1025,7 +1271,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
@@ -1042,7 +1294,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "3d5d70c0-6294-4b7d-b830-79db08edd6b8",
@@ -1059,7 +1317,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "bb00bac5-e207-4cc7-9539-a2af92b71281",
@@ -1076,7 +1340,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a4b182d3-1c06-4c82-9858-0e71d95edeb3",
@@ -1093,7 +1363,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "da40ae16-883d-4232-86a1-976aa9ffc941",
@@ -1110,7 +1386,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "79049bfd-1f01-4f9d-8e59-851cdbd4bba2",
@@ -1127,7 +1409,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a2e5259d-9c1c-46f5-b845-04fb18d07858",
@@ -1144,7 +1432,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "26906a5a-692c-40a3-a991-6b3559cda394",
@@ -1161,7 +1455,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "6ab9cd0a-0ff0-4a73-99ba-6604d9c61847",
@@ -1178,7 +1478,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
@@ -1195,7 +1501,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "2e7a713f-c3d2-449e-bd6a-a4b5b7350201",
@@ -1212,7 +1524,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "8c4bf813-284a-4938-9c1b-ac9eb6cc53e4",
@@ -1229,7 +1547,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "404226c8-acbc-47e5-819e-4c63f93cb4d4",
@@ -1246,7 +1570,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7b8bcd3c-a1fa-4b9d-9378-76684d2495b0",
@@ -1263,7 +1593,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "42d303b5-f20f-440d-8079-a8e25ef52d2e",
@@ -1280,7 +1616,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "3537f811-9658-4f9b-a29b-6311e802e60e",
@@ -1297,7 +1639,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "1f97e6af-4d9c-4d58-9812-847d89348dfc",
@@ -1314,7 +1662,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "604d62c2-62fc-4aa3-a7d2-8348e714b52d",
@@ -1331,7 +1685,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "0a3d3ab5-3edd-4075-b382-7d16a25bdf71",
@@ -1348,7 +1708,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "17559ef6-4071-495f-b966-e5be3b33d3a3",
@@ -1365,7 +1731,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "650312c1-094f-4cd9-9313-efe38bdbef0f",
@@ -1382,7 +1754,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "32624545-f720-4267-9669-d3648b7369ac",
@@ -1399,7 +1777,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "bdca68f7-2ee1-49bf-9780-27da55cea473",
@@ -1416,7 +1800,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "4830f7a5-85aa-4418-8785-40867a995614",
@@ -1433,7 +1823,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "2c8b026f-bab7-4cd8-9d86-26794a1573eb",
@@ -1450,7 +1846,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "2a94d1c2-8f15-4d08-948c-b7e9491d8273",
@@ -1467,7 +1869,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "d708065a-1337-495f-ae6b-b0b5ce40e90f",
@@ -1484,7 +1892,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7d0a189b-d704-4c0e-bc8b-8504ffcb4e9f",
@@ -1501,7 +1915,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "c76a0058-db4d-4bd3-83dd-a66f2b3578b4",
@@ -1518,7 +1938,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "1b65d9d8-0e3d-4e02-8c65-30f98e84e109",
@@ -1535,7 +1961,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "cf6c66fa-1c48-4819-a4d9-287225e766b2",
@@ -1552,7 +1984,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "d1bb3938-3e96-42a9-b73d-bafbabf8554f",
@@ -1569,7 +2007,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "58010d8f-2575-4b92-89e0-373f05b32929",
@@ -1586,7 +2030,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "896648b7-c7b7-4451-b8b3-cd37e4710fa1",
@@ -1603,7 +2053,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "dea74b1e-32da-4afc-862f-4a08fd22f8f5",
@@ -1620,7 +2076,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "2b5af239-bce6-4b05-98ad-fbeef1a54c12",
@@ -1637,7 +2099,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "c4ed06c1-4e72-485e-bde4-8f1c06e969db",
@@ -1654,7 +2122,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "98e43b59-1d3a-440a-9d73-83b599cee7c5",
@@ -1671,7 +2145,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ec7e9596-18d3-47dc-b952-bcbdfa023934",
@@ -1688,7 +2168,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "68bc433e-b316-46e1-bbe8-d53066764834",
@@ -1705,7 +2191,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "6866f29f-e813-4843-b346-ad5ff69191e8",
@@ -1722,7 +2214,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "0079c49a-da77-47d1-bc1e-8ff4cbb9d337",
@@ -1739,7 +2237,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ed2d18a8-f33e-4a66-8052-65128fe6295a",
@@ -1756,7 +2260,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "483ec51d-a691-4b78-918a-0fbc13f29a46",
@@ -1773,7 +2283,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "91bf5726-5e0a-451e-be4b-7d91650f6cfa",
@@ -1790,7 +2306,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "4ea4300f-493d-40bd-bf55-a83d9b397bf3",
@@ -1807,7 +2329,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "1b317e1f-83b1-43be-a0c0-4e210809c938",
@@ -1824,7 +2352,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "2564937c-eaeb-4faa-a4eb-0c9191a535fb",
@@ -1841,7 +2375,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "717847cd-64b0-47e7-9d1c-75866e880647",
@@ -1858,7 +2398,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "cfe58486-55c2-474d-b329-248040b519ee",
@@ -1875,7 +2421,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "9becac52-2650-408f-8ecf-d496a233d71a",
@@ -1892,7 +2444,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "8648e50d-ff7d-413d-a0fb-e1829ff940bb",
@@ -1909,7 +2467,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "5228f270-7e20-47cf-9e0b-4e6cc6fca51c",
@@ -1926,7 +2490,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "9915eac4-559e-4f20-9bdf-bb7a50e153db",
@@ -1943,7 +2513,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "e8ec4440-682a-48f1-ba59-54d8a9595c16",
@@ -1960,7 +2536,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "b5252e27-e6c6-401e-aca9-5fec3da36b65",
@@ -1977,7 +2559,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "beea5538-c891-4044-a75b-9bf21d1ef897",
@@ -1994,7 +2582,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "315b0945-c657-4c32-8b46-abb5f148482b",
@@ -2011,7 +2605,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "11c85433-4042-4e24-95fb-ccc37ef0d2ea",
@@ -2028,7 +2628,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "38f2044a-792f-46be-8707-90721abe3ea1",
@@ -2045,7 +2651,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "74ea3b93-4c65-4605-95a7-8c2ec4c382cc",
@@ -2062,7 +2674,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "19750e0a-7629-436e-9715-a1530d0b1571",
@@ -2079,7 +2697,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "44aaf1c8-ce97-4cd1-a21f-7de5db7c615d",
@@ -2096,7 +2720,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "82f30a4e-f468-4a7d-bf03-bd29d3279fe0",
@@ -2113,7 +2743,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "358dda13-365c-4434-87f0-d404b305adcb",
@@ -2130,7 +2766,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
@@ -2147,7 +2789,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "01df7214-28b7-44ab-a1f4-898bb7e83950",
@@ -2164,7 +2812,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ec41abdc-c530-4745-825f-a23cd7515ca5",
@@ -2181,7 +2835,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "5ec16ef0-b9c8-44e1-a6fc-4a01ee3f7def",
@@ -2198,7 +2858,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "337370dd-7731-490b-9e92-b7f9be6ba695",
@@ -2215,7 +2881,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "281c1b94-267e-4bbf-a7e5-47c24f99f0b5",
@@ -2232,7 +2904,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "eb037eb9-ba72-49bd-b009-8f9c84d46105",
@@ -2249,7 +2927,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "228feecd-8a97-4aaf-9b92-b9896c3a7d7d",
@@ -2266,7 +2950,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7c389f92-ffdc-4f8e-b901-1de71acc34a9",
@@ -2283,7 +2973,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "465d3f4a-4924-4ca6-9371-7266ae4393c7",
@@ -2300,7 +2996,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
@@ -2317,7 +3019,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "bda36de4-2636-4079-b473-d8f9f620820a",
@@ -2334,7 +3042,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "f0b1063a-6315-46b1-84ee-9a7787325a4c",
@@ -2351,7 +3065,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "0834f4b1-3aa1-4460-b2bd-5b4e8334c3fe",
@@ -2368,7 +3088,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "c9ea2574-7623-4974-ada0-49c075b2831b",
@@ -2385,7 +3111,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "fd212071-6a30-4b8d-870a-ae784002e8f2",
@@ -2402,7 +3134,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "890cf706-3f30-4f4f-a192-01dd841835c5",
@@ -2419,7 +3157,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
@@ -2436,7 +3180,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
@@ -2453,7 +3203,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "e859c1ae-03b9-4add-8079-7fa5bcf64ef7",
@@ -2470,7 +3226,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "26c985a4-88ca-47ea-8981-ba5529b62a7c",
@@ -2487,7 +3249,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "b081ddd8-af07-4bb5-919a-7f3edce5108a",
@@ -2504,7 +3272,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7cb0a909-f92c-4abe-9087-038d37da9d98",
@@ -2521,7 +3295,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "6717d5d5-30d8-4bcc-ad04-20251c567127",
@@ -2538,7 +3318,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "b2369b52-f62a-4e5c-8f12-6f50816538cd",
@@ -2555,7 +3341,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "0c10d530-e56e-4b4a-b6ba-67623f374474",
@@ -2572,7 +3364,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "0b236c58-9f18-4730-9dbc-0b1f70e5118c",
@@ -2589,7 +3387,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "9cc6b7f2-3aa2-4ecf-abec-17eec77b198b",
@@ -2606,7 +3410,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "10a9ad7d-fd0d-462f-8cb4-594a869f8229",
@@ -2623,7 +3433,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "eff956d5-9b8c-4522-9ac6-8791f15495ce",
@@ -2640,7 +3456,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "12fb0e82-f108-4e71-8207-74d0540639d3",
@@ -2657,7 +3479,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "65bd67be-a18d-4679-8721-cd13818933b1",
@@ -2674,7 +3502,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
@@ -2691,7 +3525,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ada69601-01d5-493f-b1a0-9b886be8daa8",
@@ -2708,7 +3548,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "16d7d64a-fca1-43cc-be01-86d776cde770",
@@ -2725,7 +3571,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a65c552b-8432-4f3b-bd72-0e48b99921a7",
@@ -2742,7 +3594,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "84e67a80-5859-48f9-a533-a1f999cb2939",
@@ -2759,7 +3617,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "17004fb9-d6b6-4f73-844e-51e02737ef5e",
@@ -2776,7 +3640,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "f8658458-ab69-4c48-a295-441a25a5fdb5",
@@ -2793,7 +3663,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
@@ -2810,7 +3686,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "1b50e1c6-7881-47ee-8965-4c19164dbf4a",
@@ -2827,7 +3709,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "0b0f1032-b36a-45e4-9930-8953b067db65",
@@ -2844,7 +3732,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7e8a043d-be9b-4bc0-b779-b9e8ea00ad04",
@@ -2861,7 +3755,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "0e91d643-d947-4f0d-b3ac-ec2715a4b87c",
@@ -2878,7 +3778,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a0edb1e9-51b5-4ad1-ad0a-5d8af6a6a6da",
@@ -2895,7 +3801,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "740c2616-7dc2-4d45-9743-ad0b9d086dbc",
@@ -2912,7 +3824,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ea87e35a-6a03-44f2-837e-648d1c84aecc",
@@ -2929,7 +3847,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "06b70024-a028-43dd-8c23-cdb75e96fac8",
@@ -2946,7 +3870,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "7a4cc3dc-3d9c-4cf2-aa27-a9b66f68937f",
@@ -2963,7 +3893,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "121ce628-ff4b-44d2-a702-81db93040dee",
@@ -2980,7 +3916,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "b28a4de3-06a8-406c-b2e9-db363f7aa2d5",
@@ -2997,7 +3939,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "5633556b-df45-4cab-83dc-760016db1ef2",
@@ -3014,7 +3962,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "a74ea72d-864f-4c25-b42e-95435794a42d",
@@ -3031,7 +3985,13 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   },
   {
     "id": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
@@ -3048,6 +4008,12 @@
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
-    "isPublicDomain": true
+    "rights": {
+      "status": "publicDomain",
+      "reasoning": "Extracted from public school textbooks",
+      "rightsSource": "Law No. 726",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
+    }
   }
 ]

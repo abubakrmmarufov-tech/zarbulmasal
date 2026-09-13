@@ -164,3 +164,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 - A public GitHub Release (`v1.0.1`) is published with standalone `.apk` assets.
 - Both the ARM64 split APK (`app-arm64-v8a-release.apk`) and the universal APK (`app-release.apk`) are directly downloadable by unauthenticated mobile users.
 - URLs verified via unauthenticated HTTP GET (returning HTTP 302 redirect to GitHub release asset storage with `content-type: application/vnd.android.package-archive`).
+
+## Update 2026-09-13
+- **Literary Heritage**: Added 171 poets and 1,466 quarantined poems currently under manual review.
+- Fixed CSP, signing config, and FavoritesNotifier race conditions.

@@ -50,7 +50,7 @@ android {
     buildTypes {
         release {
             val releaseConfig = signingConfigs.findByName("release")
-            signingConfig = releaseConfig ?: signingConfigs.getByName("debug")
+            signingConfig = releaseConfig ?: throw GradleException("Release signing config missing")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

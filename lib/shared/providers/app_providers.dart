@@ -39,8 +39,10 @@ final favoritesProvider = StateNotifierProvider<FavoritesNotifier, Set<String>>(
 );
 
 class FavoritesNotifier extends StateNotifier<Set<String>> {
+  late Future<void> _initFuture;
+  
   FavoritesNotifier() : super({}) {
-    _loadFavorites();
+    _initFuture = _loadFavorites();
   }
 
   Future<void> _loadFavorites() async {
@@ -50,6 +52,7 @@ class FavoritesNotifier extends StateNotifier<Set<String>> {
   }
 
   Future<void> toggle(String proverbId) async {
+    await _initFuture;
     final prefs = await SharedPreferences.getInstance();
     final newSet = Set<String>.from(state);
     if (newSet.contains(proverbId)) {

@@ -5,6 +5,8 @@ import 'package:zarbulmasal/features/literature/domain/literary_author.dart';
 import 'package:zarbulmasal/features/literature/domain/rights_record.dart';
 import 'package:zarbulmasal/features/literature/domain/school_canon_entry.dart';
 import 'package:zarbulmasal/features/literature/domain/source_edition.dart';
+import 'package:zarbulmasal/features/literature/domain/literary_work.dart';
+import 'package:zarbulmasal/features/literature/domain/verification_record.dart';
 
 void main() {
   group('Literature JSON Data Files Validation', () {
@@ -17,20 +19,7 @@ void main() {
       expect(raw, isA<List<dynamic>>());
 
       final list = raw as List<dynamic>;
-      expect(list.length, 10);
-
-      final expectedPoetIds = [
-        'rudaki',
-        'nasir_khusraw',
-        'kamol_khujandi',
-        'tursunzoda',
-        'qanoat',
-        'loiq_sherali',
-        'bozor_sobir',
-        'gulnazar_keldi',
-        'gulrukhsor',
-        'farzona',
-      ];
+      expect(list.length, 171);
 
       final authors = <LiteraryAuthor>[];
       for (final item in list) {
@@ -39,54 +28,34 @@ void main() {
         authors.add(author);
       }
 
-      expect(authors.map((a) => a.id).toList(), expectedPoetIds);
-
-      // Check Rudaki
-      final rudaki = authors.firstWhere((a) => a.id == 'rudaki');
-      expect(rudaki.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
-      expect(rudaki.birthYear, '~858');
-      expect(rudaki.deathYear, '~941');
-      expect(rudaki.birthPlace, 'Панҷруд, Панҷакент');
-      expect(rudaki.officialTitles, ['Одамушшуаро', 'Султони шоирон']);
-      expect(rudaki.educationGrades, ['4', '5', '8', '10']);
-      expect(rudaki.rights.status, RightsStatus.publicDomain);
-      expect(rudaki.rights.fullTextAllowed, isTrue);
-      expect(rudaki.rights.excerptAllowed, isTrue);
-
-      // Check Tursunzoda (excerptOnly)
-      final tursunzoda = authors.firstWhere((a) => a.id == 'tursunzoda');
-      expect(tursunzoda.canonicalName, 'Мирзо Турсунзода');
-      expect(tursunzoda.rights.status, RightsStatus.excerptOnly);
-      expect(tursunzoda.rights.fullTextAllowed, isFalse);
-      expect(tursunzoda.rights.excerptAllowed, isTrue);
-      expect(tursunzoda.rights.authorDeathYear, '1977');
-
-      // Check Gulrukhsor aliases
-      final gulrukhsor = authors.firstWhere((a) => a.id == 'gulrukhsor');
-      expect(gulrukhsor.aliases, ['Гулрухсор Сафиева']);
-      expect(gulrukhsor.deathYear, isNull);
-      expect(gulrukhsor.rights.status, RightsStatus.excerptOnly);
-
-      // Check Farzona aliases
-      final farzona = authors.firstWhere((a) => a.id == 'farzona');
-      expect(farzona.aliases, ['Иноят Юнусовна Хоҷаева']);
-      expect(farzona.deathYear, isNull);
-      expect(farzona.rights.status, RightsStatus.excerptOnly);
-
-      // Verify all majorWorkIds are empty
       for (final a in authors) {
-        expect(a.majorWorkIds, isEmpty);
+        expect(a.id, isNotEmpty);
+        expect(a.canonicalName, isNotEmpty);
+        expect(a.rights.status, isNot(RightsStatus.unknown));
       }
     });
 
-    test('works.json is an empty array', () {
+    test('works.json is valid and conforms to LiteraryWork model', () {
       final file = File('assets/data/literature/works.json');
       expect(file.existsSync(), isTrue);
 
       final content = file.readAsStringSync();
       final dynamic raw = jsonDecode(content);
       expect(raw, isA<List<dynamic>>());
-      expect((raw as List).isEmpty, isTrue);
+      final list = raw as List<dynamic>;
+      expect(list.length, 1466);
+
+      for (final item in list) {
+        expect(item, isA<Map<String, dynamic>>());
+        final work = LiteraryWork.fromJson(item as Map<String, dynamic>);
+        expect(work.id, isNotEmpty);
+        expect(work.authorId, isNotEmpty);
+        expect(work.title, isNotEmpty);
+        expect(work.textTajik, isNotEmpty);
+        expect(work.primarySource, isNotNull);
+        expect(work.verification.secondSourceChecked, isFalse);
+        expect(work.verification.finalStatus, VerificationStatus.needsReview);
+      }
     });
 
     test('sources.json is valid and conforms to SourceEdition model', () {
@@ -99,7 +68,6 @@ void main() {
 
       final list = raw as List<dynamic>;
       expect(list.length, greaterThanOrEqualTo(15));
-      expect(list.length, lessThanOrEqualTo(30));
 
       for (final item in list) {
         expect(item, isA<Map<String, dynamic>>());

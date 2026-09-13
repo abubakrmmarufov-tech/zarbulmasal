@@ -38,7 +38,7 @@ documentation, and code:
 
 - **Proverbs Catalog**: 149 book-attested traditional proverbs plus 1 clearly labeled needs-review
   modern learning text, across 20 categories and 6 data-derived levels
-- **Literary Heritage (Мероси адабӣ)**: 178 Tajik poets and 1,466 poems extracted with full provenance from 7 school literature textbooks (Grades 5-11)
+- **Literary Heritage (Мероси адабӣ)**: 171 Tajik poets and 1,466 quarantined poems currently under manual review from 7 school literature textbooks (Grades 5-11)
 - Tajik Cyrillic and Persian-script reading modes with correct text direction
 - Search, category filters, level filters, saved items, and daily reading
 - Meaning, explanation, example, source, and verification metadata

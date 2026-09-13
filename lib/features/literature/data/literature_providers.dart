@@ -61,9 +61,10 @@ final sourceEditionsProvider = FutureProvider<List<SourceEdition>>((ref) async {
 /// StateNotifier managing bookmarked literary work IDs.
 class LiteraryFavoritesNotifier extends StateNotifier<Set<String>> {
   final SharedPreferences? _prefs;
+  late Future<void> _initFuture;
 
   LiteraryFavoritesNotifier([this._prefs]) : super(const {}) {
-    _loadFavorites();
+    _initFuture = _loadFavorites();
   }
 
   Future<void> _loadFavorites() async {
@@ -78,6 +79,7 @@ class LiteraryFavoritesNotifier extends StateNotifier<Set<String>> {
 
   /// Toggles the bookmark status of a work by [workId].
   Future<void> toggle(String workId) async {
+    await _initFuture;
     final prefs = _prefs ?? await SharedPreferences.getInstance();
     final newSet = Set<String>.from(state);
     if (newSet.contains(workId)) {
@@ -96,6 +98,7 @@ class LiteraryFavoritesNotifier extends StateNotifier<Set<String>> {
 
   /// Adds a work to bookmarks.
   Future<void> add(String workId) async {
+    await _initFuture;
     if (state.contains(workId)) return;
     final prefs = _prefs ?? await SharedPreferences.getInstance();
     final newSet = Set<String>.from(state)..add(workId);
@@ -110,6 +113,7 @@ class LiteraryFavoritesNotifier extends StateNotifier<Set<String>> {
 
   /// Removes a work from bookmarks.
   Future<void> remove(String workId) async {
+    await _initFuture;
     if (!state.contains(workId)) return;
     final prefs = _prefs ?? await SharedPreferences.getInstance();
     final newSet = Set<String>.from(state)..remove(workId);
