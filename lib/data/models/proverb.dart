@@ -15,6 +15,8 @@ class Proverb {
   final SourceStatus sourceStatus;
   final String sourceNote;
   final String? canonicalId;
+
+  /// IDs of the proverb records that are alternative forms of this proverb.
   final List<String> variants;
 
   const Proverb({

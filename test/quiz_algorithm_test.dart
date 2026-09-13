@@ -100,6 +100,186 @@ void main() {
       }
     });
 
+    test(
+      'seed variant links are relational IDs with reciprocal canonicals',
+      () {
+        const expectedVariantIds = {
+          '43': ['44'],
+          '70': ['149'],
+          '96': ['170'],
+          '98': ['97'],
+          '120': ['166'],
+          '168': ['112'],
+          '169': ['71'],
+        };
+        final proverbsById = {
+          for (final proverb in seedProverbs) proverb.id: proverb,
+        };
+
+        for (final entry in expectedVariantIds.entries) {
+          final canonical = proverbsById[entry.key]!;
+          expect(
+            canonical.variants,
+            entry.value,
+            reason: 'Canonical ${entry.key}',
+          );
+
+          for (final variantId in canonical.variants) {
+            final variant = proverbsById[variantId];
+            expect(
+              variant,
+              isNotNull,
+              reason: 'Variant ID $variantId must resolve in the corpus',
+            );
+            expect(
+              variant!.canonicalId,
+              canonical.id,
+              reason: 'Variant $variantId must point back to ${canonical.id}',
+            );
+          }
+        }
+
+        for (final canonical in seedProverbs.where(
+          (p) => p.variants.isNotEmpty,
+        )) {
+          for (final variantId in canonical.variants) {
+            final variant = proverbsById[variantId];
+            expect(
+              variant,
+              isNotNull,
+              reason: 'Dangling variant ID $variantId',
+            );
+            expect(variant!.canonicalId, canonical.id);
+          }
+        }
+
+        for (final variant in seedProverbs.where(
+          (p) => p.canonicalId != null,
+        )) {
+          final canonical = proverbsById[variant.canonicalId];
+          expect(
+            canonical,
+            isNotNull,
+            reason: 'Dangling canonical ID ${variant.canonicalId}',
+          );
+          expect(
+            canonical!.variants,
+            contains(variant.id),
+            reason: 'Canonical ${canonical.id} must link back to ${variant.id}',
+          );
+        }
+      },
+    );
+
+    test('variant links do not depend on editable proverb text', () {
+      final canonical = _testProverb(id: 'canonical', variants: ['variant']);
+      final editedVariant = _testProverb(
+        id: 'variant',
+        tajikCyrillic: 'Матни таҳриршуда.',
+      );
+
+      expect(QuizEngine.isVariantOrRelated(canonical, editedVariant), isTrue);
+    });
+
+    test('matching text alone does not make unrelated proverbs variants', () {
+      final canonical = _testProverb(id: 'canonical', variants: ['variant']);
+      final unrelated = _testProverb(id: 'unrelated', tajikCyrillic: 'variant');
+
+      expect(QuizEngine.isVariantOrRelated(canonical, unrelated), isFalse);
+    });
+
+    test('fallback keeps source and meaning eligibility guarantees', () {
+      final target = _testProverb(id: 'target', meaningTj: 'як ду се чор');
+      final validDistractors = [
+        _testProverb(id: 'valid-1', meaningTj: 'як ду се панҷ'),
+        _testProverb(id: 'valid-2', meaningTj: 'як ду чор шаш'),
+        _testProverb(id: 'valid-3', meaningTj: 'як се чор ҳафт'),
+      ];
+      final catalog = [
+        target,
+        ...validDistractors,
+        _testProverb(
+          id: 'needs-review',
+          meaningTj: 'номзади носанҷида',
+          sourceStatus: SourceStatus.needsReview,
+        ),
+        _testProverb(
+          id: 'unverified',
+          meaningTj: 'номзади тасдиқнашуда',
+          sourceStatus: SourceStatus.unverified,
+        ),
+        _testProverb(id: 'empty-meaning', meaningTj: '   '),
+      ];
+      final expectedOptions = {
+        target.meaningTj,
+        ...validDistractors.map((proverb) => proverb.meaningTj),
+      };
+
+      for (var seed = 0; seed < 20; seed++) {
+        final question = QuizEngine.generateQuestion(
+          target,
+          catalog,
+          random: Random(seed),
+        );
+        expect(
+          question.options.toSet(),
+          expectedOptions,
+          reason: 'Seed $seed must not relax source or empty-meaning checks',
+        );
+      }
+    });
+
+    test('fallback never selects related distractors together', () {
+      final target = _testProverb(id: 'target', meaningTj: 'як ду се чор');
+      final canonicalDistractor = _testProverb(
+        id: 'candidate-canonical',
+        meaningTj: 'як ду се панҷ',
+        variants: ['candidate-variant'],
+      );
+      final variantDistractor = _testProverb(
+        id: 'candidate-variant',
+        meaningTj: 'як ду се ҳашт',
+        canonicalId: canonicalDistractor.id,
+      );
+      final catalog = [
+        target,
+        canonicalDistractor,
+        variantDistractor,
+        _testProverb(id: 'safe-1', meaningTj: 'як ду чор шаш'),
+        _testProverb(id: 'safe-2', meaningTj: 'як се чор ҳафт'),
+      ];
+
+      for (var seed = 0; seed < 20; seed++) {
+        final question = QuizEngine.generateQuestion(
+          target,
+          catalog,
+          random: Random(seed),
+        );
+        final options = question.options.toSet();
+        expect(question.options, hasLength(4));
+        expect(
+          options.contains(canonicalDistractor.meaningTj) &&
+              options.contains(variantDistractor.meaningTj),
+          isFalse,
+          reason: 'Seed $seed selected two distractors from one variant group',
+        );
+      }
+    });
+
+    test('fails explicitly when three safe distractors are unavailable', () {
+      final target = _testProverb(id: 'target');
+      final catalog = [
+        target,
+        _testProverb(id: 'safe-1', meaningTj: 'Якум'),
+        _testProverb(id: 'safe-2', meaningTj: 'Дуюм'),
+      ];
+
+      expect(
+        () => QuizEngine.generateQuestion(target, catalog),
+        throwsA(isA<StateError>()),
+      );
+    });
+
     test('word similarity helper accurately identifies textual similarity', () {
       expect(QuizEngine.wordSimilarity('салом дӯстам', 'салом дӯстам'), 1.0);
       expect(QuizEngine.wordSimilarity('салом дӯстам', 'хайр бародар'), 0.0);
@@ -165,4 +345,29 @@ void main() {
       }
     });
   });
+}
+
+Proverb _testProverb({
+  required String id,
+  String tajikCyrillic = 'Матн',
+  String meaningTj = 'Маъно',
+  String? canonicalId,
+  List<String> variants = const [],
+  SourceStatus sourceStatus = SourceStatus.bookAttested,
+}) {
+  return Proverb(
+    id: id,
+    tajikCyrillic: tajikCyrillic,
+    persianText: 'متن',
+    simpleExplanationTj: 'Шарҳ',
+    meaningTj: meaningTj,
+    exampleSentenceTj: 'Мисол',
+    categoryId: 'test',
+    level: 1,
+    type: ProverbType.traditional,
+    sourceStatus: sourceStatus,
+    sourceNote: 'Test fixture',
+    canonicalId: canonicalId,
+    variants: variants,
+  );
 }

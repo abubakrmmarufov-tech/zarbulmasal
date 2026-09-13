@@ -138,12 +138,22 @@ class AppTranslations {
     'badges_page_verified': 'Матн санҷидашуда',
     'badges_needs_review': 'Ниёз ба баррасӣ',
     'badges_unverified': 'Номаълум',
-    'badges_level': 'Сатҳ \${0}',
+    'badges_level': 'Саводи \${0}',
     'source_book_attested':
-        'Дар китоби зикршуда омадааст (саҳифа тафтиш нашудааст)',
-    'source_needs_review': 'Сарчашма ва матн ниёз ба баррасии иловагӣ дорад',
+        'Дар китоби зикршуда омадааст (саҳифа санҷида нашудааст)',
+    'source_needs_review': 'Манбаъ ва матн ба санҷиши иловагӣ ниёз дорад',
     'source_page_verified': 'Матн ва саҳифа аз китоб тасдиқ шудааст',
-    'reading_tajik_explanation': 'Шарҳи тоҷикӣ',
+    'reading_tajik_explanation': 'Шарҳи тоҷикӣ (бо хати сириллик)',
+
+    // Literature
+    'literature_title': 'Мероси адабӣ',
+    'poets_title': 'Шоирон',
+    'poets_desc': 'Зиндагинома ва осори шоирон',
+    'poems_title': 'Шеърҳо',
+    'poems_desc': 'Шеърҳои тоҷикӣ',
+    'poet_birth_death': 'Солҳои ҳаёт',
+    'poet_works': 'Осор',
+
     // Quick action descriptions
     'quiz_desc': 'Санҷиши дониш',
     'flashcards_desc': 'Омӯзиши мақолҳо бо кортҳо',
@@ -371,6 +381,16 @@ class AppTranslations {
     'source_needs_review': 'منبع و متن نیاز به بررسی تکمیلی دارد',
     'source_page_verified': 'متن و صفحه از کتاب تأیید شده است',
     'reading_tajik_explanation': 'توضیح تاجیکی (خط سیریلیک)',
+
+    // Literature
+    'literature_title': 'میراث ادبی',
+    'poets_title': 'شاعران',
+    'poets_desc': 'زندگینامه و آثار شاعران',
+    'poems_title': 'شعرها',
+    'poems_desc': 'شعرهای تاجیکی',
+    'poet_birth_death': 'سال‌های زندگی',
+    'poet_works': 'آثار',
+
     // Quick action descriptions
     'quiz_desc': 'آزمون دانش',
     'flashcards_desc': 'آموزش ضرب‌المثل‌ها با کارت‌ها',

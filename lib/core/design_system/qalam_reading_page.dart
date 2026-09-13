@@ -24,6 +24,18 @@ class QalamReadingPage extends ConsumerWidget {
     final p = proverb;
     String tr(String key) => AppTranslations.get(key, lang);
     final categories = ref.watch(categoriesProvider);
+    final proverbsById = {
+      for (final proverb in ref.watch(proverbsProvider)) proverb.id: proverb,
+    };
+    final variantTexts = p == null
+        ? const <String>[]
+        : p.variants
+              .map((variantId) {
+                final variant = proverbsById[variantId];
+                return persian ? variant?.persianText : variant?.tajikCyrillic;
+              })
+              .whereType<String>()
+              .toList(growable: false);
     final matches = categories.where((c) => c.id == p?.categoryId);
     final category = matches.isEmpty
         ? tr('detail_unknown')
@@ -127,7 +139,8 @@ class QalamReadingPage extends ConsumerWidget {
                                 : TextDirection.ltr,
                             style: QalamTypography.heroProverb(
                               color: colors.onSurface,
-                              fontSize: 35,
+                              fontSize:
+                                  30, // Optimized for mobile compatibility
                               height: 1.42,
                             ),
                           ),
@@ -236,13 +249,15 @@ class QalamReadingPage extends ConsumerWidget {
                         textDirection: TextDirection.ltr,
                       ),
                     ),
-                  if (p.variants.isNotEmpty)
+                  if (variantTexts.isNotEmpty)
                     SliverToBoxAdapter(
                       child: _ReadingSection(
                         number: '04',
                         title: persian ? 'گونه‌های دیگر' : 'Шаклҳои дигар',
-                        text: p.variants.join('\n\n'),
-                        textDirection: TextDirection.ltr,
+                        text: variantTexts.join('\n\n'),
+                        textDirection: persian
+                            ? TextDirection.rtl
+                            : TextDirection.ltr,
                       ),
                     ),
                   SliverToBoxAdapter(

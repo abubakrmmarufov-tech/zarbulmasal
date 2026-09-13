@@ -355,7 +355,7 @@ const List<Proverb> seedProverbs = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.bookAttested,
     sourceNote: 'Баёзи фолклори тоҷик. Ҷилди 2',
-    variants: ['Забони сурх сари сабзро мехӯрад.'],
+    variants: ['44'],
   ),
   Proverb(
     id: '44',
@@ -774,7 +774,7 @@ const List<Proverb> seedProverbs = [
     sourceStatus: SourceStatus.bookAttested,
     sourceNote:
         'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
-    variants: ['Корро ба кордон супор.'],
+    variants: ['149'],
   ),
   Proverb(
     id: '71',
@@ -1186,7 +1186,7 @@ const List<Proverb> seedProverbs = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.bookAttested,
     sourceNote: 'Баёзи фолклори тоҷик. Ҷилди 2',
-    variants: ['Дӯст дар рӯзи сахт маълум мешавад.'],
+    variants: ['170'],
   ),
   Proverb(
     id: '97',
@@ -1220,7 +1220,7 @@ const List<Proverb> seedProverbs = [
     sourceStatus: SourceStatus.bookAttested,
     sourceNote:
         'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
-    variants: ['Дӯсти нодон аз душмани доно бадтар аст.'],
+    variants: ['97'],
   ),
   Proverb(
     id: '99',
@@ -1573,7 +1573,7 @@ const List<Proverb> seedProverbs = [
     sourceStatus: SourceStatus.bookAttested,
     sourceNote:
         'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
-    variants: ['Дарахти пурмева сар хам мекунад.'],
+    variants: ['166'],
   ),
   Proverb(
     id: '121',
@@ -2329,7 +2329,7 @@ const List<Proverb> seedProverbs = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.bookAttested,
     sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
-    variants: ['Чоҳи дигаронро макан, ки худ меафтӣ.'],
+    variants: ['112'],
   ),
   Proverb(
     id: '169',
@@ -2344,7 +2344,7 @@ const List<Proverb> seedProverbs = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.bookAttested,
     sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
-    variants: ['Ҳар чизе, ки коштӣ, ҳамонро медаравӣ.'],
+    variants: ['71'],
   ),
   Proverb(
     id: '170',

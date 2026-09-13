@@ -6,6 +6,10 @@ import '../../data/models/proverb.dart';
 import '../../data/models/category.dart';
 import '../../data/seed/seed_categories.dart';
 import '../../data/seed/seed_proverbs.dart';
+import '../../data/seed/seed_poets.dart';
+import '../../data/seed/seed_poems.dart';
+import '../../data/models/poet.dart';
+import '../../data/models/poem.dart';
 
 final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((
   ref,
@@ -104,6 +108,14 @@ final categoriesProvider = Provider<List<Category>>((ref) {
 
 final proverbsProvider = Provider<List<Proverb>>((ref) {
   return seedProverbs;
+});
+
+final poetsProvider = Provider<List<Poet>>((ref) {
+  return seedPoets;
+});
+
+final poemsProvider = Provider<List<Poem>>((ref) {
+  return seedPoems;
 });
 
 final availableLevelsProvider = Provider<List<int>>((ref) {

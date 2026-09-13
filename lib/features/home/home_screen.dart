@@ -35,7 +35,7 @@ class HomeScreen extends ConsumerWidget {
                             tr('app_name'),
                             style: QalamTypography.label(
                               color: colors.onSurface,
-                              fontSize: 17,
+                              fontSize: 15,
                             ),
                           ),
                         ),
@@ -43,7 +43,7 @@ class HomeScreen extends ConsumerWidget {
                           'З / ض',
                           style: QalamTypography.heroProverb(
                             color: colors.primary,
-                            fontSize: 22,
+                            fontSize: 20,
                           ),
                         ),
                       ],
@@ -55,7 +55,7 @@ class HomeScreen extends ConsumerWidget {
                       tr('home_headline'),
                       style: QalamTypography.pageTitle(
                         color: colors.onSurface,
-                        fontSize: 46,
+                        fontSize: 32,
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -91,7 +91,7 @@ class HomeScreen extends ConsumerWidget {
                       tr('home_learn'),
                       style: QalamTypography.sectionTitle(
                         color: colors.onSurface,
-                        fontSize: 29,
+                        fontSize: 24,
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -148,18 +148,18 @@ class HomeScreen extends ConsumerWidget {
                           '${categories.length}',
                           style: QalamTypography.pageTitle(
                             color: colors.onSurface,
-                            fontSize: 72,
+                            fontSize: 44,
                           ),
                         ),
                         const SizedBox(width: 18),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 8),
+                            padding: const EdgeInsets.only(bottom: 4),
                             child: Text(
                               tr('categories_subtitle'),
                               style: QalamTypography.sectionTitle(
                                 color: colors.onSurface,
-                                fontSize: 23,
+                                fontSize: 20,
                               ),
                             ),
                           ),
@@ -220,6 +220,42 @@ class HomeScreen extends ConsumerWidget {
                 child: OutlinedButton(
                   onPressed: () => context.go('/proverbs'),
                   child: Text(tr('btn_see_all')),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Container(
+                color: Theme.of(context).colorScheme.surfaceContainerLow,
+                padding: const EdgeInsets.fromLTRB(24, 28, 24, 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '04 / ${tr('literature_title').toUpperCase()}',
+                      style: QalamTypography.eyebrow(color: colors.primary),
+                    ),
+                    const SizedBox(height: 22),
+                    Text(
+                      tr('literature_title'),
+                      style: QalamTypography.sectionTitle(
+                        color: colors.onSurface,
+                        fontSize: 24,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    QalamSectionLink(
+                      number: '01',
+                      title: tr('poets_title'),
+                      subtitle: tr('poets_desc'),
+                      onTap: () => context.push('/poets'),
+                    ),
+                    QalamSectionLink(
+                      number: '02',
+                      title: tr('poems_title'),
+                      subtitle: tr('poems_desc'),
+                      onTap: () => context.push('/poems'),
+                    ),
+                  ],
                 ),
               ),
             ),

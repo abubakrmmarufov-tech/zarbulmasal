@@ -28,7 +28,39 @@ void main() {
     expect(index, contains('apple-mobile-web-app-capable'));
     expect(index, contains('black-translucent'));
     expect(index, contains("connect-src 'self'"));
+    expect(index, contains("font-src 'self' data:"));
+    expect(index, isNot(contains('fonts.googleapis.com')));
+    expect(index, isNot(contains('fonts.gstatic.com')));
     expect(index, isNot(contains('user-scalable=no')));
+  });
+
+  test('all application fonts and licenses are bundled locally', () {
+    const bundledFonts = ['NotoSans', 'NotoSerif', 'NotoNaskhArabic'];
+    final pubspec = File('pubspec.yaml').readAsStringSync();
+
+    for (final family in bundledFonts) {
+      expect(pubspec, contains('family: $family'));
+      expect(File('assets/fonts/$family.ttf').existsSync(), isTrue);
+      expect(File('assets/fonts/$family-OFL.txt').existsSync(), isTrue);
+    }
+  });
+
+  test('main branch CI verifies and deploys the prepared web release', () {
+    final workflow = File('.github/workflows/ci.yml').readAsStringSync();
+    final webJob = workflow.split('  web:').last.split('  publish:').first;
+    final publishJob = workflow.split('  publish:').last;
+
+    expect(workflow, contains('branches: [main]'));
+    expect(workflow, contains('flutter analyze'));
+    expect(workflow, contains('flutter test --coverage'));
+    expect(workflow, contains('flutter build web --release'));
+    expect(workflow, contains('--base-href /zarbulmasal/'));
+    expect(workflow, contains('bash tool/prepare_web_release.sh'));
+    expect(webJob, contains('persist-credentials: false'));
+    expect(webJob, isNot(contains('contents: write')));
+    expect(publishJob, contains('contents: write'));
+    expect(workflow, contains('git worktree add --detach'));
+    expect(workflow, contains('git push origin HEAD:gh-pages'));
   });
 
   test('offline worker uses build-isolated caches and bounded navigation', () {

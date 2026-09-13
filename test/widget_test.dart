@@ -402,6 +402,46 @@ void main() {
 
   for (final language in DisplayLanguage.values) {
     testWidgets(
+      'reading resolves variant IDs in ${language.name} script and direction',
+      (tester) async {
+        final canonical = seedProverbs
+            .firstWhere((proverb) => proverb.id == '43')
+            .copyWith(variants: const ['44']);
+        final variant = seedProverbs.firstWhere(
+          (proverb) => proverb.id == '44',
+        );
+        final expected = language == DisplayLanguage.persian
+            ? variant.persianText
+            : variant.tajikCyrillic;
+
+        await openApp(
+          tester,
+          route: '/proverb/${canonical.id}',
+          catalog: [canonical, variant],
+          language: language,
+        );
+        await tester.scrollUntilVisible(
+          find.text(expected),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+
+        final variantText = find.widgetWithText(SelectableText, expected);
+        final text = tester.widget<SelectableText>(variantText);
+        expect(
+          text.textDirection,
+          language == DisplayLanguage.persian
+              ? TextDirection.rtl
+              : TextDirection.ltr,
+        );
+        expect(find.text(variant.id), findsNothing);
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
+
+  for (final language in DisplayLanguage.values) {
+    testWidgets(
       'physical flashcard swipes advance and return in ${language.name}',
       (tester) async {
         await openApp(tester, route: '/flashcards', language: language);

@@ -10,12 +10,12 @@ Branch: `qa/zarbulmasal-release-audit` (tracking `origin/main` at `3746466`)
 
 A comprehensive, evidence-grounded quality assurance audit and end-to-end verification pass was conducted for **Зарбулмасал (Zarbulmasal)**.
 
-- **Feature Catalog**: 170 proverbs across 20 categories and 6 data-derived difficulty levels.
+- **Feature Catalog**: 149 book-attested traditional proverbs plus 1 needs-review modern entry (IDs 21–170) across 20 categories and 6 data-derived difficulty levels; 20 earlier unknown-source entries remain quarantined.
 - **Platforms Verified**:
   - Android (Universal APK, split-per-ABI APKs, release Android App Bundle).
   - Web/PWA (Production build with atomic offline service worker caching, Safari iOS Home Screen compatibility).
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
-- **Quality Checks**: Static analysis (0 issues), unit & widget test suite (59 tests passing), Playwright E2E tests (online/offline, 0 console errors, 0 failed requests).
+- **Quality Checks**: Static analysis (0 issues), unit & widget test suite (74 tests passing), Playwright E2E tests (online/offline, 0 console errors, 0 failed requests).
 
 ---
 
@@ -36,7 +36,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
 
 | Component / Flow | Status | Reproduction / Verification Evidence | Severity | Resolution / Regression Test |
 | --- | --- | --- | --- | --- |
-| **Catalog Integrity** | VERIFIED WORKING | 170 unique entries, 20 valid categories, 6 levels (all populated: 7, 28, 55, 36, 33, 11). Cyrillic & Persian scripts present on all entries. | None | Verified by `test/providers_test.dart` ("catalog keeps unique identifiers..."). |
+| **Catalog Integrity** | VERIFIED WORKING | 150 unique catalog entries (149 book-attested traditional, 1 needs-review modern), 20 valid categories, 6 levels (all populated: 1, 22, 50, 33, 33, 11). Cyrillic & Persian scripts present on all entries. | None | Verified by `test/providers_test.dart` ("catalog keeps unique identifiers..."). |
 | **Dynamic Levels** | VERIFIED WORKING | Levels derived dynamically from catalog data (`availableLevelsProvider`). Sparse catalogs only expose populated levels. | None | Verified by `test/providers_test.dart` ("available levels are derived from real catalog content"). |
 | **Bilingual Reading** | VERIFIED WORKING | Instant toggle between Tajik Cyrillic (LTR) and Persian Arabic script (RTL) via header toggle and settings. | None | Verified by `test/widget_test.dart` across all viewports. |
 | **Daily Proverb** | VERIFIED WORKING | Date-deterministic daily proverb calculation with valid persistence and empty-state fallback. | None | Verified by `test/providers_test.dart` ("daily content is real, consistent today"). |
@@ -164,4 +164,3 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 - A public GitHub Release (`v1.0.1`) is published with standalone `.apk` assets.
 - Both the ARM64 split APK (`app-arm64-v8a-release.apk`) and the universal APK (`app-release.apk`) are directly downloadable by unauthenticated mobile users.
 - URLs verified via unauthenticated HTTP GET (returning HTTP 302 redirect to GitHub release asset storage with `content-type: application/vnd.android.package-archive`).
-

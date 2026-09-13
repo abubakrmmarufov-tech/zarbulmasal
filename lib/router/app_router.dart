@@ -12,6 +12,10 @@ import '../features/flashcards/flashcards_screen.dart';
 import '../features/daily/daily_proverb_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/literature/presentation/presentation.dart';
+import '../features/literature/poets_list_screen.dart' as legacy_poets;
+import '../features/literature/poems_list_screen.dart' as legacy_poems;
+import '../features/literature/poet_detail_screen.dart' as legacy_poet_detail;
+import '../features/literature/poem_detail_screen.dart' as legacy_poem_detail;
 import '../shared/widgets/app_scaffold.dart';
 import '../core/design_system/design_system.dart';
 import '../core/l10n/app_translations.dart';
@@ -43,6 +47,14 @@ final appRouter = GoRouter(
         GoRoute(
           path: '/settings',
           builder: (context, state) => const SettingsScreen(),
+        ),
+        GoRoute(
+          path: '/poets',
+          builder: (context, state) => const legacy_poets.PoetsListScreen(),
+        ),
+        GoRoute(
+          path: '/poems',
+          builder: (context, state) => const legacy_poems.PoemsListScreen(),
         ),
       ],
     ),
@@ -80,6 +92,13 @@ final appRouter = GoRouter(
       },
     ),
     GoRoute(
+      path: '/poet/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+        return legacy_poet_detail.PoetDetailScreen(poetId: id);
+      },
+    ),
+    GoRoute(
       path: '/literature/works',
       builder: (context, state) => const WorksListScreen(),
     ),
@@ -88,6 +107,13 @@ final appRouter = GoRouter(
       builder: (context, state) {
         final id = state.pathParameters['id']!;
         return PoemReaderScreen(workId: id);
+      },
+    ),
+    GoRoute(
+      path: '/poem/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+        return legacy_poem_detail.PoemDetailScreen(poemId: id);
       },
     ),
     GoRoute(

@@ -42,8 +42,7 @@ class QuizEngine {
         a.canonicalId == b.canonicalId) {
       return true;
     }
-    if (a.variants.contains(b.tajikCyrillic) ||
-        b.variants.contains(a.tajikCyrillic)) {
+    if (a.variants.contains(b.id) || b.variants.contains(a.id)) {
       return true;
     }
     return false;
@@ -131,9 +130,13 @@ class QuizEngine {
     // Fallback if strict criteria yielded fewer than 3: relax category/similarity slightly
     if (chosenDistractors.length < 3) {
       final fallbackPool = allProverbs.where((c) {
+        if (c.sourceStatus == SourceStatus.needsReview ||
+            c.sourceStatus == SourceStatus.unverified) {
+          return false;
+        }
         if (c.id == proverb.id || isVariantOrRelated(proverb, c)) return false;
         final cMeaning = c.meaningTj.trim();
-        if (cMeaning == correctMeaning) return false;
+        if (cMeaning.isEmpty || cMeaning == correctMeaning) return false;
         return !chosenDistractors.any(
           (chosen) => chosen.id == c.id || chosen.meaningTj.trim() == cMeaning,
         );
@@ -141,8 +144,23 @@ class QuizEngine {
 
       for (final candidate in fallbackPool) {
         if (chosenDistractors.length >= 3) break;
-        chosenDistractors.add(candidate);
+        final conflictsWithChosen = chosenDistractors.any(
+          (chosen) =>
+              isVariantOrRelated(candidate, chosen) ||
+              candidate.meaningTj.trim() == chosen.meaningTj.trim() ||
+              wordSimilarity(candidate.meaningTj, chosen.meaningTj) >= 0.35,
+        );
+        if (!conflictsWithChosen) {
+          chosenDistractors.add(candidate);
+        }
       }
+    }
+
+    if (chosenDistractors.length < 3) {
+      throw StateError(
+        'Cannot generate a four-option quiz question for proverb '
+        '${proverb.id}: fewer than three safe distractors are available.',
+      );
     }
 
     final options = [

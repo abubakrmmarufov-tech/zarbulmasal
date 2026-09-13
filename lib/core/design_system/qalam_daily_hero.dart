@@ -53,7 +53,7 @@ class QalamDailyHero extends ConsumerWidget {
                 textDirection: persian ? TextDirection.rtl : TextDirection.ltr,
                 style: QalamTypography.heroProverb(
                   color: QalamColors.paper,
-                  fontSize: compact ? 27 : 31,
+                  fontSize: compact ? 24 : 28,
                   height: 1.42,
                 ),
               ),
@@ -63,7 +63,7 @@ class QalamDailyHero extends ConsumerWidget {
                 textDirection: persian ? TextDirection.ltr : TextDirection.rtl,
                 style: QalamTypography.bodySecondary(
                   color: QalamColors.paperTextSoft,
-                  fontSize: 18,
+                  fontSize: 16,
                 ),
               ),
               const SizedBox(height: 30),

@@ -36,8 +36,8 @@ documentation, and code:
 
 ## What is included
 
-- 170 entries across 20 categories and 6 data-derived levels: traditional Tajik proverbs
-  and clearly labeled contemporary learning texts
+- 149 book-attested traditional proverbs plus 1 clearly labeled needs-review
+  modern learning text, across 20 categories and 6 data-derived levels
 - Tajik Cyrillic and Persian-script reading modes with correct text direction
 - Search, category filters, level filters, saved proverbs, and daily reading
 - Meaning, explanation, example, source, and verification metadata
