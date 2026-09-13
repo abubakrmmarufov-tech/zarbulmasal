@@ -163,7 +163,10 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
                                           child: FittedBox(
                                             fit: BoxFit.scaleDown,
                                             child: Text(
-                                              AppTranslations.get(keys[i], lang),
+                                              AppTranslations.get(
+                                                keys[i],
+                                                lang,
+                                              ),
                                               maxLines: 1,
                                               softWrap: false,
                                               style: QalamTypography.navLabel(
