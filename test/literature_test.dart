@@ -5,7 +5,7 @@ void main() {
   testWidgets('Literature Hub Screen renders and navigates to sections', (
     tester,
   ) async {
-    await openApp(tester, route: '/');
+    await openApp(tester, route: '/', height: 1200);
 
     final hubFinder = find.text('Мероси адабӣ');
     await tester.scrollUntilVisible(hubFinder, 300);
