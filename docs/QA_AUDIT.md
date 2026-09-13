@@ -2,7 +2,7 @@
 
 Date: 2026-09-13
 Environment: Flutter 3.47.2, Dart 3.13.2, Android SDK 36.1.0, Chrome for Testing 153.0.8010.12  
-Branch: `main` (`e87d1f6`, with uncommitted QA fixes and preserved user-staged download artifacts)
+Branch: `main` (`544dae3`, with preserved user-staged historical download artifacts)
 
 ---
 
@@ -13,7 +13,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
 - **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage contains 171 authors and 1,466 imported work candidates, all quarantined pending provenance review.
 - **Platforms Verified**:
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
-  - Local Web/PWA release build with atomic offline service worker caching; the live Android portal deployment is currently 404.
+  - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
 - **Quality Checks**: Static analysis (0 issues), Flutter unit/widget suite (153 tests passing), local browser smoke coverage across navigation, persistence, quiz, flashcards, Persian RTL, and dark mode.
 
@@ -23,7 +23,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
 
 | Branch | Latest Commit / SHA | Role / Relationship | Status |
 | --- | --- | --- | --- |
-| `origin/main` | `3746466` (PR #5) | Default production branch containing Qalam redesign, onboarding tour, font optimizations, and prepared PWA release | **CURRENT DEFAULT** |
+| `origin/main` | `544dae3` | Default production branch containing the Qalam redesign, hardened release gates, CSP fix, and phone QA harness | **CURRENT DEFAULT** |
 | `origin/latest-design` | `3328686` | Historical feature branch for Qalam redesign and onboarding | Superseded and merged into `main` |
 | `origin/optimize-pwa-9718348651884350021` | `553e3b5` (PR #2) | Historical branch for PWA Safari optimizations | Superseded by PR #3 (`3b8c0ed`) and PR #5 (`e2e8935`) |
 | `origin/release/final-pwa` | `3b8c0ed` (PR #3) | Production PWA release integration | Merged into `main` via PR #3 |
@@ -166,7 +166,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 
 ## Update 2026-09-13
 - **Literary Heritage**: Added 171 poets and 1,466 quarantined poems currently under manual review.
-- Fixed the release-signing fallback, FavoritesNotifier initialization race, literature-hub navigation gaps, and silent Daily Verse empty/error states. CSP and live deployment remain separately unverified.
+- Fixed the release-signing fallback, FavoritesNotifier initialization race, literature-hub navigation gaps, and silent Daily Verse empty/error states. Production phone QA verified the deployed root, routes, actions, and CSP-safe font fallback on 2026-09-13.
 
 ---
 
@@ -181,7 +181,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 - **GitHub Pages Android Portal**:
   - Direct downloads portal at `web/android/index.html` is present in source and in the locally prepared web artifact.
   - Staging script `tool/prepare_android_downloads.sh` integrates split APKs (`zarbulmasal-arm64-v8a.apk`, `zarbulmasal-armeabi-v7a.apk`, `zarbulmasal-universal.apk`) and checksum manifest directly into GitHub Pages deployment.
-  - The live `/zarbulmasal/android/` URL was checked on 2026-09-13 and currently returns 404; deployment is still open.
+  - The live root was checked on 2026-09-13 and returns HTTP 200; `/zarbulmasal/android/` remains HTTP 404 because signed v2.0.0 artifacts are not configured.
   - The staged APKs in the current index are historical v1.1.0 artifacts, not verified v2.0.0 outputs, and must not be published as the current release.
 - **Static Analysis & Literature Presentation Polish**:
   - `flutter analyze` 0 warnings: resolved unused `poetsCount`, `worksCount`, `canonCount` variables in `literature_hub_screen.dart`.
@@ -236,7 +236,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
    - Created `web/android/index.html` featuring responsive Qalam styling, SHA-256 verification hashes, architecture guide, and direct download buttons for ARM64, ARMv7, and Universal APKs.
    - Created `tool/prepare_android_downloads.sh` to stage APKs into `build/web/downloads/` and copy `index.html` to `build/web/android/`.
    - Added automated tests in `test/android_distribution_test.dart` and `test/pwa_assets_test.dart`.
-9. **Verification Result & Revision**: Package and local staging checks pass; live HTTP verification is still open because the deployed `/android/` URL returns 404. Source revision `main` / `2.0.0+2004`.
+9. **Verification Result & Revision**: Package and local staging checks pass; live root/runtime verification passes, while `/android/` remains intentionally unavailable until signed v2.0.0 artifacts are produced. Source revision `main` / `2.0.0+2004`.
 
 #### DEF-203: Dead Code Warnings & Static Analysis Failures in Literature Hub
 1. **ID & Severity**: `DEF-203` — **Medium** (Code Quality & Build Reliability)

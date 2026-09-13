@@ -107,16 +107,22 @@ flutter test --coverage
 flutter build apk --release
 flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run
 bash tool/prepare_web_release.sh
+python3 tool/mobile_qa.py https://abubakrmmarufov-tech.github.io/zarbulmasal/
 ```
 
 The regression suite covers routes at 360, 390, and 430 logical pixels, both
 writing systems, large text, dark mode, filtering, reading, clipboard behavior,
 favorites, persisted preferences, quizzes, flashcards, and empty or invalid
-states. GitHub Actions runs the same checks and deploys the web build from `main`.
+states. `tool/mobile_qa.py` checks 375, 390, and 430px phone viewports and
+exercises the deployed search, quiz feedback, and flashcard reveal flows.
+GitHub Actions runs the code checks and deploys the web build from `main`.
 
 ## Install on Android
 
-Direct-download APKs for Android devices (Android 7.0+) are staged by the release workflow in the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/) after the current prepared web artifact is deployed:
+Direct-download APKs for Android devices (Android 7.0+) are staged by the
+release workflow in the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
+only after production signing secrets are configured and the current release
+artifacts pass package, signature, ABI, alignment, and checksum checks:
 
 - [Android Portal & Direct APK Downloads](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
   - **ARM64-v8a** (~20 MB, recommended for modern phones)
