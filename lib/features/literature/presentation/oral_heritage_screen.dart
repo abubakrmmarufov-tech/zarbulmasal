@@ -98,16 +98,14 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
               loading: () => const SliverFillRemaining(
                 child: Center(child: CircularProgressIndicator()),
               ),
-              error: (_, _) => SliverFillRemaining(
+              error: (err, _) => SliverFillRemaining(
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
                     title: isPersian
                         ? 'خطا در بارگیری میراث شفاهی'
                         : 'Хато ҳангоми боргирӣ',
-                    subtitle: isPersian
-                        ? 'اطلاعات میراث شفاهی بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                        : 'Маълумоти мероси шифоҳӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
+                    subtitle: err.toString(),
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(oralHeritageProvider),
                       child: Text(
