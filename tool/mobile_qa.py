@@ -16,7 +16,13 @@ from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 from playwright.async_api import async_playwright
 
 
-VIEWPORTS = ((320, 568), (375, 667), (390, 844), (430, 932))
+VIEWPORTS = (
+    (320, 568),
+    (375, 667),
+    (390, 844),
+    (430, 932),
+    (568, 320),
+)
 
 
 async def load_app(page, url: str) -> None:
