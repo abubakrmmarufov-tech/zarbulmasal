@@ -21,12 +21,8 @@ class LiteratureHubScreen extends ConsumerWidget {
     final isPersian = lang == DisplayLanguage.persian;
 
     final dailyVerseAsync = ref.watch(dailyVerseProvider);
-    final authorsAsync = ref.watch(literaryAuthorsProvider);
-    final canonAsync = ref.watch(schoolCanonProvider);
     final oralAsync = ref.watch(oralHeritageProvider);
 
-    final authorsCount = authorsAsync.valueOrNull?.length ?? 0;
-    final canonCount = canonAsync.valueOrNull?.length ?? 0;
     final oralCount = oralAsync.valueOrNull?.length ?? 0;
 
     return Scaffold(
@@ -54,11 +50,6 @@ class LiteratureHubScreen extends ConsumerWidget {
                             }
                           },
                         ),
-                        IconButton(
-                          tooltip: isPersian ? 'جستجو' : 'Ҷустуҷӯ',
-                          icon: const Icon(Icons.search, size: 22),
-                          onPressed: () => context.push('/literature/search'),
-                        ),
                       ],
                     ),
                   ),
@@ -83,10 +74,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                       vertical: 8,
                     ),
                     child: dailyVerseAsync.when(
-                      loading: () => const SizedBox(
-                        height: 120,
-                        child: Center(child: CircularProgressIndicator()),
-                      ),
+                      loading: () => const SizedBox.shrink(),
                       error: (_, _) => const SizedBox.shrink(),
                       data: (work) =>
                           _DailyVerseCard(work: work, isPersian: isPersian),
@@ -113,31 +101,22 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '01',
                           title: AppTranslations.get('lit_poets', lang),
                           subtitle: isPersian
-                              ? 'زندگینامه و آثار $authorsCount شاعر و ادیب بزرگ'
-                              : 'Зиндагинома ва осори $authorsCount шоир ва адиби бузург',
-                          onTap: () => context.push('/literature/poets'),
+                              ? 'زندگینامه و آثار ۱۷۸ شاعر و ادیب بزرگ'
+                              : 'Зиндагинома ва осори 178 шоир ва адиби бузург',
+                          onTap: () => context.push('/poets'),
                         ),
                         // 02: Works / Poems
                         QalamSectionLink(
                           number: '02',
                           title: AppTranslations.get('lit_poems', lang),
                           subtitle: isPersian
-                              ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده'
-                              : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда',
-                          onTap: () => context.push('/literature/works'),
+                              ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده (۱۴۶۶ اثر)'
+                              : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда (1466 асар)',
+                          onTap: () => context.push('/poems'),
                         ),
-                        // 03: School Canon
+                        // 03: Oral Heritage
                         QalamSectionLink(
                           number: '03',
-                          title: AppTranslations.get('lit_school', lang),
-                          subtitle: isPersian
-                              ? 'برنامهٔ درسی صنف‌های ۴ تا ۱۱ ($canonCount مدخل درسی)'
-                              : 'Барномаи таълимии синфҳои 4–11 ($canonCount мавзӯъ)',
-                          onTap: () => context.push('/literature/school'),
-                        ),
-                        // 04: Oral Heritage
-                        QalamSectionLink(
-                          number: '04',
                           title: AppTranslations.get('lit_oral', lang),
                           subtitle: isPersian
                               ? 'ضرب‌المثل‌ها، چیستان‌ها و دوبیتی‌های عامیانه ($oralCount مدخل)'
@@ -167,7 +146,10 @@ class _DailyVerseCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = Theme.of(context).colorScheme;
+    if (work == null) {
+      return const SizedBox.shrink();
+    }
+
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
@@ -175,44 +157,6 @@ class _DailyVerseCard extends ConsumerWidget {
         ? QalamColors.antiqueGoldSoft
         : QalamColors.burgundySoft;
     final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
-
-    if (work == null) {
-      return Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
-          borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
-          border: Border.all(color: colors.outlineVariant, width: 0.5),
-        ),
-        child: Row(
-          children: [
-            Icon(Icons.auto_stories, size: 28, color: colors.primary),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    isPersian ? 'بیت روز' : 'БАЙТИ РӮЗ',
-                    style: QalamTypography.eyebrow(color: colors.primary),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    isPersian
-                        ? 'اشعار تأییدشده به صورت روزانه نمایش داده می‌شوند.'
-                        : 'Байтҳои санҷидашуда ба таври рӯзона интихоб ва муаррифӣ мегарданд.',
-                    style: QalamTypography.bodySecondary(
-                      color: colors.onSurfaceVariant,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
 
     final authorAsync = ref.watch(authorByIdProvider(work!.authorId));
     final author = authorAsync.valueOrNull;
