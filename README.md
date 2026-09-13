@@ -36,13 +36,15 @@ documentation, and code:
 
 ## What is included
 
-- 149 book-attested traditional proverbs plus 1 clearly labeled needs-review
+- **Proverbs Catalog**: 149 book-attested traditional proverbs plus 1 clearly labeled needs-review
   modern learning text, across 20 categories and 6 data-derived levels
+- **Literary Heritage (Мероси адабӣ)**: 178 Tajik poets and 1,466 poems extracted with full provenance from 7 school literature textbooks (Grades 5-11)
 - Tajik Cyrillic and Persian-script reading modes with correct text direction
-- Search, category filters, level filters, saved proverbs, and daily reading
+- Search, category filters, level filters, saved items, and daily reading
 - Meaning, explanation, example, source, and verification metadata
 - Quizzes, answer feedback, scoring, and replay
 - Swipeable flashcards with reveal and session progress
+- Dedicated poem reader and poet biography profiles
 - Light and dark themes, large-text support, and reduced-motion behavior
 - Android and installable web builds with offline reopening after first load
 
@@ -53,17 +55,17 @@ vermilion accents, book-like margins, restrained rules, and a multilingual type
 system built from Noto Sans, Noto Serif, and Noto Naskh Arabic. Font files and
 their licenses are bundled locally.
 
-GoRouter owns the ten application destinations. Riverpod manages filters, daily
+GoRouter owns the application destinations. Riverpod manages filters, daily
 selection, favorites, quizzes, flashcards, language, and theme. SharedPreferences
-persists favorites, writing-system choice, and theme. The proverb catalog remains
+persists favorites, writing-system choice, and theme. The catalogs remain
 local and available offline; quiz scores and flashcard sessions remain local to
 the current session.
 
 ```text
 lib/
 ├── core/       design system, theme, localization, constants
-├── data/       proverb models and the bundled catalog
-├── features/   home, discovery, reading, learning, saved items, settings
+├── data/       proverb/literature models and the bundled catalog
+├── features/   home, discovery, reading, literature, learning, saved items, settings
 ├── router/     route definitions and navigation behavior
 └── shared/     providers and cross-feature widgets
 ```
@@ -116,10 +118,8 @@ states. GitHub Actions runs the same checks and deploys the web build from `main
 
 Public direct-download APK assets are available from the [Latest Release](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/latest) without requiring a GitHub account or archive extraction:
 
-- **Recommended for modern phones (ARM64, ~20 MB)**:  
-  [Download app-arm64-v8a-release.apk](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/download/v1.0.1/app-arm64-v8a-release.apk)
-- **Universal compatibility APK (~53.8 MB)**:  
-  [Download app-release.apk](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/download/v1.0.1/app-release.apk)
+- **Universal compatibility APK (v2.0.0, ~56 MB)**:  
+  [Download app-release.apk](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/download/v2.0.0/Zarbulmasal-v2.0.0.apk)
 
 ### Installation instructions:
 1. Tap the download link above in your Android browser (Chrome, Samsung Internet, Firefox, etc.).
