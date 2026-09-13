@@ -44,6 +44,12 @@ void main() {
     expect(workflow, contains('actions/download-artifact@'));
     expect(workflow, contains('bash tool/prepare_android_downloads.sh'));
     expect(workflow, contains('Missing required Android release secret'));
+    expect(
+      workflow,
+      contains('android_release_ready'),
+      reason:
+          'Web Pages must remain deployable when Android signing is unavailable.',
+    );
     final pullRequestBuild = workflow.substring(
       workflow.indexOf('- name: Build Android APK for CI'),
       workflow.indexOf('- name: Build signed public Android APKs'),
