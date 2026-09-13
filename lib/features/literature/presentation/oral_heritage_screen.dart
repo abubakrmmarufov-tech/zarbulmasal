@@ -300,4 +300,3 @@ class _OralEntryCard extends StatelessWidget {
     );
   }
 }
-
