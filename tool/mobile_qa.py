@@ -31,6 +31,20 @@ async def screenshot_bytes(page, path: str) -> bytes:
     return await page.screenshot(path=path, full_page=False)
 
 
+async def tap_until_changed(
+    page, before: bytes, x: float, y_positions: tuple[float, ...]
+) -> bytes:
+    """Tap likely interior points and stop when the real UI visibly changes."""
+    after = before
+    for y in y_positions:
+        await page.mouse.click(x, y)
+        await page.wait_for_timeout(500)
+        after = await page.screenshot()
+        if after != before:
+            return after
+    return after
+
+
 async def run(url: str) -> int:
     failures: list[str] = []
     results: list[dict[str, object]] = []
@@ -112,13 +126,15 @@ async def run(url: str) -> int:
                 before_answer = await screenshot_bytes(
                     page, "/tmp/zarbulmasal-quiz-before-answer.png"
                 )
-                # The first answer begins around y=440 at 390x844. Tap its
-                # interior rather than its border so the pointer action tests
-                # the actual InkWell hit target reliably.
-                await page.mouse.click(width / 2, 480)
-                await page.wait_for_timeout(500)
-                after_answer = await screenshot_bytes(
-                    page, "/tmp/zarbulmasal-quiz-answer-feedback.png"
+                # Question wrapping changes the first card's vertical position
+                # by a few dozen pixels. Try two interior points, never the
+                # border/gap, and keep the first pointer action that changes
+                # the real feedback state.
+                after_answer = await tap_until_changed(
+                    page, before_answer, width / 2, (420, 480)
+                )
+                await page.screenshot(
+                    path="/tmp/zarbulmasal-quiz-answer-feedback.png"
                 )
                 if before_answer == after_answer:
                     failures.append("390px quiz answer produced no visible feedback")
