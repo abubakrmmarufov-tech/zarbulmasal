@@ -151,6 +151,11 @@ jobs:
       - name: Version offline cache from compiled application
         run: bash tool/prepare_web_release.sh
 
+      - name: Remove unavailable Android downloads portal
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.quality.outputs.android_release_ready != 'true'
+        run: |
+          rm -rf build/web/android build/web/downloads
+
       - name: Download verified public APKs
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.quality.outputs.android_release_ready == 'true'
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8

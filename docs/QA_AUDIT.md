@@ -162,7 +162,7 @@ base64 -i release.keystore | pbcopy  # Paste into GitHub Secrets as KEYSTORE_BAS
 To resolve the download obstacles identified in pre-release distribution (GitHub authentication wall and `.zip` archive wrapping):
 - A public GitHub Release (`v1.0.1`) was published with standalone `.apk` assets.
 - Historical direct-download URLs were previously verified for the v1.0.1 release.
-- Those historical URLs were verified via unauthenticated HTTP GET. The current GitHub Pages deployment was rechecked on 2026-09-13 and its `/android/` and `/downloads/` paths return HTTP 404; the current source contains the portal, while APK files are added only after a signed CI build passes staging.
+- Those historical URLs were verified via unauthenticated HTTP GET. The current GitHub Pages deployment removes the `/android/` portal and `/downloads/` files when signing is unavailable; the current source contains the portal, while APK files are added only after a signed CI build passes staging.
 
 ## Update 2026-09-13
 - **Literary Heritage**: Added 171 poets and 1,466 quarantined poems currently under manual review.
@@ -181,7 +181,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 - **GitHub Pages Android Portal**:
   - Direct downloads portal at `web/android/index.html` is present in source and in the locally prepared web artifact.
   - Staging script `tool/prepare_android_downloads.sh` integrates split APKs (`zarbulmasal-arm64-v8a.apk`, `zarbulmasal-armeabi-v7a.apk`, `zarbulmasal-universal.apk`) and checksum manifest directly into GitHub Pages deployment.
-  - The live root was checked on 2026-09-13 and returns HTTP 200; `/zarbulmasal/android/` remains HTTP 404 because signed v2.0.0 artifacts are not configured.
+  - The live root was checked on 2026-09-13 and returns HTTP 200; the deployment removes `/zarbulmasal/android/` and `/zarbulmasal/downloads/` when signed v2.0.0 artifacts are not configured.
   - The staged APKs in the current index are historical v1.1.0 artifacts, not verified v2.0.0 outputs, and must not be published as the current release.
 - **Static Analysis & Literature Presentation Polish**:
   - `flutter analyze` 0 warnings: resolved unused `poetsCount`, `worksCount`, `canonCount` variables in `literature_hub_screen.dart`.

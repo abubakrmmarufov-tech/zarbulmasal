@@ -55,6 +55,8 @@ void main() {
     expect(workflow, contains('flutter build web --release'));
     expect(workflow, contains('--base-href /zarbulmasal/'));
     expect(workflow, contains('bash tool/prepare_web_release.sh'));
+    expect(workflow, contains('Remove unavailable Android downloads portal'));
+    expect(workflow, contains('rm -rf build/web/android build/web/downloads'));
     expect(webJob, contains('persist-credentials: false'));
     expect(webJob, isNot(contains('contents: write')));
     expect(publishJob, contains('contents: write'));
