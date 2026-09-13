@@ -16,7 +16,5 @@ void main() {
     // Now we should be on Literature Hub Screen
     expect(find.text('Шоирон'), findsOneWidget);
     expect(find.text('Шеърҳо'), findsOneWidget);
-    
-    
   });
 }

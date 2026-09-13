@@ -56,7 +56,8 @@ class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
               child: QalamPageHeader(
                 eyebrow: tr('home_edition'),
                 title: tr('proverbs_title'),
-                subtitle: '${tr('proverbs_found')} / ${proverbs.length}',
+                subtitle:
+                    '${tr('proverbs_found')} / ${AppTranslations.formatNumber(proverbs.length, lang)}',
                 showRule: false,
               ),
             ),
@@ -132,7 +133,10 @@ class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
                     for (final value in availableLevels)
                       _LevelTab(
                         key: ValueKey('level-filter-$value'),
-                        label: '$value'.padLeft(2, '0'),
+                        label: AppTranslations.formatDigits(
+                          '$value'.padLeft(2, '0'),
+                          lang,
+                        ),
                         selected: level == value,
                         onTap: () =>
                             ref.read(selectedLevelProvider.notifier).state =

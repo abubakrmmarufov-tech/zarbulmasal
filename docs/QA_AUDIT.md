@@ -168,3 +168,165 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 ## Update 2026-09-13
 - **Literary Heritage**: Added 171 poets and 1,466 quarantined poems currently under manual review.
 - Fixed CSP, signing config, and FavoritesNotifier race conditions.
+
+---
+
+## 10. Release v2.0.0 Audit & Verification Register (2026-09-13)
+
+### Executive Summary
+- **Target Release**: Zarbulmasal v2.0.0 (`version: 2.0.0+2004`)
+- **Android Upgrade Continuity**:
+  - `v1.0.1` ARM64 release package: `versionCode 2002`, signing certificate SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`.
+  - `v2.0.0` base `versionCode` set to `2004` (ARMv7: 3004, ARM64: 4004, Universal: 2004), guaranteeing clean in-place upgrade without `INSTALL_FAILED_VERSION_DOWNGRADE`.
+  - CI workflow (`.github/workflows/ci.yml`) updated to verify package ID `com.zarbulmasal.zarbulmasal` and signing certificate digest before publishing.
+- **GitHub Pages Android Portal**:
+  - Direct downloads portal at `web/android/index.html` restored.
+  - Staging script `tool/prepare_android_downloads.sh` integrates split APKs (`zarbulmasal-arm64-v8a.apk`, `zarbulmasal-armeabi-v7a.apk`, `zarbulmasal-universal.apk`) and checksum manifest directly into GitHub Pages deployment.
+  - Resolves the 404 error on `/zarbulmasal/android/`.
+- **Static Analysis & Literature Presentation Polish**:
+  - `flutter analyze` 0 warnings: resolved unused `poetsCount`, `worksCount`, `canonCount` variables in `literature_hub_screen.dart`.
+  - Subtitle interpolation in Literature Hub: displays formatted poets count (`171 шоир` / `۱۷۱ شاعر`) and authentic review status when works are awaiting collation (`Ғазалҳо, қасидаҳо ва рубоиҳои дар ҳоли тасдиқ ва муқобала`).
+  - Search button restored in Literature Hub navigation bar (`/literature/search`).
+  - `OralHeritageScreen` eyebrow aligned to `03 / МЕРОСИ ШИФОҲӢ` (`۰۳ / میراث شفاهی`).
+  - `PoetDetailScreen` text direction and text alignment adjusted for Persian/Cyrillic scripts to prevent punctuation scrambling; lifespan numerals formatted in Persian.
+  - `PoemReaderScreen` copy action icon updated to `Icons.copy_outlined`.
+- **RTL Mirroring & Numerals**:
+  - Material navigation and forward chevron icons verify native `matchTextDirection: true` support for RTL layouts.
+  - Persian numeral translation exposed and applied to proverbs counts, level badges, IDs, and dates across `QalamCategoryTile`, `QalamLevelCard`, `QalamReadingPage`, `ProverbsListScreen`, `FavoritesScreen`, and `OnboardingOverlay`.
+- **Repository Hygiene**:
+  - Removed obsolete development seed files (`lib/data/seed/poems.json`, `lib/data/seed/poets.json`).
+  - Updated `README.md` to link directly to the standalone Android downloads portal.
+
+---
+
+### Comprehensive Defect Register (9-Field Specification)
+
+#### DEF-201: Android Package Upgrade Incompatibility & Version Code Downgrade Risk
+1. **ID & Severity**: `DEF-201` — **Critical** (Release & Install Blocker)
+2. **Affected Screen/Component/Data**: Android Packaging & Upgrade Pipeline (`pubspec.yaml`, `android/app/build.gradle.kts`, `.github/workflows/ci.yml`)
+3. **Device, Language, Theme, State**: Android OS 7.0+ (ARM64, ARMv7, x86_64), All languages, All themes, Existing installed app upgrade state
+4. **Exact Reproduction Steps**:
+   - Install published release `v1.0.1` ARM64 package (`versionCode 2002`, signing SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`).
+   - Build or download a `v2.0.0` APK built with default base `versionCode 1` or lower than 2002.
+   - Run `adb install -r app-arm64-v8a-release.apk` over the existing installation.
+5. **Expected vs Actual Behavior**:
+   - *Expected*: In-place upgrade succeeds preserving user preferences and favorites without error.
+   - *Actual*: Android Package Manager rejects install with `INSTALL_FAILED_VERSION_DOWNGRADE` (or `INSTALL_FAILED_UPDATE_INCOMPATIBLE` if signed by an ephemeral key).
+6. **Evidence**: Public release v1.0.1 ARM64 package inspection via `aapt dump badging` revealed `versionCode='2002'` and cert SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`.
+7. **Root Cause**: `pubspec.yaml` was set to `1.0.1+2` while release distribution scripts generated split versionCode offsets without raising the base version code above 2002 for major release v2.0.0.
+8. **Fix & Regression Protection**:
+   - Set `version: 2.0.0+2004` in `pubspec.yaml`. Split versionCode logic calculates: Universal=2004, ARMv7=3004, ARM64=4004, strictly exceeding 2002.
+   - Added `test/android_distribution_test.dart` asserting `version: 2.0.0` and `versionCode > 2002`.
+   - CI workflow checks signing cert digest and package ID before release staging.
+9. **Verification Result & Revision**: Verified in `test/android_distribution_test.dart` (PASS). Revision `main` / `2.0.0+2004`.
+
+#### DEF-202: HTTP 404 on Standalone Android Downloads Portal
+1. **ID & Severity**: `DEF-202` — **High** (User Acquisition & Distribution Blocker)
+2. **Affected Screen/Component/Data**: Web Downloads Portal (`/zarbulmasal/android/`, `web/android/index.html`, `tool/prepare_android_downloads.sh`)
+3. **Device, Language, Theme, State**: Any mobile or desktop web browser navigating to `https://abubakrmmarufov-tech.github.io/zarbulmasal/android/`
+4. **Exact Reproduction Steps**:
+   - Open browser and navigate to `https://abubakrmmarufov-tech.github.io/zarbulmasal/android/`.
+   - Observe server HTTP response.
+5. **Expected vs Actual Behavior**:
+   - *Expected*: Dedicated mobile-friendly Android downloads portal loads with direct APK download links, SHA-256 checksums, and installation instructions.
+   - *Actual*: GitHub Pages returns HTTP 404 Not Found because `/android/` was not included in the web artifact bundle.
+6. **Evidence**: Direct curl request to GitHub Pages returned HTTP 404; missing static files under `web/android/` in repository.
+7. **Root Cause**: GitHub Actions web deployment job only deployed Flutter's raw `build/web` without staging a dedicated download portal or APK assets.
+8. **Fix & Regression Protection**:
+   - Created `web/android/index.html` featuring responsive Qalam styling, SHA-256 verification hashes, architecture guide, and direct download buttons for ARM64, ARMv7, and Universal APKs.
+   - Created `tool/prepare_android_downloads.sh` to stage APKs into `build/web/downloads/` and copy `index.html` to `build/web/android/`.
+   - Added automated tests in `test/android_distribution_test.dart` and `test/pwa_assets_test.dart`.
+9. **Verification Result & Revision**: Verified via `test/android_distribution_test.dart` and `bash tool/prepare_web_release.sh` generating `build/web/android/index.html` (PASS).
+
+#### DEF-203: Dead Code Warnings & Static Analysis Failures in Literature Hub
+1. **ID & Severity**: `DEF-203` — **Medium** (Code Quality & Build Reliability)
+2. **Affected Screen/Component/Data**: `lib/features/literature/presentation/literature_hub_screen.dart`
+3. **Device, Language, Theme, State**: Development environment, Flutter static analyzer (`flutter analyze`)
+4. **Exact Reproduction Steps**:
+   - Run `flutter analyze` on the project root.
+5. **Expected vs Actual Behavior**:
+   - *Expected*: 0 analyzer warnings or errors.
+   - *Actual*: Analyzer reported 3 warnings: unused local variables `poetsCount`, `worksCount`, and `canonCount` in `literature_hub_screen.dart`.
+6. **Evidence**: `flutter analyze` output showed `unused_local_variable` warnings on lines 30-32.
+7. **Root Cause**: Variables were computed from Riverpod async providers but discarded when hardcoded placeholder strings were used in UI cards.
+8. **Fix & Regression Protection**:
+   - Cleaned up unused variables and properly wired `poetsCount` into dynamic string interpolation `AppTranslations.formatNumber(poetsCount, lang)`.
+   - Wired `worksCount` into an authentic editorial review state message.
+9. **Verification Result & Revision**: `flutter analyze` passed with 0 issues in 3.1s.
+
+#### DEF-204: Literature Hub Missing Search Action & Subtitle Hardcoding
+1. **ID & Severity**: `DEF-204` — **Medium** (UX & Accessibility Defect)
+2. **Affected Screen/Component/Data**: `LiteratureHubScreen` (`lib/features/literature/presentation/literature_hub_screen.dart`)
+3. **Device, Language, Theme, State**: Mobile viewports (360-430px), Both Tajik Cyrillic and Persian Arabic scripts, Light/Dark theme
+4. **Exact Reproduction Steps**:
+   - Open Literature Hub (`/literature`).
+   - Look for Search action button in top bar to search the 171 authors and 1,466 works.
+   - Check section subtitles for dynamic content count.
+5. **Expected vs Actual Behavior**:
+   - *Expected*: Search icon button present in top action bar leading to `/literature/search`; section 01 subtitle shows `Зиндагинома ва осори 171 шоир ва адиби бузург` / `زندگینامه و آثار ۱۷۱ شاعر و ادیب بزرگ`; section 02 shows authentic collation status.
+   - *Actual*: Search action button was completely missing from the top bar; subtitles had static/inaccurate placeholder counts.
+6. **Evidence**: `LiteratureHubScreen` app bar row only had a back button; section 01 lacked author count interpolation.
+7. **Root Cause**: Top action bar omitted search navigation; subtitle strings were hardcoded without using `AppTranslations.formatNumber`.
+8. **Fix & Regression Protection**:
+   - Added search `IconButton` with tooltip `'Ҷустуҷӯ'` / `'جستجو'` invoking `context.push('/literature/search')`.
+   - Subtitle now formats real author count (`171 шоир` / `۱۷۱ شاعر`).
+   - Covered by widget tests in `test/features/literature/presentation/literature_presentation_test.dart`.
+9. **Verification Result & Revision**: Verified in `test/features/literature/presentation/literature_presentation_test.dart` (PASS).
+
+#### DEF-205: Oral Heritage Eyebrow Index Discontinuity
+1. **ID & Severity**: `DEF-205` — **Low** (Visual Hierarchy & Consistency Defect)
+2. **Affected Screen/Component/Data**: `OralHeritageScreen` (`lib/features/literature/presentation/oral_heritage_screen.dart`)
+3. **Device, Language, Theme, State**: All viewports, Tajik and Persian scripts, All themes
+4. **Exact Reproduction Steps**:
+   - Navigate to Literature Hub and review numbered sections (01 Poets, 02 Works, 03 Oral Heritage, 04 Canon).
+   - Navigate into Oral Heritage screen.
+   - Inspect page header eyebrow.
+5. **Expected vs Actual Behavior**:
+   - *Expected*: Eyebrow displays `03 / МЕРОСИ ШИФОҲӢ` (`۰۳ / میراث شفاهی`) matching Hub section 03.
+   - *Actual*: Eyebrow displayed `04 / МЕРОСИ ШИФОҲӢ`, causing numbering inconsistency between Hub and detail page.
+6. **Evidence**: Header eyebrow string in `oral_heritage_screen.dart` was `'04 / МЕРОСИ ШИФОҲӢ'`.
+7. **Root Cause**: Numbering mismatch after reordering sections in the Literature Hub.
+8. **Fix & Regression Protection**:
+   - Updated eyebrow to `isPersian ? '۰۳ / میراث شفاهی' : '03 / МЕРОСИ ШИФОҲӢ'`.
+   - Validated in widget test `OralHeritageScreen displays entries with genre tags and citation`.
+9. **Verification Result & Revision**: Verified in `test/features/literature/presentation/literature_presentation_test.dart` (PASS).
+
+#### DEF-206: Poet Detail Screen RTL Punctuation Scrambling & Lifespan Numeral Mismatch
+1. **ID & Severity**: `DEF-206` — **Medium** (Bilingual Typography & RTL Defect)
+2. **Affected Screen/Component/Data**: `PoetDetailScreen` (`lib/features/literature/presentation/poet_detail_screen.dart`)
+3. **Device, Language, Theme, State**: Persian mode (`DisplayLanguage.persian`), RTL layout, Light/Dark theme
+4. **Exact Reproduction Steps**:
+   - Switch language to Persian in Settings or header toggle.
+   - Navigate to `/literature/poet/rudaki`.
+   - Inspect author name, altName (Cyrillic title), lifespan dates, and biography text.
+5. **Expected vs Actual Behavior**:
+   - *Expected*: Persian biography aligned to the right with `TextDirection.rtl`; Cyrillic altName retains `TextDirection.ltr` so parentheses/hyphens do not jump; lifespan displayed in Eastern Arabic numerals (`۸۵۸ – ۹۴۱`).
+   - *Actual*: AltName text without explicit text direction had trailing punctuation flipped; lifespan displayed Western digits `858 – 941`; biography lacked explicit RTL alignment.
+6. **Evidence**: Screenshot and widget tree inspection in Persian mode showed western digits in lifespan and unaligned biography text.
+7. **Root Cause**: Missing script-aware `textDirection`, `textAlign`, and `AppTranslations.formatDigits` on metadata fields in `_PoetDetailContent`.
+8. **Fix & Regression Protection**:
+   - Added conditional `textDirection` (`rtl` for Persian name/bio, `ltr` for Cyrillic altName).
+   - Wrapped `poet.lifespan` in `AppTranslations.formatDigits(poet.lifespan, lang)`.
+   - Added widget regression tests in `Literature Feature Persian Language Parity` group in `literature_presentation_test.dart`.
+9. **Verification Result & Revision**: Verified in `test/features/literature/presentation/literature_presentation_test.dart` (PASS).
+
+#### DEF-207: Incomplete Persian Numeral Formatting & Semantic Copy Icon in Reader
+1. **ID & Severity**: `DEF-207` — **Medium** (UX Polish & Localization Defect)
+2. **Affected Screen/Component/Data**: Core Qalam Components (`QalamCategoryTile`, `QalamLevelCard`, `QalamReadingPage`, `ProverbsListScreen`, `FavoritesScreen`, `PoemReaderScreen`)
+3. **Device, Language, Theme, State**: Persian script mode, All devices, Light/Dark themes
+4. **Exact Reproduction Steps**:
+   - Switch app to Persian mode.
+   - Inspect proverb count badges on Category tiles, Level cards (`۰۱`..`۰۶`), Proverb IDs, and Favorites counts.
+   - Open Poem Reader and inspect copy action icon.
+5. **Expected vs Actual Behavior**:
+   - *Expected*: All numeric indicators use authentic Eastern Arabic numerals (`۰-۹`); copy button uses clear `Icons.copy_outlined` icon with tooltip `'کپی متن'`.
+   - *Actual*: Numbers remained in Latin digits (`0-9`); poem reader used generic share icon for clipboard copy action.
+6. **Evidence**: Category tile showed `22 зарбулмасал` in Persian mode; poem reader button used `Icons.share` while copying to clipboard.
+7. **Root Cause**: `formatDigits` and `formatNumber` utility functions were not exposed in `AppTranslations` and not utilized across core widgets; icon semantics mismatch.
+8. **Fix & Regression Protection**:
+   - Exposed `formatDigits` and `formatNumber` in `AppTranslations`.
+   - Applied throughout Category tiles, Level cards, Reading page, Proverbs list, and Favorites.
+   - Replaced icon with `Icons.copy_outlined` in `PoemReaderScreen`.
+   - Added widget tests in `literature_presentation_test.dart` and `providers_test.dart`.
+9. **Verification Result & Revision**: Verified across all 150 tests in `flutter test` (PASS).
+

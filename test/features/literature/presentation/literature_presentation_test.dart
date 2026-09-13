@@ -136,6 +136,9 @@ Future<void> pumpTestApp(
       onboardingCompleteProvider.overrideWith(
         (ref) => OnboardingNotifier()..state = true,
       ),
+      displayLanguageProvider.overrideWith(
+        (ref) => DisplayLanguageNotifier()..state = language,
+      ),
       literaryAuthorsProvider.overrideWith((ref) => Future.value(authors)),
       literaryWorksProvider.overrideWith((ref) => Future.value(works)),
       approvedWorksProvider.overrideWith(
@@ -215,8 +218,6 @@ void main() {
 
         expect(find.text('Шоирон'), findsOneWidget);
         expect(find.text('Шеърҳо'), findsOneWidget);
-        
-        
       },
     );
 
@@ -392,7 +393,7 @@ void main() {
       await pumpTestApp(tester, route: '/literature/school');
 
       expect(find.byType(SchoolCanonScreen), findsOneWidget);
-      
+
       expect(find.text('СИНФИ 5'), findsOneWidget);
       expect(
         find.text('Адабиёти тоҷик (Синфи 5) (2018) — Маориф'),
@@ -407,7 +408,7 @@ void main() {
         await pumpTestApp(tester, route: '/literature/oral');
 
         expect(find.byType(OralHeritageScreen), findsOneWidget);
-        
+
         expect(find.text('Офтобро ба домон пӯшида намешавад.'), findsOneWidget);
         expect(
           find.textContaining('Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ'),
@@ -431,5 +432,91 @@ void main() {
 
       expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
     });
+  });
+
+  group('Literature Feature Persian Language Parity', () {
+    testWidgets(
+      'LiteratureHubScreen in Persian mode renders Persian title, formatted poet count, and search button',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature',
+          language: DisplayLanguage.persian,
+        );
+
+        expect(find.byType(LiteratureHubScreen), findsOneWidget);
+        expect(find.text('گنجینهٔ ادب تاجیک'), findsOneWidget);
+        expect(find.text('میراث ادبی'), findsWidgets);
+        expect(find.textContaining('۱ شاعر'), findsOneWidget);
+        expect(find.byTooltip('جستجو'), findsOneWidget);
+        expect(find.byIcon(Icons.search), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'PoetDetailScreen in Persian mode renders Persian canonical name, biography, and formatted lifespan',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/rudaki',
+          language: DisplayLanguage.persian,
+        );
+
+        expect(find.byType(PoetDetailScreen), findsOneWidget);
+        expect(find.text('زندگینامه و آثار'), findsOneWidget);
+        expect(find.text('ابوعبدالله رودکی'), findsWidgets);
+        expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
+        expect(find.text('۸۵۸ – ۹۴۱'), findsOneWidget);
+        expect(
+          find.text('بنیان‌گذار ادبیات کلاسیک فارسی و تاجیکی.'),
+          findsOneWidget,
+        );
+        expect(find.text('مالکیت عمومی'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'PoemReaderScreen in Persian mode renders Persian title, text, copy action, and Persian SourcePanel',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/rudaki-boyi-juyi-muliyon',
+          language: DisplayLanguage.persian,
+        );
+
+        expect(find.byType(PoemReaderScreen), findsOneWidget);
+        expect(find.text('خوانش شعر'), findsOneWidget);
+        expect(find.text('بوی جوی مولیان'), findsOneWidget);
+        expect(find.text('ابوعبدالله رودکی'), findsOneWidget);
+        expect(find.text('متن تأیید شده است'), findsOneWidget);
+        expect(find.textContaining('بوی جوی مولیان آید همی'), findsWidgets);
+        expect(find.byIcon(Icons.copy_outlined), findsOneWidget);
+
+        final sourceButton = find.widgetWithText(
+          OutlinedButton,
+          'منبع و اسناد',
+        );
+        expect(sourceButton, findsOneWidget);
+
+        await tester.tap(sourceButton);
+        await tester.pumpAndSettle();
+
+        expect(find.byType(SourcePanel), findsOneWidget);
+        expect(find.text('منبع و بررسی اصالت'), findsOneWidget);
+        expect(find.text('Осори Рӯдакӣ'), findsOneWidget);
+        expect(find.text('تأیید شده'), findsOneWidget);
+
+        final panelScrollable = find.descendant(
+          of: find.byType(SourcePanel),
+          matching: find.byType(Scrollable),
+        );
+        await tester.scrollUntilVisible(
+          find.text('مالکیت عمومی (Public Domain)'),
+          300,
+          scrollable: panelScrollable.first,
+        );
+        expect(find.text('مالکیت عمومی (Public Domain)'), findsOneWidget);
+      },
+    );
   });
 }

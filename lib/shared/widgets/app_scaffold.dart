@@ -175,6 +175,7 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
           // Coach marks overlay
           if (_showOnboarding)
             OnboardingOverlay(
+              language: lang,
               steps: [
                 OnboardingStep(
                   targetKey: onboardingHomeKey,

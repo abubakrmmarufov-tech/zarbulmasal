@@ -93,7 +93,7 @@ class QalamCategoryTile extends ConsumerWidget {
                       ),
                       const SizedBox(height: 7),
                       Text(
-                        '$count ${AppTranslations.get('levels_proverbs', language)}',
+                        '${AppTranslations.formatNumber(count, language)} ${AppTranslations.get('levels_proverbs', language)}',
                         style: QalamTypography.meta(
                           color: colors.onSurfaceVariant,
                         ),

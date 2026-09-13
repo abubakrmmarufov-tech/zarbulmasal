@@ -22,7 +22,8 @@ class FavoritesScreen extends ConsumerWidget {
               child: QalamPageHeader(
                 eyebrow: tr('home_edition'),
                 title: tr('favorites_title'),
-                subtitle: '${favorites.length} ${tr('favorites_count')}',
+                subtitle:
+                    '${AppTranslations.formatNumber(favorites.length, lang)} ${tr('favorites_count')}',
               ),
             ),
             if (favorites.isEmpty)

@@ -116,21 +116,23 @@ states. GitHub Actions runs the same checks and deploys the web build from `main
 
 ## Install on Android
 
-Public direct-download APK assets are available from the [Latest Release](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/latest) without requiring a GitHub account or archive extraction:
+Direct-download APKs for Android devices (Android 7.0+) are available from the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/):
 
-- **Universal compatibility APK (v2.0.0, ~56 MB)**:  
-  [Download app-release.apk](https://github.com/abubakrmmarufov-tech/zarbulmasal/releases/download/v2.0.0/Zarbulmasal-v2.0.0.apk)
+- [Android Portal & Direct APK Downloads](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
+  - **ARM64-v8a** (~20 MB, recommended for modern phones)
+  - **ARMv7a** (~18 MB, for 32-bit devices)
+  - **Universal** (~56 MB, all architectures)
 
 ### Installation instructions:
-1. Tap the download link above in your Android browser (Chrome, Samsung Internet, Firefox, etc.).
-2. When prompted by Android ("File might be harmful"), tap **Download anyway**.
-3. Open the downloaded `.apk` file. If prompted, enable **Install unknown apps** for your browser.
-4. Tap **Install** (or **Update**).
+1. Open the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/) in your mobile browser.
+2. Select your device architecture (ARM64 recommended for modern devices).
+3. Tap **Download anyway** when prompted by Android.
+4. Open the downloaded `.apk` file and tap **Install** (or **Update**).
 
 ### Delivery and signing notes:
-- **Direct download**: Release assets are standalone `.apk` binaries hosted on GitHub Releases, requiring no GitHub login and no `.zip` archive extraction.
-- **Signing identity**: Pre-release builds use development signing until repository release secrets (`KEYSTORE_BASE64`, etc.) are configured. Upgrading between builds signed with differing keys requires uninstalling the prior build first.
-- **Workflow artifacts (CI)**: CI workflow runs also upload test APKs to the [Quality & Pages action runs](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml), which require a GitHub login and extract from `.zip`.
+- **Direct download**: Release assets are standalone `.apk` binaries hosted directly on the web app distribution portal, requiring no GitHub login and no `.zip` archive extraction.
+- **Signing identity**: Public releases maintain continuity with the v1.0.1 signing certificate (SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`), allowing in-place upgrades.
+- **Workflow artifacts (CI)**: CI workflow runs also upload test APKs to the [Quality & Pages action runs](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml).
 
 ## Contributing
 

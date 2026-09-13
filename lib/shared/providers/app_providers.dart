@@ -40,7 +40,7 @@ final favoritesProvider = StateNotifierProvider<FavoritesNotifier, Set<String>>(
 
 class FavoritesNotifier extends StateNotifier<Set<String>> {
   late Future<void> _initFuture;
-  
+
   FavoritesNotifier() : super({}) {
     _initFuture = _loadFavorites();
   }
@@ -108,8 +108,6 @@ final categoriesProvider = Provider<List<Category>>((ref) {
 final proverbsProvider = Provider<List<Proverb>>((ref) {
   return seedProverbs;
 });
-
-
 
 final availableLevelsProvider = Provider<List<int>>((ref) {
   final levels =

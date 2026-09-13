@@ -88,7 +88,7 @@ class AppTranslations {
     'settings_contact_title': 'Тамос',
     'settings_contact_text':
         'Агар шумо пешниҳодҳо ё таклифҳо доред, ба мо дар Telegram нависед: @imarufov',
-    'settings_version': 'Нусхаи 1.0.1',
+    'settings_version': 'Нусхаи 2.0.0',
     'settings_year': '2026 Зарбулмасал',
     'settings_tagline': 'Мақолҳои тоҷикӣ — мероси фарҳангӣ',
     'settings_active': 'Фаъол',
@@ -325,7 +325,7 @@ class AppTranslations {
     'settings_contact_title': 'تماس',
     'settings_contact_text':
         'اگر پیشنهاد یا انتقادی دارید، به ما در Telegram بنویسید: @imarufov',
-    'settings_version': 'نسخه 1.0.1',
+    'settings_version': 'نسخه ۲.۰.۰',
     'settings_year': '2026 ضرب‌المثل',
     'settings_tagline': 'ضرب‌المثل‌های تاجیکی — میراث فرهنگی',
     'settings_active': 'فعال',
@@ -491,15 +491,22 @@ class AppTranslations {
     return result;
   }
 
-  static String _formatArgument(Object argument, DisplayLanguage language) {
-    final value = argument.toString();
-    if (language != DisplayLanguage.persian) return value;
+  static String formatDigits(String text, DisplayLanguage lang) {
+    if (lang != DisplayLanguage.persian) return text;
     const western = '0123456789';
     const persian = '۰۱۲۳۴۵۶۷۸۹';
-    return value.split('').map((character) {
+    return text.split('').map((character) {
       final index = western.indexOf(character);
       return index < 0 ? character : persian[index];
     }).join();
+  }
+
+  static String formatNumber(Object number, DisplayLanguage lang) {
+    return formatDigits(number.toString(), lang);
+  }
+
+  static String _formatArgument(Object argument, DisplayLanguage language) {
+    return formatNumber(argument, language);
   }
 
   static const List<String> monthNamesTj = [

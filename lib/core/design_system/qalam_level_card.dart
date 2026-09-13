@@ -38,7 +38,7 @@ class QalamLevelCard extends ConsumerWidget {
         ? 'advanced'
         : 'master';
     final numeral = Text(
-      '$level'.padLeft(2, '0'),
+      AppTranslations.formatDigits('$level'.padLeft(2, '0'), language),
       style: QalamTypography.pageTitle(color: colors.primary, fontSize: 54),
     );
     final heading = Text(
@@ -99,7 +99,7 @@ class QalamLevelCard extends ConsumerWidget {
                       style: QalamTypography.meta(color: colors.primary),
                     ),
                     Text(
-                      '$count ${AppTranslations.get('levels_proverbs', language)}',
+                      '${AppTranslations.formatNumber(count, language)} ${AppTranslations.get('levels_proverbs', language)}',
                       style: QalamTypography.meta(
                         color: colors.onSurfaceVariant,
                       ),

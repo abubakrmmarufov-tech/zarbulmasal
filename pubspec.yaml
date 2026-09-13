@@ -4,7 +4,7 @@ publish_to: 'none'
 homepage: https://abubakrmmarufov-tech.github.io/zarbulmasal/
 repository: https://github.com/abubakrmmarufov-tech/zarbulmasal
 issue_tracker: https://github.com/abubakrmmarufov-tech/zarbulmasal/issues
-version: 2.0.0+3
+version: 2.0.0+2004
 
 environment:
   sdk: ^3.12.1

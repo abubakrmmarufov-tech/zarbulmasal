@@ -369,11 +369,11 @@ class _PoemReaderContent extends ConsumerWidget {
                         .toggle(work.id);
                   },
                 ),
-                // Share button (only if rights permit full text)
+                // Copy button (only if rights permit full text)
                 if (work.rights.fullTextAllowed) ...[
                   IconButton(
                     tooltip: isPersian ? 'کپی متن' : 'Нусхаи матн',
-                    icon: const Icon(Icons.share_outlined),
+                    icon: const Icon(Icons.copy_outlined),
                     onPressed: () async {
                       final textToShare = hasVerifiedText
                           ? '$title\n$authorName\n\n$displayText'

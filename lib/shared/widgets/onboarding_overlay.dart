@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import '../../core/design_system/design_system.dart';
+import '../providers/app_providers.dart';
 
 /// A lightweight coach-mark overlay that spotlights UI elements on first launch.
 ///
@@ -11,10 +12,12 @@ import '../../core/design_system/design_system.dart';
 class OnboardingOverlay extends StatefulWidget {
   final List<OnboardingStep> steps;
   final Future<void> Function() onComplete;
+  final DisplayLanguage language;
   const OnboardingOverlay({
     super.key,
     required this.steps,
     required this.onComplete,
+    this.language = DisplayLanguage.tajik,
   });
 
   @override

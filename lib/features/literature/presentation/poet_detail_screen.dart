@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
+import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
@@ -168,6 +169,10 @@ class _PoetDetailContent extends ConsumerWidget {
                 // Main Name
                 Text(
                   name,
+                  textDirection:
+                      (isPersian && poet.canonicalNamePersian != null)
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
                   style: QalamTypography.pageTitle(
                     color: colors.onSurface,
                     fontSize: 34,
@@ -177,6 +182,10 @@ class _PoetDetailContent extends ConsumerWidget {
                   const SizedBox(height: 6),
                   Text(
                     altName,
+                    textDirection:
+                        (isPersian && poet.canonicalNamePersian != null)
+                        ? TextDirection.ltr
+                        : TextDirection.rtl,
                     style: QalamTypography.heroProverb(
                       color: colors.onSurfaceVariant,
                       fontSize: 20,
@@ -194,7 +203,7 @@ class _PoetDetailContent extends ConsumerWidget {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      poet.lifespan,
+                      AppTranslations.formatDigits(poet.lifespan, lang),
                       style: QalamTypography.meta(
                         color: colors.primary,
                         fontSize: 14,
@@ -269,6 +278,12 @@ class _PoetDetailContent extends ConsumerWidget {
                 const SizedBox(height: 14),
                 SelectableText(
                   biography,
+                  textDirection: (isPersian && poet.biographyFa != null)
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+                  textAlign: (isPersian && poet.biographyFa != null)
+                      ? TextAlign.right
+                      : TextAlign.left,
                   style: QalamTypography.body(
                     color: colors.onSurface,
                     fontSize: 16,

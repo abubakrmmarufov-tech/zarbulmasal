@@ -26,11 +26,12 @@ class LiteratureHubScreen extends ConsumerWidget {
     final oralCount = oralAsync.valueOrNull?.length ?? 0;
     final poetsAsync = ref.watch(literaryAuthorsProvider);
     final worksAsync = ref.watch(approvedWorksProvider);
-    final schoolCanonAsync = ref.watch(schoolCanonProvider);
 
     final poetsCount = poetsAsync.valueOrNull?.length ?? 0;
     final worksCount = worksAsync.valueOrNull?.length ?? 0;
-    final canonCount = schoolCanonAsync.valueOrNull?.length ?? 0;
+    final formattedPoetsCount = AppTranslations.formatNumber(poetsCount, lang);
+    final formattedWorksCount = AppTranslations.formatNumber(worksCount, lang);
+    final formattedOralCount = AppTranslations.formatNumber(oralCount, lang);
 
     return Scaffold(
       body: CustomScrollView(
@@ -56,6 +57,11 @@ class LiteratureHubScreen extends ConsumerWidget {
                               context.go('/');
                             }
                           },
+                        ),
+                        IconButton(
+                          tooltip: isPersian ? 'جستجو' : 'Ҷустуҷӯ',
+                          icon: const Icon(Icons.search, size: 22),
+                          onPressed: () => context.push('/literature/search'),
                         ),
                       ],
                     ),
@@ -108,17 +114,21 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '01',
                           title: AppTranslations.get('lit_poets', lang),
                           subtitle: isPersian
-                              ? 'زندگینامه و آثار  شاعر و ادیب بزرگ'
-                              : 'Зиндагинома ва осори  шоир ва адиби бузург',
+                              ? 'زندگینامه و آثار $formattedPoetsCount شاعر و ادیب بزرگ'
+                              : 'Зиндагинома ва осори $formattedPoetsCount шоир ва адиби бузург',
                           onTap: () => context.push('/literature/poets'),
                         ),
                         // 02: Works / Poems
                         QalamSectionLink(
                           number: '02',
                           title: AppTranslations.get('lit_poems', lang),
-                          subtitle: isPersian
-                              ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده ( اثر)'
-                              : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда ( асар)',
+                          subtitle: worksCount > 0
+                              ? (isPersian
+                                    ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده ($formattedWorksCount اثر)'
+                                    : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда ($formattedWorksCount асар)')
+                              : (isPersian
+                                    ? 'غزل‌ها، قصیده‌ها و رباعی‌های در حال مقابله و تصحیح'
+                                    : 'Ғазалҳо, қасидаҳо ва рубоиҳои дар ҳоли тасдиқ ва муқобала'),
                           onTap: () => context.push('/literature/works'),
                         ),
                         // 03: Oral Heritage
@@ -126,8 +136,8 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '03',
                           title: AppTranslations.get('lit_oral', lang),
                           subtitle: isPersian
-                              ? 'ضرب‌المثل‌ها، چیستان‌ها و دوبیتی‌های عامیانه ($oralCount مدخل)'
-                              : 'Зарбулмасалҳо, чистонҳо ва дубайтиҳои халқӣ ($oralCount намуна)',
+                              ? 'ضرب‌المثل‌ها، چیستان‌ها و دوبیتی‌های عامیانه ($formattedOralCount مدخل)'
+                              : 'Зарбулмасалҳо, чистонҳо ва дубайтиҳои халқӣ ($formattedOralCount намуна)',
                           onTap: () => context.push('/literature/oral'),
                         ),
                       ],

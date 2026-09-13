@@ -42,28 +42,47 @@ jobs:
       - name: Test
         run: flutter test --coverage
 
-      - name: Build Android APK
+      - name: Build Android APK for CI
+        if: github.ref != 'refs/heads/main' || github.event_name == 'pull_request'
+        run: flutter build apk --release --target-platform android-arm64
+
+      - name: Build signed public Android APKs
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          if [ -n "$KEYSTORE_BASE64" ]; then
-            echo "$KEYSTORE_BASE64" | base64 --decode > /tmp/release.keystore
-            export KEYSTORE_PATH=/tmp/release.keystore
-          fi
-          flutter build apk --release
-          flutter build apk --release --split-per-abi
+          for secret_name in KEYSTORE_BASE64 KEYSTORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do
+            if [[ -z "${!secret_name}" ]]; then
+              echo "Missing required Android release secret: $secret_name" >&2
+              exit 1
+            fi
+          done
+          printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.keystore"
+          chmod 600 "$RUNNER_TEMP/release.keystore"
+          export KEYSTORE_PATH="$RUNNER_TEMP/release.keystore"
+          flutter build apk --release --split-per-abi \
+            --obfuscate \
+            --split-debug-info=build/symbols/android
+          flutter build apk --release \
+            --obfuscate \
+            --split-debug-info=build/symbols/android
 
-      - name: Upload device-test APK
-        if: github.ref == 'refs/heads/main'
+      - name: Verify public Android packages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: bash tool/prepare_android_downloads.sh build/app/outputs/flutter-apk "$RUNNER_TEMP/android-verification"
+
+      - name: Upload verified public APKs
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: zarbulmasal-device-test-apk
+          name: zarbulmasal-public-apks
           path: |
             build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
           if-no-files-found: error
           retention-days: 30
 
@@ -96,6 +115,17 @@ jobs:
 
       - name: Version offline cache from compiled application
         run: bash tool/prepare_web_release.sh
+
+      - name: Download verified public APKs
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: zarbulmasal-public-apks
+          path: build/app/outputs/flutter-apk
+
+      - name: Add verified Android downloads to Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: bash tool/prepare_android_downloads.sh
 
       - name: Upload prepared site
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7

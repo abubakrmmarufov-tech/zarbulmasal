@@ -49,7 +49,7 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
             // Header
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۴ / میراث شفاهی' : '04 / МЕРОСИ ШИФОҲӢ',
+                eyebrow: isPersian ? '۰۳ / میراث شفاهی' : '03 / МЕРОСИ ШИФОҲӢ',
                 title: AppTranslations.get('lit_oral', lang),
                 subtitle: isPersian
                     ? 'ضرب‌المثل‌ها، چیستان‌ها، دوبیتی‌ها و ادبیات عامیانهٔ ضبط‌شده توسط دانشمندان فلکلور'

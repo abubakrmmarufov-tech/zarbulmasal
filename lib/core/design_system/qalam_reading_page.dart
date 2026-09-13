@@ -108,7 +108,10 @@ class QalamReadingPage extends ConsumerWidget {
                               Expanded(
                                 child: Text(
                                   daily
-                                      ? '${now.day} ${AppTranslations.getMonthName(now.month, lang)} / ${now.year}'
+                                      ? AppTranslations.formatDigits(
+                                          '${now.day} ${AppTranslations.getMonthName(now.month, lang)} / ${now.year}',
+                                          lang,
+                                        )
                                       : category,
                                   style: QalamTypography.eyebrow(
                                     color: colors.primary,
@@ -117,9 +120,12 @@ class QalamReadingPage extends ConsumerWidget {
                               ),
                               const SizedBox(width: 12),
                               Text(
-                                p.id
-                                    .replaceAll(RegExp(r'[^0-9]'), '')
-                                    .padLeft(3, '0'),
+                                AppTranslations.formatDigits(
+                                  p.id
+                                      .replaceAll(RegExp(r'[^0-9]'), '')
+                                      .padLeft(3, '0'),
+                                  lang,
+                                ),
                                 style: QalamTypography.meta(
                                   color: colors.onSurfaceVariant,
                                 ),
