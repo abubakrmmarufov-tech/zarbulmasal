@@ -158,13 +158,20 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
                                       ),
                                       const SizedBox(height: 6),
                                       ExcludeSemantics(
-                                        child: Text(
-                                          AppTranslations.get(keys[i], lang),
-                                          textAlign: TextAlign.center,
-                                          style: QalamTypography.navLabel(
-                                            color: selected == i
-                                                ? colors.primary
-                                                : colors.onSurfaceVariant,
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text(
+                                              AppTranslations.get(keys[i], lang),
+                                              maxLines: 1,
+                                              softWrap: false,
+                                              style: QalamTypography.navLabel(
+                                                color: selected == i
+                                                    ? colors.primary
+                                                    : colors.onSurfaceVariant,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
