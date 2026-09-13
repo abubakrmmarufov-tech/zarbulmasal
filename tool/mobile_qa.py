@@ -105,59 +105,71 @@ async def run(url: str) -> int:
             await screenshot_bytes(page, f"/tmp/zarbulmasal-mobile-{width}.png")
             action_result: dict[str, object] = {}
 
-            if width == 390:
+            if width in (320, 390):
+                artifact_suffix = "" if width == 390 else f"-{width}"
                 # Dismiss the first-launch tour, then open the real proverb
-                # search form from the bottom navigation.
+                # search form from the bottom navigation at both supported
+                # portrait phone sizes.
                 await page.mouse.click(80, height - 140)
                 await page.wait_for_timeout(400)
                 await page.mouse.click(width * 0.31, height - 30)
                 await page.wait_for_timeout(800)
                 before_search = await screenshot_bytes(
-                    page, "/tmp/zarbulmasal-proverbs-before-search.png"
+                    page,
+                    f"/tmp/zarbulmasal-proverbs-before-search{artifact_suffix}.png",
                 )
                 await page.mouse.click(width * 0.41, 190)
                 await page.keyboard.type("модар")
                 await page.wait_for_timeout(700)
                 after_search = await screenshot_bytes(
-                    page, "/tmp/zarbulmasal-proverbs-search.png"
+                    page, f"/tmp/zarbulmasal-proverbs-search{artifact_suffix}.png"
                 )
                 if before_search == after_search:
-                    failures.append("390px proverb search produced no visible change")
+                    failures.append(f"{width}px proverb search produced no visible change")
 
                 # Deep-link to the quiz screen after the navigation check and
                 # exercise answer feedback with a real pointer action. Using
                 # the hash route avoids making the test depend on scroll
                 # position after the search field has had focus.
                 await load_app(page, f"{url.rstrip('/')}/#/quiz")
+                if width == 320:
+                    # The compact viewport needs a short scroll to expose the
+                    # first answer card before a user can tap it.
+                    await page.mouse.wheel(0, 280)
+                    await page.wait_for_timeout(500)
                 before_answer = await screenshot_bytes(
-                    page, "/tmp/zarbulmasal-quiz-before-answer.png"
+                    page,
+                    f"/tmp/zarbulmasal-quiz-before-answer{artifact_suffix}.png",
                 )
                 # Question wrapping changes the first card's vertical position
                 # by a few dozen pixels. Try two interior points, never the
                 # border/gap, and keep the first pointer action that changes
                 # the real feedback state.
                 after_answer = await tap_until_changed(
-                    page, before_answer, width / 2, (420, 480)
+                    page,
+                    before_answer,
+                    width / 2,
+                    (420, 480) if width == 390 else (390, 430, 470),
                 )
                 await page.screenshot(
-                    path="/tmp/zarbulmasal-quiz-answer-feedback.png"
+                    path=f"/tmp/zarbulmasal-quiz-answer-feedback{artifact_suffix}.png"
                 )
                 if before_answer == after_answer:
-                    failures.append("390px quiz answer produced no visible feedback")
+                    failures.append(f"{width}px quiz answer produced no visible feedback")
 
                 # Deep-link to flashcards and reveal the first card. This is
                 # still a real pointer interaction on the deployed surface.
                 await load_app(page, f"{url.rstrip('/')}/#/flashcards")
                 before_reveal = await screenshot_bytes(
-                    page, "/tmp/zarbulmasal-flashcard-front.png"
+                    page, f"/tmp/zarbulmasal-flashcard-front{artifact_suffix}.png"
                 )
-                await page.mouse.click(width / 2, 400)
+                await page.mouse.click(width / 2, height * 0.53)
                 await page.wait_for_timeout(500)
                 after_reveal = await screenshot_bytes(
-                    page, "/tmp/zarbulmasal-flashcard-reveal.png"
+                    page, f"/tmp/zarbulmasal-flashcard-reveal{artifact_suffix}.png"
                 )
                 if before_reveal == after_reveal:
-                    failures.append("390px flashcard reveal produced no visible change")
+                    failures.append(f"{width}px flashcard reveal produced no visible change")
 
                 action_result = {
                     "search_changed": before_search != after_search,
