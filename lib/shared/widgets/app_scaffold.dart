@@ -50,7 +50,17 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
 
     // Listen for onboarding reset from Settings
     ref.listen<bool?>(onboardingCompleteProvider, (prev, next) {
-      if (next == false && prev != false) {
+      // The initial async load resolves from null to false on a first visit.
+      // That must not replace a user's deep link with the home route. Only an
+      // explicit reset from a completed session should navigate home first so
+      // the coach marks can target the bottom navigation.
+      if (next == false && prev == null) {
+        // The async first-load transition should show the tour in place,
+        // including when the browser opened a shell deep link.
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) setState(() => _showOnboarding = true);
+        });
+      } else if (prev == true && next == false) {
         // Navigate home first so the coach marks can see the nav bar
         context.go('/');
         WidgetsBinding.instance.addPostFrameCallback((_) {

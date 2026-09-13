@@ -135,6 +135,22 @@ void main() {
     );
   });
 
+  testWidgets('first-launch tour preserves a direct shell deep link', (
+    tester,
+  ) async {
+    final app = await openApp(
+      tester,
+      route: '/categories',
+      onboardingComplete: false,
+      disableAnimations: true,
+    );
+
+    expect(app.router.routeInformationProvider.value.uri.path, '/categories');
+    expect(find.byType(OnboardingOverlay), findsOneWidget);
+    expect(find.text('Гурӯҳҳо'), findsAtLeastNWidgets(1));
+    expect(tester.takeException(), isNull);
+  });
+
   const onboardingSizes = [
     Size(320, 568),
     Size(360, 640),
