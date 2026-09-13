@@ -21,16 +21,15 @@ void main() {
     );
   });
 
-  test('web shell carries iPhone and same-origin privacy metadata', () {
+  test('web shell carries iPhone and controlled font fallback metadata', () {
     final index = File('web/index.html').readAsStringSync();
 
     expect(index, contains('viewport-fit=cover'));
     expect(index, contains('apple-mobile-web-app-capable'));
     expect(index, contains('black-translucent'));
-    expect(index, contains("connect-src 'self'"));
-    expect(index, contains("font-src 'self' data:"));
+    expect(index, contains("connect-src 'self' https://fonts.gstatic.com"));
+    expect(index, contains("font-src 'self' data: https://fonts.gstatic.com"));
     expect(index, isNot(contains('fonts.googleapis.com')));
-    expect(index, isNot(contains('fonts.gstatic.com')));
     expect(index, isNot(contains('user-scalable=no')));
   });
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Locally bundled, script-complete type families. No network font requests.
+/// Locally bundled, script-complete type families. Flutter's engine may use
+/// the CSP-allowlisted fallback CDN for symbols outside these app fonts.
 class QalamTypography {
   QalamTypography._();
   static const serif = 'NotoSerif';
