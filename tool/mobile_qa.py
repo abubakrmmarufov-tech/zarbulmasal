@@ -16,7 +16,7 @@ from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 from playwright.async_api import async_playwright
 
 
-VIEWPORTS = ((375, 667), (390, 844), (430, 932))
+VIEWPORTS = ((320, 568), (375, 667), (390, 844), (430, 932))
 
 
 async def load_app(page, url: str) -> None:
@@ -112,7 +112,10 @@ async def run(url: str) -> int:
                 before_answer = await screenshot_bytes(
                     page, "/tmp/zarbulmasal-quiz-before-answer.png"
                 )
-                await page.mouse.click(width / 2, 440)
+                # The first answer begins around y=440 at 390x844. Tap its
+                # interior rather than its border so the pointer action tests
+                # the actual InkWell hit target reliably.
+                await page.mouse.click(width / 2, 480)
                 await page.wait_for_timeout(500)
                 after_answer = await screenshot_bytes(
                     page, "/tmp/zarbulmasal-quiz-answer-feedback.png"
