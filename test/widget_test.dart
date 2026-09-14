@@ -569,6 +569,22 @@ void main() {
     },
   );
 
+  testWidgets('home places the section-five history link after literature', (
+    tester,
+  ) async {
+    await openApp(tester, width: 390);
+
+    final scrollable = find.byType(Scrollable).first;
+    await tester.drag(scrollable, const Offset(0, -4000));
+    await tester.pumpAndSettle();
+    final history = find.text('Таърихи халқи тоҷик');
+    final historyTop = tester.getTopLeft(history).dy;
+    final literatureTitles = find.text('Мероси адабӣ');
+
+    expect(literatureTitles, findsOneWidget);
+    expect(historyTop, greaterThan(tester.getTopLeft(literatureTitles).dy));
+  });
+
   testWidgets('sparse catalogs expose only levels with real content', (
     tester,
   ) async {
@@ -880,4 +896,51 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  testWidgets('compact routes remain usable with enlarged system text', (
+    tester,
+  ) async {
+    await openApp(
+      tester,
+      route: '/quiz',
+      width: 320,
+      height: 568,
+      scale: 1.3,
+      disableAnimations: true,
+    );
+
+    final quizChoice = find.byType(QalamChoice).first;
+    await tester.ensureVisible(quizChoice);
+    await tester.tap(quizChoice);
+    await tester.pumpAndSettle();
+    expect(find.byType(ElevatedButton), findsWidgets);
+    expect(tester.takeException(), isNull);
+
+    await openApp(
+      tester,
+      route: '/flashcards',
+      width: 320,
+      height: 568,
+      scale: 1.3,
+      disableAnimations: true,
+    );
+
+    final flashcard = find.byType(QalamFlashCard);
+    await tester.ensureVisible(flashcard);
+    await tester.tap(flashcard);
+    await tester.pumpAndSettle();
+    expect(tester.widget<QalamFlashCard>(flashcard).showMeaning, isTrue);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('bottom navigation labels stay single-line on a compact phone', (
+    tester,
+  ) async {
+    await openApp(tester, width: 320, height: 568);
+
+    final settingsLabel = find.text('Танзимот');
+    expect(settingsLabel, findsOneWidget);
+    expect(tester.getRect(settingsLabel).height, lessThan(24));
+    expect(tester.takeException(), isNull);
+  });
 }

@@ -1,8 +1,8 @@
 # Zarbulmasal QA Audit & Release Verification Record
 
-Date: 2026-09-13
+Date: 2026-09-14
 Environment: Flutter 3.47.2, Dart 3.13.2, Android SDK 36.1.0, Chrome for Testing 153.0.8010.12  
-Branch: `main` (`e19f049`, with preserved user-staged historical download artifacts)
+Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifacts)
 
 ---
 
@@ -15,7 +15,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
   - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
-- **Quality Checks**: Static analysis (0 issues), Flutter unit/widget suite (153 tests passing), local browser smoke coverage across navigation, persistence, quiz, flashcards, Persian RTL, and dark mode.
+- **Quality Checks**: Static analysis (0 issues), published CI suite (152 tests passing), local suite (180 tests passing with the unpublished History worktree), and browser smoke coverage across navigation, persistence, quiz, flashcards, Persian RTL, dark mode, and real pointer actions.
 
 ---
 
@@ -23,7 +23,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
 
 | Branch | Latest Commit / SHA | Role / Relationship | Status |
 | --- | --- | --- | --- |
-| `origin/main` | `e19f049` | Default production branch containing the Qalam redesign, hardened release gates, CSP fix, phone QA harness, and fail-closed Android publishing | **CURRENT DEFAULT** |
+| `origin/main` | `2d8f348` | Default production branch containing the Qalam redesign, hardened release gates, CSP fix, phone QA harness, localized literature error states, and fail-closed Android publishing | **CURRENT DEFAULT** |
 | `origin/latest-design` | `3328686` | Historical feature branch for Qalam redesign and onboarding | Superseded and merged into `main` |
 | `origin/optimize-pwa-9718348651884350021` | `553e3b5` (PR #2) | Historical branch for PWA Safari optimizations | Superseded by PR #3 (`3b8c0ed`) and PR #5 (`e2e8935`) |
 | `origin/release/final-pwa` | `3b8c0ed` (PR #3) | Production PWA release integration | Merged into `main` via PR #3 |
@@ -112,7 +112,7 @@ Marked **UNVERIFIED**. Due to the absence of the user friend phone model, Androi
 
 1. `dart format --output=none --set-exit-if-changed lib test tool/validate_literature_json.dart tool/validate_literary_content.dart`: **PASS** (0 files changed).
 2. `flutter analyze`: **PASS** (No issues found).
-3. `flutter test --coverage`: **PASS** (153 tests passing).
+3. `flutter test --coverage`: **PASS** (180 tests passing in the current worktree; the published commit's CI suite passes 152 tests).
 4. Current source `flutter build apk --release --target-platform android-arm64`: **EXPECTED FAIL-CLOSED** without signing secrets (`Release signing config missing`). No unsigned release artifact is produced.
 5. Current source `flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run`: **PASS**.
 6. Current source `bash tool/prepare_web_release.sh`: **PASS** (deterministic build cache generated and injected).
@@ -167,6 +167,11 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 ## Update 2026-09-13
 - **Literary Heritage**: Added 171 poets and 1,466 quarantined poems currently under manual review.
 - Fixed the release-signing fallback, FavoritesNotifier initialization race, literature-hub navigation gaps, and silent Daily Verse empty/error states. Production phone QA verified the deployed root, routes, actions, and CSP-safe font fallback on 2026-09-13.
+
+## Update 2026-09-14
+- Published commit `2d8f348` is live at `https://abubakrmmarufov-tech.github.io/zarbulmasal/`.
+- Fresh public phone QA passed at 375×667, 390×844, and 430×932: no horizontal overflow, console/page errors, failed requests, or HTTP failures. Real pointer actions changed proverb search results, quiz feedback, and flashcard reveal; category and level selections navigated to `/proverbs`; favorites persisted through the public flow; settings theme and language values persisted across reload.
+- The current worktree contains an unpublished, source-bound History feature with 180 passing local tests. Its home link is ordered after the literature section, and it is intentionally excluded from the public build until its content and release scope are approved.
 
 ---
 

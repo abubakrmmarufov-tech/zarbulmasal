@@ -259,6 +259,19 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(24, 18, 24, 8),
+                child: QalamSectionLink(
+                  number: '05',
+                  title: isPersian ? 'تاریخ مردم تاجیک' : 'Таърихи халқи тоҷик',
+                  subtitle: isPersian
+                      ? 'پژوهش منبع‌محور از کتاب‌های صنف‌های ۵ تا ۱۱'
+                      : 'Тадқиқоти сарчашмабунёд аз китобҳои синфҳои 5–11',
+                  onTap: () => context.push('/history'),
+                ),
+              ),
+            ),
           ],
         ),
       ),

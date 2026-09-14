@@ -50,7 +50,16 @@ android {
     buildTypes {
         release {
             val releaseConfig = signingConfigs.findByName("release")
-            signingConfig = releaseConfig ?: throw GradleException("Release signing config missing")
+            val releaseBuildRequested = gradle.startParameter.taskNames.any { taskName ->
+                taskName.contains("Release", ignoreCase = true)
+            }
+            if (releaseConfig != null) {
+                signingConfig = releaseConfig
+            } else if (releaseBuildRequested) {
+                // Keep production artifacts fail-closed, but do not block debug
+                // APK validation when CI/local builds have no release secret.
+                throw GradleException("Release signing config missing")
+            }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

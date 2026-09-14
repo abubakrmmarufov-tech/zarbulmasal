@@ -12,6 +12,7 @@ import '../features/flashcards/flashcards_screen.dart';
 import '../features/daily/daily_proverb_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/literature/presentation/presentation.dart';
+import '../features/history/presentation/history_screen.dart';
 import '../shared/widgets/app_scaffold.dart';
 import '../core/design_system/design_system.dart';
 import '../core/l10n/app_translations.dart';
@@ -101,6 +102,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/literature/search',
       builder: (context, state) => const LiteratureSearchScreen(),
+    ),
+    GoRoute(
+      path: '/history',
+      builder: (context, state) => const HistoryScreen(),
     ),
   ],
 );

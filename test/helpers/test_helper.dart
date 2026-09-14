@@ -25,6 +25,7 @@ Future<TestApp> openApp(
   bool dark = false,
   bool onboardingComplete = true,
   bool disableAnimations = false,
+  bool settle = true,
   EdgeInsets safePadding = EdgeInsets.zero,
   List<Proverb>? catalog,
 }) async {
@@ -82,6 +83,13 @@ Future<TestApp> openApp(
       ),
     ),
   );
-  await tester.pumpAndSettle();
+  if (settle) {
+    await tester.pumpAndSettle();
+  } else {
+    // Some routes intentionally show an indeterminate loader while a large
+    // local catalog is read. A smoke test should inspect that frame without
+    // waiting forever for the loader animation to settle.
+    await tester.pump(const Duration(milliseconds: 100));
+  }
   return TestApp(container, router);
 }
