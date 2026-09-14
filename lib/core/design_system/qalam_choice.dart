@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'design_system.dart';
+import '../../shared/widgets/tajik_text.dart';
 
 /// An answer line with an explicit, accessible correct/incorrect state.
 class QalamChoice extends StatelessWidget {
@@ -12,6 +13,7 @@ class QalamChoice extends StatelessWidget {
   final VoidCallback? onTap;
   final TextDirection? textDirection;
   final int? index;
+  final bool forceTajikCyrillic;
 
   const QalamChoice({
     super.key,
@@ -24,6 +26,7 @@ class QalamChoice extends StatelessWidget {
     this.onTap,
     this.textDirection,
     this.index,
+    this.forceTajikCyrillic = false,
   });
 
   @override
@@ -91,15 +94,24 @@ class QalamChoice extends StatelessWidget {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: Text(
-                        text,
-                        textDirection: textDirection,
-                        style: QalamTypography.body(
-                          color: emphasized ? accent : colors.onSurface,
-                          fontSize: 15,
-                          height: 1.5,
-                        ),
-                      ),
+                      child: forceTajikCyrillic
+                          ? TajikText(
+                              text,
+                              style: QalamTypography.body(
+                                color: emphasized ? accent : colors.onSurface,
+                                fontSize: 15,
+                                height: 1.5,
+                              ),
+                            )
+                          : Text(
+                              text,
+                              textDirection: textDirection,
+                              style: QalamTypography.body(
+                                color: emphasized ? accent : colors.onSurface,
+                                fontSize: 15,
+                                height: 1.5,
+                              ),
+                            ),
                     ),
                   ],
                 ),

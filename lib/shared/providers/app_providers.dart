@@ -155,7 +155,9 @@ final dailyProverbProvider = Provider<Proverb?>((ref) {
     return null;
   }
 
-  final index = (now.year * 365 + now.month * 31 + now.day) % proverbs.length;
+  final epochDays =
+      DateTime(now.year, now.month, now.day).millisecondsSinceEpoch ~/ 86400000;
+  final index = epochDays % proverbs.length;
   return proverbs[index];
 });
 
