@@ -6,6 +6,7 @@ import '../l10n/app_translations.dart';
 import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/empty_state.dart';
+import '../../shared/widgets/tajik_text.dart';
 
 /// A shared, script-aware reading page for the daily and collection routes.
 class QalamReadingPage extends ConsumerWidget {
@@ -228,7 +229,7 @@ class QalamReadingPage extends ConsumerWidget {
                         scriptBadge: persian
                             ? tr('reading_tajik_explanation')
                             : null,
-                        textDirection: TextDirection.ltr,
+                        forceTajikCyrillic: true,
                       ),
                     ),
                   if (p.simpleExplanationTj.isNotEmpty)
@@ -240,7 +241,7 @@ class QalamReadingPage extends ConsumerWidget {
                         scriptBadge: persian
                             ? tr('reading_tajik_explanation')
                             : null,
-                        textDirection: TextDirection.ltr,
+                        forceTajikCyrillic: true,
                       ),
                     ),
                   if (p.exampleSentenceTj.isNotEmpty)
@@ -252,7 +253,7 @@ class QalamReadingPage extends ConsumerWidget {
                         scriptBadge: persian
                             ? tr('reading_tajik_explanation')
                             : null,
-                        textDirection: TextDirection.ltr,
+                        forceTajikCyrillic: true,
                       ),
                     ),
                   if (variantTexts.isNotEmpty)
@@ -354,6 +355,7 @@ class _ReadingSection extends StatelessWidget {
   final bool emphasis;
   final String? scriptBadge;
   final TextDirection? textDirection;
+  final bool forceTajikCyrillic;
 
   const _ReadingSection({
     required this.number,
@@ -362,6 +364,7 @@ class _ReadingSection extends StatelessWidget {
     this.emphasis = false,
     this.scriptBadge,
     this.textDirection,
+    this.forceTajikCyrillic = false,
   });
 
   @override
@@ -372,6 +375,18 @@ class _ReadingSection extends StatelessWidget {
         (RegExp(r'[\u0600-\u06FF]').hasMatch(text)
             ? TextDirection.rtl
             : TextDirection.ltr);
+
+    final style = emphasis
+        ? QalamTypography.heroProverb(
+            color: colors.onSurface,
+            fontSize: 23,
+            fontWeight: FontWeight.w400,
+          )
+        : QalamTypography.body(
+            color: colors.onSurface,
+            fontSize: 17,
+            height: 1.8,
+          );
 
     return Container(
       color: emphasis ? colors.surfaceContainerHighest : null,
@@ -395,22 +410,14 @@ class _ReadingSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 18),
-          SelectableText(
-            text,
-            semanticsLabel: text,
-            textDirection: direction,
-            style: emphasis
-                ? QalamTypography.heroProverb(
-                    color: colors.onSurface,
-                    fontSize: 23,
-                    fontWeight: FontWeight.w400,
-                  )
-                : QalamTypography.body(
-                    color: colors.onSurface,
-                    fontSize: 17,
-                    height: 1.8,
-                  ),
-          ),
+          forceTajikCyrillic
+              ? TajikText(text, style: style)
+              : SelectableText(
+                  text,
+                  semanticsLabel: text,
+                  textDirection: direction,
+                  style: style,
+                ),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'design_system.dart';
 import '../l10n/app_translations.dart';
+import '../../shared/widgets/tajik_text.dart';
 import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
 
@@ -149,21 +150,29 @@ class _QalamFlashCardState extends State<QalamFlashCard>
                       style: QalamTypography.eyebrow(color: secondary),
                     ),
                     const SizedBox(height: 36),
-                    Text(
-                      front
-                          ? (widget.isPersian
-                                ? proverb.persianText
-                                : proverb.tajikCyrillic)
-                          : proverb.meaningTj,
-                      textDirection: front && widget.isPersian
-                          ? TextDirection.rtl
-                          : TextDirection.ltr,
-                      style: QalamTypography.heroProverb(
-                        color: fg,
-                        fontSize: front ? 30 : 26,
-                        height: 1.5,
+                    if (front)
+                      Text(
+                        widget.isPersian
+                            ? proverb.persianText
+                            : proverb.tajikCyrillic,
+                        textDirection: widget.isPersian
+                            ? TextDirection.rtl
+                            : TextDirection.ltr,
+                        style: QalamTypography.heroProverb(
+                          color: fg,
+                          fontSize: 30,
+                          height: 1.5,
+                        ),
+                      )
+                    else
+                      TajikText(
+                        proverb.meaningTj,
+                        style: QalamTypography.heroProverb(
+                          color: fg,
+                          fontSize: 26,
+                          height: 1.5,
+                        ),
                       ),
-                    ),
                     const SizedBox(height: 24),
                     Divider(color: secondary.withValues(alpha: 0.4), height: 1),
                     const SizedBox(height: 24),
@@ -174,21 +183,29 @@ class _QalamFlashCardState extends State<QalamFlashCard>
                       ),
                       const SizedBox(height: 12),
                     ],
-                    Text(
-                      front
-                          ? (widget.isPersian
-                                ? proverb.tajikCyrillic
-                                : proverb.persianText)
-                          : proverb.simpleExplanationTj,
-                      textDirection: front && !widget.isPersian
-                          ? TextDirection.rtl
-                          : TextDirection.ltr,
-                      style: QalamTypography.body(
-                        color: secondary,
-                        fontSize: 16,
-                        height: 1.7,
+                    if (front)
+                      Text(
+                        widget.isPersian
+                            ? proverb.tajikCyrillic
+                            : proverb.persianText,
+                        textDirection: !widget.isPersian
+                            ? TextDirection.rtl
+                            : TextDirection.ltr,
+                        style: QalamTypography.body(
+                          color: secondary,
+                          fontSize: 16,
+                          height: 1.7,
+                        ),
+                      )
+                    else
+                      TajikText(
+                        proverb.simpleExplanationTj,
+                        style: QalamTypography.body(
+                          color: secondary,
+                          fontSize: 16,
+                          height: 1.7,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

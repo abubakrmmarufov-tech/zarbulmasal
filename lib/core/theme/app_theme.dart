@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart' show CupertinoPageTransitionsBuilder;
+
 import '../design_system/design_system.dart';
 
 class AppTheme {
@@ -42,7 +42,7 @@ class AppTheme {
     );
     return base.copyWith(
       pageTransitionsTheme: const PageTransitionsTheme(
-        builders: {
+        builders: <TargetPlatform, PageTransitionsBuilder>{
           TargetPlatform.android: QalamPageTransitions(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
           TargetPlatform.macOS: QalamPageTransitions(),

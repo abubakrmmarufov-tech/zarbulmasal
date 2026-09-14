@@ -198,7 +198,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
             isSelected: _selectedAnswer == entry.key,
             isCorrect: entry.key == currentQ.correctOptionIndex,
             revealed: _answered,
-            textDirection: TextDirection.ltr,
+            forceTajikCyrillic: true,
             onTap: _answered
                 ? null
                 : () => setState(() {
