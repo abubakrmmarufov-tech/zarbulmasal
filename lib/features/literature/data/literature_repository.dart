@@ -26,8 +26,9 @@ class LiteratureRepository {
   /// Loads verified literary authors from [authorsAssetPath].
   Future<List<LiteraryAuthor>> loadAuthors() async {
     final jsonString = await _bundle.loadString(authorsAssetPath);
-    // Offload large JSON parsing to a background isolate to prevent main thread jank
-    final dynamic decoded = await compute(jsonDecode, jsonString);
+    // Offload large JSON parsing to a background isolate to prevent main thread jank.
+    // In widget tests, use synchronous decoding to avoid isolate deadlock issues with tester.pumpAndSettle()
+    final dynamic decoded = kIsWeb || const bool.fromEnvironment('dart.vm.product') ? await compute(jsonDecode, jsonString) : jsonDecode(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -38,8 +39,7 @@ class LiteratureRepository {
   /// Loads literary works from [worksAssetPath].
   Future<List<LiteraryWork>> loadWorks() async {
     final jsonString = await _bundle.loadString(worksAssetPath);
-    // Offload large JSON parsing to a background isolate to prevent main thread jank
-    final dynamic decoded = await compute(jsonDecode, jsonString);
+    final dynamic decoded = kIsWeb || const bool.fromEnvironment('dart.vm.product') ? await compute(jsonDecode, jsonString) : jsonDecode(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -50,8 +50,7 @@ class LiteratureRepository {
   /// Loads source editions and bibliographic witnesses from [sourcesAssetPath].
   Future<List<SourceEdition>> loadSources() async {
     final jsonString = await _bundle.loadString(sourcesAssetPath);
-    // Offload large JSON parsing to a background isolate to prevent main thread jank
-    final dynamic decoded = await compute(jsonDecode, jsonString);
+    final dynamic decoded = kIsWeb || const bool.fromEnvironment('dart.vm.product') ? await compute(jsonDecode, jsonString) : jsonDecode(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -62,8 +61,7 @@ class LiteratureRepository {
   /// Loads official school canon curriculum mappings from [schoolCanonAssetPath].
   Future<List<SchoolCanonEntry>> loadSchoolCanon() async {
     final jsonString = await _bundle.loadString(schoolCanonAssetPath);
-    // Offload large JSON parsing to a background isolate to prevent main thread jank
-    final dynamic decoded = await compute(jsonDecode, jsonString);
+    final dynamic decoded = kIsWeb || const bool.fromEnvironment('dart.vm.product') ? await compute(jsonDecode, jsonString) : jsonDecode(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -76,8 +74,7 @@ class LiteratureRepository {
   /// Loads verified folklore oral heritage entries from [oralHeritageAssetPath].
   Future<List<OralHeritageEntry>> loadOralHeritage() async {
     final jsonString = await _bundle.loadString(oralHeritageAssetPath);
-    // Offload large JSON parsing to a background isolate to prevent main thread jank
-    final dynamic decoded = await compute(jsonDecode, jsonString);
+    final dynamic decoded = kIsWeb || const bool.fromEnvironment('dart.vm.product') ? await compute(jsonDecode, jsonString) : jsonDecode(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()

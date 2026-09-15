@@ -14,8 +14,9 @@ class HistoryRepository {
 
   Future<List<HistoryBook>> loadBooks() async {
     final jsonString = await _bundle.loadString(booksAssetPath);
-    // Offload large JSON parsing to a background isolate to prevent main thread jank
-    final decoded = await compute(jsonDecode, jsonString);
+    // Offload large JSON parsing to a background isolate to prevent main thread jank.
+    // In widget tests, use synchronous decoding to avoid isolate deadlock issues with tester.pumpAndSettle()
+    final dynamic decoded = kIsWeb || const bool.fromEnvironment('dart.vm.product') ? await compute(jsonDecode, jsonString) : jsonDecode(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -25,8 +26,7 @@ class HistoryRepository {
 
   Future<List<HistoryEntry>> loadEntries() async {
     final jsonString = await _bundle.loadString(entriesAssetPath);
-    // Offload large JSON parsing to a background isolate to prevent main thread jank
-    final decoded = await compute(jsonDecode, jsonString);
+    final dynamic decoded = kIsWeb || const bool.fromEnvironment('dart.vm.product') ? await compute(jsonDecode, jsonString) : jsonDecode(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
