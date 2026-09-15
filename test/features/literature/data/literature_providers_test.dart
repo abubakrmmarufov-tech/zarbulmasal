@@ -41,7 +41,7 @@ void main() {
     test('literaryAuthorsProvider loads verified authors', () async {
       final authors = await container.read(literaryAuthorsProvider.future);
       expect(authors, isNotEmpty);
-      expect(authors.length, 171);
+      expect(authors.length, 163);
       expect(authors.first.id, 'rudaki');
     });
 

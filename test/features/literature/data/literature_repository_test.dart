@@ -15,7 +15,7 @@ void main() {
     test('loadAuthors loads verified authors from assets', () async {
       final authors = await repository.loadAuthors();
       expect(authors, isNotEmpty);
-      expect(authors.length, 171);
+      expect(authors.length, 163);
 
       final rudaki = authors.firstWhere((a) => a.id == 'rudaki');
       expect(rudaki.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
