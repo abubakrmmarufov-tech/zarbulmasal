@@ -19,7 +19,7 @@ void main() {
       expect(raw, isA<List<dynamic>>());
 
       final list = raw as List<dynamic>;
-      expect(list.length, 171);
+      expect(list.length, 163);
 
       final authors = <LiteraryAuthor>[];
       for (final item in list) {
