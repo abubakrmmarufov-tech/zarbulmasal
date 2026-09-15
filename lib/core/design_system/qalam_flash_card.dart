@@ -148,6 +148,15 @@ class _QalamFlashCardState extends State<QalamFlashCard>
                           : AppTranslations.get('flashcards_meaning', lang),
                       style: QalamTypography.eyebrow(color: secondary),
                     ),
+                    if (!front && widget.isPersian) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        AppTranslations.get('flashcards_tajik_fallback', lang),
+                        textAlign: TextAlign.right,
+                        textDirection: TextDirection.rtl,
+                        style: QalamTypography.meta(color: secondary),
+                      ),
+                    ],
                     const SizedBox(height: 36),
                     Text(
                       front

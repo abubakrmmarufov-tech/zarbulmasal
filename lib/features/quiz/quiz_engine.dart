@@ -17,20 +17,37 @@ class QuizEngine {
   QuizEngine._();
 
   static final RegExp _wordRegex = RegExp(r'[\w\u0400-\u04FF]+');
+  static final Map<String, Set<String>> _wordCache = <String, Set<String>>{};
+
+  static void clearCache() => _wordCache.clear();
+
+  static Set<String> _extractWords(String s) {
+    if (_wordCache.length > 2048) {
+      _wordCache.clear();
+    }
+    return _wordCache.putIfAbsent(
+      s,
+      () => _wordRegex
+          .allMatches(s.toLowerCase())
+          .map((m) => m.group(0)!)
+          .toSet(),
+    );
+  }
+
+  static double _similarityFromSets(Set<String> wordsA, Set<String> wordsB) {
+    if (wordsA.isEmpty || wordsB.isEmpty) return 0.0;
+    var intersection = 0;
+    for (final word in wordsA) {
+      if (wordsB.contains(word)) {
+        intersection++;
+      }
+    }
+    final union = wordsA.length + wordsB.length - intersection;
+    return union == 0 ? 0.0 : intersection / union;
+  }
 
   static double wordSimilarity(String a, String b) {
-    final wordsA = _wordRegex
-        .allMatches(a.toLowerCase())
-        .map((m) => m.group(0)!)
-        .toSet();
-    final wordsB = _wordRegex
-        .allMatches(b.toLowerCase())
-        .map((m) => m.group(0)!)
-        .toSet();
-    if (wordsA.isEmpty || wordsB.isEmpty) return 0.0;
-    final intersection = wordsA.intersection(wordsB).length;
-    final union = wordsA.union(wordsB).length;
-    return intersection / union;
+    return _similarityFromSets(_extractWords(a), _extractWords(b));
   }
 
   static bool isVariantOrRelated(Proverb a, Proverb b) {
@@ -88,6 +105,7 @@ class QuizEngine {
   }) {
     final rng = random ?? Random();
     final correctMeaning = proverb.meaningTj.trim();
+    final correctWords = _extractWords(correctMeaning);
 
     // Candidate pool: exclude needsReview, unverified, variants, and exact meanings
     final candidates = allProverbs.where((c) {
@@ -99,7 +117,9 @@ class QuizEngine {
       final cMeaning = c.meaningTj.trim();
       if (cMeaning.isEmpty || cMeaning == correctMeaning) return false;
       // Filter out high semantic / word overlap (>= 0.35)
-      if (wordSimilarity(correctMeaning, cMeaning) >= 0.35) return false;
+      if (_similarityFromSets(correctWords, _extractWords(cMeaning)) >= 0.35) {
+        return false;
+      }
       return true;
     }).toList()..shuffle(rng);
 
@@ -111,19 +131,29 @@ class QuizEngine {
     });
 
     final chosenDistractors = <Proverb>[];
+    final chosenWords = <Set<String>>[];
+
     for (final candidate in candidates) {
       if (chosenDistractors.length >= 3) break;
 
+      final candMeaning = candidate.meaningTj.trim();
+      final candWords = _extractWords(candMeaning);
+
       // Ensure candidate is not a variant of already chosen distractors
-      final conflictsWithChosen = chosenDistractors.any(
-        (chosen) =>
-            isVariantOrRelated(candidate, chosen) ||
-            candidate.meaningTj.trim() == chosen.meaningTj.trim() ||
-            wordSimilarity(candidate.meaningTj, chosen.meaningTj) >= 0.35,
-      );
+      var conflictsWithChosen = false;
+      for (var i = 0; i < chosenDistractors.length; i++) {
+        final chosen = chosenDistractors[i];
+        if (isVariantOrRelated(candidate, chosen) ||
+            candMeaning == chosen.meaningTj.trim() ||
+            _similarityFromSets(candWords, chosenWords[i]) >= 0.35) {
+          conflictsWithChosen = true;
+          break;
+        }
+      }
 
       if (!conflictsWithChosen) {
         chosenDistractors.add(candidate);
+        chosenWords.add(candWords);
       }
     }
 
@@ -144,14 +174,21 @@ class QuizEngine {
 
       for (final candidate in fallbackPool) {
         if (chosenDistractors.length >= 3) break;
-        final conflictsWithChosen = chosenDistractors.any(
-          (chosen) =>
-              isVariantOrRelated(candidate, chosen) ||
-              candidate.meaningTj.trim() == chosen.meaningTj.trim() ||
-              wordSimilarity(candidate.meaningTj, chosen.meaningTj) >= 0.35,
-        );
+        final candMeaning = candidate.meaningTj.trim();
+        final candWords = _extractWords(candMeaning);
+        var conflictsWithChosen = false;
+        for (var i = 0; i < chosenDistractors.length; i++) {
+          final chosen = chosenDistractors[i];
+          if (isVariantOrRelated(candidate, chosen) ||
+              candMeaning == chosen.meaningTj.trim() ||
+              _similarityFromSets(candWords, chosenWords[i]) >= 0.35) {
+            conflictsWithChosen = true;
+            break;
+          }
+        }
         if (!conflictsWithChosen) {
           chosenDistractors.add(candidate);
+          chosenWords.add(candWords);
         }
       }
     }

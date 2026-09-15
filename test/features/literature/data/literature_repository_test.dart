@@ -20,7 +20,7 @@ void main() {
       final rudaki = authors.firstWhere((a) => a.id == 'rudaki');
       expect(rudaki.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
       expect(rudaki.canonicalNamePersian, 'ابوعبدالله رودکی');
-      expect(rudaki.birthYear, '~858');
+      expect(rudaki.birthYear, '858');
       expect(rudaki.rights.status, RightsStatus.publicDomain);
       expect(rudaki.rights.fullTextAllowed, isTrue);
     });
@@ -28,8 +28,8 @@ void main() {
     test('loadWorks loads registered works from assets', () async {
       final works = await repository.loadWorks();
       expect(works, isA<List<LiteraryWork>>());
-      // Initial canonical works asset starts empty until verification
-      expect(works.length, 1466);
+      // Candidate records are loaded, but publication remains fail-closed.
+      expect(works.length, 1472);
     });
 
     test('loadSources loads bibliographic editions from assets', () async {
@@ -60,6 +60,10 @@ void main() {
       final folklore = await repository.loadOralHeritage();
       expect(folklore, isA<List<OralHeritageEntry>>());
       expect(folklore, isEmpty);
+    });
+
+    test('normalizes common Persian keyboard variants for search', () {
+      expect(LiteratureRepository.normalizeSearchText('  رُودكي‌  '), 'رودکی');
     });
 
     group('getApprovedWorks', () {
@@ -137,11 +141,14 @@ void main() {
         expect(filtered.first.id, 'approved-1');
       });
 
-      test('getApprovedWorks loads works from asset when omitted', () async {
-        final approved = await repository.getApprovedWorks();
-        expect(approved, isA<List<LiteraryWork>>());
-        expect(approved, isEmpty);
-      });
+      test(
+        'getApprovedWorks quarantines asset works without source pages',
+        () async {
+          final approved = await repository.getApprovedWorks();
+          expect(approved, isA<List<LiteraryWork>>());
+          expect(approved, isEmpty);
+        },
+      );
     });
 
     group('getDailyVerse', () {

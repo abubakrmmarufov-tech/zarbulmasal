@@ -165,6 +165,22 @@ final worksByAuthorProvider = FutureProvider.family<List<LiteraryWork>, String>(
   },
 );
 
+/// Finds quarantined work records by [authorId] for transparent review status.
+///
+/// These records may expose a title and source citation in the author profile,
+/// but their text remains protected by [PoemReaderScreen]'s pending state.
+final worksUnderReviewByAuthorProvider =
+    FutureProvider.family<List<LiteraryWork>, String>((ref, authorId) async {
+      final works = await ref.watch(literaryWorksProvider.future);
+      return works
+          .where(
+            (work) =>
+                work.authorId == authorId &&
+                work.verification.finalStatus == VerificationStatus.needsReview,
+          )
+          .toList(growable: false);
+    });
+
 /// Convenience family provider for finding school canon entries by [authorId].
 final schoolCanonByAuthorProvider =
     FutureProvider.family<List<SchoolCanonEntry>, String>((

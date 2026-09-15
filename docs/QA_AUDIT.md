@@ -10,7 +10,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 
 A comprehensive, evidence-grounded quality assurance audit and end-to-end verification pass was conducted for **Зарбулмасал (Zarbulmasal)**.
 
-- **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage contains 171 authors and 1,466 imported work candidates, all quarantined pending provenance review.
+- **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage contains 171 authors and 1,472 imported work candidates, all quarantined pending provenance review.
 - **Platforms Verified**:
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
   - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
@@ -334,3 +334,136 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
    - Replaced icon with `Icons.copy_outlined` in `PoemReaderScreen`.
    - Added widget tests in `literature_presentation_test.dart` and `providers_test.dart`.
 9. **Verification Result & Revision**: Verified across all 150 tests in `flutter test` (PASS).
+
+#### DEF-208: History Grade 8 Presented a Misleading Empty Search Result
+1. **ID & Severity**: `DEF-208` — **High** (Content Trust & Mobile UX)
+2. **Affected Screen/Component/Data**: `HistoryScreen`; Grade 8 textbook source record.
+3. **Reproduction**: Open History on a 320px release build and select `Синфи 8`.
+4. **Actual**: The UI said `Мундариҷа ёфт нашуд`, implying a bad query or absent data, although the Grade 8 source book is known and only its chapter-level detail is unverified.
+5. **Fix**: The filtered state now describes the verified limitation plainly and leaves the filter chip available to reset. The redundant outlined reset button was removed after visual QA found it clipped below the phone viewport.
+6. **Protection/Evidence**: A provider-overridden widget regression fails on the former generic state; targeted History tests pass. A clean-origin 320px browser run confirms the full explanatory state is visible with no console errors.
+
+#### DEF-209: Literature Search Was Not Tolerant of Common Persian Keyboard Input
+1. **ID & Severity**: `DEF-209` — **High** (Persian Discoverability & Content Trust)
+2. **Affected Screen/Component/Data**: Literature global search and Poet directory.
+3. **Reproduction**: Search for Rudaki with `رودكي` (Arabic `ي`/`ك`) rather than `رودکی`.
+4. **Actual**: Raw lowercase comparisons returned no result. Global search also allowed the noncanonical importer placeholder `Unknown` into results.
+5. **Fix**: Centralized normalization removes marks and zero-width characters, maps Arabic keyboard variants to Persian characters, and normalizes whitespace. Both search surfaces use it; global suggestions/results omit noncanonical author records.
+6. **Protection/Evidence**: Unit and widget regressions pass. In a clean local release browser, `رودكي` returns Абӯабдуллоҳи Рӯдакӣ in both surfaces; `Unknown` yields the ordinary no-results state.
+
+#### DEF-210: Hash Deep Links Were Overridden and Internal Routes Were Not Shareable
+1. **ID & Severity**: `DEF-210` — **High** (Web Navigation)
+2. **Affected Screen/Component/Data**: GoRouter configuration; History and Literature routes.
+3. **Reproduction**: Open `#/history` on a fresh browser origin, or navigate from Home into Literature and inspect the address bar.
+4. **Actual**: The forced root `initialLocation` discarded the incoming hash route. GoRouter 14 also defaults to not reflecting imperative navigation in the browser URL.
+5. **Fix**: Removed the forced root location and enable GoRouter's URL reflection while constructing the app router.
+6. **Protection/Evidence**: The new router configuration test initially failed and now passes. Clean-origin browser QA verifies `#/history`, `#/literature`, and browser Back. GitHub Pages should use the fragment form rather than an unfragmented `/history` path.
+
+#### DEF-211: Uncited Works Were Presented as Fully Verified
+1. **ID & Severity**: `DEF-211` — **Critical** (Literary provenance and publication gate)
+2. **Affected Screen/Component/Data**: `works.json`, poem reader/source panel, literary-content validator, and approved-work providers.
+3. **Reproduction**: Open an affected work such as `#/literature/work/0136bbcb-75f0-4e53-b66f-1b4a12f6b211`, then select its source panel.
+4. **Actual**: 82 records claimed completed page checking and public approval, and the reader labelled their text verified, although all 82 primary-source records omitted `pageStart`.
+5. **Fix**: Downgraded the batch to `needsReview`, disabled full-text publication, and added a validator/test requirement that an approved work has a documented primary-source page and `pageChecked` confirmation.
+6. **Protection/Evidence**: The validator now reports 0 approved and 1,466 pending records. Targeted content/provider/repository tests pass; a clean-origin release browser shows the explicit reviewed-works empty state and no console errors.
+
+#### Current Local QA Snapshot (Unpublished)
+
+- Baseline: `main` at `34e0e71` plus local QA fixes; no commit, push, credential change, or deployment was performed.
+- Clean checks: `flutter analyze` (0 issues), full `flutter test --no-pub --coverage` (209 passing), literature JSON/content validators (`tool/validate_literature_json.dart`, `tool/validate_literary_content.dart`), literature-pipeline unit check, and web release build.
+- Coverage artifact: 4,561 / 5,362 lines (85.06%), exceeding the 80% threshold across all modules.
+- Content constraint: 171 authors and 1,472 work records validate structurally; all 1,472 works strictly remain quarantined under `needsReview` (none published prematurely without editorial approval and the required source checks).
+- File System / Build System Limitation: macOS intermittently returns `errno = 60: Operation timed out` while reading workspace paths, including the Android Gradle wrapper. Web and test compilation currently work, but this environmental fault is not permanently resolved; a fresh Android rebuild and diff whitespace check remain unverified.
+- RTL & Persian Numeral Parity Audit:
+  - Eastern Arabic numeral formatting (`AppTranslations.formatDigits` and `formatNumber`) comprehensively applied across History (grade chips, book strip, source citations, dynamic empty states), Literature Search (author lifespans), Settings (proverbs count), Daily Hero (Persian calendar numbers), and School Canon.
+  - Directional icons (`Icons.arrow_forward`, `Icons.chevron_right`, `Icons.arrow_forward_ios`) verified against Flutter's Material `IconData` architecture (`matchTextDirection: true` natively enabled on the underlying `IconData`), ensuring automatic horizontal mirroring in RTL layouts while preserving orientation for non-directional icons (`Icons.check`, `Icons.hourglass_empty`).
+- Runtime browser coverage (56 automated Playwright screenshots across viewports):
+  - Viewports: Phone compact (320×568), Phone standard (390×844), and Desktop (1280×800).
+  - Routes verified: Home, History, Literature Hub, Poets List, Works List, School Canon, Oral Heritage, Literature Search, Proverbs List, Categories, Favorites, Quiz, Flashcards, Daily Proverb, Levels, Settings.
+  - Persian RTL mode verified on 390×844: Home, History, Literature Hub, Poets List, Works List, Flashcards, Settings.
+  - Dark mode theme verified.
+  - Console and page error count across all 56 screens: **0 errors**.
+- Interactive E2E verification:
+  - Invalid route / 404 handling (`#/non_existent_page_404` loads polished error page without crash).
+  - Service worker active registration and offline asset cache validation.
+  - LocalStorage persistence for language (`fa`) and theme (`dark`) across reload.
+  - Direct deep links (`#/history`, `#/literature`, `#/literature/poets`, `#/literature/works`, `#/literature/school`, `#/proverbs`, `#/favorites`) preserved without root override.
+- Focused regression evidence: the recorded Tajik onboarding/literature/history journey and Persian/dark settings/proverbs/flashcard journey completed with 0 browser-console errors. They are useful evidence, but do not substitute for the two complete final regression passes required by this audit.
+- Android source configuration: package `com.zarbulmasal.zarbulmasal`, version `2.0.0`/code `2004`, min SDK 24, and target SDK 36 are present in source. No current Android artifact is claimed because the debug rebuild is blocked before compilation; physical on-device upgrade verification also remains unavailable.
+- Deployment separation: Public GitHub Pages root verified live (HTTP 200). Local fixes remain quarantined in the local worktree without unauthorized push.
+- Latest regression passes after DEF-211: (1) fresh-origin Tajik onboarding → author search/profile → Literature pending state → History direct link; (2) Persian/dark Settings → Proverbs favorite/reload → Flashcard fallback. Both had zero browser-console errors. A fresh Android rebuild remains unverified because macOS intermittently returns `Operation timed out` while reading workspace files, including `android/gradle/wrapper/gradle-wrapper.properties`; the final `git diff --check` now passes and no source file was overwritten to work around the Android environment fault.
+- History navigation evidence: in the Persian/dark local release build, selecting the Grade 5 Пешдодиён card kept the route at `#/history` and opened an in-app detail sheet with grade, textbook, and chapter reference. No browser-console errors and no external navigation occurred.
+- History category coverage: event and oral-narrative filters were added after confirming that the 71 source-bound cards included 4 events and 2 oral narratives that were otherwise only discoverable through the long unfiltered list. Widget regressions cover Tajik filtering and Persian labels; a fresh local release browser selected both filters at `#/history` and displayed the expected textbook-bound cards without console errors or external navigation.
+- Textbook-corpus foundation: local Grade 5–11 PDFs were reconciled into seven explicit `official-textbook` source records (title-page author line, publisher, year, ISBN, and local reference). Grade 5–11 School Canon mappings now carry their actual source IDs and use a visible “citation under review” state rather than claiming unreviewed curriculum evidence as final. `index_textbook_pages.py` generated 3,178 canonical-name/PDF-page review candidates; it stores no poem text and grants no approval. Printed Grade 5 page 49 was visually inspected for Rudaki’s year-only biographical evidence, page 54 for the six-bayt “Бӯйи Ҷӯйи Мулиён” excerpt, and page 59 for a two-line Tursunzoda meter example that the textbook does not identify as a standalone poem. Printed Grade 7 pages 105–107 were visually inspected for four clearly titled Kamoli Khujandi ghazal records, including the 106–107 continuation. These records remain `needsReview` pending a second witness, line-by-line collation, and editorial/rights review. A fresh local release browser confirmed the Grade 5 card cites the held 2017 Маориф edition and discloses that page review is pending.
+- Textbook biography witness: printed page 254 of the held Grade 7 (2018) edition was visually inspected for Лоиқ Шералӣ. The profile now reports the exact textbook dates `20 майи 1941` and `30 июни 2000`, birthplace `Мазори Шариф, Панҷакент`, and the page-cited concise biography; unsupported honorifics were not carried over as verified facts.
+- Jami date correction: printed Grade 7 page 109 was visually inspected and two duplicate Абдурраҳмони Ҷомӣ records were reconciled to its dates (`7 ноябри 1414`–`9 ноябри 1492`), birthplace, concise work list, and page-109 citation. The prior conflicting exact dates and opaque source labels are covered by a JSON regression.
+
+### Continued QA Cycle — 2026-09-14
+
+- Added three directly inspected textbook work candidates: `rudaki_buyi_juyi_muliyon_grade5_2017_p54`, tied to printed page 54; the two-line Tursunzoda meter example `tursunzoda_meter_example_grade5_2017_p59`, tied to printed page 59; and the four-line «Модар» excerpt `tursunzoda_modar_excerpt_grade5_2017_p216`, tied to printed page 216 of the held Grade 5 (2017) edition. Rudaki’s profile now reports only the year-level evidence visible on printed page 49 (`858–941`); unsupported exact birth/death dates and unsupported honorifics were removed from that record.
+- Added four Grade 7 textbook witnesses for Камоли Хуҷандӣ after inspecting printed pages 105–106: «Ғарибӣ» and «Гуфтам ба чашм!» on page 105, «Ошӯби ҷонӣ» on page 106, and «Дӯст медорад дилам ҷавру ҷафои дӯстро» across pages 106–107. The records preserve the complete textbook line structure as review data, but remain unpublished because they still need a second witness, line-by-line collation, and rights review.
+- The adjacent printed page 217 was also inspected. It contains an additional untitled stanza inside the surrounding biographical discussion; it was not merged into «Модар» because the page does not clearly delimit its title or relationship to the page-216 excerpt.
+- The candidate index now adds non-content `pageSignals` (`question_numbering`, `poetry_cue`, `biography_cue`, or `name_hit_only`) so obvious exercise-page hits can be deprioritized without retaining page text or treating a signal as evidence.
+- Fresh-origin browser QA switched Settings from Tajik to Persian and reopened direct literature routes: Persian navigation and pending-work protection copy rendered, the Tajik textbook citation remained intact, and error/warning diagnostics were empty. The Loïc Sherali profile also disclosed that its auditable biography is currently shown in Tajik Cyrillic while preserving the page-254 citation.
+- The rebuilt web release occupies 47 MB on disk, including CanvasKit and symbol assets; the browser automation context did not expose a navigation-timing API, so no startup-time improvement is claimed.
+- Biography-source disclosure was tightened: the author model now recognizes a citation as auditable only when it contains a printed page marker, and poet profiles label opaque import sources such as “Маҷмӯаи мактабӣ” as lacking a verified page rather than presenting them as authoritative textbook citations.
+- Unsupported composition dates and contexts were removed from 82 pending imports. The domain, UI, and content validator now require a printed page plus `pageChecked` before composition metadata can be user-visible or accepted in future records.
+- Poet profiles now expose pending work titles and their known page citations as review-only cards, while explicitly labeling records without a printed page; tapping a pending card reaches the protected reader instead of falsely reporting that no record exists.
+- Approved-work counts on poet profiles now say “approved in the app” so a visible zero is not misread as a claim that the poet wrote no poems; the pending-record count remains separate.
+- These candidates remain quarantined: `textStatus=needsReview`, `finalStatus=needsReview`, no second witness, no line-by-line sign-off, and `fullTextAllowed=false`. The app now distinguishes a known pending record from an unknown work ID and shows the citation without revealing the text.
+- Final automated pass 1: `flutter test --no-pub --coverage` — 209/209 passed; 4,561/5,362 lines (85.06%). Final automated pass 2: `flutter test --no-pub` — 209/209 passed. `flutter analyze`, JSON validation, content validation, and pipeline tests pass.
+- Final local web verification: release build completed after the Grade 7 corpus addition; fresh origins verified Rudaki profile, Grade 5 textbook filter, pending-work protection, Tajik UI, and browser diagnostics with no error/warning logs. The public GitHub Pages deployment was not changed.
+- Android status: current debug rebuild remains blocked before compilation because Gradle cannot read the wrapper properties file due to the intermittent macOS/iCloud `Operation timed out` filesystem error. No current Android artifact or device result is claimed.
+
+---
+
+## 13. Benchmark Optimization Loop: Quiz Generation Engine
+
+### Bottleneck Identification & Hypothesis
+- **Operation**: `QuizEngine.generateQuestion` / `QuizEngine.generateQuiz` (5-question distractor selection with variant and semantic collision checks).
+- **Bottleneck**: `wordSimilarity(correctMeaning, cMeaning)` was executing `RegExp.allMatches` on lowercase strings for every candidate (542 proverbs) per question. In 2,000 quiz simulations (10,000 questions), this produced over 5.4 million redundant regex operations and Set allocations.
+- **Metric**: Total wall time (ms) and throughput (ms/quiz) for 2,000 quizzes (10,000 questions).
+- **Correctness Gate**: `flutter test --no-pub test/quiz_algorithm_test.dart` (11 tests, 2,000 collision simulations, 0 collisions allowed).
+
+### Variant Comparison Table
+| Variant | Hypothesis | Command | Time (2,000 quizzes) | Throughput | Correct? | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Baseline** | Current path with repeated regex & set allocations | `dart run tool/benchmark_quiz.dart` | 18,017ms | 9.0085ms/quiz | Yes | Stable, high CPU burn |
+| **Variant 1** | Hoisted word tokenization & allocation-free intersection | `dart run tool/benchmark_quiz.dart` | 8,656ms | 4.3280ms/quiz | Yes | 2.08x speedup |
+| **Variant 2** | Static bounded word set cache (`_wordCache`) | `dart run tool/benchmark_quiz.dart` | **519ms** | **0.2595ms/quiz** | Yes | **34.7x speedup (Winner)** |
+
+### Correctness & Promotion
+- Correctness test suite `test/quiz_algorithm_test.dart` ran with 11/11 passing tests in under 1 second (previously 21 seconds).
+- Full test suite: 191/191 passed (100%), coverage at 85.03% (4,077 / 4,795 lines).
+- Variant 2 was promoted to `lib/features/quiz/quiz_engine.dart` with a bounded cache cap (2,048 entries) and explicit `clearCache()` method to prevent any possibility of memory leaks.
+
+---
+
+## 14. Formal Production Readiness Audit
+
+**Production audit: 82/100, launchable with caveats, with historical v1.1.0 APK artifacts in local downloads and physical on-device upgrade verification as the two risks to resolve before public launch.**
+
+### Blockers
+1. **Historical v1.1.0 APK artifacts in local downloads**: `downloads/zarbulmasal-arm64-v8a.apk` is version 1.1.0 (versionCode 4003). While the GitHub Actions CI workflow correctly removes `downloads/` if signing secrets are absent, local deployments must never copy these stale v1.1.0 APKs to public hosting where `android/index.html` advertises version 2.0.0.
+2. **Physical on-device Android install/upgrade verification**: Package signing continuity and manifest checks pass static and scripted validation, but a real physical handset upgrade from the previously distributed v1.0.1/v1.1.0 build to v2.0.0 must be verified on hardware to ensure `INSTALL_FAILED_UPDATE_INCOMPATIBLE` does not occur.
+
+### High-Value Fixes
+1. **Literature Content Collation**: 1,472 imported works remain fail-closed under `needsReview`. Editorial collation against physical print editions will enable their public promotion.
+2. **Offline Service Worker Cache Invalidation**: Monitor service worker registration on initial load across varied browsers to ensure version bumps flush stale cached assets immediately.
+
+### Evidence Checked
+- `git status`, `git log`, and `git diff origin/main...HEAD`
+- Static analysis: `flutter analyze` (0 issues)
+- Automated test suite: `flutter test --coverage` (191 tests passed, 85.03% line coverage)
+- Mobile QA harness: `python3 tool/mobile_qa.py` (5 viewports, 0 console errors, 0 page errors, 0 layout overflows)
+- Release scripts: `tool/prepare_web_release.sh`, `tool/prepare_android_downloads.sh`, `.github/workflows/ci.yml`
+- Android configuration: `android/app/build.gradle.kts` (fail-closed signing configuration)
+- Benchmark optimization: `tool/benchmark_quiz.dart` (34.7x speedup)
+- Secrets audit: Git grep across repository (0 exposed credentials)
+
+### Evidence Missing
+- Physical Android handset USB logcat during v1.1.0 -> v2.0.0 in-place upgrade.
+- Real-user analytics or crash monitoring in production.
+
+### Next Action
+Publish the benchmark optimization results and proceed with staging APK signing verification when repository secrets are available.

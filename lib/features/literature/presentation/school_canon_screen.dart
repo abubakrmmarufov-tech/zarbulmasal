@@ -60,8 +60,8 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                     : '03 / БАРНОМАИ МАКТАБӢ',
                 title: AppTranslations.get('lit_school', lang),
                 subtitle: isPersian
-                    ? 'آثار و شاعران مصوب برنامهٔ درسی وزارت معارف برای صنف‌های ۱ تا ۱۱'
-                    : 'Осор ва шоирони барномаи таълимии Вазорати маориф ва илми ҶТ барои синфҳои 1–11',
+                    ? 'فهرست منبع‌محورِ کتاب‌های درسی؛ هر ارجاع پس از سنجش صفحه تأیید می‌شود'
+                    : 'Феҳристи сарчашмабунёди китобҳои дарсӣ; ҳар истинод баъд аз санҷиши саҳифа тасдиқ мешавад',
               ),
             ),
             // Content
@@ -152,7 +152,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                             for (final grade in grades) ...[
                               ChoiceChip(
                                 label: Text(
-                                  isPersian ? 'صنف $grade' : 'Синфи $grade',
+                                  isPersian
+                                      ? 'صنف ${AppTranslations.formatDigits(grade, lang)}'
+                                      : 'Синфи $grade',
                                 ),
                                 selected: _selectedGrade == grade,
                                 onSelected: (selected) {
@@ -185,7 +187,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                           child: Row(
                             children: [
                               Text(
-                                isPersian ? 'صنف $grade' : 'СИНФИ $grade',
+                                isPersian
+                                    ? 'صنف ${AppTranslations.formatDigits(grade, lang)}'
+                                    : 'СИНФИ $grade',
                                 style: QalamTypography.eyebrow(
                                   color: colors.primary,
                                   fontSize: 14,
@@ -193,7 +197,7 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                               ),
                               const Spacer(),
                               Text(
-                                '${grouped[grade]!.length} ${isPersian ? "اثر" : "асар"}',
+                                '${AppTranslations.formatNumber(grouped[grade]!.length, lang)} ${isPersian ? "اثر" : "асар"}',
                                 style: QalamTypography.meta(
                                   color: colors.onSurfaceVariant,
                                 ),
@@ -248,6 +252,7 @@ class _CanonEntryCard extends StatelessWidget {
         : entry.authorId;
 
     final isMandatory = entry.isMandatory;
+    final isCitationVerified = entry.isCitationVerified;
 
     return InkWell(
       onTap: () {
@@ -290,11 +295,15 @@ class _CanonEntryCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(3),
                   ),
                   child: Text(
-                    isMandatory
-                        ? (isPersian ? 'حتماً' : 'Ҳатмӣ')
-                        : (isPersian ? 'توصیه‌شده' : 'Тавсияшаванда'),
+                    isCitationVerified
+                        ? (isMandatory
+                              ? (isPersian ? 'حتماً' : 'Ҳатмӣ')
+                              : (isPersian ? 'توصیه‌شده' : 'Тавсияшаванда'))
+                        : (isPersian
+                              ? 'ارجاع در دست بررسی'
+                              : 'Истинод дар санҷиш'),
                     style: QalamTypography.meta(
-                      color: isMandatory
+                      color: isCitationVerified && isMandatory
                           ? QalamColors.forest
                           : colors.onSurfaceVariant,
                       fontSize: 10,
@@ -336,9 +345,22 @@ class _CanonEntryCard extends StatelessWidget {
             if (entry.textbookAuthors.isNotEmpty) ...[
               const SizedBox(height: 2),
               Padding(
-                padding: const EdgeInsets.only(left: 20),
+                padding: const EdgeInsetsDirectional.only(start: 20),
                 child: Text(
                   '${isPersian ? "مؤلفان کتاب:" : "Муаллифони китоб:"} ${entry.textbookAuthors}',
+                  style: QalamTypography.meta(
+                    color: colors.onSurfaceVariant,
+                    fontSize: 11,
+                  ),
+                ),
+              ),
+            ],
+            if (entry.sourceEvidence.isNotEmpty) ...[
+              const SizedBox(height: 6),
+              Padding(
+                padding: const EdgeInsetsDirectional.only(start: 20),
+                child: Text(
+                  entry.sourceEvidence,
                   style: QalamTypography.meta(
                     color: colors.onSurfaceVariant,
                     fontSize: 11,

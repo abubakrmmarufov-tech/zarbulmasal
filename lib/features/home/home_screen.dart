@@ -216,7 +216,7 @@ class HomeScreen extends ConsumerWidget {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 24, 24, 40),
+                padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
                 child: OutlinedButton(
                   onPressed: () => context.go('/proverbs'),
                   child: Text(tr('btn_see_all')),
@@ -261,13 +261,13 @@ class HomeScreen extends ConsumerWidget {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 18, 24, 8),
+                padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
                 child: QalamSectionLink(
-                  number: '05',
+                  number: isPersian ? '۰۵' : '05',
                   title: isPersian ? 'تاریخ مردم تاجیک' : 'Таърихи халқи тоҷик',
                   subtitle: isPersian
-                      ? 'پژوهش منبع‌محور از کتاب‌های صنف‌های ۵ تا ۱۱'
-                      : 'Тадқиқоти сарчашмабунёд аз китобҳои синфҳои 5–11',
+                      ? 'پژوهش منبع‌محور از کتاب‌های صنف‌های ۵ تا ۱۱ و گاه‌شمار'
+                      : 'Тадқиқоти сарчашмабунёд аз китобҳои синфҳои 5–11 ва хатти замон',
                   onTap: () => context.push('/history'),
                 ),
               ),

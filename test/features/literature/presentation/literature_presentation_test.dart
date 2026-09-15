@@ -24,7 +24,7 @@ const testAuthorRudaki = LiteraryAuthor(
   literaryPeriod: 'Асри IX-X',
   biographyTj: 'Сардафтари адабиёти классикии тоҷик.',
   biographyFa: 'بنیان‌گذار ادبیات کلاسیک فارسی و تاجیکی.',
-  biographySource: 'Ахтарони адаб, ҷ. 1, 2008',
+  biographySource: 'Адабиёти тоҷик, синфи 5, Маориф, Душанбе, 2017, с. 49',
   officialTitles: ['Одамушшуаро'],
   educationGrades: ['4', '5', '8', '10'],
   rights: RightsRecord(
@@ -159,8 +159,21 @@ Future<void> pumpTestApp(
         ),
       ),
       worksByAuthorProvider.overrideWith(
-        (ref, id) =>
-            Future.value(works.where((w) => w.authorId == id).toList()),
+        (ref, id) => Future.value(
+          works.where((w) => w.authorId == id && w.isDisplayable).toList(),
+        ),
+      ),
+      worksUnderReviewByAuthorProvider.overrideWith(
+        (ref, id) => Future.value(
+          works
+              .where(
+                (w) =>
+                    w.authorId == id &&
+                    w.verification.finalStatus ==
+                        VerificationStatus.needsReview,
+              )
+              .toList(),
+        ),
       ),
       schoolCanonByAuthorProvider.overrideWith(
         (ref, id) =>
@@ -314,6 +327,45 @@ void main() {
       expect(find.byType(QalamPoetCard), findsOneWidget);
     });
 
+    testWidgets('LiteratureSearchScreen hides unresolved import placeholders', (
+      tester,
+    ) async {
+      await pumpTestApp(
+        tester,
+        route: '/literature/search',
+        authors: [
+          testAuthorRudaki,
+          testAuthorRudaki.copyWith(
+            id: 'unresolved-author',
+            canonicalName: 'Unknown',
+          ),
+        ],
+      );
+
+      expect(find.text('Unknown'), findsNothing);
+      await tester.enterText(find.byType(TextField), 'Unknown');
+      await tester.pumpAndSettle();
+
+      expect(find.byType(QalamPoetCard), findsNothing);
+      expect(find.text('Мундариҷа ёфт нашуд'), findsOneWidget);
+    });
+
+    testWidgets('LiteratureSearchScreen matches Persian keyboard variants', (
+      tester,
+    ) async {
+      await pumpTestApp(
+        tester,
+        route: '/literature/search',
+        language: DisplayLanguage.persian,
+        authors: [testAuthorRudaki],
+      );
+
+      await tester.enterText(find.byType(TextField), 'رودكي');
+      await tester.pumpAndSettle();
+
+      expect(find.byType(QalamPoetCard), findsOneWidget);
+    });
+
     testWidgets('Tapping a poet card navigates to PoetDetailScreen', (
       tester,
     ) async {
@@ -325,8 +377,39 @@ void main() {
       expect(find.byType(PoetDetailScreen), findsOneWidget);
       expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsWidgets);
       expect(find.text('Сардафтари адабиёти классикии тоҷик.'), findsOneWidget);
-      expect(find.text('Ахтарони адаб, ҷ. 1, 2008'), findsOneWidget);
+      expect(find.text('Сарчашмаи истинод:'), findsOneWidget);
+      expect(
+        find.text('Адабиёти тоҷик, синфи 5, Маориф, Душанбе, 2017, с. 49'),
+        findsOneWidget,
+      );
       expect(find.text('Одамушшуаро'), findsOneWidget);
+    });
+
+    testWidgets('PoetDetailScreen withholds unpage-cited biography facts', (
+      tester,
+    ) async {
+      final uncited = testAuthorRudaki.copyWith(
+        biographySource: 'Маҷмӯаи мактабӣ',
+        biographyTj: 'Маълумоти воридотии санҷиданашуда.',
+      );
+      await pumpTestApp(
+        tester,
+        route: '/literature/poet/rudaki',
+        authors: [uncited],
+      );
+
+      expect(find.text('858 – 941'), findsNothing);
+      expect(
+        find.text(
+          'Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма дар интизоранд.',
+        ),
+        findsOneWidget,
+      );
+      expect(find.text('Маълумоти воридотии санҷиданашуда.'), findsNothing);
+      expect(
+        find.text('Сарчашмаи саҳифадори санҷидашуда сабт нашудааст:'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('PoetDetailScreen renders works by author', (tester) async {
@@ -340,6 +423,84 @@ void main() {
       );
       expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
     });
+
+    testWidgets(
+      'PoetDetailScreen exposes pending work titles and citations without text',
+      (tester) async {
+        final pendingWork = testWorkRudaki.copyWith(
+          id: 'rudaki-pending-textbook-work',
+          title: 'Модар',
+          textStatus: TextStatus.needsReview,
+          textTajik: 'Ин матн то санҷиш дастрас нест.',
+          rights: const RightsRecord(
+            status: RightsStatus.excerptOnly,
+            reasoning: 'Pending rights review',
+            fullTextAllowed: false,
+            excerptAllowed: true,
+          ),
+          primarySource: testWorkRudaki.primarySource!.copyWith(
+            pageStart: 216,
+            pageEnd: 216,
+          ),
+          verification: const VerificationRecord(
+            finalStatus: VerificationStatus.needsReview,
+          ),
+        );
+        final pendingNoPageWork = pendingWork.copyWith(
+          id: 'rudaki-pending-no-page',
+          title: 'Асари бе саҳифа',
+          primarySource: const SourceEdition(
+            bookTitle: 'Адабиёти тоҷик',
+            publisher: 'Маориф',
+            city: 'Душанбе',
+            year: '2018',
+            sourceType: SourceEditionType.officialTextbook,
+          ),
+        );
+
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/rudaki',
+          works: [pendingWork, pendingNoPageWork],
+        );
+
+        expect(find.text('Осори тасдиқшуда дар барнома (0)'), findsOneWidget);
+        expect(find.text('Сабтҳои асар дар санҷиш: 2'), findsOneWidget);
+        await tester.scrollUntilVisible(
+          find.text('Модар'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        expect(find.text('Модар'), findsOneWidget);
+        await tester.scrollUntilVisible(
+          find.text('Асари бе саҳифа'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        expect(
+          find.text('Рақами саҳифаи чопӣ ҳанӯз сабт нашудааст'),
+          findsOneWidget,
+        );
+        expect(
+          find.textContaining(
+            'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
+          ),
+          findsNWidgets(2),
+        );
+        expect(find.textContaining('с. 216'), findsOneWidget);
+
+        await tester.scrollUntilVisible(
+          find.text('Модар'),
+          -300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        await tester.tap(find.text('Модар'));
+        await tester.pumpAndSettle();
+        expect(find.byType(PoemReaderScreen), findsOneWidget);
+        expect(find.text('Асар дар санҷиш аст'), findsOneWidget);
+        expect(find.text('Ин матн то санҷиш дастрас нест.'), findsNothing);
+      },
+    );
 
     testWidgets(
       'WorksListScreen renders list of approved works and navigates to reader',
@@ -425,6 +586,47 @@ void main() {
       },
     );
 
+    testWidgets(
+      'PoemReaderScreen distinguishes a known pending textbook work',
+      (tester) async {
+        final pendingWork = testWorkRudaki.copyWith(
+          textStatus: TextStatus.needsReview,
+          verification: const VerificationRecord(
+            finalStatus: VerificationStatus.needsReview,
+          ),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${pendingWork.id}',
+          works: [pendingWork],
+        );
+
+        expect(find.text('Асар дар санҷиш аст'), findsOneWidget);
+        expect(find.text('Бозгашт'), findsWidgets);
+        expect(find.textContaining('Бӯи ҷӯи Мӯлиён ояд ҳаме'), findsNothing);
+      },
+    );
+
+    testWidgets('PoemReaderScreen keeps the pending state clear in Persian', (
+      tester,
+    ) async {
+      final pendingWork = testWorkRudaki.copyWith(
+        textStatus: TextStatus.needsReview,
+        verification: const VerificationRecord(
+          finalStatus: VerificationStatus.needsReview,
+        ),
+      );
+      await pumpTestApp(
+        tester,
+        route: '/literature/work/${pendingWork.id}',
+        works: [pendingWork],
+        language: DisplayLanguage.persian,
+      );
+
+      expect(find.text('اثر در دست بررسی است'), findsOneWidget);
+      expect(find.textContaining('بوی جوی مولیان'), findsNothing);
+    });
+
     testWidgets('SchoolCanonScreen displays entries grouped by grade', (
       tester,
     ) async {
@@ -437,7 +639,8 @@ void main() {
         find.text('Адабиёти тоҷик (Синфи 5) (2018) — Маориф'),
         findsOneWidget,
       );
-      expect(find.text('Ҳатмӣ'), findsOneWidget);
+      expect(find.text('Истинод дар санҷиш'), findsOneWidget);
+      expect(find.text('Барномаи таълимӣ барои синфи 5'), findsOneWidget);
     });
 
     testWidgets(
@@ -525,6 +728,28 @@ void main() {
     );
 
     testWidgets(
+      'PoetDetailScreen discloses Tajik biography fallback in Persian mode',
+      (tester) async {
+        final authorJson = testAuthorRudaki.toJson()..remove('biographyFa');
+        final author = LiteraryAuthor.fromJson(authorJson);
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/rudaki',
+          language: DisplayLanguage.persian,
+          authors: [author],
+        );
+
+        expect(
+          find.text(
+            'این زندگی‌نامه فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شود.',
+          ),
+          findsOneWidget,
+        );
+        expect(find.text(author.biographyTj), findsOneWidget);
+      },
+    );
+
+    testWidgets(
       'PoemReaderScreen in Persian mode renders Persian title, text, copy action, and Persian SourcePanel',
       (tester) async {
         await pumpTestApp(
@@ -590,6 +815,232 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Нусхабардорӣ дастрас нест'), findsOneWidget);
+    });
+
+    testWidgets(
+      'PoetDetailScreen renders exact dates, poem count badge, and composition metadata',
+      (tester) async {
+        const testAuthorWithDates = LiteraryAuthor(
+          id: 'ayni',
+          canonicalName: 'Садриддин Айнӣ',
+          canonicalNamePersian: 'صدرالدین عینی',
+          birthYear: '1878',
+          deathYear: '1954',
+          birthDateExact: '15.04.1878',
+          deathDateExact: '15.07.1954',
+          birthPlace: 'Соктаре, Бухоро',
+          literaryPeriod: 'Асри XX',
+          biographyTj: 'Сарвари адабиёти нави тоҷик.',
+          biographySource: 'Сарчашмаи санҷиши тестӣ, с. 1',
+          rights: RightsRecord(
+            status: RightsStatus.publicDomain,
+            reasoning: 'PD',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+        );
+
+        const testWorkWithDates = LiteraryWork(
+          id: 'ayni-marsh-hurriyat',
+          authorId: 'ayni',
+          title: 'Марши ҳуррият',
+          compositionDate: '1918',
+          compositionContext: 'Дар шаҳри Самарқанд',
+          textTajik: 'Эй ситамдидагон, эй асирон,\nВақти озодии мо расид!',
+          textStatus: TextStatus.verified,
+          primarySource: SourceEdition(
+            bookTitle: 'Куллиёт, ҷ. 1',
+            publisher: 'Нашриёти давлатии Тоҷикистон',
+            city: 'Душанбе',
+            year: '1960',
+            pageStart: 12,
+            sourceType: SourceEditionType.criticalEdition,
+          ),
+          rights: RightsRecord(
+            status: RightsStatus.publicDomain,
+            reasoning: 'PD',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+          verification: VerificationRecord(
+            primarySourceChecked: true,
+            secondSourceChecked: true,
+            titleChecked: true,
+            authorshipChecked: true,
+            pageChecked: true,
+            textLineByLineChecked: true,
+            scriptChecked: true,
+            copyrightChecked: true,
+            finalStatus: VerificationStatus.approved,
+          ),
+        );
+
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/ayni',
+          authors: [testAuthorWithDates],
+          works: [testWorkWithDates],
+        );
+
+        expect(find.textContaining('15.04.1878'), findsWidgets);
+        expect(find.textContaining('15.07.1954'), findsWidgets);
+        expect(
+          find.textContaining('Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма'),
+          findsNothing,
+        );
+        expect(
+          find.textContaining('Шеърҳои тасдиқшуда дар барнома: 1'),
+          findsOneWidget,
+        );
+        expect(
+          find.textContaining('Осори тасдиқшуда дар барнома (1)'),
+          findsOneWidget,
+        );
+        expect(find.textContaining('Таълиф: 1918'), findsOneWidget);
+        expect(find.textContaining('Дар шаҳри Самарқанд'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'PoemReaderScreen renders author exact lifespan and poem composition date & context',
+      (tester) async {
+        const testAuthorWithDates = LiteraryAuthor(
+          id: 'ayni',
+          canonicalName: 'Садриддин Айнӣ',
+          canonicalNamePersian: 'صدرالدین عینی',
+          birthYear: '1878',
+          deathYear: '1954',
+          birthDateExact: '15.04.1878',
+          deathDateExact: '15.07.1954',
+          birthPlace: 'Соктаре, Бухоро',
+          literaryPeriod: 'Асри XX',
+          biographyTj: 'Сарвари адабиёти нави тоҷик.',
+          biographySource: 'Сарчашмаи санҷиши тестӣ, с. 1',
+          rights: RightsRecord(
+            status: RightsStatus.publicDomain,
+            reasoning: 'PD',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+        );
+
+        const testWorkWithDates = LiteraryWork(
+          id: 'ayni-marsh-hurriyat',
+          authorId: 'ayni',
+          title: 'Марши ҳуррият',
+          compositionDate: '1918',
+          compositionContext: 'Дар шаҳри Самарқанд',
+          textTajik: 'Эй ситамдидагон, эй асирон,\nВақти озодии мо расид!',
+          textStatus: TextStatus.verified,
+          primarySource: SourceEdition(
+            bookTitle: 'Куллиёт, ҷ. 1',
+            publisher: 'Нашриёти давлатии Тоҷикистон',
+            city: 'Душанбе',
+            year: '1960',
+            pageStart: 12,
+            sourceType: SourceEditionType.criticalEdition,
+          ),
+          rights: RightsRecord(
+            status: RightsStatus.publicDomain,
+            reasoning: 'PD',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+          verification: VerificationRecord(
+            primarySourceChecked: true,
+            secondSourceChecked: true,
+            titleChecked: true,
+            authorshipChecked: true,
+            pageChecked: true,
+            textLineByLineChecked: true,
+            scriptChecked: true,
+            copyrightChecked: true,
+            finalStatus: VerificationStatus.approved,
+          ),
+        );
+
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/ayni-marsh-hurriyat',
+          authors: [testAuthorWithDates],
+          works: [testWorkWithDates],
+        );
+
+        expect(find.textContaining('15.04.1878'), findsWidgets);
+        expect(find.textContaining('15.07.1954'), findsWidgets);
+        expect(find.textContaining('Санаи таълиф: 1918'), findsOneWidget);
+        expect(
+          find.textContaining('Муҳит: Дар шаҳри Самарқанд'),
+          findsOneWidget,
+        );
+      },
+    );
+
+    testWidgets('PoetsListScreen renders exact dates and poem count badge', (
+      tester,
+    ) async {
+      const testAuthorWithDates = LiteraryAuthor(
+        id: 'ayni',
+        canonicalName: 'Садриддин Айнӣ',
+        canonicalNamePersian: 'صدرالدین عینی',
+        birthYear: '1878',
+        deathYear: '1954',
+        birthDateExact: '15.04.1878',
+        deathDateExact: '15.07.1954',
+        birthPlace: 'Соктаре, Бухоро',
+        literaryPeriod: 'Асри XX',
+        biographyTj: 'Сарвари адабиёти нави тоҷик.',
+        biographySource: 'Сарчашмаи санҷиши тестӣ, с. 1',
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'PD',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+      );
+
+      const testWorkWithDates = LiteraryWork(
+        id: 'ayni-marsh-hurriyat',
+        authorId: 'ayni',
+        title: 'Марши ҳуррият',
+        textTajik: 'Эй ситамдидагон, эй асирон,\nВақти озодии мо расид!',
+        textStatus: TextStatus.verified,
+        primarySource: SourceEdition(
+          bookTitle: 'Куллиёт, ҷ. 1',
+          publisher: 'Нашриёти давлатии Тоҷикистон',
+          city: 'Душанбе',
+          year: '1960',
+          pageStart: 12,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'PD',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          primarySourceChecked: true,
+          secondSourceChecked: true,
+          titleChecked: true,
+          authorshipChecked: true,
+          pageChecked: true,
+          textLineByLineChecked: true,
+          scriptChecked: true,
+          copyrightChecked: true,
+          finalStatus: VerificationStatus.approved,
+        ),
+      );
+
+      await pumpTestApp(
+        tester,
+        route: '/literature/poets',
+        authors: [testAuthorWithDates],
+        works: [testWorkWithDates],
+      );
+
+      expect(find.textContaining('15.04.1878'), findsWidgets);
+      expect(find.textContaining('1 асар'), findsOneWidget);
     });
   });
 }

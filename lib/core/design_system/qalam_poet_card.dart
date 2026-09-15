@@ -11,6 +11,8 @@ class QalamPoetCard extends StatelessWidget {
   final String dates;
   final String period;
   final bool isPublicDomain;
+  final String? exactDates;
+  final String? poemCountBadge;
   final VoidCallback? onTap;
 
   const QalamPoetCard({
@@ -19,12 +21,18 @@ class QalamPoetCard extends StatelessWidget {
     required this.dates,
     required this.period,
     this.isPublicDomain = false,
+    this.exactDates,
+    this.poemCountBadge,
     this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final displayDates = (exactDates != null && exactDates!.isNotEmpty)
+        ? exactDates!
+        : dates;
+
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -51,17 +59,62 @@ class QalamPoetCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    dates,
-                    style: QalamTypography.meta(color: colors.primary),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.calendar_today_outlined,
+                        size: 13,
+                        color: colors.primary,
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: Text(
+                          displayDates,
+                          style: QalamTypography.meta(color: colors.primary),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 2),
-                  Text(
-                    period,
-                    style: QalamTypography.bodySecondary(
-                      color: colors.onSurfaceVariant,
-                      fontSize: 13,
-                    ),
+                  const SizedBox(height: 3),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          period,
+                          style: QalamTypography.bodySecondary(
+                            color: colors.onSurfaceVariant,
+                            fontSize: 13,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      if (poemCountBadge != null &&
+                          poemCountBadge!.isNotEmpty) ...[
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: colors.primary.withValues(alpha: 0.08),
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(
+                              color: colors.primary.withValues(alpha: 0.25),
+                              width: 0.5,
+                            ),
+                          ),
+                          child: Text(
+                            poemCountBadge!,
+                            style: QalamTypography.meta(
+                              color: colors.primary,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                 ],
               ),

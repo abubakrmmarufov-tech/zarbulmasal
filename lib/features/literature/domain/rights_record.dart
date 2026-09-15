@@ -21,6 +21,9 @@ enum RightsStatus {
       RegExp(r'[-_\s]'),
       '',
     );
+    if (normalized == 'licensed' || normalized == 'permission') {
+      return RightsStatus.permissionGranted;
+    }
     for (final status in RightsStatus.values) {
       if (status.name.toLowerCase() == normalized) {
         return status;

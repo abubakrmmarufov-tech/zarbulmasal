@@ -152,6 +152,12 @@ class LiteraryWork {
   /// Rights and copyright clearance record.
   final RightsRecord rights;
 
+  /// Date or year of composition if attested (e.g. "15 октябри 1948", "1954", "асри X").
+  final String? compositionDate;
+
+  /// Historical, geographic or social context of composition (e.g. "Дар шаҳри Душанбе").
+  final String? compositionContext;
+
   /// Philological verification and collation audit record.
   final VerificationRecord verification;
 
@@ -172,6 +178,8 @@ class LiteraryWork {
     this.secondarySource,
     this.textMatchResult,
     this.variantNotes,
+    this.compositionDate,
+    this.compositionContext,
     required this.rights,
     required this.verification,
   });
@@ -194,6 +202,22 @@ class LiteraryWork {
   /// Whether verified Persian Arabic text is present.
   bool get hasPersianText =>
       textPersian != null && textPersian!.trim().isNotEmpty;
+
+  /// Whether composition metadata has a page-checked primary source.
+  ///
+  /// A date or context imported without a printed page is only a lead. Keep
+  /// it out of user-facing literature records until an editor verifies the
+  /// exact source location.
+  bool get hasAuditableCompositionEvidence {
+    final source = primarySource;
+    final hasMetadata =
+        (compositionDate?.trim().isNotEmpty ?? false) ||
+        (compositionContext?.trim().isNotEmpty ?? false);
+    return hasMetadata &&
+        source != null &&
+        source.pageStart != null &&
+        verification.pageChecked;
+  }
 
   /// Creates a [LiteraryWork] from a JSON map.
   factory LiteraryWork.fromJson(Map<String, dynamic> json) {
@@ -231,6 +255,11 @@ class LiteraryWork {
       textMatchResult:
           (json['textMatchResult'] ?? json['text_match_result']) as String?,
       variantNotes: (json['variantNotes'] ?? json['variant_notes']) as String?,
+      compositionDate:
+          (json['compositionDate'] ?? json['composition_date']) as String?,
+      compositionContext:
+          (json['compositionContext'] ?? json['composition_context'])
+              as String?,
       rights: rightsJson is Map<String, dynamic>
           ? RightsRecord.fromJson(rightsJson)
           : const RightsRecord(
@@ -264,6 +293,8 @@ class LiteraryWork {
       'secondarySource': secondarySource?.toJson(),
       'textMatchResult': textMatchResult,
       'variantNotes': variantNotes,
+      if (compositionDate != null) 'compositionDate': compositionDate,
+      if (compositionContext != null) 'compositionContext': compositionContext,
       'rights': rights.toJson(),
       'verification': verification.toJson(),
     };
@@ -287,6 +318,8 @@ class LiteraryWork {
     SourceEdition? secondarySource,
     String? textMatchResult,
     String? variantNotes,
+    String? compositionDate,
+    String? compositionContext,
     RightsRecord? rights,
     VerificationRecord? verification,
   }) {
@@ -307,6 +340,8 @@ class LiteraryWork {
       secondarySource: secondarySource ?? this.secondarySource,
       textMatchResult: textMatchResult ?? this.textMatchResult,
       variantNotes: variantNotes ?? this.variantNotes,
+      compositionDate: compositionDate ?? this.compositionDate,
+      compositionContext: compositionContext ?? this.compositionContext,
       rights: rights ?? this.rights,
       verification: verification ?? this.verification,
     );

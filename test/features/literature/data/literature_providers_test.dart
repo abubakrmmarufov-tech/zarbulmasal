@@ -48,11 +48,11 @@ void main() {
     test('literaryWorksProvider loads works', () async {
       final works = await container.read(literaryWorksProvider.future);
       expect(works, isA<List<LiteraryWork>>());
-      expect(works.length, 1466);
+      expect(works.length, 1472);
     });
 
     test(
-      'approvedWorksProvider filters works to only displayable ones',
+      'approvedWorksProvider quarantines works without page-level provenance',
       () async {
         final approved = await container.read(approvedWorksProvider.future);
         expect(approved, isA<List<LiteraryWork>>());
@@ -61,7 +61,7 @@ void main() {
     );
 
     test(
-      'dailyVerseProvider returns null when no approved works exist',
+      'dailyVerseProvider is unavailable while no work has complete provenance',
       () async {
         final dailyVerse = await container.read(dailyVerseProvider.future);
         expect(dailyVerse, isNull);
@@ -105,12 +105,15 @@ void main() {
       expect(rudakiCanon.every((c) => c.authorId == 'rudaki'), isTrue);
     });
 
-    test('worksByAuthorProvider filters works by author id', () async {
-      final works = await container.read(
-        worksByAuthorProvider('rudaki').future,
-      );
-      expect(works, isEmpty);
-    });
+    test(
+      'worksByAuthorProvider omits unapproved works for an author',
+      () async {
+        final works = await container.read(
+          worksByAuthorProvider('rudaki').future,
+        );
+        expect(works, isEmpty);
+      },
+    );
 
     test('worksByAuthorProvider excludes unapproved works', () async {
       const approved = LiteraryWork(
@@ -236,6 +239,55 @@ void main() {
       );
       expect(works.map((work) => work.id), ['approved']);
     });
+
+    test(
+      'worksUnderReviewByAuthorProvider exposes only pending candidates',
+      () async {
+        const pending = LiteraryWork(
+          id: 'pending',
+          authorId: 'rudaki',
+          title: 'Pending candidate',
+          textTajik: 'Pending text',
+          textStatus: TextStatus.needsReview,
+          rights: RightsRecord(
+            status: RightsStatus.excerptOnly,
+            reasoning: 'Pending',
+            fullTextAllowed: false,
+            excerptAllowed: true,
+          ),
+          verification: VerificationRecord(
+            finalStatus: VerificationStatus.needsReview,
+          ),
+        );
+        const rejected = LiteraryWork(
+          id: 'rejected',
+          authorId: 'rudaki',
+          title: 'Rejected candidate',
+          rights: RightsRecord(
+            status: RightsStatus.blocked,
+            reasoning: 'Rejected',
+            fullTextAllowed: false,
+            excerptAllowed: false,
+          ),
+          verification: VerificationRecord(
+            finalStatus: VerificationStatus.rejected,
+          ),
+        );
+        final scopedContainer = ProviderContainer(
+          overrides: [
+            literaryWorksProvider.overrideWith(
+              (ref) async => const [pending, rejected],
+            ),
+          ],
+        );
+        addTearDown(scopedContainer.dispose);
+
+        final works = await scopedContainer.read(
+          worksUnderReviewByAuthorProvider('rudaki').future,
+        );
+        expect(works.map((work) => work.id), ['pending']);
+      },
+    );
 
     test(
       'oralHeritageProvider requires verification and rights clearance',

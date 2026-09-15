@@ -89,6 +89,18 @@ void main() {
             equals('verified'),
             reason: "Approved work ${work['id']} must have verified textStatus",
           );
+          final primarySource = work['primarySource'] as Map<String, dynamic>;
+          expect(
+            primarySource['pageStart'],
+            isA<int>(),
+            reason:
+                "Approved work ${work['id']} needs a documented source page",
+          );
+          expect(
+            verification['pageChecked'],
+            isTrue,
+            reason: "Approved work ${work['id']} must confirm its source page",
+          );
 
           final rights = work['rights'];
           expect(

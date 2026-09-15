@@ -73,7 +73,7 @@ class QalamDailyHero extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      '${now.day} ${AppTranslations.getMonthName(now.month, lang)} / ${now.year}',
+                      '${AppTranslations.formatDigits('${now.day}', lang)} ${AppTranslations.getMonthName(now.month, lang)} / ${AppTranslations.formatDigits('${now.year}', lang)}',
                       style: QalamTypography.meta(
                         color: QalamColors.paperTextSoft,
                       ),

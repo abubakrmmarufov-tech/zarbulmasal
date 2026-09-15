@@ -134,7 +134,10 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '${_currentIndex + 1}'.padLeft(2, '0'),
+              AppTranslations.formatDigits(
+                '${_currentIndex + 1}'.padLeft(2, '0'),
+                lang,
+              ),
               style: QalamTypography.pageTitle(
                 color: colors.primary,
                 fontSize: 56,
@@ -146,8 +149,11 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   AppTranslations.get('quiz_question_of', lang, [
-                    '${_currentIndex + 1}',
-                    '${_quizQuestions.length}',
+                    AppTranslations.formatDigits('${_currentIndex + 1}', lang),
+                    AppTranslations.formatDigits(
+                      '${_quizQuestions.length}',
+                      lang,
+                    ),
                   ]),
                   style: QalamTypography.meta(color: colors.onSurfaceVariant),
                 ),
@@ -188,6 +194,36 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
           AppTranslations.get('quiz_choose_meaning', lang),
           style: QalamTypography.label(color: colors.onSurfaceVariant),
         ),
+        if (persian) ...[
+          const SizedBox(height: 10),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            decoration: BoxDecoration(
+              color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: colors.outlineVariant.withValues(alpha: 0.6),
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.info_outline,
+                  size: 16,
+                  color: colors.onSurfaceVariant,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    AppTranslations.get('quiz_tajik_fallback', lang),
+                    style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                    textDirection: TextDirection.rtl,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
         const SizedBox(height: 16),
         ...options.asMap().entries.map(
           (entry) => QalamChoice(
@@ -226,6 +262,46 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 color: colors.onSurface,
                 fontSize: 14,
               ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 16, bottom: 8),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: colors.surfaceContainerLow,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: colors.outlineVariant),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  AppTranslations.get('quiz_review_title', lang),
+                  style: QalamTypography.eyebrow(color: colors.primary),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  proverb.simpleExplanationTj.isNotEmpty
+                      ? proverb.simpleExplanationTj
+                      : proverb.meaningTj,
+                  style: QalamTypography.body(
+                    color: colors.onSurface,
+                    fontSize: 15,
+                    height: 1.6,
+                  ),
+                ),
+                if (proverb.exampleSentenceTj.isNotEmpty) ...[
+                  const SizedBox(height: 10),
+                  Text(
+                    proverb.exampleSentenceTj,
+                    style: QalamTypography.bodySecondary(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 14,
+                      height: 1.5,
+                    ).copyWith(fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ],
             ),
           ),
           const SizedBox(height: 20),
@@ -287,7 +363,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                   fit: BoxFit.scaleDown,
                   alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    '$percent%',
+                    lang == DisplayLanguage.persian
+                        ? '%${AppTranslations.formatDigits('$percent', lang)}'
+                        : '$percent%',
                     textDirection: TextDirection.ltr,
                     style: QalamTypography.pageTitle(
                       color: colors.primary,
@@ -300,8 +378,11 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                 const SizedBox(height: 16),
                 Text(
                   AppTranslations.get('quiz_correct_of', lang, [
-                    '$_correctCount',
-                    '${_quizQuestions.length}',
+                    AppTranslations.formatDigits('$_correctCount', lang),
+                    AppTranslations.formatDigits(
+                      '${_quizQuestions.length}',
+                      lang,
+                    ),
                   ]),
                   style: QalamTypography.sectionTitle(
                     color: colors.onSurface,

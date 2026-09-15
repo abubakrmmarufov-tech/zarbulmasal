@@ -897,6 +897,24 @@ void main() {
     },
   );
 
+  testWidgets('Persian flashcards disclose Tajik Cyrillic explanations', (
+    tester,
+  ) async {
+    await openApp(
+      tester,
+      route: '/flashcards',
+      language: DisplayLanguage.persian,
+    );
+
+    await tester.tap(find.byType(QalamFlashCard));
+    await tester.pumpAndSettle();
+
+    expect(
+      find.text('توضیح‌ها فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شوند.'),
+      findsOneWidget,
+    );
+  });
+
   testWidgets('compact routes remain usable with enlarged system text', (
     tester,
   ) async {

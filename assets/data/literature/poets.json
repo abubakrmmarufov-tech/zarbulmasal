@@ -4,33 +4,37 @@
     "canonicalName": "Абӯабдуллоҳи Рӯдакӣ",
     "canonicalNamePersian": "ابوعبدالله رودکی",
     "aliases": [],
-    "birthYear": "~858",
-    "deathYear": "~941",
-    "birthPlace": "Панҷруд, Панҷакент",
+    "birthYear": "858",
+    "deathYear": "941",
+    "birthPlace": "Панҷруд ё Рӯдак",
     "literaryPeriod": "Адабиёти классикии форсу тоҷик (асри IX-X)",
-    "biographyTj": "Абӯабдуллоҳ Ҷаъфар ибни Муҳаммад — шоири бузурги тоҷик, ки ӯро 'Одамушшуаро' ва 'Султони шоирон' меноманд. Дар деҳаи Панҷруди ноҳияи Панҷакент таваллуд шудааст. Ӯ муассиси адабиёти классикии форсу тоҷик буда, дар дарбори Сомониён фаъолият кардааст. 22 сентябр Рӯзи Рӯдакӣ — ҷашни расмии давлатӣ мебошад.",
+    "biographyTj": "Абӯабдуллоҳ Ҷаъфар ибни Муҳаммад дар соли 858 дар хонадони Муҳаммад ба дунё омадааст. Китоби дарсӣ ӯро шоири дарбори Сомониён ва сардафтари адабиёти тоҷик ва форс муаррифӣ мекунад; деҳаи Панҷруд ё Рӯдакро бо номи ӯ мепайвандад.",
     "biographyFa": null,
-    "biographySource": "Ахтарони адаб, ҷилди 1, Адиб, 2008; Осори Рӯдакӣ, таҳияи А. Мирзоев, 1958",
+    "biographySource": "Адабиёти тоҷик, синфи 5, Маориф, Душанбе, 2017, с. 49.",
     "majorWorkIds": [],
-    "officialTitles": [
-      "Одамушшуаро",
-      "Султони шоирон"
-    ],
+    "officialTitles": [],
     "educationGrades": [
       "4",
       "5",
       "8",
       "10"
     ],
+    "relatedHistoryEntryIds": [
+      "dynasty-samanid",
+      "person-nasr-ii",
+      "poem-rudaki-kalila"
+    ],
     "rights": {
-      "authorDeathYear": "~941",
+      "authorDeathYear": "941",
       "status": "publicDomain",
       "reasoning": "Author died ~941 CE. Over 1080 years have passed, far exceeding Tajikistan's 50-year post mortem auctoris term.",
       "rightsSource": "Law No. 726, Art. 17, 19",
       "fullTextAllowed": true,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": null,
+    "deathDateExact": null
   },
   {
     "id": "nasir_khusraw",
@@ -60,7 +64,9 @@
       "fullTextAllowed": true,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "1004",
+    "deathDateExact": "Тақрибан 1088"
   },
   {
     "id": "kamol_khujandi",
@@ -88,7 +94,9 @@
       "fullTextAllowed": true,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "Тақрибан 1320",
+    "deathDateExact": "Тақрибан 1400"
   },
   {
     "id": "tursunzoda",
@@ -120,7 +128,9 @@
       "fullTextAllowed": false,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "19 апрели 1911",
+    "deathDateExact": "24 сентябри 1977"
   },
   {
     "id": "qanoat",
@@ -150,7 +160,9 @@
       "fullTextAllowed": false,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "20 майи 1932",
+    "deathDateExact": "18 майи 2018"
   },
   {
     "id": "loiq_sherali",
@@ -161,14 +173,11 @@
     "deathYear": "2000",
     "birthPlace": "Мазори Шариф, Панҷакент",
     "literaryPeriod": "Адабиёти тоҷик (нимаи дуюми асри XX)",
-    "biographyTj": "Лоиқ Шералӣ — маҳбубтарин шоири лирикии муосири тоҷик, Шоири халқии Тоҷикистон (1991). Лауреати Ҷоизаи давлатии Рӯдакӣ (1978). Эҳёгари ғазал ва рубоӣ барои мавзӯъҳои муосири ватан, модар ва забони модарӣ.",
+    "biographyTj": "Лоиқ Шералӣ 20 майи соли 1941 дар Мазори Шарифи ноҳияи Панҷакент ба дунё омадааст. Аввалин шеъраш «Ном» соли 1959 дар маҷаллаи «Садои Шарқ» чоп шудааст. Ӯ 30 июни соли 2000 дар Душанбе даргузашт.",
     "biographyFa": null,
-    "biographySource": "Куллиёт дар 2 ҷилд, Адиб, 2008; Як чаман сухан, Адиб, 2014",
+    "biographySource": "У. Тоиров, М. Солеҳов, Н. Ширинов. Адабиёти тоҷик — Душанбе: Маориф, 2018. — с. 254.",
     "majorWorkIds": [],
-    "officialTitles": [
-      "Шоири халқии Тоҷикистон",
-      "Лауреати Ҷоизаи Рӯдакӣ"
-    ],
+    "officialTitles": [],
     "educationGrades": [
       "5",
       "7",
@@ -183,7 +192,9 @@
       "fullTextAllowed": false,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "20 майи 1941",
+    "deathDateExact": "30 июни 2000"
   },
   {
     "id": "bozor_sobir",
@@ -213,7 +224,9 @@
       "fullTextAllowed": false,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "20 ноябри 1938",
+    "deathDateExact": "1 майи 2018"
   },
   {
     "id": "gulnazar_keldi",
@@ -247,7 +260,9 @@
       "fullTextAllowed": false,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "20 сентябри 1945",
+    "deathDateExact": "13 августи 2020"
   },
   {
     "id": "gulrukhsor",
@@ -279,7 +294,8 @@
       "fullTextAllowed": false,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "17 декабри 1947"
   },
   {
     "id": "farzona",
@@ -311,16 +327,17 @@
       "fullTextAllowed": false,
       "excerptAllowed": true,
       "permissionReference": null
-    }
+    },
+    "birthDateExact": "3 ноябри 1964"
   },
   {
     "id": "47c1dc67-363a-4506-8a9c-bbbb38f98d20",
     "canonicalName": "Садриддин Айнӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1878",
+    "deathYear": "1954",
+    "birthPlace": "Соктаре, Ғиҷдувон, Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -334,16 +351,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "15 апрели 1878",
+    "deathDateExact": "15 июли 1954"
   },
   {
     "id": "455f0420-3834-48f0-86b9-7da673a2a684",
     "canonicalName": "Бедил",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1644",
+    "deathYear": "1720",
+    "birthPlace": "Азимобод (Патна), Ҳиндустон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -357,16 +376,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1644",
+    "deathDateExact": "5 декабри 1720"
   },
   {
     "id": "d1abb54a-9804-4baf-b238-fd2203d7673e",
     "canonicalName": "Ҳофиз",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1315",
+    "deathYear": "1390",
+    "birthPlace": "Шероз",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -380,16 +401,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1315",
+    "deathDateExact": "1390"
   },
   {
     "id": "1a55efdd-6a1f-43b8-834f-94af060b4329",
     "canonicalName": "Абуалӣ ибни Сино",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "980",
+    "deathYear": "1037",
+    "birthPlace": "Афшана, наздикии Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Абуалӣ ибни Сино (980-1037) яке аз абармардони илмҳои ҳикмат, мантиқ, илоҳиёт, табииёт, риёзиёт, тиб, ҳайат, забон, улуми адабӣ ва фанни шеър на танҳо дар Шарқ, балки дар Ғарб мебошад. Дар Ғарб бо номи 'Авитсенна' маъруф аст.",
     "biographyFa": null,
@@ -403,16 +426,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Августи 980",
+    "deathDateExact": "18 июни 1037"
   },
   {
     "id": "3853d79b-0951-44c3-a5db-229649fa30b6",
     "canonicalName": "Боботоҳири Урён",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~990",
+    "deathYear": "~1055",
+    "birthPlace": "Ҳамадон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Боботоҳири Урён (тахминан 980 – тахминан 1055) дар шаҳри Ҳамадон зистааст ва дубайтию ғазал ба шеваи ҳамадонӣ гуфтааст. Дубайтиҳои ӯ ба адабиёти даҳонӣ (шифоҳӣ) наздиктар мебошанд.",
     "biographyFa": null,
@@ -426,16 +451,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 990",
+    "deathDateExact": "Тақрибан 1055"
   },
   {
     "id": "d48ec80f-951d-4dfd-b65a-6e409561a712",
     "canonicalName": "Унсурӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~961",
+    "deathYear": "1039",
+    "birthPlace": "Балх",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Унсурӣ (970/80 – 1050/60) нахустин шоири форсигӯй аст, ки унвони расмии 'маликушшуароӣ'-ро дар дарбори Ғазнавиён дошт.",
     "biographyFa": null,
@@ -449,16 +476,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 961",
+    "deathDateExact": "1039"
   },
   {
     "id": "282f4c69-1d14-4be2-89d3-d21f867e4964",
     "canonicalName": "Фаррухӣ Систонӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~980",
+    "deathYear": "1037",
+    "birthPlace": "Сиистон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Фаррухӣ Систонӣ (аввали асри XI) аз шоирони барҷастаи дарбори Ғазнавиён буда, дар тасвири манзараҳои табиат ва баҳорияҳо истеъдоди фавқулода дошт.",
     "biographyFa": null,
@@ -472,7 +501,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 980",
+    "deathDateExact": "1037"
   },
   {
     "id": "1c82210c-343c-4499-9639-93f0a766b5f7",
@@ -502,9 +533,9 @@
     "canonicalName": "Асадии Тӯсӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1000",
+    "deathYear": "1072",
+    "birthPlace": "Тӯс",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Асадии Тӯсӣ (1010 – 1072/73) аз нахустин шоирони форсигӯест, ки маснавии 'Гаршоспнома'-ро дар пайравии 'Шоҳнома' навишт. Инчунин муаллифи 'Луғати фурс' ва панҷ қасидаи мунозира (аз ҷумла 'Арабу Аҷам') мебошад.",
     "biographyFa": null,
@@ -518,16 +549,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1000",
+    "deathDateExact": "1072"
   },
   {
     "id": "92753b88-1d31-4f79-aae4-5d36c83ab4a1",
     "canonicalName": "Амир Унсурулмаолии Кайковус",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1021",
+    "deathYear": "1098",
+    "birthPlace": "Табаристон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Амир Унсурулмаолии Кайковус (1020 – 1099) нависандаи китоби машҳури 'Қобуснома' ва аз амирзодагони хонадони Зиёрӣ дар шимоли Эрон мебошад.",
     "biographyFa": null,
@@ -541,16 +574,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1021",
+    "deathDateExact": "1098"
   },
   {
     "id": "6e223a11-a2df-4298-bb14-2911af2da37d",
     "canonicalName": "АБУАЛӢ ИБНИ СИНО",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "980",
+    "deathYear": "1037",
+    "birthPlace": "Афшана, наздикии Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -564,16 +599,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Августи 980",
+    "deathDateExact": "18 июни 1037"
   },
   {
     "id": "ab679c6b-ce9a-4e85-bf3b-81a8bed84623",
     "canonicalName": "БОБОТОҲИРИ УРЁН",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~990",
+    "deathYear": "~1055",
+    "birthPlace": "Ҳамадон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -587,16 +624,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 990",
+    "deathDateExact": "Тақрибан 1055"
   },
   {
     "id": "5ff997ff-991d-4d18-ba6e-8acaa7a15058",
     "canonicalName": "АСАДИИ ТӮСӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1000",
+    "deathYear": "1072",
+    "birthPlace": "Тӯс",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -610,16 +649,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1000",
+    "deathDateExact": "1072"
   },
   {
     "id": "732f0989-b849-4856-a0dd-ba2f64f1c9a0",
     "canonicalName": "АМИР УНСУРУЛМАОЛИИ КАЙКОВУС",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1021",
+    "deathYear": "1098",
+    "birthPlace": "Табаристон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -633,16 +674,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1021",
+    "deathDateExact": "1098"
   },
   {
     "id": "69d27d87-439e-4efe-a14f-a1196aa8471f",
     "canonicalName": "САНОӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1080",
+    "deathYear": "1131",
+    "birthPlace": "Ғазна",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -656,16 +699,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1080",
+    "deathDateExact": "1131"
   },
   {
     "id": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
     "canonicalName": "АНВАРӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1126",
+    "deathYear": "1189",
+    "birthPlace": "Абевард (Хуросон)",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -679,16 +724,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1126",
+    "deathDateExact": "1189"
   },
   {
     "id": "5fc69b51-c38a-4427-a362-5c8a14bca835",
     "canonicalName": "Умари Хайём",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1048",
+    "deathYear": "1131",
+    "birthPlace": "Нишопур",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -702,7 +749,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "18 майи 1048",
+    "deathDateExact": "4 декабри 1131"
   },
   {
     "id": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
@@ -732,9 +781,9 @@
     "canonicalName": "Саъдӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1210",
+    "deathYear": "~1292",
+    "birthPlace": "Шероз",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -748,16 +797,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1210",
+    "deathDateExact": "Тақрибан 1292"
   },
   {
     "id": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
     "canonicalName": "Камолиддин Биноӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1453",
+    "deathYear": "1512",
+    "birthPlace": "Ҳирот",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -771,16 +822,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1453",
+    "deathDateExact": "1512"
   },
   {
     "id": "f09073cb-33b4-4fcc-abf8-75959350245c",
     "canonicalName": "Бадриддин Ҳилолӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1470",
+    "deathYear": "1529",
+    "birthPlace": "Астаробод",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -794,16 +847,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1470",
+    "deathDateExact": "1529"
   },
   {
     "id": "ef5a57a2-8949-43dd-85eb-8ceaf78335f3",
     "canonicalName": "Раҳим Ҷалил",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1909",
+    "deathYear": "1989",
+    "birthPlace": "Хуҷанд",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -817,16 +872,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "3 июни 1909",
+    "deathDateExact": "10 октябри 1989"
   },
   {
     "id": "a7feaa09-c83f-44f2-a69e-0a46ba957dbc",
     "canonicalName": "Мирсаид Миршакар",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1912",
+    "deathYear": "1993",
+    "birthPlace": "Шаҳрдав, Шуғнон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -840,7 +897,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "6 майи 1912",
+    "deathDateExact": "1 августи 1993"
   },
   {
     "id": "400b9785-ae80-4957-a653-d65c72cdbf79",
@@ -870,9 +929,9 @@
     "canonicalName": "Соиб",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1592",
+    "deathYear": "1676",
+    "birthPlace": "Табрез / Исфаҳон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -886,16 +945,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1592",
+    "deathDateExact": "1676"
   },
   {
     "id": "310a8288-d554-4b9c-9ad1-3273b1edce85",
     "canonicalName": "А. Лоҳутӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1887",
+    "deathYear": "1957",
+    "birthPlace": "Кирмоншоҳ",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -909,7 +970,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "12 октябри 1887",
+    "deathDateExact": "16 марти 1957"
   },
   {
     "id": "be19709e-c3af-460d-80b9-4c67046e8be3",
@@ -939,9 +1002,9 @@
     "canonicalName": "Аҳмади Ҷомӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1414",
+    "deathYear": "1492",
+    "birthPlace": "Харҷерд, вилояти Ҷом",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -955,16 +1018,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "7 ноябри 1414",
+    "deathDateExact": "9 ноябри 1492"
   },
   {
     "id": "b299ac33-ad0c-4e9e-8bb3-aabfd19b8126",
     "canonicalName": "Аттори Нишопурӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1145",
+    "deathYear": "1221",
+    "birthPlace": "Кадкан, Нишопур",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -978,7 +1043,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1145",
+    "deathDateExact": "1221"
   },
   {
     "id": "9a3f7c2a-a41d-4064-9ea7-766941c9ae35",
@@ -1008,9 +1075,9 @@
     "canonicalName": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~935",
+    "deathYear": "~977",
+    "birthPlace": "Тӯс / Балх / Самарқанд",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Тахминан 929/30 – 977/978. Абумансур Муҳаммад бинни Аҳмади Дақиқӣ аз ҳамасрони номдори Абуабдуллоҳи Рӯдакӣ, бунёдгузори адабиёти форсии дарӣ буда, тахминан дар миёнаҳои нимаи аввали асри Х дар Балх ба дунё омадааст. Дақиқӣ пеш аз он ки ба пойтахти Сомониён ба Бухоро биояд, замоне дар дарбори волиёни онон дар Чағониён хидмат кардааст. Бо хоҳиши Нуҳ бинни Мансури Сомонӣ ба навиштани «Шоҳнома» оғоз карда, то поёни умри кӯтоҳаш тавонист танҳо достони «Гуштосп»-ро дар ҳудуди 1000 байт ба назм дарорад (баъзан «Гуштоспнома» гӯянд). Санаи қатли Дақиқӣ тахминан соли 977-978 мебошад.",
     "biographyFa": null,
@@ -1024,16 +1091,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 935",
+    "deathDateExact": "Тақрибан 977"
   },
   {
     "id": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
     "canonicalName": "Абулқосими Фирдавсӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~940",
+    "deathYear": "~1020",
+    "birthPlace": "Бож, Тӯс",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "940 – байни солҳои 1009-1020. Абулқосими Фирдавсӣ гӯяндаи номитарин ҳамосаи миллии қавмҳои эронинажод «Шоҳнома» мебошад. Дар соли 940 милодӣ дар деҳаи Пожи Тӯс (дар наздикиҳои шаҳри Машҳади Эрон) ба дунё омадааст. Фирдавсӣ аз деҳқонзодагони замонаш буд (дар он аср калони русто ё раиси заминдоронро «деҳқон» мегуфтанд). Ӯ дар чилсолагӣ ба навиштани «Шоҳнома» бар асоси дафтари мансури Абумансурӣ оғоз намуда, онро баъд аз сӣ сол, яъне дар ҳафтодсолагиаш, дар соли 1010 ба поён расонидааст.",
     "biographyFa": null,
@@ -1047,16 +1116,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 940",
+    "deathDateExact": "Тақрибан 1020"
   },
   {
     "id": "e948618d-0c4c-484b-b60b-c1658bc51d57",
     "canonicalName": "ДАҚИҚӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~935",
+    "deathYear": "~977",
+    "birthPlace": "Тӯс / Балх / Самарқанд",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1070,16 +1141,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 935",
+    "deathDateExact": "Тақрибан 977"
   },
   {
     "id": "ac759bd8-fe4e-4ef3-9e2f-30226a014707",
     "canonicalName": "АБУЛҚОСИМИ ФИРДАВСӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~940",
+    "deathYear": "~1020",
+    "birthPlace": "Бож, Тӯс",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1093,16 +1166,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 940",
+    "deathDateExact": "Тақрибан 1020"
   },
   {
     "id": "da1e1d82-ceeb-4a9e-9e42-251b9b05d20c",
     "canonicalName": "Хоҷа Ҳофизи Шерозӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1315",
+    "deathYear": "1390",
+    "birthPlace": "Шероз",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1116,16 +1191,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1315",
+    "deathDateExact": "1390"
   },
   {
     "id": "92a7c4fa-3191-4301-ba53-8087ce7ef3d8",
     "canonicalName": "Мушфиқӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1525",
+    "deathYear": "1588",
+    "birthPlace": "Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1139,16 +1216,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1525",
+    "deathDateExact": "1588"
   },
   {
     "id": "afc28bbb-ebba-4669-9715-a10cbbe7400a",
     "canonicalName": "Абулқосим Фирдавсӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~940",
+    "deathYear": "~1020",
+    "birthPlace": "Бож, Тӯс",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1162,7 +1241,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 940",
+    "deathDateExact": "Тақрибан 1020"
   },
   {
     "id": "cef7fd49-54c8-4e46-9361-123cc52de5eb",
@@ -1238,9 +1319,9 @@
     "canonicalName": "Шаҳиди Балхӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~885",
+    "deathYear": "~935",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1254,16 +1335,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": null,
+    "deathDateExact": null
   },
   {
     "id": "da5e2975-a8e2-44ce-a30c-0e5d98f73844",
     "canonicalName": "Дақиқӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~935",
+    "deathYear": "~977",
+    "birthPlace": "Тӯс / Балх / Самарқанд",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1277,7 +1360,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 935",
+    "deathDateExact": "Тақрибан 977"
   },
   {
     "id": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
@@ -1307,9 +1392,9 @@
     "canonicalName": "Робиаи Балхӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "Асри X",
+    "deathYear": "Асри X",
+    "birthPlace": "Балх",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1323,16 +1408,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Асри X",
+    "deathDateExact": "Асри X"
   },
   {
     "id": "bb00bac5-e207-4cc7-9539-a2af92b71281",
     "canonicalName": "Абӯалӣ ибни Сино",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "980",
+    "deathYear": "1037",
+    "birthPlace": "Афшана, наздикии Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1346,7 +1433,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Августи 980",
+    "deathDateExact": "18 июни 1037"
   },
   {
     "id": "a4b182d3-1c06-4c82-9858-0e71d95edeb3",
@@ -1468,9 +1557,9 @@
     "canonicalName": "Шоҳин",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1859",
+    "deathYear": "1894",
+    "birthPlace": "Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1484,16 +1573,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1859",
+    "deathDateExact": "1894"
   },
   {
     "id": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
     "canonicalName": "Туғрал",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1865",
+    "deathYear": "1919",
+    "birthPlace": "Зосун, водии Зарафшон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1507,16 +1598,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1865",
+    "deathDateExact": "1919"
   },
   {
     "id": "2e7a713f-c3d2-449e-bd6a-a4b5b7350201",
     "canonicalName": "Асирӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1864",
+    "deathYear": "1916",
+    "birthPlace": "Хуҷанд",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1530,7 +1623,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1864",
+    "deathDateExact": "1916"
   },
   {
     "id": "8c4bf813-284a-4938-9c1b-ac9eb6cc53e4",
@@ -1583,9 +1678,9 @@
     "canonicalName": "Фаридуддини Аттор",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1145",
+    "deathYear": "1221",
+    "birthPlace": "Кадкан, Нишопур",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1599,7 +1694,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1145",
+    "deathDateExact": "1221"
   },
   {
     "id": "42d303b5-f20f-440d-8079-a8e25ef52d2e",
@@ -1698,9 +1795,9 @@
     "canonicalName": "Мирзо Абдулқодири Бедил",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1644",
+    "deathYear": "1720",
+    "birthPlace": "Азимобод (Патна), Ҳиндустон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1714,16 +1811,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1644",
+    "deathDateExact": "5 декабри 1720"
   },
   {
     "id": "17559ef6-4071-495f-b966-e5be3b33d3a3",
     "canonicalName": "Анварӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1126",
+    "deathYear": "1189",
+    "birthPlace": "Абевард (Хуросон)",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1737,16 +1836,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1126",
+    "deathDateExact": "1189"
   },
   {
     "id": "650312c1-094f-4cd9-9313-efe38bdbef0f",
     "canonicalName": "Фаррухӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~980",
+    "deathYear": "1037",
+    "birthPlace": "Сиистон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1760,16 +1861,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 980",
+    "deathDateExact": "1037"
   },
   {
     "id": "32624545-f720-4267-9669-d3648b7369ac",
     "canonicalName": "Абулқосим Лоҳутӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1887",
+    "deathYear": "1957",
+    "birthPlace": "Кирмоншоҳ",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -1783,7 +1886,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "12 октябри 1887",
+    "deathDateExact": "16 марти 1957"
   },
   {
     "id": "bdca68f7-2ee1-49bf-9780-27da55cea473",
@@ -2066,9 +2171,9 @@
     "canonicalName": "Абушакури Балхӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~915",
+    "deathYear": "Асри X",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Шоири номдори асри Х, муаллифи панду ҳикмат ва ашъори дилкаш.",
     "biographyFa": null,
@@ -2082,7 +2187,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": null,
+    "deathDateExact": null
   },
   {
     "id": "2b5af239-bce6-4b05-98ad-fbeef1a54c12",
@@ -2112,9 +2219,9 @@
     "canonicalName": "Робиаи Қуздорӣ (Робиаи Балхӣ)",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "Асри X",
+    "deathYear": "Асри X",
+    "birthPlace": "Балх",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Шоираи асри Х, машҳур ба ашъори ошиқонаи нозук ва пандомез.",
     "biographyFa": null,
@@ -2128,7 +2235,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Асри X",
+    "deathDateExact": "Асри X"
   },
   {
     "id": "98e43b59-1d3a-440a-9d73-83b599cee7c5",
@@ -2250,9 +2359,9 @@
     "canonicalName": "Абулмуайяди Балхӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "Асри X",
+    "deathYear": "Асри X",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Шоир ва нависандаи асри Х.",
     "biographyFa": null,
@@ -2266,16 +2375,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": null,
+    "deathDateExact": null
   },
   {
     "id": "483ec51d-a691-4b78-918a-0fbc13f29a46",
     "canonicalName": "Маъруфии Балхӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1207",
+    "deathYear": "1273",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "Шоири асри Х.",
     "biographyFa": null,
@@ -2289,7 +2400,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": null,
+    "deathDateExact": null
   },
   {
     "id": "91bf5726-5e0a-451e-be4b-7d91650f6cfa",
@@ -2549,9 +2662,9 @@
     "canonicalName": "Фирдавсӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~940",
+    "deathYear": "~1020",
+    "birthPlace": "Бож, Тӯс",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -2565,7 +2678,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 940",
+    "deathDateExact": "Тақрибан 1020"
   },
   {
     "id": "beea5538-c891-4044-a75b-9bf21d1ef897",
@@ -2641,9 +2756,9 @@
     "canonicalName": "Низомӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1141",
+    "deathYear": "1209",
+    "birthPlace": "Ганҷа",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -2657,16 +2772,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1141",
+    "deathDateExact": "1209"
   },
   {
     "id": "74ea3b93-4c65-4605-95a7-8c2ec4c382cc",
     "canonicalName": "Лоҳутӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1887",
+    "deathYear": "1957",
+    "birthPlace": "Кирмоншоҳ",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -2680,7 +2797,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "12 октябри 1887",
+    "deathDateExact": "16 марти 1957"
   },
   {
     "id": "19750e0a-7629-436e-9715-a1530d0b1571",
@@ -2710,9 +2829,9 @@
     "canonicalName": "Айнӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1878",
+    "deathYear": "1954",
+    "birthPlace": "Соктаре, Ғиҷдувон, Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -2726,7 +2845,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "15 апрели 1878",
+    "deathDateExact": "15 июли 1954"
   },
   {
     "id": "82f30a4e-f468-4a7d-bf03-bd29d3279fe0",
@@ -2756,13 +2877,13 @@
     "canonicalName": "Ҷомӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1414",
+    "deathYear": "1492",
+    "birthPlace": "Харҷурди вилояти Ҷом",
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": null,
+    "biographyTj": "Абдурраҳмони Ҷомӣ 7 ноябри соли 1414 дар деҳаи Харҷурди вилояти Ҷом ба дунё омадааст. Ӯ 9 ноябри соли 1492 дар Ҳирот фавтидааст. Аз ӯ асарҳои бисёри манзуму мансур, аз ҷумла «Баҳористон», «Ҳафт авранг» ва «Девони Ҷомӣ» мерос мондаанд.",
     "biographyFa": null,
-    "biographySource": "Маҷмӯаи мактабӣ",
+    "biographySource": "У. Тоиров, М. Солеҳов, Н. Ширинов. Адабиёти тоҷик — Душанбе: Маориф, 2018. — с. 109.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2772,7 +2893,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "7 ноябри 1414",
+    "deathDateExact": "9 ноябри 1492"
   },
   {
     "id": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
@@ -2894,9 +3017,9 @@
     "canonicalName": "Мавлоно Наҳвии Ҳиротӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1207",
+    "deathYear": "1273",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -2910,7 +3033,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": null,
+    "deathDateExact": null
   },
   {
     "id": "eb037eb9-ba72-49bd-b009-8f9c84d46105",
@@ -3078,9 +3203,9 @@
     "canonicalName": "Мавлоно Ҷалолиддини Балхӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1207",
+    "deathYear": "1273",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3094,16 +3219,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "30 сентябри 1207",
+    "deathDateExact": "17 декабри 1273"
   },
   {
     "id": "c9ea2574-7623-4974-ada0-49c075b2831b",
     "canonicalName": "Фаридуддини Аттори Нишопурӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1145",
+    "deathYear": "1221",
+    "birthPlace": "Кадкан, Нишопур",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3117,7 +3244,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1145",
+    "deathDateExact": "1221"
   },
   {
     "id": "fd212071-6a30-4b8d-870a-ae784002e8f2",
@@ -3193,13 +3322,13 @@
     "canonicalName": "Абдурраҳмони Ҷомӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1414",
+    "deathYear": "1492",
+    "birthPlace": "Харҷурди вилояти Ҷом",
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": null,
+    "biographyTj": "Абдурраҳмони Ҷомӣ 7 ноябри соли 1414 дар деҳаи Харҷурди вилояти Ҷом ба дунё омадааст. Ӯ 9 ноябри соли 1492 дар Ҳирот фавтидааст. Аз ӯ асарҳои бисёри манзуму мансур, аз ҷумла «Баҳористон», «Ҳафт авранг» ва «Девони Ҷомӣ» мерос мондаанд.",
     "biographyFa": null,
-    "biographySource": "Маҷмӯаи мактабӣ",
+    "biographySource": "У. Тоиров, М. Солеҳов, Н. Ширинов. Адабиёти тоҷик — Душанбе: Маориф, 2018. — с. 109.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3209,16 +3338,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "7 ноябри 1414",
+    "deathDateExact": "9 ноябри 1492"
   },
   {
     "id": "e859c1ae-03b9-4add-8079-7fa5bcf64ef7",
     "canonicalName": "Пайрав Сулаймонӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1899",
+    "deathYear": "1933",
+    "birthPlace": "Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3232,16 +3363,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "15 апрели 1899",
+    "deathDateExact": "9 июни 1933"
   },
   {
     "id": "26c985a4-88ca-47ea-8981-ba5529b62a7c",
     "canonicalName": "Ҳабиб Юсуфӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1916",
+    "deathYear": "1945",
+    "birthPlace": "Самарқанд",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3255,7 +3388,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1916",
+    "deathDateExact": "22 феврали 1945"
   },
   {
     "id": "b081ddd8-af07-4bb5-919a-7f3edce5108a",
@@ -3446,9 +3581,9 @@
     "canonicalName": "Боқӣ Раҳимзода",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1910",
+    "deathYear": "1980",
+    "birthPlace": "Сарбоғ, Ғарм",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3462,7 +3597,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "15 майи 1910",
+    "deathDateExact": "30 январи 1980"
   },
   {
     "id": "12fb0e82-f108-4e71-8207-74d0540639d3",
@@ -3492,9 +3629,9 @@
     "canonicalName": "АМИНҶОН ШУКӮҲӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1923",
+    "deathYear": "1979",
+    "birthPlace": "Рӯмон, Хуҷанд",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3508,7 +3645,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "10 июли 1923",
+    "deathDateExact": "10 августи 1979"
   },
   {
     "id": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
@@ -3722,9 +3861,9 @@
     "canonicalName": "Ҷалолуддини Балхӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1207",
+    "deathYear": "1273",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3738,7 +3877,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "30 сентябри 1207",
+    "deathDateExact": "17 декабри 1273"
   },
   {
     "id": "7e8a043d-be9b-4bc0-b779-b9e8ea00ad04",
@@ -3768,9 +3909,9 @@
     "canonicalName": "УБАЙДИ ЗОКОНӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1270",
+    "deathYear": "~1370",
+    "birthPlace": "Қазвин",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3784,16 +3925,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1270",
+    "deathDateExact": "Тақрибан 1370"
   },
   {
     "id": "a0edb1e9-51b5-4ad1-ad0a-5d8af6a6a6da",
     "canonicalName": "АБДУРРАҲМОНИ ҶОМӢ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1414",
+    "deathYear": "1492",
+    "birthPlace": "Харҷерд, вилояти Ҷом",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3807,16 +3950,18 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "7 ноябри 1414",
+    "deathDateExact": "9 ноябри 1492"
   },
   {
     "id": "740c2616-7dc2-4d45-9743-ad0b9d086dbc",
     "canonicalName": "Мавлоно Ҷалолуддин",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1207",
+    "deathYear": "1273",
+    "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3830,7 +3975,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "30 сентябри 1207",
+    "deathDateExact": "17 декабри 1273"
   },
   {
     "id": "ea87e35a-6a03-44f2-837e-648d1c84aecc",
@@ -3906,9 +4053,9 @@
     "canonicalName": "Соибои Исфаҳонӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "1592",
+    "deathYear": "1676",
+    "birthPlace": "Табрез / Исфаҳон",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3922,7 +4069,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "1592",
+    "deathDateExact": "1676"
   },
   {
     "id": "b28a4de3-06a8-406c-b2e9-db363f7aa2d5",
@@ -3952,9 +4101,9 @@
     "canonicalName": "Саййидои Насафӣ",
     "canonicalNamePersian": null,
     "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "birthYear": "~1637",
+    "deathYear": "1711",
+    "birthPlace": "Насаф / Бухоро",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": null,
     "biographyFa": null,
@@ -3968,7 +4117,9 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "birthDateExact": "Тақрибан 1637",
+    "deathDateExact": "1711"
   },
   {
     "id": "a74ea72d-864f-4c25-b42e-95435794a42d",

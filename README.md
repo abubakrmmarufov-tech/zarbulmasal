@@ -36,17 +36,16 @@ documentation, and code:
 
 ## What is included
 
-- **Proverbs Catalog**: 149 book-attested traditional proverbs plus 1 clearly labeled needs-review
-  modern learning text, across 20 categories and 6 data-derived levels
-- **Literary Heritage (Мероси адабӣ)**: 171 Tajik poets and 1,466 quarantined poems currently under manual review from 7 school literature textbooks (Grades 5-11)
-- Tajik Cyrillic and Persian-script reading modes with correct text direction
-- Search, category filters, level filters, saved items, and daily reading
-- Meaning, explanation, example, source, and verification metadata
-- Quizzes, answer feedback, scoring, and replay
-- Swipeable flashcards with reveal and session progress
-- Dedicated poem reader and poet biography profiles
-- Light and dark themes, large-text support, and reduced-motion behavior
-- Android and installable web builds with offline reopening after first load
+- **Proverbs Catalog**: 149 book-attested traditional proverbs across 20 categories and 6 data-derived levels
+- **Literary Heritage (Мероси адабӣ)**: 171 Tajik poets, 1,472 catalogued works from school textbooks (Grades 5–11), and a dedicated bilingual poem reader with parallel Cyrillic/Persian view and text scaling
+- **History of the Tajik People (Таърихи халқи тоҷик)**: Chronological timeline covering 6 canonical epochs (Ancient & Aryan, Samanid Renaissance, Medieval Dynasties, Enlightenment, Soviet, and Independence), curriculum browsing by textbook grade (5–11), and topics
+- **Cultural Knowledge Graph**: Relational cross-linking between historical eras, rulers, and literary figures ("Explore Their World")
+- **Tajik Cyrillic & Persian Arabic Support**: Full bilingual reading modes, RTL text direction isolation, Persian numerals, and phonetic diacritic-tolerant search
+- **Learning Hub**:
+  - Proverb Quizzes with post-answer explanation review and Persian numeral scoring
+  - Spaced-repetition Flashcards with persistent mastery states ("Again / Learning / Mastered")
+- **Source Verification & Rights**: Rigorous academic provenance with verified print editions and clear publication quarantine gates
+- **Design & Performance**: Qalam design system with light/dark ink themes, offline PWA support, and responsive layouts tested down to 320px ultra-compact viewports
 
 ## Design and architecture
 
@@ -104,18 +103,13 @@ application shell, catalog, fonts, and other required resources can be cached.
 dart format --output=none --set-exit-if-changed lib test
 flutter analyze
 flutter test --coverage
-flutter build apk --release
-flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run
-bash tool/prepare_web_release.sh
-python3 tool/mobile_qa.py https://abubakrmmarufov-tech.github.io/zarbulmasal/
+dart run tool/validate_literature_json.dart
+dart run tool/validate_literary_content.dart
+flutter build web --release --base-href /zarbulmasal/
+python3 tool/deep_browser_audit.py https://abubakrmmarufov-tech.github.io/zarbulmasal/
 ```
 
-The regression suite covers routes at 360, 390, and 430 logical pixels, both
-writing systems, large text, dark mode, filtering, reading, clipboard behavior,
-favorites, persisted preferences, quizzes, flashcards, and empty or invalid
-states. `tool/mobile_qa.py` checks 375, 390, and 430px phone viewports and
-exercises the deployed search, quiz feedback, and flashcard reveal flows.
-GitHub Actions runs the code checks and deploys the web build from `main`.
+The regression suite covers 228 automated tests across all routes, 8 viewports (from 320px ultra-compact phones to tablet and desktop), both writing systems (Cyrillic and Persian Arabic RTL), large text, dark mode, filtering, parallel script reading, clipboard behavior, favorites, persisted preferences, quizzes, flashcards, and empty states. `tool/deep_browser_audit.py` validates viewport overflow, console logs, and page errors across all major destinations.
 
 ## Install on Android
 

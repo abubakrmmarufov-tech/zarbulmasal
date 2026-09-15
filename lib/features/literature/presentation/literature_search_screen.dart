@@ -6,6 +6,7 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
+import '../data/literature_repository.dart';
 import '../domain/literary_author.dart';
 import '../domain/literary_work.dart';
 
@@ -58,7 +59,7 @@ class _LiteratureSearchScreenState
           style: QalamTypography.body(color: colors.onSurface),
           onChanged: (val) {
             setState(() {
-              _query = val.trim().toLowerCase();
+              _query = LiteratureRepository.normalizeSearchText(val);
             });
           },
         ),
@@ -107,7 +108,7 @@ class _LiteratureSearchScreenState
               context,
               authorsAsync.valueOrNull ?? [],
               worksAsync.valueOrNull ?? [],
-              isPersian,
+              lang,
             ),
     );
   }
@@ -118,12 +119,16 @@ class _LiteratureSearchScreenState
     List<LiteraryAuthor> authors,
   ) {
     final colors = Theme.of(context).colorScheme;
-    final suggestions = authors.take(6).map((author) {
-      if (isPersian && author.canonicalNamePersian != null) {
-        return author.canonicalNamePersian!;
-      }
-      return author.canonicalName;
-    }).toList();
+    final suggestions = authors
+        .where((author) => author.hasCanonicalName)
+        .take(6)
+        .map((author) {
+          if (isPersian && author.canonicalNamePersian != null) {
+            return author.canonicalNamePersian!;
+          }
+          return author.canonicalName;
+        })
+        .toList();
 
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -143,7 +148,10 @@ class _LiteratureSearchScreenState
                 label: Text(term),
                 onPressed: () {
                   _controller.text = term;
-                  setState(() => _query = term.toLowerCase());
+                  setState(
+                    () =>
+                        _query = LiteratureRepository.normalizeSearchText(term),
+                  );
                 },
               );
             }).toList(),
@@ -157,14 +165,22 @@ class _LiteratureSearchScreenState
     BuildContext context,
     List<LiteraryAuthor> authors,
     List<LiteraryWork> works,
-    bool isPersian,
+    DisplayLanguage lang,
   ) {
+    final isPersian = lang == DisplayLanguage.persian;
     final matchingAuthors = authors.where((a) {
-      final name = a.canonicalName.toLowerCase();
-      final fa = a.canonicalNamePersian?.toLowerCase() ?? '';
-      final period = a.literaryPeriod.toLowerCase();
-      final place = a.birthPlace?.toLowerCase() ?? '';
-      final aliases = a.aliases.any((x) => x.toLowerCase().contains(_query));
+      if (!a.hasCanonicalName) return false;
+      final name = LiteratureRepository.normalizeSearchText(a.canonicalName);
+      final fa = LiteratureRepository.normalizeSearchText(
+        a.canonicalNamePersian ?? '',
+      );
+      final period = LiteratureRepository.normalizeSearchText(a.literaryPeriod);
+      final place = LiteratureRepository.normalizeSearchText(
+        a.birthPlace ?? '',
+      );
+      final aliases = a.aliases.any(
+        (x) => LiteratureRepository.normalizeSearchText(x).contains(_query),
+      );
       return name.contains(_query) ||
           fa.contains(_query) ||
           period.contains(_query) ||
@@ -173,9 +189,11 @@ class _LiteratureSearchScreenState
     }).toList();
 
     final matchingWorks = works.where((w) {
-      final title = w.title.toLowerCase();
-      final titleFa = w.titlePersian?.toLowerCase() ?? '';
-      final incipit = w.incipit?.toLowerCase() ?? '';
+      final title = LiteratureRepository.normalizeSearchText(w.title);
+      final titleFa = LiteratureRepository.normalizeSearchText(
+        w.titlePersian ?? '',
+      );
+      final incipit = LiteratureRepository.normalizeSearchText(w.incipit ?? '');
       return title.contains(_query) ||
           titleFa.contains(_query) ||
           incipit.contains(_query);
@@ -211,7 +229,17 @@ class _LiteratureSearchScreenState
               name: (isPersian && author.canonicalNamePersian != null)
                   ? author.canonicalNamePersian!
                   : author.canonicalName,
-              dates: author.lifespan,
+              dates: author.hasAuditableBiographySource
+                  ? AppTranslations.formatDigits(author.lifespan, lang)
+                  : (isPersian ? 'تاریخ‌ها در بررسی' : 'Санаҳо дар санҷиш'),
+              exactDates:
+                  (author.hasAuditableBiographySource &&
+                      (author.birthDateExact != null ||
+                          author.deathDateExact != null))
+                  ? (isPersian
+                        ? 'ولادت: ${author.birthDateExact ?? author.birthYear ?? "—"} · وفات: ${author.deathDateExact ?? author.deathYear ?? "در قید حیات"}'
+                        : 'Таваллуд: ${author.birthDateExact ?? author.birthYear ?? "—"} · Вафот: ${author.deathDateExact ?? author.deathYear ?? "дар ҳаёт"}')
+                  : null,
               period: author.literaryPeriod,
               isPublicDomain: author.isPublicDomain,
               onTap: () => context.push('/literature/poet/${author.id}'),

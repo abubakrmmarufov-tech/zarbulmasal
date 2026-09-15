@@ -21,94 +21,102 @@ import '../shared/providers/app_providers.dart';
 Widget buildRouteErrorPage(BuildContext context, GoRouterState state) =>
     const ZarbulmasalRouteErrorPage();
 
-final appRouter = GoRouter(
-  initialLocation: '/',
-  errorBuilder: buildRouteErrorPage,
-  routes: [
-    ShellRoute(
-      builder: (context, state, child) => AppScaffold(child: child),
-      routes: [
-        GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
-        GoRoute(
-          path: '/proverbs',
-          builder: (context, state) => const ProverbsListScreen(),
-        ),
-        GoRoute(
-          path: '/categories',
-          builder: (context, state) => const CategoriesScreen(),
-        ),
-        GoRoute(
-          path: '/favorites',
-          builder: (context, state) => const FavoritesScreen(),
-        ),
-        GoRoute(
-          path: '/settings',
-          builder: (context, state) => const SettingsScreen(),
-        ),
-      ],
-    ),
-    GoRoute(
-      path: '/proverb/:id',
-      builder: (context, state) {
-        final id = state.pathParameters['id']!;
-        return ProverbDetailScreen(proverbId: id);
-      },
-    ),
-    GoRoute(path: '/levels', builder: (context, state) => const LevelsScreen()),
-    GoRoute(path: '/quiz', builder: (context, state) => const QuizScreen()),
-    GoRoute(
-      path: '/flashcards',
-      builder: (context, state) => const FlashcardsScreen(),
-    ),
-    GoRoute(
-      path: '/daily',
-      builder: (context, state) => const DailyProverbScreen(),
-    ),
-    // Literature Feature routes
-    GoRoute(
-      path: '/literature',
-      builder: (context, state) => const LiteratureHubScreen(),
-    ),
-    GoRoute(
-      path: '/literature/poets',
-      builder: (context, state) => const PoetsListScreen(),
-    ),
-    GoRoute(
-      path: '/literature/poet/:id',
-      builder: (context, state) {
-        final id = state.pathParameters['id']!;
-        return PoetDetailScreen(poetId: id);
-      },
-    ),
-    GoRoute(
-      path: '/literature/works',
-      builder: (context, state) => const WorksListScreen(),
-    ),
-    GoRoute(
-      path: '/literature/work/:id',
-      builder: (context, state) {
-        final id = state.pathParameters['id']!;
-        return PoemReaderScreen(workId: id);
-      },
-    ),
-    GoRoute(
-      path: '/literature/school',
-      builder: (context, state) => const SchoolCanonScreen(),
-    ),
-    GoRoute(
-      path: '/literature/oral',
-      builder: (context, state) => const OralHeritageScreen(),
-    ),
-    GoRoute(
-      path: '/literature/search',
-      builder: (context, state) => const LiteratureSearchScreen(),
-    ),
-    GoRoute(
-      path: '/history',
-      builder: (context, state) => const HistoryScreen(),
-    ),
-  ],
-);
+final appRouter = _buildAppRouter();
+
+GoRouter _buildAppRouter() {
+  GoRouter.optionURLReflectsImperativeAPIs = true;
+
+  return GoRouter(
+    errorBuilder: buildRouteErrorPage,
+    routes: [
+      ShellRoute(
+        builder: (context, state, child) => AppScaffold(child: child),
+        routes: [
+          GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+          GoRoute(
+            path: '/proverbs',
+            builder: (context, state) => const ProverbsListScreen(),
+          ),
+          GoRoute(
+            path: '/categories',
+            builder: (context, state) => const CategoriesScreen(),
+          ),
+          GoRoute(
+            path: '/favorites',
+            builder: (context, state) => const FavoritesScreen(),
+          ),
+          GoRoute(
+            path: '/settings',
+            builder: (context, state) => const SettingsScreen(),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '/proverb/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return ProverbDetailScreen(proverbId: id);
+        },
+      ),
+      GoRoute(
+        path: '/levels',
+        builder: (context, state) => const LevelsScreen(),
+      ),
+      GoRoute(path: '/quiz', builder: (context, state) => const QuizScreen()),
+      GoRoute(
+        path: '/flashcards',
+        builder: (context, state) => const FlashcardsScreen(),
+      ),
+      GoRoute(
+        path: '/daily',
+        builder: (context, state) => const DailyProverbScreen(),
+      ),
+      // Literature Feature routes
+      GoRoute(
+        path: '/literature',
+        builder: (context, state) => const LiteratureHubScreen(),
+      ),
+      GoRoute(
+        path: '/literature/poets',
+        builder: (context, state) => const PoetsListScreen(),
+      ),
+      GoRoute(
+        path: '/literature/poet/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return PoetDetailScreen(poetId: id);
+        },
+      ),
+      GoRoute(
+        path: '/literature/works',
+        builder: (context, state) => const WorksListScreen(),
+      ),
+      GoRoute(
+        path: '/literature/work/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return PoemReaderScreen(workId: id);
+        },
+      ),
+      GoRoute(
+        path: '/literature/school',
+        builder: (context, state) => const SchoolCanonScreen(),
+      ),
+      GoRoute(
+        path: '/literature/oral',
+        builder: (context, state) => const OralHeritageScreen(),
+      ),
+      GoRoute(
+        path: '/literature/search',
+        builder: (context, state) => const LiteratureSearchScreen(),
+      ),
+      GoRoute(
+        path: '/history',
+        builder: (context, state) => const HistoryScreen(),
+      ),
+    ],
+  );
+}
 
 /// Polished error page shown when a route is not found or navigation fails.
 class ZarbulmasalRouteErrorPage extends ConsumerWidget {

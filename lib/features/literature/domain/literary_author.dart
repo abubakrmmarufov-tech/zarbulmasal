@@ -23,6 +23,12 @@ class LiteraryAuthor {
   /// Death year or approximate period (e.g. "941", "1977", null if living).
   final String? deathYear;
 
+  /// Exact birth date if attested (e.g. "15.04.1878", "20 майи 1941").
+  final String? birthDateExact;
+
+  /// Exact death date if attested (e.g. "15.07.1954", "30 июни 2000").
+  final String? deathDateExact;
+
   /// Verified place of birth (e.g. "Рӯдак, Панҷрӯд (ҳоло Панҷакент)").
   final String? birthPlace;
 
@@ -47,6 +53,9 @@ class LiteraryAuthor {
   /// School curriculum grades where this author's works are taught (e.g. ["5", "8", "10"]).
   final List<String> educationGrades;
 
+  /// Related history entries in the cultural knowledge graph.
+  final List<String> relatedHistoryEntryIds;
+
   /// Intellectual property and copyright clearance record.
   final RightsRecord rights;
 
@@ -57,6 +66,8 @@ class LiteraryAuthor {
     this.aliases = const [],
     this.birthYear,
     this.deathYear,
+    this.birthDateExact,
+    this.deathDateExact,
     this.birthPlace,
     required this.literaryPeriod,
     required this.biographyTj,
@@ -65,11 +76,14 @@ class LiteraryAuthor {
     this.majorWorkIds = const [],
     this.officialTitles = const [],
     this.educationGrades = const [],
+    this.relatedHistoryEntryIds = const [],
     required this.rights,
   });
 
   /// Whether the author is deceased.
-  bool get isDeceased => deathYear != null && deathYear!.trim().isNotEmpty;
+  bool get isDeceased =>
+      (deathYear != null && deathYear!.trim().isNotEmpty) ||
+      (deathDateExact != null && deathDateExact!.trim().isNotEmpty);
 
   /// Whether this record has a name safe to show as a public-facing author.
   ///
@@ -81,8 +95,27 @@ class LiteraryAuthor {
     return name.isNotEmpty && name != 'unknown';
   }
 
-  /// Formatted lifespan representation (e.g. "858 – 941", "1947 – ҳоло").
+  /// Whether the biography citation names a printed page that can be audited.
+  ///
+  /// A book title or a vague collection label is useful as a lead, but it is
+  /// not enough to present the biography as page-verified textbook evidence.
+  bool get hasAuditableBiographySource {
+    final source = biographySource.trim();
+    return RegExp(
+      r'(?:с\.|ص\.|page)\s*\d+',
+      caseSensitive: false,
+    ).hasMatch(source);
+  }
+
+  /// Formatted lifespan representation (e.g. "15.04.1878 – 15.07.1954" or "858 – 941", "1947 – ҳоло").
   String get lifespan {
+    final bExact = birthDateExact?.trim() ?? '';
+    final dExact = deathDateExact?.trim() ?? '';
+    if (bExact.isNotEmpty || dExact.isNotEmpty) {
+      if (dExact.isEmpty) return '$bExact – дар ҳаёт';
+      if (bExact.isEmpty) return 'Вафот: $dExact';
+      return '$bExact – $dExact';
+    }
     final b = birthYear?.trim() ?? '';
     final d = deathYear?.trim() ?? '';
     if (b.isEmpty && d.isEmpty) return '';
@@ -107,6 +140,10 @@ class LiteraryAuthor {
       aliases: _parseStringList(json['aliases']),
       birthYear: (json['birthYear'] ?? json['birth_year'])?.toString(),
       deathYear: (json['deathYear'] ?? json['death_year'])?.toString(),
+      birthDateExact: (json['birthDateExact'] ?? json['birth_date_exact'])
+          ?.toString(),
+      deathDateExact: (json['deathDateExact'] ?? json['death_date_exact'])
+          ?.toString(),
       birthPlace: (json['birthPlace'] ?? json['birth_place']) as String?,
       literaryPeriod:
           (json['literaryPeriod'] ?? json['literary_period'] ?? '') as String,
@@ -123,6 +160,9 @@ class LiteraryAuthor {
       ),
       educationGrades: _parseStringList(
         json['educationGrades'] ?? json['education_grades'],
+      ),
+      relatedHistoryEntryIds: _parseStringList(
+        json['relatedHistoryEntryIds'] ?? json['related_history_entry_ids'],
       ),
       rights: rightsJson is Map<String, dynamic>
           ? RightsRecord.fromJson(rightsJson)
@@ -144,6 +184,8 @@ class LiteraryAuthor {
       'aliases': aliases,
       'birthYear': birthYear,
       'deathYear': deathYear,
+      if (birthDateExact != null) 'birthDateExact': birthDateExact,
+      if (deathDateExact != null) 'deathDateExact': deathDateExact,
       'birthPlace': birthPlace,
       'literaryPeriod': literaryPeriod,
       'biographyTj': biographyTj,
@@ -152,6 +194,8 @@ class LiteraryAuthor {
       'majorWorkIds': majorWorkIds,
       'officialTitles': officialTitles,
       'educationGrades': educationGrades,
+      if (relatedHistoryEntryIds.isNotEmpty)
+        'relatedHistoryEntryIds': relatedHistoryEntryIds,
       'rights': rights.toJson(),
     };
   }
@@ -164,6 +208,8 @@ class LiteraryAuthor {
     List<String>? aliases,
     String? birthYear,
     String? deathYear,
+    String? birthDateExact,
+    String? deathDateExact,
     String? birthPlace,
     String? literaryPeriod,
     String? biographyTj,
@@ -172,6 +218,7 @@ class LiteraryAuthor {
     List<String>? majorWorkIds,
     List<String>? officialTitles,
     List<String>? educationGrades,
+    List<String>? relatedHistoryEntryIds,
     RightsRecord? rights,
   }) {
     return LiteraryAuthor(
@@ -181,6 +228,8 @@ class LiteraryAuthor {
       aliases: aliases ?? this.aliases,
       birthYear: birthYear ?? this.birthYear,
       deathYear: deathYear ?? this.deathYear,
+      birthDateExact: birthDateExact ?? this.birthDateExact,
+      deathDateExact: deathDateExact ?? this.deathDateExact,
       birthPlace: birthPlace ?? this.birthPlace,
       literaryPeriod: literaryPeriod ?? this.literaryPeriod,
       biographyTj: biographyTj ?? this.biographyTj,
@@ -189,6 +238,8 @@ class LiteraryAuthor {
       majorWorkIds: majorWorkIds ?? this.majorWorkIds,
       officialTitles: officialTitles ?? this.officialTitles,
       educationGrades: educationGrades ?? this.educationGrades,
+      relatedHistoryEntryIds:
+          relatedHistoryEntryIds ?? this.relatedHistoryEntryIds,
       rights: rights ?? this.rights,
     );
   }

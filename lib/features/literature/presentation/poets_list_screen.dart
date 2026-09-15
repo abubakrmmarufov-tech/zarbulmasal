@@ -6,6 +6,8 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
+import '../data/literature_repository.dart';
+import '../domain/domain.dart';
 
 /// A screen presenting canonical Tajik literary authors and poets.
 class PoetsListScreen extends ConsumerStatefulWidget {
@@ -31,6 +33,12 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
     final authorsAsync = ref.watch(literaryAuthorsProvider);
+    final worksAsync = ref.watch(approvedWorksProvider);
+    final worksCountByAuthor = <String, int>{};
+    for (final work in worksAsync.valueOrNull ?? const <LiteraryWork>[]) {
+      worksCountByAuthor[work.authorId] =
+          (worksCountByAuthor[work.authorId] ?? 0) + 1;
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -69,7 +77,9 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                   controller: _filterController,
                   onChanged: (val) {
                     setState(() {
-                      _filterQuery = val.trim().toLowerCase();
+                      _filterQuery = LiteratureRepository.normalizeSearchText(
+                        val,
+                      );
                     });
                   },
                   decoration: InputDecoration(
@@ -141,19 +151,21 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 final filtered = authors.where((author) {
                   if (!author.hasCanonicalName) return false;
                   if (_filterQuery.isEmpty) return true;
-                  final matchName = author.canonicalName.toLowerCase().contains(
-                    _filterQuery,
-                  );
+                  final matchName = LiteratureRepository.normalizeSearchText(
+                    author.canonicalName,
+                  ).contains(_filterQuery);
                   final matchFa =
-                      author.canonicalNamePersian?.toLowerCase().contains(
-                        _filterQuery,
-                      ) ??
-                      false;
-                  final matchPeriod = author.literaryPeriod
-                      .toLowerCase()
-                      .contains(_filterQuery);
+                      author.canonicalNamePersian != null &&
+                      LiteratureRepository.normalizeSearchText(
+                        author.canonicalNamePersian!,
+                      ).contains(_filterQuery);
+                  final matchPeriod = LiteratureRepository.normalizeSearchText(
+                    author.literaryPeriod,
+                  ).contains(_filterQuery);
                   final matchAliases = author.aliases.any(
-                    (a) => a.toLowerCase().contains(_filterQuery),
+                    (a) => LiteratureRepository.normalizeSearchText(
+                      a,
+                    ).contains(_filterQuery),
                   );
                   return matchName || matchFa || matchPeriod || matchAliases;
                 }).toList();
@@ -180,11 +192,32 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                         (isPersian && poet.canonicalNamePersian != null)
                         ? poet.canonicalNamePersian!
                         : poet.canonicalName;
+                    final poemCount = worksCountByAuthor[poet.id] ?? 0;
+                    final poemCountBadge = poemCount > 0
+                        ? (isPersian
+                              ? '${AppTranslations.formatDigits(poemCount.toString(), lang)} اثر'
+                              : '${AppTranslations.formatDigits(poemCount.toString(), lang)} асар')
+                        : null;
+                    final dates = poet.hasAuditableBiographySource
+                        ? AppTranslations.formatDigits(poet.lifespan, lang)
+                        : (isPersian
+                              ? 'تاریخ‌ها در بررسی'
+                              : 'Санаҳо дар санҷиш');
+                    final exactDates =
+                        (poet.hasAuditableBiographySource &&
+                            (poet.birthDateExact != null ||
+                                poet.deathDateExact != null))
+                        ? (isPersian
+                              ? 'ولادت: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · وفات: ${poet.deathDateExact ?? poet.deathYear ?? "در قید حیات"}'
+                              : 'Таваллуд: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · Вафот: ${poet.deathDateExact ?? poet.deathYear ?? "дар ҳаёт"}')
+                        : null;
                     return QalamPoetCard(
                       name: name,
-                      dates: poet.lifespan,
+                      dates: dates,
+                      exactDates: exactDates,
                       period: poet.literaryPeriod,
                       isPublicDomain: poet.isPublicDomain,
+                      poemCountBadge: poemCountBadge,
                       onTap: () => context.push('/literature/poet/${poet.id}'),
                     );
                   }, childCount: filtered.length),

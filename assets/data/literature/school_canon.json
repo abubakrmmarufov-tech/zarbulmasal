@@ -10,7 +10,8 @@
     "textbookPublisher": "Маориф",
     "textbookYear": "2019",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълими фанни хониши адабӣ барои синфи 4, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Барномаи таълими фанни хониши адабӣ барои синфи 4, Вазорати маориф ва илми ҶТ",
+    "citationStatus": "needsReview"
   },
   {
     "id": "canon_rudaki_g5",
@@ -19,11 +20,13 @@
     "grade": "5",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 5)",
-    "textbookAuthors": "Т. Зиёев, Х. Шарифов",
+    "textbookAuthors": "Т. Мирзод, Р. Ҳамидов, М. Пирзод",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2018",
+    "textbookYear": "2017",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 5, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Китоби дарсии «Адабиёти тоҷик», синфи 5, Маориф, 2017, с. 49; санҷиши дуюм дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_5_2017"
   },
   {
     "id": "canon_rudaki_g8",
@@ -32,11 +35,13 @@
     "grade": "8",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 8)",
-    "textbookAuthors": "Х. Шарифов, У. Тоиров",
+    "textbookAuthors": "Абдунабӣ Сатторзода",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
+    "textbookYear": "2026",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 8, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 8 (Маориф, 2026); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_8_2026"
   },
   {
     "id": "canon_rudaki_g10",
@@ -45,11 +50,13 @@
     "grade": "10",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 10)",
-    "textbookAuthors": "Х. Шарифов, А. Абдусатторов",
+    "textbookAuthors": "У. Тоир, М. Солеҳ, Н. Ширинзода",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2020",
+    "textbookYear": "2026",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 10, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 10 (Маориф, 2026); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_10_2026"
   },
   {
     "id": "canon_nasir_khusraw_g8",
@@ -58,11 +65,13 @@
     "grade": "8",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 8)",
-    "textbookAuthors": "Х. Шарифов, У. Тоиров",
+    "textbookAuthors": "Абдунабӣ Сатторзода",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
+    "textbookYear": "2026",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 8, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 8 (Маориф, 2026); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_8_2026"
   },
   {
     "id": "canon_nasir_khusraw_g10",
@@ -71,11 +80,13 @@
     "grade": "10",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 10)",
-    "textbookAuthors": "Х. Шарифов, А. Абдусатторов",
+    "textbookAuthors": "У. Тоир, М. Солеҳ, Н. Ширинзода",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2020",
+    "textbookYear": "2026",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 10, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 10 (Маориф, 2026); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_10_2026"
   },
   {
     "id": "canon_kamol_khujandi_g8",
@@ -84,11 +95,13 @@
     "grade": "8",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 8)",
-    "textbookAuthors": "Х. Шарифов, У. Тоиров",
+    "textbookAuthors": "Абдунабӣ Сатторзода",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
+    "textbookYear": "2026",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 8, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 8 (Маориф, 2026); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_8_2026"
   },
   {
     "id": "canon_kamol_khujandi_g10",
@@ -97,11 +110,13 @@
     "grade": "10",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 10)",
-    "textbookAuthors": "Х. Шарифов, А. Абдусатторов",
+    "textbookAuthors": "У. Тоир, М. Солеҳ, Н. Ширинзода",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2020",
+    "textbookYear": "2026",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 10, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 10 (Маориф, 2026); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_10_2026"
   },
   {
     "id": "canon_tursunzoda_g4",
@@ -114,7 +129,8 @@
     "textbookPublisher": "Маориф",
     "textbookYear": "2019",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълими фанни хониши адабӣ барои синфи 4, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Барномаи таълими фанни хониши адабӣ барои синфи 4, Вазорати маориф ва илми ҶТ",
+    "citationStatus": "needsReview"
   },
   {
     "id": "canon_tursunzoda_g7",
@@ -123,11 +139,13 @@
     "grade": "7",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 7)",
-    "textbookAuthors": "М. Амонов, Ҳ. Шарифов",
+    "textbookAuthors": "У. Тоиров, М. Солеҳов, Н. Ширинов",
     "textbookPublisher": "Маориф",
     "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 7, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 7 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_7_2018"
   },
   {
     "id": "canon_tursunzoda_g11",
@@ -135,12 +153,14 @@
     "authorId": "tursunzoda",
     "grade": "11",
     "subject": "Адабиёти тоҷик",
-    "textbookTitle": "Адабиёти тоҷик (Синфи 11)",
-    "textbookAuthors": "А. Сайфуллоев, М. Раҷабӣ",
+    "textbookTitle": "Адабиёти тоҷик (давраи нав, Синфи 11)",
+    "textbookAuthors": "Х. Асозода, А. Кӯчаров",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2021",
+    "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 11, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик (давраи нав)», синфи 11 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_11_2018"
   },
   {
     "id": "canon_qanoat_g11",
@@ -148,12 +168,14 @@
     "authorId": "qanoat",
     "grade": "11",
     "subject": "Адабиёти тоҷик",
-    "textbookTitle": "Адабиёти тоҷик (Синфи 11)",
-    "textbookAuthors": "А. Сайфуллоев, М. Раҷабӣ",
+    "textbookTitle": "Адабиёти тоҷик (давраи нав, Синфи 11)",
+    "textbookAuthors": "Х. Асозода, А. Кӯчаров",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2021",
+    "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 11, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик (давраи нав)», синфи 11 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_11_2018"
   },
   {
     "id": "canon_loiq_sherali_g5",
@@ -162,11 +184,13 @@
     "grade": "5",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 5)",
-    "textbookAuthors": "Т. Зиёев, Х. Шарифов",
+    "textbookAuthors": "Т. Мирзод, Р. Ҳамидов, М. Пирзод",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2018",
+    "textbookYear": "2017",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 5, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 5 (Маориф, 2017); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_5_2017"
   },
   {
     "id": "canon_loiq_sherali_g7",
@@ -175,11 +199,13 @@
     "grade": "7",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 7)",
-    "textbookAuthors": "М. Амонов, Ҳ. Шарифов",
+    "textbookAuthors": "У. Тоиров, М. Солеҳов, Н. Ширинов",
     "textbookPublisher": "Маориф",
     "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 7, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 7 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_7_2018"
   },
   {
     "id": "canon_loiq_sherali_g9",
@@ -188,11 +214,13 @@
     "grade": "9",
     "subject": "Адабиёти тоҷик",
     "textbookTitle": "Адабиёти тоҷик (Синфи 9)",
-    "textbookAuthors": "Ҷ. Худойназаров, В. Самад",
+    "textbookAuthors": "Т. Мирзод, С. Давлатзода, Ф. Мирзода",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
+    "textbookYear": "2026",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 9, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 9 (Маориф, 2026); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_9_2026"
   },
   {
     "id": "canon_loiq_sherali_g11",
@@ -200,12 +228,14 @@
     "authorId": "loiq_sherali",
     "grade": "11",
     "subject": "Адабиёти тоҷик",
-    "textbookTitle": "Адабиёти тоҷик (Синфи 11)",
-    "textbookAuthors": "А. Сайфуллоев, М. Раҷабӣ",
+    "textbookTitle": "Адабиёти тоҷик (давраи нав, Синфи 11)",
+    "textbookAuthors": "Х. Асозода, А. Кӯчаров",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2021",
+    "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 11, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик (давраи нав)», синфи 11 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_11_2018"
   },
   {
     "id": "canon_bozor_sobir_g11",
@@ -213,12 +243,14 @@
     "authorId": "bozor_sobir",
     "grade": "11",
     "subject": "Адабиёти тоҷик",
-    "textbookTitle": "Адабиёти тоҷик (Синфи 11)",
-    "textbookAuthors": "А. Сайфуллоев, М. Раҷабӣ",
+    "textbookTitle": "Адабиёти тоҷик (давраи нав, Синфи 11)",
+    "textbookAuthors": "Х. Асозода, А. Кӯчаров",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2021",
+    "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 11, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик (давраи нав)», синфи 11 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_11_2018"
   },
   {
     "id": "canon_gulnazar_keldi_g1",
@@ -231,7 +263,8 @@
     "textbookPublisher": "Маориф",
     "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
+    "citationStatus": "needsReview"
   },
   {
     "id": "canon_gulnazar_keldi_g2",
@@ -244,7 +277,8 @@
     "textbookPublisher": "Маориф",
     "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
+    "citationStatus": "needsReview"
   },
   {
     "id": "canon_gulnazar_keldi_g3",
@@ -257,7 +291,8 @@
     "textbookPublisher": "Маориф",
     "textbookYear": "2019",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
+    "citationStatus": "needsReview"
   },
   {
     "id": "canon_gulnazar_keldi_g4",
@@ -270,7 +305,8 @@
     "textbookPublisher": "Маориф",
     "textbookYear": "2019",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
+    "citationStatus": "needsReview"
   },
   {
     "id": "canon_gulrukhsor_g11",
@@ -278,12 +314,14 @@
     "authorId": "gulrukhsor",
     "grade": "11",
     "subject": "Адабиёти тоҷик",
-    "textbookTitle": "Адабиёти тоҷик (Синфи 11)",
-    "textbookAuthors": "А. Сайфуллоев, М. Раҷабӣ",
+    "textbookTitle": "Адабиёти тоҷик (давраи нав, Синфи 11)",
+    "textbookAuthors": "Х. Асозода, А. Кӯчаров",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2021",
+    "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 11, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик (давраи нав)», синфи 11 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_11_2018"
   },
   {
     "id": "canon_farzona_g11",
@@ -291,11 +329,13 @@
     "authorId": "farzona",
     "grade": "11",
     "subject": "Адабиёти тоҷик",
-    "textbookTitle": "Адабиёти тоҷик (Синфи 11)",
-    "textbookAuthors": "А. Сайфуллоев, М. Раҷабӣ",
+    "textbookTitle": "Адабиёти тоҷик (давраи нав, Синфи 11)",
+    "textbookAuthors": "Х. Асозода, А. Кӯчаров",
     "textbookPublisher": "Маориф",
-    "textbookYear": "2021",
+    "textbookYear": "2018",
     "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълимии адабиёти тоҷик барои синфи 11, Вазорати маориф ва илми ҶТ"
+    "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик (давраи нав)», синфи 11 (Маориф, 2018); санҷиши саҳифа дар интизор.",
+    "citationStatus": "needsReview",
+    "sourceId": "tj_literature_grade_11_2018"
   }
 ]

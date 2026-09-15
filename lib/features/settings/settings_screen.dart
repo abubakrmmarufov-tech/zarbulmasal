@@ -92,7 +92,7 @@ class SettingsScreen extends ConsumerWidget {
                     subtitle: AppTranslations.get(
                       'settings_proverbs_count',
                       language,
-                      ['$count'],
+                      [AppTranslations.formatNumber(count, language)],
                     ),
                   ),
                   QalamSettingRow(

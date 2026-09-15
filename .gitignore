@@ -56,3 +56,6 @@ xcuserdata
 coverage/
 output/
 .playwright-cli/
+tool/www/
+downloads/
+

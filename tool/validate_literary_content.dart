@@ -130,6 +130,19 @@ void main() {
         primary['city'].toString().trim().isNotEmpty;
     final isPending = verification['finalStatus'] == 'needsReview';
 
+    final compositionDate = work['compositionDate'];
+    final compositionContext = work['compositionContext'];
+    final hasCompositionMetadata =
+        (compositionDate is String && compositionDate.trim().isNotEmpty) ||
+        (compositionContext is String && compositionContext.trim().isNotEmpty);
+    if (hasCompositionMetadata &&
+        (!hasPage || verification['pageChecked'] != true)) {
+      print(
+        'Violation: Composition metadata lacks a page-checked source: ${work['id']}',
+      );
+      exit(1);
+    }
+
     if (isPending) {
       needsReview++;
       if (!hasPage) pendingMissingPage++;
@@ -168,8 +181,11 @@ void main() {
         exit(1);
       }
 
-      if (!hasPage) {
-        missingPage++;
+      if (!hasPage || verification['pageChecked'] != true) {
+        print(
+          'Violation: Approved work is missing a documented primary-source page: ${work['id']}',
+        );
+        exit(1);
       }
       if (!hasSecondSource) {
         missingSecondSource++;

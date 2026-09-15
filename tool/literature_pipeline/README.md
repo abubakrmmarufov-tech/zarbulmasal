@@ -14,6 +14,7 @@ Extracted material is not publication evidence: generated records remain `needsR
 - `build_db.py`: Compatibility alias for `build_assets.py`; it no longer generates deleted Dart seed files.
 - `migrate_to_prod.py`: Compatibility alias for `build_assets.py`; it no longer reads deleted legacy seed files or fabricates production-ready records.
 - `create_audit.py`: Generates the provenance audits (`POET_AUDIT.md` and `POEM_AUDIT.md`) directly from the parsed data to ensure that every poem can be traced back to its PDF source and page.
+- `index_textbook_pages.py`: Produces a literal author-name/page candidate queue from the held Grade 5–11 PDFs. It stores no poem text and never approves a work; editors must inspect the source page and enter a printed-page citation separately.
 
 ## Data Directories (in `docs/literature/`)
 - `pdfs/`: Source PDFs (Ignored in git due to size/copyright).
@@ -28,4 +29,4 @@ These scripts are meant to be run by AI agents with the correct API keys and con
 3. Deploy the `book_manager` agent to process the chunks and extract JSON.
 4. Run `python3 tool/literature_pipeline/scripts/build_assets.py` from the repository root to review a dry-run candidate count.
 5. Pass `--write` only after reviewing the candidate output, then run `dart run tool/validate_literature_json.dart` and `dart run tool/validate_literary_content.dart`.
-6. Run `create_audit.py` to update the audit trails.
+6. Run `index_textbook_pages.py` to prepare the page-review queue, then run `create_audit.py` to update the audit trails.

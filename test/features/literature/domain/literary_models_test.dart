@@ -234,6 +234,12 @@ void main() {
       expect(author.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
       expect(author.isDeceased, isTrue);
       expect(author.lifespan, '858 – 941');
+      expect(author.hasAuditableBiographySource, isFalse);
+
+      final pageCitedAuthor = author.copyWith(
+        biographySource: 'Адабиёти тоҷик, синфи 5, с. 49',
+      );
+      expect(pageCitedAuthor.hasAuditableBiographySource, isTrue);
       expect(author.isPublicDomain, isTrue);
       expect(author.aliases.length, 2);
       expect(author.educationGrades, ['5', '8', '10']);
@@ -315,6 +321,43 @@ void main() {
       },
     );
 
+    test('composition metadata is auditable only after page verification', () {
+      const pending = LiteraryWork(
+        id: 'pending',
+        authorId: 'author',
+        title: 'Pending',
+        compositionDate: '1909',
+        compositionContext: 'Самарқанд',
+        primarySource: SourceEdition(
+          bookTitle: 'Textbook',
+          publisher: 'Маориф',
+          city: 'Душанбе',
+          year: '2017',
+          pageStart: 12,
+          sourceType: SourceEditionType.officialTextbook,
+        ),
+        rights: RightsRecord(
+          status: RightsStatus.excerptOnly,
+          reasoning: 'Pending review',
+          fullTextAllowed: false,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(pageChecked: false),
+      );
+      expect(pending.hasAuditableCompositionEvidence, isFalse);
+
+      final verified = LiteraryWork(
+        id: 'verified',
+        authorId: 'author',
+        title: 'Verified',
+        compositionDate: '1909',
+        primarySource: pending.primarySource,
+        rights: pending.rights,
+        verification: const VerificationRecord(pageChecked: true),
+      );
+      expect(verified.hasAuditableCompositionEvidence, isTrue);
+    });
+
     test('LiteraryWork fromJson / toJson roundtrip', () {
       final json = {
         'id': 'rudaki-boyi-juyi-muliyon',
@@ -377,6 +420,7 @@ void main() {
         'textbookAuthors': 'С. Амирқулов',
         'textbookPublisher': 'Маориф',
         'textbookYear': '2019',
+        'sourceId': 'tj_literature_grade_5_2017',
         'curriculumType': 'mandatory',
         'sourceEvidence': 'Барномаи таълимӣ, с. 34',
       };
@@ -384,7 +428,9 @@ void main() {
       final entry = SchoolCanonEntry.fromJson(json);
       expect(entry.id, 'canon-rudaki-grade5');
       expect(entry.grade, '5');
+      expect(entry.sourceId, 'tj_literature_grade_5_2017');
       expect(entry.isMandatory, isTrue);
+      expect(entry.isCitationVerified, isFalse);
 
       final serialized = entry.toJson();
       expect(serialized['subject'], 'Хониши адабӣ');

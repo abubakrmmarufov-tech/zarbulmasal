@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
+import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
+import '../data/reader_preferences_provider.dart';
 import '../domain/domain.dart';
 import 'source_panel.dart';
 
@@ -22,6 +24,7 @@ class PoemReaderScreen extends ConsumerWidget {
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
     final worksAsync = ref.watch(approvedWorksProvider);
+    final allWorksAsync = ref.watch(literaryWorksProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -62,6 +65,18 @@ class PoemReaderScreen extends ConsumerWidget {
           );
 
           if (work == null) {
+            final pendingWork = allWorksAsync.valueOrNull
+                ?.cast<LiteraryWork?>()
+                .firstWhere(
+                  (candidate) => candidate?.id == workId,
+                  orElse: () => null,
+                );
+            if (pendingWork != null &&
+                pendingWork.verification.finalStatus ==
+                    VerificationStatus.needsReview) {
+              return _PendingWorkState(work: pendingWork);
+            }
+
             return Center(
               child: EmptyState(
                 icon: Icons.menu_book_outlined,
@@ -84,13 +99,56 @@ class PoemReaderScreen extends ConsumerWidget {
   }
 }
 
-class _PoemReaderContent extends ConsumerWidget {
+/// Explains why a known textbook candidate cannot be read yet.
+class _PendingWorkState extends ConsumerWidget {
+  final LiteraryWork work;
+
+  const _PendingWorkState({required this.work});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isPersian =
+        ref.watch(displayLanguageProvider) == DisplayLanguage.persian;
+    final citation = work.primarySource?.citation;
+    final sourceNote = citation == null
+        ? ''
+        : (isPersian
+              ? '\n\nمنبع ثبت‌شده: $citation'
+              : '\n\nСарчашмаи сабтшуда: $citation');
+
+    return Center(
+      child: EmptyState(
+        icon: Icons.hourglass_empty,
+        title: isPersian ? 'اثر در دست بررسی است' : 'Асар дар санҷиш аст',
+        subtitle: isPersian
+            ? 'این رکورد از کتاب درسی ثبت شده، اما متن آن تا تکمیل مقابله و تأیید سردبیر منتشر نمی‌شود.$sourceNote'
+            : 'Ин сабт аз китоби дарсӣ гирифта шудааст, аммо матн то анҷоми муқобала ва тасдиқи муҳаррир нашр намешавад.$sourceNote',
+        action: OutlinedButton(
+          onPressed: () => qalamBack(context),
+          child: Text(isPersian ? 'بازگشت' : 'Бозгашт'),
+        ),
+      ),
+    );
+  }
+}
+
+enum ReaderScriptMode { tajik, persian, parallel }
+
+class _PoemReaderContent extends ConsumerStatefulWidget {
   final LiteraryWork work;
 
   const _PoemReaderContent({required this.work});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_PoemReaderContent> createState() => _PoemReaderContentState();
+}
+
+class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
+  ReaderScriptMode? _userScriptMode;
+
+  @override
+  Widget build(BuildContext context) {
+    final work = widget.work;
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
@@ -99,6 +157,7 @@ class _PoemReaderContent extends ConsumerWidget {
     final author = authorAsync.valueOrNull;
 
     final isFavorited = ref.watch(literaryFavoritesProvider).contains(work.id);
+    final readerPrefs = ref.watch(readerPreferencesProvider);
 
     final title =
         (isPersian &&
@@ -113,14 +172,24 @@ class _PoemReaderContent extends ConsumerWidget {
               : author.canonicalName)
         : work.authorId;
 
-    final displayText = (isPersian && work.hasPersianText)
-        ? work.textPersian!
-        : (work.hasTajikText ? work.textTajik! : (work.textPersian ?? ''));
+    final hasBothScripts = work.hasTajikText && work.hasPersianText;
+    final defaultMode = (isPersian && work.hasPersianText)
+        ? ReaderScriptMode.persian
+        : (work.hasTajikText
+              ? ReaderScriptMode.tajik
+              : ReaderScriptMode.persian);
+    final currentScriptMode = _userScriptMode ?? defaultMode;
 
-    final isRtl =
-        isPersian ||
-        (work.scriptSource == ScriptSource.persianArabic && !work.hasTajikText);
-    final hasVerifiedText = work.isDisplayable && displayText.trim().isNotEmpty;
+    final hasVerifiedText =
+        work.isDisplayable &&
+        ((currentScriptMode == ReaderScriptMode.tajik && work.hasTajikText) ||
+            (currentScriptMode == ReaderScriptMode.persian &&
+                work.hasPersianText) ||
+            (currentScriptMode == ReaderScriptMode.parallel &&
+                hasBothScripts) ||
+            (work.hasTajikText || work.hasPersianText));
+
+    final readerFontSize = (22.0 + readerPrefs.fontSizeDelta).clamp(14.0, 36.0);
 
     return Column(
       children: [
@@ -206,23 +275,262 @@ class _PoemReaderContent extends ConsumerWidget {
                           ],
                         ),
                       ),
+                      if (author != null &&
+                          author.hasAuditableBiographySource &&
+                          (author.lifespan.isNotEmpty ||
+                              author.birthDateExact != null ||
+                              author.deathDateExact != null)) ...[
+                        const SizedBox(height: 6),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.calendar_today_outlined,
+                              size: 13,
+                              color: colors.onSurfaceVariant,
+                            ),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                (author.birthDateExact != null ||
+                                        author.deathDateExact != null)
+                                    ? (isPersian
+                                          ? 'ولادت: ${author.birthDateExact ?? author.birthYear ?? "—"} · وفات: ${author.deathDateExact ?? author.deathYear ?? "در قید حیات"}'
+                                          : 'Таваллуд: ${author.birthDateExact ?? author.birthYear ?? "—"} · Вафот: ${author.deathDateExact ?? author.deathYear ?? "дар ҳаёт"}')
+                                    : AppTranslations.formatDigits(
+                                        author.lifespan,
+                                        lang,
+                                      ),
+                                style: QalamTypography.meta(
+                                  color: colors.onSurfaceVariant,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                      if (work.hasAuditableCompositionEvidence &&
+                          ((work.compositionDate != null &&
+                                  work.compositionDate!.isNotEmpty) ||
+                              (work.compositionContext != null &&
+                                  work.compositionContext!.isNotEmpty))) ...[
+                        const SizedBox(height: 12),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            if (work.hasAuditableCompositionEvidence &&
+                                work.compositionDate != null &&
+                                work.compositionDate!.isNotEmpty)
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 5,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: colors.primary.withValues(alpha: 0.08),
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                    color: colors.primary.withValues(
+                                      alpha: 0.25,
+                                    ),
+                                    width: 0.5,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.history_edu,
+                                      size: 15,
+                                      color: colors.primary,
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      isPersian
+                                          ? 'تاریخ سرایش: ${AppTranslations.formatDigits(work.compositionDate!, lang)}'
+                                          : 'Санаи таълиф: ${AppTranslations.formatDigits(work.compositionDate!, lang)}',
+                                      style: QalamTypography.meta(
+                                        color: colors.primary,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            if (work.hasAuditableCompositionEvidence &&
+                                work.compositionContext != null &&
+                                work.compositionContext!.isNotEmpty)
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 5,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: colors.surfaceContainerHighest
+                                      .withValues(alpha: 0.6),
+                                  borderRadius: BorderRadius.circular(6),
+                                  border: Border.all(
+                                    color: colors.outlineVariant.withValues(
+                                      alpha: 0.5,
+                                    ),
+                                    width: 0.5,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.place_outlined,
+                                      size: 15,
+                                      color: colors.onSurfaceVariant,
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      isPersian
+                                          ? 'بستر: ${work.compositionContext!}'
+                                          : 'Муҳит: ${work.compositionContext!}',
+                                      style: QalamTypography.meta(
+                                        color: colors.onSurfaceVariant,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
                       const SizedBox(height: 24),
                       const Divider(height: 1),
-                      const SizedBox(height: 28),
-                      // Text body or Review Placeholder
-                      if (hasVerifiedText) ...[
-                        SelectableText(
-                          displayText,
-                          textDirection: isRtl
-                              ? TextDirection.rtl
-                              : TextDirection.ltr,
-                          textAlign: isRtl ? TextAlign.right : TextAlign.left,
-                          style: QalamTypography.heroProverb(
-                            color: colors.onSurface,
-                            fontSize: 22,
-                            height: 1.85,
+                      const SizedBox(height: 16),
+
+                      // Script Switcher when both scripts exist
+                      if (hasBothScripts) ...[
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            physics: const BouncingScrollPhysics(),
+                            child: Row(
+                              children: [
+                                ChoiceChip(
+                                  label: Text(
+                                    isPersian
+                                        ? 'سیریلیک تاجیکی'
+                                        : 'Тоҷикӣ (Кириллӣ)',
+                                  ),
+                                  selected:
+                                      currentScriptMode ==
+                                      ReaderScriptMode.tajik,
+                                  onSelected: (_) => setState(
+                                    () => _userScriptMode =
+                                        ReaderScriptMode.tajik,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                ChoiceChip(
+                                  label: Text(
+                                    isPersian
+                                        ? 'فارسی (عربی)'
+                                        : 'Форсӣ (Арабӣ)',
+                                  ),
+                                  selected:
+                                      currentScriptMode ==
+                                      ReaderScriptMode.persian,
+                                  onSelected: (_) => setState(
+                                    () => _userScriptMode =
+                                        ReaderScriptMode.persian,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                ChoiceChip(
+                                  avatar: const Icon(
+                                    Icons.compare_arrows,
+                                    size: 16,
+                                  ),
+                                  label: Text(
+                                    isPersian ? 'متن موازی' : 'Матни мувозӣ',
+                                  ),
+                                  selected:
+                                      currentScriptMode ==
+                                      ReaderScriptMode.parallel,
+                                  onSelected: (_) => setState(
+                                    () => _userScriptMode =
+                                        ReaderScriptMode.parallel,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                      ] else if (isPersian &&
+                          !work.hasPersianText &&
+                          work.hasTajikText) ...[
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.info_outline,
+                                size: 15,
+                                color: colors.primary,
+                              ),
+                              const SizedBox(width: 6),
+                              Expanded(
+                                child: Text(
+                                  'متن این اثر طبق نسخه‌های معتبر به خط سیریلیک تاجیکی ثبت شده است.',
+                                  style: QalamTypography.meta(
+                                    color: colors.onSurfaceVariant,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+
+                      // Text body or Review Placeholder
+                      if (hasVerifiedText) ...[
+                        if (currentScriptMode == ReaderScriptMode.parallel &&
+                            hasBothScripts)
+                          _buildParallelVerses(
+                            context,
+                            work.textTajik!,
+                            work.textPersian!,
+                            readerFontSize,
+                            readerPrefs.lineHeightMultiplier,
+                            colors,
+                          )
+                        else if (currentScriptMode ==
+                                ReaderScriptMode.persian &&
+                            work.hasPersianText)
+                          Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: SelectableText(
+                              work.textPersian!,
+                              textAlign: TextAlign.right,
+                              style: QalamTypography.heroProverb(
+                                color: colors.onSurface,
+                                fontSize: readerFontSize,
+                                height: readerPrefs.lineHeightMultiplier,
+                              ),
+                            ),
+                          )
+                        else
+                          Directionality(
+                            textDirection: TextDirection.ltr,
+                            child: SelectableText(
+                              work.textTajik ?? work.textPersian ?? '',
+                              textAlign: TextAlign.left,
+                              style: QalamTypography.heroProverb(
+                                color: colors.onSurface,
+                                fontSize: readerFontSize,
+                                height: readerPrefs.lineHeightMultiplier,
+                              ),
+                            ),
+                          ),
                       ] else ...[
                         Container(
                           padding: const EdgeInsets.all(20),
@@ -284,7 +592,9 @@ class _PoemReaderContent extends ConsumerWidget {
                                   '«${work.incipit}»',
                                   style: QalamTypography.heroProverb(
                                     color: colors.onSurface,
-                                    fontSize: 18,
+                                    fontSize:
+                                        (18.0 + readerPrefs.fontSizeDelta * 0.5)
+                                            .clamp(14.0, 28.0),
                                     height: 1.5,
                                   ),
                                 ),
@@ -339,9 +649,9 @@ class _PoemReaderContent extends ConsumerWidget {
             ],
           ),
         ),
-        // Bottom action bar
+        // Bottom action bar with font scaling controls
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           decoration: BoxDecoration(
             color: colors.surface,
             border: Border(
@@ -350,84 +660,210 @@ class _PoemReaderContent extends ConsumerWidget {
           ),
           child: SafeArea(
             top: false,
-            child: Row(
-              children: [
-                // Bookmark button
-                IconButton(
-                  tooltip: isFavorited
-                      ? (isPersian
-                            ? 'حذف از نشان‌شده‌ها'
-                            : 'Аз маҳфуз баровардан')
-                      : (isPersian ? 'نشان کردن' : 'Маҳфуз кардан'),
-                  icon: Icon(
-                    isFavorited ? Icons.bookmark : Icons.bookmark_border,
-                    color: isFavorited
-                        ? colors.primary
-                        : colors.onSurfaceVariant,
-                  ),
-                  onPressed: () {
-                    ref
-                        .read(literaryFavoritesProvider.notifier)
-                        .toggle(work.id);
-                  },
-                ),
-                // Copy button (only if rights permit full text)
-                if (work.rights.fullTextAllowed) ...[
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: Row(
+                children: [
+                  // Bookmark button
                   IconButton(
-                    tooltip: isPersian ? 'کپی متن' : 'Нусхаи матн',
-                    icon: const Icon(Icons.copy_outlined),
-                    onPressed: () async {
-                      final textToShare = hasVerifiedText
-                          ? '$title\n$authorName\n\n$displayText'
-                          : '$title\n$authorName';
-                      try {
-                        await Clipboard.setData(
-                          ClipboardData(text: textToShare),
-                        );
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                isPersian
-                                    ? 'متن در حافظه کپی شد'
-                                    : 'Матн нусхабардорӣ шуд',
-                              ),
-                            ),
-                          );
-                        }
-                      } catch (_) {
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                isPersian
-                                    ? 'کپی در دسترس نیست'
-                                    : 'Нусхабардорӣ дастрас нест',
-                              ),
-                            ),
-                          );
-                        }
-                      }
+                    tooltip: isFavorited
+                        ? (isPersian
+                              ? 'حذف از نشان‌شده‌ها'
+                              : 'Аз маҳфуз баровардан')
+                        : (isPersian ? 'نشان کردن' : 'Маҳфуз кардан'),
+                    icon: Icon(
+                      isFavorited ? Icons.bookmark : Icons.bookmark_border,
+                      color: isFavorited
+                          ? colors.primary
+                          : colors.onSurfaceVariant,
+                    ),
+                    onPressed: () {
+                      ref
+                          .read(literaryFavoritesProvider.notifier)
+                          .toggle(work.id);
                     },
                   ),
-                ],
-                const Spacer(),
-                // Source (Манбаъ) button
-                OutlinedButton.icon(
-                  onPressed: () => SourcePanel.show(context, work),
-                  icon: const Icon(Icons.menu_book_outlined, size: 18),
-                  label: Text(
-                    isPersian ? 'منبع و اسناد' : 'Манбаъ',
-                    style: QalamTypography.meta(
-                      color: colors.onSurface,
-                      fontSize: 13,
+                  // Copy button (only if rights permit full text)
+                  if (work.rights.fullTextAllowed) ...[
+                    IconButton(
+                      tooltip: isPersian ? 'کپی متن' : 'Нусхаи матн',
+                      icon: const Icon(Icons.copy_outlined),
+                      onPressed: () async {
+                        final String activeText;
+                        if (currentScriptMode == ReaderScriptMode.parallel &&
+                            hasBothScripts) {
+                          activeText =
+                              '${work.textTajik}\n\n${work.textPersian}';
+                        } else if (currentScriptMode ==
+                                ReaderScriptMode.persian &&
+                            work.hasPersianText) {
+                          activeText = work.textPersian!;
+                        } else {
+                          activeText = work.textTajik ?? work.textPersian ?? '';
+                        }
+                        final textToShare = hasVerifiedText
+                            ? '$title\n$authorName\n\n$activeText'
+                            : '$title\n$authorName';
+                        try {
+                          await Clipboard.setData(
+                            ClipboardData(text: textToShare),
+                          );
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  isPersian
+                                      ? 'متن در حافظه کپی شد'
+                                      : 'Матн нусхабардорӣ шуд',
+                                ),
+                              ),
+                            );
+                          }
+                        } catch (_) {
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  isPersian
+                                      ? 'کپی در دسترس نیست'
+                                      : 'Нусхабардорӣ дастрас нест',
+                                ),
+                              ),
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ],
+                  // Font Size Controls (A- / A+)
+                  IconButton(
+                    tooltip: isPersian
+                        ? 'کوچک‌تر کردن متن'
+                        : 'Кам кардани матн',
+                    icon: const Icon(Icons.text_decrease, size: 20),
+                    onPressed: () => ref
+                        .read(readerPreferencesProvider.notifier)
+                        .decreaseFontSize(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: Text(
+                      isPersian
+                          ? '${AppTranslations.formatDigits('${(100 + readerPrefs.fontSizeDelta * 5).round()}', DisplayLanguage.persian)}٪'
+                          : '${(100 + readerPrefs.fontSizeDelta * 5).round()}%',
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  IconButton(
+                    tooltip: isPersian
+                        ? 'بزرگ‌تر کردن متن'
+                        : 'Калон кардани матн',
+                    icon: const Icon(Icons.text_increase, size: 20),
+                    onPressed: () => ref
+                        .read(readerPreferencesProvider.notifier)
+                        .increaseFontSize(),
+                  ),
+                  const SizedBox(width: 8),
+                  // Source (Манбаъ) button
+                  OutlinedButton.icon(
+                    onPressed: () => SourcePanel.show(context, work),
+                    icon: const Icon(Icons.menu_book_outlined, size: 18),
+                    label: Text(
+                      isPersian ? 'منبع و اسناد' : 'Манбаъ',
+                      style: QalamTypography.meta(
+                        color: colors.onSurface,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _buildParallelVerses(
+    BuildContext context,
+    String tajikText,
+    String persianText,
+    double fontSize,
+    double lineHeight,
+    ColorScheme colors,
+  ) {
+    final tjLines = tajikText
+        .split('\n')
+        .where((l) => l.trim().isNotEmpty)
+        .toList();
+    final faLines = persianText
+        .split('\n')
+        .where((l) => l.trim().isNotEmpty)
+        .toList();
+
+    final count = tjLines.length > faLines.length
+        ? tjLines.length
+        : faLines.length;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (var i = 0; i < count; i++) ...[
+          Container(
+            margin: const EdgeInsets.only(bottom: 16),
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: colors.surfaceContainerHighest.withValues(alpha: 0.35),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: colors.outlineVariant.withValues(alpha: 0.5),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (i < tjLines.length)
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: SelectableText(
+                      tjLines[i],
+                      style: QalamTypography.heroProverb(
+                        color: colors.onSurface,
+                        fontSize: fontSize,
+                        height: lineHeight,
+                      ),
+                    ),
+                  ),
+                if (i < tjLines.length && i < faLines.length)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Divider(
+                      height: 1,
+                      color: colors.outlineVariant.withValues(alpha: 0.3),
+                    ),
+                  ),
+                if (i < faLines.length)
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: SelectableText(
+                      faLines[i],
+                      textAlign: TextAlign.right,
+                      style: QalamTypography.heroProverb(
+                        color: colors.primary,
+                        fontSize: fontSize * 0.95,
+                        height: lineHeight,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ],
     );
   }

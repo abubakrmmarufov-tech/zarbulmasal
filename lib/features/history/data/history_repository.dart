@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import '../../../core/utils/search_normalizer.dart';
 import '../domain/history_domain.dart';
 
 class HistoryRepository {
   static const booksAssetPath = 'assets/data/history/books.json';
   static const entriesAssetPath = 'assets/data/history/entries.json';
-  static final _searchMarks = RegExp(r'[\u064B-\u065F\u0670\u06D6-\u06ED]');
 
   final AssetBundle _bundle;
 
@@ -34,36 +34,36 @@ class HistoryRepository {
     String query, {
     String? grade,
     HistoryEntryKind? kind,
+    HistoryEpoch? epoch,
   }) {
-    final normalized = _normalize(query);
+    final cleanQuery = query.trim();
     return entries
         .where((entry) {
           if (grade != null && entry.grade != grade) return false;
           if (kind != null && entry.kind != kind) return false;
-          if (normalized.isEmpty) return true;
-          final haystack = [
+          if (epoch != null && entry.epoch != epoch) return false;
+          if (cleanQuery.isEmpty) return true;
+          final searchFields = [
             entry.title,
-            entry.titlePersian,
+            if (entry.titlePersian != null) entry.titlePersian!,
             entry.summary,
+            if (entry.summaryPersian != null) entry.summaryPersian!,
             entry.period,
             entry.sourceSection,
+            if (entry.capital != null) entry.capital!,
+            if (entry.capitalPersian != null) entry.capitalPersian!,
+            if (entry.territory != null) entry.territory!,
+            if (entry.territoryPersian != null) entry.territoryPersian!,
+            if (entry.significance != null) entry.significance!,
+            if (entry.significancePersian != null) entry.significancePersian!,
+            if (entry.dates != null) entry.dates!,
+            if (entry.datesPersian != null) entry.datesPersian!,
             ...entry.keywords,
-          ].whereType<String>().map(_normalize).join(' ');
-          return haystack.contains(normalized);
+            ...entry.keyFigures,
+            ...entry.keyFiguresPersian,
+          ];
+          return SearchNormalizer.matchesAny(searchFields, cleanQuery);
         })
         .toList(growable: false);
-  }
-
-  static String _normalize(String value) {
-    return value
-        .toLowerCase()
-        .replaceAll(_searchMarks, '')
-        .replaceAll('\u200c', '')
-        .replaceAll('\u200d', '')
-        .replaceAll('ي', 'ی')
-        .replaceAll('ى', 'ی')
-        .replaceAll('ك', 'ک')
-        .replaceAll(RegExp(r'\s+'), ' ')
-        .trim();
   }
 }

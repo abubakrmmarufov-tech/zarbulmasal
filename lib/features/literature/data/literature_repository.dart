@@ -19,8 +19,23 @@ class LiteratureRepository {
       'assets/data/literature/school_canon.json';
   static const String oralHeritageAssetPath =
       'assets/data/literature/oral_heritage.json';
+  static final _searchMarks = RegExp(r'[\u064B-\u065F\u0670\u06D6-\u06ED]');
 
   LiteratureRepository({AssetBundle? bundle}) : _bundle = bundle ?? rootBundle;
+
+  /// Normalizes common Persian keyboard variants for tolerant local search.
+  static String normalizeSearchText(String value) {
+    return value
+        .toLowerCase()
+        .replaceAll(_searchMarks, '')
+        .replaceAll('\u200c', '')
+        .replaceAll('\u200d', '')
+        .replaceAll('ي', 'ی')
+        .replaceAll('ى', 'ی')
+        .replaceAll('ك', 'ک')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
+  }
 
   /// Loads verified literary authors from [authorsAssetPath].
   Future<List<LiteraryAuthor>> loadAuthors() async {

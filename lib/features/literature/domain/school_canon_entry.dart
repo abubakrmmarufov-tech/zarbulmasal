@@ -30,11 +30,20 @@ class SchoolCanonEntry {
   /// Publication year of the textbook edition (e.g. "2018").
   final String textbookYear;
 
+  /// Stable ID of the held textbook edition in the literature source register.
+  final String sourceId;
+
   /// Curriculum requirement type: "mandatory" (*ҳатмӣ*) or "recommended" (*барои мутолиаи беруназсинфӣ*).
   final String curriculumType;
 
   /// Bibliographical page citation or curriculum evidence.
   final String sourceEvidence;
+
+  /// Citation-review state for this curriculum mapping.
+  ///
+  /// A textbook mention is not a verified curriculum citation until its page
+  /// and edition have been checked against the held source.
+  final String citationStatus;
 
   const SchoolCanonEntry({
     required this.id,
@@ -46,12 +55,18 @@ class SchoolCanonEntry {
     required this.textbookAuthors,
     required this.textbookPublisher,
     required this.textbookYear,
+    this.sourceId = '',
     this.curriculumType = 'mandatory',
     required this.sourceEvidence,
+    this.citationStatus = 'needsReview',
   });
 
   /// Whether this canon entry is part of the mandatory school syllabus.
   bool get isMandatory => curriculumType.trim().toLowerCase() == 'mandatory';
+
+  /// Whether this entry has a page-level, editor-reviewed citation.
+  bool get isCitationVerified =>
+      citationStatus.trim().toLowerCase() == 'verified';
 
   /// Creates a [SchoolCanonEntry] from a JSON map.
   factory SchoolCanonEntry.fromJson(Map<String, dynamic> json) {
@@ -70,11 +85,15 @@ class SchoolCanonEntry {
               as String,
       textbookYear: (json['textbookYear'] ?? json['textbook_year'] ?? '')
           .toString(),
+      sourceId: (json['sourceId'] ?? json['source_id'] ?? '') as String,
       curriculumType:
           (json['curriculumType'] ?? json['curriculum_type'] ?? 'mandatory')
               as String,
       sourceEvidence:
           (json['sourceEvidence'] ?? json['source_evidence'] ?? '') as String,
+      citationStatus:
+          (json['citationStatus'] ?? json['citation_status'] ?? 'needsReview')
+              as String,
     );
   }
 
@@ -90,8 +109,10 @@ class SchoolCanonEntry {
       'textbookAuthors': textbookAuthors,
       'textbookPublisher': textbookPublisher,
       'textbookYear': textbookYear,
+      'sourceId': sourceId,
       'curriculumType': curriculumType,
       'sourceEvidence': sourceEvidence,
+      'citationStatus': citationStatus,
     };
   }
 
@@ -106,8 +127,10 @@ class SchoolCanonEntry {
     String? textbookAuthors,
     String? textbookPublisher,
     String? textbookYear,
+    String? sourceId,
     String? curriculumType,
     String? sourceEvidence,
+    String? citationStatus,
   }) {
     return SchoolCanonEntry(
       id: id ?? this.id,
@@ -119,8 +142,10 @@ class SchoolCanonEntry {
       textbookAuthors: textbookAuthors ?? this.textbookAuthors,
       textbookPublisher: textbookPublisher ?? this.textbookPublisher,
       textbookYear: textbookYear ?? this.textbookYear,
+      sourceId: sourceId ?? this.sourceId,
       curriculumType: curriculumType ?? this.curriculumType,
       sourceEvidence: sourceEvidence ?? this.sourceEvidence,
+      citationStatus: citationStatus ?? this.citationStatus,
     );
   }
 

@@ -2,30 +2,49 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/utils/search_normalizer.dart';
 import '../../data/models/proverb.dart';
 import '../../data/models/category.dart';
 import '../../data/seed/seed_categories.dart';
 import '../../data/seed/seed_proverbs.dart';
 
+/// Injected pre-loaded SharedPreferences instance.
+/// In production, this is initialized before runApp and overridden in ProviderScope
+/// so that theme, language, and onboarding states are instant and non-flashing.
+final sharedPreferencesProvider = Provider<SharedPreferences?>((ref) => null);
+
 final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((
   ref,
 ) {
-  return ThemeModeNotifier();
+  final prefs = ref.watch(sharedPreferencesProvider);
+  return ThemeModeNotifier(prefs);
 });
 
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
-  ThemeModeNotifier() : super(ThemeMode.system) {
-    _loadTheme();
+  final SharedPreferences? _prefs;
+
+  static ThemeMode _resolveInitial(SharedPreferences? prefs) {
+    if (prefs == null) return ThemeMode.light;
+    final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
+    return isDark ? ThemeMode.dark : ThemeMode.light;
+  }
+
+  ThemeModeNotifier([SharedPreferences? prefs])
+    : _prefs = prefs,
+      super(_resolveInitial(prefs)) {
+    if (prefs == null) {
+      _loadTheme();
+    }
   }
 
   Future<void> _loadTheme() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
     state = isDark ? ThemeMode.dark : ThemeMode.light;
   }
 
   Future<void> toggleTheme() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     final isDark = state == ThemeMode.light;
     await prefs.setBool(AppConstants.prefsDarkMode, isDark);
     state = isDark ? ThemeMode.dark : ThemeMode.light;
@@ -34,26 +53,40 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 
 final favoritesProvider = StateNotifierProvider<FavoritesNotifier, Set<String>>(
   (ref) {
-    return FavoritesNotifier();
+    final prefs = ref.watch(sharedPreferencesProvider);
+    return FavoritesNotifier(prefs);
   },
 );
 
 class FavoritesNotifier extends StateNotifier<Set<String>> {
+  final SharedPreferences? _prefs;
   late Future<void> _initFuture;
 
-  FavoritesNotifier() : super({}) {
-    _initFuture = _loadFavorites();
+  static Set<String> _resolveInitial(SharedPreferences? prefs) {
+    if (prefs == null) return const {};
+    final list = prefs.getStringList(AppConstants.prefsFavorites) ?? [];
+    return list.toSet();
+  }
+
+  FavoritesNotifier([SharedPreferences? prefs])
+    : _prefs = prefs,
+      super(_resolveInitial(prefs)) {
+    if (prefs == null) {
+      _initFuture = _loadFavorites();
+    } else {
+      _initFuture = Future.value();
+    }
   }
 
   Future<void> _loadFavorites() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     final list = prefs.getStringList(AppConstants.prefsFavorites) ?? [];
     state = list.toSet();
   }
 
   Future<void> toggle(String proverbId) async {
     await _initFuture;
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     final newSet = Set<String>.from(state);
     if (newSet.contains(proverbId)) {
       newSet.remove(proverbId);
@@ -77,22 +110,35 @@ enum DisplayLanguage { tajik, persian }
 
 final displayLanguageProvider =
     StateNotifierProvider<DisplayLanguageNotifier, DisplayLanguage>((ref) {
-      return DisplayLanguageNotifier();
+      final prefs = ref.watch(sharedPreferencesProvider);
+      return DisplayLanguageNotifier(prefs);
     });
 
 class DisplayLanguageNotifier extends StateNotifier<DisplayLanguage> {
-  DisplayLanguageNotifier() : super(DisplayLanguage.tajik) {
-    _loadLanguage();
+  final SharedPreferences? _prefs;
+
+  static DisplayLanguage _resolveInitial(SharedPreferences? prefs) {
+    if (prefs == null) return DisplayLanguage.tajik;
+    final lang = prefs.getString(AppConstants.prefsLanguage) ?? 'tj';
+    return lang == 'fa' ? DisplayLanguage.persian : DisplayLanguage.tajik;
+  }
+
+  DisplayLanguageNotifier([SharedPreferences? prefs])
+    : _prefs = prefs,
+      super(_resolveInitial(prefs)) {
+    if (prefs == null) {
+      _loadLanguage();
+    }
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     final lang = prefs.getString(AppConstants.prefsLanguage) ?? 'tj';
     state = lang == 'fa' ? DisplayLanguage.persian : DisplayLanguage.tajik;
   }
 
   Future<void> setLanguage(DisplayLanguage lang) async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     await prefs.setString(
       AppConstants.prefsLanguage,
       lang == DisplayLanguage.persian ? 'fa' : 'tj',
@@ -127,16 +173,20 @@ final filteredProverbsProvider = Provider<List<Proverb>>((ref) {
   final proverbs = ref.watch(proverbsProvider);
   final category = ref.watch(selectedCategoryProvider);
   final level = ref.watch(selectedLevelProvider);
-  final query = ref.watch(searchQueryProvider).toLowerCase();
+  final query = ref.watch(searchQueryProvider);
 
   return proverbs.where((p) {
     final matchesCategory = category == null || p.categoryId == category;
     final matchesLevel = level == null || p.level == level;
     final matchesQuery =
         query.isEmpty ||
-        p.tajikCyrillic.toLowerCase().contains(query) ||
-        p.persianText.toLowerCase().contains(query) ||
-        p.meaningTj.toLowerCase().contains(query);
+        SearchNormalizer.matchesAny([
+          p.tajikCyrillic,
+          p.persianText,
+          p.meaningTj,
+          p.simpleExplanationTj,
+          p.exampleSentenceTj,
+        ], query);
     return matchesCategory && matchesLevel && matchesQuery;
   }).toList();
 });
@@ -147,15 +197,23 @@ final favoritesListProvider = Provider<List<Proverb>>((ref) {
   return proverbs.where((p) => favorites.contains(p.id)).toList();
 });
 
+/// Deterministic, gapless calendar day index calculation based on UTC days difference.
+/// Guaranteed to advance by exactly 1 day per calendar day regardless of month length (28, 29, 30, 31)
+/// and across leap years and year-end transitions.
+int calendarDayIndex(DateTime now, int catalogLength) {
+  if (catalogLength <= 0) return 0;
+  final epoch = DateTime.utc(2020, 1, 1);
+  final target = DateTime.utc(now.year, now.month, now.day);
+  final days = target.difference(epoch).inDays;
+  return ((days % catalogLength) + catalogLength) % catalogLength;
+}
+
 final dailyProverbProvider = Provider<Proverb?>((ref) {
   final proverbs = ref.watch(proverbsProvider);
-  final now = DateTime.now();
-
   if (proverbs.isEmpty) {
     return null;
   }
-
-  final index = (now.year * 365 + now.month * 31 + now.day) % proverbs.length;
+  final index = calendarDayIndex(DateTime.now(), proverbs.length);
   return proverbs[index];
 });
 
@@ -163,27 +221,39 @@ final dailyProverbProvider = Provider<Proverb?>((ref) {
 
 final onboardingCompleteProvider =
     StateNotifierProvider<OnboardingNotifier, bool?>((ref) {
-      return OnboardingNotifier();
+      final prefs = ref.watch(sharedPreferencesProvider);
+      return OnboardingNotifier(prefs);
     });
 
 class OnboardingNotifier extends StateNotifier<bool?> {
-  OnboardingNotifier() : super(null) {
-    _load();
+  final SharedPreferences? _prefs;
+
+  static bool? _resolveInitial(SharedPreferences? prefs) {
+    if (prefs == null) return null;
+    return prefs.getBool(AppConstants.prefsOnboardingComplete) ?? false;
+  }
+
+  OnboardingNotifier([SharedPreferences? prefs])
+    : _prefs = prefs,
+      super(_resolveInitial(prefs)) {
+    if (prefs == null) {
+      _load();
+    }
   }
 
   Future<void> _load() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     state = prefs.getBool(AppConstants.prefsOnboardingComplete) ?? false;
   }
 
   Future<void> complete() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     await prefs.setBool(AppConstants.prefsOnboardingComplete, true);
     state = true;
   }
 
   Future<void> reset() async {
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
     await prefs.setBool(AppConstants.prefsOnboardingComplete, false);
     state = false;
   }

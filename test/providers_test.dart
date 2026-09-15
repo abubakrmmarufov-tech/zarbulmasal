@@ -340,4 +340,58 @@ void main() {
       }
     },
   );
+
+  test(
+    'pre-loaded sharedPreferencesProvider initializes state synchronously',
+    () async {
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefsDarkMode: true,
+        AppConstants.prefsLanguage: 'fa',
+        AppConstants.prefsFavorites: [seedProverbs.first.id],
+        AppConstants.prefsOnboardingComplete: true,
+      });
+      final prefs = await SharedPreferences.getInstance();
+
+      final container = ProviderContainer(
+        overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+      );
+      addTearDown(container.dispose);
+
+      // Initial read must be immediately synchronous without delay or flash
+      expect(container.read(themeModeProvider), ThemeMode.dark);
+      expect(container.read(displayLanguageProvider), DisplayLanguage.persian);
+      expect(
+        container.read(favoritesProvider),
+        contains(seedProverbs.first.id),
+      );
+      expect(container.read(onboardingCompleteProvider), isTrue);
+    },
+  );
+
+  test(
+    'filteredProverbsProvider uses diacritic folding and phonetic matching',
+    () {
+      final container = ProviderContainer();
+      addTearDown(container.dispose);
+
+      // Search with plain 'и' for a word that contains 'ӣ'
+      final proverbWithI = seedProverbs.firstWhere(
+        (p) => p.tajikCyrillic.contains('ӣ'),
+      );
+      final plainSearch = proverbWithI.tajikCyrillic
+          .replaceAll('ӣ', 'и')
+          .split(' ')
+          .first;
+      container.read(searchQueryProvider.notifier).state = plainSearch;
+      expect(container.read(filteredProverbsProvider), contains(proverbWithI));
+
+      // Search with Persian ZWNJ removed or added
+      final proverbWithFa = seedProverbs.firstWhere(
+        (p) => p.persianText.isNotEmpty,
+      );
+      final faWord = proverbWithFa.persianText.split(' ').first;
+      container.read(searchQueryProvider.notifier).state = faWord;
+      expect(container.read(filteredProverbsProvider), contains(proverbWithFa));
+    },
+  );
 }

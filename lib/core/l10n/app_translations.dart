@@ -53,6 +53,9 @@ class AppTranslations {
     'quiz_title': 'Озмун',
     'quiz_question_of': 'Савол \${0} аз \${1}',
     'quiz_choose_meaning': 'Маънои дурустро интихоб кунед:',
+    'quiz_tajik_fallback':
+        'Гузинаҳои шарҳ бо хатти сирилликии тоҷикӣ мебошанд.',
+    'quiz_review_title': 'Шарҳи зарбулмасал',
     'quiz_correct_of': '\${0} аз \${1} дуруст',
     'quiz_excellent': 'Аъло!',
     'quiz_good': 'Хуб!',
@@ -64,8 +67,13 @@ class AppTranslations {
     'flashcards_card_of': 'Корти \${0} аз \${1}',
     'flashcards_meaning': 'Маъно',
     'flashcards_explanation': 'Шарҳ',
+    'flashcards_tajik_fallback':
+        'Шарҳҳо ҳоло бо хатти сирилликии тоҷикӣ намоиш дода мешаванд.',
     'flashcards_tap_to_hide': 'Барои пинҳон кардан ламс кунед',
     'flashcards_tap_to_show': 'Барои дидани маъно ламс кунед',
+    'flashcard_mastery_again': 'Бозхонӣ',
+    'flashcard_mastery_learning': 'Дар ёдгирӣ',
+    'flashcard_mastery_mastered': 'Аз худ шуд',
     // Settings
     'settings_title': 'Танзимот',
     'settings_subtitle': 'Танзимоти барнома',
@@ -297,6 +305,8 @@ class AppTranslations {
     'quiz_title': 'آزمون',
     'quiz_question_of': 'سؤال \${0} از \${1}',
     'quiz_choose_meaning': 'معنی صحیح را انتخاب کنید:',
+    'quiz_tajik_fallback': 'گزینه‌های توضیح به خط سیریلیک تاجیکی می‌باشند.',
+    'quiz_review_title': 'توضیح ضرب‌المثل',
     'quiz_correct_of': '\${0} از \${1} درست',
     'quiz_excellent': 'عالی!',
     'quiz_good': 'خوب!',
@@ -308,8 +318,13 @@ class AppTranslations {
     'flashcards_card_of': 'کارت \${0} از \${1}',
     'flashcards_meaning': 'معنی',
     'flashcards_explanation': 'توضیح',
+    'flashcards_tajik_fallback':
+        'توضیح‌ها فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شوند.',
     'flashcards_tap_to_hide': 'برای پنهان کردن لمس کنید',
     'flashcards_tap_to_show': 'برای دیدن معنی لمس کنید',
+    'flashcard_mastery_again': 'دوباره',
+    'flashcard_mastery_learning': 'در حال یادگیری',
+    'flashcard_mastery_mastered': 'یاد گرفتم',
     // Settings
     'settings_title': 'تنظیمات',
     'settings_subtitle': 'تنظیمات برنامه',

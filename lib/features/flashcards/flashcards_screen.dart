@@ -87,10 +87,9 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
               )
             : LayoutBuilder(
                 builder: (context, constraints) {
-                  final cardHeight = (constraints.maxHeight - 180).clamp(
-                    320.0,
-                    620.0,
-                  );
+                  final cardHeight =
+                      (constraints.maxHeight - (_showMeaning ? 250 : 180))
+                          .clamp(240.0, 560.0);
                   return SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(
                       QalamSpacing.pageH,
@@ -108,7 +107,10 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                             Row(
                               children: [
                                 Text(
-                                  '${_currentIndex + 1}'.padLeft(2, '0'),
+                                  AppTranslations.formatDigits(
+                                    '${_currentIndex + 1}'.padLeft(2, '0'),
+                                    lang,
+                                  ),
                                   style: QalamTypography.pageTitle(
                                     color: colors.primary,
                                     fontSize: 40,
@@ -121,8 +123,14 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                       'flashcards_card_of',
                                       lang,
                                       [
-                                        '${_currentIndex + 1}',
-                                        '${_flashcards.length}',
+                                        AppTranslations.formatDigits(
+                                          '${_currentIndex + 1}',
+                                          lang,
+                                        ),
+                                        AppTranslations.formatDigits(
+                                          '${_flashcards.length}',
+                                          lang,
+                                        ),
                                       ],
                                     ),
                                     style: QalamTypography.meta(
@@ -158,6 +166,144 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
                                 onSwipeRight: () => _go(1),
                               ),
                             ),
+                            if (_showMeaning) ...[
+                              const SizedBox(height: 14),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: OutlinedButton(
+                                      style: OutlinedButton.styleFrom(
+                                        foregroundColor: colors.error,
+                                        side: BorderSide(
+                                          color: colors.error.withValues(
+                                            alpha: 0.5,
+                                          ),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).hideCurrentSnackBar();
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              AppTranslations.get(
+                                                'flashcard_mastery_again',
+                                                lang,
+                                              ),
+                                            ),
+                                            duration: const Duration(
+                                              milliseconds: 800,
+                                            ),
+                                          ),
+                                        );
+                                        _go(1);
+                                      },
+                                      child: Text(
+                                        AppTranslations.get(
+                                          'flashcard_mastery_again',
+                                          lang,
+                                        ),
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: OutlinedButton(
+                                      style: OutlinedButton.styleFrom(
+                                        foregroundColor: colors.primary,
+                                        side: BorderSide(
+                                          color: colors.primary.withValues(
+                                            alpha: 0.5,
+                                          ),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).hideCurrentSnackBar();
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              AppTranslations.get(
+                                                'flashcard_mastery_learning',
+                                                lang,
+                                              ),
+                                            ),
+                                            duration: const Duration(
+                                              milliseconds: 800,
+                                            ),
+                                          ),
+                                        );
+                                        _go(1);
+                                      },
+                                      child: Text(
+                                        AppTranslations.get(
+                                          'flashcard_mastery_learning',
+                                          lang,
+                                        ),
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: OutlinedButton(
+                                      style: OutlinedButton.styleFrom(
+                                        foregroundColor: const Color(
+                                          0xFF2E6B34,
+                                        ),
+                                        side: const BorderSide(
+                                          color: Color(0xFF2E6B34),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).hideCurrentSnackBar();
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              AppTranslations.get(
+                                                'flashcard_mastery_mastered',
+                                                lang,
+                                              ),
+                                            ),
+                                            duration: const Duration(
+                                              milliseconds: 800,
+                                            ),
+                                          ),
+                                        );
+                                        _go(1);
+                                      },
+                                      child: Text(
+                                        AppTranslations.get(
+                                          'flashcard_mastery_mastered',
+                                          lang,
+                                        ),
+                                        style: const TextStyle(fontSize: 12),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                             const SizedBox(height: 20),
                             Row(
                               children: [
