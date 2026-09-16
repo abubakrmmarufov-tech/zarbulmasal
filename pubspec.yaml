@@ -7,8 +7,8 @@ issue_tracker: https://github.com/abubakrmmarufov-tech/zarbulmasal/issues
 version: 2.0.0+2004
 
 environment:
-  sdk: ^3.12.1
-  flutter: 3.47.2
+  sdk: ">=3.11.0 <4.0.0"
+  flutter: ">=3.41.2"
 
 dependencies:
   flutter:

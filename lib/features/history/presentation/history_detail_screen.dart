@@ -35,15 +35,18 @@ class HistoryDetailScreen extends ConsumerWidget {
         data: (entries) {
           final entry = entries.firstWhere(
             (e) => e.id == entryId,
-            orElse: () => entries.first, // Fallback, shouldn't happen if routed correctly
+            orElse: () =>
+                entries.first, // Fallback, shouldn't happen if routed correctly
           );
 
           if (entry.id != entryId) {
-             return Center(child: Text(isPersian ? 'یافت نشد' : 'Ёфт нашуд'));
+            return Center(child: Text(isPersian ? 'یافت نشد' : 'Ёфт нашуд'));
           }
 
           final books = booksAsync.valueOrNull ?? [];
-          final sourceBook = books.where((b) => b.id == entry.sourceBookId).firstOrNull;
+          final sourceBook = books
+              .where((b) => b.id == entry.sourceBookId)
+              .firstOrNull;
 
           final title = isPersian && entry.titlePersian != null
               ? entry.titlePersian!
@@ -81,9 +84,14 @@ class HistoryDetailScreen extends ConsumerWidget {
             bottom: false,
             child: SingleChildScrollView(
               child: Directionality(
-                textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
+                textDirection: isPersian
+                    ? TextDirection.rtl
+                    : TextDirection.ltr,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 8,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -99,11 +107,16 @@ class HistoryDetailScreen extends ConsumerWidget {
                           Expanded(
                             child: Text(
                               _getKindLabel(entry.kind, isPersian),
-                              style: QalamTypography.eyebrow(color: colors.primary),
+                              style: QalamTypography.eyebrow(
+                                color: colors.primary,
+                              ),
                             ),
                           ),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
                               color: colors.primaryContainer,
                               borderRadius: BorderRadius.circular(8),
@@ -138,14 +151,21 @@ class HistoryDetailScreen extends ConsumerWidget {
                         ),
                       ),
                       const SizedBox(height: 24),
-                      if (dates != null || capital != null || territory != null || keyFigures.isNotEmpty) ...[
+                      if (dates != null ||
+                          capital != null ||
+                          territory != null ||
+                          keyFigures.isNotEmpty) ...[
                         Container(
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            color: colors.surfaceContainerHighest.withValues(alpha: 0.3),
+                            color: colors.surfaceContainerHighest.withValues(
+                              alpha: 0.3,
+                            ),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: colors.outlineVariant.withValues(alpha: 0.5),
+                              color: colors.outlineVariant.withValues(
+                                alpha: 0.5,
+                              ),
                             ),
                           ),
                           child: Column(
@@ -154,7 +174,9 @@ class HistoryDetailScreen extends ConsumerWidget {
                               if (dates != null && dates.isNotEmpty) ...[
                                 _DetailRow(
                                   icon: Icons.calendar_today,
-                                  label: isPersian ? 'دورهٔ زمانی' : 'Давраи замонӣ',
+                                  label: isPersian
+                                      ? 'دورهٔ زمانی'
+                                      : 'Давраи замонӣ',
                                   value: dates,
                                 ),
                               ],
@@ -167,7 +189,8 @@ class HistoryDetailScreen extends ConsumerWidget {
                                   value: capital,
                                 ),
                               ],
-                              if (territory != null && territory.isNotEmpty) ...[
+                              if (territory != null &&
+                                  territory.isNotEmpty) ...[
                                 if ((dates != null && dates.isNotEmpty) ||
                                     (capital != null && capital.isNotEmpty))
                                   const Divider(height: 16),
@@ -179,12 +202,15 @@ class HistoryDetailScreen extends ConsumerWidget {
                               ],
                               if (keyFigures.isNotEmpty) ...[
                                 if ((capital != null && capital.isNotEmpty) ||
-                                    (territory != null && territory.isNotEmpty) ||
+                                    (territory != null &&
+                                        territory.isNotEmpty) ||
                                     (dates != null && dates.isNotEmpty))
                                   const Divider(height: 16),
                                 _DetailRow(
                                   icon: Icons.people_outline,
-                                  label: isPersian ? 'چهره‌ها و حکمرانان' : 'Чеҳраҳо ва ҳукмронон',
+                                  label: isPersian
+                                      ? 'چهره‌ها و حکمرانان'
+                                      : 'Чеҳраҳо ва ҳукмронон',
                                   value: keyFigures.join(', '),
                                 ),
                               ],
@@ -223,7 +249,9 @@ class HistoryDetailScreen extends ConsumerWidget {
                       if (entry.relatedAuthorIds.isNotEmpty) ...[
                         const SizedBox(height: 24),
                         Text(
-                          isPersian ? 'شاعران و ادبان وابسته' : 'Шоирон ва адибони пайвандӣ',
+                          isPersian
+                              ? 'شاعران و ادبان وابسته'
+                              : 'Шоирон ва адибони пайвандӣ',
                           style: QalamTypography.eyebrow(color: colors.primary),
                         ),
                         const SizedBox(height: 12),
@@ -231,17 +259,25 @@ class HistoryDetailScreen extends ConsumerWidget {
                           spacing: 8,
                           runSpacing: 8,
                           children: entry.relatedAuthorIds.map((authorId) {
-                            final authorAsync = ref.watch(authorByIdProvider(authorId));
+                            final authorAsync = ref.watch(
+                              authorByIdProvider(authorId),
+                            );
                             final author = authorAsync.valueOrNull;
                             final authorName = author != null
-                                ? ((isPersian && author.canonicalNamePersian != null)
+                                ? ((isPersian &&
+                                          author.canonicalNamePersian != null)
                                       ? author.canonicalNamePersian!
                                       : author.canonicalName)
                                 : (authorId == 'rudaki'
-                                      ? (isPersian ? 'ابوعبدالله رودکی' : 'Абӯабдуллоҳи Рӯдакӣ')
+                                      ? (isPersian
+                                            ? 'ابوعبدالله رودکی'
+                                            : 'Абӯабдуллоҳи Рӯдакӣ')
                                       : authorId);
                             return ActionChip(
-                              avatar: const Icon(Icons.auto_stories_outlined, size: 16),
+                              avatar: const Icon(
+                                Icons.auto_stories_outlined,
+                                size: 16,
+                              ),
                               label: Text(authorName),
                               onPressed: () {
                                 context.push('/literature/poet/$authorId');
@@ -263,14 +299,20 @@ class HistoryDetailScreen extends ConsumerWidget {
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.menu_book, size: 18, color: colors.primary),
+                                Icon(
+                                  Icons.menu_book,
+                                  size: 18,
+                                  color: colors.primary,
+                                ),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: Text(
                                     isPersian
                                         ? 'منبع مستند: کتاب درسی تاریخ خلق تاجیک'
                                         : 'Сарчашмаи таълимӣ: Китоби дарсии «Таърихи халқи тоҷик»',
-                                    style: QalamTypography.eyebrow(color: colors.primary),
+                                    style: QalamTypography.eyebrow(
+                                      color: colors.primary,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -280,13 +322,17 @@ class HistoryDetailScreen extends ConsumerWidget {
                               isPersian
                                   ? 'صنف ${AppTranslations.formatDigits(entry.grade, DisplayLanguage.persian)} · $section'
                                   : 'Синфи ${entry.grade} · $section',
-                              style: QalamTypography.meta(color: colors.onSurface),
+                              style: QalamTypography.meta(
+                                color: colors.onSurface,
+                              ),
                             ),
                             if (sourceBook != null) ...[
                               const SizedBox(height: 6),
                               Text(
                                 '${sourceBook.title} (${sourceBook.author})',
-                                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                                style: QalamTypography.meta(
+                                  color: colors.onSurfaceVariant,
+                                ),
                               ),
                             ],
                           ],

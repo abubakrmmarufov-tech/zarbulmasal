@@ -5,7 +5,6 @@ import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
-import '../../literature/data/literature_providers.dart';
 import '../data/history_providers.dart';
 import '../domain/history_domain.dart';
 
