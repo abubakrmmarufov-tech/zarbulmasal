@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
@@ -1212,8 +1213,45 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                           color: colors.onSurfaceVariant,
                         ),
                       ),
+                      if (sourceBook!.sourceUrl.isNotEmpty) ...[
+                        const SizedBox(height: 12),
+                        SizedBox(
+                          width: double.infinity,
+                          child: FilledButton.tonalIcon(
+                            onPressed: () async {
+                              final uri = Uri.parse(sourceBook!.sourceUrl);
+                              if (await canLaunchUrl(uri)) {
+                                await launchUrl(
+                                  uri,
+                                  mode: LaunchMode.externalApplication,
+                                );
+                              }
+                            },
+                            icon: const Icon(Icons.open_in_browser, size: 18),
+                            label: Text(
+                              isPersian
+                                  ? 'ورود به وبگاه کتاب در marifat.tj'
+                                  : 'Мутолиа дар сомонаи расмӣ (marifat.tj)',
+                            ),
+                          ),
+                        ),
+                      ],
                     ],
                   ],
+                ),
+              ),
+              const SizedBox(height: 12),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  icon: const Icon(Icons.fullscreen, size: 18),
+                  label: Text(
+                    isPersian ? 'نمایش تمام‌صفحه' : 'Саҳифаи пурраи таърихӣ',
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    context.push('/history/${entry.id}');
+                  },
                 ),
               ),
             ],
@@ -1324,6 +1362,29 @@ void _showHistoryBookDetails(
                     ),
                   ],
                   const SizedBox(height: 20),
+                  if (book.sourceUrl.isNotEmpty) ...[
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        icon: const Icon(Icons.open_in_browser),
+                        label: Text(
+                          isPersian
+                              ? 'ورود به وبگاه کتاب (marifat.tj)'
+                              : 'Гузаштан ба сомонаи китоб (marifat.tj)',
+                        ),
+                        onPressed: () async {
+                          final uri = Uri.parse(book.sourceUrl);
+                          if (await canLaunchUrl(uri)) {
+                            await launchUrl(
+                              uri,
+                              mode: LaunchMode.externalApplication,
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
                   SizedBox(
                     width: double.infinity,
                     child: FilledButton.icon(

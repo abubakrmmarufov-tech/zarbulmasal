@@ -22,7 +22,7 @@
     "relatedHistoryEntryIds": [
       "dynasty-samanid",
       "person-nasr-ii",
-      "poem-rudaki-kalila"
+      "person-ismail-samani"
     ],
     "rights": {
       "authorDeathYear": "941",
@@ -66,7 +66,8 @@
       "permissionReference": null
     },
     "birthDateExact": "1004",
-    "deathDateExact": "Тақрибан 1088"
+    "deathDateExact": "Тақрибан 1088",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "kamol_khujandi",
@@ -96,7 +97,8 @@
       "permissionReference": null
     },
     "birthDateExact": "Тақрибан 1320",
-    "deathDateExact": "Тақрибан 1400"
+    "deathDateExact": "Тақрибан 1400",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "tursunzoda",
@@ -130,7 +132,11 @@
       "permissionReference": null
     },
     "birthDateExact": "19 апрели 1911",
-    "deathDateExact": "24 сентябри 1977"
+    "deathDateExact": "24 сентябри 1977",
+    "relatedHistoryEntryIds": [
+      "event-tajik-ussr",
+      "event-world-war-two"
+    ]
   },
   {
     "id": "qanoat",
@@ -162,7 +168,8 @@
       "permissionReference": null
     },
     "birthDateExact": "20 майи 1932",
-    "deathDateExact": "18 майи 2018"
+    "deathDateExact": "18 майи 2018",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "loiq_sherali",
@@ -194,7 +201,10 @@
       "permissionReference": null
     },
     "birthDateExact": "20 майи 1941",
-    "deathDateExact": "30 июни 2000"
+    "deathDateExact": "30 июни 2000",
+    "relatedHistoryEntryIds": [
+      "event-independence"
+    ]
   },
   {
     "id": "bozor_sobir",
@@ -226,7 +236,10 @@
       "permissionReference": null
     },
     "birthDateExact": "20 ноябри 1938",
-    "deathDateExact": "1 майи 2018"
+    "deathDateExact": "1 майи 2018",
+    "relatedHistoryEntryIds": [
+      "event-independence"
+    ]
   },
   {
     "id": "gulnazar_keldi",
@@ -262,7 +275,10 @@
       "permissionReference": null
     },
     "birthDateExact": "20 сентябри 1945",
-    "deathDateExact": "13 августи 2020"
+    "deathDateExact": "13 августи 2020",
+    "relatedHistoryEntryIds": [
+      "event-independence"
+    ]
   },
   {
     "id": "gulrukhsor",
@@ -295,7 +311,8 @@
       "excerptAllowed": true,
       "permissionReference": null
     },
-    "birthDateExact": "17 декабри 1947"
+    "birthDateExact": "17 декабри 1947",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "farzona",
@@ -328,12 +345,13 @@
       "excerptAllowed": true,
       "permissionReference": null
     },
-    "birthDateExact": "3 ноябри 1964"
+    "birthDateExact": "3 ноябри 1964",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "47c1dc67-363a-4506-8a9c-bbbb38f98d20",
     "canonicalName": "Садриддин Айнӣ",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "صدرالدین عینی",
     "aliases": [],
     "birthYear": "1878",
     "deathYear": "1954",
@@ -353,12 +371,16 @@
       "excerptAllowed": true
     },
     "birthDateExact": "15 апрели 1878",
-    "deathDateExact": "15 июли 1954"
+    "deathDateExact": "15 июли 1954",
+    "relatedHistoryEntryIds": [
+      "event-tajik-ussr",
+      "person-ayni"
+    ]
   },
   {
     "id": "455f0420-3834-48f0-86b9-7da673a2a684",
     "canonicalName": "Бедил",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "بیدل دهلوی",
     "aliases": [],
     "birthYear": "1644",
     "deathYear": "1720",
@@ -378,12 +400,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1644",
-    "deathDateExact": "5 декабри 1720"
+    "deathDateExact": "5 декабри 1720",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "d1abb54a-9804-4baf-b238-fd2203d7673e",
     "canonicalName": "Ҳофиз",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "حافظ شیرازی",
     "aliases": [],
     "birthYear": "~1315",
     "deathYear": "1390",
@@ -403,7 +426,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1315",
-    "deathDateExact": "1390"
+    "deathDateExact": "1390",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "1a55efdd-6a1f-43b8-834f-94af060b4329",
@@ -428,7 +452,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Августи 980",
-    "deathDateExact": "18 июни 1037"
+    "deathDateExact": "18 июни 1037",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "3853d79b-0951-44c3-a5db-229649fa30b6",
@@ -453,7 +478,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 990",
-    "deathDateExact": "Тақрибан 1055"
+    "deathDateExact": "Тақрибан 1055",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "d48ec80f-951d-4dfd-b65a-6e409561a712",
@@ -478,7 +504,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 961",
-    "deathDateExact": "1039"
+    "deathDateExact": "1039",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "282f4c69-1d14-4be2-89d3-d21f867e4964",
@@ -503,12 +530,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 980",
-    "deathDateExact": "1037"
+    "deathDateExact": "1037",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "1c82210c-343c-4499-9639-93f0a766b5f7",
     "canonicalName": "Манучеҳрии Домғонӣ",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "منوچهری دامغانی",
     "aliases": [],
     "birthYear": null,
     "deathYear": null,
@@ -526,7 +554,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
@@ -551,7 +580,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1000",
-    "deathDateExact": "1072"
+    "deathDateExact": "1072",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "92753b88-1d31-4f79-aae4-5d36c83ab4a1",
@@ -576,12 +606,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1021",
-    "deathDateExact": "1098"
+    "deathDateExact": "1098",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "6e223a11-a2df-4298-bb14-2911af2da37d",
     "canonicalName": "АБУАЛӢ ИБНИ СИНО",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "ابوعلی ابن سینا",
     "aliases": [],
     "birthYear": "980",
     "deathYear": "1037",
@@ -601,12 +632,16 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Августи 980",
-    "deathDateExact": "18 июни 1037"
+    "deathDateExact": "18 июни 1037",
+    "relatedHistoryEntryIds": [
+      "dynasty-samanid",
+      "dynasty-ghaznavid"
+    ]
   },
   {
     "id": "ab679c6b-ce9a-4e85-bf3b-81a8bed84623",
     "canonicalName": "БОБОТОҲИРИ УРЁН",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "باباطاهر عریان",
     "aliases": [],
     "birthYear": "~990",
     "deathYear": "~1055",
@@ -626,7 +661,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 990",
-    "deathDateExact": "Тақрибан 1055"
+    "deathDateExact": "Тақрибан 1055",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "5ff997ff-991d-4d18-ba6e-8acaa7a15058",
@@ -651,7 +687,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1000",
-    "deathDateExact": "1072"
+    "deathDateExact": "1072",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "732f0989-b849-4856-a0dd-ba2f64f1c9a0",
@@ -676,12 +713,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1021",
-    "deathDateExact": "1098"
+    "deathDateExact": "1098",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "69d27d87-439e-4efe-a14f-a1196aa8471f",
     "canonicalName": "САНОӢ",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "سنایی غزنوی",
     "aliases": [],
     "birthYear": "1080",
     "deathYear": "1131",
@@ -701,7 +739,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1080",
-    "deathDateExact": "1131"
+    "deathDateExact": "1131",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
@@ -726,12 +765,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1126",
-    "deathDateExact": "1189"
+    "deathDateExact": "1189",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "5fc69b51-c38a-4427-a362-5c8a14bca835",
     "canonicalName": "Умари Хайём",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "عمر خیام نیشابوری",
     "aliases": [],
     "birthYear": "1048",
     "deathYear": "1131",
@@ -751,7 +791,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "18 майи 1048",
-    "deathDateExact": "4 декабри 1131"
+    "deathDateExact": "4 декабри 1131",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
@@ -774,12 +815,13 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
     "canonicalName": "Саъдӣ",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "سعدی شیرازی",
     "aliases": [],
     "birthYear": "~1210",
     "deathYear": "~1292",
@@ -799,7 +841,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1210",
-    "deathDateExact": "Тақрибан 1292"
+    "deathDateExact": "Тақрибан 1292",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
@@ -824,12 +867,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1453",
-    "deathDateExact": "1512"
+    "deathDateExact": "1512",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "f09073cb-33b4-4fcc-abf8-75959350245c",
     "canonicalName": "Бадриддин Ҳилолӣ",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "بدرالدین هلالی",
     "aliases": [],
     "birthYear": "1470",
     "deathYear": "1529",
@@ -849,7 +893,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1470",
-    "deathDateExact": "1529"
+    "deathDateExact": "1529",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ef5a57a2-8949-43dd-85eb-8ceaf78335f3",
@@ -874,7 +919,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "3 июни 1909",
-    "deathDateExact": "10 октябри 1989"
+    "deathDateExact": "10 октябри 1989",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a7feaa09-c83f-44f2-a69e-0a46ba957dbc",
@@ -899,7 +945,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "6 майи 1912",
-    "deathDateExact": "1 августи 1993"
+    "deathDateExact": "1 августи 1993",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "400b9785-ae80-4957-a653-d65c72cdbf79",
@@ -922,7 +969,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "8e7316a8-5101-4fd2-8a83-0a883a8da9fb",
@@ -947,7 +995,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1592",
-    "deathDateExact": "1676"
+    "deathDateExact": "1676",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "310a8288-d554-4b9c-9ad1-3273b1edce85",
@@ -972,7 +1021,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "12 октябри 1887",
-    "deathDateExact": "16 марти 1957"
+    "deathDateExact": "16 марти 1957",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "be19709e-c3af-460d-80b9-4c67046e8be3",
@@ -995,7 +1045,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "9ab32712-ce1d-4054-a7cc-163ca4a8f11f",
@@ -1020,7 +1071,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "7 ноябри 1414",
-    "deathDateExact": "9 ноябри 1492"
+    "deathDateExact": "9 ноябри 1492",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "b299ac33-ad0c-4e9e-8bb3-aabfd19b8126",
@@ -1045,7 +1097,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1145",
-    "deathDateExact": "1221"
+    "deathDateExact": "1221",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "9a3f7c2a-a41d-4064-9ea7-766941c9ae35",
@@ -1068,7 +1121,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
@@ -1093,12 +1147,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 935",
-    "deathDateExact": "Тақрибан 977"
+    "deathDateExact": "Тақрибан 977",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
     "canonicalName": "Абулқосими Фирдавсӣ",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "ابوالقاسم فردوسی",
     "aliases": [],
     "birthYear": "~940",
     "deathYear": "~1020",
@@ -1118,7 +1173,11 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 940",
-    "deathDateExact": "Тақрибан 1020"
+    "deathDateExact": "Тақрибан 1020",
+    "relatedHistoryEntryIds": [
+      "dynasty-samanid",
+      "dynasty-ghaznavid"
+    ]
   },
   {
     "id": "e948618d-0c4c-484b-b60b-c1658bc51d57",
@@ -1143,7 +1202,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 935",
-    "deathDateExact": "Тақрибан 977"
+    "deathDateExact": "Тақрибан 977",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ac759bd8-fe4e-4ef3-9e2f-30226a014707",
@@ -1168,7 +1228,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 940",
-    "deathDateExact": "Тақрибан 1020"
+    "deathDateExact": "Тақрибан 1020",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "da1e1d82-ceeb-4a9e-9e42-251b9b05d20c",
@@ -1193,7 +1254,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1315",
-    "deathDateExact": "1390"
+    "deathDateExact": "1390",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "92a7c4fa-3191-4301-ba53-8087ce7ef3d8",
@@ -1218,7 +1280,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1525",
-    "deathDateExact": "1588"
+    "deathDateExact": "1588",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "afc28bbb-ebba-4669-9715-a10cbbe7400a",
@@ -1243,7 +1306,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 940",
-    "deathDateExact": "Тақрибан 1020"
+    "deathDateExact": "Тақрибан 1020",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "cef7fd49-54c8-4e46-9361-123cc52de5eb",
@@ -1266,7 +1330,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "6b080d51-336b-48ba-92cd-85fe29149e0d",
@@ -1289,7 +1354,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "79b50923-ea65-4554-b65d-bbf3ee49f35c",
@@ -1312,7 +1378,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a6b5eb18-39e9-4fdf-b492-e5956a553436",
@@ -1337,7 +1404,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": null,
-    "deathDateExact": null
+    "deathDateExact": null,
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "da5e2975-a8e2-44ce-a30c-0e5d98f73844",
@@ -1362,7 +1430,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 935",
-    "deathDateExact": "Тақрибан 977"
+    "deathDateExact": "Тақрибан 977",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
@@ -1385,7 +1454,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "3d5d70c0-6294-4b7d-b830-79db08edd6b8",
@@ -1410,7 +1480,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Асри X",
-    "deathDateExact": "Асри X"
+    "deathDateExact": "Асри X",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "bb00bac5-e207-4cc7-9539-a2af92b71281",
@@ -1435,7 +1506,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Августи 980",
-    "deathDateExact": "18 июни 1037"
+    "deathDateExact": "18 июни 1037",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a4b182d3-1c06-4c82-9858-0e71d95edeb3",
@@ -1458,7 +1530,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "da40ae16-883d-4232-86a1-976aa9ffc941",
@@ -1481,7 +1554,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "79049bfd-1f01-4f9d-8e59-851cdbd4bba2",
@@ -1504,7 +1578,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a2e5259d-9c1c-46f5-b845-04fb18d07858",
@@ -1527,7 +1602,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "26906a5a-692c-40a3-a991-6b3559cda394",
@@ -1550,7 +1626,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "6ab9cd0a-0ff0-4a73-99ba-6604d9c61847",
@@ -1575,7 +1652,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1859",
-    "deathDateExact": "1894"
+    "deathDateExact": "1894",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
@@ -1600,7 +1678,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1865",
-    "deathDateExact": "1919"
+    "deathDateExact": "1919",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "2e7a713f-c3d2-449e-bd6a-a4b5b7350201",
@@ -1625,7 +1704,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1864",
-    "deathDateExact": "1916"
+    "deathDateExact": "1916",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "8c4bf813-284a-4938-9c1b-ac9eb6cc53e4",
@@ -1648,7 +1728,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "404226c8-acbc-47e5-819e-4c63f93cb4d4",
@@ -1671,7 +1752,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7b8bcd3c-a1fa-4b9d-9378-76684d2495b0",
@@ -1696,7 +1778,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1145",
-    "deathDateExact": "1221"
+    "deathDateExact": "1221",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "42d303b5-f20f-440d-8079-a8e25ef52d2e",
@@ -1719,7 +1802,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "3537f811-9658-4f9b-a29b-6311e802e60e",
@@ -1742,7 +1826,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "1f97e6af-4d9c-4d58-9812-847d89348dfc",
@@ -1765,7 +1850,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "604d62c2-62fc-4aa3-a7d2-8348e714b52d",
@@ -1788,7 +1874,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "0a3d3ab5-3edd-4075-b382-7d16a25bdf71",
@@ -1813,7 +1900,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1644",
-    "deathDateExact": "5 декабри 1720"
+    "deathDateExact": "5 декабри 1720",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "17559ef6-4071-495f-b966-e5be3b33d3a3",
@@ -1838,7 +1926,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1126",
-    "deathDateExact": "1189"
+    "deathDateExact": "1189",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "650312c1-094f-4cd9-9313-efe38bdbef0f",
@@ -1863,7 +1952,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 980",
-    "deathDateExact": "1037"
+    "deathDateExact": "1037",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "32624545-f720-4267-9669-d3648b7369ac",
@@ -1888,7 +1978,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "12 октябри 1887",
-    "deathDateExact": "16 марти 1957"
+    "deathDateExact": "16 марти 1957",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "bdca68f7-2ee1-49bf-9780-27da55cea473",
@@ -1911,7 +2002,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "4830f7a5-85aa-4418-8785-40867a995614",
@@ -1934,7 +2026,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "2c8b026f-bab7-4cd8-9d86-26794a1573eb",
@@ -1957,7 +2050,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "2a94d1c2-8f15-4d08-948c-b7e9491d8273",
@@ -1980,7 +2074,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "d708065a-1337-495f-ae6b-b0b5ce40e90f",
@@ -2003,7 +2098,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7d0a189b-d704-4c0e-bc8b-8504ffcb4e9f",
@@ -2026,7 +2122,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "c76a0058-db4d-4bd3-83dd-a66f2b3578b4",
@@ -2049,7 +2146,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "1b65d9d8-0e3d-4e02-8c65-30f98e84e109",
@@ -2072,7 +2170,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "cf6c66fa-1c48-4819-a4d9-287225e766b2",
@@ -2095,7 +2194,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "d1bb3938-3e96-42a9-b73d-bafbabf8554f",
@@ -2118,7 +2218,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "58010d8f-2575-4b92-89e0-373f05b32929",
@@ -2141,7 +2242,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "896648b7-c7b7-4451-b8b3-cd37e4710fa1",
@@ -2164,7 +2266,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "dea74b1e-32da-4afc-862f-4a08fd22f8f5",
@@ -2189,7 +2292,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": null,
-    "deathDateExact": null
+    "deathDateExact": null,
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "2b5af239-bce6-4b05-98ad-fbeef1a54c12",
@@ -2212,7 +2316,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "c4ed06c1-4e72-485e-bde4-8f1c06e969db",
@@ -2237,7 +2342,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Асри X",
-    "deathDateExact": "Асри X"
+    "deathDateExact": "Асри X",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "98e43b59-1d3a-440a-9d73-83b599cee7c5",
@@ -2260,7 +2366,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ec7e9596-18d3-47dc-b952-bcbdfa023934",
@@ -2283,7 +2390,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "68bc433e-b316-46e1-bbe8-d53066764834",
@@ -2306,7 +2414,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "6866f29f-e813-4843-b346-ad5ff69191e8",
@@ -2329,7 +2438,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "0079c49a-da77-47d1-bc1e-8ff4cbb9d337",
@@ -2352,7 +2462,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ed2d18a8-f33e-4a66-8052-65128fe6295a",
@@ -2377,7 +2488,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": null,
-    "deathDateExact": null
+    "deathDateExact": null,
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "483ec51d-a691-4b78-918a-0fbc13f29a46",
@@ -2402,7 +2514,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": null,
-    "deathDateExact": null
+    "deathDateExact": null,
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "91bf5726-5e0a-451e-be4b-7d91650f6cfa",
@@ -2425,7 +2538,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "4ea4300f-493d-40bd-bf55-a83d9b397bf3",
@@ -2448,7 +2562,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "1b317e1f-83b1-43be-a0c0-4e210809c938",
@@ -2471,7 +2586,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "2564937c-eaeb-4faa-a4eb-0c9191a535fb",
@@ -2494,7 +2610,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "717847cd-64b0-47e7-9d1c-75866e880647",
@@ -2517,7 +2634,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "cfe58486-55c2-474d-b329-248040b519ee",
@@ -2540,7 +2658,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "9becac52-2650-408f-8ecf-d496a233d71a",
@@ -2563,7 +2682,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "8648e50d-ff7d-413d-a0fb-e1829ff940bb",
@@ -2586,7 +2706,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "5228f270-7e20-47cf-9e0b-4e6cc6fca51c",
@@ -2609,7 +2730,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "9915eac4-559e-4f20-9bdf-bb7a50e153db",
@@ -2632,7 +2754,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "e8ec4440-682a-48f1-ba59-54d8a9595c16",
@@ -2655,7 +2778,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "b5252e27-e6c6-401e-aca9-5fec3da36b65",
@@ -2680,7 +2804,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 940",
-    "deathDateExact": "Тақрибан 1020"
+    "deathDateExact": "Тақрибан 1020",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "beea5538-c891-4044-a75b-9bf21d1ef897",
@@ -2703,7 +2828,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "315b0945-c657-4c32-8b46-abb5f148482b",
@@ -2726,7 +2852,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "11c85433-4042-4e24-95fb-ccc37ef0d2ea",
@@ -2749,7 +2876,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "38f2044a-792f-46be-8707-90721abe3ea1",
@@ -2774,7 +2902,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1141",
-    "deathDateExact": "1209"
+    "deathDateExact": "1209",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "74ea3b93-4c65-4605-95a7-8c2ec4c382cc",
@@ -2799,7 +2928,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "12 октябри 1887",
-    "deathDateExact": "16 марти 1957"
+    "deathDateExact": "16 марти 1957",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "19750e0a-7629-436e-9715-a1530d0b1571",
@@ -2822,7 +2952,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "44aaf1c8-ce97-4cd1-a21f-7de5db7c615d",
@@ -2847,7 +2978,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "15 апрели 1878",
-    "deathDateExact": "15 июли 1954"
+    "deathDateExact": "15 июли 1954",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "82f30a4e-f468-4a7d-bf03-bd29d3279fe0",
@@ -2870,7 +3002,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "358dda13-365c-4434-87f0-d404b305adcb",
@@ -2895,7 +3028,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "7 ноябри 1414",
-    "deathDateExact": "9 ноябри 1492"
+    "deathDateExact": "9 ноябри 1492",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
@@ -2918,7 +3052,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "01df7214-28b7-44ab-a1f4-898bb7e83950",
@@ -2941,7 +3076,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ec41abdc-c530-4745-825f-a23cd7515ca5",
@@ -2964,7 +3100,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "5ec16ef0-b9c8-44e1-a6fc-4a01ee3f7def",
@@ -2987,7 +3124,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "337370dd-7731-490b-9e92-b7f9be6ba695",
@@ -3010,7 +3148,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "281c1b94-267e-4bbf-a7e5-47c24f99f0b5",
@@ -3035,7 +3174,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": null,
-    "deathDateExact": null
+    "deathDateExact": null,
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "eb037eb9-ba72-49bd-b009-8f9c84d46105",
@@ -3058,7 +3198,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "228feecd-8a97-4aaf-9b92-b9896c3a7d7d",
@@ -3081,7 +3222,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7c389f92-ffdc-4f8e-b901-1de71acc34a9",
@@ -3104,7 +3246,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "465d3f4a-4924-4ca6-9371-7266ae4393c7",
@@ -3127,7 +3270,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
@@ -3150,7 +3294,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "bda36de4-2636-4079-b473-d8f9f620820a",
@@ -3173,7 +3318,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "f0b1063a-6315-46b1-84ee-9a7787325a4c",
@@ -3196,7 +3342,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "0834f4b1-3aa1-4460-b2bd-5b4e8334c3fe",
@@ -3221,7 +3368,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "30 сентябри 1207",
-    "deathDateExact": "17 декабри 1273"
+    "deathDateExact": "17 декабри 1273",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "c9ea2574-7623-4974-ada0-49c075b2831b",
@@ -3246,7 +3394,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1145",
-    "deathDateExact": "1221"
+    "deathDateExact": "1221",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "fd212071-6a30-4b8d-870a-ae784002e8f2",
@@ -3269,7 +3418,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "890cf706-3f30-4f4f-a192-01dd841835c5",
@@ -3292,7 +3442,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
@@ -3315,7 +3466,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
@@ -3340,7 +3492,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "7 ноябри 1414",
-    "deathDateExact": "9 ноябри 1492"
+    "deathDateExact": "9 ноябри 1492",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "e859c1ae-03b9-4add-8079-7fa5bcf64ef7",
@@ -3365,7 +3518,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "15 апрели 1899",
-    "deathDateExact": "9 июни 1933"
+    "deathDateExact": "9 июни 1933",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "26c985a4-88ca-47ea-8981-ba5529b62a7c",
@@ -3390,7 +3544,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1916",
-    "deathDateExact": "22 феврали 1945"
+    "deathDateExact": "22 феврали 1945",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "b081ddd8-af07-4bb5-919a-7f3edce5108a",
@@ -3413,7 +3568,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7cb0a909-f92c-4abe-9087-038d37da9d98",
@@ -3436,7 +3592,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "6717d5d5-30d8-4bcc-ad04-20251c567127",
@@ -3459,7 +3616,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "b2369b52-f62a-4e5c-8f12-6f50816538cd",
@@ -3482,7 +3640,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "0c10d530-e56e-4b4a-b6ba-67623f374474",
@@ -3505,7 +3664,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "0b236c58-9f18-4730-9dbc-0b1f70e5118c",
@@ -3528,7 +3688,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "9cc6b7f2-3aa2-4ecf-abec-17eec77b198b",
@@ -3551,7 +3712,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "10a9ad7d-fd0d-462f-8cb4-594a869f8229",
@@ -3574,7 +3736,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "eff956d5-9b8c-4522-9ac6-8791f15495ce",
@@ -3599,7 +3762,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "15 майи 1910",
-    "deathDateExact": "30 январи 1980"
+    "deathDateExact": "30 январи 1980",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "12fb0e82-f108-4e71-8207-74d0540639d3",
@@ -3622,7 +3786,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "65bd67be-a18d-4679-8721-cd13818933b1",
@@ -3647,7 +3812,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "10 июли 1923",
-    "deathDateExact": "10 августи 1979"
+    "deathDateExact": "10 августи 1979",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
@@ -3670,7 +3836,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ada69601-01d5-493f-b1a0-9b886be8daa8",
@@ -3693,7 +3860,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "16d7d64a-fca1-43cc-be01-86d776cde770",
@@ -3716,7 +3884,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a65c552b-8432-4f3b-bd72-0e48b99921a7",
@@ -3739,7 +3908,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "84e67a80-5859-48f9-a533-a1f999cb2939",
@@ -3762,12 +3932,13 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "17004fb9-d6b6-4f73-844e-51e02737ef5e",
     "canonicalName": "Сайидо",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "سیدای نسفی",
     "aliases": [],
     "birthYear": null,
     "deathYear": null,
@@ -3785,7 +3956,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "f8658458-ab69-4c48-a295-441a25a5fdb5",
@@ -3808,7 +3980,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
@@ -3831,7 +4004,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "1b50e1c6-7881-47ee-8965-4c19164dbf4a",
@@ -3854,7 +4028,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "0b0f1032-b36a-45e4-9930-8953b067db65",
@@ -3879,7 +4054,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "30 сентябри 1207",
-    "deathDateExact": "17 декабри 1273"
+    "deathDateExact": "17 декабри 1273",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7e8a043d-be9b-4bc0-b779-b9e8ea00ad04",
@@ -3902,7 +4078,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "0e91d643-d947-4f0d-b3ac-ec2715a4b87c",
@@ -3927,12 +4104,13 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1270",
-    "deathDateExact": "Тақрибан 1370"
+    "deathDateExact": "Тақрибан 1370",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a0edb1e9-51b5-4ad1-ad0a-5d8af6a6a6da",
     "canonicalName": "АБДУРРАҲМОНИ ҶОМӢ",
-    "canonicalNamePersian": null,
+    "canonicalNamePersian": "عبدالرحمان جامی",
     "aliases": [],
     "birthYear": "1414",
     "deathYear": "1492",
@@ -3952,7 +4130,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "7 ноябри 1414",
-    "deathDateExact": "9 ноябри 1492"
+    "deathDateExact": "9 ноябри 1492",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "740c2616-7dc2-4d45-9743-ad0b9d086dbc",
@@ -3977,7 +4156,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "30 сентябри 1207",
-    "deathDateExact": "17 декабри 1273"
+    "deathDateExact": "17 декабри 1273",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ea87e35a-6a03-44f2-837e-648d1c84aecc",
@@ -4000,7 +4180,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "06b70024-a028-43dd-8c23-cdb75e96fac8",
@@ -4023,7 +4204,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "7a4cc3dc-3d9c-4cf2-aa27-a9b66f68937f",
@@ -4046,7 +4228,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "121ce628-ff4b-44d2-a702-81db93040dee",
@@ -4071,7 +4254,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "1592",
-    "deathDateExact": "1676"
+    "deathDateExact": "1676",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "b28a4de3-06a8-406c-b2e9-db363f7aa2d5",
@@ -4094,7 +4278,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "5633556b-df45-4cab-83dc-760016db1ef2",
@@ -4119,7 +4304,8 @@
       "excerptAllowed": true
     },
     "birthDateExact": "Тақрибан 1637",
-    "deathDateExact": "1711"
+    "deathDateExact": "1711",
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "a74ea72d-864f-4c25-b42e-95435794a42d",
@@ -4142,7 +4328,8 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   },
   {
     "id": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
@@ -4165,6 +4352,7 @@
       "rightsSource": "Law No. 726",
       "fullTextAllowed": true,
       "excerptAllowed": true
-    }
+    },
+    "relatedHistoryEntryIds": []
   }
 ]

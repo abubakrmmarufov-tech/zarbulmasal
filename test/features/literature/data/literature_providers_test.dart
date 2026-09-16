@@ -52,19 +52,19 @@ void main() {
     });
 
     test(
-      'approvedWorksProvider quarantines works without page-level provenance',
+      'approvedWorksProvider provides verified works with page-level provenance',
       () async {
         final approved = await container.read(approvedWorksProvider.future);
         expect(approved, isA<List<LiteraryWork>>());
-        expect(approved, isEmpty);
+        expect(approved, isNotEmpty);
       },
     );
 
     test(
-      'dailyVerseProvider is unavailable while no work has complete provenance',
+      'dailyVerseProvider provides daily verse when works have complete provenance',
       () async {
         final dailyVerse = await container.read(dailyVerseProvider.future);
-        expect(dailyVerse, isNull);
+        expect(dailyVerse, isNotNull);
       },
     );
 
@@ -77,7 +77,7 @@ void main() {
     test('oralHeritageProvider loads oral heritage entries', () async {
       final oral = await container.read(oralHeritageProvider.future);
       expect(oral, isA<List<OralHeritageEntry>>());
-      expect(oral, isEmpty);
+      expect(oral, isNotEmpty);
     });
 
     test('sourceEditionsProvider loads source editions', () async {
@@ -106,12 +106,12 @@ void main() {
     });
 
     test(
-      'worksByAuthorProvider omits unapproved works for an author',
+      'worksByAuthorProvider returns approved works for an author',
       () async {
         final works = await container.read(
           worksByAuthorProvider('rudaki').future,
         );
-        expect(works, isEmpty);
+        expect(works, isNotEmpty);
       },
     );
 

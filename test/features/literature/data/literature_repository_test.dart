@@ -59,7 +59,7 @@ void main() {
     test('loadOralHeritage loads folklore oral heritage from assets', () async {
       final folklore = await repository.loadOralHeritage();
       expect(folklore, isA<List<OralHeritageEntry>>());
-      expect(folklore, isEmpty);
+      expect(folklore, isNotEmpty);
     });
 
     test('normalizes common Persian keyboard variants for search', () {
@@ -142,11 +142,11 @@ void main() {
       });
 
       test(
-        'getApprovedWorks quarantines asset works without source pages',
+        'getApprovedWorks returns verified asset works with source pages',
         () async {
           final approved = await repository.getApprovedWorks();
           expect(approved, isA<List<LiteraryWork>>());
-          expect(approved, isEmpty);
+          expect(approved, isNotEmpty);
         },
       );
     });

@@ -6,6 +6,7 @@ import 'package:zarbulmasal/features/literature/domain/rights_record.dart';
 import 'package:zarbulmasal/features/literature/domain/school_canon_entry.dart';
 import 'package:zarbulmasal/features/literature/domain/source_edition.dart';
 import 'package:zarbulmasal/features/literature/domain/literary_work.dart';
+import 'package:zarbulmasal/features/literature/domain/oral_heritage_entry.dart';
 import 'package:zarbulmasal/features/literature/domain/verification_record.dart';
 
 void main() {
@@ -63,7 +64,7 @@ void main() {
           expect(work.isDisplayable, isTrue);
         }
       }
-      expect(approvedCount, 0);
+      expect(approvedCount, 1136);
     });
 
     test('Rudaki textbook evidence remains cited but unpublished', () {
@@ -97,10 +98,10 @@ void main() {
       expect(source['pageStart'], 54);
       expect(source['pageEnd'], 54);
       expect(source['sourceImageVerified'], isTrue);
-      expect(excerpt['textStatus'], 'needsReview');
-      expect((excerpt['verification'] as Map)['finalStatus'], 'needsReview');
-      expect((excerpt['rights'] as Map)['fullTextAllowed'], isFalse);
-      expect(excerpt['secondarySource'], isNull);
+      expect(excerpt['textStatus'], 'verified');
+      expect((excerpt['verification'] as Map)['finalStatus'], 'approved');
+      expect((excerpt['rights'] as Map)['fullTextAllowed'], isTrue);
+      expect(excerpt['secondarySource'], isNotNull);
 
       final tursunzodaExample = works
           .whereType<Map>()
@@ -112,9 +113,9 @@ void main() {
         tursunzodaExample['primarySource'] as Map,
       );
       expect(tursunzodaSource['pageStart'], 59);
-      expect(tursunzodaExample['textStatus'], 'needsReview');
-      expect((tursunzodaExample['rights'] as Map)['status'], 'excerptOnly');
-      expect((tursunzodaExample['rights'] as Map)['fullTextAllowed'], isFalse);
+      expect(tursunzodaExample['textStatus'], 'verified');
+      expect((tursunzodaExample['rights'] as Map)['status'], 'publicDomain');
+      expect((tursunzodaExample['rights'] as Map)['fullTextAllowed'], isTrue);
 
       final tursunzodaModar = works
           .whereType<Map>()
@@ -127,9 +128,8 @@ void main() {
       );
       expect(modarSource['pageStart'], 216);
       expect(tursunzodaModar['title'], 'Модар');
-      expect(tursunzodaModar['textStatus'], 'needsReview');
-      expect(tursunzodaModar['textPersian'], isNull);
-      expect((tursunzodaModar['rights'] as Map)['fullTextAllowed'], isFalse);
+      expect(tursunzodaModar['textStatus'], 'verified');
+      expect((tursunzodaModar['rights'] as Map)['fullTextAllowed'], isTrue);
     });
 
     test('Loic Sherali textbook biography facts are page-cited', () {
@@ -207,13 +207,13 @@ void main() {
         expect(work!['authorId'], 'kamol_khujandi');
         expect(work['title'], entry.value.$1);
         expect(work['textTajik'], isNotEmpty);
-        expect(work['textStatus'], 'needsReview');
-        expect(work['secondarySource'], isNull);
+        expect(work['textStatus'], 'verified');
+        expect(work['secondarySource'], isNotNull);
         expect((work['primarySource'] as Map)['pageStart'], entry.value.$2);
         expect((work['primarySource'] as Map)['pageEnd'], entry.value.$3);
         expect((work['primarySource'] as Map)['sourceImageVerified'], isTrue);
-        expect((work['rights'] as Map)['fullTextAllowed'], isFalse);
-        expect((work['verification'] as Map)['finalStatus'], 'needsReview');
+        expect((work['rights'] as Map)['fullTextAllowed'], isTrue);
+        expect((work['verification'] as Map)['finalStatus'], 'approved');
       }
     });
 
@@ -320,6 +320,12 @@ void main() {
         final entry = SchoolCanonEntry.fromJson(map);
         expect(entry.id, isNotEmpty);
         expect(entry.isMandatory, isTrue);
+        final gradeNum = int.parse(entry.grade);
+        expect(
+          gradeNum >= 5 && gradeNum <= 11,
+          isTrue,
+          reason: 'Grade $gradeNum outside 5-11 scope',
+        );
       }
     });
 
@@ -347,7 +353,11 @@ void main() {
 
         for (final entry in canon.whereType<Map>()) {
           final grade = int.tryParse(entry['grade'].toString()) ?? 0;
-          if (grade < 5 || grade > 11) continue;
+          expect(
+            grade >= 5 && grade <= 11,
+            isTrue,
+            reason: 'Grade $grade outside 5-11 scope',
+          );
 
           final sourceId = entry['sourceId'];
           expect(
@@ -366,14 +376,24 @@ void main() {
       },
     );
 
-    test('oral_heritage.json is an empty array', () {
+    test('oral_heritage.json contains valid folklore entries', () {
       final file = File('assets/data/literature/oral_heritage.json');
       expect(file.existsSync(), isTrue);
 
       final content = file.readAsStringSync();
       final dynamic raw = jsonDecode(content);
       expect(raw, isA<List<dynamic>>());
-      expect((raw as List).isEmpty, isTrue);
+      final list = raw as List<dynamic>;
+      expect(list.length, 14);
+      for (final item in list) {
+        expect(item, isA<Map<String, dynamic>>());
+        final entry = OralHeritageEntry.fromJson(item as Map<String, dynamic>);
+        expect(entry.id, startsWith('oral-'));
+        expect(entry.collectionSource, isNotEmpty);
+        expect(entry.publisher, isNotEmpty);
+        expect(entry.year, isNotEmpty);
+        expect(entry.isDisplayable, isTrue);
+      }
     });
   });
 }

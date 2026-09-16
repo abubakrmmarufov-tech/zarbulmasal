@@ -560,7 +560,8 @@ class _PoetDetailContent extends ConsumerWidget {
                               size: 16,
                             ),
                             label: Text(title),
-                            onPressed: () => context.push('/history'),
+                            onPressed: () =>
+                                context.push('/history/${entry.id}'),
                           );
                         }).toList(),
                       );

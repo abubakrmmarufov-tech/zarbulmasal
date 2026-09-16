@@ -276,7 +276,11 @@ class _CanonEntryCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  entry.subject,
+                  isPersian
+                      ? (entry.subject == 'Адабиёти тоҷик'
+                            ? 'ادبیات تاجیک'
+                            : 'خوانش ادبی')
+                      : entry.subject,
                   style: QalamTypography.meta(
                     color: colors.primary,
                     fontSize: 12,

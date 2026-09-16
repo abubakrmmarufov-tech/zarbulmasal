@@ -21,3 +21,11 @@ final historyEntriesByIdsProvider =
       final idSet = ids.toSet();
       return all.where((e) => idSet.contains(e.id)).toList();
     });
+
+final historyEntryByIdProvider = FutureProvider.family<HistoryEntry?, String>((
+  ref,
+  id,
+) async {
+  final entries = await ref.watch(historyEntriesProvider.future);
+  return entries.where((e) => e.id == id).firstOrNull;
+});

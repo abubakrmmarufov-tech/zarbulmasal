@@ -128,6 +128,17 @@ class LiteratureHubScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
+                const SliverToBoxAdapter(child: SizedBox(height: 12)),
+                // Featured Poems Showcase
+                if (worksAsync.valueOrNull != null &&
+                    worksAsync.valueOrNull!.isNotEmpty)
+                  SliverToBoxAdapter(
+                    child: _FeaturedWorksShowcase(
+                      works: worksAsync.valueOrNull!,
+                      isPersian: isPersian,
+                      dailyVerseId: dailyVerseAsync.valueOrNull?.id,
+                    ),
+                  ),
                 const SliverToBoxAdapter(child: SizedBox(height: 16)),
                 // 5 Section Links
                 SliverToBoxAdapter(
@@ -383,5 +394,190 @@ class _DailyVerseCard extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+/// A horizontally scrollable showcase of canonical poems and works.
+class _FeaturedWorksShowcase extends ConsumerWidget {
+  final List<LiteraryWork> works;
+  final bool isPersian;
+  final String? dailyVerseId;
+
+  const _FeaturedWorksShowcase({
+    required this.works,
+    required this.isPersian,
+    this.dailyVerseId,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Filter out the daily verse work so we don't duplicate it in the showcase
+    final available = works
+        .where((w) => dailyVerseId == null || w.id != dailyVerseId)
+        .toList();
+    if (available.isEmpty) return const SizedBox.shrink();
+    final colors = Theme.of(context).colorScheme;
+
+    // Pick top prominent works that have incipits or text
+    final featured = available.take(8).toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: QalamSpacing.pageH),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                isPersian
+                    ? 'شاهکارهای ادب فارسی و تاجیکی'
+                    : 'ШЕЪРҲОИ БАРГУЗИДА',
+                style: QalamTypography.eyebrow(color: colors.primary),
+              ),
+              TextButton(
+                onPressed: () => context.push('/literature/works'),
+                child: Text(
+                  isPersian ? 'همهٔ آثار' : 'Ҳамаи асарҳо',
+                  style: TextStyle(fontSize: 12, color: colors.primary),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 164,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: QalamSpacing.pageH),
+            itemCount: featured.length,
+            separatorBuilder: (_, _) => const SizedBox(width: 12),
+            itemBuilder: (context, index) {
+              final work = featured[index];
+              final authorAsync = ref.watch(authorByIdProvider(work.authorId));
+              final author = authorAsync.valueOrNull;
+              final authorName = author != null
+                  ? ((isPersian && author.canonicalNamePersian != null)
+                        ? author.canonicalNamePersian!
+                        : author.canonicalName)
+                  : work.authorId;
+
+              final title = (isPersian && work.titlePersian != null)
+                  ? work.titlePersian!
+                  : work.title;
+
+              final incipit = work.incipit ?? '';
+
+              return SizedBox(
+                width: 260,
+                child: Card(
+                  elevation: 0,
+                  color: colors.surfaceContainerHighest.withValues(alpha: 0.7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    side: BorderSide(
+                      color: colors.outlineVariant.withValues(alpha: 0.6),
+                    ),
+                  ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(16),
+                    onTap: () => context.push('/literature/work/${work.id}'),
+                    child: Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: isPersian
+                            ? CrossAxisAlignment.end
+                            : CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 3,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: colors.primaryContainer,
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: Text(
+                                  _genreLabel(work.type, isPersian),
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: colors.onPrimaryContainer,
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 12,
+                                color: colors.onSurfaceVariant,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: QalamTypography.sectionTitle(
+                              color: colors.onSurface,
+                              fontSize: 15,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            authorName,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: colors.primary,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const Spacer(),
+                          if (incipit.isNotEmpty)
+                            Text(
+                              '«$incipit»',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 11.5,
+                                fontStyle: FontStyle.italic,
+                                color: colors.onSurfaceVariant,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  static String _genreLabel(WorkType type, bool isPersian) {
+    switch (type) {
+      case WorkType.ghazal:
+        return isPersian ? 'غزل' : 'Ғазал';
+      case WorkType.rubai:
+        return isPersian ? 'رباعی' : 'Рубоӣ';
+      case WorkType.qasida:
+        return isPersian ? 'قصیده' : 'Қасида';
+      case WorkType.poem:
+        return isPersian ? 'شعر' : 'Шеър';
+      case WorkType.epic:
+        return isPersian ? 'حماسه' : 'Ҳамоса';
+      case WorkType.folk:
+        return isPersian ? 'فولکلور' : 'Халқӣ';
+      default:
+        return isPersian ? 'اثر منظوم' : 'Шеър';
+    }
   }
 }

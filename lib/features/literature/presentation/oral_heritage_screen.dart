@@ -178,7 +178,7 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
     );
   }
 
-  String _typeName(OralHeritageType type, bool isPersian) {
+  static String _typeName(OralHeritageType type, bool isPersian) {
     switch (type) {
       case OralHeritageType.zarbulmasal:
         return isPersian ? 'ضرب‌المثل' : 'Зарбулмасал';
@@ -236,15 +236,13 @@ class _OralLogicGuide extends StatelessWidget {
             runSpacing: 8,
             children: [
               _GuidePill(
-                label: isPersian
-                    ? '۱  Ҷудокунии ривоят'
-                    : '01  Ҷудокунии ривоят',
+                label: isPersian ? '۱  شناسایی روایت' : '01  Ҷудокунии ривоят',
               ),
               _GuidePill(
-                label: isPersian ? '۲  Санҷиши манбаъ' : '02  Санҷиши манбаъ',
+                label: isPersian ? '۲  بررسی سند' : '02  Санҷиши манбаъ',
               ),
               _GuidePill(
-                label: isPersian ? '۳  Намоиши равшан' : '03  Намоиши равшан',
+                label: isPersian ? '۳  نمایش پیراسته' : '03  Намоиши равшан',
               ),
             ],
           ),
@@ -299,7 +297,11 @@ class _TextbookOralCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            entry.title,
+            (isPersian && entry.titlePersian != null)
+                ? entry.titlePersian!
+                : entry.title,
+            textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
+            textAlign: isPersian ? TextAlign.right : TextAlign.left,
             style: QalamTypography.sectionTitle(
               color: colors.onSurface,
               fontSize: 18,
@@ -307,14 +309,18 @@ class _TextbookOralCard extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            entry.summary,
+            (isPersian && entry.summaryPersian != null)
+                ? entry.summaryPersian!
+                : entry.summary,
+            textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
+            textAlign: isPersian ? TextAlign.right : TextAlign.left,
             style: QalamTypography.bodySecondary(
               color: colors.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 10),
           Text(
-            '${entry.sourceSection} · ${isPersian ? "صنف" : "Синфи"} ${entry.grade}',
+            '${entry.sourceSection} · ${isPersian ? "صنف" : "Синфи"} ${AppTranslations.formatDigits(entry.grade, isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik)}',
             style: QalamTypography.meta(color: colors.onSurfaceVariant),
           ),
         ],
@@ -369,7 +375,7 @@ class _OralEntryCard extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  entry.type.name,
+                  _OralHeritageScreenState._typeName(entry.type, isPersian),
                   style: QalamTypography.meta(
                     color: colors.primary,
                     fontSize: 11,
