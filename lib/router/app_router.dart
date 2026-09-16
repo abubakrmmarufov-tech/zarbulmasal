@@ -13,6 +13,7 @@ import '../features/daily/daily_proverb_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/literature/presentation/presentation.dart';
 import '../features/history/presentation/history_screen.dart';
+import '../features/history/presentation/history_detail_screen.dart';
 import '../shared/widgets/app_scaffold.dart';
 import '../core/design_system/design_system.dart';
 import '../core/l10n/app_translations.dart';
@@ -113,6 +114,13 @@ GoRouter _buildAppRouter() {
       GoRoute(
         path: '/history',
         builder: (context, state) => const HistoryScreen(),
+      ),
+      GoRoute(
+        path: '/history/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return HistoryDetailScreen(entryId: id);
+        },
       ),
     ],
   );

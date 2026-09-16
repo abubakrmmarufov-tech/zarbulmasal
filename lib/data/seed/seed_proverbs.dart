@@ -3,7 +3,6 @@ import '../models/proverb.dart';
 const List<Proverb> seedProverbs = [
   // Legacy IDs 1-20 quarantined during the content audit.
   // Production corpus contains 150 verified Tajik proverbs (IDs 21-170).
-
   Proverb(
     id: '21',
     tajikCyrillic: 'Мисли модар ёру мисли Ватан диёре нест.',

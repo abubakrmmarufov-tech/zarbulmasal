@@ -1,19 +1,5 @@
 [
   {
-    "id": "canon_rudaki_g4",
-    "workId": "",
-    "authorId": "rudaki",
-    "grade": "4",
-    "subject": "Хониши адабӣ",
-    "textbookTitle": "Хониши адабӣ (Синфи 4)",
-    "textbookAuthors": "С. Амирқулов, Ҳ. Ҷумъаев",
-    "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
-    "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълими фанни хониши адабӣ барои синфи 4, Вазорати маориф ва илми ҶТ",
-    "citationStatus": "needsReview"
-  },
-  {
     "id": "canon_rudaki_g5",
     "workId": "",
     "authorId": "rudaki",
@@ -117,20 +103,6 @@
     "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик», синфи 10 (Маориф, 2026); санҷиши саҳифа дар интизор.",
     "citationStatus": "needsReview",
     "sourceId": "tj_literature_grade_10_2026"
-  },
-  {
-    "id": "canon_tursunzoda_g4",
-    "workId": "",
-    "authorId": "tursunzoda",
-    "grade": "4",
-    "subject": "Хониши адабӣ",
-    "textbookTitle": "Хониши адабӣ (Синфи 4)",
-    "textbookAuthors": "С. Амирқулов, Ҳ. Ҷумъаев",
-    "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
-    "curriculumType": "mandatory",
-    "sourceEvidence": "Барномаи таълими фанни хониши адабӣ барои синфи 4, Вазорати маориф ва илми ҶТ",
-    "citationStatus": "needsReview"
   },
   {
     "id": "canon_tursunzoda_g7",
@@ -251,62 +223,6 @@
     "sourceEvidence": "Нусхаи маҳаллии «Адабиёти тоҷик (давраи нав)», синфи 11 (Маориф, 2018); санҷиши саҳифа дар интизор.",
     "citationStatus": "needsReview",
     "sourceId": "tj_literature_grade_11_2018"
-  },
-  {
-    "id": "canon_gulnazar_keldi_g1",
-    "workId": "",
-    "authorId": "gulnazar_keldi",
-    "grade": "1",
-    "subject": "Хониши адабӣ",
-    "textbookTitle": "Алифбо ва Хониши адабӣ (Синфи 1)",
-    "textbookAuthors": "С. Амирқулов, С. Нарзуллоева",
-    "textbookPublisher": "Маориф",
-    "textbookYear": "2018",
-    "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
-    "citationStatus": "needsReview"
-  },
-  {
-    "id": "canon_gulnazar_keldi_g2",
-    "workId": "",
-    "authorId": "gulnazar_keldi",
-    "grade": "2",
-    "subject": "Хониши адабӣ",
-    "textbookTitle": "Хониши адабӣ (Синфи 2)",
-    "textbookAuthors": "С. Амирқулов",
-    "textbookPublisher": "Маориф",
-    "textbookYear": "2018",
-    "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
-    "citationStatus": "needsReview"
-  },
-  {
-    "id": "canon_gulnazar_keldi_g3",
-    "workId": "",
-    "authorId": "gulnazar_keldi",
-    "grade": "3",
-    "subject": "Хониши адабӣ",
-    "textbookTitle": "Хониши адабӣ (Синфи 3)",
-    "textbookAuthors": "С. Амирқулов",
-    "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
-    "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
-    "citationStatus": "needsReview"
-  },
-  {
-    "id": "canon_gulnazar_keldi_g4",
-    "workId": "",
-    "authorId": "gulnazar_keldi",
-    "grade": "4",
-    "subject": "Хониши адабӣ",
-    "textbookTitle": "Хониши адабӣ (Синфи 4)",
-    "textbookAuthors": "С. Амирқулов, Ҳ. Ҷумъаев",
-    "textbookPublisher": "Маориф",
-    "textbookYear": "2019",
-    "curriculumType": "mandatory",
-    "sourceEvidence": "Суруди миллии Ҷумҳурии Тоҷикистон, Вазорати маориф ва илми ҶТ",
-    "citationStatus": "needsReview"
   },
   {
     "id": "canon_gulrukhsor_g11",
