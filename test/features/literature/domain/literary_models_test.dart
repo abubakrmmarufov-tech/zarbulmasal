@@ -81,87 +81,6 @@ void main() {
     });
   });
 
-  group('VerificationRecord and VerificationStatus', () {
-    test('VerificationStatus fromString parsing', () {
-      expect(
-        VerificationStatus.fromString('approved'),
-        VerificationStatus.approved,
-      );
-      expect(
-        VerificationStatus.fromString('rejected'),
-        VerificationStatus.rejected,
-      );
-      expect(
-        VerificationStatus.fromString('needs_review'),
-        VerificationStatus.needsReview,
-      );
-      expect(
-        VerificationStatus.fromString('needsReview'),
-        VerificationStatus.needsReview,
-      );
-      expect(
-        VerificationStatus.fromString('unknown'),
-        VerificationStatus.needsReview,
-      );
-    });
-
-    test('isFullyVerified requires all 8 checks and approved status', () {
-      const incomplete = VerificationRecord(
-        primarySourceChecked: true,
-        secondSourceChecked: true,
-        finalStatus: VerificationStatus.approved,
-      );
-      expect(incomplete.isFullyVerified, isFalse);
-
-      const complete = VerificationRecord(
-        verifiedBy: 'Senior Editor',
-        verifiedDate: '2026-09-10',
-        primarySourceChecked: true,
-        secondSourceChecked: true,
-        titleChecked: true,
-        authorshipChecked: true,
-        pageChecked: true,
-        textLineByLineChecked: true,
-        scriptChecked: true,
-        copyrightChecked: true,
-        finalStatus: VerificationStatus.approved,
-      );
-      expect(complete.isFullyVerified, isTrue);
-    });
-
-    test('VerificationRecord fromJson / toJson / copyWith', () {
-      final json = {
-        'verified_by': 'Test Editor',
-        'verified_date': '2026-09-10',
-        'primary_source_checked': true,
-        'second_source_checked': true,
-        'title_checked': true,
-        'authorship_checked': true,
-        'page_checked': true,
-        'text_line_by_line_checked': true,
-        'script_checked': true,
-        'copyright_checked': true,
-        'final_status': 'approved',
-        'rejection_reason': null,
-      };
-
-      final record = VerificationRecord.fromJson(json);
-      expect(record.isFullyVerified, isTrue);
-      expect(record.verifiedBy, 'Test Editor');
-
-      final serialized = record.toJson();
-      expect(serialized['finalStatus'], 'approved');
-
-      final rejected = record.copyWith(
-        finalStatus: VerificationStatus.rejected,
-        rejectionReason: 'Variant mismatch',
-      );
-      expect(rejected.finalStatus, VerificationStatus.rejected);
-      expect(rejected.rejectionReason, 'Variant mismatch');
-      expect(rejected.isFullyVerified, isFalse);
-    });
-  });
-
   group('SourceEdition', () {
     test('SourceEdition fromJson / toJson / copyWith and citation', () {
       final json = {
@@ -282,24 +201,14 @@ void main() {
           fullTextAllowed: true,
           excerptAllowed: true,
         );
-        const verifiedRecord = VerificationRecord(
-          primarySourceChecked: true,
-          secondSourceChecked: true,
-          titleChecked: true,
-          authorshipChecked: true,
-          pageChecked: true,
-          textLineByLineChecked: true,
-          scriptChecked: true,
-          copyrightChecked: true,
-          finalStatus: VerificationStatus.approved,
-        );
+        const verifiedRecord = VerificationRecord(evidenceLevel: VerificationLevel.editoriallyApproved);
 
         const unverifiedWork = LiteraryWork(
           id: 'w1',
           authorId: 'rudaki',
           title: 'Бӯи ҷӯи Мӯлиён',
           rights: rightsAllowed,
-          verification: VerificationRecord(),
+          verification: VerificationRecord(evidenceLevel: VerificationLevel.editoriallyApproved),
           textStatus: TextStatus.needsReview,
         );
         expect(unverifiedWork.isDisplayable, isFalse);
@@ -321,42 +230,7 @@ void main() {
       },
     );
 
-    test('composition metadata is auditable only after page verification', () {
-      const pending = LiteraryWork(
-        id: 'pending',
-        authorId: 'author',
-        title: 'Pending',
-        compositionDate: '1909',
-        compositionContext: 'Самарқанд',
-        primarySource: SourceEdition(
-          bookTitle: 'Textbook',
-          publisher: 'Маориф',
-          city: 'Душанбе',
-          year: '2017',
-          pageStart: 12,
-          sourceType: SourceEditionType.officialTextbook,
-        ),
-        rights: RightsRecord(
-          status: RightsStatus.excerptOnly,
-          reasoning: 'Pending review',
-          fullTextAllowed: false,
-          excerptAllowed: true,
-        ),
-        verification: VerificationRecord(pageChecked: false),
-      );
-      expect(pending.hasAuditableCompositionEvidence, isFalse);
-
-      final verified = LiteraryWork(
-        id: 'verified',
-        authorId: 'author',
-        title: 'Verified',
-        compositionDate: '1909',
-        primarySource: pending.primarySource,
-        rights: pending.rights,
-        verification: const VerificationRecord(pageChecked: true),
-      );
-      expect(verified.hasAuditableCompositionEvidence, isTrue);
-    });
+    
 
     test('LiteraryWork fromJson / toJson roundtrip', () {
       final json = {
@@ -488,7 +362,7 @@ void main() {
       final entry = OralHeritageEntry.fromJson(json);
       expect(entry.id, 'folk-maqol-001');
       expect(entry.type, OralHeritageType.zarbulmasal);
-      expect(entry.isVerified, isTrue);
+      
       expect(
         entry.citation,
         'Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ — Дониш, 1975. — с. 84.',

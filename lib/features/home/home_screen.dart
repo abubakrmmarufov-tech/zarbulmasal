@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/providers/learning_providers.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -15,6 +16,7 @@ class HomeScreen extends ConsumerWidget {
     final proverbs = ref.watch(proverbsProvider);
     final categories = ref.watch(categoriesProvider);
     final availableLevels = ref.watch(availableLevelsProvider);
+    final stats = ref.watch(masteryStatsProvider);
     final isPersian = lang == DisplayLanguage.persian;
     String tr(String key) => AppTranslations.get(key, lang);
     return Scaffold(
@@ -40,7 +42,7 @@ class HomeScreen extends ConsumerWidget {
                           ),
                         ),
                         Text(
-                          'З / ض',
+                          isPersian ? 'ض' : 'З / ض',
                           style: QalamTypography.heroProverb(
                             color: colors.primary,
                             fontSize: 20,
@@ -83,7 +85,7 @@ class HomeScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '01 / ${tr('home_learning')}',
+                      '${AppTranslations.formatDigits('01', lang)} / ${tr('home_learning')}',
                       style: QalamTypography.eyebrow(color: colors.primary),
                     ),
                     const SizedBox(height: 14),
@@ -94,21 +96,56 @@ class HomeScreen extends ConsumerWidget {
                         fontSize: 24,
                       ),
                     ),
+                    if (stats.masteredCount > 0 || stats.learningCount > 0) ...[
+                      const SizedBox(height: 12),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: colors.surfaceContainerLow,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: colors.outlineVariant),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.auto_stories_outlined,
+                              size: 18,
+                              color: colors.primary,
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                AppTranslations.get('home_mastery_stat', lang, [
+                                  stats.masteredCount,
+                                  stats.totalProverbs,
+                                ]),
+                                style: QalamTypography.meta(
+                                  color: colors.onSurface,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                     const SizedBox(height: 12),
                     QalamSectionLink(
-                      number: '01',
+                      number: AppTranslations.formatDigits('01', lang),
                       title: tr('quiz_title'),
                       subtitle: tr('quiz_desc'),
                       onTap: () => context.push('/quiz'),
                     ),
                     QalamSectionLink(
-                      number: '02',
+                      number: AppTranslations.formatDigits('02', lang),
                       title: tr('flashcards_title'),
                       subtitle: tr('flashcards_desc'),
                       onTap: () => context.push('/flashcards'),
                     ),
                     QalamSectionLink(
-                      number: '03',
+                      number: AppTranslations.formatDigits('03', lang),
                       title: tr('levels_title'),
                       subtitle: AppTranslations.get('levels_subtitle', lang, [
                         availableLevels.length,
@@ -137,7 +174,7 @@ class HomeScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '02 / ${tr('categories_title')}',
+                      '${AppTranslations.formatDigits('02', lang)} / ${tr('categories_title')}',
                       style: QalamTypography.eyebrow(color: colors.primary),
                     ),
                     const SizedBox(height: 22),
@@ -145,7 +182,10 @@ class HomeScreen extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          '${categories.length}',
+                          AppTranslations.formatDigits(
+                            '${categories.length}',
+                            lang,
+                          ),
                           style: QalamTypography.pageTitle(
                             color: colors.onSurface,
                             fontSize: 44,
@@ -169,9 +209,9 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(height: 20),
                     for (final category in categories.take(3))
                       QalamSectionLink(
-                        number: '${categories.indexOf(category) + 1}'.padLeft(
-                          2,
-                          '0',
+                        number: AppTranslations.formatDigits(
+                          '${categories.indexOf(category) + 1}'.padLeft(2, '0'),
+                          lang,
                         ),
                         title: QalamCategoryTile.nameFor(category, lang),
                         subtitle:
@@ -199,7 +239,8 @@ class HomeScreen extends ConsumerWidget {
             ),
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: '03 / ${tr('home_explore')}',
+                eyebrow:
+                    '${AppTranslations.formatDigits('03', lang)} / ${tr('home_explore')}',
                 title: tr('home_proverbs'),
                 subtitle: AppTranslations.get('proverb_count_label', lang, [
                   proverbs.length,
@@ -231,7 +272,7 @@ class HomeScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '04 / ${tr('literature_title').toUpperCase()}',
+                      '${AppTranslations.formatDigits('04', lang)} / ${tr('literature_title').toUpperCase()}',
                       style: QalamTypography.eyebrow(color: colors.primary),
                     ),
                     const SizedBox(height: 22),
@@ -244,13 +285,13 @@ class HomeScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 16),
                     QalamSectionLink(
-                      number: '01',
+                      number: AppTranslations.formatDigits('01', lang),
                       title: tr('poets_title'),
                       subtitle: tr('poets_desc'),
                       onTap: () => context.push('/literature/poets'),
                     ),
                     QalamSectionLink(
-                      number: '02',
+                      number: AppTranslations.formatDigits('02', lang),
                       title: tr('poems_title'),
                       subtitle: tr('poems_desc'),
                       onTap: () => context.push('/literature/works'),
@@ -263,7 +304,7 @@ class HomeScreen extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
                 child: QalamSectionLink(
-                  number: isPersian ? '۰۵' : '05',
+                  number: AppTranslations.formatDigits('05', lang),
                   title: isPersian ? 'تاریخ مردم تاجیک' : 'Таърихи халқи тоҷик',
                   subtitle: isPersian
                       ? 'پژوهش منبع‌محور از کتاب‌های صنف‌های ۵ تا ۱۱ و گاه‌شمار'

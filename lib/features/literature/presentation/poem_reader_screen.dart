@@ -72,8 +72,8 @@ class PoemReaderScreen extends ConsumerWidget {
                   orElse: () => null,
                 );
             if (pendingWork != null &&
-                pendingWork.verification.finalStatus ==
-                    VerificationStatus.needsReview) {
+                pendingWork.verification.evidenceLevel ==
+                    VerificationLevel.needsReview) {
               return _PendingWorkState(work: pendingWork);
             }
 
@@ -231,8 +231,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           const SizedBox(width: 10),
                           QalamSourceBadge(
                             isVerified:
-                                work.verification.finalStatus ==
-                                VerificationStatus.approved,
+                                work.verification.evidenceLevel ==
+                                VerificationLevel.editoriallyApproved,
                             label: isPersian
                                 ? 'متن تأیید شده است'
                                 : 'Матн санҷида шудааст',

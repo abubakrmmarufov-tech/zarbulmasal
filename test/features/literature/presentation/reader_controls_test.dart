@@ -34,15 +34,15 @@ void main() {
       excerptAllowed: true,
     ),
     verification: VerificationRecord(
-      primarySourceChecked: true,
-      secondSourceChecked: true,
-      titleChecked: true,
-      authorshipChecked: true,
-      pageChecked: true,
-      textLineByLineChecked: true,
-      scriptChecked: true,
-      copyrightChecked: true,
-      finalStatus: VerificationStatus.approved,
+      
+      
+      
+      
+      
+      
+      
+      
+      evidenceLevel: VerificationLevel.editoriallyApproved,
     ),
   );
 

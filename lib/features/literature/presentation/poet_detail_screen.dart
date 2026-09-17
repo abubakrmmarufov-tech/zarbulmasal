@@ -786,8 +786,8 @@ class _PoetDetailContent extends ConsumerWidget {
                             ],
                           ),
                         ),
-                        if (work.verification.finalStatus ==
-                            VerificationStatus.approved)
+                        if (work.verification.evidenceLevel ==
+                            VerificationLevel.editoriallyApproved)
                           const Icon(
                             Icons.check_circle_outline,
                             size: 16,

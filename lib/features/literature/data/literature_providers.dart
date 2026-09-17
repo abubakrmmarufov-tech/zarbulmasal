@@ -176,7 +176,7 @@ final worksUnderReviewByAuthorProvider =
           .where(
             (work) =>
                 work.authorId == authorId &&
-                work.verification.finalStatus == VerificationStatus.needsReview,
+                work.verification.evidenceLevel == VerificationLevel.needsReview,
           )
           .toList(growable: false);
     });

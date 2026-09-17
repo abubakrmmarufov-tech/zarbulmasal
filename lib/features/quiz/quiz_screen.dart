@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
+import '../../data/models/learning_mastery.dart';
 import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/providers/learning_providers.dart';
 import 'quiz_engine.dart';
 
 class QuizScreen extends ConsumerStatefulWidget {
@@ -20,6 +22,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   int? _selectedAnswer;
   bool _answered = false;
   int _correctCount = 0;
+  final List<Proverb> _missedProverbs = [];
   final _scroll = ScrollController();
 
   @override
@@ -46,6 +49,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
       _selectedAnswer = null;
       _answered = false;
       _correctCount = 0;
+      _missedProverbs.clear();
     });
     if (_scroll.hasClients) _scroll.jumpTo(0);
   }
@@ -237,13 +241,26 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
             textDirection: TextDirection.ltr,
             onTap: _answered
                 ? null
-                : () => setState(() {
-                    _selectedAnswer = entry.key;
-                    _answered = true;
-                    if (entry.key == currentQ.correctOptionIndex) {
-                      _correctCount++;
-                    }
-                  }),
+                : () {
+                    final isCorrect =
+                        entry.key == currentQ.correctOptionIndex;
+                    setState(() {
+                      _selectedAnswer = entry.key;
+                      _answered = true;
+                      if (isCorrect) {
+                        _correctCount++;
+                      } else {
+                        _missedProverbs.add(proverb);
+                      }
+                    });
+                    ref.read(proverbMasteryProvider.notifier).recordReview(
+                          proverb.id,
+                          isCorrect
+                              ? MasteryLevel.learning
+                              : MasteryLevel.again,
+                          isCorrect: isCorrect,
+                        );
+                  },
           ),
         ),
         if (_answered) ...[
@@ -280,27 +297,40 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                   style: QalamTypography.eyebrow(color: colors.primary),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  proverb.simpleExplanationTj.isNotEmpty
-                      ? proverb.simpleExplanationTj
-                      : proverb.meaningTj,
-                  style: QalamTypography.body(
-                    color: colors.onSurface,
-                    fontSize: 15,
-                    height: 1.6,
+                Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          proverb.simpleExplanationTj.isNotEmpty
+                              ? proverb.simpleExplanationTj
+                              : proverb.meaningTj,
+                          textAlign: TextAlign.left,
+                          style: QalamTypography.body(
+                            color: colors.onSurface,
+                            fontSize: 15,
+                            height: 1.6,
+                          ),
+                        ),
+                        if (proverb.exampleSentenceTj.isNotEmpty) ...[
+                          const SizedBox(height: 10),
+                          Text(
+                            proverb.exampleSentenceTj,
+                            textAlign: TextAlign.left,
+                            style: QalamTypography.bodySecondary(
+                              color: colors.onSurfaceVariant,
+                              fontSize: 14,
+                              height: 1.5,
+                            ).copyWith(fontStyle: FontStyle.italic),
+                          ),
+                        ],
+                      ],
+                    ),
                   ),
                 ),
-                if (proverb.exampleSentenceTj.isNotEmpty) ...[
-                  const SizedBox(height: 10),
-                  Text(
-                    proverb.exampleSentenceTj,
-                    style: QalamTypography.bodySecondary(
-                      color: colors.onSurfaceVariant,
-                      fontSize: 14,
-                      height: 1.5,
-                    ).copyWith(fontStyle: FontStyle.italic),
-                  ),
-                ],
               ],
             ),
           ),
@@ -394,7 +424,40 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                   AppTranslations.get(feedback, lang),
                   style: QalamTypography.body(color: colors.onSurfaceVariant),
                 ),
-                const SizedBox(height: 32),
+                if (_missedProverbs.isNotEmpty) ...[
+                  const SizedBox(height: 20),
+                  Text(
+                    AppTranslations.get('quiz_missed_title', lang),
+                    style: QalamTypography.eyebrow(color: colors.error),
+                  ),
+                  const SizedBox(height: 8),
+                  ..._missedProverbs.map(
+                    (p) => Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: Text(
+                        '• ${lang == DisplayLanguage.persian ? p.persianText : p.tajikCyrillic}',
+                        style: QalamTypography.meta(
+                          color: colors.onSurface,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    icon: const Icon(Icons.style_outlined, size: 18),
+                    label: Text(
+                      AppTranslations.get('quiz_practice_missed', lang),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(dialogContext);
+                      ref
+                          .read(flashcardsFilterProvider.notifier)
+                          .state = MasteryFilter.again;
+                      context.push('/flashcards');
+                    },
+                  ),
+                ],
+                const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pop(dialogContext);

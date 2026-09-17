@@ -332,8 +332,8 @@ class SourcePanel extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final ver = work.verification;
 
-    final isApproved = ver.finalStatus == VerificationStatus.approved;
-    final isRejected = ver.finalStatus == VerificationStatus.rejected;
+    final isApproved = ver.evidenceLevel == VerificationLevel.editoriallyApproved;
+    final isRejected = ver.evidenceLevel == VerificationLevel.rejected;
     final statusColor = isApproved
         ? QalamColors.forest
         : (isRejected ? QalamColors.danger : QalamColors.burgundySoft);
@@ -373,11 +373,11 @@ class SourcePanel extends ConsumerWidget {
           ],
         ),
         const SizedBox(height: 12),
-        if (ver.verifiedBy != null || ver.verifiedDate != null) ...[
+        if (ver.evidenceHash != null || ver.verifiedAt != null) ...[
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: Text(
-              '${isPersian ? 'مصحح/محرر:' : 'Муҳаққиқ/муҳаррир:'} ${ver.verifiedBy ?? '—'} (${ver.verifiedDate ?? '—'})',
+              '${isPersian ? 'مصحح/محرر:' : 'Муҳаққиқ/муҳаррир:'} ${ver.evidenceHash ?? '—'} (${ver.verifiedAt ?? '—'})',
               style: QalamTypography.meta(color: colors.onSurfaceVariant),
             ),
           ),
@@ -386,54 +386,54 @@ class SourcePanel extends ConsumerWidget {
           isPersian
               ? 'منبع اصلی چاپی بررسی شد'
               : 'Сарчашмаи асосии чопӣ санҷида шуд',
-          ver.primarySourceChecked,
+          (ver.evidenceLevel.index >= VerificationLevel.primaryChecked.index),
           colors,
         ),
         _buildCheckItem(
           isPersian ? 'منبع دوم مقابله شد' : 'Сарчашмаи дуввум муқобала шуд',
-          ver.secondSourceChecked,
+          ver.pageVerified,
           colors,
         ),
         _buildCheckItem(
           isPersian
               ? 'عنوان در نسخهٔ اصل تأیید شد'
               : 'Номи асар дар нашри аслӣ тасдиқ шуд',
-          ver.titleChecked,
+          (ver.evidenceLevel.index >= VerificationLevel.sourceLocated.index),
           colors,
         ),
         _buildCheckItem(
           isPersian
               ? 'انتساب به مؤلف محرز شد'
               : 'Муаллифи асар муайян ва тасдиқ шуд',
-          ver.authorshipChecked,
+          (ver.evidenceLevel.index >= VerificationLevel.sourceLocated.index),
           colors,
         ),
         _buildCheckItem(
           isPersian
               ? 'صفحات کتاب چاپی مستند شد'
               : 'Саҳифаҳои нашри чопӣ дақиқ шуд',
-          ver.pageChecked,
+          ver.pageVerified,
           colors,
         ),
         _buildCheckItem(
           isPersian
               ? 'متن بیت‌به‌بیت مقابله شد'
               : 'Матн мисраъ ба мисраъ муқобала шуд',
-          ver.textLineByLineChecked,
+          (ver.evidenceLevel.index >= VerificationLevel.collated.index),
           colors,
         ),
         _buildCheckItem(
           isPersian
               ? 'رسم‌الخط و اعراب بررسی شد'
               : 'Имло, аломатҳо ва хат тасдиқ шуд',
-          ver.scriptChecked,
+          (ver.evidenceLevel.index >= VerificationLevel.collated.index),
           colors,
         ),
         _buildCheckItem(
           isPersian
               ? 'حقوق مؤلف مطابق قانون بررسی شد'
               : 'Ҳуқуқи муаллиф тибқи қонунгузорӣ тасдиқ шуд',
-          ver.copyrightChecked,
+          (ver.evidenceLevel.index >= VerificationLevel.editoriallyApproved.index),
           colors,
         ),
         if (ver.rejectionReason != null && ver.rejectionReason!.isNotEmpty) ...[

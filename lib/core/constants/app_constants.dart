@@ -7,6 +7,7 @@ class AppConstants {
   static const String prefsLanguage = 'display_language';
   static const String prefsOnboardingComplete = 'onboarding_complete';
   static const String prefsLiteraryFavorites = 'literary_favorites';
+  static const String prefsMastery = 'proverb_mastery';
 
   static const List<String> levelNames = [
     'Оғозӣ',

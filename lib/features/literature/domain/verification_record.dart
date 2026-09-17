@@ -1,179 +1,101 @@
-/// Verification audit trail for a literary work.
-///
-/// Tracks the philological collation and editorial sign-off status.
-enum VerificationStatus {
-  approved,
+/// Verification levels representing explicit evidence levels for provenance.
+enum VerificationLevel {
+  /// Text was extracted from a textbook/PDF. Does NOT mean correct.
+  extracted,
+  /// Exact source book and page located.
+  sourceLocated,
+  /// Text manually/programmatically compared against primary page image/text with reliable evidence.
+  primaryChecked,
+  /// An independent second edition contains the work.
+  secondWitnessLocated,
+  /// The two witnesses were compared.
+  collated,
+  /// A real documented editorial review occurred.
+  editoriallyApproved,
+  /// Indicates the record requires review.
   rejected,
   needsReview;
 
-  /// Parses a string to [VerificationStatus] matching camelCase, snake_case, or kebab-case.
-  ///
-  /// Defaults to [VerificationStatus.needsReview] if null or unrecognised.
-  static VerificationStatus fromString(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return VerificationStatus.needsReview;
+  static VerificationLevel fromString(String? value) {
+    if (value == null || value.trim().isEmpty) return VerificationLevel.needsReview;
+    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    for (final status in VerificationLevel.values) {
+      if (status.name.toLowerCase() == normalized) return status;
     }
-    final normalized = value.trim().toLowerCase().replaceAll(
-      RegExp(r'[-_\s]'),
-      '',
-    );
-    for (final status in VerificationStatus.values) {
-      if (status.name.toLowerCase() == normalized) {
-        return status;
-      }
-    }
-    return VerificationStatus.needsReview;
+    // Fallback mapping for old 'approved' -> extracted or something, 
+    // but the reset script sets everything to needsReview.
+    if (normalized == 'approved') return VerificationLevel.extracted;
+    return VerificationLevel.needsReview;
   }
 }
 
-/// Verification audit trail for a literary work.
-///
-/// Enforces dual-witness philological collation, orthographic checks,
-/// copyright clearance, and editorial sign-off.
+/// Verification audit trail for a literary work enforcing strict epistemic provenance.
 class VerificationRecord {
-  /// Name or identifier of the editor who performed the verification.
-  final String? verifiedBy;
-
+  /// The final appropriate stage that may be shown publicly.
+  final VerificationLevel evidenceLevel;
+  
+  /// The method by which this check was performed, e.g. "automatedCandidateExtraction"
+  final String? verificationMethod;
+  
   /// Date when the verification was signed off (e.g. "YYYY-MM-DD").
-  final String? verifiedDate;
+  final String? verifiedAt;
 
-  /// Whether the primary Tier A source witness was verified.
-  final bool primarySourceChecked;
+  /// Whether the page numbers in the source edition were confirmed with evidence.
+  final bool pageVerified;
 
-  /// Whether a corroborating second source witness was verified.
-  final bool secondSourceChecked;
+  /// A reproducible reference to the inspected source material.
+  final String? evidenceHash;
 
-  /// Whether the title was verified against the canonical edition.
-  final bool titleChecked;
-
-  /// Whether authorship attribution was verified.
-  final bool authorshipChecked;
-
-  /// Whether the page numbers in the source edition were confirmed.
-  final bool pageChecked;
-
-  /// Whether the text was collated line-by-line against the physical scan.
-  final bool textLineByLineChecked;
-
-  /// Whether Cyrillic diacritics and/or Persian Arabic orthography were audited.
-  final bool scriptChecked;
-
-  /// Whether copyright clearance was validated under Law No. 726.
-  final bool copyrightChecked;
-
-  /// Final editorial status.
-  final VerificationStatus finalStatus;
-
-  /// Reason for rejection if [finalStatus] is [VerificationStatus.rejected].
+  /// Reason for rejection or needs review note.
   final String? rejectionReason;
 
   const VerificationRecord({
-    this.verifiedBy,
-    this.verifiedDate,
-    this.primarySourceChecked = false,
-    this.secondSourceChecked = false,
-    this.titleChecked = false,
-    this.authorshipChecked = false,
-    this.pageChecked = false,
-    this.textLineByLineChecked = false,
-    this.scriptChecked = false,
-    this.copyrightChecked = false,
-    this.finalStatus = VerificationStatus.needsReview,
+    this.evidenceLevel = VerificationLevel.needsReview,
+    this.verificationMethod,
+    this.verifiedAt,
+    this.pageVerified = false,
+    this.evidenceHash,
     this.rejectionReason,
   });
 
-  /// Convenience getter: returns true only when all 8 checks pass and status is approved.
-  bool get isFullyVerified =>
-      primarySourceChecked &&
-      secondSourceChecked &&
-      titleChecked &&
-      authorshipChecked &&
-      pageChecked &&
-      textLineByLineChecked &&
-      scriptChecked &&
-      copyrightChecked &&
-      finalStatus == VerificationStatus.approved;
+  bool get isFullyVerified => evidenceLevel == VerificationLevel.editoriallyApproved;
 
-  /// Creates a [VerificationRecord] from a JSON map.
   factory VerificationRecord.fromJson(Map<String, dynamic> json) {
     return VerificationRecord(
-      verifiedBy: (json['verifiedBy'] ?? json['verified_by']) as String?,
-      verifiedDate: (json['verifiedDate'] ?? json['verified_date']) as String?,
-      primarySourceChecked: _parseBool(
-        json['primarySourceChecked'] ?? json['primary_source_checked'],
-      ),
-      secondSourceChecked: _parseBool(
-        json['secondSourceChecked'] ?? json['second_source_checked'],
-      ),
-      titleChecked: _parseBool(json['titleChecked'] ?? json['title_checked']),
-      authorshipChecked: _parseBool(
-        json['authorshipChecked'] ?? json['authorship_checked'],
-      ),
-      pageChecked: _parseBool(json['pageChecked'] ?? json['page_checked']),
-      textLineByLineChecked: _parseBool(
-        json['textLineByLineChecked'] ?? json['text_line_by_line_checked'],
-      ),
-      scriptChecked: _parseBool(
-        json['scriptChecked'] ?? json['script_checked'],
-      ),
-      copyrightChecked: _parseBool(
-        json['copyrightChecked'] ?? json['copyright_checked'],
-      ),
-      finalStatus: VerificationStatus.fromString(
-        (json['finalStatus'] ?? json['final_status'] ?? json['status'])
-            as String?,
-      ),
-      rejectionReason:
-          (json['rejectionReason'] ?? json['rejection_reason']) as String?,
+      evidenceLevel: VerificationLevel.fromString(json['evidenceLevel'] ?? json['finalStatus'] ?? json['status']),
+      verificationMethod: json['verificationMethod'],
+      verifiedAt: json['verifiedAt'] ?? json['verifiedDate'],
+      pageVerified: _parseBool(json['pageVerified']),
+      evidenceHash: json['evidenceHash'],
+      rejectionReason: json['rejectionReason'],
     );
   }
 
-  /// Converts this [VerificationRecord] to a JSON map.
   Map<String, dynamic> toJson() {
     return {
-      'verifiedBy': verifiedBy,
-      'verifiedDate': verifiedDate,
-      'primarySourceChecked': primarySourceChecked,
-      'secondSourceChecked': secondSourceChecked,
-      'titleChecked': titleChecked,
-      'authorshipChecked': authorshipChecked,
-      'pageChecked': pageChecked,
-      'textLineByLineChecked': textLineByLineChecked,
-      'scriptChecked': scriptChecked,
-      'copyrightChecked': copyrightChecked,
-      'finalStatus': finalStatus.name,
+      'evidenceLevel': evidenceLevel.name,
+      'verificationMethod': verificationMethod,
+      'verifiedAt': verifiedAt,
+      'pageVerified': pageVerified,
+      'evidenceHash': evidenceHash,
       'rejectionReason': rejectionReason,
     };
   }
 
-  /// Creates a copy of this [VerificationRecord] with the given fields replaced.
   VerificationRecord copyWith({
-    String? verifiedBy,
-    String? verifiedDate,
-    bool? primarySourceChecked,
-    bool? secondSourceChecked,
-    bool? titleChecked,
-    bool? authorshipChecked,
-    bool? pageChecked,
-    bool? textLineByLineChecked,
-    bool? scriptChecked,
-    bool? copyrightChecked,
-    VerificationStatus? finalStatus,
+    VerificationLevel? evidenceLevel,
+    String? verificationMethod,
+    String? verifiedAt,
+    bool? pageVerified,
+    String? evidenceHash,
     String? rejectionReason,
   }) {
     return VerificationRecord(
-      verifiedBy: verifiedBy ?? this.verifiedBy,
-      verifiedDate: verifiedDate ?? this.verifiedDate,
-      primarySourceChecked: primarySourceChecked ?? this.primarySourceChecked,
-      secondSourceChecked: secondSourceChecked ?? this.secondSourceChecked,
-      titleChecked: titleChecked ?? this.titleChecked,
-      authorshipChecked: authorshipChecked ?? this.authorshipChecked,
-      pageChecked: pageChecked ?? this.pageChecked,
-      textLineByLineChecked:
-          textLineByLineChecked ?? this.textLineByLineChecked,
-      scriptChecked: scriptChecked ?? this.scriptChecked,
-      copyrightChecked: copyrightChecked ?? this.copyrightChecked,
-      finalStatus: finalStatus ?? this.finalStatus,
+      evidenceLevel: evidenceLevel ?? this.evidenceLevel,
+      verificationMethod: verificationMethod ?? this.verificationMethod,
+      verifiedAt: verifiedAt ?? this.verifiedAt,
+      pageVerified: pageVerified ?? this.pageVerified,
+      evidenceHash: evidenceHash ?? this.evidenceHash,
       rejectionReason: rejectionReason ?? this.rejectionReason,
     );
   }
@@ -189,37 +111,25 @@ class VerificationRecord {
       identical(this, other) ||
       other is VerificationRecord &&
           runtimeType == other.runtimeType &&
-          verifiedBy == other.verifiedBy &&
-          verifiedDate == other.verifiedDate &&
-          primarySourceChecked == other.primarySourceChecked &&
-          secondSourceChecked == other.secondSourceChecked &&
-          titleChecked == other.titleChecked &&
-          authorshipChecked == other.authorshipChecked &&
-          pageChecked == other.pageChecked &&
-          textLineByLineChecked == other.textLineByLineChecked &&
-          scriptChecked == other.scriptChecked &&
-          copyrightChecked == other.copyrightChecked &&
-          finalStatus == other.finalStatus &&
+          evidenceLevel == other.evidenceLevel &&
+          verificationMethod == other.verificationMethod &&
+          verifiedAt == other.verifiedAt &&
+          pageVerified == other.pageVerified &&
+          evidenceHash == other.evidenceHash &&
           rejectionReason == other.rejectionReason;
 
   @override
   int get hashCode => Object.hash(
-    verifiedBy,
-    verifiedDate,
-    primarySourceChecked,
-    secondSourceChecked,
-    titleChecked,
-    authorshipChecked,
-    pageChecked,
-    textLineByLineChecked,
-    scriptChecked,
-    copyrightChecked,
-    finalStatus,
+    evidenceLevel,
+    verificationMethod,
+    verifiedAt,
+    pageVerified,
+    evidenceHash,
     rejectionReason,
   );
 
   @override
   String toString() {
-    return 'VerificationRecord(status: ${finalStatus.name}, isFullyVerified: $isFullyVerified, verifiedBy: $verifiedBy)';
+    return 'VerificationRecord(level: ${evidenceLevel.name}, method: $verificationMethod)';
   }
 }

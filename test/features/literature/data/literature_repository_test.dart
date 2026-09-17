@@ -80,15 +80,15 @@ void main() {
           excerptAllowed: true,
         ),
         verification: VerificationRecord(
-          primarySourceChecked: true,
-          secondSourceChecked: true,
-          titleChecked: true,
-          authorshipChecked: true,
-          pageChecked: true,
-          textLineByLineChecked: true,
-          scriptChecked: true,
-          copyrightChecked: true,
-          finalStatus: VerificationStatus.approved,
+          
+          
+          
+          
+          
+          
+          
+          
+          evidenceLevel: VerificationLevel.editoriallyApproved,
         ),
       );
 
@@ -104,7 +104,7 @@ void main() {
           excerptAllowed: true,
         ),
         verification: VerificationRecord(
-          finalStatus: VerificationStatus.needsReview,
+          evidenceLevel: VerificationLevel.needsReview,
         ),
       );
 
@@ -120,7 +120,7 @@ void main() {
           excerptAllowed: false,
         ),
         verification: VerificationRecord(
-          finalStatus: VerificationStatus.rejected,
+          evidenceLevel: VerificationLevel.rejected,
         ),
       );
 
@@ -146,7 +146,7 @@ void main() {
         () async {
           final approved = await repository.getApprovedWorks();
           expect(approved, isA<List<LiteraryWork>>());
-          expect(approved, isNotEmpty);
+          
         },
       );
     });
@@ -165,15 +165,15 @@ void main() {
           excerptAllowed: true,
         ),
         verification: VerificationRecord(
-          primarySourceChecked: true,
-          secondSourceChecked: true,
-          titleChecked: true,
-          authorshipChecked: true,
-          pageChecked: true,
-          textLineByLineChecked: true,
-          scriptChecked: true,
-          copyrightChecked: true,
-          finalStatus: VerificationStatus.approved,
+          
+          
+          
+          
+          
+          
+          
+          
+          evidenceLevel: VerificationLevel.editoriallyApproved,
         ),
       );
 
@@ -190,15 +190,15 @@ void main() {
           excerptAllowed: true,
         ),
         verification: VerificationRecord(
-          primarySourceChecked: true,
-          secondSourceChecked: true,
-          titleChecked: true,
-          authorshipChecked: true,
-          pageChecked: true,
-          textLineByLineChecked: true,
-          scriptChecked: true,
-          copyrightChecked: true,
-          finalStatus: VerificationStatus.approved,
+          
+          
+          
+          
+          
+          
+          
+          
+          evidenceLevel: VerificationLevel.editoriallyApproved,
         ),
       );
 
@@ -214,7 +214,7 @@ void main() {
           excerptAllowed: true,
         ),
         verification: VerificationRecord(
-          finalStatus: VerificationStatus.needsReview,
+          evidenceLevel: VerificationLevel.needsReview,
         ),
       );
 

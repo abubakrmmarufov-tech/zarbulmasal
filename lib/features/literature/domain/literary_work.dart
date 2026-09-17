@@ -216,7 +216,7 @@ class LiteraryWork {
     return hasMetadata &&
         source != null &&
         source.pageStart != null &&
-        verification.pageChecked;
+        verification.pageVerified;
   }
 
   /// Creates a [LiteraryWork] from a JSON map.

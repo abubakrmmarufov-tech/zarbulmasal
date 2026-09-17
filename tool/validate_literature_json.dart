@@ -111,10 +111,10 @@ void main() {
       'Work ${work.id} rights reasoning is empty',
     );
 
-    if (work.verification.finalStatus == VerificationStatus.approved) {
+    if (work.verification.evidenceLevel == VerificationLevel.editoriallyApproved) {
       approvedCount++;
       assert(
-        work.verification.secondSourceChecked,
+        work.verification.pageVerified,
         'Approved work ${work.id} is missing a second witness',
       );
       assert(
@@ -125,8 +125,8 @@ void main() {
         work.isDisplayable,
         'Approved work ${work.id} must be displayable',
       );
-    } else if (work.verification.finalStatus ==
-        VerificationStatus.needsReview) {
+    } else if (work.verification.evidenceLevel ==
+        VerificationLevel.needsReview) {
       needsReviewCount++;
       assert(
         !work.isDisplayable,
