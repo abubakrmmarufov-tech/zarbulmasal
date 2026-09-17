@@ -9,7 +9,7 @@
     "year": "2008",
     "sourceType": "presidential-series",
     "sourceInstitution": "Институти забон ва адабиёти ба номи Рӯдакӣ",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "rudaki_osori_rudaki_1958",
@@ -21,7 +21,7 @@
     "year": "1958",
     "sourceType": "critical-edition",
     "sourceInstitution": "Академияи илмҳои РСС Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "rudaki_devoni_rudaki_2015",
@@ -33,7 +33,7 @@
     "year": "2015",
     "sourceType": "critical-edition",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "nasir_khusraw_akhtaron_adab_2010",
@@ -45,7 +45,7 @@
     "year": "2010",
     "sourceType": "presidential-series",
     "sourceInstitution": "Институти забон ва адабиёти ба номи Рӯдакӣ",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "nasir_khusraw_safarnoma_1970",
@@ -57,7 +57,7 @@
     "year": "1970",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "nasir_khusraw_safarnoma_2003",
@@ -69,7 +69,7 @@
     "year": "2003",
     "sourceType": "scholarly-edition",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "nasir_khusraw_rushnoinoma_1980",
@@ -81,7 +81,7 @@
     "year": "1980",
     "sourceType": "academic-monograph",
     "sourceInstitution": "Академияи илмҳои РСС Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "kamol_khujandi_devon_adib_2015",
@@ -93,7 +93,7 @@
     "year": "2015",
     "sourceType": "academic-monograph",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "kamol_khujandi_devon_noshir_2020",
@@ -105,7 +105,7 @@
     "year": "2020",
     "sourceType": "critical-edition",
     "sourceInstitution": "Маркази илмии Камоли Хуҷандӣ",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "kamol_khujandi_devon_irfon_1983",
@@ -117,7 +117,7 @@
     "year": "1983",
     "sourceType": "academic-monograph",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "tursunzoda_kulliyot_donish_2025",
@@ -129,7 +129,7 @@
     "year": "2025",
     "sourceType": "academic-monograph",
     "sourceInstitution": "Академияи миллии илмҳои Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "tursunzoda_kulliyot_irfon_1971",
@@ -141,7 +141,7 @@
     "year": "1971",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Институти забон ва адабиёти ба номи Рӯдакӣ",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "tursunzoda_osori_muntakhab_1989",
@@ -153,7 +153,7 @@
     "year": "1989",
     "sourceType": "academic-monograph",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "qanoat_akhtaron_adab_2014",
@@ -165,7 +165,7 @@
     "year": "2014",
     "sourceType": "presidential-series",
     "sourceInstitution": "Иттифоқи нависандагони Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "qanoat_kulliyot_adib_2012",
@@ -177,7 +177,7 @@
     "year": "2012",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "loiq_sherali_kulliyot_adib_2008",
@@ -189,7 +189,7 @@
     "year": "2008",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Иттифоқи нависандагони Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "loiq_sherali_kulliyot_noshir_2021",
@@ -201,7 +201,7 @@
     "year": "2021",
     "sourceType": "academic-monograph",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "loiq_sherali_sad_bargi_ghazal_2015",
@@ -213,7 +213,7 @@
     "year": "2015",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "bozor_sobir_khuni_qalam_2010",
@@ -225,7 +225,7 @@
     "year": "2010",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "bozor_sobir_yak_chaman_sukhan_2014",
@@ -237,7 +237,7 @@
     "year": "2014",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Иттифоқи нависандагони Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "gulnazar_se_kulchai_tanuri_1995",
@@ -249,7 +249,7 @@
     "year": "1995",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "gulnazar_ogushi_sarshor_2011",
@@ -261,7 +261,7 @@
     "year": "2011",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "gulrukhsor_muntakhabi_ashor_2006",
@@ -273,7 +273,7 @@
     "year": "2006",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "gulrukhsor_jovidona_2009",
@@ -285,7 +285,7 @@
     "year": "2009",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "farzona_qatrae_az_muliyon_2003",
@@ -297,7 +297,7 @@
     "year": "2003",
     "sourceType": "academic-monograph",
     "sourceInstitution": "Маркази илмии Хуҷанд",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "farzona_daryoi_suzon_2014",
@@ -309,7 +309,7 @@
     "year": "2014",
     "sourceType": "printed-book-scan",
     "sourceInstitution": "Китобхонаи миллии Тоҷикистон",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "tj_literature_grade_5_2017",
@@ -323,7 +323,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "tj_literature_grade_6_2014",
@@ -352,7 +352,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": true
+    "sourceImageVerified": false
   },
   {
     "id": "tj_literature_grade_8_2026",
