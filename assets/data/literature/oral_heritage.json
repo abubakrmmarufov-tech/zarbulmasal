@@ -11,23 +11,14 @@
     "year": "1980",
     "page": "с. 45",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Эҷодиёти даҳанакии мардумӣ (фолклор).",
-      "rightsSource": "Академияи илмҳои Тоҷикистон",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-rubai-002",
@@ -41,23 +32,14 @@
     "year": "1982",
     "page": "с. 78",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Фолклори миллӣ ва моликияти умумӣ.",
-      "rightsSource": "Академияи миллии илмҳои ҶТ",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-dubayti-001",
@@ -71,23 +53,14 @@
     "year": "1985",
     "page": "с. 112",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Эҷодиёти даҳанакии мардумӣ.",
-      "rightsSource": "Маркази мардумшиносӣ",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-dubayti-002",
@@ -101,23 +74,14 @@
     "year": "1987",
     "page": "с. 64",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Фолклори суннатии мардумӣ.",
-      "rightsSource": "Академияи миллии илмҳо",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-chiston-001",
@@ -131,23 +95,14 @@
     "year": "1975",
     "page": "с. 23",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Чистони суннатии мардумӣ.",
-      "rightsSource": "Фолклори тоҷик",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-chiston-002",
@@ -161,23 +116,14 @@
     "year": "1975",
     "page": "с. 35",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Чистони суннатии халқӣ.",
-      "rightsSource": "Фолклори тоҷик",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-chiston-003",
@@ -191,23 +137,14 @@
     "year": "1975",
     "page": "с. 48",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Фолклори кӯдакон ва наврасон.",
-      "rightsSource": "Фолклори тоҷик",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-zarbulmasal-001",
@@ -221,23 +158,14 @@
     "year": "1977",
     "page": "с. 14",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Зарбулмасали классикии мардуми тоҷик.",
-      "rightsSource": "Пажӯҳишгоҳи забон ва адабиёт",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-zarbulmasal-002",
@@ -251,23 +179,14 @@
     "year": "1977",
     "page": "с. 89",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Мақоли мардумӣ.",
-      "rightsSource": "Фарҳанги зарбулмасалҳо",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-zarbulmasal-003",
@@ -281,23 +200,14 @@
     "year": "1977",
     "page": "с. 120",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Мақоли ахлоқии мардумӣ.",
-      "rightsSource": "Фарҳанги зарбулмасалҳо",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-maqol-001",
@@ -311,23 +221,14 @@
     "year": "1983",
     "page": "с. 52",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Ҳикмати мардумӣ.",
-      "rightsSource": "Академияи илмҳо",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-maqol-002",
@@ -341,23 +242,14 @@
     "year": "1983",
     "page": "с. 67",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Ҳикмати мардумӣ дар васфи ҳунар.",
-      "rightsSource": "Академияи илмҳо",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-afsona-001",
@@ -371,23 +263,14 @@
     "year": "1978",
     "page": "с. 34",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Афсонаи қадимаи мардумӣ.",
-      "rightsSource": "Фолклори тоҷик",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   },
   {
     "id": "oral-afsona-002",
@@ -401,22 +284,13 @@
     "year": "1980",
     "page": "с. 92",
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Афсонаи анъанавии мардумӣ.",
-      "rightsSource": "Фолклори тоҷик",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Pending review",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "verifiedDate": "2026-09-15",
-      "titleChecked": true,
-      "authorshipChecked": true,
-      "pageChecked": true,
-      "textLineByLineChecked": true,
-      "scriptChecked": true,
-      "copyrightChecked": true,
-      "finalStatus": "needsReview"
-    },
-    "finalStatus": "needsReview"
+      "evidenceLevel": "extracted"
+    }
   }
 ]

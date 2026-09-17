@@ -17,7 +17,9 @@ enum VerificationLevel {
   needsReview;
 
   static VerificationLevel fromString(String? value) {
-    if (value == null || value.trim().isEmpty) return VerificationLevel.needsReview;
+    if (value == null || value.trim().isEmpty) {
+      return VerificationLevel.needsReview;
+    }
     final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
     for (final status in VerificationLevel.values) {
       if (status.name.toLowerCase() == normalized) return status;
