@@ -289,57 +289,75 @@ void main() {
       }
     });
 
-    test('12 core curriculum poems have page proof, with classical approved and modern primaryChecked', () {
-      final file = File('assets/data/literature/works.json');
-      final list = jsonDecode(file.readAsStringSync()) as List<dynamic>;
+    test(
+      '12 core curriculum poems have page proof, with classical approved and modern primaryChecked',
+      () {
+        final file = File('assets/data/literature/works.json');
+        final list = jsonDecode(file.readAsStringSync()) as List<dynamic>;
 
-      final approvedWorks = <LiteraryWork>[];
-      final primaryCheckedWorks = <LiteraryWork>[];
+        final approvedWorks = <LiteraryWork>[];
+        final primaryCheckedWorks = <LiteraryWork>[];
 
-      for (final item in list) {
-        final work = LiteraryWork.fromJson(item as Map<String, dynamic>);
-        if (work.verification.evidenceLevel ==
-            VerificationLevel.editoriallyApproved) {
-          approvedWorks.add(work);
-        } else if (work.verification.evidenceLevel ==
-            VerificationLevel.primaryChecked) {
-          primaryCheckedWorks.add(work);
+        for (final item in list) {
+          final work = LiteraryWork.fromJson(item as Map<String, dynamic>);
+          if (work.verification.evidenceLevel ==
+              VerificationLevel.editoriallyApproved) {
+            approvedWorks.add(work);
+          } else if (work.verification.evidenceLevel ==
+              VerificationLevel.primaryChecked) {
+            primaryCheckedWorks.add(work);
+          }
         }
-      }
 
-      expect(approvedWorks.length, 8);
-      for (final work in approvedWorks) {
-        expect(work.isDisplayable, isTrue);
-        expect(work.rights.status, RightsStatus.publicDomain);
-        expect(work.rights.fullTextAllowed, isTrue);
-        expect(work.verification.pageVerified, isTrue);
-        expect(work.primarySource!.pageStart, isNotNull);
-        expect(work.primarySource!.sourceImageVerified, isTrue);
+        expect(approvedWorks.length, 8);
+        for (final work in approvedWorks) {
+          expect(work.isDisplayable, isTrue);
+          expect(work.rights.status, RightsStatus.publicDomain);
+          expect(work.rights.fullTextAllowed, isTrue);
+          expect(work.verification.pageVerified, isTrue);
+          expect(work.primarySource!.pageStart, isNotNull);
+          expect(work.primarySource!.sourceImageVerified, isTrue);
 
-        final imageFile = File('assets/data/literature/page_images/${work.id}.png');
-        expect(imageFile.existsSync(), isTrue,
-            reason: 'Page image missing for work ${work.id}');
-        expect(imageFile.lengthSync(), greaterThan(10000),
-            reason: 'Page image too small for work ${work.id}');
-      }
+          final imageFile = File(
+            'assets/data/literature/page_images/${work.id}.png',
+          );
+          expect(
+            imageFile.existsSync(),
+            isTrue,
+            reason: 'Page image missing for work ${work.id}',
+          );
+          expect(
+            imageFile.lengthSync(),
+            greaterThan(10000),
+            reason: 'Page image too small for work ${work.id}',
+          );
+        }
 
-      expect(primaryCheckedWorks.length, 4);
-      for (final work in primaryCheckedWorks) {
-        expect(work.isDisplayable, isFalse);
-        expect(work.rights.status, RightsStatus.excerptOnly);
-        expect(work.rights.fullTextAllowed, isFalse);
-        expect(work.rights.excerptAllowed, isTrue);
-        expect(work.verification.pageVerified, isTrue);
-        expect(work.primarySource!.pageStart, isNotNull);
-        expect(work.primarySource!.sourceImageVerified, isTrue);
+        expect(primaryCheckedWorks.length, 4);
+        for (final work in primaryCheckedWorks) {
+          expect(work.isDisplayable, isFalse);
+          expect(work.rights.status, RightsStatus.excerptOnly);
+          expect(work.rights.fullTextAllowed, isFalse);
+          expect(work.rights.excerptAllowed, isTrue);
+          expect(work.verification.pageVerified, isTrue);
+          expect(work.primarySource!.pageStart, isNotNull);
+          expect(work.primarySource!.sourceImageVerified, isTrue);
 
-        final imageFile = File('assets/data/literature/page_images/${work.id}.png');
-        expect(imageFile.existsSync(), isTrue,
-            reason: 'Page image missing for work ${work.id}');
-        expect(imageFile.lengthSync(), greaterThan(10000),
-            reason: 'Page image too small for work ${work.id}');
-      }
-    });
+          final imageFile = File(
+            'assets/data/literature/page_images/${work.id}.png',
+          );
+          expect(
+            imageFile.existsSync(),
+            isTrue,
+            reason: 'Page image missing for work ${work.id}',
+          );
+          expect(
+            imageFile.lengthSync(),
+            greaterThan(10000),
+            reason: 'Page image too small for work ${work.id}',
+          );
+        }
+      },
+    );
   });
 }
-

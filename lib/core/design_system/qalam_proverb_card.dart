@@ -10,11 +10,7 @@ class QalamProverbCard extends ConsumerWidget {
   final Proverb proverb;
   final VoidCallback? onTap;
 
-  const QalamProverbCard({
-    super.key,
-    required this.proverb,
-    this.onTap,
-  });
+  const QalamProverbCard({super.key, required this.proverb, this.onTap});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,10 +34,7 @@ class QalamProverbCard extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(
-                  color: colors.outlineVariant,
-                  width: 0.5,
-                ),
+                bottom: BorderSide(color: colors.outlineVariant, width: 0.5),
               ),
             ),
             child: Column(

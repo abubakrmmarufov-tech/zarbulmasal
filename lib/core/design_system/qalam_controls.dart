@@ -23,7 +23,8 @@ class QalamBookmark extends ConsumerWidget {
     final saved = ref.watch(favoritesProvider).contains(proverbId);
     final lang = ref.watch(displayLanguageProvider);
     final activeColor = color ?? Theme.of(context).colorScheme.primary;
-    final inactiveColor = color ?? Theme.of(context).colorScheme.onSurfaceVariant;
+    final inactiveColor =
+        color ?? Theme.of(context).colorScheme.onSurfaceVariant;
 
     return IconButton(
       tooltip: AppTranslations.get(
@@ -80,7 +81,9 @@ class QalamScriptSwitch extends ConsumerWidget {
                 minimumSize: const Size(44, 40),
               ),
               child: Text(
-                value == DisplayLanguage.persian ? 'فارسی (عربی)' : 'Тоҷикӣ (Кириллӣ)',
+                value == DisplayLanguage.persian
+                    ? 'فارسی (عربی)'
+                    : 'Тоҷикӣ (Кириллӣ)',
                 style: QalamTypography.label(
                   color: lang == value
                       ? colors.primary
@@ -128,10 +131,7 @@ class QalamSectionLink extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(vertical: 18),
           decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(
-                color: colors.outlineVariant,
-                width: 0.5,
-              ),
+              bottom: BorderSide(color: colors.outlineVariant, width: 0.5),
             ),
           ),
           child: Row(

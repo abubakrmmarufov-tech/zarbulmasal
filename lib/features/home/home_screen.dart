@@ -274,13 +274,16 @@ class HomeScreen extends ConsumerWidget {
                           lang,
                         ),
                         title: QalamCategoryTile.nameFor(category, lang),
-                        subtitle:
-                            AppTranslations.get('proverb_count_label', lang, [
-                              AppTranslations.formatDigits(
-                                '${proverbs.where((p) => p.categoryId == category.id).length}',
-                                lang,
-                              ),
-                            ]),
+                        subtitle: AppTranslations.get(
+                          'proverb_count_label',
+                          lang,
+                          [
+                            AppTranslations.formatDigits(
+                              '${proverbs.where((p) => p.categoryId == category.id).length}',
+                              lang,
+                            ),
+                          ],
+                        ),
                         onTap: () {
                           ref.read(selectedCategoryProvider.notifier).state =
                               category.id;

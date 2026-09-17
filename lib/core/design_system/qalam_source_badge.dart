@@ -28,10 +28,7 @@ class QalamSourceBadge extends StatelessWidget {
         : QalamColors.forest.withValues(alpha: 0.25);
 
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8.0,
-        vertical: 3.0,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3.0),
       decoration: BoxDecoration(
         color: bg,
         border: Border.all(color: border, width: 0.5),

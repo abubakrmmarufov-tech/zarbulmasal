@@ -32,7 +32,9 @@ class QalamLiteratureCard extends StatelessWidget {
     final accentColor = isDark
         ? QalamColors.antiqueGoldSoft
         : QalamColors.burgundySoft;
-    final borderColor = isDark ? QalamColors.hairlineDark : QalamColors.hairline;
+    final borderColor = isDark
+        ? QalamColors.hairlineDark
+        : QalamColors.hairline;
 
     return Padding(
       padding: const EdgeInsets.symmetric(

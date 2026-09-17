@@ -46,10 +46,7 @@ class QalamPoetCard extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(
-                color: colors.outlineVariant,
-                width: 0.5,
-              ),
+              bottom: BorderSide(color: colors.outlineVariant, width: 0.5),
             ),
           ),
           child: Row(
@@ -110,7 +107,9 @@ class QalamPoetCard extends StatelessWidget {
                             ),
                             decoration: BoxDecoration(
                               color: colors.primary.withValues(alpha: 0.08),
-                              borderRadius: BorderRadius.circular(QalamSpacing.radiusXs),
+                              borderRadius: BorderRadius.circular(
+                                QalamSpacing.radiusXs,
+                              ),
                               border: Border.all(
                                 color: colors.primary.withValues(alpha: 0.25),
                                 width: 0.5,

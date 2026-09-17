@@ -28,8 +28,12 @@ class QalamDailyHero extends ConsumerWidget {
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textPrimary = isDark ? QalamColors.paperText : QalamColors.paperHigh;
     final textMuted = isDark ? QalamColors.paperTextSoft : QalamColors.paperLow;
-    final accentGold = isDark ? QalamColors.antiqueGoldSoft : QalamColors.antiqueGoldSoft;
-    final ruleColor = isDark ? QalamColors.hairlineDark : const Color(0x33F3F0E7);
+    final accentGold = isDark
+        ? QalamColors.antiqueGoldSoft
+        : QalamColors.antiqueGoldSoft;
+    final ruleColor = isDark
+        ? QalamColors.hairlineDark
+        : const Color(0x33F3F0E7);
 
     return Material(
       color: bg,
@@ -55,7 +59,9 @@ class QalamDailyHero extends ConsumerWidget {
                     ),
                     decoration: BoxDecoration(
                       color: accentGold.withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(QalamSpacing.radiusXs),
+                      borderRadius: BorderRadius.circular(
+                        QalamSpacing.radiusXs,
+                      ),
                     ),
                     child: Text(
                       AppTranslations.get('home_daily_proverb', lang),
@@ -63,10 +69,7 @@ class QalamDailyHero extends ConsumerWidget {
                     ),
                   ),
                   const Spacer(),
-                  QalamBookmark(
-                    proverbId: proverb.id,
-                    color: accentGold,
-                  ),
+                  QalamBookmark(proverbId: proverb.id, color: accentGold),
                 ],
               ),
               const SizedBox(height: 20),
@@ -106,7 +109,10 @@ class QalamDailyHero extends ConsumerWidget {
                     onPressed: onOpen,
                     style: TextButton.styleFrom(
                       foregroundColor: textPrimary,
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 8,
+                      ),
                       minimumSize: const Size(44, 36),
                     ),
                     child: Row(

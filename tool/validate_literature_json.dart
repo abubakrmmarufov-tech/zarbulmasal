@@ -157,7 +157,9 @@ void main() {
   );
   print('  ✓ Total works: ${worksList.length}');
   print('  ✓ Approved poetic works: $approvedCount');
-  print('  ✓ Primary checked works (curriculum provenance): $primaryCheckedCount');
+  print(
+    '  ✓ Primary checked works (curriculum provenance): $primaryCheckedCount',
+  );
   print('  ✓ Quarantined needsReview items: $needsReviewCount');
   print('  ✓ Works with Tajik text: $textTajikCount');
   print('  ✓ Works with Persian text: $textPersianCount');

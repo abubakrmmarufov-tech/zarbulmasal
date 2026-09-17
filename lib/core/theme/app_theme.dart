@@ -30,10 +30,16 @@ class AppTheme {
           surface: paper,
           onSurface: ink,
           onSurfaceVariant: muted,
-          surfaceContainerLowest: dark ? QalamColors.inkWell : QalamColors.paperHigh,
-          surfaceContainerLow: dark ? const Color(0xFF161C18) : QalamColors.paperWarm,
+          surfaceContainerLowest: dark
+              ? QalamColors.inkWell
+              : QalamColors.paperHigh,
+          surfaceContainerLow: dark
+              ? const Color(0xFF161C18)
+              : QalamColors.paperWarm,
           surfaceContainer: dark ? QalamColors.inkCard : QalamColors.cream,
-          surfaceContainerHigh: dark ? const Color(0xFF222B24) : QalamColors.paperLow,
+          surfaceContainerHigh: dark
+              ? const Color(0xFF222B24)
+              : QalamColors.paperLow,
           surfaceContainerHighest: dark
               ? QalamColors.inkCardHigh
               : const Color(0xFFE5DFC9),
@@ -137,7 +143,9 @@ class AppTheme {
         filled: false,
         hintStyle: QalamTypography.body(color: muted),
         border: UnderlineInputBorder(borderSide: BorderSide(color: rule)),
-        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: rule)),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: rule),
+        ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: accent, width: 2),
         ),
@@ -145,7 +153,9 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: dark ? QalamColors.inkCard : QalamColors.paperHigh,
-        selectedColor: dark ? QalamColors.antiqueGoldDeep : QalamColors.paperLow,
+        selectedColor: dark
+            ? QalamColors.antiqueGoldDeep
+            : QalamColors.paperLow,
         disabledColor: dark ? QalamColors.inkWell : QalamColors.paperLow,
         labelStyle: QalamTypography.meta(color: ink),
         secondaryLabelStyle: QalamTypography.meta(color: accent),
