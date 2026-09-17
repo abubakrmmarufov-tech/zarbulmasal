@@ -201,14 +201,18 @@ void main() {
           fullTextAllowed: true,
           excerptAllowed: true,
         );
-        const verifiedRecord = VerificationRecord(evidenceLevel: VerificationLevel.editoriallyApproved);
+        const verifiedRecord = VerificationRecord(
+          evidenceLevel: VerificationLevel.editoriallyApproved,
+        );
 
         const unverifiedWork = LiteraryWork(
           id: 'w1',
           authorId: 'rudaki',
           title: 'Бӯи ҷӯи Мӯлиён',
           rights: rightsAllowed,
-          verification: VerificationRecord(evidenceLevel: VerificationLevel.editoriallyApproved),
+          verification: VerificationRecord(
+            evidenceLevel: VerificationLevel.editoriallyApproved,
+          ),
           textStatus: TextStatus.needsReview,
         );
         expect(unverifiedWork.isDisplayable, isFalse);
@@ -229,8 +233,6 @@ void main() {
         expect(blockedWork.isExcerptDisplayable, isFalse);
       },
     );
-
-    
 
     test('LiteraryWork fromJson / toJson roundtrip', () {
       final json = {
@@ -362,7 +364,7 @@ void main() {
       final entry = OralHeritageEntry.fromJson(json);
       expect(entry.id, 'folk-maqol-001');
       expect(entry.type, OralHeritageType.zarbulmasal);
-      
+
       expect(
         entry.citation,
         'Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ — Дониш, 1975. — с. 84.',

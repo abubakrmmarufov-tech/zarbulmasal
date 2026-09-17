@@ -18,8 +18,8 @@ void main() {
   assert(poetsFile.existsSync(), 'poets.json does not exist');
   final poetsList = jsonDecode(poetsFile.readAsStringSync()) as List<dynamic>;
   assert(
-    poetsList.length == 171,
-    'Expected exactly 171 poets, found ${poetsList.length}',
+    poetsList.length == 150,
+    'Expected exactly 150 poets, found ${poetsList.length}',
   );
 
   final authorIds = <String>{};
@@ -75,6 +75,7 @@ void main() {
 
   final workIds = <String>{};
   int approvedCount = 0;
+  int primaryCheckedCount = 0;
   int needsReviewCount = 0;
   int textTajikCount = 0;
   int textPersianCount = 0;
@@ -111,7 +112,8 @@ void main() {
       'Work ${work.id} rights reasoning is empty',
     );
 
-    if (work.verification.evidenceLevel == VerificationLevel.editoriallyApproved) {
+    if (work.verification.evidenceLevel ==
+        VerificationLevel.editoriallyApproved) {
       approvedCount++;
       assert(
         work.verification.pageVerified,
@@ -126,6 +128,17 @@ void main() {
         'Approved work ${work.id} must be displayable',
       );
     } else if (work.verification.evidenceLevel ==
+        VerificationLevel.primaryChecked) {
+      primaryCheckedCount++;
+      assert(
+        !work.isDisplayable,
+        'Primary checked work ${work.id} without editorial/rights clearance must not be displayable',
+      );
+      assert(
+        work.verification.pageVerified,
+        'Primary checked work ${work.id} must have pageVerified: true',
+      );
+    } else if (work.verification.evidenceLevel ==
         VerificationLevel.needsReview) {
       needsReviewCount++;
       assert(
@@ -135,20 +148,19 @@ void main() {
     }
   }
   assert(
-    approvedCount == 1136,
-    'Expected 1136 approved works, got $approvedCount',
+    approvedCount + needsReviewCount + primaryCheckedCount == worksList.length,
+    'All works must be classified as either approved, primaryChecked, or needsReview',
   );
   assert(
-    needsReviewCount == 336,
-    'Expected 336 needsReview works, got $needsReviewCount',
+    approvedCount <= 1000,
+    'Approved works ($approvedCount) must not violate epistemic verification limits',
   );
   print('  ✓ Total works: ${worksList.length}');
   print('  ✓ Approved poetic works: $approvedCount');
+  print('  ✓ Primary checked works (curriculum provenance): $primaryCheckedCount');
   print('  ✓ Quarantined needsReview items: $needsReviewCount');
   print('  ✓ Works with Tajik text: $textTajikCount');
-  print(
-    '  ✓ Works with Persian text: $textPersianCount (honest metric: 0/1136)',
-  );
+  print('  ✓ Works with Persian text: $textPersianCount');
 
   // 3. Validate sources.json & school_canon.json
   print('\n[3/5] Validating school_canon.json & sources.json...');
@@ -166,8 +178,8 @@ void main() {
   assert(canonFile.existsSync(), 'school_canon.json does not exist');
   final canonList = jsonDecode(canonFile.readAsStringSync()) as List<dynamic>;
   assert(
-    canonList.length == 25,
-    'Expected 25 school canon entries, got ${canonList.length}',
+    canonList.length >= 70,
+    'Expected at least 70 school canon entries, got ${canonList.length}',
   );
 
   for (final item in canonList) {

@@ -318,12 +318,16 @@ class _DailyVerseCard extends ConsumerWidget {
     }
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
     final accentColor = isDark
         ? QalamColors.antiqueGoldSoft
         : QalamColors.burgundySoft;
     final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
+    final borderColor = isDark
+        ? QalamColors.hairlineDark
+        : QalamColors.hairline;
 
     final authorAsync = ref.watch(authorByIdProvider(work!.authorId));
     final author = authorAsync.valueOrNull;
@@ -341,10 +345,13 @@ class _DailyVerseCard extends ConsumerWidget {
 
     return Material(
       color: bg,
-      borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
+        side: BorderSide(color: borderColor, width: 0.5),
+      ),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => context.push('/literature/work/${work!.id}'),
-        borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
         child: Padding(
           padding: const EdgeInsets.all(QalamSpacing.cardPad),
           child: Column(
@@ -357,19 +364,23 @@ class _DailyVerseCard extends ConsumerWidget {
                     isPersian ? 'بیت روز' : 'БАЙТИ РӮЗ',
                     style: QalamTypography.eyebrow(color: accentColor),
                   ),
-                  Icon(Icons.arrow_forward, color: accentColor, size: 18),
+                  Icon(
+                    isRtl ? Icons.arrow_back : Icons.arrow_forward,
+                    color: accentColor,
+                    size: 18,
+                  ),
                 ],
               ),
               const SizedBox(height: 14),
               Text(
                 verseText,
-                style: QalamTypography.heroProverb(
+                style: QalamTypography.verseText(
                   color: textColor,
                   fontSize: 22,
-                  height: 1.5,
+                  height: 1.55,
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
               Row(
                 children: [
                   Text(
@@ -417,6 +428,7 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
         .toList();
     if (available.isEmpty) return const SizedBox.shrink();
     final colors = Theme.of(context).colorScheme;
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
 
     // Pick top prominent works that have incipits or text
     final featured = available.take(8).toList();
@@ -439,7 +451,7 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
                 onPressed: () => context.push('/literature/works'),
                 child: Text(
                   isPersian ? 'همهٔ آثار' : 'Ҳамаи асарҳо',
-                  style: TextStyle(fontSize: 12, color: colors.primary),
+                  style: QalamTypography.meta(color: colors.primary),
                 ),
               ),
             ],
@@ -447,7 +459,7 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
         ),
         const SizedBox(height: 8),
         SizedBox(
-          height: 164,
+          height: 168,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: QalamSpacing.pageH),
@@ -471,17 +483,19 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
 
               return SizedBox(
                 width: 260,
-                child: Card(
-                  elevation: 0,
-                  color: colors.surfaceContainerHighest.withValues(alpha: 0.7),
+                child: Material(
+                  color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(
+                      QalamSpacing.cardRadius,
+                    ),
                     side: BorderSide(
                       color: colors.outlineVariant.withValues(alpha: 0.6),
+                      width: 0.5,
                     ),
                   ),
+                  clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    borderRadius: BorderRadius.circular(16),
                     onTap: () => context.push('/literature/work/${work.id}'),
                     child: Padding(
                       padding: const EdgeInsets.all(14),
@@ -499,20 +513,25 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
                                   vertical: 3,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: colors.primaryContainer,
-                                  borderRadius: BorderRadius.circular(6),
+                                  color: colors.primaryContainer.withValues(
+                                    alpha: 0.6,
+                                  ),
+                                  borderRadius: BorderRadius.circular(
+                                    QalamSpacing.radiusSm,
+                                  ),
                                 ),
                                 child: Text(
                                   _genreLabel(work.type, isPersian),
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
+                                  style: QalamTypography.meta(
                                     color: colors.onPrimaryContainer,
+                                    fontSize: 11,
                                   ),
                                 ),
                               ),
                               Icon(
-                                Icons.arrow_forward_ios,
+                                isRtl
+                                    ? Icons.arrow_back_ios
+                                    : Icons.arrow_forward_ios,
                                 size: 12,
                                 color: colors.onSurfaceVariant,
                               ),
@@ -531,10 +550,9 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
                           const SizedBox(height: 4),
                           Text(
                             authorName,
-                            style: TextStyle(
-                              fontSize: 12,
+                            style: QalamTypography.meta(
                               color: colors.primary,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
                             ),
                           ),
                           const Spacer(),
@@ -543,10 +561,9 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
                               '«$incipit»',
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 11.5,
-                                fontStyle: FontStyle.italic,
+                              style: QalamTypography.bodySecondary(
                                 color: colors.onSurfaceVariant,
+                                fontSize: 12,
                               ),
                             ),
                         ],

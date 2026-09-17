@@ -8,6 +8,7 @@ import '../../shared/providers/learning_providers.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
@@ -19,28 +20,54 @@ class HomeScreen extends ConsumerWidget {
     final stats = ref.watch(masteryStatsProvider);
     final isPersian = lang == DisplayLanguage.persian;
     String tr(String key) => AppTranslations.get(key, lang);
+
     return Scaffold(
       body: SafeArea(
         bottom: false,
         child: CustomScrollView(
           slivers: [
+            // Publication Masthead Header
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 18, 24, 24),
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  20,
+                  QalamSpacing.pageH,
+                  24,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Masthead Top Row
                     Row(
                       children: [
-                        Expanded(
-                          child: Text(
-                            tr('app_name'),
-                            style: QalamTypography.label(
-                              color: colors.onSurface,
-                              fontSize: 15,
+                        Flexible(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: colors.primary.withValues(alpha: 0.08),
+                              borderRadius: BorderRadius.circular(
+                                QalamSpacing.radiusXs,
+                              ),
+                              border: Border.all(
+                                color: colors.primary.withValues(alpha: 0.25),
+                                width: 0.5,
+                              ),
+                            ),
+                            child: Text(
+                              tr('app_name').toUpperCase(),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: QalamTypography.eyebrow(
+                                color: colors.primary,
+                              ),
                             ),
                           ),
                         ),
+                        const SizedBox(width: 8),
                         Text(
                           isPersian ? 'ض' : 'З / ض',
                           style: QalamTypography.heroProverb(
@@ -51,8 +78,8 @@ class HomeScreen extends ConsumerWidget {
                       ],
                     ),
                     const SizedBox(height: 18),
-                    const Divider(),
-                    const SizedBox(height: 24),
+                    Divider(color: colors.outlineVariant, height: 1),
+                    const SizedBox(height: 22),
                     Text(
                       tr('home_headline'),
                       style: QalamTypography.pageTitle(
@@ -60,17 +87,20 @@ class HomeScreen extends ConsumerWidget {
                         fontSize: 32,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
                     Text(
                       tr('app_tagline'),
                       style: QalamTypography.bodySecondary(
                         color: colors.onSurfaceVariant,
+                        fontSize: 14,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
+
+            // Signature Daily Proverb Hero Folio
             if (daily != null)
               SliverToBoxAdapter(
                 child: QalamDailyHero(
@@ -78,17 +108,24 @@ class HomeScreen extends ConsumerWidget {
                   onOpen: () => context.push('/daily'),
                 ),
               ),
+
+            // Section 01: Learning & Mastery Portal
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 36, 24, 32),
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  32,
+                  QalamSpacing.pageH,
+                  24,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${AppTranslations.formatDigits('01', lang)} / ${tr('home_learning')}',
+                      '${AppTranslations.formatDigits('01', lang)} / ${tr('home_learning').toUpperCase()}',
                       style: QalamTypography.eyebrow(color: colors.primary),
                     ),
-                    const SizedBox(height: 14),
+                    const SizedBox(height: 12),
                     Text(
                       tr('home_learn'),
                       style: QalamTypography.sectionTitle(
@@ -104,9 +141,14 @@ class HomeScreen extends ConsumerWidget {
                           vertical: 10,
                         ),
                         decoration: BoxDecoration(
-                          color: colors.surfaceContainerLow,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: colors.outlineVariant),
+                          color: colors.surfaceContainerLowest,
+                          borderRadius: BorderRadius.circular(
+                            QalamSpacing.radiusSm,
+                          ),
+                          border: Border.all(
+                            color: colors.outlineVariant,
+                            width: 0.5,
+                          ),
                         ),
                         child: Row(
                           children: [
@@ -119,8 +161,14 @@ class HomeScreen extends ConsumerWidget {
                             Expanded(
                               child: Text(
                                 AppTranslations.get('home_mastery_stat', lang, [
-                                  stats.masteredCount,
-                                  stats.totalProverbs,
+                                  AppTranslations.formatDigits(
+                                    '${stats.masteredCount}',
+                                    lang,
+                                  ),
+                                  AppTranslations.formatDigits(
+                                    '${stats.totalProverbs}',
+                                    lang,
+                                  ),
                                 ]),
                                 style: QalamTypography.meta(
                                   color: colors.onSurface,
@@ -131,7 +179,7 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       ),
                     ],
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 8),
                     QalamSectionLink(
                       number: AppTranslations.formatDigits('01', lang),
                       title: tr('quiz_title'),
@@ -148,7 +196,10 @@ class HomeScreen extends ConsumerWidget {
                       number: AppTranslations.formatDigits('03', lang),
                       title: tr('levels_title'),
                       subtitle: AppTranslations.get('levels_subtitle', lang, [
-                        availableLevels.length,
+                        AppTranslations.formatDigits(
+                          '${availableLevels.length}',
+                          lang,
+                        ),
                       ]),
                       onTap: () => context.push('/levels'),
                     ),
@@ -156,6 +207,8 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
+
+            // Feature Banner: Literary Heritage
             SliverToBoxAdapter(
               child: QalamLiteratureCard(
                 onTap: () => context.push('/literature'),
@@ -166,18 +219,25 @@ class HomeScreen extends ConsumerWidget {
                 sectionLabel: isPersian ? '۰۱ / ادبیات' : '01 / АДАБИЁТ',
               ),
             ),
+
+            // Section 02: Categories Index
             SliverToBoxAdapter(
               child: Container(
-                color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
+                color: colors.surfaceContainerLow,
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  28,
+                  QalamSpacing.pageH,
+                  24,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${AppTranslations.formatDigits('02', lang)} / ${tr('categories_title')}',
+                      '${AppTranslations.formatDigits('02', lang)} / ${tr('categories_title').toUpperCase()}',
                       style: QalamTypography.eyebrow(color: colors.primary),
                     ),
-                    const SizedBox(height: 22),
+                    const SizedBox(height: 18),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -188,10 +248,10 @@ class HomeScreen extends ConsumerWidget {
                           ),
                           style: QalamTypography.pageTitle(
                             color: colors.onSurface,
-                            fontSize: 44,
+                            fontSize: 42,
                           ),
                         ),
-                        const SizedBox(width: 18),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 4),
@@ -199,14 +259,14 @@ class HomeScreen extends ConsumerWidget {
                               tr('categories_subtitle'),
                               style: QalamTypography.sectionTitle(
                                 color: colors.onSurface,
-                                fontSize: 20,
+                                fontSize: 18,
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     for (final category in categories.take(3))
                       QalamSectionLink(
                         number: AppTranslations.formatDigits(
@@ -216,9 +276,10 @@ class HomeScreen extends ConsumerWidget {
                         title: QalamCategoryTile.nameFor(category, lang),
                         subtitle:
                             AppTranslations.get('proverb_count_label', lang, [
-                              proverbs
-                                  .where((p) => p.categoryId == category.id)
-                                  .length,
+                              AppTranslations.formatDigits(
+                                '${proverbs.where((p) => p.categoryId == category.id).length}',
+                                lang,
+                              ),
                             ]),
                         onTap: () {
                           ref.read(selectedCategoryProvider.notifier).state =
@@ -237,13 +298,15 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
+
+            // Section 03: Proverbs Explorer
             SliverToBoxAdapter(
               child: QalamPageHeader(
                 eyebrow:
-                    '${AppTranslations.formatDigits('03', lang)} / ${tr('home_explore')}',
+                    '${AppTranslations.formatDigits('03', lang)} / ${tr('home_explore').toUpperCase()}',
                 title: tr('home_proverbs'),
                 subtitle: AppTranslations.get('proverb_count_label', lang, [
-                  proverbs.length,
+                  AppTranslations.formatDigits('${proverbs.length}', lang),
                 ]),
                 showRule: false,
               ),
@@ -257,17 +320,29 @@ class HomeScreen extends ConsumerWidget {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  20,
+                  QalamSpacing.pageH,
+                  28,
+                ),
                 child: OutlinedButton(
                   onPressed: () => context.go('/proverbs'),
                   child: Text(tr('btn_see_all')),
                 ),
               ),
             ),
+
+            // Section 04: Literature Portal
             SliverToBoxAdapter(
               child: Container(
-                color: Theme.of(context).colorScheme.surfaceContainerLow,
-                padding: const EdgeInsets.fromLTRB(24, 28, 24, 32),
+                color: colors.surfaceContainerLow,
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  28,
+                  QalamSpacing.pageH,
+                  28,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -275,7 +350,7 @@ class HomeScreen extends ConsumerWidget {
                       '${AppTranslations.formatDigits('04', lang)} / ${tr('literature_title').toUpperCase()}',
                       style: QalamTypography.eyebrow(color: colors.primary),
                     ),
-                    const SizedBox(height: 22),
+                    const SizedBox(height: 16),
                     Text(
                       tr('literature_title'),
                       style: QalamTypography.sectionTitle(
@@ -283,7 +358,7 @@ class HomeScreen extends ConsumerWidget {
                         fontSize: 24,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 14),
                     QalamSectionLink(
                       number: AppTranslations.formatDigits('01', lang),
                       title: tr('poets_title'),
@@ -300,9 +375,16 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
+
+            // Section 05: History Portal
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 16, 24, 28),
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  16,
+                  QalamSpacing.pageH,
+                  36,
+                ),
                 child: QalamSectionLink(
                   number: AppTranslations.formatDigits('05', lang),
                   title: isPersian ? 'تاریخ مردم تاجیک' : 'Таърихи халқи тоҷик',

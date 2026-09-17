@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'design_system.dart';
 
-/// A publication heading: small folio, large title, a single ink rule.
+/// A publication heading: small folio, large title, subtle accent rule.
 class QalamPageHeader extends StatelessWidget {
   final String? eyebrow;
   final String title;
@@ -9,6 +9,7 @@ class QalamPageHeader extends StatelessWidget {
   final Widget? trailing;
   final bool showRule;
   final EdgeInsets padding;
+
   const QalamPageHeader({
     super.key,
     this.eyebrow,
@@ -16,8 +17,14 @@ class QalamPageHeader extends StatelessWidget {
     this.subtitle,
     this.trailing,
     this.showRule = true,
-    this.padding = const EdgeInsets.fromLTRB(24, 28, 24, 24),
+    this.padding = const EdgeInsets.fromLTRB(
+      QalamSpacing.pageH,
+      28,
+      QalamSpacing.pageH,
+      24,
+    ),
   });
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -31,7 +38,7 @@ class QalamPageHeader extends StatelessWidget {
               eyebrow!,
               style: QalamTypography.eyebrow(color: colors.primary),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 14),
           ],
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,11 +49,14 @@ class QalamPageHeader extends StatelessWidget {
                   style: QalamTypography.pageTitle(color: colors.onSurface),
                 ),
               ),
-              if (trailing != null) ...[const SizedBox(width: 12), trailing!],
+              if (trailing != null) ...[
+                const SizedBox(width: 12),
+                trailing!,
+              ],
             ],
           ),
           if (subtitle != null) ...[
-            const SizedBox(height: 14),
+            const SizedBox(height: 10),
             Text(
               subtitle!,
               style: QalamTypography.bodySecondary(
@@ -54,7 +64,10 @@ class QalamPageHeader extends StatelessWidget {
               ),
             ),
           ],
-          if (showRule) ...[const SizedBox(height: 28), const Divider()],
+          if (showRule) ...[
+            const SizedBox(height: 24),
+            Divider(color: colors.outlineVariant, height: 1),
+          ],
         ],
       ),
     );

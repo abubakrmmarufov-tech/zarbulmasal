@@ -110,6 +110,8 @@ class _PoetDetailContent extends ConsumerWidget {
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
 
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+
     final name = (isPersian && poet.canonicalNamePersian != null)
         ? poet.canonicalNamePersian!
         : poet.canonicalName;
@@ -137,7 +139,12 @@ class _PoetDetailContent extends ConsumerWidget {
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 20, 24, 16),
+            padding: const EdgeInsets.fromLTRB(
+              QalamSpacing.pageH,
+              20,
+              QalamSpacing.pageH,
+              16,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -158,7 +165,9 @@ class _PoetDetailContent extends ConsumerWidget {
                         ),
                         decoration: BoxDecoration(
                           color: QalamColors.forest.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(3),
+                          borderRadius: BorderRadius.circular(
+                            QalamSpacing.radiusSm,
+                          ),
                           border: Border.all(
                             color: QalamColors.forest.withValues(alpha: 0.3),
                             width: 0.5,
@@ -795,7 +804,7 @@ class _PoetDetailContent extends ConsumerWidget {
                           ),
                         const SizedBox(width: 8),
                         Icon(
-                          Icons.chevron_right,
+                          isRtl ? Icons.chevron_left : Icons.chevron_right,
                           size: 18,
                           color: colors.onSurfaceVariant,
                         ),
@@ -828,7 +837,7 @@ class _PoetDetailContent extends ConsumerWidget {
                   onTap: () => context.push('/literature/work/${work.id}'),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
+                      horizontal: QalamSpacing.pageH,
                       vertical: 14,
                     ),
                     decoration: BoxDecoration(
@@ -902,7 +911,7 @@ class _PoetDetailContent extends ConsumerWidget {
                         ),
                         const SizedBox(width: 8),
                         Icon(
-                          Icons.chevron_right,
+                          isRtl ? Icons.chevron_left : Icons.chevron_right,
                           size: 18,
                           color: colors.onSurfaceVariant,
                         ),

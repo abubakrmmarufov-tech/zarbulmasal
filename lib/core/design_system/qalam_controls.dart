@@ -17,10 +17,14 @@ class QalamBookmark extends ConsumerWidget {
   final String proverbId;
   final Color? color;
   const QalamBookmark({super.key, required this.proverbId, this.color});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final saved = ref.watch(favoritesProvider).contains(proverbId);
     final lang = ref.watch(displayLanguageProvider);
+    final activeColor = color ?? Theme.of(context).colorScheme.primary;
+    final inactiveColor = color ?? Theme.of(context).colorScheme.onSurfaceVariant;
+
     return IconButton(
       tooltip: AppTranslations.get(
         saved ? 'bookmark_remove' : 'bookmark_add',
@@ -30,8 +34,8 @@ class QalamBookmark extends ConsumerWidget {
       onPressed: () => ref.read(favoritesProvider.notifier).toggle(proverbId),
       icon: Icon(
         saved ? Icons.bookmark : Icons.bookmark_outline,
-        color: color ?? (saved ? Theme.of(context).colorScheme.primary : null),
-        size: 23,
+        color: saved ? activeColor : inactiveColor,
+        size: 22,
       ),
     );
   }
@@ -39,38 +43,49 @@ class QalamBookmark extends ConsumerWidget {
 
 class QalamScriptSwitch extends ConsumerWidget {
   const QalamScriptSwitch({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lang = ref.watch(displayLanguageProvider);
     final colors = Theme.of(context).colorScheme;
+
     return Wrap(
-      spacing: 12,
+      spacing: 10,
+      runSpacing: 8,
       children: [
         for (final value in DisplayLanguage.values)
           Semantics(
             selected: lang == value,
-            child: TextButton(
+            child: OutlinedButton(
               onPressed: () =>
                   ref.read(displayLanguageProvider.notifier).setLanguage(value),
-              style: TextButton.styleFrom(
+              style: OutlinedButton.styleFrom(
                 foregroundColor: lang == value
                     ? colors.primary
                     : colors.onSurfaceVariant,
+                backgroundColor: lang == value
+                    ? colors.primary.withValues(alpha: 0.08)
+                    : Colors.transparent,
                 side: BorderSide(
-                  color: lang == value ? colors.primary : colors.outline,
+                  color: lang == value ? colors.primary : colors.outlineVariant,
+                  width: lang == value ? 1.5 : 0.5,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
                 ),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 12,
+                  vertical: 10,
                 ),
+                minimumSize: const Size(44, 40),
               ),
               child: Text(
-                value == DisplayLanguage.persian ? 'فارسی' : 'Тоҷикӣ',
+                value == DisplayLanguage.persian ? 'فارسی (عربی)' : 'Тоҷикӣ (Кириллӣ)',
                 style: QalamTypography.label(
                   color: lang == value
                       ? colors.primary
                       : colors.onSurfaceVariant,
-                  fontSize: 14,
+                  fontSize: 13,
                 ),
               ),
             ),
@@ -80,11 +95,12 @@ class QalamScriptSwitch extends ConsumerWidget {
   }
 }
 
-class QalamSectionLink extends StatelessWidget {
+class QalamSectionLink extends ConsumerWidget {
   final String number;
   final String title;
   final String subtitle;
   final VoidCallback? onTap;
+
   const QalamSectionLink({
     super.key,
     required this.number,
@@ -92,34 +108,48 @@ class QalamSectionLink extends StatelessWidget {
     required this.subtitle,
     required this.onTap,
   });
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
+    final lang = ref.watch(displayLanguageProvider);
+    final isPersian = lang == DisplayLanguage.persian;
     final enabled = onTap != null;
     final contentColor = enabled
         ? colors.onSurface
-        : colors.onSurfaceVariant.withValues(alpha: 0.65);
+        : colors.onSurfaceVariant.withValues(alpha: 0.60);
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
+        borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 22),
+          padding: const EdgeInsets.symmetric(vertical: 18),
           decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: colors.outline)),
+            border: Border(
+              bottom: BorderSide(
+                color: colors.outlineVariant,
+                width: 0.5,
+              ),
+            ),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                number,
-                style: QalamTypography.meta(
-                  color: enabled
-                      ? colors.primary
-                      : colors.onSurfaceVariant.withValues(alpha: 0.65),
+              Container(
+                width: 32,
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  number,
+                  style: QalamTypography.eyebrow(
+                    color: enabled
+                        ? colors.primary
+                        : colors.onSurfaceVariant.withValues(alpha: 0.60),
+                  ),
                 ),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,22 +158,27 @@ class QalamSectionLink extends StatelessWidget {
                       title,
                       style: QalamTypography.sectionTitle(
                         color: contentColor,
-                        fontSize: 23,
+                        fontSize: 20,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: QalamTypography.bodySecondary(color: contentColor),
+                      style: QalamTypography.bodySecondary(
+                        color: colors.onSurfaceVariant,
+                        fontSize: 13,
+                      ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(width: 12),
               Icon(
-                enabled ? Icons.arrow_forward : Icons.hourglass_empty,
-                size: 22,
-                color: contentColor,
+                enabled
+                    ? (isPersian ? Icons.arrow_back : Icons.arrow_forward)
+                    : Icons.hourglass_empty,
+                size: 18,
+                color: enabled ? colors.primary : colors.onSurfaceVariant,
               ),
             ],
           ),

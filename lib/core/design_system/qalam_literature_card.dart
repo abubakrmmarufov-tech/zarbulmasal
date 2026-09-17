@@ -25,12 +25,14 @@ class QalamLiteratureCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
     final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
     final accentColor = isDark
         ? QalamColors.antiqueGoldSoft
         : QalamColors.burgundySoft;
+    final borderColor = isDark ? QalamColors.hairlineDark : QalamColors.hairline;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -39,10 +41,13 @@ class QalamLiteratureCard extends StatelessWidget {
       ),
       child: Material(
         color: bg,
-        borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
+          side: BorderSide(color: borderColor, width: 0.5),
+        ),
+        clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
           child: Padding(
             padding: const EdgeInsets.all(QalamSpacing.cardPad),
             child: Column(
@@ -52,7 +57,7 @@ class QalamLiteratureCard extends StatelessWidget {
                   sectionLabel,
                   style: QalamTypography.eyebrow(color: accentColor),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 14),
                 Row(
                   children: [
                     Expanded(
@@ -61,9 +66,9 @@ class QalamLiteratureCard extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: QalamTypography.sectionTitle(
+                            style: QalamTypography.literaryTitle(
                               color: textColor,
-                              fontSize: 26,
+                              fontSize: 24,
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -77,7 +82,11 @@ class QalamLiteratureCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 16),
-                    Icon(Icons.arrow_forward, color: accentColor, size: 22),
+                    Icon(
+                      isRtl ? Icons.arrow_back : Icons.arrow_forward,
+                      color: accentColor,
+                      size: 20,
+                    ),
                   ],
                 ),
               ],

@@ -193,7 +193,8 @@ class _WorkListItem extends ConsumerWidget {
               ),
             ),
             const SizedBox(width: 12),
-            if (work.verification.evidenceLevel == VerificationLevel.editoriallyApproved)
+            if (work.verification.evidenceLevel ==
+                VerificationLevel.editoriallyApproved)
               const Icon(
                 Icons.check_circle_outline,
                 size: 16,

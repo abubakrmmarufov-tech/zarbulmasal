@@ -79,7 +79,8 @@ class AppTranslations {
     'flashcards_filter_learning': 'Дар ёдгирӣ',
     'flashcards_filter_mastered': 'Аз худ шуд',
     'flashcards_empty_filter': 'Дар ин бахш ҳоло корт нест.',
-    'flashcards_empty_hint': 'Дар вақти хондани кортҳо сатҳи азхудкуниро интихоб кунед.',
+    'flashcards_empty_hint':
+        'Дар вақти хондани кортҳо сатҳи азхудкуниро интихоб кунед.',
     'quiz_practice_missed': 'Машқи иштибоҳҳо',
     'quiz_missed_title': 'Мақолҳои ниёзманди такрор:',
     'home_mastery_stat': '\${0} аз \${1} аз худ шуд',

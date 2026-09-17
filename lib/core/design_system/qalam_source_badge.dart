@@ -1,25 +1,11 @@
 import 'package:flutter/material.dart';
+import 'qalam_colors.dart';
 import 'qalam_typography.dart';
 import 'qalam_spacing.dart';
 
-/// Verification badge that displays "Матн санҷида шудааст ✓" only when
-/// ALL required verification gates have passed for a literary work.
-///
-/// This badge must NEVER be shown based merely on finding text on multiple
-/// websites. It requires:
-/// - Primary source checked
-/// - Title checked
-/// - Authorship checked
-/// - Page checked
-/// - Text line-by-line checked
-/// - Script checked
-/// - Copyright checked
-/// - Final status == approved
+/// Verification badge that displays editorial provenance status.
 class QalamSourceBadge extends StatelessWidget {
-  /// Whether the work has passed all verification gates.
   final bool isVerified;
-
-  /// The label to display (defaults to Tajik verification text).
   final String label;
 
   const QalamSourceBadge({
@@ -32,22 +18,37 @@ class QalamSourceBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!isVerified) return const SizedBox.shrink();
 
-    final colors = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final fg = isDark ? const Color(0xFF7CA98B) : QalamColors.forest;
+    final bg = isDark
+        ? QalamColors.forest.withValues(alpha: 0.20)
+        : QalamColors.forest.withValues(alpha: 0.08);
+    final border = isDark
+        ? QalamColors.forest.withValues(alpha: 0.40)
+        : QalamColors.forest.withValues(alpha: 0.25);
+
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: QalamSpacing.badgePadH,
-        vertical: QalamSpacing.badgePadV,
+        horizontal: 8.0,
+        vertical: 3.0,
       ),
       decoration: BoxDecoration(
-        border: Border.all(color: colors.outlineVariant, width: 0.5),
-        borderRadius: BorderRadius.circular(QalamSpacing.badgeRadius),
+        color: bg,
+        border: Border.all(color: border, width: 0.5),
+        borderRadius: BorderRadius.circular(QalamSpacing.radiusXs),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.check_circle_outline, size: 14, color: colors.primary),
-          const SizedBox(width: 6),
-          Text(label, style: QalamTypography.meta(color: colors.primary)),
+          Icon(Icons.check_circle_outline, size: 13, color: fg),
+          const SizedBox(width: 5),
+          Text(
+            label,
+            style: QalamTypography.meta(
+              color: fg,
+              fontSize: 11,
+            ).copyWith(fontWeight: FontWeight.w600),
+          ),
         ],
       ),
     );

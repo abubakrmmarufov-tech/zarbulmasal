@@ -25,21 +25,31 @@ class AppTheme {
           brightness: base.brightness,
         ).copyWith(
           primary: accent,
-          onPrimary: dark ? QalamColors.ink : QalamColors.paperHigh,
-          secondary: dark ? const Color(0xFFACC7A9) : QalamColors.forest,
+          onPrimary: dark ? QalamColors.inkWell : QalamColors.paperHigh,
+          secondary: dark ? const Color(0xFF7CA98B) : QalamColors.forest,
           surface: paper,
           onSurface: ink,
           onSurfaceVariant: muted,
+          surfaceContainerLowest: dark ? QalamColors.inkWell : QalamColors.paperHigh,
+          surfaceContainerLow: dark ? const Color(0xFF161C18) : QalamColors.paperWarm,
+          surfaceContainer: dark ? QalamColors.inkCard : QalamColors.cream,
+          surfaceContainerHigh: dark ? const Color(0xFF222B24) : QalamColors.paperLow,
           surfaceContainerHighest: dark
               ? QalamColors.inkCardHigh
-              : QalamColors.paperLow,
+              : const Color(0xFFE5DFC9),
           outline: rule,
           outlineVariant: rule,
           error: dark ? const Color(0xFFF3AA9D) : QalamColors.danger,
         );
+
     final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(3),
+      borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
     );
+    final cardShape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(QalamSpacing.radiusMd),
+      side: BorderSide(color: rule, width: 0.5),
+    );
+
     return base.copyWith(
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
@@ -78,16 +88,16 @@ class AppTheme {
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: false,
-        titleTextStyle: QalamTypography.label(color: ink, fontSize: 15),
+        titleTextStyle: QalamTypography.sectionTitle(color: ink, fontSize: 17),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: scheme.primary,
           foregroundColor: scheme.onPrimary,
           elevation: 0,
-          minimumSize: const Size(48, 52),
+          minimumSize: const Size(48, 48),
           shape: shape,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           textStyle: QalamTypography.label(
             color: scheme.onPrimary,
             fontSize: 14,
@@ -96,24 +106,24 @@ class AppTheme {
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
-          minimumSize: const Size(48, 52),
+          minimumSize: const Size(48, 48),
           shape: shape,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: ink,
-          minimumSize: const Size(48, 52),
+          minimumSize: const Size(48, 48),
           shape: shape,
-          side: BorderSide(color: ink),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          side: BorderSide(color: rule),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: accent,
-          minimumSize: const Size(48, 48),
+          minimumSize: const Size(48, 44),
           shape: shape,
         ),
       ),
@@ -127,13 +137,25 @@ class AppTheme {
         filled: false,
         hintStyle: QalamTypography.body(color: muted),
         border: UnderlineInputBorder(borderSide: BorderSide(color: rule)),
-        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: ink)),
+        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: rule)),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: accent, width: 2),
         ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
+        contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       ),
-      dividerTheme: DividerThemeData(color: rule, space: 1, thickness: 1),
+      chipTheme: ChipThemeData(
+        backgroundColor: dark ? QalamColors.inkCard : QalamColors.paperHigh,
+        selectedColor: dark ? QalamColors.antiqueGoldDeep : QalamColors.paperLow,
+        disabledColor: dark ? QalamColors.inkWell : QalamColors.paperLow,
+        labelStyle: QalamTypography.meta(color: ink),
+        secondaryLabelStyle: QalamTypography.meta(color: accent),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
+          side: BorderSide(color: rule, width: 0.5),
+        ),
+      ),
+      dividerTheme: DividerThemeData(color: rule, space: 1, thickness: 0.5),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: accent,
         linearTrackColor: rule,
@@ -141,18 +163,32 @@ class AppTheme {
       dialogTheme: DialogThemeData(
         backgroundColor: paper,
         surfaceTintColor: Colors.transparent,
-        shape: shape,
+        shape: cardShape,
         elevation: 0,
       ),
       snackBarTheme: SnackBarThemeData(
         backgroundColor: ink,
-        contentTextStyle: QalamTypography.body(color: paper, fontSize: 14),
+        contentTextStyle: QalamTypography.body(
+          color: dark ? QalamColors.inkBg : QalamColors.paperHigh,
+          fontSize: 14,
+        ),
         behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
+        ),
       ),
-      cardTheme: CardThemeData(color: paper, elevation: 0, shape: shape),
+      cardTheme: CardThemeData(
+        color: dark ? QalamColors.inkCard : QalamColors.paperHigh,
+        elevation: 0,
+        shape: cardShape,
+      ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: paper,
-        shape: shape,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(QalamSpacing.radiusLg),
+          ),
+        ),
         surfaceTintColor: Colors.transparent,
       ),
     );

@@ -1,9 +1,4 @@
-enum MasteryLevel {
-  unseen,
-  again,
-  learning,
-  mastered,
-}
+enum MasteryLevel { unseen, again, learning, mastered }
 
 class ProverbMastery {
   final String proverbId;

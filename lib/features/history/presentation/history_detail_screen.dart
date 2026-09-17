@@ -204,10 +204,15 @@ class HistoryDetailScreen extends ConsumerWidget {
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: colors.surfaceContainerHighest.withValues(
-                        alpha: 0.5,
+                        alpha: 0.45,
                       ),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: colors.outlineVariant),
+                      borderRadius: BorderRadius.circular(
+                        QalamSpacing.cardRadius,
+                      ),
+                      border: Border.all(
+                        color: colors.outlineVariant.withValues(alpha: 0.6),
+                        width: 0.5,
+                      ),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -366,8 +371,13 @@ class HistoryDetailScreen extends ConsumerWidget {
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: colors.surfaceContainerLow,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: colors.outlineVariant),
+                    borderRadius: BorderRadius.circular(
+                      QalamSpacing.cardRadius,
+                    ),
+                    border: Border.all(
+                      color: colors.outlineVariant.withValues(alpha: 0.6),
+                      width: 0.5,
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

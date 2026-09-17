@@ -6,20 +6,15 @@ import '../../data/models/learning_mastery.dart';
 import '../../data/models/proverb.dart';
 import 'app_providers.dart';
 
-enum MasteryFilter {
-  all,
-  again,
-  learning,
-  mastered,
-}
+enum MasteryFilter { all, again, learning, mastered }
 
 final proverbMasteryProvider =
-    StateNotifierProvider<ProverbMasteryNotifier, Map<String, ProverbMastery>>(
-      (ref) {
-        final prefs = ref.watch(sharedPreferencesProvider);
-        return ProverbMasteryNotifier(prefs);
-      },
-    );
+    StateNotifierProvider<ProverbMasteryNotifier, Map<String, ProverbMastery>>((
+      ref,
+    ) {
+      final prefs = ref.watch(sharedPreferencesProvider);
+      return ProverbMasteryNotifier(prefs);
+    });
 
 class ProverbMasteryNotifier
     extends StateNotifier<Map<String, ProverbMastery>> {
@@ -96,9 +91,7 @@ class ProverbMasteryNotifier
     state = next;
 
     final prefs = _prefs ?? await SharedPreferences.getInstance();
-    final serialized = json.encode(
-      next.map((k, v) => MapEntry(k, v.toJson())),
-    );
+    final serialized = json.encode(next.map((k, v) => MapEntry(k, v.toJson())));
     await prefs.setString(AppConstants.prefsMastery, serialized);
   }
 

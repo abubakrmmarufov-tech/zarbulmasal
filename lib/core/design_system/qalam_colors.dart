@@ -3,77 +3,93 @@ import 'package:flutter/material.dart';
 /// Qalam — the central design system for Zarbulmasal.
 ///
 /// The palette and typography are tuned to feel like a refined literary
-/// publication rooted in Tajik culture: paper, burgundy, dark green, antique gold.
+/// publication rooted in Tajik culture: paper, ink, burgundy, forest green, antique gold.
 class QalamColors {
   QalamColors._();
 
-  static const Color burgundy = Color(0xFFA43D2F);
-  static const Color burgundyDeep = Color(0xFF7D2E25);
-  static const Color burgundySoft = Color(0xFFBE5946);
-  static const Color forest = Color(0xFF365442);
-  static const Color forestSoft = Color(0xFF56765E);
-  static const Color antiqueGold = Color(0xFFA43D2F);
-  static const Color antiqueGoldSoft = Color(0xFFE5A794);
-  static const Color antiqueGoldDeep = Color(0xFF815548);
+  // --- Primary Heritage Tones ---
+  static const Color burgundy = Color(0xFF9E3424);
+  static const Color burgundyDeep = Color(0xFF782417);
+  static const Color burgundySoft = Color(0xFFBD5343);
 
-  static const Color paper = Color(0xFFF3F0E7);
+  static const Color forest = Color(0xFF2E523A);
+  static const Color forestSoft = Color(0xFF4E735B);
+  static const Color forestDeep = Color(0xFF1E3B27);
+
+  static const Color antiqueGold = Color(0xFFC49A45);
+  static const Color antiqueGoldSoft = Color(0xFFE0BD70);
+  static const Color antiqueGoldDeep = Color(0xFF8F6B21);
+
+  static const Color terracotta = Color(0xFFB85C38);
+
+  // --- Light Surfaces & Ink ---
+  static const Color paper = Color(0xFFF4EFE6);
+  static const Color paperHigh = Color(0xFFFAF8F2);
+  static const Color paperLow = Color(0xFFEAE4D7);
+  static const Color paperWarm = Color(0xFFFBF9F4);
   static const Color cream = Color(0xFFEBE8DD);
-  static const Color paperHigh = Color(0xFFFAF8F1);
-  static const Color paperLow = Color(0xFFE2DED1);
-  static const Color ink = Color(0xFF202720);
-  static const Color inkSoft = Color(0xFF596056);
-  static const Color inkMute = Color(0xFF6B7168);
-  static const Color hairline = Color(0x1A202720);
-  static const Color hairlineGold = Color(0x33A43D2F);
 
-  static const Color inkBg = Color(0xFF181E1B);
-  static const Color inkCard = Color(0xFF242C26);
-  static const Color inkCardHigh = Color(0xFF2D362F);
-  static const Color inkWell = Color(0xFF121713);
-  static const Color paperText = Color(0xFFF3F0E7);
-  static const Color paperTextSoft = Color(0xFFC8C9BE);
-  static const Color paperTextMute = Color(0xFFA0A99C);
-  static const Color hairlineDark = Color(0x22F3F0E7);
-  static const Color hairlineGoldDark = Color(0x44D9B36A);
+  static const Color ink = Color(0xFF1B221E);
+  static const Color inkSoft = Color(0xFF4A554E);
+  static const Color inkMute = Color(0xFF6C7870);
 
-  static const Color success = Color(0xFF365442);
-  static const Color danger = Color(0xFF9A3528);
+  static const Color hairline = Color(0x1F1B221E);
+  static const Color hairlineSoft = Color(0x121B221E);
+  static const Color hairlineGold = Color(0x47C49A45);
+
+  // --- Dark Surfaces & Paper Text ---
+  static const Color inkBg = Color(0xFF121614);
+  static const Color inkCard = Color(0xFF1B221E);
+  static const Color inkCardHigh = Color(0xFF252E28);
+  static const Color inkWell = Color(0xFF0B0E0C);
+
+  static const Color paperText = Color(0xFFF2EFE9);
+  static const Color paperTextSoft = Color(0xFFC2C9C3);
+  static const Color paperTextMute = Color(0xFF8F9A91);
+
+  static const Color hairlineDark = Color(0x24F2EFE9);
+  static const Color hairlineGoldDark = Color(0x4DE0BD70);
+
+  // --- Semantic States ---
+  static const Color success = Color(0xFF2E523A);
+  static const Color danger = Color(0xFF9E3424);
+  static const Color warning = Color(0xFFC49A45);
 
   /// Stable tokens — deterministic mapping from category name to brand color.
   static const List<CategoryToken> categoryTokens = [
-    CategoryToken(name: 'ilm', token: Color(0xFF365442)),
-    CategoryToken(name: 'hikmat', token: Color(0xFFA43D2F)),
-    CategoryToken(name: 'sabr', token: Color(0xFF6B5B3E)),
-    CategoryToken(name: 'padaru_modar', token: Color(0xFF815548)),
-    CategoryToken(name: 'dusti', token: Color(0xFF56765E)),
-    CategoryToken(name: 'mehnat', token: Color(0xFF7D2E25)),
-    CategoryToken(name: 'pul', token: Color(0xFFA43D2F)),
-    CategoryToken(name: 'rostqavli', token: Color(0xFF365442)),
-    CategoryToken(name: 'muhabbat', token: Color(0xFFBE5946)),
-    CategoryToken(name: 'zindagi', token: Color(0xFF815548)),
-    CategoryToken(name: 'din', token: Color(0xFF6B5B3E)),
-    CategoryToken(name: 'jasorat', token: Color(0xFFA43D2F)),
-    CategoryToken(name: 'vaqt', token: Color(0xFFA43D2F)),
-    CategoryToken(name: 'xomushhi', token: Color(0xFF56765E)),
-    CategoryToken(name: 'odob', token: Color(0xFF7D2E25)),
-    CategoryToken(name: 'tanbali', token: Color(0xFFBE5946)),
-    CategoryToken(name: 'oila', token: Color(0xFF365442)),
-    CategoryToken(name: 'ehtirom', token: Color(0xFF815548)),
-    CategoryToken(name: 'omuzish', token: Color(0xFF56765E)),
-    CategoryToken(name: 'muvaffaqiyat', token: Color(0xFFA43D2F)),
+    CategoryToken(name: 'ilm', token: Color(0xFF2E523A)),
+    CategoryToken(name: 'hikmat', token: Color(0xFF9E3424)),
+    CategoryToken(name: 'sabr', token: Color(0xFF8F6B21)),
+    CategoryToken(name: 'padaru_modar', token: Color(0xFF782417)),
+    CategoryToken(name: 'dusti', token: Color(0xFF4E735B)),
+    CategoryToken(name: 'mehnat', token: Color(0xFFB85C38)),
+    CategoryToken(name: 'pul', token: Color(0xFFC49A45)),
+    CategoryToken(name: 'rostqavli', token: Color(0xFF2E523A)),
+    CategoryToken(name: 'muhabbat', token: Color(0xFFBD5343)),
+    CategoryToken(name: 'zindagi', token: Color(0xFF782417)),
+    CategoryToken(name: 'din', token: Color(0xFF8F6B21)),
+    CategoryToken(name: 'jasorat', token: Color(0xFF9E3424)),
+    CategoryToken(name: 'vaqt', token: Color(0xFFC49A45)),
+    CategoryToken(name: 'xomushhi', token: Color(0xFF4E735B)),
+    CategoryToken(name: 'odob', token: Color(0xFF2E523A)),
+    CategoryToken(name: 'tanbali', token: Color(0xFFBD5343)),
+    CategoryToken(name: 'oila', token: Color(0xFF2E523A)),
+    CategoryToken(name: 'ehtirom', token: Color(0xFF782417)),
+    CategoryToken(name: 'omuzish', token: Color(0xFF4E735B)),
+    CategoryToken(name: 'muvaffaqiyat', token: Color(0xFF9E3424)),
   ];
 
   /// Legacy lookup — keeps old `getCategoryColor(index)` calls working.
   static Color legacyCategoryColor(int index) {
     const legacy = <Color>[
-      Color(0xFFA43D2F),
-      Color(0xFF365442),
-      Color(0xFFA43D2F),
-      Color(0xFFBE5946),
-      Color(0xFF815548),
-      Color(0xFF56765E),
-      Color(0xFF6B5B3E),
-      Color(0xFF7D2E25),
+      Color(0xFF9E3424),
+      Color(0xFF2E523A),
+      Color(0xFFC49A45),
+      Color(0xFFBD5343),
+      Color(0xFF782417),
+      Color(0xFF4E735B),
+      Color(0xFF8F6B21),
+      Color(0xFFB85C38),
     ];
     return legacy[index % legacy.length];
   }

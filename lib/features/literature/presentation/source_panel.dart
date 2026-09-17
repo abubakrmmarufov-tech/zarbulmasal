@@ -216,22 +216,88 @@ class SourcePanel extends ConsumerWidget {
                   ),
                 ),
                 if (primary.sourceImageVerified) ...[
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.check_circle,
-                        size: 14,
-                        color: QalamColors.forest,
+                  const SizedBox(height: 12),
+                  InkWell(
+                    onTap: () => _showPageImageDialog(context, isPersian),
+                    borderRadius: BorderRadius.circular(6),
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: QalamColors.forest.withValues(alpha: 0.07),
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(
+                          color: QalamColors.forest.withValues(alpha: 0.3),
+                          width: 0.8,
+                        ),
                       ),
-                      const SizedBox(width: 6),
-                      Text(
-                        isPersian
-                            ? 'اسکن نسخه خطی/چاپی بررسی شده است'
-                            : 'Нусхаи асл дида баромада шуд',
-                        style: QalamTypography.meta(color: QalamColors.forest),
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: SizedBox(
+                              width: 48,
+                              height: 64,
+                              child: Image.asset(
+                                'assets/data/literature/page_images/${work.id}.png',
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, _, _) => Container(
+                                  color: colors.surfaceContainerHighest,
+                                  child: const Icon(
+                                    Icons.menu_book,
+                                    size: 24,
+                                    color: QalamColors.forest,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.verified,
+                                      size: 16,
+                                      color: QalamColors.forest,
+                                    ),
+                                    const SizedBox(width: 6),
+                                    Expanded(
+                                      child: Text(
+                                        isPersian
+                                            ? 'تصویر صفحهٔ کتاب درسی'
+                                            : 'Тасвири аслии саҳифаи китоб',
+                                        style: QalamTypography.sectionTitle(
+                                          color: QalamColors.forest,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  isPersian
+                                      ? 'برای مشاهده و بزرگ‌نمایی تصویر اسکن‌شده ضربه بزنید'
+                                      : 'Барои дидан ва калон кардани саҳифаи аслӣ пахш кунед',
+                                  style: QalamTypography.meta(
+                                    color: colors.onSurfaceVariant,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Icon(
+                            Icons.fullscreen,
+                            size: 22,
+                            color: QalamColors.forest,
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ],
@@ -332,7 +398,8 @@ class SourcePanel extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final ver = work.verification;
 
-    final isApproved = ver.evidenceLevel == VerificationLevel.editoriallyApproved;
+    final isApproved =
+        ver.evidenceLevel == VerificationLevel.editoriallyApproved;
     final isRejected = ver.evidenceLevel == VerificationLevel.rejected;
     final statusColor = isApproved
         ? QalamColors.forest
@@ -433,7 +500,8 @@ class SourcePanel extends ConsumerWidget {
           isPersian
               ? 'حقوق مؤلف مطابق قانون بررسی شد'
               : 'Ҳуқуқи муаллиф тибқи қонунгузорӣ тасдиқ шуд',
-          (ver.evidenceLevel.index >= VerificationLevel.editoriallyApproved.index),
+          (ver.evidenceLevel.index >=
+              VerificationLevel.editoriallyApproved.index),
           colors,
         ),
         if (ver.rejectionReason != null && ver.rejectionReason!.isNotEmpty) ...[
@@ -630,6 +698,57 @@ class SourcePanel extends ConsumerWidget {
       child: Text(
         '$label: ${allowed ? "✓" : "—"}',
         style: QalamTypography.meta(color: tagColor, fontSize: 11),
+      ),
+    );
+  }
+
+  void _showPageImageDialog(BuildContext context, bool isPersian) {
+    final primary = work.primarySource;
+
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) => Dialog.fullscreen(
+        backgroundColor: Colors.black.withValues(alpha: 0.95),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Colors.black87,
+            foregroundColor: Colors.white,
+            elevation: 0,
+            leading: IconButton(
+              tooltip: isPersian ? 'بستن' : 'Пӯшидан',
+              icon: const Icon(Icons.close),
+              onPressed: () => Navigator.of(dialogContext).pop(),
+            ),
+            title: Text(
+              primary?.bookTitle != null
+                  ? '${primary!.bookTitle} ${primary.formattedPages != null ? "(${primary.formattedPages})" : ""}'
+                  : (isPersian ? 'تصویر صفحه' : 'Тасвири саҳифа'),
+              style: QalamTypography.sectionTitle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          body: Center(
+            child: InteractiveViewer(
+              minScale: 0.5,
+              maxScale: 4.0,
+              child: Image.asset(
+                'assets/data/literature/page_images/${work.id}.png',
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => Center(
+                  child: Text(
+                    isPersian
+                        ? 'تصویر صفحه در دسترس نیست'
+                        : 'Тасвири саҳифа дастрас нест',
+                    style: const TextStyle(color: Colors.white70),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

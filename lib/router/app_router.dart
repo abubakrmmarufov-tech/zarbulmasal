@@ -89,11 +89,25 @@ GoRouter _buildAppRouter() {
         },
       ),
       GoRoute(
+        path: '/literature/poets/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return PoetDetailScreen(poetId: id);
+        },
+      ),
+      GoRoute(
         path: '/literature/works',
         builder: (context, state) => const WorksListScreen(),
       ),
       GoRoute(
         path: '/literature/work/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return PoemReaderScreen(workId: id);
+        },
+      ),
+      GoRoute(
+        path: '/literature/works/:id',
         builder: (context, state) {
           final id = state.pathParameters['id']!;
           return PoemReaderScreen(workId: id);

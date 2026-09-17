@@ -58,4 +58,9 @@ output/
 .playwright-cli/
 tool/www/
 downloads/
+pdf books/
+docs/literature/pdfs/
+tool/screenshots/
+*.pyc
+__pycache__/
 

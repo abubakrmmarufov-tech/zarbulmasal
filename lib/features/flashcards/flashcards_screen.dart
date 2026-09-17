@@ -39,22 +39,25 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
         pool = List<Proverb>.from(allProverbs)..shuffle(Random());
         break;
       case MasteryFilter.again:
-        pool = allProverbs
-            .where((p) => masteryMap[p.id]?.level == MasteryLevel.again)
-            .toList()
-          ..shuffle(Random());
+        pool =
+            allProverbs
+                .where((p) => masteryMap[p.id]?.level == MasteryLevel.again)
+                .toList()
+              ..shuffle(Random());
         break;
       case MasteryFilter.learning:
-        pool = allProverbs
-            .where((p) => masteryMap[p.id]?.level == MasteryLevel.learning)
-            .toList()
-          ..shuffle(Random());
+        pool =
+            allProverbs
+                .where((p) => masteryMap[p.id]?.level == MasteryLevel.learning)
+                .toList()
+              ..shuffle(Random());
         break;
       case MasteryFilter.mastered:
-        pool = allProverbs
-            .where((p) => masteryMap[p.id]?.level == MasteryLevel.mastered)
-            .toList()
-          ..shuffle(Random());
+        pool =
+            allProverbs
+                .where((p) => masteryMap[p.id]?.level == MasteryLevel.mastered)
+                .toList()
+              ..shuffle(Random());
         break;
     }
 

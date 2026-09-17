@@ -640,8 +640,6 @@ void main() {
     expect(find.textContaining('2 سطح'), findsNothing);
   });
 
-  
-
   testWidgets('compact routes remain usable with enlarged system text', (
     tester,
   ) async {

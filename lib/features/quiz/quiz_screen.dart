@@ -242,8 +242,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
             onTap: _answered
                 ? null
                 : () {
-                    final isCorrect =
-                        entry.key == currentQ.correctOptionIndex;
+                    final isCorrect = entry.key == currentQ.correctOptionIndex;
                     setState(() {
                       _selectedAnswer = entry.key;
                       _answered = true;
@@ -253,7 +252,9 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                         _missedProverbs.add(proverb);
                       }
                     });
-                    ref.read(proverbMasteryProvider.notifier).recordReview(
+                    ref
+                        .read(proverbMasteryProvider.notifier)
+                        .recordReview(
                           proverb.id,
                           isCorrect
                               ? MasteryLevel.learning
@@ -436,9 +437,7 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                       padding: const EdgeInsets.only(bottom: 6),
                       child: Text(
                         '• ${lang == DisplayLanguage.persian ? p.persianText : p.tajikCyrillic}',
-                        style: QalamTypography.meta(
-                          color: colors.onSurface,
-                        ),
+                        style: QalamTypography.meta(color: colors.onSurface),
                       ),
                     ),
                   ),
@@ -450,9 +449,8 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
                     ),
                     onPressed: () {
                       Navigator.pop(dialogContext);
-                      ref
-                          .read(flashcardsFilterProvider.notifier)
-                          .state = MasteryFilter.again;
+                      ref.read(flashcardsFilterProvider.notifier).state =
+                          MasteryFilter.again;
                       context.push('/flashcards');
                     },
                   ),

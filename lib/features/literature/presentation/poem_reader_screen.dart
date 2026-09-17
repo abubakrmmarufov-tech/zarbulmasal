@@ -72,8 +72,10 @@ class PoemReaderScreen extends ConsumerWidget {
                   orElse: () => null,
                 );
             if (pendingWork != null &&
-                pendingWork.verification.evidenceLevel ==
-                    VerificationLevel.needsReview) {
+                (pendingWork.verification.evidenceLevel ==
+                        VerificationLevel.needsReview ||
+                    pendingWork.verification.evidenceLevel ==
+                        VerificationLevel.primaryChecked)) {
               return _PendingWorkState(work: pendingWork);
             }
 
@@ -204,8 +206,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Genre & Verification row
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Container(
                             padding: const EdgeInsets.symmetric(
@@ -228,7 +232,6 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 10),
                           QalamSourceBadge(
                             isVerified:
                                 work.verification.evidenceLevel ==
@@ -237,6 +240,49 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                 ? 'متن تأیید شده است'
                                 : 'Матн санҷида шудааст',
                           ),
+                          if (work.primarySource?.sourceImageVerified == true)
+                            InkWell(
+                              onTap: () => SourcePanel.show(context, work),
+                              borderRadius: BorderRadius.circular(4),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: QalamColors.forest.withValues(
+                                    alpha: 0.1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(4),
+                                  border: Border.all(
+                                    color: QalamColors.forest.withValues(
+                                      alpha: 0.4,
+                                    ),
+                                    width: 0.5,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Icon(
+                                      Icons.photo_library_outlined,
+                                      size: 13,
+                                      color: QalamColors.forest,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      isPersian
+                                          ? 'سند تصویری'
+                                          : 'Тасвири саҳифа',
+                                      style: QalamTypography.meta(
+                                        color: QalamColors.forest,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                         ],
                       ),
                       const SizedBox(height: 18),
@@ -268,7 +314,9 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             ),
                             const SizedBox(width: 4),
                             Icon(
-                              Icons.arrow_forward_ios,
+                              Directionality.of(context) == TextDirection.rtl
+                                  ? Icons.arrow_back_ios
+                                  : Icons.arrow_forward_ios,
                               size: 13,
                               color: colors.primary,
                             ),
@@ -819,9 +867,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: colors.surfaceContainerHighest.withValues(alpha: 0.35),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
               border: Border.all(
                 color: colors.outlineVariant.withValues(alpha: 0.5),
+                width: 0.5,
               ),
             ),
             child: Column(

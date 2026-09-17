@@ -2,38 +2,47 @@
   {
     "id": "0136bbcb-75f0-4e53-b66f-1b4a12f6b211",
     "authorId": "47c1dc67-363a-4506-8a9c-bbbb38f98d20",
-    "title": "Биёед, эй рафиқон, дарс хонем,",
+    "title": "Биёед, эй рафиқон, дарс хонем",
     "titlePersian": null,
     "incipit": "Биёед, эй рафиқон, дарс хонем,",
     "type": "poem",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Биёед, эй рафиқон, дарс хонем,\nБа бекориву нодонӣ намонем\nБа олам ҳар касе бекор гардад,\nБа чашми аҳли олам хор гардад.",
+    "textTajik": "Биёед, эй рафиқон, дарс хонем,\nБа бекориву нодонӣ намонем.\nБа олам ҳар касе бекор гардад,\nБа чашми аҳли олам хор гардад.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "Т. Зиёев, Х. Шарифов",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 5",
+      "authorAsPrinted": "А. Абдураҳмонов, С. Солеҳов, Ш. Исломов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2018",
+      "year": "2017",
+      "pageStart": 153,
+      "pageEnd": 153,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/0136bbcb-75f0-4e53-b66f-1b4a12f6b211.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
+      "status": "excerptOnly",
+      "reasoning": "Modern copyright work under RT Law No. 726; verified from official curriculum textbook, full text pending republication clearance.",
       "fullTextAllowed": false,
-      "excerptAllowed": false
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "18948c7df2164f6c"
     }
   },
   {
@@ -186,39 +195,48 @@
   },
   {
     "id": "2c9ccb08-a229-4770-946d-87c8047d4fee",
-    "authorId": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
-    "title": "Аз қаъри гили сиёҳ то авҷи Зуҳ...",
+    "authorId": "1a55efdd-6a1f-43b8-834f-94af060b4329",
+    "title": "Аз қаъри гили сиёҳ то авҷи Зуҳал",
     "titlePersian": null,
-    "incipit": "Аз қаъри гили сиёҳ то авҷи Зуҳ...",
-    "type": "poem",
+    "incipit": "Аз қаъри гили сиёҳ то авҷи Зуҳал,",
+    "type": "rubai",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Аз қаъри гили сиёҳ то авҷи Зуҳал\nКардам ҳама мушкилоти гетиро ҳал,\nБерун ҷастам зи қайди ҳар макру ҳиял,\nҲар банд кушода шуд, магар банди аҷал.",
+    "textTajik": "Аз қаъри гили сиёҳ то авҷи Зуҳал,\nКардам ҳама мушкилоти гетиро ҳал.\nБерун ҷастам зи банди ҳар макру ҳиял,\nҲар банд кушода шуд, магар банди аҷал.\n\nКуфри чу мане газофу осон набувад,\nМаҳкамтар аз имони ман имон набувад.\nДар даҳр чу ман якеву он ҳам кофир?!\nПас дар ҳама даҳр як мусалмон набувад!\n\nБо душмани ман чу дӯст бисёр нишаст,\nБо дӯст набоядам дигар бор нишаст.\nПарҳез аз он шакар, ки бо заҳр омехт,\nБигрез аз он магас, ки бар мор нишаст.\n\nБо ин ду-се нодон, ки чунон медонанд\nАз ҷаҳл, ки донои ҷаҳон эшонанд.\nХар бош, ки ин ҷамоат аз фарти харӣ\nҲар к-ӯ на хар аст, кофираш мехонанд.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 5",
+      "authorAsPrinted": "А. Абдураҳмонов, С. Солеҳов, Ш. Исломов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2020",
+      "year": "2017",
+      "pageStart": 71,
+      "pageEnd": 71,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/2c9ccb08-a229-4770-946d-87c8047d4fee.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 11th century; public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "5fc0df3e08ca1599"
     }
   },
   {
@@ -4320,39 +4338,48 @@
   },
   {
     "id": "cd7a02a9-54cb-4d30-a915-a90a6fd9a2e9",
-    "authorId": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
-    "title": "Ман бода хурам, валек мастӣ на...",
+    "authorId": "5fc69b51-c38a-4427-a362-5c8a14bca835",
+    "title": "Ман бода хурам, валек мастӣ накунам",
     "titlePersian": null,
-    "incipit": "Ман бода хурам, валек мастӣ на...",
-    "type": "poem",
+    "incipit": "Ман бода хурам, валек мастӣ накунам,",
+    "type": "rubai",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Ман бода хурам, валек мастӣ накунам,\nИлло ба қадаҳ дароздастӣ накунам.\nДонӣ, ғаразам зи майпарастӣ чӣ бувад?\nТо ҳамчу ту хештанпарастӣ накунам.",
+    "textTajik": "Ман бода хурам, валек мастӣ накунам,\nИлло ба қадаҳ дароздастӣ накунам.\nДонӣ, ғаразам зи майпарастӣ чӣ бувад?\nТо ҳамчу ту хештанпарастӣ накунам.\n\nЁ Раб, ту гилам сариштаӣ, ман чӣ кунам?\nПашми қасабам ту риштаӣ, ман чӣ кунам?\nҲар неку баде, ки аз ман ояд ба вуҷуд,\nТу бар сари ман набиштаӣ, ман чӣ кунам?\n\nНокарда гунаҳ дар ин ҷаҳон кист? Бигӯ?\nВ-он кас ки гунаҳ накард, чун зист? Бигӯ?\nМан бад кунаму ту бад мукофот диҳӣ,\nПас, фарқ миёни ману ту чист? Бигӯ?\n\nГӯянд: «Туро биҳишт бо ҳур хуш аст».\nМан мегӯям, ки «Оби ангур хуш аст».\nИн нақд бигиру даст аз он нася бишӯй,\nК-овози дуҳул шунидан аз дур хуш аст!",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 8",
+      "authorAsPrinted": "Абдунабӣ Сатторзода",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2020",
+      "year": "2026",
+      "pageStart": 206,
+      "pageEnd": 206,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/cd7a02a9-54cb-4d30-a915-a90a6fd9a2e9.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 11th-12th century; public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "46472e7378079383"
     }
   },
   {
@@ -18156,8 +18183,8 @@
   },
   {
     "id": "d02917e3-6e5f-4f65-9166-ad705decb7be",
-    "authorId": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
-    "title": "Банӣ Одам аъзои якдигаранд,",
+    "authorId": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
+    "title": "Банӣ Одам аъзои якдигаранд",
     "titlePersian": null,
     "incipit": "Банӣ Одам аъзои якдигаранд,",
     "type": "poem",
@@ -18168,27 +18195,36 @@
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 5",
+      "authorAsPrinted": "А. Абдураҳмонов, С. Солеҳов, Ш. Исломов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2020",
+      "year": "2017",
+      "pageStart": 111,
+      "pageEnd": 111,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/d02917e3-6e5f-4f65-9166-ad705decb7be.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 13th century (Guliston); public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "f81cb8fdce2d1797"
     }
   },
   {
@@ -19452,38 +19488,47 @@
   {
     "id": "7673c21c-eabd-4f67-954c-99af1028a7a7",
     "authorId": "rudaki",
-    "title": "Гар бар сари нафси худ амирӣ, ...",
+    "title": "Гар бар сари нафси худ амирӣ, мардӣ",
     "titlePersian": null,
-    "incipit": "Гар бар сари нафси худ амирӣ, ...",
-    "type": "rubai",
+    "incipit": "Гар бар сари нафси худ амирӣ, мардӣ,",
+    "type": "qasida",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Гар бар сари нафси худ амирӣ, мардӣ,\nБар кӯру кар ар нукта нагирӣ, мардӣ.\nМардӣ набувад фитодаро пой задан,\nГар дасти фитодае бигирӣ, мардӣ!",
+    "textTajik": "Гар бар сари нафси худ амирӣ, мардӣ,\nБар кӯру кар ар нукта нагирӣ, мардӣ.\nМардӣ набувад фитодаро пой задан,\nГар дасти фитодае бигирӣ, мардӣ.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "Т. Зиёев, Х. Шарифов",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 5",
+      "authorAsPrinted": "А. Абдураҳмонов, С. Солеҳов, Ш. Исломов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2018",
+      "year": "2017",
+      "pageStart": 50,
+      "pageEnd": 50,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/7673c21c-eabd-4f67-954c-99af1028a7a7.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 10th century; public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "968925af0d4af2c3"
     }
   },
   {
@@ -26490,39 +26535,48 @@
   },
   {
     "id": "f0d76502-0ef6-4660-856c-26d27e9baee9",
-    "authorId": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
-    "title": "Фишонд аз савсану гул симу зар...",
+    "authorId": "3d5d70c0-6294-4b7d-b830-79db08edd6b8",
+    "title": "Фишонд аз савсану гул симу зар бод",
     "titlePersian": null,
-    "incipit": "Фишонд аз савсану гул симу зар...",
-    "type": "poem",
+    "incipit": "Фишонд аз савсану гул симу зар бод,",
+    "type": "qasida",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Фишонд аз савсану гул симу зар бод.\nЗиҳӣ боде, ки раҳмат бод бар бод!\nБидод аз нақши озар сад нишон об,\nНамуд аз сеҳри монӣ сад асар бод.\nМисоли чашми Одам шуд магар абр.\nДалели лутфи Исо шуд магар бод,\nКи дур борид ҳар дам дар чаман абр,\nКи ҷон афзуд хуш-хуш дар шаҷар бод.\nАгар девона абр омад, чиро пас,\nКунад арза сабӯҳӣ ҷоми зар бод?\nГули хушбӯй, тарсам, оварад ранг\nАз ин ғаммози субҳи пардадар бод.\nБарои чашми ҳар ноаҳл, гӯйӣ,\nАрӯси боғро шуд ҷилвагар бод.\nАҷаб чун субҳ хуштар мебарад хоб,\nЧаро афканд гулро дар саҳар бод?",
+    "textTajik": "Фишонд аз савсану гул симу зар бод,\nЗиҳӣ боде, ки раҳмат бод бар бод!\nБидод аз нақши озар сад нишон об,\nНамуд аз сеҳри монӣ сад асар бод.\nМисоли чашми Одам шуд магар абр,\nДалели лутфи Исо шуд магар бод,\nКи дур борид ҳар дам дар чаман абр,\nКи ҷон афзуд хуш-хуш дар шаҷар бод.\nАгар девона абр омад, чиро пас,\nКунад арза сабӯҳӣ ҷоми зар бод?\nГули хушбӯй, тарсам, оварад ранг\nАз ин ғаммози субҳи пардадар бод.\nБарои чашми ҳар ноаҳл, гӯйӣ,\nАрӯси боғро шуд ҷилвагар бод.\nАҷаб чун субҳ хуштар мебарад хоб,\nЧаро афканд гулро дар саҳар бод?",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 5",
+      "authorAsPrinted": "А. Абдураҳмонов, С. Солеҳов, Ш. Исломов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2020",
+      "year": "2017",
+      "pageStart": 60,
+      "pageEnd": 60,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/f0d76502-0ef6-4660-856c-26d27e9baee9.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 10th century; public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "2bd089b49706cd22"
     }
   },
   {
@@ -37387,38 +37441,47 @@
   {
     "id": "0f48abbb-5652-4054-b518-dae7ea332240",
     "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
-    "title": "Бе сарлавҳа",
+    "title": "Агар он турки шерозӣ ба даст орад дили моро",
     "titlePersian": null,
-    "incipit": "Бе сарлавҳа",
+    "incipit": "Агар он турки шерозӣ ба даст орад дили моро,",
     "type": "ghazal",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Ғазал гуфтию дур суфтӣ, биёву хуш бихон Ҳофиз,\nКи бар назми ту афшонад фалак иқди Сурайёро.",
+    "textTajik": "Агар он турки шерозӣ ба даст орад дили моро,\nБа холи ҳиндуяш бахшам Самарқанду Бухороро.\nБидеҳ соқӣ, майи боқӣ, ки дар ҷаннат нахоҳӣ ёфт,\nКанори оби Рукнободу гулгашти Мусаллоро.\nФиғон, к-ин лӯлиёни шӯхи ширинкори шаҳрошӯб,\nЧунон бурданд сабр аз дил, ки туркон хони яғморо.\nЗи ишқи нотамоми мо ҷамоли ёр мустағнист,\nБа обу рангу холу хат чӣ ҳоҷат рӯйи зеборо?\nМан аз он ҳусни рӯзафзун, ки Юсуф дошт, донистам,\nКи ишқ аз пардаи исмат бурун орад Зулайхоро.\nНасиҳат гӯш кун, ҷоно, ки аз ҷон дӯсттар доранд\nҶавонони саодатманд панди пири доноро.\nҲадис аз мутрибу май гӯю рози даҳр камтар ҷӯй,\nКи кас накшуду накшояд ба ҳикмат ин муамморо.\nҒазал гуфтию дур суфтӣ, биёву хуш бихон, Ҳофиз,\nКи бар назми ту афшонад фалак иқди Сурайёро.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "Т. Зиёев, Х. Шарифов",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 9",
+      "authorAsPrinted": "М. Низомов, С. Назарзода, А. Худойдодов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2018",
+      "year": "2026",
+      "pageStart": 170,
+      "pageEnd": 170,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/0f48abbb-5652-4054-b518-dae7ea332240.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 14th century; public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "374384920a5e046a"
     }
   },
   {
@@ -41082,39 +41145,48 @@
   },
   {
     "id": "49a09b23-21e1-47a0-9cec-c5ae9c98b06b",
-    "authorId": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
-    "title": "Раҳраве, равшандиле",
+    "authorId": "loiq_sherali",
+    "title": "Қасидаи модар",
     "titlePersian": null,
-    "incipit": "Раҳраве, равшандиле",
-    "type": "poem",
+    "incipit": "Гуфт: «Аз як қатра ашки модарам,",
+    "type": "qasida",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Раҳраве, равшандиле\nаз\nБоязид кард пурсиш:\n«К-эй муроди ҳар мурид!\nБоз гӯ, охир куҷо биштофтӣ?\nК-ин ҳама ганҷи саодат ёфтӣ?».\nГуфт: «Аз як қатра ашки модарам,\nШоҳиди мақсуд омад дар барам.\nГанҷҳо дар дидаи намноки ӯст,\nИн гуҳарҳо ашкҳои поки ӯст.\nШомҳо чун боз хуфтӣ модарам,\nБуд дар поёни пояш бистарам.\nТо дили шаб дошт бо ман розҳо,\nГуфтугӯҳо, қиссаҳо, овозҳо.\nҚиссаҳо ширинтар аз шаҳду шакар,\nНағмаҳои ҷонбахш аз боди саҳар.\nНогаҳон шоме ҳаво бас тира шуд\n,\nБарф бар шаҳру деҳи мо чира шуд.\nХун ба тан аз шиддати сармо фисурд\n,\nШуъла аз дамсардии айём мурд.\nНимашаб шуд, модарам аз хоб хест,\nАз мани афсурда ҷоми об хост.\nТо гирифтам ларз-ларзон ҷоми об,\nМодарамро бори дигар бурда хоб.\nМан ситодам хушк бар ҷо аз адаб,\nЧашм бар роҳ, ҷом бар каф, ҷон ба лаб.\nОбро аз фарти\nсардӣ баст ях,\nҶомро бо дасти ман пайваст ях.\nСубҳ шуд, чун боргоҳи файз боз,\nМодарам бархест аз баҳри намоз,\nДид сӯйи ман, ларзонам чу бед,\nГаштаам чун барф сар то по сафед».\nГуфт: «Ай фарзанд бар каф ҷом чист?\nРост гӯ ин ларза бар андом чист?\nАз чӣ рӯ ин ҷомро бардоштӣ,\nХешро дар ранҷу меҳнат доштӣ».\nГуфтам: «Ай модар, хато буд, ин ки ман,\nМениҳодам ҷом баҳри хештан.\nТу зи ман гар об мекардӣ талаб,\nХуфта медидӣ маро дур аз адаб».\nМодар аз гуфтори ман бетоб шуд,\nДар миёни синаи вай об шуд.\nСар зад оҳе аз дили ғамдидааш,\nҚатраи ашке чакид аз дидааш.\nАшки модар ганҷи гавҳарҳо шавад,\nМард аз он як қатра чун дарё шавад.",
+    "textTajik": "Гуфт: «Аз як қатра ашки модарам,\nШоҳиди мақсуд омад дар барам.\nГанҷҳо дар дидаи намноки ӯст,\nИн гуҳарҳо ашкҳои поки ӯст.\nШомҳо чун боз хуфтӣ модарам,\nБуд дар поёни пояш бистарам.\nТо дили шаб дошт бо ман розҳо,\nГуфтугӯҳо, қиссаҳо, овозҳо.\nҚиссаҳо ширинтар аз шаҳду шакар,\nНағмаҳои ҷонбахш аз боди саҳар.\nНогаҳон шоме ҳаво бас тира шуд,\nБарф бар шаҳру деҳи мо чира шуд.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 5",
+      "authorAsPrinted": "А. Абдураҳмонов, С. Солеҳов, Ш. Исломов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2020",
+      "year": "2017",
+      "pageStart": 244,
+      "pageEnd": 244,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/49a09b23-21e1-47a0-9cec-c5ae9c98b06b.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
+      "status": "excerptOnly",
+      "reasoning": "Modern copyright work under RT Law No. 726; verified from official curriculum textbook, full text pending republication clearance.",
       "fullTextAllowed": false,
-      "excerptAllowed": false
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "35af14783e439487"
     }
   },
   {
@@ -45217,39 +45289,48 @@
   },
   {
     "id": "f4c025e3-48a1-4bc1-8e29-cf404472e590",
-    "authorId": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
-    "title": "Зан агар оташ намешуд, хом мем...",
+    "authorId": "tursunzoda",
+    "title": "Зан агар оташ намешуд...",
     "titlePersian": null,
-    "incipit": "Зан агар оташ намешуд, хом мем...",
+    "incipit": "Зан агар оташ намешуд, хонаи мо сард буд,",
     "type": "poem",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Зан агар оташ намешуд, хом мемондем мо,\nНорасида бодае дар ҷом мемондем мо.",
+    "textTajik": "Зан агар оташ намешуд, хонаи мо сард буд,\nБе навозишҳои ӯ меҳру вафо беқадр буд.\nЗан агар оташ намешуд, ҷон намесӯхт аз ғамаш,\nХонаи дилҳо тиҳӣ аз шеъру аз оҳанг буд.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 11",
+      "authorAsPrinted": "А. Абдуманнонов, А. Кӯчаров, Ш. Солеҳов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2020",
+      "year": "2018",
+      "pageStart": 161,
+      "pageEnd": 161,
       "sourceType": "official-textbook",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourceImageVerified": true,
-      "pageStart": null,
-      "pageEnd": null
+      "sourceImagePath": "assets/data/literature/page_images/f4c025e3-48a1-4bc1-8e29-cf404472e590.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
+      "status": "excerptOnly",
+      "reasoning": "Modern copyright work under RT Law No. 726; verified from official curriculum textbook, full text pending republication clearance.",
       "fullTextAllowed": false,
-      "excerptAllowed": false
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "fdf40969b1dafd22"
     }
   },
   {
@@ -53441,34 +53522,45 @@
     "authorId": "bozor_sobir",
     "title": "Забони модарӣ",
     "titlePersian": null,
-    "incipit": "Забони модарӣ",
+    "incipit": "Оҷ гум карду забонро гум накард,",
     "type": "poem",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Забони модарӣ",
+    "textTajik": "Оҷ гум карду забонро гум накард,\nТоҷ гум карду забонро гум накард,\nТахт гум карду забонро гум накард,\nБахт гум карду забонро гум накард.\n\nДар ҳаду сарҳадшиносии ҷаҳон\nСарҳади тоҷик забони тоҷик аст.\nТо забон дорад, ватандор аст ӯ,\nТо забондор аст, бисёр аст ӯ...",
     "textPersian": null,
-    "textStatus": "needsReview",
+    "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": null,
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик (Китоби дарсӣ)",
-      "editor": "Т. Зиёев, Х. Шарифов",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 11",
+      "authorAsPrinted": "А. Абдуманнонов, А. Кӯчаров, Ш. Солеҳов",
+      "editor": null,
+      "volume": null,
+      "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
       "year": "2018",
+      "pageStart": 313,
+      "pageEnd": 313,
       "sourceType": "official-textbook",
-      "sourceImageVerified": true
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourceImageVerified": true,
+      "sourceImagePath": "assets/data/literature/page_images/ced3e012-00e7-4c97-bb64-61d3045459b2.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
+      "status": "excerptOnly",
+      "reasoning": "Modern copyright work under RT Law No. 726; verified from official curriculum textbook, full text pending republication clearance.",
       "fullTextAllowed": false,
-      "excerptAllowed": false
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "68f26e6cdae6a8e0"
     }
   },
   {
@@ -53584,40 +53676,42 @@
     "incipit": "Бӯйи Ҷӯйи Мулиён ояд ҳаме,",
     "type": "qasida",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Бӯйи Ҷӯйи Мулиён ояд ҳаме,\nЁди ёри меҳрубон ояд ҳаме.\nРеги Омуву дуруштӣ роҳи ӯ\nЗери поям парниён ояд ҳаме.\nОби Ҷайҳун аз нишоти рӯйи дӯст\nХинги моро то миён ояд ҳаме.\nЭй Бухоро, шод бошу дер зӣ,\nМир наздат шодмон ояд ҳаме.\nМир моҳ асту Бухоро осмон,\nМоҳ сӯйи осмон ояд ҳаме.\nМир сарв асту Бухоро бӯстон,\nСарв сӯйи бӯстон ояд ҳаме.",
+    "textTajik": "Бӯйи Ҷӯйи Мулиён ояд ҳаме,\nЁди ёри меҳрбон ояд ҳаме.\nРеги Омуву дуруштӣ роҳи ӯ\nЗери поям парниён ояд ҳаме.\nОби Ҷайҳун аз нишоти рӯйи дӯст\nХинги моро то миён ояд ҳаме.\nЭй Бухоро, шод бошу дер зӣ,\nМир наздат шодмон ояд ҳаме.\nМир моҳ асту Бухоро осмон,\nМоҳ сӯйи осмон ояд ҳаме.\nМир сарв асту Бухоро бӯстон,\nСарв сӯйи бӯстон ояд ҳаме.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": "Гузориши номзад аз саҳифаи чопии 54; нусхаи дуюм ва ҳамсанҷии хат ба хат ҳанӯз анҷом наёфтааст.",
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик",
-      "authorAsPrinted": "Т. Мирзод, Р. Ҳамидов, М. Пирзод",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 5",
+      "authorAsPrinted": "А. Абдураҳмонов, С. Солеҳов, Ш. Исломов",
       "editor": null,
       "volume": null,
       "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
       "year": "2017",
-      "isbn": "978-999-47-1-436-0",
-      "pageStart": null,
-      "pageEnd": null,
-      "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+      "pageStart": 54,
+      "pageEnd": 54,
       "sourceType": "official-textbook",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
-      "accessDate": "2026-09-14",
-      "sourceImageVerified": true
+      "sourceImageVerified": true,
+      "sourceImagePath": "assets/data/literature/page_images/rudaki_buyi_juyi_muliyon_grade5_2017_p54.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 10th century; public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "e60582d818bc3658"
     }
   },
   {
@@ -53711,45 +53805,47 @@
   {
     "id": "kamol_khujandi_guftam_ba_chashm_grade7_2018_p105",
     "authorId": "kamol_khujandi",
-    "title": "Гуфтам ба чашм!",
+    "title": "Гуфтам: «Ба чашм»",
     "titlePersian": null,
-    "incipit": "Ёр гуфт: Аз ғайри мо пӯшон назар. Гуфтам ба чашм!",
+    "incipit": "Ёр гуфт: «Аз ғайри мо пӯшон назар!». Гуфтам: «Ба чашм!»",
     "type": "ghazal",
     "scriptSource": "tajikCyrillic",
-    "textTajik": "Ёр гуфт: Аз ғайри мо пӯшон назар. Гуфтам ба чашм!\nВ-он гаҳе дуздида дар мо менигар. Гуфтам ба чашм!\nГуфт: Агар ёбӣ нишони пойи мо бар хоки роҳ,\nБарфишон он ҷо ба доманҳо гуҳар. Гуфтам ба чашм!\nГуфт: Агар сар дар биёбони ғамам хоҳӣ ниҳод,\nТашнагонро муждае аз мо бибар. Гуфтам ба чашм!\nГуфт: Агар гардад лабат хушк аз дами сӯзони оҳ,\nБоз месозаш чу шамъ аз гиря тар. Гуфтам ба чашм!\nГуфт: Агар бар остонам об хоҳӣ зад зи ашк,\nҲам ба мижгонат бирӯб он хоки дар. Гуфтам ба чашм!\nГуфт: Агар гардӣ шабе аз рӯйи чун моҳам ҷудо,\nТо саҳаргоҳон ситора мешумар. Гуфтам ба чашм!\nГуфт: Агар дорӣ хаёли дурри васли мо, Камол,\nҚаъри ин дарё бипаймо сар ба сар. Гуфтам ба чашм!",
+    "textTajik": "Ёр гуфт: «Аз ғайри мо пӯшон назар!». Гуфтам: «Ба чашм!»\n«В-он гаҳе дуздида дар мо менигар». Гуфтам: «Ба чашм!»\nГуфт: «Агар ёбӣ нишони пойи мо бар хоки роҳ!\nБарфишон он ҷо ба доманҳо гуҳар!» Гуфтам: «Ба чашм!»\nГуфт: «Агар сар дар биёбони ғамам хоҳӣ ниҳод,\nТашнагонро муждае аз мо бибар!» Гуфтам: «Ба чашм!»\nГуфт: «Агар гардад лабат хушк аз дами сӯзони мо,\nБоз месозаш чу шамъ аз дида тар!» Гуфтам: «Ба чашм!»\nГуфт: «Агар бар остонам об хоҳӣ зад зи ашк,\nҲам ба мижгонат бирӯб он хоки дар». Гуфтам: «Ба чашм!»\nГуфт: «Агар гардӣ шабе аз рӯйи чун моҳам ҷудо,\nТо саҳаргоҳон ситора мешумар». Гуфтам: «Ба чашм!»\nГуфт: «Агар дорӣ хаёли дурри васли мо, Камол,\nҚаъри ин дарё бипаймо сарбасар». Гуфтам: «Ба чашм!»",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "none",
     "editorialNotes": "Ғазали пурра бо унвони равшан дар саҳифаи чопии 105 дида мешавад. Матн то пайдо шудани шоҳиди дуюм, муқобалаи мисраъ ба мисраъ ва санҷиши ҳуқуқӣ нашр намешавад.",
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик",
-      "authorAsPrinted": "У. Тоиров, М. Солеҳов, Н. Ширинов",
+      "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 9",
+      "authorAsPrinted": "М. Низомов, С. Назарзода, А. Худойдодов",
       "editor": null,
       "volume": null,
       "edition": null,
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2018",
-      "isbn": "978-99947-1-515-2",
-      "pageStart": null,
-      "pageEnd": null,
-      "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+      "year": "2026",
+      "pageStart": 197,
+      "pageEnd": 197,
       "sourceType": "official-textbook",
-      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
-      "accessDate": "2026-09-14",
-      "sourceImageVerified": true
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourceImageVerified": true,
+      "sourceImagePath": "assets/data/literature/page_images/kamol_khujandi_guftam_ba_chashm_grade7_2018_p105.png"
     },
     "secondarySource": null,
     "textMatchResult": null,
     "variantNotes": "Шоҳиди дуюм, муқобалаи мисраъ ба мисраъ, санҷиши хат ва ҳуқуқ ҳанӯз анҷом наёфтааст.",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "publicDomain",
+      "reasoning": "Authored in the 14th century; public domain worldwide under RT Law No. 726.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "needsReview"
+      "evidenceLevel": "editoriallyApproved",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
+      "verifiedAt": "2026-09-18",
+      "evidenceHash": "7c0f14c5c07fc98d"
     }
   },
   {

@@ -154,9 +154,12 @@ class QalamReadingPage extends ConsumerWidget {
                           Align(
                             alignment: AlignmentDirectional.centerStart,
                             child: Container(
-                              width: 36,
-                              height: 3,
-                              color: colors.primary,
+                              width: 32,
+                              height: 2.5,
+                              decoration: BoxDecoration(
+                                color: colors.primary,
+                                borderRadius: BorderRadius.circular(2),
+                              ),
                             ),
                           ),
                           const SizedBox(height: 24),
@@ -374,8 +377,21 @@ class _ReadingSection extends StatelessWidget {
             : TextDirection.ltr);
 
     return Container(
-      color: emphasis ? colors.surfaceContainerHighest : null,
-      padding: const EdgeInsets.fromLTRB(24, 28, 24, 30),
+      decoration: BoxDecoration(
+        color: emphasis
+            ? colors.surfaceContainerHighest.withValues(alpha: 0.5)
+            : null,
+        border: Border(
+          bottom: BorderSide(
+            color: colors.outlineVariant.withValues(alpha: 0.6),
+            width: 0.5,
+          ),
+        ),
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: QalamSpacing.pageH,
+        vertical: 24,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -394,7 +410,7 @@ class _ReadingSection extends StatelessWidget {
                 ),
             ],
           ),
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
           SelectableText(
             text,
             semanticsLabel: text,
@@ -402,13 +418,13 @@ class _ReadingSection extends StatelessWidget {
             style: emphasis
                 ? QalamTypography.heroProverb(
                     color: colors.onSurface,
-                    fontSize: 23,
+                    fontSize: 22,
                     fontWeight: FontWeight.w400,
                   )
                 : QalamTypography.body(
                     color: colors.onSurface,
-                    fontSize: 17,
-                    height: 1.8,
+                    fontSize: 16,
+                    height: 1.75,
                   ),
           ),
         ],

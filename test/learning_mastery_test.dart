@@ -7,7 +7,6 @@ import 'package:zarbulmasal/core/constants/app_constants.dart';
 import 'package:zarbulmasal/core/l10n/app_translations.dart';
 import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/data/models/learning_mastery.dart';
-import 'package:zarbulmasal/data/models/proverb.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/features/flashcards/flashcards_screen.dart';
 import 'package:zarbulmasal/features/quiz/quiz_screen.dart';
@@ -99,12 +98,20 @@ void main() {
       final prefs = await SharedPreferences.getInstance();
       final notifier = ProverbMasteryNotifier(prefs);
 
-      await notifier.recordReview('proverb-10', MasteryLevel.learning, isCorrect: true);
+      await notifier.recordReview(
+        'proverb-10',
+        MasteryLevel.learning,
+        isCorrect: true,
+      );
       expect(notifier.getLevel('proverb-10'), MasteryLevel.learning);
       expect(notifier.state['proverb-10']?.reviewCount, 1);
       expect(notifier.state['proverb-10']?.correctCount, 1);
 
-      await notifier.recordReview('proverb-10', MasteryLevel.mastered, isCorrect: true);
+      await notifier.recordReview(
+        'proverb-10',
+        MasteryLevel.mastered,
+        isCorrect: true,
+      );
       expect(notifier.getLevel('proverb-10'), MasteryLevel.mastered);
       expect(notifier.state['proverb-10']?.reviewCount, 2);
       expect(notifier.state['proverb-10']?.correctCount, 2);
@@ -123,9 +130,7 @@ void main() {
       final prefs = await SharedPreferences.getInstance();
 
       final container = ProviderContainer(
-        overrides: [
-          sharedPreferencesProvider.overrideWithValue(prefs),
-        ],
+        overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
       );
       addTearDown(container.dispose);
 
@@ -151,15 +156,15 @@ void main() {
   });
 
   group('Flashcards Screen Widgets', () {
-    testWidgets('renders filter bar and chips with live counts', (tester) async {
+    testWidgets('renders filter bar and chips with live counts', (
+      tester,
+    ) async {
       SharedPreferences.setMockInitialValues({});
       final prefs = await SharedPreferences.getInstance();
 
       await tester.pumpWidget(
         ProviderScope(
-          overrides: [
-            sharedPreferencesProvider.overrideWithValue(prefs),
-          ],
+          overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
           child: MaterialApp(
             theme: AppTheme.lightTheme,
             home: const FlashcardsScreen(),
@@ -175,15 +180,15 @@ void main() {
       expect(find.textContaining('Аз худ шуд'), findsWidgets);
     });
 
-    testWidgets('shows empty filter state when no cards match filter', (tester) async {
+    testWidgets('shows empty filter state when no cards match filter', (
+      tester,
+    ) async {
       SharedPreferences.setMockInitialValues({});
       final prefs = await SharedPreferences.getInstance();
 
       await tester.pumpWidget(
         ProviderScope(
-          overrides: [
-            sharedPreferencesProvider.overrideWithValue(prefs),
-          ],
+          overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
           child: MaterialApp(
             theme: AppTheme.lightTheme,
             home: const FlashcardsScreen(),
@@ -198,42 +203,57 @@ void main() {
       await tester.tap(againChip);
       await tester.pumpAndSettle();
 
-      expect(find.text(AppTranslations.get('flashcards_empty_filter', DisplayLanguage.tajik)), findsOneWidget);
-      expect(find.text(AppTranslations.get('flashcards_empty_hint', DisplayLanguage.tajik)), findsOneWidget);
+      expect(
+        find.text(
+          AppTranslations.get('flashcards_empty_filter', DisplayLanguage.tajik),
+        ),
+        findsOneWidget,
+      );
+      expect(
+        find.text(
+          AppTranslations.get('flashcards_empty_hint', DisplayLanguage.tajik),
+        ),
+        findsOneWidget,
+      );
     });
   });
 
   group('Quiz Screen Cyrillic Directionality', () {
-    testWidgets('isolates Cyrillic text in LTR direction even in Persian locale', (tester) async {
-      SharedPreferences.setMockInitialValues({});
-      final prefs = await SharedPreferences.getInstance();
+    testWidgets(
+      'isolates Cyrillic text in LTR direction even in Persian locale',
+      (tester) async {
+        SharedPreferences.setMockInitialValues({});
+        final prefs = await SharedPreferences.getInstance();
 
-      await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            sharedPreferencesProvider.overrideWithValue(prefs),
-            displayLanguageProvider.overrideWith(
-              (ref) => DisplayLanguageNotifier(prefs)..state = DisplayLanguage.persian,
+        await tester.pumpWidget(
+          ProviderScope(
+            overrides: [
+              sharedPreferencesProvider.overrideWithValue(prefs),
+              displayLanguageProvider.overrideWith(
+                (ref) =>
+                    DisplayLanguageNotifier(prefs)
+                      ..state = DisplayLanguage.persian,
+              ),
+            ],
+            child: MaterialApp(
+              theme: AppTheme.lightTheme,
+              home: const QuizScreen(),
             ),
-          ],
-          child: MaterialApp(
-            theme: AppTheme.lightTheme,
-            home: const QuizScreen(),
           ),
-        ),
-      );
-      await tester.pumpAndSettle();
+        );
+        await tester.pumpAndSettle();
 
-      // Answer first question
-      final choice = find.byType(InkWell).first;
-      await tester.tap(choice);
-      await tester.pumpAndSettle();
+        // Answer first question
+        final choice = find.byType(InkWell).first;
+        await tester.tap(choice);
+        await tester.pumpAndSettle();
 
-      // Verify Directionality widget around review box is LTR
-      final ltrWidgets = find.byWidgetPredicate(
-        (w) => w is Directionality && w.textDirection == TextDirection.ltr,
-      );
-      expect(ltrWidgets, findsWidgets);
-    });
+        // Verify Directionality widget around review box is LTR
+        final ltrWidgets = find.byWidgetPredicate(
+          (w) => w is Directionality && w.textDirection == TextDirection.ltr,
+        );
+        expect(ltrWidgets, findsWidgets);
+      },
+    );
   });
 }

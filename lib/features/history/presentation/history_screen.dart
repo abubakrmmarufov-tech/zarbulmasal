@@ -314,20 +314,22 @@ class _BookStrip extends StatelessWidget {
         separatorBuilder: (_, _) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
           final book = books[index];
-          final radius = BorderRadius.circular(12);
+          final radius = BorderRadius.circular(QalamSpacing.cardRadius);
           return Material(
-            color: colors.surfaceContainerHighest,
-            borderRadius: radius,
-            child: InkWell(
+            color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
+            shape: RoundedRectangleBorder(
               borderRadius: radius,
+              side: BorderSide(
+                color: colors.outlineVariant.withValues(alpha: 0.6),
+                width: 0.5,
+              ),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: InkWell(
               onTap: () => onBookSelected(book),
               child: Container(
                 width: 190,
                 padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  borderRadius: radius,
-                  border: Border.all(color: colors.outlineVariant),
-                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -740,10 +742,16 @@ class _HistoryCard extends StatelessWidget {
 
     return Card(
       elevation: 0,
-      margin: const EdgeInsets.fromLTRB(24, 6, 24, 6),
+      margin: const EdgeInsets.symmetric(
+        horizontal: QalamSpacing.pageH,
+        vertical: 6,
+      ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-        side: BorderSide(color: colors.outlineVariant),
+        borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
+        side: BorderSide(
+          color: colors.outlineVariant.withValues(alpha: 0.6),
+          width: 0.5,
+        ),
       ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(

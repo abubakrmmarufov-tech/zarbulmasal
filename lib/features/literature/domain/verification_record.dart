@@ -2,16 +2,22 @@
 enum VerificationLevel {
   /// Text was extracted from a textbook/PDF. Does NOT mean correct.
   extracted,
+
   /// Exact source book and page located.
   sourceLocated,
+
   /// Text manually/programmatically compared against primary page image/text with reliable evidence.
   primaryChecked,
+
   /// An independent second edition contains the work.
   secondWitnessLocated,
+
   /// The two witnesses were compared.
   collated,
+
   /// A real documented editorial review occurred.
   editoriallyApproved,
+
   /// Indicates the record requires review.
   rejected,
   needsReview;
@@ -20,11 +26,14 @@ enum VerificationLevel {
     if (value == null || value.trim().isEmpty) {
       return VerificationLevel.needsReview;
     }
-    final normalized = value.trim().toLowerCase().replaceAll(RegExp(r'[-_\s]'), '');
+    final normalized = value.trim().toLowerCase().replaceAll(
+      RegExp(r'[-_\s]'),
+      '',
+    );
     for (final status in VerificationLevel.values) {
       if (status.name.toLowerCase() == normalized) return status;
     }
-    // Fallback mapping for old 'approved' -> extracted or something, 
+    // Fallback mapping for old 'approved' -> extracted or something,
     // but the reset script sets everything to needsReview.
     if (normalized == 'approved') return VerificationLevel.extracted;
     return VerificationLevel.needsReview;
@@ -35,10 +44,10 @@ enum VerificationLevel {
 class VerificationRecord {
   /// The final appropriate stage that may be shown publicly.
   final VerificationLevel evidenceLevel;
-  
+
   /// The method by which this check was performed, e.g. "automatedCandidateExtraction"
   final String? verificationMethod;
-  
+
   /// Date when the verification was signed off (e.g. "YYYY-MM-DD").
   final String? verifiedAt;
 
@@ -60,11 +69,14 @@ class VerificationRecord {
     this.rejectionReason,
   });
 
-  bool get isFullyVerified => evidenceLevel == VerificationLevel.editoriallyApproved;
+  bool get isFullyVerified =>
+      evidenceLevel == VerificationLevel.editoriallyApproved;
 
   factory VerificationRecord.fromJson(Map<String, dynamic> json) {
     return VerificationRecord(
-      evidenceLevel: VerificationLevel.fromString(json['evidenceLevel'] ?? json['finalStatus'] ?? json['status']),
+      evidenceLevel: VerificationLevel.fromString(
+        json['evidenceLevel'] ?? json['finalStatus'] ?? json['status'],
+      ),
       verificationMethod: json['verificationMethod'],
       verifiedAt: json['verifiedAt'] ?? json['verifiedDate'],
       pageVerified: _parseBool(json['pageVerified']),

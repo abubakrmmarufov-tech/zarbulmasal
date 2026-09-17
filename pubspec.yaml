@@ -37,6 +37,7 @@ flutter:
     - assets/data/literature/sources.json
     - assets/data/literature/school_canon.json
     - assets/data/literature/oral_heritage.json
+    - assets/data/literature/page_images/
     - assets/data/history/books.json
     - assets/data/history/entries.json
   fonts:

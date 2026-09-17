@@ -34,14 +34,6 @@ void main() {
       excerptAllowed: true,
     ),
     verification: VerificationRecord(
-      
-      
-      
-      
-      
-      
-      
-      
       evidenceLevel: VerificationLevel.editoriallyApproved,
     ),
   );
