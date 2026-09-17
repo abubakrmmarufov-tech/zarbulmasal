@@ -90,8 +90,8 @@ void main() {
     final textStatus = work['textStatus'];
 
     if (verification is! Map ||
-        verification['finalStatus'] is! String ||
-        verification['finalStatus'].toString().trim().isEmpty) {
+        verification['evidenceLevel'] is! String ||
+        verification['evidenceLevel'].toString().trim().isEmpty) {
       print("Violation: Work has invalid verification record: ${work['id']}");
       exit(1);
     }
@@ -128,7 +128,7 @@ void main() {
     final hasCity =
         primary['city'] is String &&
         primary['city'].toString().trim().isNotEmpty;
-    final isPending = verification['finalStatus'] == 'needsReview';
+    final isPending = verification['evidenceLevel'] == 'needsReview';
 
     final compositionDate = work['compositionDate'];
     final compositionContext = work['compositionContext'];
@@ -156,7 +156,7 @@ void main() {
       if (!hasPublisher || !hasCity) pendingIncompleteSource++;
     }
 
-    if (verification['finalStatus'] == 'approved') {
+    if (verification['evidenceLevel'] == 'approved') {
       approved++;
       if (textStatus != 'verified') {
         print(
@@ -198,7 +198,7 @@ void main() {
         );
         exit(1);
       }
-    } else if (verification['finalStatus'] == 'rejected') {
+    } else if (verification['evidenceLevel'] == 'rejected') {
       rejected++;
     }
   }
