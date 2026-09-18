@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../../../core/utils/search_normalizer.dart';
 import '../domain/history_domain.dart';
@@ -12,7 +13,9 @@ class HistoryRepository {
   HistoryRepository({AssetBundle? bundle}) : _bundle = bundle ?? rootBundle;
 
   Future<List<HistoryBook>> loadBooks() async {
-    final decoded = jsonDecode(await _bundle.loadString(booksAssetPath));
+    final jsonString = await _bundle.loadString(booksAssetPath);
+    // ⚡ Bolt: Offload expensive JSON parsing to background isolate to prevent UI jank
+    final decoded = await compute(jsonDecode, jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -21,7 +24,9 @@ class HistoryRepository {
   }
 
   Future<List<HistoryEntry>> loadEntries() async {
-    final decoded = jsonDecode(await _bundle.loadString(entriesAssetPath));
+    final jsonString = await _bundle.loadString(entriesAssetPath);
+    // ⚡ Bolt: Offload expensive JSON parsing to background isolate to prevent UI jank
+    final decoded = await compute(jsonDecode, jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
