@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 
@@ -40,7 +41,8 @@ class LiteratureRepository {
   /// Loads verified literary authors from [authorsAssetPath].
   Future<List<LiteraryAuthor>> loadAuthors() async {
     final jsonString = await _bundle.loadString(authorsAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    // ⚡ Bolt: Offload expensive JSON parsing to background isolate to prevent UI jank
+    final dynamic decoded = await compute(jsonDecode, jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -51,7 +53,8 @@ class LiteratureRepository {
   /// Loads literary works from [worksAssetPath].
   Future<List<LiteraryWork>> loadWorks() async {
     final jsonString = await _bundle.loadString(worksAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    // ⚡ Bolt: Offload expensive JSON parsing to background isolate to prevent UI jank
+    final dynamic decoded = await compute(jsonDecode, jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -62,7 +65,8 @@ class LiteratureRepository {
   /// Loads source editions and bibliographic witnesses from [sourcesAssetPath].
   Future<List<SourceEdition>> loadSources() async {
     final jsonString = await _bundle.loadString(sourcesAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    // ⚡ Bolt: Offload expensive JSON parsing to background isolate to prevent UI jank
+    final dynamic decoded = await compute(jsonDecode, jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -73,7 +77,8 @@ class LiteratureRepository {
   /// Loads official school canon curriculum mappings from [schoolCanonAssetPath].
   Future<List<SchoolCanonEntry>> loadSchoolCanon() async {
     final jsonString = await _bundle.loadString(schoolCanonAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    // ⚡ Bolt: Offload expensive JSON parsing to background isolate to prevent UI jank
+    final dynamic decoded = await compute(jsonDecode, jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -86,7 +91,8 @@ class LiteratureRepository {
   /// Loads verified folklore oral heritage entries from [oralHeritageAssetPath].
   Future<List<OralHeritageEntry>> loadOralHeritage() async {
     final jsonString = await _bundle.loadString(oralHeritageAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    // ⚡ Bolt: Offload expensive JSON parsing to background isolate to prevent UI jank
+    final dynamic decoded = await compute(jsonDecode, jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
