@@ -4,8 +4,11 @@
   <p><strong>Zarbulmasal · ضرب‌المثل</strong></p>
   <p>A calm, editorial home for Tajik proverbs, language, memory, and discovery.</p>
   <p>
-    <a href="https://abubakrmmarufov-tech.github.io/zarbulmasal/">Open the web app</a>
-    ·
+    <a href="https://abubakrmmarufov-tech.github.io/zarbulmasal/">
+      <img src="https://img.shields.io/badge/%F0%9F%9A%80_Open_Live_App-abubakrmmarufov--tech.github.io%2Fzarbulmasal%2F-2e7d32?style=for-the-badge&logoColor=white" alt="Open Live App">
+    </a>
+  </p>
+  <p>
     <a href="CONTRIBUTING.md">Contribute</a>
     ·
     <a href="https://github.com/abubakrmmarufov-tech/zarbulmasal/issues">Report an issue</a>

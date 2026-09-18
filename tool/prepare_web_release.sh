@@ -23,6 +23,11 @@ hash_file() {
   fi
 }
 
+# Ensure GitHub Pages serves the SPA entry point on direct subpath URLs
+if [[ -f "$web_dir/index.html" ]]; then
+  cp "$web_dir/index.html" "$web_dir/404.html"
+fi
+
 # Include every emitted artifact plus the two source templates. The emitted
 # bootstrap and worker are excluded because their injected ID would make a
 # repeated preparation self-referential; their source templates cover changes

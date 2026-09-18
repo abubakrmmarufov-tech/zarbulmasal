@@ -63,8 +63,7 @@ self.addEventListener('fetch', event => {
   const scopeUrl = new URL(self.registration.scope);
   const isShellNavigation = request.mode === 'navigate' &&
     url.origin === scopeUrl.origin &&
-    (url.pathname === scopeUrl.pathname ||
-      url.pathname === `${scopeUrl.pathname}index.html`);
+    url.pathname.startsWith(scopeUrl.pathname);
   // Cache app resources only; future API endpoints must remain outside this list.
   if (request.mode === 'navigate' && !isShellNavigation) return;
   if (!isShellNavigation && !CORE.includes(path) &&
