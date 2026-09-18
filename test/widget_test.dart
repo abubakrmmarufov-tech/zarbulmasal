@@ -16,7 +16,6 @@ import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
-import 'package:zarbulmasal/shared/widgets/onboarding_overlay.dart';
 
 class TestApp {
   final ProviderContainer container;
@@ -96,18 +95,15 @@ Future<TestApp> openApp(
 }
 
 void main() {
-  testWidgets(
-    'unknown routes show native error page',
-    (tester) async {
-      final app = await openApp(tester);
+  testWidgets('unknown routes show native error page', (tester) async {
+    final app = await openApp(tester);
 
-      app.router.go('/not-a-zarbulmasal-route');
-      await tester.pumpAndSettle();
-      expect(find.text('Саҳифа ёфт нашуд'), findsOneWidget);
-      expect(find.text("Couldn't load object"), findsNothing);
-      expect(tester.takeException(), isNull);
-    },
-  );
+    app.router.go('/not-a-zarbulmasal-route');
+    await tester.pumpAndSettle();
+    expect(find.text('Саҳифа ёфт нашуд'), findsOneWidget);
+    expect(find.text("Couldn't load object"), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
 
   testWidgets(
     'reading copies real content and back handles pushed and direct routes',

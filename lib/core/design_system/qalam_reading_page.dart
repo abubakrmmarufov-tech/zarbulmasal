@@ -5,6 +5,7 @@ import 'design_system.dart';
 import '../l10n/app_translations.dart';
 import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/providers/recent_activity_provider.dart';
 import '../../shared/widgets/empty_state.dart';
 
 /// A shared, script-aware reading page for the daily and collection routes.
@@ -41,6 +42,27 @@ class QalamReadingPage extends ConsumerWidget {
         ? tr('detail_unknown')
         : QalamCategoryTile.nameFor(matches.first, lang);
     final now = DateTime.now();
+
+    if (p != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref
+            .read(recentActivityProvider.notifier)
+            .addActivity(
+              RecentActivity(
+                id: p.id,
+                type: RecentActivityType.proverb,
+                title: persian
+                    ? (p.persianText.isNotEmpty
+                          ? p.persianText
+                          : p.tajikCyrillic)
+                    : p.tajikCyrillic,
+                subtitle: persian ? 'ضرب‌المثل' : 'Зарбулмасал',
+                timestamp: DateTime.now(),
+                route: '/proverb/${p.id}',
+              ),
+            );
+      });
+    }
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

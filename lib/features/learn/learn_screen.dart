@@ -28,7 +28,10 @@ class LearnScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Text(
           isPersian ? 'آموزش' : 'Омӯзиш',
-          style: QalamTypography.sectionTitle(color: colors.onSurface, fontSize: 22),
+          style: QalamTypography.sectionTitle(
+            color: colors.onSurface,
+            fontSize: 22,
+          ),
         ),
       ),
       body: ListView(
@@ -112,16 +115,27 @@ class LearnScreen extends ConsumerWidget {
             icon: Icons.stairs_outlined,
             title: tr('levels_title'),
             subtitle: isPersian
-                ? 'گام به گام یاد بگیرید'
-                : 'Қадам ба қадам омӯзед',
+                ? 'آموزش گام به گام در ۶ سطح'
+                : 'Омӯзиши қадам ба қадам дар 6 сатҳ',
             onTap: () => context.push('/levels'),
+          ),
+          _buildLearnCard(
+            context,
+            icon: Icons.school_outlined,
+            title: isPersian
+                ? 'ادبیات مکتبی (صنف‌های ۵–۱۱)'
+                : 'Адабиёти мактабӣ (синфҳои 5–11)',
+            subtitle: isPersian
+                ? 'آثار و شاعران بر اساس برنامه درسی'
+                : 'Осор ва шоирон тибқи барномаи таълимӣ',
+            onTap: () => context.push('/literature/school'),
           ),
 
           const SizedBox(height: 32),
 
           // Practice
           Text(
-            isPersian ? 'تمرین' : 'Тамрин',
+            isPersian ? 'تمرین و سنجش' : 'Машқ ва санҷиш',
             style: QalamTypography.sectionTitle(color: colors.onSurface),
           ),
           const SizedBox(height: 12),
@@ -132,6 +146,9 @@ class LearnScreen extends ConsumerWidget {
                   context,
                   icon: Icons.quiz_outlined,
                   title: tr('quiz_title'),
+                  subtitle: isPersian
+                      ? 'آزمون ۴ گزینه‌ای'
+                      : 'Санҷиши 4-гузинагӣ',
                   onTap: () => context.push('/quiz'),
                 ),
               ),
@@ -141,6 +158,7 @@ class LearnScreen extends ConsumerWidget {
                   context,
                   icon: Icons.style_outlined,
                   title: tr('flashcards_title'),
+                  subtitle: isPersian ? 'تکرار با کارت‌ها' : 'Такрор бо кортҳо',
                   onTap: () => context.push('/flashcards'),
                 ),
               ),

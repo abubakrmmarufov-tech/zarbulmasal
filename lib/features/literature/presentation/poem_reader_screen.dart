@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
+import '../../../shared/providers/recent_activity_provider.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../data/reader_preferences_provider.dart';
@@ -93,6 +94,23 @@ class PoemReaderScreen extends ConsumerWidget {
               ),
             );
           }
+
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            ref
+                .read(recentActivityProvider.notifier)
+                .addActivity(
+                  RecentActivity(
+                    id: work.id,
+                    type: RecentActivityType.work,
+                    title: isPersian && work.titlePersian != null
+                        ? work.titlePersian!
+                        : work.title,
+                    subtitle: isPersian ? 'شعر' : 'Шеър',
+                    timestamp: DateTime.now(),
+                    route: '/literature/work/${work.id}',
+                  ),
+                );
+          });
 
           return _PoemReaderContent(work: work);
         },

@@ -47,6 +47,20 @@ class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
     final categories = ref.watch(categoriesProvider);
     String tr(String key) => AppTranslations.get(key, lang);
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          tooltip: tr('back'),
+          icon: const BackButtonIcon(),
+          onPressed: () => qalamBack(context),
+        ),
+        title: Text(
+          tr('proverbs_title'),
+          style: QalamTypography.sectionTitle(
+            color: colors.onSurface,
+            fontSize: 20,
+          ),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: CustomScrollView(

@@ -5,6 +5,10 @@ import 'helpers/test_helper.dart';
 void main() {
   const routes = [
     '/',
+    '/explore',
+    '/learn',
+    '/saved',
+    '/search',
     '/proverbs',
     '/categories',
     '/favorites',

@@ -17,13 +17,27 @@ class SettingsScreen extends ConsumerWidget {
     final count = ref.watch(proverbsProvider).length;
     String tr(String key) => AppTranslations.get(key, language);
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          icon: const BackButtonIcon(),
+          onPressed: () => qalamBack(context),
+        ),
+        title: Text(
+          tr('settings_title'),
+          style: QalamTypography.sectionTitle(
+            color: colors.onSurface,
+            fontSize: 20,
+          ),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۵ / ترجیح‌ها' : '05 / ИНТИХОБ',
+                eyebrow: tr('app_name').toUpperCase(),
                 title: tr('settings_title'),
                 subtitle: tr('settings_subtitle'),
               ),

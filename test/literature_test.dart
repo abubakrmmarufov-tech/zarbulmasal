@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'helpers/test_helper.dart'; // We created this
 
@@ -11,7 +10,7 @@ void main() {
     final hubFinder = find.text('Адабиёт');
     await tester.scrollUntilVisible(hubFinder, 300);
     expect(hubFinder, findsOneWidget);
-    
+
     await tester.tap(hubFinder);
     await tester.pumpAndSettle();
 

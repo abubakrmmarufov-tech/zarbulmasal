@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/providers/recent_activity_provider.dart';
 import '../../shared/widgets/empty_state.dart';
 
 class LevelsScreen extends ConsumerWidget {
@@ -92,6 +93,22 @@ class LevelsScreen extends ConsumerWidget {
                         ref.read(searchQueryProvider.notifier).state = '';
                         ref.read(selectedLevelProvider.notifier).state =
                             selected == level ? null : level;
+                        ref
+                            .read(recentActivityProvider.notifier)
+                            .addActivity(
+                              RecentActivity(
+                                id: 'level-$level',
+                                type: RecentActivityType.level,
+                                title: isPersian
+                                    ? 'سطح $level'
+                                    : 'Сатҳи $level',
+                                subtitle: isPersian
+                                    ? 'آموزش گام به گام'
+                                    : 'Омӯзиши қадам ба қадам',
+                                timestamp: DateTime.now(),
+                                route: '/proverbs',
+                              ),
+                            );
                         context.go('/proverbs');
                       },
                     );

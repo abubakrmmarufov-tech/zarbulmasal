@@ -28,6 +28,7 @@ Future<TestApp> openApp(
   bool settle = true,
   EdgeInsets safePadding = EdgeInsets.zero,
   List<Proverb>? catalog,
+  List<Override>? overrides,
 }) async {
   tester.view.physicalSize = Size(width, height);
   tester.view.devicePixelRatio = 1;
@@ -43,6 +44,7 @@ Future<TestApp> openApp(
   final container = ProviderContainer(
     overrides: [
       if (catalog != null) proverbsProvider.overrideWithValue(catalog),
+      ...?overrides,
     ],
   );
   final router = GoRouter(

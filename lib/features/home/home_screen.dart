@@ -55,32 +55,34 @@ class HomeScreen extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           children: [
             // Search Bar
-            GestureDetector(
-              onTap: () => context.push('/search'),
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: colors.surfaceContainerLow,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: colors.outlineVariant),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.search, color: colors.primary),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        isPersian
-                            ? 'جستجوی شاعر، شعر، تاریخ، ضرب‌المثل...'
-                            : 'Ҷустуҷӯи шоир, шеър, таърих, зарбулмасал...',
-                        style: QalamTypography.body(
-                          color: colors.onSurfaceVariant,
+            Semantics(
+              button: true,
+              label: tr('search_hint_global'),
+              child: GestureDetector(
+                onTap: () => context.push('/search'),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: colors.surfaceContainerLow,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: colors.outlineVariant),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.search, color: colors.primary),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          tr('search_hint_global'),
+                          style: QalamTypography.body(
+                            color: colors.onSurfaceVariant,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -89,7 +91,7 @@ class HomeScreen extends ConsumerWidget {
             // Continue where you left off
             if (recentActivities.isNotEmpty) ...[
               Text(
-                isPersian ? 'ادامه خواندن' : 'Идомаи хондан',
+                tr('home_continue_reading'),
                 style: QalamTypography.sectionTitle(color: colors.onSurface),
               ),
               const SizedBox(height: 12),
@@ -108,10 +110,16 @@ class HomeScreen extends ConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
-                      vertical: 20,
+                      vertical: 18,
                     ),
                     child: Row(
                       children: [
+                        Icon(
+                          _iconForActivity(recentActivities.first.type),
+                          color: colors.onPrimaryContainer,
+                          size: 26,
+                        ),
+                        const SizedBox(width: 14),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,6 +128,7 @@ class HomeScreen extends ConsumerWidget {
                                 recentActivities.first.title,
                                 style: QalamTypography.body(
                                   color: colors.onPrimaryContainer,
+                                  fontWeight: FontWeight.w600,
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -133,15 +142,18 @@ class HomeScreen extends ConsumerWidget {
                                       alpha: 0.8,
                                     ),
                                   ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ],
                           ),
                         ),
+                        const SizedBox(width: 8),
                         Icon(
-                          Icons.play_arrow_rounded,
+                          Icons.arrow_forward_rounded,
                           color: colors.onPrimaryContainer,
-                          size: 28,
+                          size: 24,
                         ),
                       ],
                     ),
@@ -153,7 +165,7 @@ class HomeScreen extends ConsumerWidget {
 
             // Explore Tajik Culture
             Text(
-              isPersian ? 'کشف فرهنگ تاجیک' : 'Кашфи фарҳанги тоҷик',
+              tr('home_explore_culture'),
               style: QalamTypography.sectionTitle(color: colors.onSurface),
             ),
             const SizedBox(height: 12),
@@ -164,6 +176,9 @@ class HomeScreen extends ConsumerWidget {
                     context,
                     icon: Icons.auto_stories_outlined,
                     title: isPersian ? 'ادبیات' : 'Адабиёт',
+                    subtitle: isPersian
+                        ? 'شاعران، شعرها و کتاب‌ها'
+                        : 'Шоирон, шеърҳо ва китобҳо',
                     onTap: () => context.push('/literature'),
                   ),
                 ),
@@ -173,6 +188,9 @@ class HomeScreen extends ConsumerWidget {
                     context,
                     icon: Icons.timeline,
                     title: isPersian ? 'تاریخ' : 'Таърих',
+                    subtitle: isPersian
+                        ? 'شخصیت‌ها و دوره‌ها'
+                        : 'Шахсиятҳо ва давраҳо',
                     onTap: () => context.push('/history'),
                   ),
                 ),
@@ -186,6 +204,9 @@ class HomeScreen extends ConsumerWidget {
                     context,
                     icon: Icons.menu_book_outlined,
                     title: isPersian ? 'ضرب‌المثل‌ها' : 'Зарбулмасалҳо',
+                    subtitle: isPersian
+                        ? 'حکمت مردم تاجیک'
+                        : 'Ҳикмати халқи тоҷик',
                     onTap: () => context.push('/proverbs'),
                   ),
                 ),
@@ -193,8 +214,11 @@ class HomeScreen extends ConsumerWidget {
                 Expanded(
                   child: _buildShortcutCard(
                     context,
-                    icon: Icons.stairs_outlined,
+                    icon: Icons.school_outlined,
                     title: isPersian ? 'آموزش' : 'Омӯзиш',
+                    subtitle: isPersian
+                        ? 'گام به گام بیاموزید'
+                        : 'Қадам ба қадам омӯзед',
                     onTap: () => context.go('/learn'),
                   ),
                 ),
@@ -205,7 +229,7 @@ class HomeScreen extends ConsumerWidget {
             // Today
             if (daily != null) ...[
               Text(
-                isPersian ? 'امروز' : 'Имрӯз',
+                tr('home_today'),
                 style: QalamTypography.sectionTitle(color: colors.onSurface),
               ),
               const SizedBox(height: 12),
@@ -221,10 +245,26 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
+  static IconData _iconForActivity(RecentActivityType type) {
+    switch (type) {
+      case RecentActivityType.proverb:
+        return Icons.menu_book_outlined;
+      case RecentActivityType.poet:
+        return Icons.person_outline;
+      case RecentActivityType.work:
+        return Icons.auto_stories_outlined;
+      case RecentActivityType.history:
+        return Icons.timeline;
+      case RecentActivityType.level:
+        return Icons.stairs_outlined;
+    }
+  }
+
   Widget _buildShortcutCard(
     BuildContext context, {
     required IconData icon,
     required String title,
+    String? subtitle,
     required VoidCallback onTap,
   }) {
     final colors = Theme.of(context).colorScheme;
@@ -240,13 +280,30 @@ class HomeScreen extends ConsumerWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(icon, color: colors.primary),
-              const SizedBox(height: 12),
-              Text(title, style: QalamTypography.body(color: colors.onSurface)),
+              Icon(icon, color: colors.primary, size: 26),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: QalamTypography.body(
+                  color: colors.onSurface,
+                  fontWeight: FontWeight.w600,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              if (subtitle != null) ...[
+                const SizedBox(height: 4),
+                Text(
+                  subtitle,
+                  style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ],
           ),
         ),

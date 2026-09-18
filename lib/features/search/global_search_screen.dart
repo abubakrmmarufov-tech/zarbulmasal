@@ -4,11 +4,14 @@ import 'package:go_router/go_router.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../core/utils/search_normalizer.dart';
+import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
 import '../../shared/widgets/empty_state.dart';
 import '../literature/data/literature_providers.dart';
+import '../literature/domain/domain.dart';
 import '../history/data/history_providers.dart';
+import '../history/domain/history_domain.dart';
 
 class GlobalSearchScreen extends ConsumerStatefulWidget {
   const GlobalSearchScreen({super.key});
@@ -49,9 +52,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
           controller: _controller,
           autofocus: true,
           decoration: InputDecoration(
-            hintText: isPersian
-                ? 'جستجوی شاعر، شعر، ضرب‌المثل یا تاریخ...'
-                : 'Ҷустуҷӯи шоир, шеър, зарбулмасал ё таърих...',
+            hintText: AppTranslations.get('search_hint_global', lang),
             border: InputBorder.none,
             hintStyle: QalamTypography.bodySecondary(
               color: colors.onSurfaceVariant,
@@ -108,9 +109,9 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
           : _buildSearchResults(
               context,
               proverbs,
-              authorsAsync.valueOrNull ?? [],
-              worksAsync.valueOrNull ?? [],
-              historyAsync.valueOrNull ?? [],
+              authorsAsync.valueOrNull ?? const [],
+              worksAsync.valueOrNull ?? const [],
+              historyAsync.valueOrNull ?? const [],
               lang,
             ),
     );
@@ -118,36 +119,49 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
 
   Widget _buildEmptyState(BuildContext context, bool isPersian) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.search,
-            size: 48,
-            color: Theme.of(
-              context,
-            ).colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            isPersian
-                ? 'جستجو در کل زرب‌المثل'
-                : 'Ҷустуҷӯ дар кулли Зарбулмасал',
-            style: QalamTypography.sectionTitle(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.search,
+              size: 48,
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
             ),
-          ),
-        ],
+            const SizedBox(height: 16),
+            Text(
+              isPersian
+                  ? 'جستجو در کل زرب‌المثل'
+                  : 'Ҷустуҷӯ дар кулли Зарбулмасал',
+              style: QalamTypography.sectionTitle(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              isPersian
+                  ? 'می‌توانید نام شاعران، عنوان شعرها، ضرب‌المثل‌ها و رویدادهای تاریخی را جستجو کنید.'
+                  : 'Шумо метавонед номи шоирон, унвони шеърҳо, зарбулмасалҳо ва рӯйдодҳои таърихиро ҷустуҷӯ намоед.',
+              textAlign: TextAlign.center,
+              style: QalamTypography.bodySecondary(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildSearchResults(
     BuildContext context,
-    List<dynamic> proverbs,
-    List<dynamic> authors,
-    List<dynamic> works,
-    List<dynamic> history,
+    List<Proverb> proverbs,
+    List<LiteraryAuthor> authors,
+    List<LiteraryWork> works,
+    List<HistoryEntry> history,
     DisplayLanguage lang,
   ) {
     final isPersian = lang == DisplayLanguage.persian;
@@ -173,9 +187,10 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
 
     final matchingProverbs = proverbs.where((p) {
       return SearchNormalizer.matchesAny([
-        p.tajik,
-        p.persian ?? '',
-        p.literalTranslation ?? '',
+        p.tajikCyrillic,
+        p.persianText,
+        p.meaningTj,
+        p.simpleExplanationTj,
       ], _query);
     }).toList();
 
@@ -183,8 +198,11 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
       return SearchNormalizer.matchesAny([
         h.title,
         h.titlePersian ?? '',
-        h.summary ?? '',
+        h.summary,
         h.summaryPersian ?? '',
+        ...h.keywords,
+        ...h.keyFigures,
+        ...h.keyFiguresPersian,
       ], _query);
     }).toList();
 
@@ -209,15 +227,26 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
       padding: const EdgeInsets.symmetric(vertical: 16),
       children: [
         if (matchingAuthors.isNotEmpty) ...[
-          _buildSectionHeader(isPersian ? 'شاعران' : 'Шоирон', colors),
+          _buildSectionHeader(
+            isPersian
+                ? 'شاعران (${matchingAuthors.length})'
+                : 'Шоирон (${matchingAuthors.length})',
+            colors,
+          ),
           for (final author in matchingAuthors)
             ListTile(
+              leading: Icon(Icons.person_outline, color: colors.primary),
               title: Text(
                 (isPersian && author.canonicalNamePersian != null)
                     ? author.canonicalNamePersian!
                     : author.canonicalName,
+                style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: Text(author.literaryPeriod),
+              subtitle: Text(
+                author.literaryPeriod,
+                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+              ),
+              trailing: const Icon(Icons.chevron_right, size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)
@@ -240,23 +269,31 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ],
         if (matchingWorks.isNotEmpty) ...[
           _buildSectionHeader(
-            isPersian ? 'شعرها و آثار' : 'Шеърҳо ва осор',
+            isPersian
+                ? 'شعرها و آثار (${matchingWorks.length})'
+                : 'Шеърҳо ва осор (${matchingWorks.length})',
             colors,
           ),
           for (final work in matchingWorks)
             ListTile(
+              leading: Icon(Icons.auto_stories_outlined, color: colors.primary),
               title: Text(
                 (isPersian && work.titlePersian != null)
                     ? work.titlePersian!
                     : work.title,
+                style: QalamTypography.body(color: colors.onSurface),
               ),
               subtitle: work.incipit != null
                   ? Text(
                       work.incipit!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                      ),
                     )
                   : null,
+              trailing: const Icon(Icons.chevron_right, size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)
@@ -278,14 +315,29 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ],
         if (matchingProverbs.isNotEmpty) ...[
           _buildSectionHeader(
-            isPersian ? 'ضرب‌المثل‌ها' : 'Зарбулмасалҳо',
+            isPersian
+                ? 'ضرب‌المثل‌ها (${matchingProverbs.length})'
+                : 'Зарбулмасалҳо (${matchingProverbs.length})',
             colors,
           ),
           for (final proverb in matchingProverbs)
             ListTile(
+              leading: Icon(Icons.menu_book_outlined, color: colors.primary),
               title: Text(
-                isPersian ? (proverb.persian ?? proverb.tajik) : proverb.tajik,
+                isPersian
+                    ? (proverb.persianText.isNotEmpty
+                          ? proverb.persianText
+                          : proverb.tajikCyrillic)
+                    : proverb.tajikCyrillic,
+                style: QalamTypography.body(color: colors.onSurface),
               ),
+              subtitle: Text(
+                proverb.meaningTj,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+              ),
+              trailing: const Icon(Icons.chevron_right, size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)
@@ -294,8 +346,10 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                         id: proverb.id,
                         type: RecentActivityType.proverb,
                         title: isPersian
-                            ? (proverb.persian ?? proverb.tajik)
-                            : proverb.tajik,
+                            ? (proverb.persianText.isNotEmpty
+                                  ? proverb.persianText
+                                  : proverb.tajikCyrillic)
+                            : proverb.tajikCyrillic,
                         subtitle: isPersian ? 'ضرب‌المثل' : 'Зарбулмасал',
                         timestamp: DateTime.now(),
                         route: '/proverb/${proverb.id}',
@@ -306,15 +360,35 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
             ),
         ],
         if (matchingHistory.isNotEmpty) ...[
-          _buildSectionHeader(isPersian ? 'تاریخ' : 'Таърих', colors),
+          _buildSectionHeader(
+            isPersian
+                ? 'تاریخ (${matchingHistory.length})'
+                : 'Таърих (${matchingHistory.length})',
+            colors,
+          ),
           for (final entry in matchingHistory)
             ListTile(
+              leading: Icon(Icons.timeline, color: colors.primary),
               title: Text(
                 (isPersian && entry.titlePersian != null)
                     ? entry.titlePersian!
                     : entry.title,
+                style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: entry.date != null ? Text(entry.date!) : null,
+              subtitle: entry.dates != null
+                  ? Text(
+                      entry.dates!,
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    )
+                  : Text(
+                      entry.period,
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+              trailing: const Icon(Icons.chevron_right, size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)

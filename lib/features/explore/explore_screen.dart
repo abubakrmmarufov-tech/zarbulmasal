@@ -17,8 +17,11 @@ class ExploreScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          isPersian ? 'جستجو و کشف' : 'Ҷустуҷӯ ва кашф',
-          style: QalamTypography.sectionTitle(color: colors.onSurface, fontSize: 22),
+          AppTranslations.get('explore_title', lang),
+          style: QalamTypography.sectionTitle(
+            color: colors.onSurface,
+            fontSize: 22,
+          ),
         ),
       ),
       body: ListView(
@@ -38,11 +41,15 @@ class ExploreScreen extends ConsumerWidget {
                 children: [
                   Icon(Icons.search, color: colors.primary),
                   const SizedBox(width: 12),
-                  Text(
-                    isPersian
-                        ? 'جستجوی شاعر، شعر، تاریخ...'
-                        : 'Ҷустуҷӯи шоир, шеър, таърих...',
-                    style: QalamTypography.body(color: colors.onSurfaceVariant),
+                  Expanded(
+                    child: Text(
+                      isPersian
+                          ? 'جستجوی شاعر، شعر، تاریخ...'
+                          : 'Ҷустуҷӯи шоир, шеър, таърих...',
+                      style: QalamTypography.body(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -60,18 +67,27 @@ class ExploreScreen extends ConsumerWidget {
             context,
             icon: Icons.people_outline,
             title: isPersian ? 'شاعران و نویسندگان' : 'Шоирон ва нависандагон',
+            subtitle: isPersian
+                ? 'زندگی‌نامه و گلچین آثار'
+                : 'Зиндагинома ва осор',
             onTap: () => context.push('/literature/poets'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.auto_stories_outlined,
             title: isPersian ? 'شعرها و کتاب‌ها' : 'Шеърҳо ва китобҳо',
+            subtitle: isPersian
+                ? 'مجموعه اشعار معتبر'
+                : 'Маҷмӯаи шеърҳои тасдиқшуда',
             onTap: () => context.push('/literature/works'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.school_outlined,
             title: isPersian ? 'ادبیات مکتب' : 'Адабиёти мактабӣ',
+            subtitle: isPersian
+                ? 'برنامه درسی صنف‌های ۵–۱۱'
+                : 'Барномаи таълимии синфҳои 5–11',
             onTap: () => context.push('/literature/school'),
           ),
           _buildExploreCard(
@@ -80,7 +96,19 @@ class ExploreScreen extends ConsumerWidget {
             title: isPersian
                 ? 'ادبیات شفاهی (عامیانه)'
                 : 'Адабиёти шифоҳӣ (халқӣ)',
+            subtitle: isPersian
+                ? 'افسانه‌ها، چیستان‌ها و ترانه‌ها'
+                : 'Афсонаҳо, чистонҳо ва сурудҳо',
             onTap: () => context.push('/literature/oral'),
+          ),
+          _buildExploreCard(
+            context,
+            icon: Icons.hub_outlined,
+            title: isPersian ? 'مرکز میراث ادبی' : 'Маркази мероси адабӣ',
+            subtitle: isPersian
+                ? 'مرور کامل میراث ادبی و بیت روز'
+                : 'Шарҳи комили мероси адабӣ ва байти рӯз',
+            onTap: () => context.push('/literature'),
           ),
           const SizedBox(height: 32),
 
@@ -94,7 +122,9 @@ class ExploreScreen extends ConsumerWidget {
             context,
             icon: Icons.timeline,
             title: isPersian ? 'تاریخ مردم تاجیک' : 'Таърихи халқи тоҷик',
-            subtitle: isPersian ? 'رویدادها و افراد' : 'Рӯйдодҳо ва ашхос',
+            subtitle: isPersian
+                ? 'رویدادها، سلسله‌ها و افراد'
+                : 'Рӯйдодҳо, сулолаҳо ва шахсиятҳо',
             onTap: () => context.push('/history'),
           ),
           const SizedBox(height: 32),
@@ -109,12 +139,18 @@ class ExploreScreen extends ConsumerWidget {
             context,
             icon: Icons.format_list_bulleted,
             title: isPersian ? 'موضوعات' : 'Мавзӯъҳо',
+            subtitle: isPersian
+                ? 'دسته‌بندی موضوعی ضرب‌المثل‌ها'
+                : 'Гурӯҳбандии мавзӯии мақолҳо',
             onTap: () => context.push('/categories'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.menu_book_outlined,
             title: isPersian ? 'مرور همه' : 'Мурури ҳама',
+            subtitle: isPersian
+                ? 'فهرست کامل ضرب‌المثل‌ها'
+                : 'Феҳристи комили зарбулмасалҳо',
             onTap: () => context.push('/proverbs'),
           ),
         ],

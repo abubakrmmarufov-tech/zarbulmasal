@@ -16,13 +16,27 @@ class CategoriesScreen extends ConsumerWidget {
     final selected = ref.watch(selectedCategoryProvider);
     final isPersian = language == DisplayLanguage.persian;
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          icon: const BackButtonIcon(),
+          onPressed: () => qalamBack(context),
+        ),
+        title: Text(
+          AppTranslations.get('categories_title', language),
+          style: QalamTypography.sectionTitle(
+            color: Theme.of(context).colorScheme.onSurface,
+            fontSize: 20,
+          ),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۲ / فهرست' : '02 / ФЕҲРИСТ',
+                eyebrow: AppTranslations.get('home_edition', language),
                 title: AppTranslations.get('categories_title', language),
                 subtitle: AppTranslations.get('categories_subtitle', language),
               ),

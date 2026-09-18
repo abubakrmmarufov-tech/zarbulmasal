@@ -669,9 +669,7 @@ void main() {
   });
 
   group('Literature Feature Persian Language Parity', () {
-    testWidgets('Home literature shortcut uses Persian title', (
-      tester,
-    ) async {
+    testWidgets('Home literature shortcut uses Persian title', (tester) async {
       await pumpTestApp(tester, route: '/', language: DisplayLanguage.persian);
 
       expect(find.text('ادبیات'), findsOneWidget);

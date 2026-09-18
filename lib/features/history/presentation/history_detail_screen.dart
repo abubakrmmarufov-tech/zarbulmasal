@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
+import '../../../shared/providers/recent_activity_provider.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../../literature/data/literature_providers.dart';
 import '../data/history_providers.dart';
@@ -110,6 +111,23 @@ class HistoryDetailScreen extends ConsumerWidget {
               ? entry.keyFiguresPersian
               : entry.keyFigures;
           final section = entry.sourceSection;
+
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            ref
+                .read(recentActivityProvider.notifier)
+                .addActivity(
+                  RecentActivity(
+                    id: entry.id,
+                    type: RecentActivityType.history,
+                    title: isPersian && entry.titlePersian != null
+                        ? entry.titlePersian!
+                        : entry.title,
+                    subtitle: isPersian ? 'تاریخ' : 'Таърих',
+                    timestamp: DateTime.now(),
+                    route: '/history/${entry.id}',
+                  ),
+                );
+          });
 
           return Directionality(
             textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,

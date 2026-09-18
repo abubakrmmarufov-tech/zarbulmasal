@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
+import '../../../shared/providers/recent_activity_provider.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_author.dart';
@@ -78,6 +79,23 @@ class PoetDetailScreen extends ConsumerWidget {
               ),
             );
           }
+
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            ref
+                .read(recentActivityProvider.notifier)
+                .addActivity(
+                  RecentActivity(
+                    id: poet.id,
+                    type: RecentActivityType.poet,
+                    title: isPersian && poet.canonicalNamePersian != null
+                        ? poet.canonicalNamePersian!
+                        : poet.canonicalName,
+                    subtitle: poet.literaryPeriod,
+                    timestamp: DateTime.now(),
+                    route: '/literature/poet/${poet.id}',
+                  ),
+                );
+          });
 
           return _PoetDetailContent(
             poet: poet,

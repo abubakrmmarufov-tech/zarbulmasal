@@ -90,6 +90,12 @@ class RecentActivityNotifier extends StateNotifier<List<RecentActivity>> {
     await _save(current);
   }
 
+  Future<void> clearAll() async {
+    state = const [];
+    if (_prefs == null) return;
+    await _prefs.remove(_key);
+  }
+
   Future<void> _save(List<RecentActivity> activities) async {
     if (_prefs == null) return;
     final encoded = activities.map((e) => jsonEncode(e.toJson())).toList();

@@ -14,6 +14,20 @@ class FavoritesScreen extends ConsumerWidget {
     final lang = ref.watch(displayLanguageProvider);
     String tr(String key) => AppTranslations.get(key, lang);
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          tooltip: tr('back'),
+          icon: const BackButtonIcon(),
+          onPressed: () => qalamBack(context),
+        ),
+        title: Text(
+          tr('favorites_title'),
+          style: QalamTypography.sectionTitle(
+            color: Theme.of(context).colorScheme.onSurface,
+            fontSize: 20,
+          ),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: CustomScrollView(
