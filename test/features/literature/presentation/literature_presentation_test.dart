@@ -199,14 +199,13 @@ Future<void> pumpTestApp(
 void main() {
   group('Literature Feature Presentation & Navigation', () {
     testWidgets(
-      'Home screen includes QalamLiteratureCard that navigates to /literature',
+      'Home screen includes Literature shortcut that navigates to /literature',
       (tester) async {
         await pumpTestApp(tester, route: '/');
 
-        expect(find.byType(QalamLiteratureCard), findsOneWidget);
-        expect(find.text('Мероси адабӣ'), findsOneWidget);
+        expect(find.text('Адабиёт'), findsOneWidget);
 
-        await tester.tap(find.byType(QalamLiteratureCard));
+        await tester.tap(find.text('Адабиёт'));
         await tester.pumpAndSettle();
 
         expect(find.byType(LiteratureHubScreen), findsOneWidget);
@@ -670,14 +669,13 @@ void main() {
   });
 
   group('Literature Feature Persian Language Parity', () {
-    testWidgets('Home literature card uses Persian title and section label', (
+    testWidgets('Home literature shortcut uses Persian title', (
       tester,
     ) async {
       await pumpTestApp(tester, route: '/', language: DisplayLanguage.persian);
 
-      expect(find.text('میراث ادبی'), findsOneWidget);
-      expect(find.text('۰۱ / ادبیات'), findsOneWidget);
-      expect(find.text('Мероси адабӣ'), findsNothing);
+      expect(find.text('ادبیات'), findsOneWidget);
+      expect(find.text('Адабиёт'), findsNothing);
     });
 
     testWidgets(

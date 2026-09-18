@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../features/home/home_screen.dart';
+import '../features/explore/explore_screen.dart';
+import '../features/learn/learn_screen.dart';
+import '../features/saved/saved_screen.dart';
+import '../features/search/global_search_screen.dart';
 import '../features/proverbs/proverbs_list_screen.dart';
 import '../features/proverbs/proverb_detail_screen.dart';
 import '../features/categories/categories_screen.dart';
@@ -30,27 +34,68 @@ GoRouter _buildAppRouter() {
   return GoRouter(
     errorBuilder: buildRouteErrorPage,
     routes: [
-      ShellRoute(
-        builder: (context, state, child) => AppScaffold(child: child),
-        routes: [
-          GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
-          GoRoute(
-            path: '/proverbs',
-            builder: (context, state) => const ProverbsListScreen(),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) =>
+            AppScaffold(navigationShell: navigationShell),
+        branches: [
+          // Branch 0: Home
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/',
+                builder: (context, state) => const HomeScreen(),
+              ),
+            ],
           ),
-          GoRoute(
-            path: '/categories',
-            builder: (context, state) => const CategoriesScreen(),
+          // Branch 1: Explore
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/explore',
+                builder: (context, state) => const ExploreScreen(),
+              ),
+            ],
           ),
-          GoRoute(
-            path: '/favorites',
-            builder: (context, state) => const FavoritesScreen(),
+          // Branch 2: Learn
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/learn',
+                builder: (context, state) => const LearnScreen(),
+              ),
+            ],
           ),
-          GoRoute(
-            path: '/settings',
-            builder: (context, state) => const SettingsScreen(),
+          // Branch 3: Saved
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/saved',
+                builder: (context, state) => const SavedScreen(),
+              ),
+            ],
           ),
         ],
+      ),
+      // Top-level routes for details and other pages to overlay over the shell or transition natively
+      GoRoute(
+        path: '/search',
+        builder: (context, state) => const GlobalSearchScreen(),
+      ),
+      GoRoute(
+        path: '/proverbs',
+        builder: (context, state) => const ProverbsListScreen(),
+      ),
+      GoRoute(
+        path: '/categories',
+        builder: (context, state) => const CategoriesScreen(),
+      ),
+      GoRoute(
+        path: '/favorites',
+        builder: (context, state) => const FavoritesScreen(),
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (context, state) => const SettingsScreen(),
       ),
       GoRoute(
         path: '/proverb/:id',

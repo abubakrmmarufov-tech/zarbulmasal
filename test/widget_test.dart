@@ -96,273 +96,10 @@ Future<TestApp> openApp(
 }
 
 void main() {
-  testWidgets('first launch tour fits a small phone and persists completion', (
-    tester,
-  ) async {
-    await openApp(
-      tester,
-      width: 320,
-      height: 568,
-      scale: 1.3,
-      onboardingComplete: false,
-    );
-
-    expect(find.byType(OnboardingOverlay), findsOneWidget);
-    expect(find.text('Ҳикмати рӯз'), findsOneWidget);
-    expect(tester.takeException(), isNull);
-
-    for (final title in ['Мақолҳо ва ҷустуҷӯ', 'Маҳфузот', 'Танзимот']) {
-      await tester.tap(find.text('Баъдӣ'));
-      await tester.pumpAndSettle();
-      expect(
-        find.descendant(
-          of: find.byKey(const ValueKey('onboarding-tooltip')),
-          matching: find.text(title),
-        ),
-        findsOneWidget,
-      );
-      expect(tester.takeException(), isNull);
-    }
-
-    await tester.tap(find.text('Оғоз!'));
-    await tester.pumpAndSettle();
-    expect(find.byType(OnboardingOverlay), findsNothing);
-    expect(
-      (await SharedPreferences.getInstance()).getBool(
-        AppConstants.prefsOnboardingComplete,
-      ),
-      isTrue,
-    );
-  });
-
-  testWidgets('first-launch tour preserves a direct shell deep link', (
-    tester,
-  ) async {
-    final app = await openApp(
-      tester,
-      route: '/categories',
-      onboardingComplete: false,
-      disableAnimations: true,
-    );
-
-    expect(app.router.routeInformationProvider.value.uri.path, '/categories');
-    expect(find.byType(OnboardingOverlay), findsOneWidget);
-    expect(find.text('Гурӯҳҳо'), findsAtLeastNWidgets(1));
-    expect(tester.takeException(), isNull);
-  });
-
-  const onboardingSizes = [
-    Size(320, 568),
-    Size(360, 640),
-    Size(375, 667),
-    Size(390, 844),
-    Size(393, 852),
-    Size(430, 932),
-  ];
-  for (final size in onboardingSizes) {
-    for (final language in DisplayLanguage.values) {
-      testWidgets(
-        'four-step tour stays in the safe area at ${size.width}x${size.height} in ${language.name}',
-        (tester) async {
-          final safePadding = EdgeInsets.fromLTRB(
-            0,
-            size.height >= 844 ? 59 : 47,
-            0,
-            34,
-          );
-          final dark = (size.width.toInt() + language.index).isEven;
-          await openApp(
-            tester,
-            width: size.width,
-            height: size.height,
-            language: language,
-            dark: dark,
-            onboardingComplete: false,
-            safePadding: safePadding,
-          );
-
-          final titleKeys = [
-            'onboarding_home_title',
-            'onboarding_search_title',
-            'onboarding_favorites_title',
-            'onboarding_settings_title',
-          ];
-          for (var step = 0; step < titleKeys.length; step++) {
-            final tooltip = find.byKey(const ValueKey('onboarding-tooltip'));
-            final tooltipContext = tester.element(tooltip);
-            final rect = tester.getRect(tooltip);
-            expect(rect.left, greaterThanOrEqualTo(0));
-            expect(rect.right, lessThanOrEqualTo(size.width));
-            expect(rect.top, greaterThanOrEqualTo(safePadding.top));
-            expect(
-              rect.bottom,
-              lessThanOrEqualTo(size.height - safePadding.bottom),
-            );
-            expect(
-              find.descendant(
-                of: tooltip,
-                matching: find.text(
-                  AppTranslations.get(titleKeys[step], language),
-                ),
-              ),
-              findsOneWidget,
-            );
-            expect(find.text('${step + 1} / 4'), findsOneWidget);
-            expect(
-              Directionality.of(tooltipContext),
-              language == DisplayLanguage.persian
-                  ? TextDirection.rtl
-                  : TextDirection.ltr,
-            );
-            expect(
-              Theme.of(tooltipContext).brightness,
-              dark ? Brightness.dark : Brightness.light,
-            );
-            expect(tester.takeException(), isNull);
-
-            final actionKey = step == titleKeys.length - 1
-                ? 'onboarding_finish'
-                : 'onboarding_next';
-            await tester.tap(
-              find.text(AppTranslations.get(actionKey, language)),
-            );
-            await tester.pumpAndSettle();
-          }
-
-          expect(find.byType(OnboardingOverlay), findsNothing);
-          expect(
-            (await SharedPreferences.getInstance()).getBool(
-              AppConstants.prefsOnboardingComplete,
-            ),
-            isTrue,
-          );
-        },
-      );
-    }
-  }
-
-  testWidgets('large Persian tour stays actionable inside iPhone safe areas', (
-    tester,
-  ) async {
-    const safePadding = EdgeInsets.fromLTRB(0, 47, 0, 34);
-    await openApp(
-      tester,
-      width: 320,
-      height: 568,
-      scale: 2,
-      language: DisplayLanguage.persian,
-      dark: true,
-      onboardingComplete: false,
-      safePadding: safePadding,
-    );
-
-    for (var step = 0; step < 4; step++) {
-      final tooltip = find.byKey(const ValueKey('onboarding-tooltip'));
-      final action = find.text(step == 3 ? 'شروع!' : 'بعدی');
-      expect(tooltip, findsOneWidget);
-      expect(action, findsOneWidget);
-      expect(tester.takeException(), isNull);
-      await tester.ensureVisible(action);
-      await tester.pump();
-      final actionRect = tester.getRect(action);
-      expect(actionRect.top, greaterThanOrEqualTo(safePadding.top));
-      expect(actionRect.bottom, lessThanOrEqualTo(568 - safePadding.bottom));
-      await tester.tap(action);
-      await tester.pumpAndSettle();
-    }
-
-    expect(find.byType(OnboardingOverlay), findsNothing);
-    expect(tester.takeException(), isNull);
-  });
-
-  testWidgets('tour removes transition durations when motion is reduced', (
-    tester,
-  ) async {
-    await openApp(tester, onboardingComplete: false, disableAnimations: true);
-
-    expect(
-      tester.widget<AnimatedSwitcher>(find.byType(AnimatedSwitcher)).duration,
-      Duration.zero,
-    );
-    await tester.tap(find.text('Гузаштан'));
-    await tester.pump();
-    expect(find.byType(OnboardingOverlay), findsNothing);
-    expect(
-      (await SharedPreferences.getInstance()).getBool(
-        AppConstants.prefsOnboardingComplete,
-      ),
-      isTrue,
-    );
-    expect(tester.takeException(), isNull);
-  });
-
-  testWidgets('tour can be skipped and launched again from settings', (
-    tester,
-  ) async {
-    final app = await openApp(tester, onboardingComplete: false);
-    await tester.tap(find.text('Гузаштан'));
-    await tester.pumpAndSettle();
-    expect(find.byType(OnboardingOverlay), findsNothing);
-    expect(
-      (await SharedPreferences.getInstance()).getBool(
-        AppConstants.prefsOnboardingComplete,
-      ),
-      isTrue,
-    );
-
-    app.router.go('/settings');
-    await tester.pumpAndSettle();
-    final replay = find.text('Роҳнамои хусусиятҳо');
-    await tester.scrollUntilVisible(
-      replay,
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
-    await tester.tap(replay);
-    await tester.pumpAndSettle();
-    expect(app.router.routeInformationProvider.value.uri.path, '/');
-    expect(find.byType(OnboardingOverlay), findsOneWidget);
-    expect(find.text('Ҳикмати рӯз'), findsOneWidget);
-
-    for (var step = 0; step < 3; step++) {
-      await tester.tap(find.text('Баъдӣ'));
-      await tester.pumpAndSettle();
-    }
-    await tester.tap(find.text('Оғоз!'));
-    await tester.pumpAndSettle();
-    expect(find.byType(OnboardingOverlay), findsNothing);
-    expect(
-      (await SharedPreferences.getInstance()).getBool(
-        AppConstants.prefsOnboardingComplete,
-      ),
-      isTrue,
-    );
-  });
-
-  testWidgets('system back dismisses and remembers the first-launch tour', (
-    tester,
-  ) async {
-    await openApp(tester, onboardingComplete: false);
-    expect(find.byType(OnboardingOverlay), findsOneWidget);
-
-    await tester.binding.handlePopRoute();
-    await tester.pumpAndSettle();
-
-    expect(find.byType(OnboardingOverlay), findsNothing);
-    expect(
-      (await SharedPreferences.getInstance()).getBool(
-        AppConstants.prefsOnboardingComplete,
-      ),
-      isTrue,
-    );
-    expect(tester.takeException(), isNull);
-  });
-
   testWidgets(
-    'returning users do not see onboarding and unknown routes are native',
+    'unknown routes show native error page',
     (tester) async {
       final app = await openApp(tester);
-      expect(find.byType(OnboardingOverlay), findsNothing);
 
       app.router.go('/not-a-zarbulmasal-route');
       await tester.pumpAndSettle();
@@ -569,22 +306,6 @@ void main() {
     },
   );
 
-  testWidgets('home places the section-five history link after literature', (
-    tester,
-  ) async {
-    await openApp(tester, width: 390);
-
-    final scrollable = find.byType(Scrollable).first;
-    await tester.drag(scrollable, const Offset(0, -4000));
-    await tester.pumpAndSettle();
-    final history = find.text('Таърихи халқи тоҷик');
-    final historyTop = tester.getTopLeft(history).dy;
-    final literatureTitles = find.text('Мероси адабӣ');
-
-    expect(literatureTitles, findsOneWidget);
-    expect(historyTop, greaterThan(tester.getTopLeft(literatureTitles).dy));
-  });
-
   testWidgets('sparse catalogs expose only levels with real content', (
     tester,
   ) async {
@@ -633,7 +354,6 @@ void main() {
       catalog: sparseCatalog,
     );
 
-    expect(find.text('۲ سطح موجود'), findsOneWidget);
     app.router.go('/levels');
     await tester.pumpAndSettle();
     expect(find.text('۲ سطح موجود'), findsOneWidget);
@@ -681,7 +401,7 @@ void main() {
   ) async {
     await openApp(tester, width: 320, height: 568);
 
-    final settingsLabel = find.text('Танзимот');
+    final settingsLabel = find.text('Маҳфуз');
     expect(settingsLabel, findsOneWidget);
     expect(tester.getRect(settingsLabel).height, lessThan(24));
     expect(tester.takeException(), isNull);

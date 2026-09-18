@@ -4,250 +4,148 @@ import 'package:go_router/go_router.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../providers/app_providers.dart';
-import 'onboarding_overlay.dart';
 
-/// GlobalKeys for onboarding coach marks. Exposed so the overlay can locate
-/// each navigation target on screen.
-final onboardingSearchKey = GlobalKey(debugLabel: 'onboarding-search');
-final onboardingFavoritesKey = GlobalKey(debugLabel: 'onboarding-favorites');
-final onboardingSettingsKey = GlobalKey(debugLabel: 'onboarding-settings');
-final onboardingHomeKey = GlobalKey(debugLabel: 'onboarding-home');
+class AppScaffold extends ConsumerWidget {
+  final StatefulNavigationShell navigationShell;
 
-class AppScaffold extends ConsumerStatefulWidget {
-  final Widget child;
-  const AppScaffold({super.key, required this.child});
+  const AppScaffold({super.key, required this.navigationShell});
 
   @override
-  ConsumerState<AppScaffold> createState() => _AppScaffoldState();
-}
-
-class _AppScaffoldState extends ConsumerState<AppScaffold> {
-  bool _showOnboarding = false;
-
-  Future<void> _dismissOnboarding() async {
-    await ref.read(onboardingCompleteProvider.notifier).complete();
-    if (mounted) setState(() => _showOnboarding = false);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // Delay so that the frame renders before we read widget positions.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      final done = ref.read(onboardingCompleteProvider);
-      if (done == false) {
-        setState(() => _showOnboarding = true);
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final path = GoRouterState.of(context).uri.path;
+  Widget build(BuildContext context, WidgetRef ref) {
     final lang = ref.watch(displayLanguageProvider);
     final colors = Theme.of(context).colorScheme;
 
-    // Listen for onboarding reset from Settings
-    ref.listen<bool?>(onboardingCompleteProvider, (prev, next) {
-      // The initial async load resolves from null to false on a first visit.
-      // That must not replace a user's deep link with the home route. Only an
-      // explicit reset from a completed session should navigate home first so
-      // the coach marks can target the bottom navigation.
-      if (next == false && prev == null) {
-        // The async first-load transition should show the tour in place,
-        // including when the browser opened a shell deep link.
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (mounted) setState(() => _showOnboarding = true);
-        });
-      } else if (prev == true && next == false) {
-        // Navigate home first so the coach marks can see the nav bar
-        context.go('/');
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (mounted) setState(() => _showOnboarding = true);
-        });
-      }
-    });
+    void goBranch(int index) {
+      navigationShell.goBranch(
+        index,
+        initialLocation: index == navigationShell.currentIndex,
+      );
+    }
 
-    const routes = ['/', '/proverbs', '/categories', '/favorites', '/settings'];
-    const keys = [
-      'nav_home',
-      'nav_proverbs',
-      'nav_categories',
-      'nav_favorites',
-      'nav_settings',
-    ];
-    const icons = [
-      Icons.home_outlined,
-      Icons.menu_book_outlined,
-      Icons.format_list_bulleted,
-      Icons.bookmark_outline,
-      Icons.tune,
-    ];
+    final isPersian = lang == DisplayLanguage.persian;
 
-    // Assign GlobalKeys to specific nav items for onboarding targeting
-    final navKeys = <int, GlobalKey>{
-      0: onboardingHomeKey,
-      1: onboardingSearchKey, // Proverbs tab (has search)
-      3: onboardingFavoritesKey, // Favorites tab
-      4: onboardingSettingsKey, // Settings tab
-    };
+    return Scaffold(
+      body: navigationShell,
+      bottomNavigationBar: DecoratedBox(
+        decoration: BoxDecoration(
+          color: colors.surface,
+          border: Border(top: BorderSide(color: colors.outline)),
+        ),
+        child: SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildNavItem(
+                  context,
+                  index: 0,
+                  currentIndex: navigationShell.currentIndex,
+                  icon: Icons.home_outlined,
+                  label: AppTranslations.get('nav_home', lang),
+                  onTap: () => goBranch(0),
+                  colors: colors,
+                ),
+                _buildNavItem(
+                  context,
+                  index: 1,
+                  currentIndex: navigationShell.currentIndex,
+                  icon: Icons.explore_outlined,
+                  label: isPersian ? 'کشف' : 'Кашф',
+                  onTap: () => goBranch(1),
+                  colors: colors,
+                ),
+                _buildNavItem(
+                  context,
+                  index: 2,
+                  currentIndex: navigationShell.currentIndex,
+                  icon: Icons.school_outlined,
+                  label: isPersian ? 'آموزش' : 'Омӯзиш',
+                  onTap: () => goBranch(2),
+                  colors: colors,
+                ),
+                _buildNavItem(
+                  context,
+                  index: 3,
+                  currentIndex: navigationShell.currentIndex,
+                  icon: Icons.bookmark_outline,
+                  label: isPersian ? 'ذخیره' : 'Маҳфуз',
+                  onTap: () => goBranch(3),
+                  colors: colors,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
-    final selected = routes.indexOf(path);
-
-    return PopScope(
-      canPop: !_showOnboarding,
-      onPopInvokedWithResult: (didPop, result) {
-        if (!didPop && _showOnboarding) _dismissOnboarding();
-      },
-      child: Stack(
-        children: [
-          Scaffold(
-            body: widget.child,
-            bottomNavigationBar: DecoratedBox(
-              decoration: BoxDecoration(
-                color: colors.surface,
-                border: Border(top: BorderSide(color: colors.outline)),
-              ),
-              child: SafeArea(
-                top: false,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
+  Widget _buildNavItem(
+    BuildContext context, {
+    required int index,
+    required int currentIndex,
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+    required ColorScheme colors,
+  }) {
+    final selected = index == currentIndex;
+    return Expanded(
+      child: Semantics(
+        selected: selected,
+        button: true,
+        label: label,
+        child: Tooltip(
+          excludeFromSemantics: true,
+          message: label,
+          child: InkWell(
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 2),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    height: 2,
+                    width: 18,
+                    color: selected ? colors.primary : Colors.transparent,
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      for (var i = 0; i < routes.length; i++)
-                        Expanded(
-                          child: Semantics(
-                            selected: selected == i,
-                            button: true,
-                            label: AppTranslations.get(keys[i], lang),
-                            child: Tooltip(
-                              excludeFromSemantics: true,
-                              message: AppTranslations.get(keys[i], lang),
-                              child: InkWell(
-                                key: navKeys[i],
-                                onTap: () => context.go(routes[i]),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 9,
-                                    horizontal: 2,
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        height: 2,
-                                        width: 18,
-                                        color: selected == i
-                                            ? colors.primary
-                                            : Colors.transparent,
-                                      ),
-                                      const SizedBox(height: 7),
-                                      ExcludeSemantics(
-                                        child: Icon(
-                                          icons[i],
-                                          size: 22,
-                                          color: selected == i
-                                              ? colors.primary
-                                              : colors.onSurfaceVariant,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 6),
-                                      ExcludeSemantics(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: FittedBox(
-                                            fit: BoxFit.scaleDown,
-                                            child: Text(
-                                              AppTranslations.get(
-                                                keys[i],
-                                                lang,
-                                              ),
-                                              maxLines: 1,
-                                              softWrap: false,
-                                              style: QalamTypography.navLabel(
-                                                color: selected == i
-                                                    ? colors.primary
-                                                    : colors.onSurfaceVariant,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                  const SizedBox(height: 7),
+                  ExcludeSemantics(
+                    child: Icon(
+                      icon,
+                      size: 24,
+                      color: selected
+                          ? colors.primary
+                          : colors.onSurfaceVariant,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  ExcludeSemantics(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          label,
+                          maxLines: 1,
+                          softWrap: false,
+                          style: QalamTypography.navLabel(
+                            color: selected
+                                ? colors.primary
+                                : colors.onSurfaceVariant,
                           ),
                         ),
-                    ],
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
-
-          // Coach marks overlay
-          if (_showOnboarding)
-            OnboardingOverlay(
-              language: lang,
-              steps: [
-                OnboardingStep(
-                  targetKey: onboardingHomeKey,
-                  title: AppTranslations.get('onboarding_home_title', lang),
-                  description: AppTranslations.get(
-                    'onboarding_home_description',
-                    lang,
-                  ),
-                  nextLabel: AppTranslations.get('onboarding_next', lang),
-                  skipLabel: AppTranslations.get('onboarding_skip', lang),
-                  finishLabel: AppTranslations.get('onboarding_finish', lang),
-                ),
-                OnboardingStep(
-                  targetKey: onboardingSearchKey,
-                  title: AppTranslations.get('onboarding_search_title', lang),
-                  description: AppTranslations.get(
-                    'onboarding_search_description',
-                    lang,
-                  ),
-                  nextLabel: AppTranslations.get('onboarding_next', lang),
-                  skipLabel: AppTranslations.get('onboarding_skip', lang),
-                  finishLabel: AppTranslations.get('onboarding_finish', lang),
-                ),
-                OnboardingStep(
-                  targetKey: onboardingFavoritesKey,
-                  title: AppTranslations.get(
-                    'onboarding_favorites_title',
-                    lang,
-                  ),
-                  description: AppTranslations.get(
-                    'onboarding_favorites_description',
-                    lang,
-                  ),
-                  nextLabel: AppTranslations.get('onboarding_next', lang),
-                  skipLabel: AppTranslations.get('onboarding_skip', lang),
-                  finishLabel: AppTranslations.get('onboarding_finish', lang),
-                ),
-                OnboardingStep(
-                  targetKey: onboardingSettingsKey,
-                  title: AppTranslations.get('onboarding_settings_title', lang),
-                  description: AppTranslations.get(
-                    'onboarding_settings_description',
-                    lang,
-                  ),
-                  nextLabel: AppTranslations.get('onboarding_next', lang),
-                  skipLabel: AppTranslations.get('onboarding_skip', lang),
-                  finishLabel: AppTranslations.get('onboarding_finish', lang),
-                ),
-              ],
-              onComplete: _dismissOnboarding,
-            ),
-        ],
+        ),
       ),
     );
   }
