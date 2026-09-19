@@ -372,7 +372,8 @@ class AppTranslations {
     'hist_epoch_enlightenment': 'Маорифпарварӣ',
     'hist_epoch_soviet': 'Давраи Шӯравӣ',
     'hist_epoch_independence': 'Истиқлолият',
-    'hist_official_textbook': 'Сарчашмаи таълимӣ: Китоби дарсии «Таърихи халқи тоҷик»',
+    'hist_official_textbook':
+        'Сарчашмаи таълимӣ: Китоби дарсии «Таърихи халқи тоҷик»',
     'hist_textbook_grade': 'Китоби дарсии синфи \${0}',
     'hist_source_study': 'Мутолиа дар сомонаи расмӣ (maorif.tj)',
     'hist_source_study_local': 'Китоби дарсии боргузоришуда',
@@ -385,7 +386,8 @@ class AppTranslations {
     'hist_summary': 'Хулосаи таърихӣ',
     'hist_title_main': 'Таърихи халқи тоҷик',
     'hist_header_eyebrow': '04 / ТАЪРИХНОМАИ МАКТАБӢ',
-    'hist_header_subtitle': 'Тадқиқоти кӯтоҳи сарчашмабунёд аз китобҳои синфҳои 5–11',
+    'hist_header_subtitle':
+        'Тадқиқоти кӯтоҳи сарчашмабунёд аз китобҳои синфҳои 5–11',
     'hist_search_hint': 'Ҷустуҷӯ дар номҳо ва воқеаҳо',
     'hist_view_textbooks': 'Китобҳои дарсӣ',
     'hist_view_topics_label': 'Мавзӯъҳо',
@@ -400,7 +402,8 @@ class AppTranslations {
     // Literature Hub & Screens
     'lit_hub_eyebrow': 'ГАНҶИНАИ АДАБИ ТОҶИК',
     'lit_hub_title': 'Адабиёти тоҷик',
-    'lit_hub_subtitle': 'Ганҷинаи шеър ва ҳикмати тоҷик бо истинод ба сарчашмаҳои чопии муътамад',
+    'lit_hub_subtitle':
+        'Ганҷинаи шеър ва ҳикмати тоҷик бо истинод ба сарчашмаҳои чопии муътамад',
     'lit_hub_poets_card': 'Шоирон ва нависандагон',
     'lit_hub_poets_card_sub': 'Бузургони адабиёти тоҷик',
     'lit_hub_works_card': 'Шеърҳо ва асарҳо',
@@ -411,17 +414,21 @@ class AppTranslations {
     'lit_hub_oral_card_sub': 'Зарбулмасалҳо, чистонҳо ва дубайтиҳо',
     'lit_poets_eyebrow': '01 / ШОИРОН',
     'lit_poets_title': 'Шоирони тоҷик',
-    'lit_poets_subtitle': 'Бузургони адабиёти классик ва муосири тоҷик бо зиндагиномаи мустанад',
+    'lit_poets_subtitle':
+        'Бузургони адабиёти классик ва муосири тоҷик бо зиндагиномаи мустанад',
     'lit_poets_search_hint': 'Ҷустуҷӯи шоир аз рӯи ном ё давр...',
     'lit_works_eyebrow': '02 / ШЕЪРҲО',
     'lit_works_title': 'Осори манзум',
-    'lit_works_subtitle': 'Ғазалҳо, рубоиҳо ва осори манзуми тасдиқшуда аз нусхаҳои чопӣ',
+    'lit_works_subtitle':
+        'Ғазалҳо, рубоиҳо ва осори манзуми тасдиқшуда аз нусхаҳои чопӣ',
     'lit_canon_eyebrow': '03 / БАРНОМАИ МАКТАБӢ',
     'lit_canon_title': 'Барномаи мактабӣ',
-    'lit_canon_subtitle': 'Феҳристи сарчашмабунёди китобҳои дарсӣ; ҳар истинод баъд аз санҷиши саҳифа тасдиқ мешавад',
+    'lit_canon_subtitle':
+        'Феҳристи сарчашмабунёди китобҳои дарсӣ; ҳар истинод баъд аз санҷиши саҳифа тасдиқ мешавад',
     'lit_oral_eyebrow': '03 / МЕРОСИ ШИФОҲӢ',
     'lit_oral_title': 'Мероси шифоҳӣ',
-    'lit_oral_subtitle': 'Зарбулмасалҳо, чистонҳо, дубайтиҳо ва фолклори сабтшудаи мардуми тоҷик',
+    'lit_oral_subtitle':
+        'Зарбулмасалҳо, чистонҳо, дубайтиҳо ва фолклори сабтшудаи мардуми тоҷик',
     'lit_reader_title': 'Хониши шеър',
     'lit_reader_tajik_tab': 'Хатти тоҷикӣ',
     'lit_reader_persian_tab': 'Хатти форсӣ',
@@ -450,7 +457,8 @@ class AppTranslations {
     'lit_not_found': 'Асар ёфт нашуд',
     'lit_not_found_hint': 'Асаре бо ин нишонӣ ёфт нашуд.',
     'lit_pending_review_title': 'Асар дар санҷиш аст',
-    'lit_pending_review_desc': 'Ин сабт аз китоби дарсӣ гирифта шудааст, аммо матн то анҷоми муқобала ва тасдиқи муҳаррир нашр намешавад.',
+    'lit_pending_review_desc':
+        'Ин сабт аз китоби дарсӣ гирифта шудааст, аммо матн то анҷоми муқобала ва тасдиқи муҳаррир нашр намешавад.',
     'lit_filter_all_genres': 'Ҳамаи сабкҳо',
     'lit_filter_all_grades': 'Ҳамаи синфҳо',
 
@@ -459,7 +467,6 @@ class AppTranslations {
     'quiz_incorrect_badge': 'Ҷавоби нодуруст',
     'quiz_feedback_correct': 'Дуруст. Офарин!',
     'quiz_feedback_incorrect': 'Нодуруст. Ҷавоби дурустро дар поён бубинед.',
-
 
     // Explore Extra
     'explore_poets_title': 'Шоирон ва нависандагон',
@@ -486,7 +493,8 @@ class AppTranslations {
     // Settings Extra
     'settings_script_cyrillic': 'Хатти кириллӣ',
     'settings_script_persian': 'Хатти форсӣ',
-    'settings_source_dialog_text': 'Маҷмӯа мақолҳои анъанавӣ ва матнҳои таълимии муосирро дар бар мегирад. Сарчашма ва ҳолати санҷиш дар саҳифаи ҳар матн нишон дода мешаванд.',
+    'settings_source_dialog_text':
+        'Маҷмӯа мақолҳои анъанавӣ ва матнҳои таълимии муосирро дар бар мегирад. Сарчашма ва ҳолати санҷиш дар саҳифаи ҳар матн нишон дода мешаванд.',
 
     // Global Search Extra
     'search_error_title': 'Хатои ҷустуҷӯ',
@@ -507,9 +515,11 @@ class AppTranslations {
 
     // Literature Extra
     'lit_search_error_title': 'Хато ҳангоми боргирии ҷустуҷӯ',
-    'lit_search_error_sub': 'Маълумоти ҷустуҷӯ бор нашуд. Лутфан дубора кӯшиш кунед.',
+    'lit_search_error_sub':
+        'Маълумоти ҷустуҷӯ бор нашуд. Лутфан дубора кӯшиш кунед.',
     'lit_poet_error_title': 'Хато ҳангоми боргирӣ',
-    'lit_poet_error_sub': 'Маълумоти шоир бор нашуд. Лутфан дубора кӯшиш кунед.',
+    'lit_poet_error_sub':
+        'Маълумоти шоир бор нашуд. Лутфан дубора кӯшиш кунед.',
     'lit_poet_not_found_title': 'Шоир ёфт нашуд',
     'lit_poet_not_found_sub': 'Шоире бо ин нишонӣ сабт нашудааст.',
     'lit_poet_curriculum_header': 'Барномаи мактабӣ',
@@ -521,9 +531,11 @@ class AppTranslations {
     'lit_work_not_found_title': 'Асар ёфт нашуд',
     'lit_work_not_found_sub': 'Асаре бо ин нишонӣ ёфт нашуд.',
     'lit_work_pending_title': 'Асар дар санҷиш аст',
-    'lit_work_pending_sub': 'Ин сабт аз китоби дарсӣ гирифта шудааст, аммо матн то анҷоми муқобала ва тасдиқи муҳаррир нашр намешавад.',
+    'lit_work_pending_sub':
+        'Ин сабт аз китоби дарсӣ гирифта шудааст, аммо матн то анҷоми муқобала ва тасдиқи муҳаррир нашр намешавад.',
     'lit_work_source_registered': 'Сарчашмаи сабтшуда: \${0}',
-    'lit_work_rights_pending': 'Ҳуқуқи истифодаи матн ҳанӯз бо санади иҷозат тасдиқ нашудааст.',
+    'lit_work_rights_pending':
+        'Ҳуқуқи истифодаи матн ҳанӯз бо санади иҷозат тасдиқ нашудааст.',
     'lit_work_font_size': 'Андозаи хат',
     'lit_work_decrease_font': 'Хурд кардани хат',
     'lit_work_increase_font': 'Калон кардани хат',
@@ -536,9 +548,11 @@ class AppTranslations {
     'hist_empty_title': 'Мавод ёфт нашуд',
     'hist_empty_sub': 'Барои ин ҷустуҷӯ ё филтр чизе ёфт нашуд.',
     'hist_detail_error_title': 'Хато дар боргирии маълумот',
-    'hist_detail_error_sub': 'Маълумоти шиноснома бор нашуд. Лутфан дубора кӯшиш кунед.',
+    'hist_detail_error_sub':
+        'Маълумоти шиноснома бор нашуд. Лутфан дубора кӯшиш кунед.',
     'hist_detail_not_found_title': 'Сабти таърихӣ ёфт нашуд',
-    'hist_detail_not_found_sub': 'Сабте бо ин нишонӣ дар пойгоҳи маълумот нест.',
+    'hist_detail_not_found_sub':
+        'Сабте бо ин нишонӣ дар пойгоҳи маълумот нест.',
     'hist_detail_epoch': 'Давраи таърихӣ',
     'hist_detail_source_book': 'Китоби дарсӣ',
     'hist_detail_source_section': 'Боби дарсӣ',
@@ -552,7 +566,8 @@ class AppTranslations {
 
     // School Canon
     'lit_canon_error_title': 'Хато ҳангоми боргирии барнома',
-    'lit_canon_error_sub': 'Барномаи таълимӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
+    'lit_canon_error_sub':
+        'Барномаи таълимӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
     'lit_canon_empty_title': 'Барномаи таълимӣ ёфт нашуд',
     'lit_subject_tajik': 'Адабиёти тоҷик',
     'lit_subject_reading': 'Хониши адабӣ',
@@ -565,31 +580,42 @@ class AppTranslations {
     'lit_hub_daily_verse_retry': 'Маълумоти адабиро дубора боргирӣ кунед.',
     'lit_hub_sections_header': 'БАХШҲОИ ГАНҶИНА',
     'lit_hub_history_card': 'Таърихи халқи тоҷик',
-    'lit_hub_history_card_sub': 'Номҳо, давлатҳо ва шеърҳои китобҳои синфҳои 5–11',
+    'lit_hub_history_card_sub':
+        'Номҳо, давлатҳо ва шеърҳои китобҳои синфҳои 5–11',
     'lit_hub_poets_count': 'Зиндагинома ва осори \${0} шоир ва адиби бузург',
-    'lit_hub_works_count': 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда (\${0} асар)',
-    'lit_hub_works_under_review': 'Ғазалҳо, қасидаҳо ва рубоиҳои дар ҳоли тасдиқ ва муқобала',
-    'lit_hub_school_canon_count': 'Осори шомил ба барномаи таълимии мактабҳо (\${0} асар)',
-    'lit_hub_oral_count': 'Зарбулмасалҳо, чистонҳо ва дубайтиҳои халқӣ (\${0} намуна)',
+    'lit_hub_works_count':
+        'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда (\${0} асар)',
+    'lit_hub_works_under_review':
+        'Ғазалҳо, қасидаҳо ва рубоиҳои дар ҳоли тасдиқ ва муқобала',
+    'lit_hub_school_canon_count':
+        'Осори шомил ба барномаи таълимии мактабҳо (\${0} асар)',
+    'lit_hub_oral_count':
+        'Зарбулмасалҳо, чистонҳо ва дубайтиҳои халқӣ (\${0} намуна)',
     'lit_hub_featured_verses': 'ШЕЪРҲОИ БАРГУЗИДА',
     'lit_hub_all_works': 'Ҳамаи асарҳо',
     'lit_hub_read_work': 'Мутолиаи асар',
 
     // Poet Detail
-    'lit_poet_header_dates_pending': 'Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма дар интизоранд.',
+    'lit_poet_header_dates_pending':
+        'Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма дар интизоранд.',
     'lit_poet_approved_works_count': 'Шеърҳои тасдиқшуда дар барнома: \${0}',
     'lit_poet_review_works_count': 'Сабтҳо таҳти санҷиш: \${0}',
-    'lit_poet_bio_pending': 'Матни тарҷумаиҳолӣ то сабт ва санҷиши истиноди саҳифадор дастрас нест.',
+    'lit_poet_bio_pending':
+        'Матни тарҷумаиҳолӣ то сабт ва санҷиши истиноди саҳифадор дастрас нест.',
     'lit_poet_explore_world': 'Ҷаҳони ӯро бишносед',
-    'lit_poet_explore_world_sub': 'Давлатҳо, чеҳраҳо ва воқеаҳои таърихии ҳамзамон дар таърихи халқи тоҷик',
+    'lit_poet_explore_world_sub':
+        'Давлатҳо, чеҳраҳо ва воқеаҳои таърихии ҳамзамон дар таърихи халқи тоҷик',
     'lit_poet_approved_works_header': 'Осори тасдиқшуда дар барнома (\${0})',
     'lit_poet_works_in_review_label': 'Сабтҳои асар дар санҷиш: \${0}',
-    'lit_poet_works_review_desc': 'Матнҳои осори ин шоир дар марҳилаи муқобала ва санҷиши сарчашмаҳо қарор доранд.',
+    'lit_poet_works_review_desc':
+        'Матнҳои осори ин шоир дар марҳилаи муқобала ва санҷиши сарчашмаҳо қарор доранд.',
     'lit_poet_bio_source_verified': 'Сарчашмаи истинод:',
-    'lit_poet_bio_source_unverified': 'Сарчашмаи саҳифадори санҷидашуда сабт нашудааст:',
+    'lit_poet_bio_source_unverified':
+        'Сарчашмаи саҳифадори санҷидашуда сабт нашудааст:',
     'lit_poet_source_tag': 'Барчаспи воридотӣ: \${0}',
     'lit_poet_composition_year': 'Таълиф: \${0}',
-    'lit_poet_work_in_review_sub': 'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
+    'lit_poet_work_in_review_sub':
+        'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
     'lit_poet_page_not_recorded': 'Рақами саҳифаи чопӣ ҳанӯз сабт нашудааст',
 
     // Poem Reader
@@ -601,10 +627,14 @@ class AppTranslations {
     'lit_script_cyrillic': 'Тоҷикӣ (Кириллӣ)',
     'lit_script_persian': 'Форсӣ (Арабӣ)',
     'lit_script_parallel': 'Матни мувозӣ',
-    'lit_cyrillic_only_notice': 'Матни ин асар тибқи нусхаҳои муътамад ба хатти кириллии тоҷикӣ сабт шудааст.',
-    'lit_generated_script_notice': 'Намоиши ҳарфии тавлидшуда аз хатти кириллии тоҷикӣ; ин матн нусхаи аслии форсӣ ё тарҷумаи маъноӣ нест.',
-    'lit_editorial_review_pending': 'Матн дар ҳоли муқобала бо нусхаҳои чопӣ аст',
-    'lit_editorial_policy_notice': 'Мутобиқи сиёсати нашрии «Зарбулмасал», матни шеърҳо танҳо пас аз муқобала бо на камтар аз ду сарчашмаи чопии муътамад ва имзои муҳаррир нашр карда мешавад.',
+    'lit_cyrillic_only_notice':
+        'Матни ин асар тибқи нусхаҳои муътамад ба хатти кириллии тоҷикӣ сабт шудааст.',
+    'lit_generated_script_notice':
+        'Намоиши ҳарфии тавлидшуда аз хатти кириллии тоҷикӣ; ин матн нусхаи аслии форсӣ ё тарҷумаи маъноӣ нест.',
+    'lit_editorial_review_pending':
+        'Матн дар ҳоли муқобала бо нусхаҳои чопӣ аст',
+    'lit_editorial_policy_notice':
+        'Мутобиқи сиёсати нашрии «Зарбулмасал», матни шеърҳо танҳо пас аз муқобала бо на камтар аз ду сарчашмаи чопии муътамад ва имзои муҳаррир нашр карда мешавад.',
     'lit_incipit_label': 'Матлаи асар:',
     'lit_editorial_notes_label': 'Шарҳҳои матншиносӣ ва имло:',
     'lit_copy_poem': 'Нусхаи матн',
@@ -625,8 +655,10 @@ class AppTranslations {
     'lit_source_sec_proof': 'Сарчашмаи дуввум (Муқобала)',
     'lit_source_biblio_citation': 'Иқтибоси библиографӣ:',
     'lit_source_page_image_title': 'Тасвири аслии саҳифаи китоб',
-    'lit_source_page_image_hint': 'Барои дидан ва калон кардани саҳифаи аслӣ пахш кунед',
-    'lit_source_not_registered': 'Сарчашмаи чопӣ ҳанӯз ба қайд гирифта нашудааст.',
+    'lit_source_page_image_hint':
+        'Барои дидан ва калон кардани саҳифаи аслӣ пахш кунед',
+    'lit_source_not_registered':
+        'Сарчашмаи чопӣ ҳанӯз ба қайд гирифта нашудааст.',
     'lit_source_comparison_result': 'Натиҷаи муқобала:',
     'lit_source_variant_notes': 'Тафовути нусхаҳо:',
     'lit_source_verified_label': 'Тасдиқшуда',
@@ -655,7 +687,8 @@ class AppTranslations {
     'lit_source_page_close': 'Пӯшидан',
     'lit_rights_public_domain': 'Моликияти умумӣ (Public Domain)',
     'lit_rights_protected': 'Ҳифзшуда / Таҳти ҳимоя',
-    'lit_poet_bio_cyrillic_fallback': 'Ин шарҳи ҳол ҳоло бо хатти кириллии тоҷикӣ намоиш дода мешавад.',
+    'lit_poet_bio_cyrillic_fallback':
+        'Ин шарҳи ҳол ҳоло бо хатти кириллии тоҷикӣ намоиш дода мешавад.',
 
     // Literature Search
     'lit_search_suggestions': 'Пешниҳодҳои ҷустуҷӯ:',
@@ -666,23 +699,28 @@ class AppTranslations {
 
     // Poets & Works Lists
     'lit_poets_error_title': 'Хато ҳангоми боргирии шоирон',
-    'lit_poets_error_sub': 'Маълумоти шоирон бор нашуд. Лутфан дубора кӯшиш кунед.',
+    'lit_poets_error_sub':
+        'Маълумоти шоирон бор нашуд. Лутфан дубора кӯшиш кунед.',
     'lit_poets_empty_title': 'Шоире ёфт нашуд',
     'lit_poets_empty_sub': 'Бо ин вожа шоире дар феҳрист ёфт нашуд.',
     'lit_works_error_title': 'Хато ҳангоми боргирии асарҳо',
-    'lit_works_error_sub': 'Маълумоти осор бор нашуд. Лутфан дубора кӯшиш кунед.',
+    'lit_works_error_sub':
+        'Маълумоти осор бор нашуд. Лутфан дубора кӯшиш кунед.',
     'lit_works_empty_review_title': 'Осор дар марҳилаи санҷиш қарор дорад',
-    'lit_works_empty_review_sub': 'Мутобиқи меъёрҳои илмии барнома, матни асарҳо танҳо пас аз муқобала бо нусхаҳои чопии муътамад ва сабти манбаъ нашр мегардад.',
+    'lit_works_empty_review_sub':
+        'Мутобиқи меъёрҳои илмии барнома, матни асарҳо танҳо пас аз муқобала бо нусхаҳои чопии муътамад ва сабти манбаъ нашр мегардад.',
     'lit_works_view_poets': 'Дидани рӯйхати шоирон',
 
     // Oral Heritage
     'lit_oral_error_title': 'Хато ҳангоми боргирӣ',
-    'lit_oral_error_sub': 'Маълумоти мероси шифоҳӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
+    'lit_oral_error_sub':
+        'Маълумоти мероси шифоҳӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
     'lit_oral_empty_title': 'Мероси шифоҳӣ ёфт нашуд',
     'lit_oral_empty_sub': 'Бо ин филтр намунае ёфт нашуд.',
     'lit_oral_filter_all': 'Ҳама',
     'lit_oral_guide_eyebrow': 'МАНТИҚИ МЕРОСИ ШИФОҲӢ',
-    'lit_oral_guide_body': 'Ҳар ривоят се қабат дорад: матн, навъи ривоят ва сарчашма. Танҳо матни муқобилашуда ва иҷозадор дар феҳристи пурра меояд.',
+    'lit_oral_guide_body':
+        'Ҳар ривоят се қабат дорад: матн, навъи ривоят ва сарчашма. Танҳо матни муқобилашуда ва иҷозадор дар феҳристи пурра меояд.',
     'lit_oral_guide_pill1': '01  Ҷудокунии ривоят',
     'lit_oral_guide_pill2': '02  Санҷиши манбаъ',
     'lit_oral_guide_pill3': '03  Намоиши равшан',
@@ -690,7 +728,8 @@ class AppTranslations {
 
     // Global Search
     'search_empty_prompt_title': 'Ҷустуҷӯ дар кулли Зарбулмасал',
-    'search_empty_prompt_sub': 'Шумо метавонед номи шоирон, унвони шеърҳо, зарбулмасалҳо ва рӯйдодҳои таърихиро ҷустуҷӯ намоед.',
+    'search_empty_prompt_sub':
+        'Шумо метавонед номи шоирон, унвони шеърҳо, зарбулмасалҳо ва рӯйдодҳои таърихиро ҷустуҷӯ намоед.',
     'search_no_results_for': 'Бо вожаи «\${0}» чизе ёфт нашуд.',
     'search_poets_count': 'Шоирон (\${0})',
     'search_works_count': 'Шеърҳо ва осор (\${0})',
@@ -699,6 +738,53 @@ class AppTranslations {
     'search_kind_poem': 'Шеър',
     'search_kind_proverb': 'Зарбулмасал',
     'search_kind_history': 'Таърих',
+    // Books / digital library
+    'books_title': 'Китобхона',
+    'books_eyebrow': 'ФЕҲРИСТИ КИТОБҲО',
+    'books_subtitle': 'Китобҳоро кашф кунед ва дар манбаи қонунӣ бихонед',
+    'books_search_hint': 'Ҷустуҷӯи китоб, муаллиф ё мавзӯъ...',
+    'books_all': 'Ҳамаи китобҳо',
+    'books_featured': 'Интихоби китобхона',
+    'books_categories': 'Бахшҳо',
+    'books_poetry': 'Назм',
+    'books_classical': 'Адабиёти классикӣ',
+    'books_modern': 'Адабиёти муосир',
+    'books_history': 'Таърих',
+    'books_textbooks': 'Китобҳои дарсӣ',
+    'books_authors': 'Муаллифон',
+    'books_no_results': 'Китобе ёфт нашуд',
+    'books_no_results_sub': 'Вожаи ҷустуҷӯ ё бахши дигарро санҷед.',
+    'books_load_error': 'Китобҳо бор нашуданд',
+    'books_load_error_sub':
+        'Феҳристи китобхона дастрас нест. Дубора кӯшиш кунед.',
+    'books_provider': 'Манбаъ',
+    'books_source_page': 'Саҳифаи манбаъ',
+    'books_read': 'Хондан',
+    'books_read_on_provider': 'Хондан дар Китобхон',
+    'books_download_unavailable': 'Боргирӣ дар барнома дастрас нест',
+    'books_rights_unclear': 'Ҳуқуқи бознашр норӯшан аст',
+    'books_external_note': 'Хондан дар саҳифаи аслии провайдер кушода мешавад.',
+    'books_link_error': 'Саҳифаи китоб кушода нашуд.',
+    'books_edition': 'Нашр',
+    'books_publisher': 'Нашриёт',
+    'books_year': 'Сол',
+    'books_pages': 'Саҳифаҳо',
+    'books_language': 'Забон',
+    'books_script': 'Хат',
+    'books_category': 'Бахш',
+    'books_description': 'Дар бораи китоб',
+    'books_related_author': 'Муаллиф дар Мероси адабӣ',
+    'books_author_books': 'Китобҳои дастрас аз ҳамин муаллиф',
+    'books_saved': 'Китобҳои маҳфузшуда',
+    'books_saved_empty': 'Ҳоло китобе маҳфуз нашудааст.',
+    'books_saved_empty_sub': 'Аз саҳифаи китоб нишонаи маҳфузро интихоб кунед.',
+    'books_catalogue_only': 'Танҳо дар феҳрист',
+    'books_pdf': 'PDF',
+    'books_count': '\${0} китоб',
+    'books_provider_stats': '\${0} китоб · \${1} муаллиф · \${2} бахш',
+    'books_search_result': 'Китобҳо (\${0})',
+    'explore_books_title': 'Китобхона',
+    'explore_books_sub': 'Кашф ва хондани китобҳои дастрас',
   };
 
   static const Map<String, String> fa = {
@@ -1080,7 +1166,8 @@ class AppTranslations {
     'hist_summary': 'خلاصهٔ تاریخی',
     'hist_title_main': 'تاریخ مردم تاجیک',
     'hist_header_eyebrow': '۰۴ / تاریخ‌نامهٔ مکتبی',
-    'hist_header_subtitle': 'پژوهشی کوتاه و منبع‌محور از کتاب‌های صنف‌های ۵ تا ۱۱',
+    'hist_header_subtitle':
+        'پژوهشی کوتاه و منبع‌محور از کتاب‌های صنف‌های ۵ تا ۱۱',
     'hist_search_hint': 'جست‌وجو در نام‌ها و رویدادها',
     'hist_view_textbooks': 'کتاب‌های درسی',
     'hist_view_topics_label': 'موضوع‌ها',
@@ -1095,7 +1182,8 @@ class AppTranslations {
     // Literature Hub & Screens
     'lit_hub_eyebrow': 'گنجینهٔ ادب تاجیک',
     'lit_hub_title': 'ادبیات تاجیک',
-    'lit_hub_subtitle': 'گنجینهٔ شعر و حکمت تاجیک با استناد به نسخه‌های چاپی و معتبر',
+    'lit_hub_subtitle':
+        'گنجینهٔ شعر و حکمت تاجیک با استناد به نسخه‌های چاپی و معتبر',
     'lit_hub_poets_card': 'شاعران و نویسندگان',
     'lit_hub_poets_card_sub': 'بزرگان ادب تاجیک',
     'lit_hub_works_card': 'شعرها و آثار منظوم',
@@ -1106,17 +1194,20 @@ class AppTranslations {
     'lit_hub_oral_card_sub': 'ضرب‌المثل‌ها، چیستان‌ها و دوبیتی‌ها',
     'lit_poets_eyebrow': '۰۱ / شاعران',
     'lit_poets_title': 'شاعران تاجیک',
-    'lit_poets_subtitle': 'بزرگان ادب کلاسیک و معاصر تاجیک با زندگینامه و اسناد معتبر',
+    'lit_poets_subtitle':
+        'بزرگان ادب کلاسیک و معاصر تاجیک با زندگینامه و اسناد معتبر',
     'lit_poets_search_hint': 'جستجوی شاعر بر اساس نام یا دوره...',
     'lit_works_eyebrow': '۰۲ / شعرها',
     'lit_works_title': 'آثار منظوم',
     'lit_works_subtitle': 'غزل‌ها، رباعی‌ها و آثار منظوم بررسی‌شده و معتبر',
     'lit_canon_eyebrow': '۰۳ / برنامهٔ مکتبی',
     'lit_canon_title': 'برنامهٔ مکتبی',
-    'lit_canon_subtitle': 'فهرست منبع‌محورِ کتاب‌های درسی؛ هر ارجاع پس از سنجش صفحه تأیید می‌شود',
+    'lit_canon_subtitle':
+        'فهرست منبع‌محورِ کتاب‌های درسی؛ هر ارجاع پس از سنجش صفحه تأیید می‌شود',
     'lit_oral_eyebrow': '۰۳ / میراث شفاهی',
     'lit_oral_title': 'میراث شفاهی',
-    'lit_oral_subtitle': 'ضرب‌المثل‌ها، چیستان‌ها، دوبیتی‌ها و ادبیات عامیانهٔ ضبط‌شده',
+    'lit_oral_subtitle':
+        'ضرب‌المثل‌ها، چیستان‌ها، دوبیتی‌ها و ادبیات عامیانهٔ ضبط‌شده',
     'lit_reader_title': 'خوانش شعر',
     'lit_reader_tajik_tab': 'خط تاجیکی',
     'lit_reader_persian_tab': 'خط فارسی',
@@ -1145,7 +1236,8 @@ class AppTranslations {
     'lit_not_found': 'اثر یافت نشد',
     'lit_not_found_hint': 'اثر با شناسهٔ مورد نظر در دسترس نیست.',
     'lit_pending_review_title': 'اثر در دست بررسی است',
-    'lit_pending_review_desc': 'این رکورد از کتاب درسی ثبت شده، اما متن آن تا تکمیل مقابله و تأیید سردبیر منتشر نمی‌شود.',
+    'lit_pending_review_desc':
+        'این رکورد از کتاب درسی ثبت شده، اما متن آن تا تکمیل مقابله و تأیید سردبیر منتشر نمی‌شود.',
     'lit_filter_all_genres': 'همهٔ سبک‌ها',
     'lit_filter_all_grades': 'همهٔ صنف‌ها',
 
@@ -1154,7 +1246,6 @@ class AppTranslations {
     'quiz_incorrect_badge': 'پاسخ نادرست',
     'quiz_feedback_correct': 'درست است. آفرین!',
     'quiz_feedback_incorrect': 'نادرست. پاسخ درست را در پایین ببینید.',
-
 
     // Explore Extra
     'explore_poets_title': 'شاعران و نویسندگان',
@@ -1181,7 +1272,8 @@ class AppTranslations {
     // Settings Extra
     'settings_script_cyrillic': 'خط سیریلیک',
     'settings_script_persian': 'خط فارسی',
-    'settings_source_dialog_text': 'این مجموعه شامل ضرب‌المثل‌های سنتی و متن‌های آموزشی معاصر است. یادداشت منبع و وضعیت بررسی در صفحهٔ هر متن نمایش داده می‌شود.',
+    'settings_source_dialog_text':
+        'این مجموعه شامل ضرب‌المثل‌های سنتی و متن‌های آموزشی معاصر است. یادداشت منبع و وضعیت بررسی در صفحهٔ هر متن نمایش داده می‌شود.',
 
     // Global Search Extra
     'search_error_title': 'خطا در جستجو',
@@ -1202,7 +1294,8 @@ class AppTranslations {
 
     // Literature Extra
     'lit_search_error_title': 'خطا در بارگیری جستجو',
-    'lit_search_error_sub': 'داده‌های جستجو بارگیری نشد. لطفاً دوباره تلاش کنید.',
+    'lit_search_error_sub':
+        'داده‌های جستجو بارگیری نشد. لطفاً دوباره تلاش کنید.',
     'lit_poet_error_title': 'خطا در بارگیری',
     'lit_poet_error_sub': 'اطلاعات شاعر بارگیری نشد. لطفاً دوباره تلاش کنید.',
     'lit_poet_not_found_title': 'شاعر یافت نشد',
@@ -1216,9 +1309,11 @@ class AppTranslations {
     'lit_work_not_found_title': 'اثر یافت نشد',
     'lit_work_not_found_sub': 'اثر با شناسهٔ مورد نظر در دسترس نیست.',
     'lit_work_pending_title': 'اثر در دست بررسی است',
-    'lit_work_pending_sub': 'این رکورد از کتاب درسی ثبت شده، اما متن آن تا تکمیل مقابله و تأیید سردبیر منتشر نمی‌شود.',
+    'lit_work_pending_sub':
+        'این رکورد از کتاب درسی ثبت شده، اما متن آن تا تکمیل مقابله و تأیید سردبیر منتشر نمی‌شود.',
     'lit_work_source_registered': 'منبع ثبت‌شده: \${0}',
-    'lit_work_rights_pending': 'حق استفاده از متن هنوز با سند اجازه تأیید نشده است.',
+    'lit_work_rights_pending':
+        'حق استفاده از متن هنوز با سند اجازه تأیید نشده است.',
     'lit_work_font_size': 'اندازهٔ قلم',
     'lit_work_decrease_font': 'کوچک کردن قلم',
     'lit_work_increase_font': 'بزرگ کردن قلم',
@@ -1231,7 +1326,8 @@ class AppTranslations {
     'hist_empty_title': 'محتوایی یافت نشد',
     'hist_empty_sub': 'برای این جستجو یا فیلتر موردی پیدا نشد.',
     'hist_detail_error_title': 'خطا در بارگیری اطلاعات',
-    'hist_detail_error_sub': 'اطلاعات شناسنامه بارگیری نشد. لطفاً دوباره تلاش کنید.',
+    'hist_detail_error_sub':
+        'اطلاعات شناسنامه بارگیری نشد. لطفاً دوباره تلاش کنید.',
     'hist_detail_not_found_title': 'رکورد تاریخی یافت نشد',
     'hist_detail_not_found_sub': 'رکوردی با این شناسه در پایگاه داده نیست.',
     'hist_detail_epoch': 'دورهٔ تاریخی',
@@ -1260,26 +1356,34 @@ class AppTranslations {
     'lit_hub_daily_verse_retry': 'اطلاعات ادبی را دوباره بارگیری کنید.',
     'lit_hub_sections_header': 'بخش‌های گنجینه',
     'lit_hub_history_card': 'تاریخ مردم تاجیک',
-    'lit_hub_history_card_sub': 'نام‌ها، دولت‌ها و شعرهای کتاب‌های صنف‌های ۵ تا ۱۱',
+    'lit_hub_history_card_sub':
+        'نام‌ها، دولت‌ها و شعرهای کتاب‌های صنف‌های ۵ تا ۱۱',
     'lit_hub_poets_count': 'زندگینامه و آثار \${0} شاعر و ادیب بزرگ',
     'lit_hub_works_count': 'غزل‌ها، قصیده‌ها و رباعی‌های تأییدشده (\${0} اثر)',
-    'lit_hub_works_under_review': 'غزل‌ها، قصیده‌ها و رباعی‌های در حال مقابله و تأیید',
-    'lit_hub_school_canon_count': 'آثار شامل بر برنامهٔ تعلیمی مکتب‌ها (\${0} اثر)',
-    'lit_hub_oral_count': 'ضرب‌المثل‌ها، چیستان‌ها و دوبیت‌های خلقی (\${0} نمونه)',
+    'lit_hub_works_under_review':
+        'غزل‌ها، قصیده‌ها و رباعی‌های در حال مقابله و تأیید',
+    'lit_hub_school_canon_count':
+        'آثار شامل بر برنامهٔ تعلیمی مکتب‌ها (\${0} اثر)',
+    'lit_hub_oral_count':
+        'ضرب‌المثل‌ها، چیستان‌ها و دوبیت‌های خلقی (\${0} نمونه)',
     'lit_hub_featured_verses': 'شعرهای برگزیده',
     'lit_hub_all_works': 'همهٔ آثار',
     'lit_hub_read_work': 'خوانش کامل',
 
     // Poet Detail
-    'lit_poet_header_dates_pending': 'تاریخ و زادگاه تا بررسی صفحهٔ منبع در دست بررسی است.',
+    'lit_poet_header_dates_pending':
+        'تاریخ و زادگاه تا بررسی صفحهٔ منبع در دست بررسی است.',
     'lit_poet_approved_works_count': 'اشعار تأییدشده در برنامه: \${0}',
     'lit_poet_review_works_count': 'رکوردها تحت بررسی: \${0}',
-    'lit_poet_bio_pending': 'متن زندگینامه تا ثبت و بررسی ارجاع صفحه‌دار در دسترس نیست.',
+    'lit_poet_bio_pending':
+        'متن زندگینامه تا ثبت و بررسی ارجاع صفحه‌دار در دسترس نیست.',
     'lit_poet_explore_world': 'جهان او را بشناسید',
-    'lit_poet_explore_world_sub': 'دوره‌ها، حاکمان و وقایع تاریخی هم‌دوره در برنامه',
+    'lit_poet_explore_world_sub':
+        'دوره‌ها، حاکمان و وقایع تاریخی هم‌دوره در برنامه',
     'lit_poet_approved_works_header': 'آثار تأییدشده در برنامه (\${0})',
     'lit_poet_works_in_review_label': 'رکوردهای آثار در بررسی: \${0}',
-    'lit_poet_works_review_desc': 'اشعار این شاعر در حال تطبیق با نسخه‌های خطی و چاپی معتبر است.',
+    'lit_poet_works_review_desc':
+        'اشعار این شاعر در حال تطبیق با نسخه‌های خطی و چاپی معتبر است.',
     'lit_poet_bio_source_verified': 'منبع استناد زندگینامه:',
     'lit_poet_bio_source_unverified': 'منبع صفحه‌دارِ تأییدشده ثبت نشده است:',
     'lit_poet_source_tag': 'برچسب واردشده: \${0}',
@@ -1296,10 +1400,13 @@ class AppTranslations {
     'lit_script_cyrillic': 'تاجیکی (سیریلیک)',
     'lit_script_persian': 'فارسی (عربی)',
     'lit_script_parallel': 'متن موازی',
-    'lit_cyrillic_only_notice': 'متن این اثر طبق نسخه‌های معتبر به خط سیریلیک تاجیکی ثبت شده است.',
-    'lit_generated_script_notice': 'نمایش نوشتاریِ تولیدشده از خط سیریلیک تاجیکی؛ این متن شاهد اصلی فارسی یا ترجمهٔ معنایی نیست.',
+    'lit_cyrillic_only_notice':
+        'متن این اثر طبق نسخه‌های معتبر به خط سیریلیک تاجیکی ثبت شده است.',
+    'lit_generated_script_notice':
+        'نمایش نوشتاریِ تولیدشده از خط سیریلیک تاجیکی؛ این متن شاهد اصلی فارسی یا ترجمهٔ معنایی نیست.',
     'lit_editorial_review_pending': 'متن در حال مقابله با نسخه‌های چاپی است',
-    'lit_editorial_policy_notice': 'بر پایهٔ سیاست نشر «ضرب‌المثل»، متن شعرها تنها پس از مقابله با دست‌کم دو منبع چاپی معتبر و تأیید سردبیر منتشر می‌شود.',
+    'lit_editorial_policy_notice':
+        'بر پایهٔ سیاست نشر «ضرب‌المثل»، متن شعرها تنها پس از مقابله با دست‌کم دو منبع چاپی معتبر و تأیید سردبیر منتشر می‌شود.',
     'lit_incipit_label': 'مطلع اثر:',
     'lit_editorial_notes_label': 'یادداشت‌های تصحیح و رسم‌الخط:',
     'lit_copy_poem': 'کپی متن',
@@ -1320,7 +1427,8 @@ class AppTranslations {
     'lit_source_sec_proof': 'منبع دوم (مقابله)',
     'lit_source_biblio_citation': 'ارجاع کتاب‌شناختی:',
     'lit_source_page_image_title': 'تصویر اصلی صفحهٔ کتاب',
-    'lit_source_page_image_hint': 'برای مشاهده و بزرگ‌نمایی صفحهٔ اصلی کلیک کنید',
+    'lit_source_page_image_hint':
+        'برای مشاهده و بزرگ‌نمایی صفحهٔ اصلی کلیک کنید',
     'lit_source_not_registered': 'منبع چاپی هنوز ثبت نشده است.',
     'lit_source_comparison_result': 'نتیجهٔ مقابله:',
     'lit_source_variant_notes': 'یادداشت‌های نسخه‌بدل:',
@@ -1350,7 +1458,8 @@ class AppTranslations {
     'lit_source_page_close': 'بستن',
     'lit_rights_public_domain': 'مالکیت عمومی (Public Domain)',
     'lit_rights_protected': 'دارای کپی‌رایت / تحت حفاظت',
-    'lit_poet_bio_cyrillic_fallback': 'این زندگی‌نامه فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شود.',
+    'lit_poet_bio_cyrillic_fallback':
+        'این زندگی‌نامه فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شود.',
 
     // Literature Search
     'lit_search_suggestions': 'پیشنهادهای جست‌وجو:',
@@ -1361,23 +1470,27 @@ class AppTranslations {
 
     // Poets & Works Lists
     'lit_poets_error_title': 'خطا در بارگیری شاعران',
-    'lit_poets_error_sub': 'اطلاعات شاعران بارگیری نشد. لطفاً دوباره تلاش کنید.',
+    'lit_poets_error_sub':
+        'اطلاعات شاعران بارگیری نشد. لطفاً دوباره تلاش کنید.',
     'lit_poets_empty_title': 'شاعری یافت نشد',
     'lit_poets_empty_sub': 'با این واژه شاعری در فهرست یافت نشد.',
     'lit_works_error_title': 'خطا در بارگیری آثار',
     'lit_works_error_sub': 'اطلاعات آثار بارگیری نشد. لطفاً دوباره تلاش کنید.',
     'lit_works_empty_review_title': 'آثار در مرحلهٔ سنجش قرار دارند',
-    'lit_works_empty_review_sub': 'بر اساس معیارهای علمی برنامه، متن آثار تنها پس از مقابله با نسخه‌های چاپی معتبر و ثبت منبع منتشر می‌شود.',
+    'lit_works_empty_review_sub':
+        'بر اساس معیارهای علمی برنامه، متن آثار تنها پس از مقابله با نسخه‌های چاپی معتبر و ثبت منبع منتشر می‌شود.',
     'lit_works_view_poets': 'مشاهدهٔ فهرست شاعران',
 
     // Oral Heritage
     'lit_oral_error_title': 'خطا در بارگیری',
-    'lit_oral_error_sub': 'اطلاعات میراث شفاهی بارگیری نشد. لطفاً دوباره تلاش کنید.',
+    'lit_oral_error_sub':
+        'اطلاعات میراث شفاهی بارگیری نشد. لطفاً دوباره تلاش کنید.',
     'lit_oral_empty_title': 'میراث شفاهی یافت نشد',
     'lit_oral_empty_sub': 'با این فیلتر موردی یافت نشد.',
     'lit_oral_filter_all': 'همه',
     'lit_oral_guide_eyebrow': 'منطق میراث شفاهی',
-    'lit_oral_guide_body': 'هر روایت سه لایه دارد: متن، نوع روایت و منبع. فقط متنی که مقابله و اجازهٔ نشر دارد در فهرست کامل می‌آید.',
+    'lit_oral_guide_body':
+        'هر روایت سه لایه دارد: متن، نوع روایت و منبع. فقط متنی که مقابله و اجازهٔ نشر دارد در فهرست کامل می‌آید.',
     'lit_oral_guide_pill1': '۱  شناسایی روایت',
     'lit_oral_guide_pill2': '۲  بررسی سند',
     'lit_oral_guide_pill3': '۳  نمایش پیراسته',
@@ -1385,7 +1498,8 @@ class AppTranslations {
 
     // Global Search
     'search_empty_prompt_title': 'جست‌وجو در سراسر ضرب‌المثل',
-    'search_empty_prompt_sub': 'می‌توانید نام شاعران، عنوان شعرها، ضرب‌المثل‌ها و رویدادهای تاریخی را جست‌وجو کنید.',
+    'search_empty_prompt_sub':
+        'می‌توانید نام شاعران، عنوان شعرها، ضرب‌المثل‌ها و رویدادهای تاریخی را جست‌وجو کنید.',
     'search_no_results_for': 'با واژهٔ «\${0}» موردی یافت نشد.',
     'search_poets_count': 'شاعران (\${0})',
     'search_works_count': 'شعرها و آثار (\${0})',
@@ -1394,6 +1508,52 @@ class AppTranslations {
     'search_kind_poem': 'شعر',
     'search_kind_proverb': 'ضرب‌المثل',
     'search_kind_history': 'تاریخ',
+    // Books / digital library
+    'books_title': 'کتابخانه',
+    'books_eyebrow': 'فهرست کتاب‌ها',
+    'books_subtitle': 'کتاب‌ها را کشف کنید و در منبع قانونی بخوانید',
+    'books_search_hint': 'جست‌وجوی کتاب، نویسنده یا موضوع...',
+    'books_all': 'همهٔ کتاب‌ها',
+    'books_featured': 'گزیدهٔ کتابخانه',
+    'books_categories': 'بخش‌ها',
+    'books_poetry': 'شعر',
+    'books_classical': 'ادبیات کلاسیک',
+    'books_modern': 'ادبیات معاصر',
+    'books_history': 'تاریخ',
+    'books_textbooks': 'کتاب‌های درسی',
+    'books_authors': 'نویسندگان',
+    'books_no_results': 'کتابی یافت نشد',
+    'books_no_results_sub': 'واژهٔ جست‌وجو یا بخش دیگری را امتحان کنید.',
+    'books_load_error': 'کتاب‌ها بارگیری نشدند',
+    'books_load_error_sub': 'فهرست کتابخانه در دسترس نیست. دوباره تلاش کنید.',
+    'books_provider': 'منبع',
+    'books_source_page': 'صفحهٔ منبع',
+    'books_read': 'خواندن',
+    'books_read_on_provider': 'خواندن در کتاب‌خوان',
+    'books_download_unavailable': 'بارگیری در برنامه در دسترس نیست',
+    'books_rights_unclear': 'حقوق بازنشر روشن نیست',
+    'books_external_note': 'خواندن در صفحهٔ اصلی ارائه‌دهنده باز می‌شود.',
+    'books_link_error': 'صفحهٔ کتاب باز نشد.',
+    'books_edition': 'نسخه',
+    'books_publisher': 'ناشر',
+    'books_year': 'سال',
+    'books_pages': 'صفحه',
+    'books_language': 'زبان',
+    'books_script': 'خط',
+    'books_category': 'بخش',
+    'books_description': 'دربارهٔ کتاب',
+    'books_related_author': 'نویسنده در میراث ادبی',
+    'books_author_books': 'کتاب‌های در دسترس از همین نویسنده',
+    'books_saved': 'کتاب‌های ذخیره‌شده',
+    'books_saved_empty': 'هنوز کتابی ذخیره نشده است.',
+    'books_saved_empty_sub': 'از صفحهٔ کتاب، نشان ذخیره را انتخاب کنید.',
+    'books_catalogue_only': 'فقط در فهرست',
+    'books_pdf': 'PDF',
+    'books_count': '\${0} کتاب',
+    'books_provider_stats': '\${0} کتاب · \${1} نویسنده · \${2} بخش',
+    'books_search_result': 'کتاب‌ها (\${0})',
+    'explore_books_title': 'کتابخانه',
+    'explore_books_sub': 'کشف و خواندن کتاب‌های در دسترس',
   };
 
   static String get(
@@ -1420,7 +1580,9 @@ class AppTranslations {
     String key, [
     List<Object> args = const [],
   ]) {
-    final lang = langCode == 'fa' ? DisplayLanguage.persian : DisplayLanguage.tajik;
+    final lang = langCode == 'fa'
+        ? DisplayLanguage.persian
+        : DisplayLanguage.tajik;
     return get(key, lang, args);
   }
 
@@ -1429,7 +1591,11 @@ class AppTranslations {
     String key, [
     List<Object> args = const [],
   ]) {
-    return get(key, isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik, args);
+    return get(
+      key,
+      isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik,
+      args,
+    );
   }
 
   static String formatDigits(String text, DisplayLanguage lang) {

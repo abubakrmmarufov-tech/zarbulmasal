@@ -6,6 +6,7 @@ import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
 import '../literature/data/literature_providers.dart';
+import '../books/data/books_providers.dart';
 
 class SavedScreen extends ConsumerWidget {
   const SavedScreen({super.key});
@@ -19,6 +20,8 @@ class SavedScreen extends ConsumerWidget {
     final favoriteProverbs = ref.watch(favoritesListProvider);
     final bookmarkedWorks =
         ref.watch(literaryFavoriteWorksProvider).valueOrNull ?? const [];
+    final bookmarkedBooks =
+        ref.watch(favoriteBooksProvider).valueOrNull ?? const [];
 
     final recentActivities = ref.watch(recentActivityProvider);
     String tr(String key) => AppTranslations.get(key, lang);
@@ -43,7 +46,9 @@ class SavedScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 12),
 
-          if (favoriteProverbs.isEmpty && bookmarkedWorks.isEmpty)
+          if (favoriteProverbs.isEmpty &&
+              bookmarkedWorks.isEmpty &&
+              bookmarkedBooks.isEmpty)
             Card(
               elevation: 0,
               color: colors.surfaceContainerLowest,
@@ -193,6 +198,59 @@ class SavedScreen extends ConsumerWidget {
                           .toggle(work.id),
                     ),
                     onTap: () => context.push('/literature/work/${work.id}'),
+                  ),
+                );
+              }),
+            ],
+            if (bookmarkedBooks.isNotEmpty) ...[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8, top: 16),
+                child: Text(
+                  '${tr('books_saved')} (${bookmarkedBooks.length})',
+                  style: QalamTypography.eyebrow(color: colors.primary),
+                ),
+              ),
+              ...bookmarkedBooks.map((book) {
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  elevation: 0,
+                  color: colors.surfaceContainerLowest,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    side: BorderSide(
+                      color: colors.outlineVariant.withValues(alpha: 0.5),
+                    ),
+                  ),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.local_library_outlined,
+                      color: colors.primary,
+                    ),
+                    title: Text(
+                      book.titleFor(lang),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: QalamTypography.body(color: colors.onSurface),
+                    ),
+                    subtitle: book.authorFor(lang) == null
+                        ? null
+                        : Text(
+                            book.authorFor(lang)!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: QalamTypography.meta(
+                              color: colors.onSurfaceVariant,
+                            ),
+                          ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.bookmark, size: 22),
+                      color: colors.primary,
+                      tooltip: tr('bookmark_remove'),
+                      onPressed: () => ref
+                          .read(bookFavoritesProvider.notifier)
+                          .toggle(book.id),
+                    ),
+                    onTap: () => context.push('/books/${book.id}'),
                   ),
                 );
               }),

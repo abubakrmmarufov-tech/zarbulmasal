@@ -40,6 +40,8 @@ flutter:
     - assets/data/literature/page_images/
     - assets/data/history/books.json
     - assets/data/history/entries.json
+    - assets/data/books/providers.json
+    - assets/data/books/books.json
   fonts:
     - family: NotoSans
       fonts:

@@ -12,6 +12,8 @@ import '../domain/literary_work.dart';
 import '../domain/verification_record.dart';
 import '../../history/data/history_providers.dart';
 import '../../history/domain/history_domain.dart';
+import '../../books/data/books_providers.dart';
+import '../../books/presentation/book_cover.dart';
 
 /// A detailed monograph view for a canonical Tajik author/poet,
 /// displaying verified biography, source citations, curriculum links, and works.
@@ -125,6 +127,7 @@ class _PoetDetailContent extends ConsumerWidget {
     final isPersian = lang == DisplayLanguage.persian;
 
     final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final books = ref.watch(booksByAuthorProvider(poet.id));
 
     final name = (isPersian && poet.canonicalNamePersian != null)
         ? poet.canonicalNamePersian!
@@ -143,11 +146,9 @@ class _PoetDetailContent extends ConsumerWidget {
         : AppTranslations.get('lit_poet_bio_source_unverified', lang);
     final biographySourceText = poet.hasAuditableBiographySource
         ? poet.biographySource
-        : AppTranslations.translate(
-            'lit_poet_source_tag',
-            lang,
-            [poet.biographySource],
-          );
+        : AppTranslations.translate('lit_poet_source_tag', lang, [
+            poet.biographySource,
+          ]);
 
     return CustomScrollView(
       slivers: [
@@ -313,22 +314,18 @@ class _PoetDetailContent extends ConsumerWidget {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          AppTranslations.translate(
-                            'lit_author_dates',
-                            lang,
-                            [
-                              AppTranslations.formatDigits(
-                                poet.birthDateExact ?? poet.birthYear ?? '—',
-                                lang,
-                              ),
-                              AppTranslations.formatDigits(
-                                poet.deathDateExact ??
-                                    poet.deathYear ??
-                                    AppTranslations.get('lit_author_alive', lang),
-                                lang,
-                              ),
-                            ],
-                          ),
+                          AppTranslations.translate('lit_author_dates', lang, [
+                            AppTranslations.formatDigits(
+                              poet.birthDateExact ?? poet.birthYear ?? '—',
+                              lang,
+                            ),
+                            AppTranslations.formatDigits(
+                              poet.deathDateExact ??
+                                  poet.deathYear ??
+                                  AppTranslations.get('lit_author_alive', lang),
+                              lang,
+                            ),
+                          ]),
                           style: QalamTypography.meta(
                             color: colors.onSurface,
                             fontSize: 13,
@@ -492,7 +489,10 @@ class _PoetDetailContent extends ConsumerWidget {
                     children: [
                       if (isPersian && poet.biographyFa == null) ...[
                         Text(
-                          AppTranslations.get('lit_poet_bio_cyrillic_fallback', lang),
+                          AppTranslations.get(
+                            'lit_poet_bio_cyrillic_fallback',
+                            lang,
+                          ),
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.right,
                           style: QalamTypography.meta(
@@ -727,7 +727,10 @@ class _PoetDetailContent extends ConsumerWidget {
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            AppTranslations.get('lit_poet_works_review_desc', lang),
+                            AppTranslations.get(
+                              'lit_poet_works_review_desc',
+                              lang,
+                            ),
                             style: QalamTypography.bodySecondary(
                               color: colors.onSurfaceVariant,
                               fontSize: 13,
@@ -971,6 +974,48 @@ class _PoetDetailContent extends ConsumerWidget {
             );
           },
         ),
+        if (books.isNotEmpty) ...[
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 28, 24, 12),
+              child: Text(
+                AppTranslations.get('books_author_books', lang),
+                style: QalamTypography.sectionTitle(
+                  color: colors.onSurface,
+                  fontSize: 22,
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              final book = books[index];
+              return ListTile(
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 6,
+                ),
+                leading: BookCover(book: book, width: 48, height: 68),
+                title: Text(
+                  book.titleFor(lang),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: QalamTypography.body(color: colors.onSurface),
+                ),
+                subtitle: Text(
+                  book.primaryEdition?.publicationYear ??
+                      AppTranslations.get('books_provider', lang),
+                  style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                ),
+                trailing: Icon(
+                  isRtl ? Icons.chevron_left : Icons.chevron_right,
+                  color: colors.onSurfaceVariant,
+                ),
+                onTap: () => context.push('/books/${book.id}'),
+              );
+            }, childCount: books.length),
+          ),
+        ],
         const SliverToBoxAdapter(child: SizedBox(height: 48)),
       ],
     );

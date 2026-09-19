@@ -231,9 +231,22 @@ class LiteratureHubScreen extends ConsumerWidget {
                               ? () => context.push('/literature/oral')
                               : null,
                         ),
-                        // 05: Search
+                        // 05: Books
                         QalamSectionLink(
                           number: '05',
+                          title: AppTranslations.get(
+                            'explore_books_title',
+                            lang,
+                          ),
+                          subtitle: AppTranslations.get(
+                            'explore_books_sub',
+                            lang,
+                          ),
+                          onTap: () => context.push('/books'),
+                        ),
+                        // 06: Search
+                        QalamSectionLink(
+                          number: '06',
                           title: AppTranslations.get('lit_search', lang),
                           subtitle: AppTranslations.get(
                             'lit_search_desc',

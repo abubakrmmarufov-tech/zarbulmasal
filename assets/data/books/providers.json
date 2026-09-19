@@ -1,0 +1,16 @@
+[
+  {
+    "id": "kitobkhon",
+    "name": "Китобхон",
+    "domain": "kitobkhon.net",
+    "catalogueUrl": "https://kitobkhon.net/books",
+    "descriptionTj": "Китобхонаи электронии тоҷикӣ бо феҳристи китобҳо, муаллифон ва бахшҳо.",
+    "descriptionFa": "کتابخانهٔ الکترونیکی تاجیکی با فهرست کتاب‌ها، نویسندگان و بخش‌ها.",
+    "catalogueSize": 1092,
+    "authorCount": 725,
+    "categoryCount": 30,
+    "supportsReader": false,
+    "supportsDownload": true,
+    "sourcePurpose": "bookAvailability"
+  }
+]

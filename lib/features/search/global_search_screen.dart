@@ -12,6 +12,8 @@ import '../history/data/history_providers.dart';
 import '../history/domain/history_domain.dart';
 import '../literature/data/literature_providers.dart';
 import '../literature/domain/domain.dart';
+import '../books/data/books_providers.dart';
+import '../books/domain/book_domain.dart';
 
 class GlobalSearchScreen extends ConsumerStatefulWidget {
   const GlobalSearchScreen({super.key});
@@ -39,6 +41,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
     final authorsAsync = ref.watch(literaryAuthorsProvider);
     final worksAsync = ref.watch(approvedWorksProvider);
     final historyAsync = ref.watch(historyEntriesProvider);
+    final booksAsync = ref.watch(booksProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -107,6 +110,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
               authorsAsync.valueOrNull ?? const [],
               worksAsync.valueOrNull ?? const [],
               historyAsync.valueOrNull ?? const [],
+              booksAsync.valueOrNull ?? const [],
               lang,
             ),
     );
@@ -153,6 +157,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
     List<LiteraryAuthor> authors,
     List<LiteraryWork> works,
     List<HistoryEntry> history,
+    List<Book> books,
     DisplayLanguage lang,
   ) {
     final isPersian = lang == DisplayLanguage.persian;
@@ -197,19 +202,20 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
       ], _query);
     }).toList();
 
+    final matchingBooks = books.where((book) => book.matches(_query)).toList();
+
     if (matchingAuthors.isEmpty &&
         matchingWorks.isEmpty &&
         matchingProverbs.isEmpty &&
-        matchingHistory.isEmpty) {
+        matchingHistory.isEmpty &&
+        matchingBooks.isEmpty) {
       return Center(
         child: EmptyState(
           icon: Icons.search_off,
           title: AppTranslations.get('lit_no_results', lang),
-          subtitle: AppTranslations.translate(
-            'search_no_results_for',
-            lang,
-            [_query],
-          ),
+          subtitle: AppTranslations.translate('search_no_results_for', lang, [
+            _query,
+          ]),
         ),
       );
     }
@@ -221,16 +227,12 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
       children: [
         if (matchingAuthors.isNotEmpty) ...[
           _buildSectionHeader(
-            AppTranslations.translate(
-              'search_poets_count',
-              lang,
-              [
-                AppTranslations.formatDigits(
-                  matchingAuthors.length.toString(),
-                  lang,
-                ),
-              ],
-            ),
+            AppTranslations.translate('search_poets_count', lang, [
+              AppTranslations.formatDigits(
+                matchingAuthors.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final author in matchingAuthors)
@@ -269,16 +271,12 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ],
         if (matchingWorks.isNotEmpty) ...[
           _buildSectionHeader(
-            AppTranslations.translate(
-              'search_works_count',
-              lang,
-              [
-                AppTranslations.formatDigits(
-                  matchingWorks.length.toString(),
-                  lang,
-                ),
-              ],
-            ),
+            AppTranslations.translate('search_works_count', lang, [
+              AppTranslations.formatDigits(
+                matchingWorks.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final work in matchingWorks)
@@ -320,18 +318,45 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
               },
             ),
         ],
+        if (matchingBooks.isNotEmpty) ...[
+          _buildSectionHeader(
+            AppTranslations.translate('books_search_result', lang, [
+              AppTranslations.formatDigits(
+                matchingBooks.length.toString(),
+                lang,
+              ),
+            ]),
+            colors,
+          ),
+          for (final book in matchingBooks)
+            ListTile(
+              leading: Icon(
+                Icons.local_library_outlined,
+                color: colors.primary,
+              ),
+              title: Text(
+                book.titleFor(lang),
+                style: QalamTypography.body(color: colors.onSurface),
+              ),
+              subtitle: Text(
+                book.authorFor(lang) ??
+                    AppTranslations.get('books_title', lang),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+              ),
+              trailing: const QalamChevron(size: 20),
+              onTap: () => context.push('/books/${book.id}'),
+            ),
+        ],
         if (matchingProverbs.isNotEmpty) ...[
           _buildSectionHeader(
-            AppTranslations.translate(
-              'search_proverbs_count',
-              lang,
-              [
-                AppTranslations.formatDigits(
-                  matchingProverbs.length.toString(),
-                  lang,
-                ),
-              ],
-            ),
+            AppTranslations.translate('search_proverbs_count', lang, [
+              AppTranslations.formatDigits(
+                matchingProverbs.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final proverb in matchingProverbs)
@@ -378,16 +403,12 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ],
         if (matchingHistory.isNotEmpty) ...[
           _buildSectionHeader(
-            AppTranslations.translate(
-              'search_history_count',
-              lang,
-              [
-                AppTranslations.formatDigits(
-                  matchingHistory.length.toString(),
-                  lang,
-                ),
-              ],
-            ),
+            AppTranslations.translate('search_history_count', lang, [
+              AppTranslations.formatDigits(
+                matchingHistory.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final entry in matchingHistory)

@@ -95,6 +95,13 @@ class ExploreScreen extends ConsumerWidget {
             subtitle: AppTranslations.get('explore_hub_sub', lang),
             onTap: () => context.push('/literature'),
           ),
+          _buildExploreCard(
+            context,
+            icon: Icons.local_library_outlined,
+            title: AppTranslations.get('explore_books_title', lang),
+            subtitle: AppTranslations.get('explore_books_sub', lang),
+            onTap: () => context.push('/books'),
+          ),
           const SizedBox(height: 32),
 
           // History Section
