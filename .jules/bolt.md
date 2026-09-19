@@ -1,0 +1,3 @@
+## 2024-05-18 - [Flutter JSON Decoding Main Thread Bottleneck]
+**Learning:** [In Flutter apps with large static JSON asset bundles, `jsonDecode` operates synchronously on the main UI thread. During initialization or lazy loading scenarios, this synchronous block can cause noticeable UI jank and frame drops, violating 60fps guarantees. This is an important consideration specifically for architectures that read large local data sets directly into memory.]
+**Action:** [Use Flutter's `compute()` function (from `package:flutter/foundation.dart`) for decoding anything over ~10KB in size (`await compute(jsonDecode, jsonString)`) to correctly isolate the parsing overhead on a background worker.]
