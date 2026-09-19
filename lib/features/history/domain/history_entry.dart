@@ -13,22 +13,24 @@ enum HistoryEntryKind {
   oral,
 }
 
-/// A specific, verifiable historical claim with exact textbook and page evidence.
+/// A historical claim with explicit evidence state.
 class HistoryClaimProvenance {
   final String claim;
   final String? claimPersian;
   final String sourceBookId;
-  final int printedPage;
-  final int pdfPage;
+  final int? printedPage;
+  final int? pdfPage;
   final String status;
+  final String? statusNote;
 
   const HistoryClaimProvenance({
     required this.claim,
     this.claimPersian,
     required this.sourceBookId,
-    required this.printedPage,
-    required this.pdfPage,
+    this.printedPage,
+    this.pdfPage,
     this.status = 'VERIFIED_UPLOADED_BOOK_PAGE',
+    this.statusNote,
   });
 
   factory HistoryClaimProvenance.fromJson(Map<String, dynamic> json) {
@@ -36,9 +38,10 @@ class HistoryClaimProvenance {
       claim: json['claim'] as String? ?? '',
       claimPersian: json['claimPersian'] as String?,
       sourceBookId: json['sourceBookId'] as String? ?? '',
-      printedPage: (json['printedPage'] as num?)?.toInt() ?? 0,
-      pdfPage: (json['pdfPage'] as num?)?.toInt() ?? 0,
+      printedPage: (json['printedPage'] as num?)?.toInt(),
+      pdfPage: (json['pdfPage'] as num?)?.toInt(),
       status: json['status'] as String? ?? 'VERIFIED_UPLOADED_BOOK_PAGE',
+      statusNote: json['statusNote'] as String?,
     );
   }
 
@@ -46,9 +49,10 @@ class HistoryClaimProvenance {
     'claim': claim,
     if (claimPersian != null) 'claimPersian': claimPersian,
     'sourceBookId': sourceBookId,
-    'printedPage': printedPage,
-    'pdfPage': pdfPage,
+    if (printedPage != null) 'printedPage': printedPage,
+    if (pdfPage != null) 'pdfPage': pdfPage,
     'status': status,
+    if (statusNote != null) 'statusNote': statusNote,
   };
 }
 
@@ -184,9 +188,9 @@ class HistoryEntry {
       datesPersian: json['datesPersian'] as String?,
       founder: json['founder'] as String?,
       founderPersian: json['founderPersian'] as String?,
-      rulers: (json['rulers'] as List? ?? const [])
-          .whereType<String>()
-          .toList(growable: false),
+      rulers: (json['rulers'] as List? ?? const []).whereType<String>().toList(
+        growable: false,
+      ),
       rulersPersian: (json['rulersPersian'] as List? ?? const [])
           .whereType<String>()
           .toList(growable: false),

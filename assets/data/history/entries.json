@@ -187,9 +187,10 @@
         "claim": "Китоби синфи 5 давлати Ҳахоманишиёнро ҳамчун яке аз давлатҳои бузурги Ориёно ва замони Дориюши Кабир меомӯзонад.",
         "claimPersian": "بزرگ‌ترین شاهنشاهی دنیای باستان که بخش عظیمی از آسیا، مصر و اروپا را در بر می‌گرفت.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -234,9 +235,10 @@
         "claim": "Пас аз ҳуҷуми Искандари Мақдунӣ дар Ориёно давлати эллинӣ бо номи Юнону Бохтар пайдо мешавад.",
         "claimPersian": "دولت هلنیستی در خاور باستان که پس از فتوحات اسکندر مقدونی در باختر و سغد شکل گرفت.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -283,9 +285,10 @@
         "claim": "Китоб таъсиси давлати Ашкониён, сохти иқтисодию сиёсӣ ва фарҳанги онро ҳамчун давлати баъд аз Юнону Бохтар шарҳ медиҳад.",
         "claimPersian": "سلسله قدرتمند ایرانی در پارت که به استیلای سلوکیان پایان بخشید و قرن‌ها هماورد روم بود.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -330,9 +333,10 @@
         "claim": "Дар китоби синфи 5 ҳамчун империя бо шаҳрҳо, деҳот, иқтисод, тиҷорат, фарҳанг ва варзиш омӯхта мешаванд.",
         "claimPersian": "یکی از چهار امپراتوری بزرگ عهد باستان با محوریت باختر و پیونددهنده تمدن‌های آسیا.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -380,9 +384,10 @@
         "claim": "Сосониён — Китоби синфи 6 таъсис, ҷангҳои берунӣ, дин, фарҳанг, шаҳрҳо ва аҳаммияти давлати",
         "claimPersian": "شاهنشاهی ساسانیان — دوران زرین فرهنگ، دیوان‌سالاری و استقلال ایران باستان پیش از ورود اسلام.",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -425,9 +430,10 @@
         "claim": "Хиёниён–Ҳайтолиён — Синфи 6 пайдоиш, ватан, шаҳрҳои марказӣ ва муносибатҳои Хиёниён–Ҳайтолиёнро дар ",
         "claimPersian": "دولت هفتالیان (خیونیان و هیاطله) — دولت مقتدر بومی آسیای مرکزی در سده‌های ۵ تا ۶ میلادی که بر باختر، سغد و هند مسلط",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -472,9 +478,10 @@
         "claim": "Хилофати араб — Китобҳои синфҳои 6–7 густариши ислом, ҳокимияти арабҳо ва муборизаи тоҷикон баро",
         "claimPersian": "خلافت عرب (امویان و عباسیان) — دوران گسترش اسلام به ماوراءالنهر و شکل‌گیری نهضت‌های آزادی‌خواهانه مردم تاجیک.",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -516,9 +523,10 @@
         "claim": "Тоҳириён — Дар синфи 7 ҳамчун яке аз давлатҳои тоҷикон пас аз сустшавии хилофати Аббосиён о",
         "claimPersian": "دولت طاهریان — نخستین حکومت مستقل نیمه‌خودمختار ایرانی-تاجیکی در خراسان پس از چیرگی اعراب.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -558,9 +566,10 @@
         "claim": "Саффориён — Китоби синфи 7 оғози давлат ва кори Яъқуб ибни Лайсро дар силсилаи давлатдории т",
         "claimPersian": "دولت صفاریان — قیام عیاران سیستان به رهبری یعقوب لیث صفار و رسمیت یافتن دوباره زبان فارسی دری.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -618,9 +627,10 @@
         "claim": "Сомониён — Синфи 7 таъсиси давлати Сомониён, дастгоҳи идорӣ, иқтисод, шаҳрҳо, адабиёт, илм ",
         "claimPersian": "دولت سامانیان — دوران طلایی احیای فرهنگ، هویت ملی، زبان تاجیکی-فارسی و دانش در تاریخ مردم تاجیک.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -661,9 +671,10 @@
         "claim": "Қарахониён — Дар синфи 7 ҳамчун яке аз давлатҳои асрҳои XI–XII ва замони тағйири вазъи сиёсии",
         "claimPersian": "دولت قراخانیان — حکومتی از تبار ترکان در ماوراءالنهر و کاشغر که پایان دوره سامانیان را رقم زد.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -710,9 +721,10 @@
         "claim": "Ғазнавиён — Китоби синфи 7 давлати Ғазнавиёнро дар бахши давлатҳои асрҳои XI–XII ҷой медиҳад",
         "claimPersian": "دولت غزنویان — سلسله پرنفوذ در شرق خلافت که با فتح هند و پشتیبانی از ادبای فارسی شناخته می‌شود.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -759,9 +771,10 @@
         "claim": "Салҷуқиён — Дар таърихи синфи 7 ҳамчун давлати асрҳои XI–XII ва яке аз қудратҳои минтақа шар",
         "claimPersian": "امپراتوری سلجوقیان — امپراتوری پهناور اسلامی در سده‌های یازدهم و دوازدهم میلادی با هدایت وزیران دانشم",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -806,9 +819,10 @@
         "claim": "Хоразмшоҳиён — Китоб вазъи давлати Хоразмшоҳиён ва заминаи ҳамлаи муғулҳоро дар пайванди таърих",
         "claimPersian": "دولت خوارزمشاهیان — دولت گسترده ماوراءالنهر و ایران در آستانه یورش فاجعه‌بار چنگیزخان مغول.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -854,9 +868,10 @@
         "claim": "Империяи Муғул — Синфи 7 ҳуҷум, муборизаи халқҳои Осиёи Марказӣ, паёмадҳои забт ва вазъи баъди Чи",
         "claimPersian": "امپراتوری مغول و ایلخانان — دوران تهاجم ویرانگر مغول به ماوراءالنهر و پیامدهای سنگین انسانی، شهری و تمدنی آن",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -897,9 +912,10 @@
         "claim": "Ғуриён — Дар бахши давлатҳои тоҷикон дар асрҳои XI–XIV ҳамчун давлати ҷудогонаи таърихӣ м",
         "claimPersian": "دولت غوریان — حکومت مقتدر تاجیکان در کوهستان غور که تا دشت‌های هند و دهلی گسترش یافت.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -943,9 +959,10 @@
         "claim": "Куртҳои Ҳирот — Синфи 7 Куртҳои Ҳиротро дар идомаи давлатҳои тоҷикони асрҳои XI–XIV ҷой медиҳад.",
         "claimPersian": "آل کرت هرات — دودمان تاجیک‌تبار حاکم بر هرات و خراسان در عصر استیلای ایلخانان مغول.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -988,9 +1005,10 @@
         "claim": "Сарбадорон — Дар китоби синфи 7 ҳамчун як давлати тоҷикон дар давраи пас аз ҳуҷуми муғулҳо ом",
         "claimPersian": "نهضت و حکومت سربداران — قیام مردمی و ضد اشغالگری در بیهق و خراسان علیه حاکمان مغول ایلخانی در سده هشتم.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1031,9 +1049,10 @@
         "claim": "Музаффариён — Китоби синфи 7 бахши давлатҳои тоҷиконро бо давлати Музаффариён ҷамъбаст мекунад",
         "claimPersian": "دولت مظفریان — دودمان ایرانی حاکم بر فارس، یزد و اصفهان در عصر درخشش دیوان حافظ شیرازی.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1081,9 +1100,10 @@
         "claim": "Аморати Бухоро — Синфи 9 вазъи аморат, ҷангҳои Русия бо давлатҳои Осиёи Марказӣ ва барпо шудани ҳ",
         "claimPersian": "امارت بخارا (دودمان منغیت) — دولت واپسین ماوراءالنهر پیش از انقلاب و فروپاشی نظام امیرنشین در سال ۱۹۲۰.",
         "sourceBookId": "history-9",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1129,9 +1149,10 @@
         "claim": "Хонии Қӯқанд — Дар синфи 9 ҷангҳои Русия бо хонии Қӯқанд, шӯришҳои солҳои 1873–1876 ва барҳам х",
         "claimPersian": "خانات خوقند — حکومت مقتدر در دره فرغانه و بخش‌های شمالی تاجیکستان تا زمان انضمام به روسیه تزار",
         "sourceBookId": "history-9",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1174,9 +1195,10 @@
         "claim": "Империяи Русия дар Осиёи Марказӣ — Китоб таъсиси генерал-губернатории Туркистон, сиёсати мустамликавӣ ва таъсири он",
         "claimPersian": "امپراتوری روسیه در آسیای میانه — دوران استعمار تزاری، ایجاد فرمانداری کل ترکستان و دگرگونی ساختارهای اقتصادی منطق",
         "sourceBookId": "history-9",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1222,9 +1244,10 @@
         "claim": "Таъсисёбии ҶМШС ва ҶШС Тоҷикистон — Китоби синфи 10 сохтори давлати шӯравӣ, тақсимоти миллӣ-маъмурӣ ва гузаштан аз м",
         "claimPersian": "تأسیس جمهوری‌های شوروی تاجیکستان (جمشس و جشس) — احیای شخصیت حقوقی و مرزهای ملی تاجیکستان پس از تقسیم‌بندی‌های ارضی آسیای میانه.",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1268,9 +1291,10 @@
         "claim": "Ҷанги шаҳрвандӣ дар Тоҷикистон — Синфи 10 сабабҳо, оғози ҳаракати зиддишӯравӣ, муқовимат дар Суғд, Бадахшон ва Бу",
         "claimPersian": "درگیری‌ها و تحولات پس از انقلاب (۱۹۱۸–۱۹۲۳) — دوران پرآشوب استقرار حکومت جدید شوروی و رویارویی‌های پیچیده سیاسی در بخارای شرقی",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1316,9 +1340,10 @@
         "claim": "Тоҷикистон дар Ҷанги Дуюми Ҷаҳонӣ — Китоб иштироки тоҷиконистонӣ дар муҳорибаҳо, ҳаракатҳои партизанӣ, муқовимати зи",
         "claimPersian": "تاجیکستان در جنگ دوم جهانی (۱۹۴۱–۱۹۴۵) — فداکاری بیش از ۳۰۰ هزار دلاور تاجیکستانی در جبهه‌های نبرد ضد فاشیسم و پشتیبانی م",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1357,9 +1382,10 @@
         "claim": "Ташкилёбии Ҷумҳурии соҳибистиқлоли Тоҷикистон — Китоби синфи 11 пош хӯрдани ИҶШС, таъсиси Ҷумҳурии соҳибистиқлол, ҷанги шаҳрванд",
         "claimPersian": "استقلال دولتی جمهوری تاجیکستان — آغاز دوران نوین حاکمیت ملی، صلح سراسری، وحدت ملی و توسعه مستقل اقتصادی و فرهنگی.",
         "sourceBookId": "history-11",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1383,9 +1409,10 @@
         "claim": "Дар ривоятҳои китоби синфи 5 ҳамчун нахустин шоҳ ва оғози силсилаи Пешдодиён зикр мешавад.",
         "claimPersian": "در روایات کتاب صنف پنجم به عنوان نخستین پادشاه و آغاز دودمان اساطیری پیشدادیان ذکر می‌شود.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1409,9 +1436,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "در کتاب تاریخ صنف پنجم به عنوان یکی از مهم‌ترین پادشاهان تمدن‌ساز تاریخ باستان معرفی می‌شود.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1435,9 +1463,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "در کتاب صنف پنجم در زمره پادشاهان دادگر و پیروز بر ضحاک و بخش‌کننده جهان میان فرزندان یاد می‌شود.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1461,9 +1490,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "بنیان‌گذار سلسله کیانیان (کویان) در روایات اوستایی و تاریخ ملی.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1487,9 +1517,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "از نامدارترین پادشاهان سلسله کیانیان در روایات تاریخ باستان آریانا.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1513,9 +1544,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "پادشاه دادگر و پیروز کیانی در نبرد با تورانیان در تاریخ ملی.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1539,9 +1571,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "پادشاه حامی زرتشت و پذیرنده آیین مزدیسنا در بلخ بر پایه روایات تاریخی.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1628,9 +1661,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "از بزرگ‌ترین پادشاهان شاهنشاهی ساسانی که در کتاب‌های درسی تاریخ یاد شده است.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1690,9 +1724,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "از پادشاهان بزرگ و بنیان‌گذاران امپراتوری کوشانیان در تاریخ باستان.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1716,9 +1751,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "از شاهان و سرداران نیرومند هفتالیان (خیونیان) در آسیای میانه.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1742,9 +1778,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "از پادشاهان نامدار اواخر عصر ساسانیان پیش از گسترش اسلام.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1768,9 +1805,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "از نامدارترین حاکمان سلسله طاهریان و گسترش‌دهنده دانش و فرهنگ در خراسان.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1794,9 +1832,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "بنیان‌گذار سلسله صفاریان و نخستین احیاگر زبان و ادب پارسی پس از تسلط اعراب.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1823,9 +1862,10 @@
         "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
         "claimPersian": "امیر نامدار سامانی که روزگارش عصر زرین دانش، فرهنگ و ادب با حضور رودکی و بلعمی بود.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1859,9 +1899,10 @@
         "claim": "Китоби синфи 5 пайдоиши дини зардуштӣ, Авесто ва русуми ориёиро дар замони Каёниён шарҳ медиҳад.",
         "claimPersian": "پیامبر باستان آریایی و سراینده گاهان در اوستا با شعار پندار نیک، گفتار نیک و کردار نیک.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1896,9 +1937,10 @@
         "claim": "Дар бахши Ҳахоманишиён ҳамчун шоҳи бузург ва шахсияти марказии давлатдорӣ ва ҷангҳо бо Юнониён омадааст.",
         "claimPersian": "بزرگ‌ترین سازمان‌دهنده شاهنشاهی هخامنشی، پدیدآورنده کتیبه جهانی بیستون و ضرب‌کننده سکه دریک.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1962,9 +2004,10 @@
         "claim": "Евсенҳо (Кушониён) — Дар матни синфи 6 номи «Евсенҳо» дар баробари Хиёниён омада, ба Кушониён нисбат ",
         "claimPersian": "یوسن‌ها (کوشانیان) — در کتاب تاریخ صنف ششم نام یوسن‌ها در پیوند با شاخه‌های کوشانیان ذکر شده است.",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -1988,9 +2031,10 @@
         "claim": "Ардашери Бобакон — Китоби синфи 6 ӯро бо таъсиси давлати Сосониён ва идомаи суннати давлатдории пеш",
         "claimPersian": "اردشیر بابکان — بنیان‌گذار سلسله شاهنشاهی ساسانیان و احیاگر وحدت و سنن کهن ملی.",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2026,9 +2070,10 @@
         "claim": "Хусрави Анӯшервон — Дар фасли Сосониён ҳамчун шоҳ, ислоҳотгар ва пуштибони фарҳанг, илм ва идоракуни",
         "claimPersian": "خسرو یکم انوشیروان — شاهنشاه دادگر ساسانی، بنیان‌گذار دانشگاه گندی‌شاپور و آورنده کلیله و دمنه به زبا",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2064,9 +2109,10 @@
         "claim": "Деваштич — Китоби синфи 6 шӯриш, бойгонии Деваштич ва аҳаммияти таърихии онро дар муборизаи",
         "claimPersian": "دیواشتیچ — فرمانروای پنجکنت و اخشید سغد، رهبر جنبش مقاومت مردمی در برابر اشغالگران اموی.",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2102,9 +2148,10 @@
         "claim": "Абӯмуслими Хуросонӣ — Дар оғози китоби синфи 7 ҳамчун раҳбари қиёме бар зидди Умавиён ва шахсияти таъс",
         "claimPersian": "ابومسلم خراسانی — پیشوای قیام آزادی‌خواهانه سیاهجامگان در خراسان و براندازنده خلافت اموی.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2139,9 +2186,10 @@
         "claim": "Исмоили Сомонӣ — Синфи 7 ӯро дар маркази таъсиси давлати Сомониён ва ташаккули давлатдории тоҷико",
         "claimPersian": "امیر اسماعیل سامانی — بنیان‌گذار دولت متمرکز سامانیان، نماد دادگری، تدبیر کشورداری و هویت ملی تاجیکان.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2177,9 +2225,10 @@
         "claim": "Темурмалик — Китоби синфи 7 ӯро сарвари мудофиаи Хуҷанд ва қаҳрамони мубориза бар зидди истил",
         "claimPersian": "تیمورملک — والی خجند و نماد جاودان دلیری، ازخودگذشتگی و ایستادگی در برابر سپاه مغول.",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2203,9 +2252,10 @@
         "claim": "Ҷалолуддини Хоразмшоҳ — Дар синфи 7 ҳамчун шахсияти муқовимати қаҳрамононаи халқҳои Осиёи Марказӣ ба муғ",
         "claimPersian": "جلال‌الدین خوارزمشاه — سردار و پادشاه دلاور که در برابر هجوم چنگیزخان و سپاهیان مغول تا پای جان مقاومت ",
         "sourceBookId": "history-7",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2242,9 +2292,10 @@
         "claim": "Садриддин Айнӣ — Китоби синфҳои 9–11 ӯро ҳамчун адиб ва муаллифи асарҳое дар бораи амирони Манғит",
         "claimPersian": "صدرالدین عینی — پدر ادبیات نوین تاجیک، قهرمان تاجیکستان و احیاگر تاریخ و هویت ملی معاصر.",
         "sourceBookId": "history-9",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2268,9 +2319,10 @@
         "claim": "Иброҳимбек — Дар синфи 10 ҳамчун яке аз сарварони дастаҳои зиддишӯравӣ дар Бухорои Шарқӣ ва м",
         "claimPersian": "ابراهیم‌بیک — از فرماندهان دسته‌های مقاومت در برابر نیروهای شوروی در بخارای شرقی در دهه ۱۹۲۰.",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2295,9 +2347,10 @@
         "claim": "Эмомалӣ Раҳмон — Дар китоби синфи 11 дар бахши ташаккули давлати соҳибистиқлол ва рӯйдодҳои сулҳу",
         "claimPersian": "امام‌علی رحمان — پیشوای ملت و رئیس‌جمهور جمهوری تاجیکستان، معمار صلح و وحدت ملی در دوران استقلال.",
         "sourceBookId": "history-11",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2322,9 +2375,10 @@
         "claim": "Китоби синфи 5 байтҳои Шоҳномаро ҳангоми шарҳи Каюмарс, Ҳушанг ва Заҳҳок ҳамчун ҳамосаи ривоятҳои таърихӣ меорад.",
         "claimPersian": "کتاب صنف پنجم ابیات شاهنامه فردوسی را هنگام شرح کیومرث، هوشنگ و جمشید به عنوان حماسه روایات تاریخی می‌آورد.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2349,9 +2403,10 @@
         "claim": "Дар синфи 5 Авесто ҳамчун маҷмӯаи матнҳои динӣ, фолклорӣ, адабӣ ва таърихии ориёӣ шарҳ дода мешавад.",
         "claimPersian": "در تاریخ صنف پنجم اوستا به عنوان کهن‌ترین یادگار مذهبی، ادبی و تاریخی نیاکان آریایی معرفی می‌شود.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2376,9 +2431,10 @@
         "claim": "«Аз Хутталон омадия…» — Китоби синфи 6 ин мисраи кӯтоҳро ҳамчун шаҳодати забони бохтариёни пеш аз истило",
         "claimPersian": "«از ختلان آمدیه…» — کتاب صنف ششم این مصراع کهن را به عنوان نمونه‌ای از شعر و زبان باختریان پیش از اس",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2406,9 +2462,10 @@
         "claim": "Калила ва Димна — Рӯдакӣ — Синфи 6 мегӯяд, ки асари суғдии «Панчатантра» баъд ба воситаи устод Рӯдакӣ бо но",
         "claimPersian": "کلیله و دمنه — رودکی — کتاب تاریخ اشاره می‌کند که منظومه تمثیلی کلیله و دمنه توسط استاد رودکی در دربار ",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2433,9 +2490,10 @@
         "claim": "Шеъри Хуррамии Самарқандӣ — Китоби синфи 6 Хуррамии Самарқандиро аз намояндагони шуубия ва шоири танқидгари ",
         "claimPersian": "شعر خرمی سمرقندی — کتاب تاریخ صنف ششم خرمی سمرقندی را از شاعران نهضت شعوبیه و منتقد ستم امویان یاد ",
         "sourceBookId": "history-6",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2460,9 +2518,10 @@
         "claim": "«Қаҳрамони халқи тоҷик Темурмалик» — С. Айнӣ — Дар китоби синфи 10 ин асар дар қатори осори маъруфи адабиёти давраи ҷангӣ зикр ",
         "claimPersian": "«قهرمان خلق تاجیک تیمورملک» — ص. عینی — در کتاب تاریخ صنف دهم این اثر ماندگار صدرالدین عینی در ردیف آثار میهن‌دوستانه ثب",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2487,9 +2546,10 @@
         "claim": "«Исёни Муқаннаъ» — С. Айнӣ — Синфи 10 онро дар қатори асарҳои таърихию ватандӯстонаи адибони тоҷик дар солҳои",
         "claimPersian": "«عصیان مقنع» — ص. عینی — اثر تاریخی و ارزشمند صدرالدین عینی درباره مقاومت استقلال‌طلبانه مردم ماوراءالنهر",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2514,9 +2574,10 @@
         "claim": "«Пули Вахш» — Абулқосим Лоҳутӣ — Китоби синфи 10 ин асарро дар рӯйхати осори адабии солҳои 1930 зикр мекунад.",
         "claimPersian": "«پل وخش» — ابوالقاسم لاهوتی — کتاب درسی این شعر معروف ابوالقاسم لاهوتی را نمونه‌ای از ادبیات دوران نوسازی و سا",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2540,9 +2601,10 @@
         "claim": "«Писари Ватан» — Мирзо Турсунзода — Дар синфи 10 ҳамчун яке аз асарҳои машҳури адабиёти тоҷик дар давраи ҷангӣ номба",
         "claimPersian": "«پسر وطن» — میرزا تورسون‌زاده — از ماندگارترین اشعار میهن‌پرستانه میرزا تورسون‌زاده در دوران جنگ جهانی دوم.",
         "sourceBookId": "history-10",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_CURRICULUM_MAORIF"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2566,9 +2628,10 @@
         "claim": "Барои ҷудо кардани ривоят аз таърихи санадӣ: китоби синфи 5 Пешдодиёнро «шоҳони ривоятӣ» меномад ва онро дар бахши алоҳида шарҳ медиҳад.",
         "claimPersian": "کتاب صنف پنجم دوران پیشدادیان را دوران نخستین شاهان آریایی و فرهنگ‌ساز می‌داند.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },
@@ -2593,9 +2656,10 @@
         "claim": "Китоб ҳамзамон бо маълумоти Авесто ва осори паҳлавӣ ривоятҳои Кайковус ва Кайхусравро нишон медиҳад; инҳо ҳамчун қабати ривоятӣ бояд бо нишони равшан хонда шаванд.",
         "claimPersian": "روایات حماسی و کهن شاهان کیانی بر پایه اسناد اوستا و کتاب‌های درسی تاریخ.",
         "sourceBookId": "history-5",
-        "printedPage": 1,
-        "pdfPage": 1,
-        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
       }
     ]
   },

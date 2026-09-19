@@ -88,7 +88,7 @@ async function runAudit() {
     // Set localStorage language to 'fa' (Persian)
     await page.goto('http://localhost:8080/zarbulmasal/');
     await page.evaluate(() => {
-      localStorage.setItem('flutter.zarbulmasal_lang', 'fa');
+      localStorage.setItem('flutter.display_language', JSON.stringify('fa'));
     });
     await page.reload({ waitUntil: 'networkidle' });
     await page.waitForTimeout(1000);
@@ -124,7 +124,7 @@ async function runAudit() {
     const page = await context.newPage();
     await page.goto('http://localhost:8080/zarbulmasal/');
     await page.evaluate(() => {
-      localStorage.setItem('flutter.zarbulmasal_theme', 'dark');
+      localStorage.setItem('flutter.dark_mode', JSON.stringify(true));
     });
     await page.reload({ waitUntil: 'networkidle' });
     await page.waitForTimeout(1000);

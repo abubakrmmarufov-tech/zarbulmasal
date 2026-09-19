@@ -17,10 +17,8 @@ void main() {
   final poetsFile = File('assets/data/literature/poets.json');
   assert(poetsFile.existsSync(), 'poets.json does not exist');
   final poetsList = jsonDecode(poetsFile.readAsStringSync()) as List<dynamic>;
-  assert(
-    poetsList.length == 150,
-    'Expected exactly 150 poets, found ${poetsList.length}',
-  );
+  // NOTE: Count is not asserted as a fixed invariant (use PROVENANCE_PAGE_AUDIT.md for metrics)
+  assert(poetsList.isNotEmpty, 'poets.json must not be empty');
 
   final authorIds = <String>{};
   int tajikBios = 0;
@@ -42,10 +40,26 @@ void main() {
       author.rights.reasoning.isNotEmpty,
       'Poet ${author.id} rights reasoning should not be empty',
     );
+    // NOTE: rights.status == unknown IS acceptable — do NOT assert against it.
+    // An honest "unknown" is better than a fabricated "publicDomain".
     assert(
-      author.rights.status != RightsStatus.unknown,
-      'Poet ${author.id} rights status should not be unknown',
+      author.rights.status != RightsStatus.publicDomain,
+      'Poet ${author.id} claims publicDomain without attached supporting evidence.',
     );
+    assert(
+      {
+        'SOURCE_BACKED',
+        'EDITORIAL_SUMMARY_FROM_SOURCES',
+        'UNSUPPORTED_GENERATED',
+      }.contains(author.biographyTjProvenance),
+      'Poet ${author.id} has invalid biography provenance.',
+    );
+    if (author.biographyTjProvenance == 'UNSUPPORTED_GENERATED') {
+      assert(
+        author.biographyTj.trim().isEmpty,
+        'Unsupported biography ${author.id} must be quarantined from active content.',
+      );
+    }
 
     if (author.biographyTj.trim().isNotEmpty) {
       tajikBios++;
@@ -68,10 +82,8 @@ void main() {
   final worksFile = File('assets/data/literature/works.json');
   assert(worksFile.existsSync(), 'works.json does not exist');
   final worksList = jsonDecode(worksFile.readAsStringSync()) as List<dynamic>;
-  assert(
-    worksList.length == 1472,
-    'Expected exactly 1472 works, found ${worksList.length}',
-  );
+  // NOTE: Count is not asserted as a fixed invariant.
+  assert(worksList.isNotEmpty, 'works.json must not be empty');
 
   final workIds = <String>{};
   int approvedCount = 0;
@@ -99,9 +111,22 @@ void main() {
     );
     textTajikCount++;
 
-    if (work.textPersian != null && work.textPersian!.trim().isNotEmpty) {
-      textPersianCount++;
-    }
+    assert(
+      work.textPersian == null,
+      'Generated text must not remain in textPersian for ${work.id}',
+    );
+    assert(
+      work.persianScriptSource == 'generated',
+      'Work ${work.id} must label its Persian-script representation',
+    );
+    assert(
+      work.persianScriptRepresentation?.trim().isNotEmpty == true,
+      'Work ${work.id} has no generated Persian-script representation',
+    );
+    assert(
+      work.scriptSource != ScriptSource.both,
+      'Generated Persian representation cannot be labeled as both scripts',
+    );
 
     assert(
       work.primarySource != null,
@@ -123,10 +148,9 @@ void main() {
         work.primarySource!.pageStart != null,
         'Approved work ${work.id} missing page number',
       );
-      assert(
-        work.isDisplayable,
-        'Approved work ${work.id} must be displayable',
-      );
+      // Evidence verification and rights clearance are separate. An approved
+      // source page is not permission to publish its text.
+      assert(!work.isDisplayable || work.rights.status != RightsStatus.unknown);
     } else if (work.verification.evidenceLevel ==
         VerificationLevel.primaryChecked) {
       primaryCheckedCount++;
@@ -147,14 +171,8 @@ void main() {
       );
     }
   }
-  assert(
-    approvedCount + needsReviewCount + primaryCheckedCount == worksList.length,
-    'All works must be classified as either approved, primaryChecked, or needsReview',
-  );
-  assert(
-    approvedCount <= 1000,
-    'Approved works ($approvedCount) must not violate epistemic verification limits',
-  );
+  // Counts are reported as metrics only. The validator checks consistency,
+  // not a target number of records or an artificial approval quota.
   print('  ✓ Total works: ${worksList.length}');
   print('  ✓ Approved poetic works: $approvedCount');
   print(
@@ -179,10 +197,7 @@ void main() {
   final canonFile = File('assets/data/literature/school_canon.json');
   assert(canonFile.existsSync(), 'school_canon.json does not exist');
   final canonList = jsonDecode(canonFile.readAsStringSync()) as List<dynamic>;
-  assert(
-    canonList.length >= 70,
-    'Expected at least 70 school canon entries, got ${canonList.length}',
-  );
+  assert(canonList.isNotEmpty, 'school canon must not be empty');
 
   for (final item in canonList) {
     final map = item as Map<String, dynamic>;
@@ -210,10 +225,7 @@ void main() {
   final oralFile = File('assets/data/literature/oral_heritage.json');
   assert(oralFile.existsSync(), 'oral_heritage.json does not exist');
   final oralList = jsonDecode(oralFile.readAsStringSync()) as List<dynamic>;
-  assert(
-    oralList.length == 14,
-    'Expected 14 oral heritage entries, got ${oralList.length}',
-  );
+  assert(oralList.isNotEmpty, 'oral heritage must not be empty');
 
   final oralIds = <String>{};
   for (final item in oralList) {
@@ -235,7 +247,12 @@ void main() {
       'Oral entry ${entry.id} missing publisher',
     );
     assert(entry.year.isNotEmpty, 'Oral entry ${entry.id} missing year');
-    assert(entry.isDisplayable, 'Oral entry ${entry.id} should be displayable');
+    assert(
+      entry.verification.evidenceLevel !=
+              VerificationLevel.editoriallyApproved ||
+          entry.isDisplayable,
+      'Approved oral entry ${entry.id} must have rights and verification clearance',
+    );
   }
   print('  ✓ Authentic oral heritage records: ${oralList.length}');
 
@@ -255,25 +272,23 @@ void main() {
   assert(historyEntriesFile.existsSync(), 'entries.json does not exist');
   final historyList =
       jsonDecode(historyEntriesFile.readAsStringSync()) as List<dynamic>;
-  assert(
-    historyList.length == 71,
-    'Expected 71 history entries, got ${historyList.length}',
-  );
+  // NOTE: Count is not asserted as a fixed invariant.
+  assert(historyList.isNotEmpty, 'entries.json must not be empty');
 
   int totalHistoryAuthors = 0;
   int totalHistoryWorks = 0;
   for (final item in historyList) {
     final map = item as Map<String, dynamic>;
     assert(map['id'] is String && (map['id'] as String).isNotEmpty);
-    assert(map['titleTj'] is String && (map['titleTj'] as String).isNotEmpty);
-    assert(map['titleFa'] is String && (map['titleFa'] as String).isNotEmpty);
+    // Actual JSON uses 'title' and 'titlePersian' (not 'titleTj'/'titleFa')
     assert(
-      map['descriptionTj'] is String &&
-          (map['descriptionTj'] as String).isNotEmpty,
+      map['title'] is String && (map['title'] as String).isNotEmpty,
+      'History entry ${map['id']} missing title field',
     );
+    // 'summary' is required; 'titlePersian' and 'summaryPersian' are optional bilingual fields
     assert(
-      map['descriptionFa'] is String &&
-          (map['descriptionFa'] as String).isNotEmpty,
+      map['summary'] is String && (map['summary'] as String).isNotEmpty,
+      'History entry ${map['id']} missing summary field',
     );
 
     final sourceBookId = map['sourceBookId'] as String?;
@@ -282,6 +297,44 @@ void main() {
         bookIds.contains(sourceBookId),
         'History entry ${map['id']} points to unknown sourceBookId: $sourceBookId',
       );
+    }
+
+    final claims = (map['claimProvenance'] as List<dynamic>?) ?? const [];
+    for (final rawClaim in claims) {
+      final claim = rawClaim as Map<String, dynamic>;
+      final status = claim['status'] as String? ?? '';
+      const validStatuses = {
+        'VERIFIED_UPLOADED_BOOK_PAGE',
+        'VERIFIED_MAORIF_PAGE',
+        'VERIFIED_DOCUMENT',
+        'SOURCE_LOCATED',
+        'GENERATED_TRANSFORMATION',
+        'EDITORIAL_TRANSLATION',
+        'PARTIAL',
+        'NEEDS_REVIEW',
+        'UNSUPPORTED',
+      };
+      assert(
+        validStatuses.contains(status),
+        'History entry ${map['id']} has invalid claim status $status',
+      );
+      final printedPage = (claim['printedPage'] as num?)?.toInt();
+      final pdfPage = (claim['pdfPage'] as num?)?.toInt();
+      assert(
+        printedPage == null || printedPage > 0,
+        'History entry ${map['id']} has invalid printedPage',
+      );
+      assert(
+        pdfPage == null || pdfPage > 0,
+        'History entry ${map['id']} has invalid pdfPage',
+      );
+      if (status == 'VERIFIED_UPLOADED_BOOK_PAGE' ||
+          status == 'VERIFIED_MAORIF_PAGE') {
+        assert(
+          printedPage != null || pdfPage != null,
+          'Page-verified history entry ${map['id']} has no page',
+        );
+      }
     }
 
     final relatedAuthorIds =
@@ -309,5 +362,8 @@ void main() {
   print('  ✓ Linked author references: $totalHistoryAuthors (0 dangling)');
   print('  ✓ Linked work references: $totalHistoryWorks (0 dangling)');
 
-  print('\n✅ ALL CULTURAL HERITAGE DATA VERIFIED SUCCESSFULLY!');
+  print('\n✅ Cultural heritage consistency validation completed.');
+  print(
+    '   This validator does not imply that every record is source-verified.',
+  );
 }

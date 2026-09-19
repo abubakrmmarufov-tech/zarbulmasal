@@ -53,8 +53,15 @@ enum TextStatus {
 }
 
 /// Primary script encoding available for this work.
+///
+/// - [tajikOnly]: Source text is Tajik Cyrillic only; any Persian-script text is
+///   a mechanically generated representation, NOT an original source witness.
+/// - [both]: Genuine dual-script source evidence exists (both scripts attested
+///   in verified printed sources).
+/// - [persianArabic]: Source is Persian/Arabic script only.
 enum ScriptSource {
   tajikCyrillic,
+  tajikOnly,
   persianArabic,
   both;
 
@@ -113,6 +120,10 @@ class LiteraryWork {
   /// Canonical title in Persian Arabic script if verified (e.g. "بوی جوی مولیان").
   final String? titlePersian;
 
+  /// Origin of [titlePersian]. Current records use "generated" for a
+  /// mechanical representation derived from Tajik Cyrillic.
+  final String? titlePersianSource;
+
   /// Opening line / first hemistich (incipit) of the work.
   final String? incipit;
 
@@ -127,6 +138,17 @@ class LiteraryWork {
 
   /// Full text in Persian Arabic script (must be null or empty until verified).
   final String? textPersian;
+
+  /// Generated Persian-script representation (mechanical Tajik Cyrillic → Arabic script
+  /// conversion). Distinct from [textPersian] which should only hold a genuine Persian
+  /// source text or verified semantic translation.
+  final String? persianScriptRepresentation;
+
+  /// Origin of the Persian-script content.
+  /// - "generated": Mechanically converted from Tajik Cyrillic (not a source witness).
+  /// - "source": Present in a verified permitted source in Persian script.
+  /// - "translation": A semantic Persian translation of the Tajik original.
+  final String? persianScriptSource;
 
   /// Verification status of the text content.
   final TextStatus textStatus;
@@ -166,11 +188,14 @@ class LiteraryWork {
     required this.authorId,
     required this.title,
     this.titlePersian,
+    this.titlePersianSource,
     this.incipit,
     this.type = WorkType.other,
     this.scriptSource = ScriptSource.tajikCyrillic,
     this.textTajik,
     this.textPersian,
+    this.persianScriptRepresentation,
+    this.persianScriptSource,
     this.textStatus = TextStatus.needsReview,
     this.editorial = EditorialTransformation.none,
     this.editorialNotes,
@@ -199,9 +224,21 @@ class LiteraryWork {
   /// Whether verified Tajik Cyrillic text is present.
   bool get hasTajikText => textTajik != null && textTajik!.trim().isNotEmpty;
 
-  /// Whether verified Persian Arabic text is present.
-  bool get hasPersianText =>
-      textPersian != null && textPersian!.trim().isNotEmpty;
+  /// Whether a genuine Persian Arabic source text is present.
+  ///
+  /// Returns false when [persianScriptSource] is "generated" — a mechanical
+  /// Cyrillic→Arabic transliteration is NOT a source witness and must NOT
+  /// be treated as equivalent to an original Persian text.
+  bool get hasPersianText {
+    if (persianScriptSource == 'generated') return false;
+    return textPersian != null && textPersian!.trim().isNotEmpty;
+  }
+
+  /// Whether a Persian-script representation (including generated) exists for display.
+  bool get hasPersianDisplay =>
+      (textPersian != null && textPersian!.trim().isNotEmpty) ||
+      (persianScriptRepresentation != null &&
+          persianScriptRepresentation!.trim().isNotEmpty);
 
   /// Whether composition metadata has a page-checked primary source.
   ///
@@ -231,6 +268,7 @@ class LiteraryWork {
       authorId: (json['authorId'] ?? json['author_id'] ?? '') as String,
       title: (json['title'] ?? '') as String,
       titlePersian: (json['titlePersian'] ?? json['title_persian']) as String?,
+      titlePersianSource: json['titlePersianSource'] as String?,
       incipit: (json['incipit']) as String?,
       type: WorkType.fromString(json['type'] as String?),
       scriptSource: ScriptSource.fromString(
@@ -238,6 +276,9 @@ class LiteraryWork {
       ),
       textTajik: (json['textTajik'] ?? json['text_tajik']) as String?,
       textPersian: (json['textPersian'] ?? json['text_persian']) as String?,
+      persianScriptRepresentation:
+          json['persianScriptRepresentation'] as String?,
+      persianScriptSource: json['persianScriptSource'] as String?,
       textStatus: TextStatus.fromString(
         (json['textStatus'] ?? json['text_status']) as String?,
       ),
@@ -281,11 +322,16 @@ class LiteraryWork {
       'authorId': authorId,
       'title': title,
       'titlePersian': titlePersian,
+      if (titlePersianSource != null) 'titlePersianSource': titlePersianSource,
       'incipit': incipit,
       'type': type.name,
       'scriptSource': scriptSource.name,
       'textTajik': textTajik,
       'textPersian': textPersian,
+      if (persianScriptRepresentation != null)
+        'persianScriptRepresentation': persianScriptRepresentation,
+      if (persianScriptSource != null)
+        'persianScriptSource': persianScriptSource,
       'textStatus': textStatus.name,
       'editorial': editorial.name,
       'editorialNotes': editorialNotes,
@@ -306,11 +352,14 @@ class LiteraryWork {
     String? authorId,
     String? title,
     String? titlePersian,
+    String? titlePersianSource,
     String? incipit,
     WorkType? type,
     ScriptSource? scriptSource,
     String? textTajik,
     String? textPersian,
+    String? persianScriptRepresentation,
+    String? persianScriptSource,
     TextStatus? textStatus,
     EditorialTransformation? editorial,
     String? editorialNotes,
@@ -328,11 +377,15 @@ class LiteraryWork {
       authorId: authorId ?? this.authorId,
       title: title ?? this.title,
       titlePersian: titlePersian ?? this.titlePersian,
+      titlePersianSource: titlePersianSource ?? this.titlePersianSource,
       incipit: incipit ?? this.incipit,
       type: type ?? this.type,
       scriptSource: scriptSource ?? this.scriptSource,
       textTajik: textTajik ?? this.textTajik,
       textPersian: textPersian ?? this.textPersian,
+      persianScriptRepresentation:
+          persianScriptRepresentation ?? this.persianScriptRepresentation,
+      persianScriptSource: persianScriptSource ?? this.persianScriptSource,
       textStatus: textStatus ?? this.textStatus,
       editorial: editorial ?? this.editorial,
       editorialNotes: editorialNotes ?? this.editorialNotes,

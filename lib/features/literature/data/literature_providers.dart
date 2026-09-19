@@ -173,12 +173,7 @@ final worksUnderReviewByAuthorProvider =
     FutureProvider.family<List<LiteraryWork>, String>((ref, authorId) async {
       final works = await ref.watch(literaryWorksProvider.future);
       return works
-          .where(
-            (work) =>
-                work.authorId == authorId &&
-                work.verification.evidenceLevel ==
-                    VerificationLevel.needsReview,
-          )
+          .where((work) => work.authorId == authorId && !work.isDisplayable)
           .toList(growable: false);
     });
 

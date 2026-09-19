@@ -41,16 +41,15 @@
       "person-ismail-samani"
     ],
     "rights": {
-      "authorDeathYear": "941",
-      "status": "publicDomain",
-      "reasoning": "Author died ~941 CE. Over 1080 years have passed, far exceeding Tajikistan's 50-year post mortem auctoris term.",
-      "rightsSource": "Law No. 726, Art. 17, 19",
-      "fullTextAllowed": true,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": null,
-    "deathDateExact": null
+    "deathDateExact": null,
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "nasir_khusraw",
@@ -85,17 +84,16 @@
       "8"
     ],
     "rights": {
-      "authorDeathYear": "~1077",
-      "status": "publicDomain",
-      "reasoning": "Author died ~1077 CE. Over 930 years have passed.",
-      "rightsSource": "Law No. 726, Art. 17, 19",
-      "fullTextAllowed": true,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1004",
     "deathDateExact": "Тақрибан 1088",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "kamol_khujandi",
@@ -128,17 +126,16 @@
       "9"
     ],
     "rights": {
-      "authorDeathYear": "~1400",
-      "status": "publicDomain",
-      "reasoning": "Author died ~1400 CE. Over 620 years have passed.",
-      "rightsSource": "Law No. 726, Art. 17, 19",
-      "fullTextAllowed": true,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 1320",
     "deathDateExact": "Тақрибан 1400",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "tursunzoda",
@@ -175,20 +172,19 @@
       "7"
     ],
     "rights": {
-      "authorDeathYear": "1977",
-      "status": "excerptOnly",
-      "reasoning": "Author died Sept 24, 1977. Under Art. 17, 50-year term runs through Dec 31, 2027. Enters public domain Jan 1, 2028.",
-      "rightsSource": "Law No. 726, Art. 17",
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
       "fullTextAllowed": false,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "excerptAllowed": false
     },
     "birthDateExact": "19 апрели 1911",
     "deathDateExact": "24 сентябри 1977",
     "relatedHistoryEntryIds": [
       "event-tajik-ussr",
       "event-world-war-two"
-    ]
+    ],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "qanoat",
@@ -221,17 +217,16 @@
       "11"
     ],
     "rights": {
-      "authorDeathYear": "2018",
-      "status": "excerptOnly",
-      "reasoning": "Author died May 18, 2018. 50-year term runs through Dec 31, 2068.",
-      "rightsSource": "Law No. 726, Art. 17",
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
       "fullTextAllowed": false,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "excerptAllowed": false
     },
     "birthDateExact": "20 майи 1932",
     "deathDateExact": "18 майи 2018",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "loiq_sherali",
@@ -267,19 +262,18 @@
       "9"
     ],
     "rights": {
-      "authorDeathYear": "2000",
-      "status": "excerptOnly",
-      "reasoning": "Author died June 30, 2000. 50-year term runs through Dec 31, 2050.",
-      "rightsSource": "Law No. 726, Art. 17",
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
       "fullTextAllowed": false,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "excerptAllowed": false
     },
     "birthDateExact": "20 майи 1941",
     "deathDateExact": "30 июни 2000",
     "relatedHistoryEntryIds": [
       "event-independence"
-    ]
+    ],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "bozor_sobir",
@@ -309,19 +303,18 @@
       "11"
     ],
     "rights": {
-      "authorDeathYear": "2018",
-      "status": "excerptOnly",
-      "reasoning": "Author died May 1, 2018. 50-year term runs through Dec 31, 2068.",
-      "rightsSource": "Law No. 726, Art. 17",
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
       "fullTextAllowed": false,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "excerptAllowed": false
     },
     "birthDateExact": "20 ноябри 1938",
     "deathDateExact": "1 майи 2018",
     "relatedHistoryEntryIds": [
       "event-independence"
-    ]
+    ],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "gulnazar_keldi",
@@ -348,19 +341,18 @@
       "4"
     ],
     "rights": {
-      "authorDeathYear": "2020",
-      "status": "excerptOnly",
-      "reasoning": "National Anthem text exempt under Art. 8. Other works protected until Dec 31, 2070.",
-      "rightsSource": "Law No. 726, Art. 8, 17",
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
       "fullTextAllowed": false,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "excerptAllowed": false
     },
     "birthDateExact": "20 сентябри 1945",
     "deathDateExact": "13 августи 2020",
     "relatedHistoryEntryIds": [
       "event-independence"
-    ]
+    ],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "gulrukhsor",
@@ -385,16 +377,15 @@
       "11"
     ],
     "rights": {
-      "authorDeathYear": null,
-      "status": "excerptOnly",
-      "reasoning": "Living author (b. 1947). Full copyright protection active for life + 50 years.",
-      "rightsSource": "Law No. 726, Art. 17",
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
       "fullTextAllowed": false,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "excerptAllowed": false
     },
     "birthDateExact": "17 декабри 1947",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "farzona",
@@ -419,16 +410,15 @@
       "11"
     ],
     "rights": {
-      "authorDeathYear": null,
-      "status": "excerptOnly",
-      "reasoning": "Living author (b. 1964). Full copyright protection active for life + 50 years.",
-      "rightsSource": "Law No. 726, Art. 17",
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
       "fullTextAllowed": false,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "excerptAllowed": false
     },
     "birthDateExact": "3 ноябри 1964",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "47c1dc67-363a-4506-8a9c-bbbb38f98d20",
@@ -465,18 +455,19 @@
       "6"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "15 апрели 1878",
     "deathDateExact": "15 июли 1954",
     "relatedHistoryEntryIds": [
       "event-tajik-ussr",
       "person-ayni"
-    ]
+    ],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "455f0420-3834-48f0-86b9-7da673a2a684",
@@ -509,15 +500,16 @@
       "10"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1644",
     "deathDateExact": "5 декабри 1720",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "d1abb54a-9804-4baf-b238-fd2203d7673e",
@@ -550,15 +542,16 @@
       "9"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 1315",
     "deathDateExact": "1390",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "1a55efdd-6a1f-43b8-834f-94af060b4329",
@@ -593,15 +586,16 @@
       "8"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Августи 980",
     "deathDateExact": "18 июни 1037",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "3853d79b-0951-44c3-a5db-229649fa30b6",
@@ -621,15 +615,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 990",
     "deathDateExact": "Тақрибан 1055",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "d48ec80f-951d-4dfd-b65a-6e409561a712",
@@ -647,15 +642,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 961",
     "deathDateExact": "1039",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "282f4c69-1d14-4be2-89d3-d21f867e4964",
@@ -676,15 +672,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 980",
     "deathDateExact": "1037",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "1c82210c-343c-4499-9639-93f0a766b5f7",
@@ -702,13 +699,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
@@ -728,15 +726,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 1000",
     "deathDateExact": "1072",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "92753b88-1d31-4f79-aae4-5d36c83ab4a1",
@@ -756,15 +755,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1021",
     "deathDateExact": "1098",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "69d27d87-439e-4efe-a14f-a1196aa8471f",
@@ -782,15 +782,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1080",
     "deathDateExact": "1131",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
@@ -811,15 +812,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1126",
     "deathDateExact": "1189",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "5fc69b51-c38a-4427-a362-5c8a14bca835",
@@ -853,15 +855,16 @@
       "8"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "18 майи 1048",
     "deathDateExact": "4 декабри 1131",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
@@ -879,13 +882,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
@@ -919,15 +923,16 @@
       "9"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 1210",
     "deathDateExact": "Тақрибан 1292",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
@@ -945,15 +950,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1453",
     "deathDateExact": "1512",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "f09073cb-33b4-4fcc-abf8-75959350245c",
@@ -971,15 +977,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1470",
     "deathDateExact": "1529",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "ef5a57a2-8949-43dd-85eb-8ceaf78335f3",
@@ -997,15 +1004,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "3 июни 1909",
     "deathDateExact": "10 октябри 1989",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a7feaa09-c83f-44f2-a69e-0a46ba957dbc",
@@ -1023,15 +1031,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "6 майи 1912",
     "deathDateExact": "1 августи 1993",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "400b9785-ae80-4957-a653-d65c72cdbf79",
@@ -1049,13 +1058,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "310a8288-d554-4b9c-9ad1-3273b1edce85",
@@ -1090,15 +1100,16 @@
       "5"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "12 октябри 1887",
     "deathDateExact": "16 марти 1957",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "be19709e-c3af-460d-80b9-4c67046e8be3",
@@ -1116,13 +1127,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "9ab32712-ce1d-4054-a7cc-163ca4a8f11f",
@@ -1140,15 +1152,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "7 ноябри 1414",
     "deathDateExact": "9 ноябри 1492",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "9a3f7c2a-a41d-4064-9ea7-766941c9ae35",
@@ -1166,13 +1179,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
@@ -1193,15 +1207,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 935",
     "deathDateExact": "Тақрибан 977",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
@@ -1235,18 +1250,19 @@
       "8"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 940",
     "deathDateExact": "Тақрибан 1020",
     "relatedHistoryEntryIds": [
       "dynasty-samanid",
       "dynasty-ghaznavid"
-    ]
+    ],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "92a7c4fa-3191-4301-ba53-8087ce7ef3d8",
@@ -1264,15 +1280,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1525",
     "deathDateExact": "1588",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "cef7fd49-54c8-4e46-9361-123cc52de5eb",
@@ -1283,20 +1300,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Ғании Кашмирӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "محمدطاهر غنی کشمیری (درگذشته ۱۶۶۸ م) از شاعران بزرگ و خلاق سبک هندی در کشمیر بود که به قناعت طبع، ایجاز کلام و مضمون‌سازی‌های شگفت‌انگیز در شعر پارسی اشتهار دارد.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "6b080d51-336b-48ba-92cd-85fe29149e0d",
@@ -1314,13 +1333,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "79b50923-ea65-4554-b65d-bbf3ee49f35c",
@@ -1338,13 +1358,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a6b5eb18-39e9-4fdf-b492-e5956a553436",
@@ -1362,15 +1383,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": null,
     "deathDateExact": null,
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
@@ -1390,13 +1412,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "3d5d70c0-6294-4b7d-b830-79db08edd6b8",
@@ -1416,15 +1439,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Асри X",
     "deathDateExact": "Асри X",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "bb00bac5-e207-4cc7-9539-a2af92b71281",
@@ -1442,15 +1466,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Августи 980",
     "deathDateExact": "18 июни 1037",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a4b182d3-1c06-4c82-9858-0e71d95edeb3",
@@ -1468,13 +1493,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "da40ae16-883d-4232-86a1-976aa9ffc941",
@@ -1492,13 +1518,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "79049bfd-1f01-4f9d-8e59-851cdbd4bba2",
@@ -1516,13 +1543,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a2e5259d-9c1c-46f5-b845-04fb18d07858",
@@ -1540,13 +1568,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "26906a5a-692c-40a3-a991-6b3559cda394",
@@ -1564,13 +1593,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "6ab9cd0a-0ff0-4a73-99ba-6604d9c61847",
@@ -1602,15 +1632,16 @@
       "6"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1859",
     "deathDateExact": "1894",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
@@ -1628,15 +1659,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1865",
     "deathDateExact": "1919",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "2e7a713f-c3d2-449e-bd6a-a4b5b7350201",
@@ -1654,15 +1686,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1864",
     "deathDateExact": "1916",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "8c4bf813-284a-4938-9c1b-ac9eb6cc53e4",
@@ -1673,20 +1706,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Дар аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "بخش موضوعی دربرگیرنده متون و اشعار گوناگون تعلیمی و تربیتی مندرج در متون درسی.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "404226c8-acbc-47e5-819e-4c63f93cb4d4",
@@ -1697,20 +1732,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Мисраъҳои аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابیات و مصراع‌های ادبی برگرفته از متون سنتی و کتاب‌های درسی ادبیات تاجیک.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "42d303b5-f20f-440d-8079-a8e25ef52d2e",
@@ -1728,13 +1765,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "3537f811-9658-4f9b-a29b-6311e802e60e",
@@ -1745,20 +1783,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Номаълум аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "آثار برآمده از ادبیات عامیانه، ترانه‌ها، چیستان‌ها و میراث شفاهی خلق تاجیک در کتاب‌های درسی.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "1f97e6af-4d9c-4d58-9812-847d89348dfc",
@@ -1769,20 +1809,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Яҳёхоҷа аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "یحیی‌خواجه از شاعران و سرایندگان سنت‌های ادبی حوزه‌های شهری فرارود در سده‌های متأخر است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "604d62c2-62fc-4aa3-a7d2-8348e714b52d",
@@ -1800,13 +1842,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "bdca68f7-2ee1-49bf-9780-27da55cea473",
@@ -1824,13 +1867,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "4830f7a5-85aa-4418-8785-40867a995614",
@@ -1841,20 +1885,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Озарбоди Меҳроспандон аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "آذرباد مهراسپندان موبدان‌موبد و اندرزنویس برجسته عهد ساسانیان و صاحب اندرزنامه‌های اخلاقی در کتاب‌های درسی تاریخ و ادبیات است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 13–14.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "2c8b026f-bab7-4cd8-9d86-26794a1573eb",
@@ -1872,13 +1918,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "2a94d1c2-8f15-4d08-948c-b7e9491d8273",
@@ -1896,13 +1943,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "d708065a-1337-495f-ae6b-b0b5ce40e90f",
@@ -1920,13 +1968,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "7d0a189b-d704-4c0e-bc8b-8504ffcb4e9f",
@@ -1937,20 +1986,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Бассоми Курди Хориҷӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "بسام کرد خارجی از شاعران پیشگام عهد صفاریان در سیستان بود که در ستایش یعقوب لیث اشعاری سرود.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–32.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "c76a0058-db4d-4bd3-83dd-a66f2b3578b4",
@@ -1961,20 +2012,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Муҳаммад бинни Мухаллад ас-Сиҷзӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "محمد بن مخلد سیگزی از شاعران دوره صفاری در سیستان است که ابیاتی به زبان پارسی از او باقی مانده است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–32.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "1b65d9d8-0e3d-4e02-8c65-30f98e84e109",
@@ -1985,20 +2038,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Маҳмуди Варроқи Ҳиравии ас-Сиҷзӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "محمود وراق هروی از شعرای آغازین ادب پارسی در هرات عهد طاهریان است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "cf6c66fa-1c48-4819-a4d9-287225e766b2",
@@ -2009,20 +2064,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Фирӯзи Машриқӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "فیروز مشرقی از شعرای اولیه زبان فارسی در عهد صفاریان در خراسان بود.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "d1bb3938-3e96-42a9-b73d-bafbabf8554f",
@@ -2033,20 +2090,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абусулайки Ҷурҷонӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوسلیک گرگانی از سرایندگان کهن شعر پارسی هم‌عصر با دولت طاهریان و صفاریان است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–32.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "58010d8f-2575-4b92-89e0-373f05b32929",
@@ -2057,20 +2116,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Масъуди Марвазӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "مسعود مروزی شاعر سده چهارم هجری و سراینده نخستین شاهنامه منظوم پیش از دقیقی و فردوسی است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31, 34.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "896648b7-c7b7-4451-b8b3-cd37e4710fa1",
@@ -2088,13 +2149,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "dea74b1e-32da-4afc-862f-4a08fd22f8f5",
@@ -2105,22 +2167,24 @@
     "deathYear": "Асри X",
     "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абушакури Балхӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوشکور بلخی (سده چهارم هجری) شاعر و حکیم عهد سامانی و سراینده منظومه اخلاقی «آفرین‌نامه» در بحر متقارب است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": null,
     "deathDateExact": null,
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "2b5af239-bce6-4b05-98ad-fbeef1a54c12",
@@ -2138,13 +2202,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "98e43b59-1d3a-440a-9d73-83b599cee7c5",
@@ -2155,20 +2220,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абузироаи Ҷурҷонӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوزراعه معمری گرگانی از شاعران دوره سامانی در گرگان است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 45.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "ec7e9596-18d3-47dc-b952-bcbdfa023934",
@@ -2186,13 +2253,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "68bc433e-b316-46e1-bbe8-d53066764834",
@@ -2210,13 +2278,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "6866f29f-e813-4843-b346-ad5ff69191e8",
@@ -2234,13 +2303,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "0079c49a-da77-47d1-bc1e-8ff4cbb9d337",
@@ -2251,20 +2321,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Кисоии Марвазӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "مجدالدین ابوالحسن کسایی مروزی (۹۵۳–۱۰۰۴ م) از بزرگ‌ترین شاعران قصیده‌سرا و وعظ‌گوی اواخر عهد سامانی و آغاز غزنوی در مرو است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 43.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "ed2d18a8-f33e-4a66-8052-65128fe6295a",
@@ -2275,22 +2347,24 @@
     "deathYear": "Асри X",
     "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абулмуайяди Балхӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوالمؤید بلخی شاعر و دانشمند سده چهارم هجری و مؤلف شاهنامه بزرگ منثور ملقب به «شاهنامه مؤیدی» است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": null,
     "deathDateExact": null,
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "483ec51d-a691-4b78-918a-0fbc13f29a46",
@@ -2308,15 +2382,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": null,
     "deathDateExact": null,
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "91bf5726-5e0a-451e-be4b-7d91650f6cfa",
@@ -2327,20 +2402,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Хусравонӣ (Хусравӣ) аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "خسروانی از شاعران خوش‌قریحه عهد سامانی در فرارود است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "4ea4300f-493d-40bd-bf55-a83d9b397bf3",
@@ -2358,13 +2435,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "1b317e1f-83b1-43be-a0c0-4e210809c938",
@@ -2382,13 +2460,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "2564937c-eaeb-4faa-a4eb-0c9191a535fb",
@@ -2406,13 +2485,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "717847cd-64b0-47e7-9d1c-75866e880647",
@@ -2423,20 +2503,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абуабдуллоҳи Ҷайҳонӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوعبدالله محمد بن احمد جیهانی دانشمند، جغرافی‌دان و وزیر بزرگ دولت سامانیان است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "cfe58486-55c2-474d-b329-248040b519ee",
@@ -2447,20 +2529,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абулфазли Балъамӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوالفضل محمد بن عبیدالله بلعمی وزیر دانشمند سامانیان و حامی بزرگ استاد رودکی است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 44–45.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "9becac52-2650-408f-8ecf-d496a233d71a",
@@ -2471,20 +2555,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абуалии Балъамӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوعلی محمد بن محمد بلعمی وزیر سامانیان و مترجم و نگارنده تاریخ بلعمی (ترجمه تاریخ طبری به زبان پارسی دری) است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "8648e50d-ff7d-413d-a0fb-e1829ff940bb",
@@ -2502,13 +2588,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "5228f270-7e20-47cf-9e0b-4e6cc6fca51c",
@@ -2526,13 +2613,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "9915eac4-559e-4f20-9bdf-bb7a50e153db",
@@ -2550,13 +2638,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "e8ec4440-682a-48f1-ba59-54d8a9595c16",
@@ -2576,13 +2665,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "beea5538-c891-4044-a75b-9bf21d1ef897",
@@ -2593,20 +2683,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абулаббоси Марвазӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوالعباس مروزی از کهن‌ترین شاعران مرو در آغاز شکل‌گیری ادب دری است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "19750e0a-7629-436e-9715-a1530d0b1571",
@@ -2617,20 +2709,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Фарҳат аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "فرهت از شعرای پارسی‌گوی ثبت‌شده در جنگ‌ها و مجموعه‌های کهن ادبی است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "82f30a4e-f468-4a7d-bf03-bd29d3279fe0",
@@ -2641,20 +2735,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Салмони Соваҷӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "خواجه جمال‌الدین سلمان ساوجی (۱۲۹۹–۱۳۷۶ م) از بزرگ‌ترین قصیده‌سرایان و غزل‌سرایان سده هشتم هجری در دربار جلایریان است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "358dda13-365c-4434-87f0-d404b305adcb",
@@ -2672,15 +2768,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "7 ноябри 1414",
     "deathDateExact": "9 ноябри 1492",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
@@ -2698,13 +2795,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "01df7214-28b7-44ab-a1f4-898bb7e83950",
@@ -2715,20 +2813,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Шаҳиди шоир аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "حکیم شهید بلخی از برجسته‌ترین فلاسفه، خوشنویسان و شاعران قرن چهارم هجری در بلخ است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "ec41abdc-c530-4745-825f-a23cd7515ca5",
@@ -2746,13 +2846,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "5ec16ef0-b9c8-44e1-a6fc-4a01ee3f7def",
@@ -2770,13 +2871,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "337370dd-7731-490b-9e92-b7f9be6ba695",
@@ -2794,13 +2896,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "281c1b94-267e-4bbf-a7e5-47c24f99f0b5",
@@ -2811,22 +2914,24 @@
     "deathYear": "1273",
     "birthPlace": "Балх / Вахш",
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Мавлоно Наҳвии Ҳиротӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "مولانا نحوی هروی از ادیبان، لغویان و شاعران حوزه ادبی هرات در عصر تیموریان است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": null,
     "deathDateExact": null,
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "eb037eb9-ba72-49bd-b009-8f9c84d46105",
@@ -2837,20 +2942,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Қозизода аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "قاضی‌زاده از دانشمندان و ادیبان سرشناس در تاریخ فرهنگ و ادب ماوراءالنهر است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "228feecd-8a97-4aaf-9b92-b9896c3a7d7d",
@@ -2882,13 +2989,14 @@
       "9"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "7c389f92-ffdc-4f8e-b901-1de71acc34a9",
@@ -2906,13 +3014,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "465d3f4a-4924-4ca6-9371-7266ae4393c7",
@@ -2932,13 +3041,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
@@ -2956,13 +3066,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "bda36de4-2636-4079-b473-d8f9f620820a",
@@ -2973,20 +3084,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Амир Шоҳии Сабзворӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "امیر ملک مشرقی متخلص به شاهی سبزواری (درگذشته ۱۴۵۳ م) شاعر و نقاش برجسته عهد شاهرخ تیموری است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "c9ea2574-7623-4974-ada0-49c075b2831b",
@@ -3007,15 +3120,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 1145",
     "deathDateExact": "1221",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "fd212071-6a30-4b8d-870a-ae784002e8f2",
@@ -3033,13 +3147,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
@@ -3057,13 +3172,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
@@ -3099,15 +3215,16 @@
       "9"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "7 ноябри 1414",
     "deathDateExact": "9 ноябри 1492",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "e859c1ae-03b9-4add-8079-7fa5bcf64ef7",
@@ -3125,15 +3242,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "15 апрели 1899",
     "deathDateExact": "9 июни 1933",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "26c985a4-88ca-47ea-8981-ba5529b62a7c",
@@ -3151,15 +3269,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1916",
     "deathDateExact": "22 феврали 1945",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "b081ddd8-af07-4bb5-919a-7f3edce5108a",
@@ -3170,20 +3289,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Александр Пушкин аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "الکساندر سرگیویچ پوشکین (۱۷۹۹–۱۸۳۷ م) شاعر ملی و بنیادگذار ادبیات کلاسیک روسیه است که آثارش توسط مترجمان بزرگ تاجیک به فارسی ترجمه و در کتاب‌های درسی تدریس می‌شود.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "7cb0a909-f92c-4abe-9087-038d37da9d98",
@@ -3194,20 +3315,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Михаил Лермонтов аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "میخائیل لرمانتوف (۱۸۱۴–۱۸۴۱ م) شاعر و نویسنده نامدار رمانتیک روسیه که اشعار و منظومه‌های او با ترجمه فارسی تاجیکی در کتب درسی وارد شده است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "6717d5d5-30d8-4bcc-ad04-20251c567127",
@@ -3218,20 +3341,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Самуил Маршак аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ساموئل مارشاک (۱۸۸۷–۱۹۶۴ م) شاعر، نمایشنامه‌نویس و مترجم سرشناس ادبیات کودک است که آثارش در برنامه درسی مکاتب تاجیکستان تدریس می‌شود.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "b2369b52-f62a-4e5c-8f12-6f50816538cd",
@@ -3242,20 +3367,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Виктор Гюго аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ویکتور هوگو (۱۸۰۲–۱۸۸۵ م) نویسنده، شاعر و ادیب بزرگ فرانسوی و آفریننده شاهکارهایی چون «بینوایان» که بخش‌هایی از آثار وی در کتب درسی تاجیکستان گنجانده شده است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "0c10d530-e56e-4b4a-b6ba-67623f374474",
@@ -3266,20 +3393,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Рафаэл Патканян аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "رافائل پاتکانیان (۱۸۳۰–۱۸۹۲ م) شاعر و نویسنده ارمنی که آثار میهن‌دوستانه او در گلچین‌های بین‌المللی کتاب‌های درسی ترجمه شده است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "0b236c58-9f18-4730-9dbc-0b1f70e5118c",
@@ -3290,20 +3419,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "султон Муҳаммад аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "سلطان علاءالدین محمد خوارزمشاه پادشاه خوارزمشاهیان که در آثار داستانی و تاریخی ادبیات پیرامون مقاومت مردم در برابر مغول ذکر شده است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "9cc6b7f2-3aa2-4ecf-abec-17eec77b198b",
@@ -3314,20 +3445,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Темурмалик аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "تیمورملک سردار دلاور خجند و قهرمان مقاومت ملی در برابر هجوم مغول که در اثر تاریخی-ادبی صدرالدین عینی جاودانه گشته است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "10a9ad7d-fd0d-462f-8cb4-594a869f8229",
@@ -3345,13 +3478,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "eff956d5-9b8c-4522-9ac6-8791f15495ce",
@@ -3369,15 +3503,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "15 майи 1910",
     "deathDateExact": "30 январи 1980",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "12fb0e82-f108-4e71-8207-74d0540639d3",
@@ -3395,13 +3530,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "65bd67be-a18d-4679-8721-cd13818933b1",
@@ -3419,15 +3555,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "10 июли 1923",
     "deathDateExact": "10 августи 1979",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
@@ -3438,20 +3575,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Заҳири Форёбӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ظهیرالدین ابوالفضل طاهر بن محمد فاریابی (۱۱۵۶–۱۲۰۱ م) از بزرگ‌ترین قصیده‌سرایان و استادان برجسته ادب فارسی در سده ششم هجری است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "ada69601-01d5-493f-b1a0-9b886be8daa8",
@@ -3462,20 +3601,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Заҳирии Самарқандӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "محمد بن علی بن عمر ظهیری سمرقندی (سده ششم هجری) ادیب و مترجم و نگارنده کتاب مشهور «سندبادنامه» به نثر فنی و آراسته پارسی است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "16d7d64a-fca1-43cc-be01-86d776cde770",
@@ -3486,20 +3627,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Рашиди Ватвот аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "رشیدالدین محمد بن محمد وطواط (۱۰۸۸–۱۱۸۲ م) شاعر، رساله‌نویس و ادیب دربار خوارزمشاهیان و صاحب کتاب عروض و بلاغت «حدایق‌السحر فی دقایق‌الشعر» است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "a65c552b-8432-4f3b-bd72-0e48b99921a7",
@@ -3510,20 +3653,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Раҳимӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "رحیمی از شاعران سنتی و ثبت‌شده در تاریخ ادبیات تاجیکستان است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "f8658458-ab69-4c48-a295-441a25a5fdb5",
@@ -3534,20 +3679,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Бадри Чочӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "بدرالدین چاچی (درگذشته ۱۳۴۶ م) شاعر و قصیده‌سرای برجسته برخاسته از چاچ (تاشکند) مقیم دهلی در عهد سلطان محمد تغلق است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
@@ -3558,20 +3705,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Масъуди Саъди Салмон аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "مسعود سعد سلمان (۱۰۴۶–۱۱۲۱ م) شاعر بزرگ عهد غزنویان در لاهور و آفریننده مشهورترین حبسیات (اشعار زندان) در ادب فارسی است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "1b50e1c6-7881-47ee-8965-4c19164dbf4a",
@@ -3582,20 +3731,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Шамси Табрезӣ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "شمس‌الدین محمد بن علی بن ملک‌داد تبریزی (۱۱۸۵–۱۲۴۸ م) عارف شوریده، پیر روحانی و مراد مولانا جلال‌الدین بلخی که دیدار او سرچشمه سرایش دیوان شمس شد.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "0b0f1032-b36a-45e4-9930-8953b067db65",
@@ -3617,15 +3768,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "30 сентябри 1207",
     "deathDateExact": "17 декабри 1273",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "0e91d643-d947-4f0d-b3ac-ec2715a4b87c",
@@ -3643,15 +3795,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 1270",
     "deathDateExact": "Тақрибан 1370",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "ea87e35a-6a03-44f2-837e-648d1c84aecc",
@@ -3669,13 +3822,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "06b70024-a028-43dd-8c23-cdb75e96fac8",
@@ -3693,13 +3847,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "7a4cc3dc-3d9c-4cf2-aa27-a9b66f68937f",
@@ -3710,20 +3865,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Ҳасанбеки Рафеъ аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "حسن‌بیک رفیع از شاعران و ادیبان حوزه ادبی ماوراءالنهر در سده‌های میانه است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "121ce628-ff4b-44d2-a702-81db93040dee",
@@ -3743,15 +3900,16 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "1592",
     "deathDateExact": "1676",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "b28a4de3-06a8-406c-b2e9-db363f7aa2d5",
@@ -3762,20 +3920,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абӯсаиди Абулхайр аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "ابوسعید فضل‌الله بن ابوالخیر میهنی (۹۶۷–۱۰۴۹ م) از نام‌آورترین عارفان، مشایخ تصوف و پیشگامان کاربرد رباعی در مجالس عرفانی است.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "5633556b-df45-4cab-83dc-760016db1ef2",
@@ -3808,15 +3968,16 @@
       "7"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "birthDateExact": "Тақрибан 1637",
     "deathDateExact": "1711",
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a74ea72d-864f-4c25-b42e-95435794a42d",
@@ -3834,13 +3995,14 @@
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
@@ -3851,20 +4013,22 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Unknown аз чеҳраҳои шинохташудаи мероси адабӣ ва фарҳангии халқи тоҷик мебошад, ки ашъору осори вай дар таърихи адабиёт ва маҷмӯаҳои таълимии кишвар мақоми шоиста дорад.",
-    "biographyFa": "مجموعه غنی فولکلور، ادبیات شفاهی، چیستان‌ها، مثل‌ها و داستان‌های کهن مردمی خلق تاجیک.",
+    "biographyTj": "",
+    "biographyFa": null,
     "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Extracted from public school textbooks",
-      "rightsSource": "Law No. 726",
-      "fullTextAllowed": true,
-      "excerptAllowed": true
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "relatedHistoryEntryIds": []
+    "relatedHistoryEntryIds": [],
+    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "ahmad_donish",
@@ -3898,10 +4062,14 @@
       "Девони ашъор"
     ],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Муаллиф соли 1897 даргузаштааст. Осори ӯ дар моликияти умумӣ қарор дорад."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "احمد مخدوم بن ناصر معروف به احمد دانش (۱۸۲۷–۱۸۹۷ م) متفکر، معارف‌پرور و فیلسوف برجسته بخارا و صاحب شاهکار منثور «نوادرالوقایع» است."
+    "biographyFa": "احمد مخدوم بن ناصر معروف به احمد دانش (۱۸۲۷–۱۸۹۷ م) متفکر، معارف‌پرور و فیلسوف برجسته بخارا و صاحب شاهکار منثور «نوادرالوقایع» است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "gulchehra_sulaymoni",
@@ -3925,10 +4093,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "excerptOnly",
-      "reasoning": "Осори таълимии мактабӣ."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "گلچهره سلیمانی (۱۹۲۸–۲۰۰۳ م) متولد بخارا، شاعر خلق تاجیکستان و از چهره‌های ممتاز شعر کودک و نوجوان در ادبیات معاصر تاجیک است."
+    "biographyFa": "گلچهره سلیمانی (۱۹۲۸–۲۰۰۳ م) متولد بخارا، شاعر خلق تاجیکستان و از چهره‌های ممتاز شعر کودک و نوجوان در ادبیات معاصر تاجیک است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b",
@@ -3953,10 +4125,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "excerptOnly",
-      "reasoning": "Осори таълимии мактабӣ."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "ساتم الغ‌زاده (۱۹۱۱–۱۹۹۷ م) متولد پاپ فرغانه، نویسنده خلق تاجیکستان، پژوهشگر نامی و مؤلف رمان‌های پرشکوه «فردوسی»، «واسط» و نمایشنامه‌های تاریخی درخشان است."
+    "biographyFa": "ساتم الغ‌زاده (۱۹۱۱–۱۹۹۷ م) متولد پاپ فرغانه، نویسنده خلق تاجیکستان، پژوهشگر نامی و مؤلف رمان‌های پرشکوه «فردوسی»، «واسط» و نمایشنامه‌های تاریخی درخشان است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c",
@@ -3979,10 +4155,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "excerptOnly",
-      "reasoning": "Осори таълимии мактабӣ."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "جلال اکرامی (۱۹۰۹–۱۹۹۳ م) متولد بخارا، نویسنده خلق تاجیکستان و از پایه‌گذاران رمان‌نویسی تاجیک و مؤلف شاهکار «دختر آتش» و «دوازده دروازه بخارا» است."
+    "biographyFa": "جلال اکرامی (۱۹۰۹–۱۹۹۳ م) متولد بخارا، نویسنده خلق تاجیکستان و از پایه‌گذاران رمان‌نویسی تاجیک و مؤلف شاهکار «دختر آتش» و «دوازده دروازه بخارا» است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "b2c3d4e5-c6d7-4e8f-9a0b-1c2d3e4f5a6b",
@@ -4008,10 +4188,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Осори классикии садаи XIII дар моликияти умумӣ мебошад."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "سدیدالدین محمد عوفی بخاری (۱۱۷۱–۱۲۴۲ م) ادیب، مورخ و تذکره‌نویس شهیر بخارا و مؤلف «لباب‌الالباب» (نخستین تذکره شعر فارسی) و «جوامع‌الحکایات و لوامع‌الروایات» است."
+    "biographyFa": "سدیدالدین محمد عوفی بخاری (۱۱۷۱–۱۲۴۲ م) ادیب، مورخ و تذکره‌نویس شهیر بخارا و مؤلف «لباب‌الالباب» (نخستین تذکره شعر فارسی) و «جوامع‌الحکایات و لوامع‌الروایات» است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "c3d4e5f6-d7e8-4f9a-0b1c-2d3e4f5a6b7c",
@@ -4035,10 +4219,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Осори классикии асри XI дар моликияти умумӣ қарор дорад."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "حجةالاسلام ابوحامد امام محمد غزالی طوسی (۱۰۵۸–۱۱۱۱ م) متفکر و فیلسوف بزرگ اسلام و مؤلف «احیاء علوم‌الدین» و کتاب ارجمند نصیحت‌نامه «نصیحةالملوک» به زبان پارسی است."
+    "biographyFa": "حجةالاسلام ابوحامد امام محمد غزالی طوسی (۱۰۵۸–۱۱۱۱ م) متفکر و فیلسوف بزرگ اسلام و مؤلف «احیاء علوم‌الدین» و کتاب ارجمند نصیحت‌نامه «نصیحةالملوک» به زبان پارسی است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5e",
@@ -4062,10 +4250,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "excerptOnly",
-      "reasoning": "Осори таълимии мактабӣ."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "فاتح نیازی (۱۹۱۴–۱۹۹۱ م) متولد سمرقند، نویسنده خلق تاجیکستان، روزنامه‌نگار و مؤلف رمان معروف جنگی «وفا» و آثار داستانی پرشمار است."
+    "biographyFa": "فاتح نیازی (۱۹۱۴–۱۹۹۱ م) متولد سمرقند، نویسنده خلق تاجیکستان، روزنامه‌نگار و مؤلف رمان معروف جنگی «وفا» و آثار داستانی پرشمار است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6f",
@@ -4088,10 +4280,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "excerptOnly",
-      "reasoning": "Осори таълимии мактабӣ."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "عبدالملک بهاری (۱۹۲۷–۲۰۱۰ م) متولد خجند، نویسنده خلق تاجیکستان و از پیشگامان ادبیات علمی-تخیلی و کودک و نوجوان در تاجیکستان است."
+    "biographyFa": "عبدالملک بهاری (۱۹۲۷–۲۰۱۰ م) متولد خجند، نویسنده خلق تاجیکستان و از پیشگامان ادبیات علمی-تخیلی و کودک و نوجوان در تاجیکستان است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
@@ -4115,10 +4311,14 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "excerptOnly",
-      "reasoning": "Осори таълимии мактабӣ."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "صفرمحمد ایوبی (۱۹۴۵–۲۰۱۱ م) شاعر و نمایشنامه‌نویس نامدار تاجیکستان و مؤلف نمایشنامه‌های تاریخی برجسته‌ای چون «امیر اسماعیل سامانی» و «دقیقی» است."
+    "biographyFa": "صفرمحمد ایوبی (۱۹۴۵–۲۰۱۱ م) شاعر و نمایشنامه‌نویس نامدار تاجیکستان و مؤلف نمایشنامه‌های تاریخی برجسته‌ای چون «امیر اسماعیل سامانی» و «دقیقی» است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9e",
@@ -4141,9 +4341,13 @@
     ],
     "majorWorkIds": [],
     "rights": {
-      "status": "publicDomain",
-      "reasoning": "Осори адабии асри XII комилан дар моликияти умумӣ қарор дорад."
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
-    "biographyFa": "ابوطاهر محمد بن حسن بن علی بن موسی طرسوسی (سده ششم هجری) از بزرگ‌ترین داستان‌سرایان کهن ادب فارسی و گردآورنده حماسه‌های عامیانه مانند «داراب‌نامه» و «سمک عیار» است."
+    "biographyFa": "ابوطاهر محمد بن حسن بن علی بن موسی طرسوسی (سده ششم هجری) از بزرگ‌ترین داستان‌سرایان کهن ادب فارسی و گردآورنده حماسه‌های عامیانه مانند «داراب‌نامه» و «سمک عیار» است.",
+    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   }
 ]

@@ -21,8 +21,10 @@ void main() {
       expect(rudaki.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
       expect(rudaki.canonicalNamePersian, 'ابوعبدالله رودکی');
       expect(rudaki.birthYear, '858');
-      expect(rudaki.rights.status, RightsStatus.publicDomain);
-      expect(rudaki.rights.fullTextAllowed, isTrue);
+      // Rights evidence was not sufficient to retain the old public-domain
+      // claim, so the repaired catalog fails closed until it is re-established.
+      expect(rudaki.rights.status, RightsStatus.unknown);
+      expect(rudaki.rights.fullTextAllowed, isFalse);
     });
 
     test('loadWorks loads registered works from assets', () async {

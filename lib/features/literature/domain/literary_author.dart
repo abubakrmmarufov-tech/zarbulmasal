@@ -44,6 +44,22 @@ class LiteraryAuthor {
   /// Authoritative citation for biographical facts (Tier A / Tier B source).
   final String biographySource;
 
+  /// Epistemic category for the Tajik biography paragraph.
+  ///
+  /// Supported values are SOURCE_BACKED, EDITORIAL_SUMMARY_FROM_SOURCES, and
+  /// UNSUPPORTED_GENERATED.  Unsupported biographies are kept empty in the
+  /// active record and may carry a quarantine note for audit purposes.
+  final String biographyTjProvenance;
+
+  /// Epistemic category for the Persian biography paragraph.
+  ///
+  /// Supported values are SOURCE_PERSIAN, SOURCE_TRANSLATION,
+  /// EDITORIAL_TRANSLATION, and UNSUPPORTED_GENERATED.
+  final String biographyFaProvenance;
+
+  /// Optional note explaining why an unsupported paragraph was quarantined.
+  final String? biographyQuarantineNote;
+
   /// List of IDs of major canonical works by this author.
   final List<String> majorWorkIds;
 
@@ -73,6 +89,9 @@ class LiteraryAuthor {
     required this.biographyTj,
     this.biographyFa,
     required this.biographySource,
+    this.biographyTjProvenance = 'EDITORIAL_SUMMARY_FROM_SOURCES',
+    this.biographyFaProvenance = 'EDITORIAL_TRANSLATION',
+    this.biographyQuarantineNote,
     this.majorWorkIds = const [],
     this.officialTitles = const [],
     this.educationGrades = const [],
@@ -152,6 +171,12 @@ class LiteraryAuthor {
       biographyFa: (json['biographyFa'] ?? json['biography_fa']) as String?,
       biographySource:
           (json['biographySource'] ?? json['biography_source'] ?? '') as String,
+      biographyTjProvenance:
+          (json['biographyTjProvenance'] ?? 'EDITORIAL_SUMMARY_FROM_SOURCES')
+              as String,
+      biographyFaProvenance:
+          (json['biographyFaProvenance'] ?? 'EDITORIAL_TRANSLATION') as String,
+      biographyQuarantineNote: json['biographyQuarantineNote'] as String?,
       majorWorkIds: _parseStringList(
         json['majorWorkIds'] ?? json['major_work_ids'],
       ),
@@ -191,6 +216,10 @@ class LiteraryAuthor {
       'biographyTj': biographyTj,
       'biographyFa': biographyFa,
       'biographySource': biographySource,
+      'biographyTjProvenance': biographyTjProvenance,
+      'biographyFaProvenance': biographyFaProvenance,
+      if (biographyQuarantineNote != null)
+        'biographyQuarantineNote': biographyQuarantineNote,
       'majorWorkIds': majorWorkIds,
       'officialTitles': officialTitles,
       'educationGrades': educationGrades,
@@ -215,6 +244,9 @@ class LiteraryAuthor {
     String? biographyTj,
     String? biographyFa,
     String? biographySource,
+    String? biographyTjProvenance,
+    String? biographyFaProvenance,
+    String? biographyQuarantineNote,
     List<String>? majorWorkIds,
     List<String>? officialTitles,
     List<String>? educationGrades,
@@ -235,6 +267,12 @@ class LiteraryAuthor {
       biographyTj: biographyTj ?? this.biographyTj,
       biographyFa: biographyFa ?? this.biographyFa,
       biographySource: biographySource ?? this.biographySource,
+      biographyTjProvenance:
+          biographyTjProvenance ?? this.biographyTjProvenance,
+      biographyFaProvenance:
+          biographyFaProvenance ?? this.biographyFaProvenance,
+      biographyQuarantineNote:
+          biographyQuarantineNote ?? this.biographyQuarantineNote,
       majorWorkIds: majorWorkIds ?? this.majorWorkIds,
       officialTitles: officialTitles ?? this.officialTitles,
       educationGrades: educationGrades ?? this.educationGrades,

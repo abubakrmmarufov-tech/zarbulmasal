@@ -118,7 +118,10 @@ async def run(url: str) -> int:
                     page,
                     f"/tmp/zarbulmasal-proverbs-before-search{artifact_suffix}.png",
                 )
-                await page.mouse.click(width * 0.41, 190)
+                # The search field sits near the top of the compact hub on
+                # both supported portrait widths; y=190 lands on the first
+                # content card and never focuses the field at 320 px.
+                await page.mouse.click(width * 0.41, 120)
                 await page.keyboard.type("модар")
                 await page.wait_for_timeout(700)
                 after_search = await screenshot_bytes(

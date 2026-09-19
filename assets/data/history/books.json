@@ -14,7 +14,9 @@
     "descriptionPersian": "از عصر سنگ و دوران پیشدادیان و کیانیان تا دولت‌های ماد، هخامنشیان، یونان و باختر، اشکانیان و کوشانیان.",
     "sourceUrl": "https://maorif.tj/libraries?category=27",
     "isUploadedBook": true,
-    "localPath": "pdf books/history_5.pdf"
+    "localPath": "pdf books/history_5.pdf",
+    "totalPages": 240,
+    "totalPagesNote": "Verified with uploaded PDF on 2026-09-19"
   },
   {
     "id": "history-6",
@@ -26,11 +28,13 @@
     "year": "2022",
     "edition": "Нашри IV, китоби дарсӣ барои синфи 6",
     "publisher": "Душанбе: Маориф, 2022",
-    "pages": 200,
+    "pages": null,
     "description": "Сосониён, Кушониёни хурд, Ҳайтолиён, густариши ислом ва оғози муборизаҳои озодихоҳона.",
     "descriptionPersian": "ساسانیان، کوشانیان خرد، هفتالیان، گسترش اسلام و آغاز جنبش‌های آزادی‌خواهانه.",
     "sourceUrl": "https://maorif.tj/libraries?category=28",
-    "isUploadedBook": false
+    "isUploadedBook": false,
+    "totalPages": null,
+    "totalPagesNote": "Not verified from an uploaded PDF"
   },
   {
     "id": "history-7",
@@ -42,11 +46,13 @@
     "year": "2017",
     "edition": "Китоби дарсӣ барои синфи 7",
     "publisher": "Душанбе: Маориф, 2017",
-    "pages": 224,
+    "pages": null,
     "description": "Аз раҳоӣ аз хилофати араб ва давлатҳои Тоҳириён, Саффориён ва Сомониён то давлати Музаффариён.",
     "descriptionPersian": "از رهایی از خلافت عرب و دولت‌های طاهریان، صفاریان و سامانیان تا دولت مظفریان.",
     "sourceUrl": "https://maorif.tj/libraries?category=29",
-    "isUploadedBook": false
+    "isUploadedBook": false,
+    "totalPages": null,
+    "totalPagesNote": "Not verified from an uploaded PDF"
   },
   {
     "id": "history-8",
@@ -58,11 +64,13 @@
     "year": "2016",
     "edition": "Китоби дарсӣ барои синфи 8",
     "publisher": "Душанбе: Маориф, 2016",
-    "pages": 240,
+    "pages": null,
     "description": "Давраи таърихи асрҳои XVI–XVIII ва хонигариҳои Осиёи Марказӣ.",
     "descriptionPersian": "دوره تاریخی سده‌های ۱۶ تا ۱۸ و خانات آسیای میانه.",
     "sourceUrl": "https://maorif.tj/libraries?category=30",
-    "isUploadedBook": false
+    "isUploadedBook": false,
+    "totalPages": null,
+    "totalPagesNote": "Not verified from an uploaded PDF"
   },
   {
     "id": "history-9",
@@ -74,11 +82,13 @@
     "year": "2020",
     "edition": "Нашри III, китоби дарсӣ барои синфи 9",
     "publisher": "Душанбе: Маориф, 2020",
-    "pages": 272,
+    "pages": null,
     "description": "Осиёи Марказӣ ва тоҷикон дар нимаи дуюми асри XIX ва оғози асри XX, ҳаракати маорифпарварӣ ва ҷадидия.",
     "descriptionPersian": "آسیای میانه و تاجیکان در نیمه دوم قرن ۱۹ و آغاز قرن ۲۰، جنبش معارف‌پروری و جدیدیه.",
     "sourceUrl": "https://maorif.tj/libraries?category=31",
-    "isUploadedBook": false
+    "isUploadedBook": false,
+    "totalPages": null,
+    "totalPagesNote": "Not verified from an uploaded PDF"
   },
   {
     "id": "history-10",
@@ -90,11 +100,13 @@
     "year": "2017",
     "edition": "Китоби дарсӣ барои синфи 10",
     "publisher": "Душанбе: Маориф, 2017",
-    "pages": 256,
+    "pages": null,
     "description": "Тоҷикистон дар солҳои 1917–1945: давлатсозӣ, ҷанги шаҳрвандӣ, саноатикунонӣ ва Ҷанги Бузурги Ватанӣ.",
     "descriptionPersian": "تاجیکستان در سال‌های ۱۹۱۷–۱۹۴۵: تشکیل جمهوری، جنگ داخلی، صنعتی‌سازی و جنگ جهانی دوم.",
     "sourceUrl": "https://maorif.tj/libraries?category=32",
-    "isUploadedBook": false
+    "isUploadedBook": false,
+    "totalPages": null,
+    "totalPagesNote": "Not verified from an uploaded PDF"
   },
   {
     "id": "history-11",
@@ -106,10 +118,12 @@
     "year": "2016",
     "edition": "Китоби дарсӣ барои синфи 11",
     "publisher": "Душанбе: Маориф, 2016",
-    "pages": 288,
+    "pages": null,
     "description": "Тоҷикистон аз соли 1945 то давраи соҳибистиқлолӣ, сулҳ ва ваҳдати миллӣ.",
     "descriptionPersian": "تاجیکستان از سال ۱۹۴۵ تا دوران استقلال دولتی، صلح و وحدت ملی.",
     "sourceUrl": "https://maorif.tj/libraries?category=33",
-    "isUploadedBook": false
+    "isUploadedBook": false,
+    "totalPages": null,
+    "totalPagesNote": "Not verified from an uploaded PDF"
   }
 ]

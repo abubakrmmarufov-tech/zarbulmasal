@@ -215,7 +215,7 @@ void main() {
     });
 
     test(
-      'worksUnderReviewByAuthorProvider exposes only pending candidates',
+      'worksUnderReviewByAuthorProvider exposes all non-displayable candidates',
       () async {
         const pending = LiteraryWork(
           id: 'pending',
@@ -259,7 +259,7 @@ void main() {
         final works = await scopedContainer.read(
           worksUnderReviewByAuthorProvider('rudaki').future,
         );
-        expect(works.map((work) => work.id), ['pending']);
+        expect(works.map((work) => work.id), ['pending', 'rejected']);
       },
     );
 

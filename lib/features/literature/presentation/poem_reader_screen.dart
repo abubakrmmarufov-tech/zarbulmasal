@@ -126,15 +126,30 @@ class _PendingWorkState extends ConsumerWidget {
     final sourceNote = citation == null
         ? ''
         : '\n\n${AppTranslations.get('lit_work_source_registered', lang, [citation])}';
+    final rightsNote = work.rights.status.name == 'unknown'
+        ? '\n\n${AppTranslations.get('lit_work_rights_pending', lang)}'
+        : '';
 
     return Center(
       child: EmptyState(
         icon: Icons.hourglass_empty,
         title: AppTranslations.get('lit_work_pending_title', lang),
-        subtitle: '${AppTranslations.get('lit_work_pending_sub', lang)}$sourceNote',
-        action: OutlinedButton(
-          onPressed: () => qalamBack(context),
-          child: Text(AppTranslations.get('back', lang)),
+        subtitle:
+            '${AppTranslations.get('lit_work_pending_sub', lang)}$rightsNote$sourceNote',
+        action: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (work.primarySource != null)
+              OutlinedButton.icon(
+                onPressed: () => SourcePanel.show(context, work),
+                icon: const Icon(Icons.menu_book_outlined, size: 18),
+                label: Text(AppTranslations.get('lit_source_and_docs', lang)),
+              ),
+            OutlinedButton(
+              onPressed: () => qalamBack(context),
+              child: Text(AppTranslations.get('back', lang)),
+            ),
+          ],
         ),
       ),
     );
@@ -181,8 +196,11 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
               : author.canonicalName)
         : work.authorId;
 
+    final hasGeneratedPersian =
+        work.persianScriptSource == 'generated' && work.hasPersianDisplay;
     final hasBothScripts = work.hasTajikText && work.hasPersianText;
-    final defaultMode = (isPersian && work.hasPersianText)
+    final defaultMode =
+        (isPersian && (work.hasPersianText || hasGeneratedPersian))
         ? ReaderScriptMode.persian
         : (work.hasTajikText
               ? ReaderScriptMode.tajik
@@ -193,7 +211,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
         work.isDisplayable &&
         ((currentScriptMode == ReaderScriptMode.tajik && work.hasTajikText) ||
             (currentScriptMode == ReaderScriptMode.persian &&
-                work.hasPersianText) ||
+                (work.hasPersianText || hasGeneratedPersian)) ||
             (currentScriptMode == ReaderScriptMode.parallel &&
                 hasBothScripts) ||
             (work.hasTajikText || work.hasPersianText));
@@ -276,7 +294,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                     ),
                                     const SizedBox(width: 4),
                                     Text(
-                                      AppTranslations.get('lit_page_image', lang),
+                                      AppTranslations.get(
+                                        'lit_page_image',
+                                        lang,
+                                      ),
                                       style: QalamTypography.meta(
                                         color: QalamColors.forest,
                                         fontSize: 12,
@@ -355,7 +376,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                               author.deathYear ??
                                               (isPersian
                                                   ? "در قید حیات"
-                                                  : "дар ҳаёт")
+                                                  : "дар ҳаёт"),
                                         ],
                                       )
                                     : AppTranslations.formatDigits(
@@ -412,7 +433,12 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                       AppTranslations.get(
                                         'lit_comp_date',
                                         lang,
-                                        [AppTranslations.formatDigits(work.compositionDate!, lang)],
+                                        [
+                                          AppTranslations.formatDigits(
+                                            work.compositionDate!,
+                                            lang,
+                                          ),
+                                        ],
                                       ),
                                       style: QalamTypography.meta(
                                         color: colors.primary,
@@ -482,7 +508,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               children: [
                                 ChoiceChip(
                                   label: Text(
-                                    AppTranslations.get('lit_script_cyrillic', lang),
+                                    AppTranslations.get(
+                                      'lit_script_cyrillic',
+                                      lang,
+                                    ),
                                   ),
                                   selected:
                                       currentScriptMode ==
@@ -495,7 +524,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                 const SizedBox(width: 8),
                                 ChoiceChip(
                                   label: Text(
-                                    AppTranslations.get('lit_script_persian', lang),
+                                    AppTranslations.get(
+                                      'lit_script_persian',
+                                      lang,
+                                    ),
                                   ),
                                   selected:
                                       currentScriptMode ==
@@ -512,7 +544,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                     size: 16,
                                   ),
                                   label: Text(
-                                    AppTranslations.get('lit_script_parallel', lang),
+                                    AppTranslations.get(
+                                      'lit_script_parallel',
+                                      lang,
+                                    ),
                                   ),
                                   selected:
                                       currentScriptMode ==
@@ -526,9 +561,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             ),
                           ),
                         ),
-                      ] else if (isPersian &&
-                          !work.hasPersianText &&
-                          work.hasTajikText) ...[
+                      ] else if (isPersian && hasGeneratedPersian) ...[
                         Padding(
                           padding: const EdgeInsets.only(bottom: 16),
                           child: Row(
@@ -541,7 +574,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               const SizedBox(width: 6),
                               Expanded(
                                 child: Text(
-                                  AppTranslations.get('lit_cyrillic_only_notice', lang),
+                                  AppTranslations.get(
+                                    'lit_generated_script_notice',
+                                    lang,
+                                  ),
                                   style: QalamTypography.meta(
                                     color: colors.onSurfaceVariant,
                                     fontSize: 12,
@@ -567,11 +603,12 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           )
                         else if (currentScriptMode ==
                                 ReaderScriptMode.persian &&
-                            work.hasPersianText)
+                            (work.hasPersianText || hasGeneratedPersian))
                           Directionality(
                             textDirection: TextDirection.rtl,
                             child: SelectableText(
-                              work.textPersian!,
+                              work.textPersian ??
+                                  work.persianScriptRepresentation!,
                               textAlign: TextAlign.right,
                               style: QalamTypography.heroProverb(
                                 color: colors.onSurface,
@@ -584,7 +621,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           Directionality(
                             textDirection: TextDirection.ltr,
                             child: SelectableText(
-                              work.textTajik ?? work.textPersian ?? '',
+                              work.textTajik ??
+                                  work.textPersian ??
+                                  work.persianScriptRepresentation ??
+                                  '',
                               textAlign: TextAlign.left,
                               style: QalamTypography.heroProverb(
                                 color: colors.onSurface,
@@ -763,10 +803,16 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               '${work.textTajik}\n\n${work.textPersian}';
                         } else if (currentScriptMode ==
                                 ReaderScriptMode.persian &&
-                            work.hasPersianText) {
-                          activeText = work.textPersian!;
+                            (work.hasPersianText || hasGeneratedPersian)) {
+                          activeText =
+                              work.textPersian ??
+                              work.persianScriptRepresentation!;
                         } else {
-                          activeText = work.textTajik ?? work.textPersian ?? '';
+                          activeText =
+                              work.textTajik ??
+                              work.textPersian ??
+                              work.persianScriptRepresentation ??
+                              '';
                         }
                         final textToShare = hasVerifiedText
                             ? '$title\n$authorName\n\n$activeText'
@@ -789,7 +835,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  AppTranslations.get('lit_copy_unavailable', lang),
+                                  AppTranslations.get(
+                                    'lit_copy_unavailable',
+                                    lang,
+                                  ),
                                 ),
                               ),
                             );
@@ -800,7 +849,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                   ],
                   // Font Size Controls (A- / A+)
                   IconButton(
-                    tooltip: AppTranslations.get('lit_work_decrease_font', lang),
+                    tooltip: AppTranslations.get(
+                      'lit_work_decrease_font',
+                      lang,
+                    ),
                     icon: const Icon(Icons.text_decrease, size: 20),
                     onPressed: () => ref
                         .read(readerPreferencesProvider.notifier)
@@ -819,7 +871,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                     ),
                   ),
                   IconButton(
-                    tooltip: AppTranslations.get('lit_work_increase_font', lang),
+                    tooltip: AppTranslations.get(
+                      'lit_work_increase_font',
+                      lang,
+                    ),
                     icon: const Icon(Icons.text_increase, size: 20),
                     onPressed: () => ref
                         .read(readerPreferencesProvider.notifier)
