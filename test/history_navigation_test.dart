@@ -23,13 +23,13 @@ void main() {
 
     const testBooks = [
       HistoryBook(
-        id: 'marifat-462',
+        id: 'history-5',
         grade: '5',
         title: 'Таърихи халқи тоҷик: Замони ориёиҳо',
         author: 'Юсуфшоҳ Яъқубов',
         year: '2015',
         description: 'Китоби дарсии синфи 5 оид ба замони қадим ва ориёиҳо.',
-        sourceUrl: 'https://marifat.tj/book/details?id=462',
+        sourceUrl: 'https://maorif.tj/libraries?category=27',
       ),
     ];
 
@@ -42,7 +42,7 @@ void main() {
             'Сарлашкар ва қаҳрамони муборизаи халқҳои Суғду Бохтар бар зидди лашкари Искандари Мақдунӣ.',
         period: 'Солҳои 329–327 пеш аз милод',
         grade: '5',
-        sourceBookId: 'marifat-462',
+        sourceBookId: 'history-5',
         sourceSection: 'Муборизаи Спитамен',
         significance: 'Рамзи фидокории миллӣ ва озодихоҳӣ дар таърихи тоҷикон.',
         dates: '329–327 п.м.',

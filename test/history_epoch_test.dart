@@ -20,7 +20,7 @@ void main() {
         summary: 'Мубориза бар зидди лашкари Искандари Мақдунӣ.',
         period: '558–330 то милод',
         grade: '5',
-        sourceBookId: 'marifat-462',
+        sourceBookId: 'history-5',
         sourceSection: 'Муборизаи Спитамен',
       );
       expect(ancientEntry.epoch, HistoryEpoch.ancient);
@@ -32,7 +32,7 @@ void main() {
         summary: 'Нахустин давлати мутамаркази тоҷикон.',
         period: 'Асрҳои IX–X милодӣ',
         grade: '7',
-        sourceBookId: 'marifat-464',
+        sourceBookId: 'history-7',
         sourceSection: 'Ташкилёбии давлати Сомониён',
       );
       expect(samanidEntry.epoch, HistoryEpoch.samanid);
@@ -44,7 +44,7 @@ void main() {
         summary: 'Давлати бузурги асрҳои миёна.',
         period: 'Асрҳои XIV–XV милодӣ',
         grade: '7',
-        sourceBookId: 'marifat-464',
+        sourceBookId: 'history-7',
         sourceSection: 'Давлати Темуриён',
       );
       expect(medievalEntry.epoch, HistoryEpoch.medieval);
@@ -56,7 +56,7 @@ void main() {
         summary: 'Сарвари ҳаракати маорифпарварӣ дар Аморати Бухоро.',
         period: 'Асри XIX милодӣ',
         grade: '9',
-        sourceBookId: 'marifat-466',
+        sourceBookId: 'history-9',
         sourceSection: 'Маорифпарварӣ',
         keywords: ['маорифпарварӣ', 'ҷадид'],
       );
@@ -69,7 +69,7 @@ void main() {
         summary: 'Таъсиси ҷумҳурии автономии Тоҷикистон дар ҳайати Ӯзбекистон.',
         period: '1917–1929',
         grade: '10',
-        sourceBookId: 'marifat-467',
+        sourceBookId: 'history-10',
         sourceSection: 'Таъсиси ҶМШС',
         keywords: ['шӯравӣ'],
       );
@@ -82,7 +82,7 @@ void main() {
         summary: 'Эъломияи истиқлолияти давлатӣ.',
         period: '1991 то давраи муосир',
         grade: '11',
-        sourceBookId: 'marifat-468',
+        sourceBookId: 'history-11',
         sourceSection: 'Истиқлолият',
       );
       expect(independenceEntry.epoch, HistoryEpoch.independence);
@@ -176,13 +176,13 @@ void main() {
 
       const testBooks = [
         HistoryBook(
-          id: 'marifat-462',
+          id: 'history-5',
           grade: '5',
           title: 'Таърихи халқи тоҷик: Замони ориёиҳо',
           author: 'Юсуфшоҳ Яъқубов',
           year: '2015',
           description: 'Китоби дарсии синфи 5.',
-          sourceUrl: 'https://marifat.tj/book/details?id=462',
+          sourceUrl: 'https://maorif.tj/libraries?category=27',
         ),
       ];
 
@@ -194,7 +194,7 @@ void main() {
           summary: 'Сарлашкар ва қаҳрамони муборизаи халқҳои Суғду Бохтар.',
           period: '558–330 то милод',
           grade: '5',
-          sourceBookId: 'marifat-462',
+          sourceBookId: 'history-5',
           sourceSection: 'Муборизаи Спитамен',
         ),
         HistoryEntry(
@@ -204,7 +204,7 @@ void main() {
           summary: 'Амири Сомониён.',
           period: 'Асрҳои IX–X милодӣ',
           grade: '7',
-          sourceBookId: 'marifat-464',
+          sourceBookId: 'history-7',
           sourceSection: 'Сомониён',
         ),
       ];

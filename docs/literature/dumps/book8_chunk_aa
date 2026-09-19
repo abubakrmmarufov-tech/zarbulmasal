@@ -23,7 +23,7 @@
 2026
 
 
-## https://marifat.tj (Page 1)
+## https://maorif.tj (Page 1)
 
 ТДУ (УДК) 891.550 (075.3)
 ТКБ (ББК) Я73  83.3 тоҷ.

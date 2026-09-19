@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'qalam_colors.dart';
 import 'qalam_typography.dart';
 import 'qalam_spacing.dart';
+import 'qalam_controls.dart';
 
 /// A list item for displaying a poet in the Шоирон (Poets) list.
 ///
@@ -146,11 +147,7 @@ class QalamPoetCard extends StatelessWidget {
                   ),
                 ),
               const SizedBox(width: 6),
-              Icon(
-                Icons.chevron_right,
-                size: 20,
-                color: colors.onSurfaceVariant,
-              ),
+              const QalamChevron(size: 20),
             ],
           ),
         ),

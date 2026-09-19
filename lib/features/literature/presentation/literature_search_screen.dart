@@ -42,7 +42,7 @@ class _LiteratureSearchScreenState
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          tooltip: AppTranslations.get('btn_back', lang),
           icon: const BackButtonIcon(),
           onPressed: () => qalamBack(context),
         ),
@@ -66,7 +66,7 @@ class _LiteratureSearchScreenState
         actions: [
           if (_query.isNotEmpty)
             IconButton(
-              tooltip: isPersian ? 'پاک کردن جستجو' : 'Пок кардани ҷустуҷӯ',
+              tooltip: AppTranslations.get('lit_search_clear_tooltip', lang),
               icon: const Icon(Icons.clear),
               onPressed: () {
                 _controller.clear();
@@ -81,20 +81,14 @@ class _LiteratureSearchScreenState
           ? Center(
               child: EmptyState(
                 icon: Icons.error_outline,
-                title: isPersian
-                    ? 'خطا در بارگیری جستجو'
-                    : 'Хато ҳангоми боргирии ҷустуҷӯ',
-                subtitle: isPersian
-                    ? 'داده‌های جستجو بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                    : 'Маълумоти ҷустуҷӯ бор нашуд. Лутфан дубора кӯшиш кунед.',
+                title: AppTranslations.get('lit_search_error_title', lang),
+                subtitle: AppTranslations.get('lit_search_error_sub', lang),
                 action: OutlinedButton(
                   onPressed: () {
                     ref.invalidate(literaryAuthorsProvider);
                     ref.invalidate(approvedWorksProvider);
                   },
-                  child: Text(
-                    isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                  ),
+                  child: Text(AppTranslations.get('btn_retry', lang)),
                 ),
               ),
             )
@@ -102,6 +96,7 @@ class _LiteratureSearchScreenState
           ? _buildEmptyPrompt(
               context,
               isPersian,
+              lang,
               authorsAsync.valueOrNull ?? const [],
             )
           : _buildSearchResults(
@@ -116,6 +111,7 @@ class _LiteratureSearchScreenState
   Widget _buildEmptyPrompt(
     BuildContext context,
     bool isPersian,
+    DisplayLanguage lang,
     List<LiteraryAuthor> authors,
   ) {
     final colors = Theme.of(context).colorScheme;
@@ -136,7 +132,7 @@ class _LiteratureSearchScreenState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            isPersian ? 'پیشنهادهای جستجو:' : 'Пешниҳодҳои ҷустуҷӯ:',
+            AppTranslations.get('lit_search_suggestions', lang),
             style: QalamTypography.eyebrow(color: colors.primary),
           ),
           const SizedBox(height: 16),
@@ -203,10 +199,12 @@ class _LiteratureSearchScreenState
       return Center(
         child: EmptyState(
           icon: Icons.search_off,
-          title: isPersian ? 'نتیجه‌ای یافت نشد' : 'Мундариҷа ёфт нашуд',
-          subtitle: isPersian
-              ? 'با عبارت «$_query» اثری یا شاعری پیدا نشد.'
-              : 'Бо вожаи «$_query» шоир ё асаре ёфт нашуд.',
+          title: AppTranslations.get('lit_no_results', lang),
+          subtitle: AppTranslations.translate(
+            'lit_search_no_results_for',
+            lang,
+            [_query],
+          ),
         ),
       );
     }
@@ -220,7 +218,7 @@ class _LiteratureSearchScreenState
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 8, 24, 8),
             child: Text(
-              isPersian ? 'شاعران' : 'Шоирон',
+              AppTranslations.get('lit_search_poets_section', lang),
               style: QalamTypography.eyebrow(color: colors.primary),
             ),
           ),
@@ -231,14 +229,27 @@ class _LiteratureSearchScreenState
                   : author.canonicalName,
               dates: author.hasAuditableBiographySource
                   ? AppTranslations.formatDigits(author.lifespan, lang)
-                  : (isPersian ? 'تاریخ‌ها در بررسی' : 'Санаҳо дар санҷиш'),
+                  : AppTranslations.get('lit_search_dates_pending', lang),
               exactDates:
                   (author.hasAuditableBiographySource &&
                       (author.birthDateExact != null ||
                           author.deathDateExact != null))
-                  ? (isPersian
-                        ? 'ولادت: ${author.birthDateExact ?? author.birthYear ?? "—"} · وفات: ${author.deathDateExact ?? author.deathYear ?? "در قید حیات"}'
-                        : 'Таваллуд: ${author.birthDateExact ?? author.birthYear ?? "—"} · Вафот: ${author.deathDateExact ?? author.deathYear ?? "дар ҳаёт"}')
+                  ? AppTranslations.translate(
+                      'lit_author_dates',
+                      lang,
+                      [
+                        AppTranslations.formatDigits(
+                          author.birthDateExact ?? author.birthYear ?? '—',
+                          lang,
+                        ),
+                        AppTranslations.formatDigits(
+                          author.deathDateExact ??
+                              author.deathYear ??
+                              AppTranslations.get('lit_author_alive', lang),
+                          lang,
+                        ),
+                      ],
+                    )
                   : null,
               period: author.literaryPeriod,
               isPublicDomain: author.isPublicDomain,
@@ -250,7 +261,7 @@ class _LiteratureSearchScreenState
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 8, 24, 8),
             child: Text(
-              isPersian ? 'شعرها و آثار' : 'Шеърҳо ва осор',
+              AppTranslations.get('lit_search_works_section', lang),
               style: QalamTypography.eyebrow(color: colors.primary),
             ),
           ),
@@ -280,7 +291,7 @@ class _LiteratureSearchScreenState
                       overflow: TextOverflow.ellipsis,
                     )
                   : null,
-              trailing: const Icon(Icons.chevron_right, size: 20),
+              trailing: const QalamChevron(size: 20),
               onTap: () => context.push('/literature/work/${work.id}'),
             ),
         ],

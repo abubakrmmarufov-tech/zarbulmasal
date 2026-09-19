@@ -70,7 +70,7 @@ const testHistoryEntry = HistoryEntry(
       'Сарлашкар ва қаҳрамони муборизаи халқҳои Суғду Бохтар бар зидди лашкари Искандари Мақдунӣ.',
   period: 'Солҳои 329–327 пеш аз милод',
   grade: '5',
-  sourceBookId: 'marifat-462',
+  sourceBookId: 'history-5',
   sourceSection: 'Муборизаи Спитамен',
   significance: 'Рамзи фидокории миллӣ ва озодихоҳӣ дар таърихи тоҷикон.',
   dates: '329–327 п.м.',
@@ -119,6 +119,24 @@ void main() {
       expect(find.textContaining('Рӯдакӣ'), findsWidgets);
       expect(find.textContaining('Шоирон'), findsWidgets);
     });
+
+    testWidgets(
+      'searching with Latin characters (rudaki) finds Cyrillic poet',
+      (tester) async {
+        await openApp(
+          tester,
+          route: '/search',
+          catalog: seedProverbs,
+          overrides: overrides,
+        );
+
+        await tester.enterText(find.byType(TextField), 'rudaki');
+        await tester.pumpAndSettle();
+
+        expect(find.textContaining('Рӯдакӣ'), findsWidgets);
+        expect(find.textContaining('Шоирон'), findsWidgets);
+      },
+    );
 
     testWidgets('searching for a proverb displays proverb result', (
       tester,

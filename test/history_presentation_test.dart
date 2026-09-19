@@ -32,13 +32,13 @@ Future<void> pumpHistoryScreen(
       books ??
       [
         const HistoryBook(
-          id: 'marifat-462',
+          id: 'history-5',
           grade: '5',
           title: 'Таърихи халқи тоҷик: Замони ориёиҳо',
           author: 'Юсуфшоҳ Яъқубов',
           year: '2015',
           description: 'Китоби дарсии синфи 5 оид ба замони қадим ва ориёиҳо.',
-          sourceUrl: 'https://marifat.tj/book/details?id=462',
+          sourceUrl: 'https://maorif.tj/libraries?category=27',
         ),
       ];
 
@@ -53,7 +53,7 @@ Future<void> pumpHistoryScreen(
               'Сарлашкар ва қаҳрамони муборизаи халқҳои Суғду Бохтар бар зидди лашкари Искандари Мақдунӣ.',
           period: 'Солҳои 329–327 пеш аз милод',
           grade: '5',
-          sourceBookId: 'marifat-462',
+          sourceBookId: 'history-5',
           sourceSection: 'Муборизаи Спитамен',
           significance:
               'Рамзи фидокории миллӣ ва озодихоҳӣ дар таърихи тоҷикон.',
@@ -139,7 +139,7 @@ void main() {
             summary: 'Хулосаи рӯйдоди санҷишӣ.',
             period: 'Соли 1000',
             grade: '5',
-            sourceBookId: 'marifat-462',
+            sourceBookId: 'history-5',
             sourceSection: 'Рӯйдодҳо',
           ),
           HistoryEntry(
@@ -149,7 +149,7 @@ void main() {
             summary: 'Хулосаи ривояти санҷишӣ.',
             period: 'Замони қадим',
             grade: '5',
-            sourceBookId: 'marifat-462',
+            sourceBookId: 'history-5',
             sourceSection: 'Ривоятҳо',
           ),
         ],
@@ -190,13 +190,13 @@ void main() {
         tester,
         books: [
           const HistoryBook(
-            id: 'marifat-503',
+            id: 'history-8',
             grade: '8',
             title: 'Таърихи халқи тоҷик',
             author: 'А. Мухторов',
             year: '2016',
             description: 'Source record only',
-            sourceUrl: 'https://marifat.tj/book/details?id=503',
+            sourceUrl: 'https://maorif.tj/libraries?category=27',
           ),
         ],
         entries: const [],

@@ -5,9 +5,10 @@
 *.swp
 .DS_Store
 
-# Eclipse / Android Studio
+# Eclipse / Android Studio / IDEs
 .idea/
 *.iml
+.continue/
 
 # Flutter/Dart
 .dart_tool/

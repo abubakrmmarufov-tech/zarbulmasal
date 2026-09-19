@@ -289,7 +289,7 @@ class SavedScreen extends ConsumerWidget {
                           ),
                         )
                       : null,
-                  trailing: const Icon(Icons.chevron_right, size: 20),
+                  trailing: const QalamChevron(size: 20),
                   onTap: () => context.push(activity.route),
                 ),
               );

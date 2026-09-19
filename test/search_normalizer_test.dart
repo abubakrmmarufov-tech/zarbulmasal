@@ -53,5 +53,28 @@ void main() {
       expect(SearchNormalizer.matches('ضرب‌المثل', 'ضرب المثل'), isTrue);
       expect(SearchNormalizer.matches('کتاب', 'كتاب'), isTrue);
     });
+
+    test('transliterates Latin queries and matches Tajik Cyrillic content', () {
+      expect(SearchNormalizer.latinToTajikCyrillic('rudaki'), 'рудаки');
+      expect(SearchNormalizer.latinToTajikCyrillic('khayyam'), 'хайем');
+      expect(SearchNormalizer.latinToTajikCyrillic('sino'), 'сино');
+      expect(SearchNormalizer.latinToTajikCyrillic('somoniyon'), 'сомониен');
+      expect(
+        SearchNormalizer.latinToTajikCyrillic('zarbulmasal'),
+        'зарбулмасал',
+      );
+
+      // Matching target with Latin input
+      expect(SearchNormalizer.matches('Абӯабдуллоҳи Рӯдакӣ', 'rudaki'), isTrue);
+      expect(SearchNormalizer.matches('Умари Хайём', 'khayyam'), isTrue);
+      expect(SearchNormalizer.matches('Абӯалӣ ибни Сино', 'sino'), isTrue);
+      expect(SearchNormalizer.matches('Давлати Сомониён', 'somoniyon'), isTrue);
+      expect(
+        SearchNormalizer.matches('Зарбулмасалҳои тоҷикӣ', 'zarbulmasal'),
+        isTrue,
+      );
+      expect(SearchNormalizer.matches('Ҳофизи Шерозӣ', 'hafiz'), isTrue);
+      expect(SearchNormalizer.matches('Абдурраҳмони Ҷомӣ', 'jami'), isTrue);
+    });
   });
 }

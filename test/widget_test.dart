@@ -16,6 +16,7 @@ import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
+import 'package:zarbulmasal/shared/widgets/onboarding_overlay.dart';
 
 class TestApp {
   final ProviderContainer container;
@@ -402,4 +403,25 @@ void main() {
     expect(tester.getRect(settingsLabel).height, lessThan(24));
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets(
+    'onboarding overlay renders on first launch and can be dismissed',
+    (tester) async {
+      final app = await openApp(tester, onboardingComplete: false);
+
+      // Onboarding overlay should be present on first launch
+      expect(find.byType(OnboardingOverlay), findsOneWidget);
+      expect(find.byKey(const ValueKey('onboarding-tooltip')), findsOneWidget);
+
+      // Skip button dismisses overlay
+      final skipButton = find.text('Гузаштан');
+      expect(skipButton, findsOneWidget);
+      await tester.tap(skipButton);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OnboardingOverlay), findsNothing);
+      expect(app.container.read(onboardingCompleteProvider), isTrue);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }

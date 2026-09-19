@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/design_system/design_system.dart';
+import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../domain/literary_work.dart';
 import '../domain/rights_record.dart';
@@ -28,7 +29,6 @@ class SourcePanel extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
 
     return DraggableScrollableSheet(
       initialChildSize: 0.75,
@@ -78,7 +78,7 @@ class SourcePanel extends ConsumerWidget {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        isPersian ? 'منبع و بررسی اصالت' : 'Сарчашма ва санҷиш',
+                        AppTranslations.get('lit_source_panel_title', lang),
                         style: QalamTypography.sectionTitle(
                           color: colors.onSurface,
                           fontSize: 19,
@@ -86,7 +86,7 @@ class SourcePanel extends ConsumerWidget {
                       ),
                     ),
                     IconButton(
-                      tooltip: isPersian ? 'بستن' : 'Бастан',
+                      tooltip: AppTranslations.get('btn_close', lang),
                       icon: const Icon(Icons.close, size: 20),
                       onPressed: () => Navigator.of(context).pop(),
                     ),
@@ -100,15 +100,15 @@ class SourcePanel extends ConsumerWidget {
                   controller: scrollController,
                   padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
                   children: [
-                    _buildPrimarySourceSection(context, isPersian),
+                    _buildPrimarySourceSection(context, lang),
                     const SizedBox(height: 24),
                     if (work.secondarySource != null) ...[
-                      _buildSecondarySourceSection(context, isPersian),
+                      _buildSecondarySourceSection(context, lang),
                       const SizedBox(height: 24),
                     ],
-                    _buildVerificationSection(context, isPersian),
+                    _buildVerificationSection(context, lang),
                     const SizedBox(height: 24),
-                    _buildRightsSection(context, isPersian),
+                    _buildRightsSection(context, lang),
                   ],
                 ),
               ),
@@ -119,7 +119,7 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildPrimarySourceSection(BuildContext context, bool isPersian) {
+  Widget _buildPrimarySourceSection(BuildContext context, DisplayLanguage lang) {
     final colors = Theme.of(context).colorScheme;
     final primary = work.primarySource;
 
@@ -129,7 +129,7 @@ class SourcePanel extends ConsumerWidget {
         _buildSectionHeader(
           context,
           icon: Icons.menu_book,
-          title: isPersian ? 'منبع اصلی (Tier A)' : 'Сарчашмаи асосӣ (Tier A)',
+          title: AppTranslations.get('lit_source_tier_a', lang),
         ),
         const SizedBox(height: 12),
         if (primary != null) ...[
@@ -153,7 +153,7 @@ class SourcePanel extends ConsumerWidget {
                 if (primary.authorAsPrinted != null) ...[
                   const SizedBox(height: 4),
                   _buildMetaRow(
-                    isPersian ? 'مؤلف:' : 'Муаллиф:',
+                    '${AppTranslations.get('lit_source_author', lang)}:',
                     primary.authorAsPrinted!,
                     colors,
                   ),
@@ -161,21 +161,21 @@ class SourcePanel extends ConsumerWidget {
                 if (primary.editor != null) ...[
                   const SizedBox(height: 4),
                   _buildMetaRow(
-                    isPersian ? 'محرر:' : 'Муҳаррир:',
+                    '${AppTranslations.get('lit_source_editor', lang)}:',
                     primary.editor!,
                     colors,
                   ),
                 ],
                 const SizedBox(height: 4),
                 _buildMetaRow(
-                  isPersian ? 'نشریات:' : 'Нашриёт:',
+                  '${AppTranslations.get('lit_source_publisher', lang)}:',
                   '${primary.city}: ${primary.publisher}, ${primary.year}',
                   colors,
                 ),
                 if (primary.formattedPages != null) ...[
                   const SizedBox(height: 4),
                   _buildMetaRow(
-                    isPersian ? 'صفحه:' : 'Саҳифа:',
+                    '${AppTranslations.get('lit_source_page', lang)}:',
                     primary.formattedPages!,
                     colors,
                   ),
@@ -183,7 +183,7 @@ class SourcePanel extends ConsumerWidget {
                 if (primary.volume != null) ...[
                   const SizedBox(height: 4),
                   _buildMetaRow(
-                    isPersian ? 'جلد:' : 'Ҷилд:',
+                    '${AppTranslations.get('lit_source_volume', lang)}:',
                     primary.volume!,
                     colors,
                   ),
@@ -195,7 +195,7 @@ class SourcePanel extends ConsumerWidget {
                 if (primary.sourceInstitution != null) ...[
                   const SizedBox(height: 4),
                   _buildMetaRow(
-                    isPersian ? 'مؤسسه:' : 'Муассиса:',
+                    '${AppTranslations.get('lit_source_institution', lang)}:',
                     primary.sourceInstitution!,
                     colors,
                   ),
@@ -204,7 +204,7 @@ class SourcePanel extends ConsumerWidget {
                 const Divider(height: 1),
                 const SizedBox(height: 10),
                 Text(
-                  isPersian ? 'ارجاع کتاب‌شناختی:' : 'Иқтибоси библиографӣ:',
+                  AppTranslations.get('lit_source_biblio_citation', lang),
                   style: QalamTypography.meta(color: colors.primary),
                 ),
                 const SizedBox(height: 4),
@@ -218,7 +218,7 @@ class SourcePanel extends ConsumerWidget {
                 if (primary.sourceImageVerified) ...[
                   const SizedBox(height: 12),
                   InkWell(
-                    onTap: () => _showPageImageDialog(context, isPersian),
+                    onTap: () => _showPageImageDialog(context, lang),
                     borderRadius: BorderRadius.circular(6),
                     child: Container(
                       padding: const EdgeInsets.all(12),
@@ -266,9 +266,10 @@ class SourcePanel extends ConsumerWidget {
                                     const SizedBox(width: 6),
                                     Expanded(
                                       child: Text(
-                                        isPersian
-                                            ? 'تصویر صفحهٔ کتاب درسی'
-                                            : 'Тасвири аслии саҳифаи китоб',
+                                        AppTranslations.get(
+                                          'lit_source_page_image_title',
+                                          lang,
+                                        ),
                                         style: QalamTypography.sectionTitle(
                                           color: QalamColors.forest,
                                           fontSize: 14,
@@ -279,9 +280,10 @@ class SourcePanel extends ConsumerWidget {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  isPersian
-                                      ? 'برای مشاهده و بزرگ‌نمایی تصویر اسکن‌شده ضربه بزنید'
-                                      : 'Барои дидан ва калон кардани саҳифаи аслӣ пахш кунед',
+                                  AppTranslations.get(
+                                    'lit_source_page_image_hint',
+                                    lang,
+                                  ),
                                   style: QalamTypography.meta(
                                     color: colors.onSurfaceVariant,
                                     fontSize: 12,
@@ -305,9 +307,7 @@ class SourcePanel extends ConsumerWidget {
           ),
         ] else ...[
           Text(
-            isPersian
-                ? 'منبع چاپی هنوز ثبت نشده است.'
-                : 'Сарчашмаи чопӣ ҳанӯз ба қайд гирифта нашудааст.',
+            AppTranslations.get('lit_source_not_registered', lang),
             style: QalamTypography.bodySecondary(
               color: colors.onSurfaceVariant,
             ),
@@ -317,7 +317,7 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildSecondarySourceSection(BuildContext context, bool isPersian) {
+  Widget _buildSecondarySourceSection(BuildContext context, DisplayLanguage lang) {
     final colors = Theme.of(context).colorScheme;
     final secondary = work.secondarySource;
     if (secondary == null) return const SizedBox.shrink();
@@ -328,9 +328,7 @@ class SourcePanel extends ConsumerWidget {
         _buildSectionHeader(
           context,
           icon: Icons.auto_stories,
-          title: isPersian
-              ? 'منبع دوم (مقابله)'
-              : 'Сарчашмаи дуввум (Муқобала)',
+          title: AppTranslations.get('lit_source_sec_proof', lang),
         ),
         const SizedBox(height: 12),
         Container(
@@ -352,14 +350,14 @@ class SourcePanel extends ConsumerWidget {
               ),
               const SizedBox(height: 4),
               _buildMetaRow(
-                isPersian ? 'نشریات:' : 'Нашриёт:',
+                '${AppTranslations.get('lit_source_publisher', lang)}:',
                 '${secondary.city}: ${secondary.publisher}, ${secondary.year}',
                 colors,
               ),
               if (secondary.formattedPages != null) ...[
                 const SizedBox(height: 4),
                 _buildMetaRow(
-                  isPersian ? 'صفحه:' : 'Саҳифа:',
+                  '${AppTranslations.get('lit_source_page', lang)}:',
                   secondary.formattedPages!,
                   colors,
                 ),
@@ -367,7 +365,7 @@ class SourcePanel extends ConsumerWidget {
               if (work.textMatchResult != null) ...[
                 const SizedBox(height: 8),
                 _buildMetaRow(
-                  isPersian ? 'نتیجه مقابله:' : 'Натиҷаи муқобала:',
+                  AppTranslations.get('lit_source_comparison_result', lang),
                   work.textMatchResult!,
                   colors,
                 ),
@@ -375,7 +373,7 @@ class SourcePanel extends ConsumerWidget {
               if (work.variantNotes != null) ...[
                 const SizedBox(height: 8),
                 Text(
-                  isPersian ? 'یادداشت‌های نسخه‌بدل:' : 'Тафовути нусхаҳо:',
+                  AppTranslations.get('lit_source_variant_notes', lang),
                   style: QalamTypography.meta(color: colors.primary),
                 ),
                 const SizedBox(height: 4),
@@ -394,7 +392,7 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildVerificationSection(BuildContext context, bool isPersian) {
+  Widget _buildVerificationSection(BuildContext context, DisplayLanguage lang) {
     final colors = Theme.of(context).colorScheme;
     final ver = work.verification;
 
@@ -406,10 +404,10 @@ class SourcePanel extends ConsumerWidget {
         : (isRejected ? QalamColors.danger : QalamColors.burgundySoft);
 
     final statusText = isApproved
-        ? (isPersian ? 'تأیید شده' : 'Тасдиқшуда')
+        ? AppTranslations.get('lit_source_verified_label', lang)
         : (isRejected
-              ? (isPersian ? 'رد شده' : 'Радшуда')
-              : (isPersian ? 'در حال بررسی' : 'Дар баррасӣ'));
+              ? AppTranslations.get('lit_source_rejected_label', lang)
+              : AppTranslations.get('lit_source_review_label', lang));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -420,7 +418,7 @@ class SourcePanel extends ConsumerWidget {
             _buildSectionHeader(
               context,
               icon: Icons.fact_check_outlined,
-              title: isPersian ? 'بررسی‌های متن‌شناسی' : 'Санҷишҳои матншиносӣ',
+              title: AppTranslations.get('lit_source_textual_checks', lang),
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -444,62 +442,48 @@ class SourcePanel extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: Text(
-              '${isPersian ? 'مصحح/محرر:' : 'Муҳаққиқ/муҳаррир:'} ${ver.evidenceHash ?? '—'} (${ver.verifiedAt ?? '—'})',
+              '${AppTranslations.get('lit_source_checker_label', lang)} ${ver.evidenceHash ?? '—'} (${ver.verifiedAt ?? '—'})',
               style: QalamTypography.meta(color: colors.onSurfaceVariant),
             ),
           ),
         ],
         _buildCheckItem(
-          isPersian
-              ? 'منبع اصلی چاپی بررسی شد'
-              : 'Сарчашмаи асосии чопӣ санҷида шуд',
+          AppTranslations.get('lit_source_check_primary', lang),
           (ver.evidenceLevel.index >= VerificationLevel.primaryChecked.index),
           colors,
         ),
         _buildCheckItem(
-          isPersian ? 'منبع دوم مقابله شد' : 'Сарчашмаи дуввум муқобала шуд',
+          AppTranslations.get('lit_source_check_secondary', lang),
           ver.pageVerified,
           colors,
         ),
         _buildCheckItem(
-          isPersian
-              ? 'عنوان در نسخهٔ اصل تأیید شد'
-              : 'Номи асар дар нашри аслӣ тасдиқ шуд',
+          AppTranslations.get('lit_source_check_title', lang),
           (ver.evidenceLevel.index >= VerificationLevel.sourceLocated.index),
           colors,
         ),
         _buildCheckItem(
-          isPersian
-              ? 'انتساب به مؤلف محرز شد'
-              : 'Муаллифи асар муайян ва тасдиқ шуд',
+          AppTranslations.get('lit_source_check_author', lang),
           (ver.evidenceLevel.index >= VerificationLevel.sourceLocated.index),
           colors,
         ),
         _buildCheckItem(
-          isPersian
-              ? 'صفحات کتاب چاپی مستند شد'
-              : 'Саҳифаҳои нашри чопӣ дақиқ шуд',
+          AppTranslations.get('lit_source_check_pages', lang),
           ver.pageVerified,
           colors,
         ),
         _buildCheckItem(
-          isPersian
-              ? 'متن بیت‌به‌بیت مقابله شد'
-              : 'Матн мисраъ ба мисраъ муқобала шуд',
+          AppTranslations.get('lit_source_check_lines', lang),
           (ver.evidenceLevel.index >= VerificationLevel.collated.index),
           colors,
         ),
         _buildCheckItem(
-          isPersian
-              ? 'رسم‌الخط و اعراب بررسی شد'
-              : 'Имло, аломатҳо ва хат тасдиқ шуд',
+          AppTranslations.get('lit_source_check_orthography', lang),
           (ver.evidenceLevel.index >= VerificationLevel.collated.index),
           colors,
         ),
         _buildCheckItem(
-          isPersian
-              ? 'حقوق مؤلف مطابق قانون بررسی شد'
-              : 'Ҳуқуқи муаллиф тибқи қонунгузорӣ тасдиқ шуд',
+          AppTranslations.get('lit_source_check_copyright', lang),
           (ver.evidenceLevel.index >=
               VerificationLevel.editoriallyApproved.index),
           colors,
@@ -513,7 +497,7 @@ class SourcePanel extends ConsumerWidget {
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
-              '${isPersian ? 'علت رد:' : 'Сабаби рад:'} ${ver.rejectionReason}',
+              '${AppTranslations.get('lit_source_rejection_reason', lang)} ${ver.rejectionReason}',
               style: QalamTypography.bodySecondary(
                 color: QalamColors.danger,
                 fontSize: 13,
@@ -525,7 +509,7 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildRightsSection(BuildContext context, bool isPersian) {
+  Widget _buildRightsSection(BuildContext context, DisplayLanguage lang) {
     final colors = Theme.of(context).colorScheme;
     final rights = work.rights;
 
@@ -537,9 +521,7 @@ class SourcePanel extends ConsumerWidget {
         _buildSectionHeader(
           context,
           icon: Icons.gavel_outlined,
-          title: isPersian
-              ? 'وضعیت حقوقی و کپی‌رایت'
-              : 'Ҳуқуқи муаллиф ва мақом',
+          title: AppTranslations.get('lit_source_copyright_status', lang),
         ),
         const SizedBox(height: 12),
         Container(
@@ -563,12 +545,8 @@ class SourcePanel extends ConsumerWidget {
                   Expanded(
                     child: Text(
                       isPublic
-                          ? (isPersian
-                                ? 'مالکیت عمومی (Public Domain)'
-                                : 'Моликияти умумӣ (Public Domain)')
-                          : (isPersian
-                                ? 'دارای کپی‌رایت / تحت حفاظت'
-                                : 'Ҳифзшуда / Таҳти ҳимоя'),
+                          ? AppTranslations.get('lit_rights_public_domain', lang)
+                          : AppTranslations.get('lit_rights_protected', lang),
                       style: QalamTypography.label(
                         color: isPublic ? QalamColors.forest : colors.primary,
                         fontSize: 14,
@@ -588,7 +566,7 @@ class SourcePanel extends ConsumerWidget {
               if (rights.rightsSource != null) ...[
                 const SizedBox(height: 6),
                 _buildMetaRow(
-                  isPersian ? 'مرجع قانونی:' : 'Асоси қонунӣ:',
+                  AppTranslations.get('lit_source_legal_basis', lang),
                   rights.rightsSource!,
                   colors,
                 ),
@@ -596,7 +574,7 @@ class SourcePanel extends ConsumerWidget {
               if (rights.permissionReference != null) ...[
                 const SizedBox(height: 6),
                 _buildMetaRow(
-                  isPersian ? 'سند مجوز:' : 'Ҳуҷҷати иҷозат:',
+                  AppTranslations.get('lit_source_license_doc', lang),
                   rights.permissionReference!,
                   colors,
                 ),
@@ -605,13 +583,13 @@ class SourcePanel extends ConsumerWidget {
               Row(
                 children: [
                   _buildTag(
-                    isPersian ? 'متن کامل' : 'Матни пурра',
+                    AppTranslations.get('lit_source_full_text', lang),
                     rights.fullTextAllowed,
                     colors,
                   ),
                   const SizedBox(width: 8),
                   _buildTag(
-                    isPersian ? 'اقتباس' : 'Иқтибос',
+                    AppTranslations.get('lit_source_excerpt', lang),
                     rights.excerptAllowed,
                     colors,
                   ),
@@ -702,7 +680,7 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  void _showPageImageDialog(BuildContext context, bool isPersian) {
+  void _showPageImageDialog(BuildContext context, DisplayLanguage lang) {
     final primary = work.primarySource;
 
     showDialog<void>(
@@ -716,14 +694,14 @@ class SourcePanel extends ConsumerWidget {
             foregroundColor: Colors.white,
             elevation: 0,
             leading: IconButton(
-              tooltip: isPersian ? 'بستن' : 'Пӯшидан',
+              tooltip: AppTranslations.get('lit_source_page_close', lang),
               icon: const Icon(Icons.close),
               onPressed: () => Navigator.of(dialogContext).pop(),
             ),
             title: Text(
               primary?.bookTitle != null
                   ? '${primary!.bookTitle} ${primary.formattedPages != null ? "(${primary.formattedPages})" : ""}'
-                  : (isPersian ? 'تصویر صفحه' : 'Тасвири саҳифа'),
+                  : AppTranslations.get('lit_source_page_title', lang),
               style: QalamTypography.sectionTitle(
                 color: Colors.white,
                 fontSize: 16,
@@ -739,9 +717,7 @@ class SourcePanel extends ConsumerWidget {
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) => Center(
                   child: Text(
-                    isPersian
-                        ? 'تصویر صفحه در دسترس نیست'
-                        : 'Тасвири саҳифа дастрас нест',
+                    AppTranslations.get('lit_source_image_unavailable', lang),
                     style: const TextStyle(color: Colors.white70),
                   ),
                 ),

@@ -36,12 +36,12 @@ class PoetDetailScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          tooltip: AppTranslations.get('btn_back', lang),
           icon: const BackButtonIcon(),
           onPressed: () => qalamBack(context),
         ),
         title: Text(
-          isPersian ? 'زندگینامه و آثار' : 'Зиндагинома ва осор',
+          AppTranslations.get('lit_poet_dossier', lang),
           style: QalamTypography.sectionTitle(
             color: colors.onSurface,
             fontSize: 18,
@@ -53,13 +53,11 @@ class PoetDetailScreen extends ConsumerWidget {
         error: (_, _) => Center(
           child: EmptyState(
             icon: Icons.error_outline,
-            title: isPersian ? 'خطا در بارگیری' : 'Хато ҳангоми боргирӣ',
-            subtitle: isPersian
-                ? 'اطلاعات شاعر بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                : 'Маълумоти шоир бор нашуд. Лутфан дубора кӯшиш кунед.',
+            title: AppTranslations.get('lit_poet_error_title', lang),
+            subtitle: AppTranslations.get('lit_poet_error_sub', lang),
             action: OutlinedButton(
               onPressed: () => ref.invalidate(authorByIdProvider(poetId)),
-              child: Text(isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан'),
+              child: Text(AppTranslations.get('btn_retry', lang)),
             ),
           ),
         ),
@@ -68,13 +66,11 @@ class PoetDetailScreen extends ConsumerWidget {
             return Center(
               child: EmptyState(
                 icon: Icons.person_off_outlined,
-                title: isPersian ? 'شاعر یافت نشد' : 'Шоир ёфт нашуд',
-                subtitle: isPersian
-                    ? 'اطلاعات این مؤلف در پایگاه داده ثبت نشده است.'
-                    : 'Маълумоти ин шоир дар пойгоҳи маълумот пайдо нашуд.',
+                title: AppTranslations.get('lit_poet_not_found_title', lang),
+                subtitle: AppTranslations.get('lit_poet_not_found_sub', lang),
                 action: OutlinedButton(
                   onPressed: () => qalamBack(context),
-                  child: Text(isPersian ? 'بازگشت' : 'Бозгашт'),
+                  child: Text(AppTranslations.get('btn_back', lang)),
                 ),
               ),
             );
@@ -143,15 +139,15 @@ class _PoetDetailContent extends ConsumerWidget {
         : poet.biographyTj;
     final hasAuditableBiography = poet.hasAuditableBiographySource;
     final biographySourceLabel = poet.hasAuditableBiographySource
-        ? (isPersian ? 'منبع استناد زندگینامه:' : 'Сарчашмаи истинод:')
-        : (isPersian
-              ? 'منبع صفحه‌دارِ تأییدشده ثبت نشده است:'
-              : 'Сарчашмаи саҳифадори санҷидашуда сабт нашудааст:');
+        ? AppTranslations.get('lit_poet_bio_source_verified', lang)
+        : AppTranslations.get('lit_poet_bio_source_unverified', lang);
     final biographySourceText = poet.hasAuditableBiographySource
         ? poet.biographySource
-        : (isPersian
-              ? 'برچسب واردشده: ${poet.biographySource}'
-              : 'Барчаспи воридотӣ: ${poet.biographySource}');
+        : AppTranslations.translate(
+            'lit_poet_source_tag',
+            lang,
+            [poet.biographySource],
+          );
 
     return CustomScrollView(
       slivers: [
@@ -201,7 +197,7 @@ class _PoetDetailContent extends ConsumerWidget {
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              isPersian ? 'مالکیت عمومی' : 'Моликияти умумӣ',
+                              AppTranslations.get('lit_public_domain', lang),
                               style: QalamTypography.meta(
                                 color: QalamColors.forest,
                                 fontSize: 11,
@@ -283,9 +279,7 @@ class _PoetDetailContent extends ConsumerWidget {
                 ] else if (poet.lifespan.isNotEmpty ||
                     (poet.birthPlace?.isNotEmpty ?? false))
                   Text(
-                    isPersian
-                        ? 'تاریخ و زادگاه تا بررسی صفحهٔ منبع در دست بررسی است.'
-                        : 'Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма дар интизоранд.',
+                    AppTranslations.get('lit_poet_header_dates_pending', lang),
                     style: QalamTypography.meta(
                       color: colors.onSurfaceVariant,
                       fontSize: 13,
@@ -319,9 +313,22 @@ class _PoetDetailContent extends ConsumerWidget {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          isPersian
-                              ? 'ولادت: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · وفات: ${poet.deathDateExact ?? poet.deathYear ?? "در قید حیات"}'
-                              : 'Таваллуд: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · Вафот: ${poet.deathDateExact ?? poet.deathYear ?? "дар ҳаёт"}',
+                          AppTranslations.translate(
+                            'lit_author_dates',
+                            lang,
+                            [
+                              AppTranslations.formatDigits(
+                                poet.birthDateExact ?? poet.birthYear ?? '—',
+                                lang,
+                              ),
+                              AppTranslations.formatDigits(
+                                poet.deathDateExact ??
+                                    poet.deathYear ??
+                                    AppTranslations.get('lit_author_alive', lang),
+                                lang,
+                              ),
+                            ],
+                          ),
                           style: QalamTypography.meta(
                             color: colors.onSurface,
                             fontSize: 13,
@@ -364,9 +371,16 @@ class _PoetDetailContent extends ConsumerWidget {
                               ),
                               const SizedBox(width: 6),
                               Text(
-                                isPersian
-                                    ? 'اشعار تأییدشده در برنامه: ${AppTranslations.formatDigits(approvedCount.toString(), lang)}'
-                                    : 'Шеърҳои тасдиқшуда дар барнома: $approvedCount',
+                                AppTranslations.translate(
+                                  'lit_poet_approved_works_count',
+                                  lang,
+                                  [
+                                    AppTranslations.formatDigits(
+                                      approvedCount.toString(),
+                                      lang,
+                                    ),
+                                  ],
+                                ),
                                 style: TextStyle(
                                   color: colors.primary,
                                   fontWeight: FontWeight.w600,
@@ -403,9 +417,16 @@ class _PoetDetailContent extends ConsumerWidget {
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  isPersian
-                                      ? 'رکوردها تحت بررسی: ${AppTranslations.formatDigits(reviewCount.toString(), lang)}'
-                                      : 'Сабтҳо таҳти санҷиш: $reviewCount',
+                                  AppTranslations.translate(
+                                    'lit_poet_review_works_count',
+                                    lang,
+                                    [
+                                      AppTranslations.formatDigits(
+                                        reviewCount.toString(),
+                                        lang,
+                                      ),
+                                    ],
+                                  ),
                                   style: QalamTypography.meta(
                                     color: colors.onSurfaceVariant,
                                     fontSize: 13,
@@ -458,7 +479,7 @@ class _PoetDetailContent extends ConsumerWidget {
                 const SizedBox(height: 24),
                 // Biography Section
                 Text(
-                  isPersian ? 'زندگینامه' : 'Зиндагинома',
+                  AppTranslations.get('lit_poet_biography', lang),
                   style: QalamTypography.sectionTitle(
                     color: colors.onSurface,
                     fontSize: 22,
@@ -471,7 +492,7 @@ class _PoetDetailContent extends ConsumerWidget {
                     children: [
                       if (isPersian && poet.biographyFa == null) ...[
                         Text(
-                          'این زندگی‌نامه فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شود.',
+                          AppTranslations.get('lit_poet_bio_cyrillic_fallback', lang),
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.right,
                           style: QalamTypography.meta(
@@ -499,9 +520,7 @@ class _PoetDetailContent extends ConsumerWidget {
                   )
                 else
                   Text(
-                    isPersian
-                        ? 'متن زندگینامه تا ثبت و بررسی ارجاع صفحه‌دار در دسترس نیست.'
-                        : 'Матни тарҷумаиҳолӣ то сабт ва санҷиши истиноди саҳифадор дастрас нест.',
+                    AppTranslations.get('lit_poet_bio_pending', lang),
                     style: QalamTypography.bodySecondary(
                       color: colors.onSurfaceVariant,
                       fontSize: 15,
@@ -544,7 +563,7 @@ class _PoetDetailContent extends ConsumerWidget {
                 if (poet.relatedHistoryEntryIds.isNotEmpty) ...[
                   const SizedBox(height: 24),
                   Text(
-                    isPersian ? 'جهان او را بشناسید' : 'Ҷаҳони ӯро бишносед',
+                    AppTranslations.get('lit_poet_explore_world', lang),
                     style: QalamTypography.sectionTitle(
                       color: colors.onSurface,
                       fontSize: 20,
@@ -552,9 +571,7 @@ class _PoetDetailContent extends ConsumerWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    isPersian
-                        ? 'دوره‌ها، حاکمان و وقایع تاریخی هم‌دوره در برنامه'
-                        : 'Давлатҳо, чеҳраҳо ва воқеаҳои таърихии ҳамзамон дар таърихи халқи тоҷик',
+                    AppTranslations.get('lit_poet_explore_world_sub', lang),
                     style: QalamTypography.bodySecondary(
                       color: colors.onSurfaceVariant,
                       fontSize: 13,
@@ -602,18 +619,23 @@ class _PoetDetailContent extends ConsumerWidget {
                 // Works Section Title
                 worksAsync.maybeWhen(
                   data: (works) => Text(
-                    isPersian
-                        ? 'آثار تأییدشده در برنامه (${AppTranslations.formatDigits(works.length.toString(), lang)})'
-                        : 'Осори тасдиқшуда дар барнома (${works.length})',
+                    AppTranslations.translate(
+                      'lit_poet_approved_works_header',
+                      lang,
+                      [
+                        AppTranslations.formatDigits(
+                          works.length.toString(),
+                          lang,
+                        ),
+                      ],
+                    ),
                     style: QalamTypography.sectionTitle(
                       color: colors.onSurface,
                       fontSize: 22,
                     ),
                   ),
                   orElse: () => Text(
-                    isPersian
-                        ? 'آثار تأییدشده дар برنامه'
-                        : 'Осори тасдиқшуда дар барнома',
+                    AppTranslations.get('lit_poet_works_header', lang),
                     style: QalamTypography.sectionTitle(
                       color: colors.onSurface,
                       fontSize: 22,
@@ -627,9 +649,16 @@ class _PoetDetailContent extends ConsumerWidget {
                       : Padding(
                           padding: const EdgeInsets.only(bottom: 4),
                           child: Text(
-                            isPersian
-                                ? 'رکوردهای آثار در بررسی: ${AppTranslations.formatDigits(reviewWorks.length.toString(), lang)}'
-                                : 'Сабтҳои асар дар санҷиш: ${reviewWorks.length}',
+                            AppTranslations.translate(
+                              'lit_poet_works_in_review_label',
+                              lang,
+                              [
+                                AppTranslations.formatDigits(
+                                  reviewWorks.length.toString(),
+                                  lang,
+                                ),
+                              ],
+                            ),
                             style: QalamTypography.meta(
                               color: colors.primary,
                               fontSize: 13,
@@ -657,18 +686,12 @@ class _PoetDetailContent extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: EmptyState(
                 icon: Icons.error_outline,
-                title: isPersian
-                    ? 'خطا در بارگیری آثار'
-                    : 'Хато ҳангоми боргирии осор',
-                subtitle: isPersian
-                    ? 'آثار شاعر بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                    : 'Осори шоир бор нашуд. Лутфан дубора кӯшиш кунед.',
+                title: AppTranslations.get('lit_works_error_title', lang),
+                subtitle: AppTranslations.get('lit_works_error_sub', lang),
                 action: OutlinedButton(
                   onPressed: () =>
                       ref.invalidate(worksByAuthorProvider(poet.id)),
-                  child: Text(
-                    isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                  ),
+                  child: Text(AppTranslations.get('btn_retry', lang)),
                 ),
               ),
             ),
@@ -704,9 +727,7 @@ class _PoetDetailContent extends ConsumerWidget {
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            isPersian
-                                ? 'اشعار این شاعر در حال تطبیق با نسخه‌های خطی و چاپی معتبر است.'
-                                : 'Матнҳои осори ин шоир дар марҳилаи муқобала ва санҷиши сарчашмаҳо қарор доранд.',
+                            AppTranslations.get('lit_poet_works_review_desc', lang),
                             style: QalamTypography.bodySecondary(
                               color: colors.onSurfaceVariant,
                               fontSize: 13,
@@ -780,9 +801,16 @@ class _PoetDetailContent extends ConsumerWidget {
                                     ),
                                     const SizedBox(width: 4),
                                     Text(
-                                      isPersian
-                                          ? 'سرایش: ${work.compositionDate}'
-                                          : 'Таълиф: ${work.compositionDate}',
+                                      AppTranslations.translate(
+                                        'lit_poet_composition_year',
+                                        lang,
+                                        [
+                                          AppTranslations.formatDigits(
+                                            work.compositionDate!,
+                                            lang,
+                                          ),
+                                        ],
+                                      ),
                                       style: TextStyle(
                                         color: colors.primary,
                                         fontSize: 12,
@@ -891,9 +919,10 @@ class _PoetDetailContent extends ConsumerWidget {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                isPersian
-                                    ? 'در بررسی منبع؛ متن هنوز منتشر نشده است'
-                                    : 'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
+                                AppTranslations.get(
+                                  'lit_poet_work_in_review_sub',
+                                  lang,
+                                ),
                                 style: QalamTypography.meta(
                                   color: colors.primary,
                                   fontSize: 12,
@@ -915,9 +944,10 @@ class _PoetDetailContent extends ConsumerWidget {
                               ] else ...[
                                 const SizedBox(height: 4),
                                 Text(
-                                  isPersian
-                                      ? 'شماره صفحه چاپی هنوز ثبت نشده است'
-                                      : 'Рақами саҳифаи чопӣ ҳанӯз сабт нашудааст',
+                                  AppTranslations.get(
+                                    'lit_poet_page_not_recorded',
+                                    lang,
+                                  ),
                                   style: QalamTypography.meta(
                                     color: colors.onSurfaceVariant,
                                     fontSize: 12,

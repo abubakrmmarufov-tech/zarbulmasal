@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
-import '../data/literature_providers.dart';
-import '../domain/oral_heritage_entry.dart';
 import '../../history/data/history_providers.dart';
 import '../../history/domain/history_entry.dart';
+import '../data/literature_providers.dart';
+import '../domain/oral_heritage_entry.dart';
 
-/// A screen displaying verified folklore and oral literary heritage
-/// of the Tajik people: proverbs, riddles, folk dubaytis, and folk rubais.
+/// A screen showcasing authenticated oral heritage: proverbs, folklore,
+/// riddles, and folk quatrains.
 class OralHeritageScreen extends ConsumerStatefulWidget {
   const OralHeritageScreen({super.key});
 
@@ -33,7 +32,7 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
         ref.watch(historyEntriesProvider).valueOrNull ?? const <HistoryEntry>[];
     final textbookOral = historyEntries
         .where((entry) => entry.kind == HistoryEntryKind.oral)
-        .toList(growable: false);
+        .toList();
 
     return Scaffold(
       body: SafeArea(
@@ -47,7 +46,7 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: IconButton(
-                    tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+                    tooltip: AppTranslations.get('btn_back', lang),
                     icon: const BackButtonIcon(),
                     onPressed: () => qalamBack(context),
                   ),
@@ -57,52 +56,48 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
             // Header
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۳ / میراث شفاهی' : '03 / МЕРОСИ ШИФОҲӢ',
-                title: AppTranslations.get('lit_oral', lang),
-                subtitle: isPersian
-                    ? 'ضرب‌المثل‌ها، چیستان‌ها، دوبیتی‌ها و ادبیات عامیانهٔ ضبط‌شده توسط دانشمندان فلکلور'
-                    : 'Зарбулмасалҳо, чистонҳо, дубайтиҳо ва фолклори сабтшудаи мардуми тоҷик',
+                eyebrow: AppTranslations.get('lit_oral_eyebrow', lang),
+                title: AppTranslations.get('lit_oral_title', lang),
+                subtitle: AppTranslations.get('lit_oral_subtitle', lang),
               ),
             ),
-            // Filters are useful only once verified entries exist. The empty
-            // state below is intentionally a source guide, not a fake catalog.
-            if (oralAsync.valueOrNull?.isNotEmpty == true)
-              SliverToBoxAdapter(
-                child: SingleChildScrollView(
+            // Type Filter Chips
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 44,
+                child: ListView(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 8,
+                    horizontal: QalamSpacing.pageH,
                   ),
-                  child: Row(
-                    children: [
-                      ChoiceChip(
-                        label: Text(isPersian ? 'همه' : 'Ҳама'),
-                        selected: _selectedType == null,
-                        onSelected: (selected) {
-                          if (selected) setState(() => _selectedType = null);
-                        },
+                  children: [
+                    FilterChip(
+                      selected: _selectedType == null,
+                      label: Text(
+                        AppTranslations.get('lit_oral_filter_all', lang),
                       ),
-                      const SizedBox(width: 8),
-                      for (final type in OralHeritageType.values)
-                        if (type != OralHeritageType.other) ...[
-                          ChoiceChip(
-                            label: Text(_typeName(type, isPersian)),
-                            selected: _selectedType == type,
-                            onSelected: (selected) {
-                              setState(() {
-                                _selectedType = selected ? type : null;
-                              });
-                            },
+                      onSelected: (_) => setState(() => _selectedType = null),
+                    ),
+                    const SizedBox(width: 8),
+                    ...OralHeritageType.values.map((type) {
+                      final selected = _selectedType == type;
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: FilterChip(
+                          selected: selected,
+                          label: Text(_typeName(type, lang)),
+                          onSelected: (_) => setState(
+                            () => _selectedType = selected ? null : type,
                           ),
-                          const SizedBox(width: 8),
-                        ],
-                    ],
-                  ),
+                        ),
+                      );
+                    }),
+                  ],
                 ),
               ),
+            ),
             const SliverToBoxAdapter(child: SizedBox(height: 12)),
-            // List of entries
+            // Main content
             oralAsync.when(
               loading: () => const SliverFillRemaining(
                 child: Center(child: CircularProgressIndicator()),
@@ -111,17 +106,14 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
-                    title: isPersian
-                        ? 'خطا در بارگیری میراث شفاهی'
-                        : 'Хато ҳангоми боргирӣ',
-                    subtitle: isPersian
-                        ? 'اطلاعات میراث شفاهی بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                        : 'Маълумоти мероси шифоҳӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
+                    title: AppTranslations.get('lit_oral_error_title', lang),
+                    subtitle: AppTranslations.get('lit_oral_error_sub', lang),
                     action: OutlinedButton(
-                      onPressed: () => ref.invalidate(oralHeritageProvider),
-                      child: Text(
-                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                      ),
+                      onPressed: () {
+                        ref.invalidate(oralHeritageProvider);
+                        ref.invalidate(historyEntriesProvider);
+                      },
+                      child: Text(AppTranslations.get('btn_retry', lang)),
                     ),
                   ),
                 ),
@@ -132,76 +124,94 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
                     : entries.where((e) => e.type == _selectedType).toList();
 
                 if (filtered.isEmpty) {
-                  return SliverMainAxisGroup(
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: _OralLogicGuide(isPersian: isPersian),
-                      ),
-                      if (textbookOral.isNotEmpty)
-                        SliverList.builder(
-                          itemCount: textbookOral.length,
-                          itemBuilder: (context, index) => _TextbookOralCard(
-                            entry: textbookOral[index],
-                            isPersian: isPersian,
-                          ),
+                  return SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Center(
+                      child: EmptyState(
+                        icon: Icons.menu_book_outlined,
+                        title: AppTranslations.get(
+                          'lit_oral_empty_title',
+                          lang,
                         ),
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(24, 12, 24, 8),
-                          child: OutlinedButton.icon(
-                            onPressed: () => context.push('/history'),
-                            icon: const Icon(Icons.timeline_outlined),
-                            label: Text(
-                              isPersian
-                                  ? 'مشاهدهٔ تاریخ و ریشهٔ روایت‌ها'
-                                  : 'Дидани таърих ва решаи ривоятҳо',
-                            ),
-                          ),
+                        subtitle: AppTranslations.get(
+                          'lit_oral_empty_sub',
+                          lang,
                         ),
                       ),
-                    ],
+                    ),
                   );
                 }
 
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate((context, index) {
-                    final entry = filtered[index];
-                    return _OralEntryCard(entry: entry, isPersian: isPersian);
-                  }, childCount: filtered.length),
+                return SliverMainAxisGroup(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: _OralLogicGuide(
+                        lang: lang,
+                        isPersian: isPersian,
+                      ),
+                    ),
+                    if (textbookOral.isNotEmpty) ...[
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate((context, index) {
+                          final entry = textbookOral[index];
+                          return _TextbookOralCard(
+                            entry: entry,
+                            lang: lang,
+                            isPersian: isPersian,
+                          );
+                        }, childCount: textbookOral.length),
+                      ),
+                      const SliverToBoxAdapter(child: SizedBox(height: 12)),
+                    ],
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        final entry = filtered[index];
+                        return _OralEntryCard(
+                          entry: entry,
+                          lang: lang,
+                          isPersian: isPersian,
+                        );
+                      }, childCount: filtered.length),
+                    ),
+                  ],
                 );
               },
             ),
-            const SliverToBoxAdapter(child: SizedBox(height: 48)),
+            const SliverToBoxAdapter(child: SizedBox(height: 32)),
           ],
         ),
       ),
     );
   }
 
-  static String _typeName(OralHeritageType type, bool isPersian) {
+  static String _typeName(OralHeritageType type, DisplayLanguage lang) {
     switch (type) {
       case OralHeritageType.zarbulmasal:
-        return isPersian ? 'ضرب‌المثل' : 'Зарбулмасал';
+        return AppTranslations.get('lit_oral_type_zarbulmasal', lang);
       case OralHeritageType.maqol:
-        return isPersian ? 'مقال' : 'Мақол';
+        return AppTranslations.get('lit_oral_type_maqol', lang);
       case OralHeritageType.chiston:
-        return isPersian ? 'چیستان' : 'Чистон';
+        return AppTranslations.get('lit_oral_type_chiston', lang);
       case OralHeritageType.dubaytiKhalqi:
-        return isPersian ? 'دوبیتی خلقی' : 'Дубайтии халқӣ';
+        return AppTranslations.get('lit_oral_type_dubaytiKhalqi', lang);
       case OralHeritageType.rubaiKhalqi:
-        return isPersian ? 'رباعی خلقی' : 'Рубоии халқӣ';
+        return AppTranslations.get('lit_oral_type_rubaiKhalqi', lang);
       case OralHeritageType.afsona:
-        return isPersian ? 'افسانه' : 'Афсона';
+        return AppTranslations.get('lit_oral_type_afsona', lang);
       case OralHeritageType.other:
-        return isPersian ? 'دیگر' : 'Дигар';
+        return AppTranslations.get('lit_oral_type_other', lang);
     }
   }
 }
 
 class _OralLogicGuide extends StatelessWidget {
+  final DisplayLanguage lang;
   final bool isPersian;
 
-  const _OralLogicGuide({required this.isPersian});
+  const _OralLogicGuide({
+    required this.lang,
+    required this.isPersian,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -218,14 +228,12 @@ class _OralLogicGuide extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            isPersian ? 'منطق میراث شفاهی' : 'МАНТИҚИ МЕРОСИ ШИФОҲӢ',
+            AppTranslations.get('lit_oral_guide_eyebrow', lang),
             style: QalamTypography.eyebrow(color: colors.primary),
           ),
           const SizedBox(height: 8),
           Text(
-            isPersian
-                ? 'هر روایت سه لایه دارد: متن، نوع روایت و منبع. فقط متنی که مقابله و اجازهٔ نشر دارد در فهرست کامل می‌آید.'
-                : 'Ҳар ривоят се қабат дорад: матн, навъи ривоят ва сарчашма. Танҳо матни муқобилашуда ва иҷозадор дар феҳристи пурра меояд.',
+            AppTranslations.get('lit_oral_guide_body', lang),
             style: QalamTypography.bodySecondary(
               color: colors.onSurfaceVariant,
             ),
@@ -236,13 +244,13 @@ class _OralLogicGuide extends StatelessWidget {
             runSpacing: 8,
             children: [
               _GuidePill(
-                label: isPersian ? '۱  شناسایی روایت' : '01  Ҷудокунии ривоят',
+                label: AppTranslations.get('lit_oral_guide_pill1', lang),
               ),
               _GuidePill(
-                label: isPersian ? '۲  بررسی سند' : '02  Санҷиши манбаъ',
+                label: AppTranslations.get('lit_oral_guide_pill2', lang),
               ),
               _GuidePill(
-                label: isPersian ? '۳  نمایش پیراسته' : '03  Намоиши равшан',
+                label: AppTranslations.get('lit_oral_guide_pill3', lang),
               ),
             ],
           ),
@@ -273,13 +281,24 @@ class _GuidePill extends StatelessWidget {
 
 class _TextbookOralCard extends StatelessWidget {
   final HistoryEntry entry;
+  final DisplayLanguage lang;
   final bool isPersian;
 
-  const _TextbookOralCard({required this.entry, required this.isPersian});
+  const _TextbookOralCard({
+    required this.entry,
+    required this.lang,
+    required this.isPersian,
+  });
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final gradeLabel = AppTranslations.translate(
+      'lit_grade',
+      lang,
+      [AppTranslations.formatDigits(entry.grade, lang)],
+    );
+
     return Container(
       margin: const EdgeInsets.fromLTRB(24, 6, 24, 6),
       padding: const EdgeInsets.all(16),
@@ -292,7 +311,7 @@ class _TextbookOralCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            isPersian ? 'روایت در کتاب تاریخ' : 'РИВОЯТ ДАР КИТОБИ ТАЪРИХ',
+            AppTranslations.get('lit_oral_textbook_eyebrow', lang),
             style: QalamTypography.eyebrow(color: colors.primary),
           ),
           const SizedBox(height: 8),
@@ -320,7 +339,7 @@ class _TextbookOralCard extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            '${entry.sourceSection} · ${isPersian ? "صنف" : "Синфи"} ${AppTranslations.formatDigits(entry.grade, isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik)}',
+            '${entry.sourceSection} · $gradeLabel',
             style: QalamTypography.meta(color: colors.onSurfaceVariant),
           ),
         ],
@@ -331,9 +350,14 @@ class _TextbookOralCard extends StatelessWidget {
 
 class _OralEntryCard extends StatelessWidget {
   final OralHeritageEntry entry;
+  final DisplayLanguage lang;
   final bool isPersian;
 
-  const _OralEntryCard({required this.entry, required this.isPersian});
+  const _OralEntryCard({
+    required this.entry,
+    required this.lang,
+    required this.isPersian,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -375,7 +399,7 @@ class _OralEntryCard extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  _OralHeritageScreenState._typeName(entry.type, isPersian),
+                  _OralHeritageScreenState._typeName(entry.type, lang),
                   style: QalamTypography.meta(
                     color: colors.primary,
                     fontSize: 11,
@@ -401,14 +425,14 @@ class _OralEntryCard extends StatelessWidget {
                 ),
               IconButton(
                 icon: const Icon(Icons.copy_outlined, size: 16),
-                tooltip: isPersian ? 'کپی' : 'Нусхабардорӣ',
+                tooltip: AppTranslations.get('btn_copy', lang),
                 onPressed: () async {
                   await Clipboard.setData(ClipboardData(text: displayText));
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          isPersian ? 'کپی شد' : 'Матн нусхабардорӣ шуд',
+                          AppTranslations.get('lit_copied_toast', lang),
                         ),
                       ),
                     );

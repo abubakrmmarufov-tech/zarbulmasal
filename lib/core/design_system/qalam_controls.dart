@@ -187,3 +187,22 @@ class QalamSectionLink extends ConsumerWidget {
     );
   }
 }
+
+/// Directionality-aware chevron icon that points forward according to text direction.
+/// Points right in LTR (Tajik Cyrillic) and left in RTL (Persian).
+class QalamChevron extends StatelessWidget {
+  final double size;
+  final Color? color;
+
+  const QalamChevron({super.key, this.size = 20, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    return Icon(
+      isRtl ? Icons.chevron_left : Icons.chevron_right,
+      size: size,
+      color: color ?? Theme.of(context).colorScheme.onSurfaceVariant,
+    );
+  }
+}

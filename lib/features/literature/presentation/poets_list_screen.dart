@@ -52,7 +52,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: IconButton(
-                    tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+                    tooltip: AppTranslations.get('btn_back', lang),
                     icon: const BackButtonIcon(),
                     onPressed: () => qalamBack(context),
                   ),
@@ -62,11 +62,9 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
             // Header
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۱ / شاعران' : '01 / ШОИРОН',
+                eyebrow: AppTranslations.get('lit_poets_eyebrow', lang),
                 title: AppTranslations.get('lit_poets', lang),
-                subtitle: isPersian
-                    ? 'بزرگان ادب کلاسیک و معاصر تاجیک با زندگینامه و اسناد معتبر'
-                    : 'Бузургони адабиёти классик ва муосири тоҷик бо зиндагиномаи мустанад',
+                subtitle: AppTranslations.get('lit_poets_subtitle', lang),
               ),
             ),
             // Filter Search Bar
@@ -83,15 +81,17 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                     });
                   },
                   decoration: InputDecoration(
-                    hintText: isPersian
-                        ? 'جستجوی شاعر بر اساس نام یا دوره...'
-                        : 'Ҷустуҷӯи шоир аз рӯи ном ё давр...',
+                    hintText: AppTranslations.get(
+                      'lit_poets_search_hint',
+                      lang,
+                    ),
                     prefixIcon: const Icon(Icons.search, size: 20),
                     suffixIcon: _filterQuery.isNotEmpty
                         ? IconButton(
-                            tooltip: isPersian
-                                ? 'پاک کردن جستجو'
-                                : 'Пок кардани ҷустуҷӯ',
+                            tooltip: AppTranslations.get(
+                              'lit_search_clear_tooltip',
+                              lang,
+                            ),
                             icon: const Icon(Icons.clear, size: 18),
                             onPressed: () {
                               _filterController.clear();
@@ -132,17 +132,11 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
-                    title: isPersian
-                        ? 'خطا در بارگیری شاعران'
-                        : 'Хато ҳангоми боргирии шоирон',
-                    subtitle: isPersian
-                        ? 'داده‌های شاعران بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                        : 'Маълумоти шоирон бор нашуд. Лутфан дубора кӯшиш кунед.',
+                    title: AppTranslations.get('lit_poets_error_title', lang),
+                    subtitle: AppTranslations.get('lit_poets_error_sub', lang),
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(literaryAuthorsProvider),
-                      child: Text(
-                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                      ),
+                      child: Text(AppTranslations.get('btn_retry', lang)),
                     ),
                   ),
                 ),
@@ -176,10 +170,14 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                     child: Center(
                       child: EmptyState(
                         icon: Icons.search_off,
-                        title: isPersian ? 'شاعری یافت نشد' : 'Шоире ёфт нашуд',
-                        subtitle: isPersian
-                            ? 'با عبارت جستجوی مورد نظر نتیجه‌ای پیدا نشد.'
-                            : 'Бо ин вожа шоире дар феҳрист ёфт нашуд.',
+                        title: AppTranslations.get(
+                          'lit_poets_empty_title',
+                          lang,
+                        ),
+                        subtitle: AppTranslations.get(
+                          'lit_poets_empty_sub',
+                          lang,
+                        ),
                       ),
                     ),
                   );
@@ -194,22 +192,37 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                         : poet.canonicalName;
                     final poemCount = worksCountByAuthor[poet.id] ?? 0;
                     final poemCountBadge = poemCount > 0
-                        ? (isPersian
-                              ? '${AppTranslations.formatDigits(poemCount.toString(), lang)} اثر'
-                              : '${AppTranslations.formatDigits(poemCount.toString(), lang)} асар')
+                        ? '${AppTranslations.formatDigits(poemCount.toString(), lang)} ${AppTranslations.get('lit_works_unit', lang)}'
                         : null;
                     final dates = poet.hasAuditableBiographySource
                         ? AppTranslations.formatDigits(poet.lifespan, lang)
-                        : (isPersian
-                              ? 'تاریخ‌ها در بررسی'
-                              : 'Санаҳо дар санҷиш');
+                        : AppTranslations.get(
+                            'lit_search_dates_pending',
+                            lang,
+                          );
                     final exactDates =
                         (poet.hasAuditableBiographySource &&
                             (poet.birthDateExact != null ||
                                 poet.deathDateExact != null))
-                        ? (isPersian
-                              ? 'ولادت: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · وفات: ${poet.deathDateExact ?? poet.deathYear ?? "در قید حیات"}'
-                              : 'Таваллуд: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · Вафот: ${poet.deathDateExact ?? poet.deathYear ?? "дар ҳаёт"}')
+                        ? AppTranslations.translate(
+                            'lit_author_dates',
+                            lang,
+                            [
+                              AppTranslations.formatDigits(
+                                poet.birthDateExact ?? poet.birthYear ?? '—',
+                                lang,
+                              ),
+                              AppTranslations.formatDigits(
+                                poet.deathDateExact ??
+                                    poet.deathYear ??
+                                    AppTranslations.get(
+                                      'lit_author_alive',
+                                      lang,
+                                    ),
+                                lang,
+                              ),
+                            ],
+                          )
                         : null;
                     return QalamPoetCard(
                       name: name,
