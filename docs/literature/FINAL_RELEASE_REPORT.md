@@ -126,7 +126,7 @@ author-reference and rights-consistency validation; it is not shipped data.
 
 The latest local checks on this worktree report:
 
-- `flutter test --no-pub --coverage --reporter compact`: **393/393 passed**
+- `flutter test --no-pub --coverage --reporter compact`: **394/394 passed**
 - Coverage: **7,720/9,394 lines (82.18%)**
 - `python3 tool/check_coverage.py coverage/lcov.info --minimum 80`: **pass**;
   the CI gate enforces the documented 80% minimum.

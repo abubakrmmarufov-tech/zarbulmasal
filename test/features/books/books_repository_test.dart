@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -115,6 +117,38 @@ void main() {
       expect(farzona.authorId, 'farzona');
       expect(farzona.relatedPoetIds, ['farzona']);
     });
+
+    test(
+      'all related-poet links are unique and resolve to the poet catalog',
+      () async {
+        final books = await repository.loadBooks();
+        final poets =
+            jsonDecode(
+                  await rootBundle.loadString(
+                    'assets/data/literature/poets.json',
+                  ),
+                )
+                as List<dynamic>;
+        final poetIds = poets
+            .whereType<Map<String, dynamic>>()
+            .map((poet) => poet['id'])
+            .whereType<String>()
+            .toSet();
+
+        for (final book in books) {
+          expect(
+            book.relatedPoetIds.toSet(),
+            hasLength(book.relatedPoetIds.length),
+            reason: 'Duplicate related poet on ${book.id}',
+          );
+          expect(
+            book.relatedPoetIds.every(poetIds.contains),
+            isTrue,
+            reason: 'Dangling related poet on ${book.id}',
+          );
+        }
+      },
+    );
 
     test(
       'retains the provider cover for Qobusnoma when it matches the book page',
