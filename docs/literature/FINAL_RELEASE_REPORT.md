@@ -8,10 +8,14 @@ Play-release signoff.**
 This is a current evidence snapshot, not a release sign-off. The repository
 working tree is clean; the web-only Pages deployment is explicitly recorded
 below, while the source branch remains separately published for review.
+The current local source checkpoint is `8b6b8dc`; the review branch is
+`audit-publish-2026-09-22` at `78691f7`. Its workflow file remains at the
+previous published revision because the connected GitHub OAuth credential does
+not have the `workflow` scope.
 
 Fresh content-repair evidence (2026-09-22): the rebuilt web artifact uses
-cache ID `75792ceb8692e786ace2`; the web-only Pages deployment is `gh-pages`
-commit `3020730`; and the live app root and
+cache ID `b4e5d7d2ba59b8f4038f`; the web-only Pages deployment is `gh-pages`
+commit `af0a7c8`; and the live app root and
 `privacy.html` return HTTP 200.
 The live browser sweep covers 8 viewports and 209 route/mode visits with zero
 errors, overflows, console errors, page errors, or request failures. Android
@@ -132,8 +136,8 @@ author-reference and rights-consistency validation; it is not shipped data.
 
 The latest local checks on this worktree report:
 
-- `flutter test --no-pub --coverage --reporter compact`: **396/396 passed**
-- Coverage: **7,736/9,412 lines (82.19%)**
+- `flutter test --no-pub --coverage --reporter compact`: **397/397 passed**
+- Coverage: **7,746/9,420 lines (82.23%)**
 - `python3 tool/check_coverage.py coverage/lcov.info --minimum 80`: **pass**;
   the CI gate enforces the documented 80% minimum.
 - Accessibility regression: the Home and Explore search entries plus the
