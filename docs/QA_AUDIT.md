@@ -7,7 +7,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > **Current-state override — 2026-09-22:** The dated audit below is a historical
 > record from 2026-09-14 and is not current Play release signoff. The current
 > worktree is branch `provenance-repair-2026-09-19` at audited source checkpoint
-> `1002819` plus subsequent verified test/documentation commits, with 394 tests
+> `1120270` with 394 tests
 > passing and 82.18% line coverage (7,720/9,394 lines), clean analysis, strict Gradle dependency
 > verification with valid metadata and a successful offline `assembleDebug`, and passing
 > CI-equivalent web and browser audits. The CI web job now repeats the prepared-release
