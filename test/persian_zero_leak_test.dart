@@ -6,6 +6,7 @@ import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 
 void main() {
   final cyrillicRegex = RegExp(r'[\u0400-\u04FF]');
+  final latinRegex = RegExp(r'[A-Za-z]');
 
   group('Persian Zero-Leak & Translation Parity', () {
     test(
@@ -339,18 +340,18 @@ void main() {
           final scriptSource = work['scriptSource'] as String?;
           final representationSource = work['persianScriptSource'] as String?;
 
-          expect(
-            titlePersian,
-            isNotNull,
-            reason: 'Missing titlePersian in work $id',
-          );
-          expect(
-            titlePersian!.trim(),
-            isNotEmpty,
-            reason: 'Empty titlePersian in work $id',
-          );
-          if (cyrillicRegex.hasMatch(titlePersian)) {
-            leaks.add('$id: titlePersian -> $titlePersian');
+          if (titlePersian != null) {
+            expect(
+              titlePersian.trim(),
+              isNotEmpty,
+              reason: 'Empty titlePersian in work $id',
+            );
+            if (cyrillicRegex.hasMatch(titlePersian)) {
+              leaks.add('$id: titlePersian -> $titlePersian');
+            }
+            if (latinRegex.hasMatch(titlePersian)) {
+              leaks.add('$id: Latin in titlePersian -> $titlePersian');
+            }
           }
 
           expect(
@@ -359,20 +360,31 @@ void main() {
             reason:
                 'Generated Persian text must not masquerade as a source field in work $id',
           );
-          expect(
-            representation,
-            isNotNull,
-            reason:
-                'Missing generated Persian-script representation in work $id',
-          );
-          expect(
-            representation!.trim(),
-            isNotEmpty,
-            reason: 'Empty generated Persian-script representation in work $id',
-          );
-          if (cyrillicRegex.hasMatch(representation)) {
-            leaks.add(
-              '$id: persianScriptRepresentation -> ${representation.substring(0, representation.length > 50 ? 50 : representation.length)}',
+          if (work['textTajik'] != null) {
+            expect(
+              representation,
+              isNotNull,
+              reason:
+                  'Missing generated Persian-script representation in work $id',
+            );
+            expect(
+              representation!.trim(),
+              isNotEmpty,
+              reason:
+                  'Empty generated Persian-script representation in work $id',
+            );
+            if (cyrillicRegex.hasMatch(representation)) {
+              leaks.add(
+                '$id: persianScriptRepresentation -> ${representation.substring(0, representation.length > 50 ? 50 : representation.length)}',
+              );
+            }
+            generatedRepresentations++;
+          } else {
+            expect(
+              representation,
+              isNull,
+              reason:
+                  'Quarantined work $id without text must not have a Persian representation',
             );
           }
           expect(
@@ -385,11 +397,15 @@ void main() {
             equals('generated'),
             reason: 'Work $id has an unlabeled script transformation',
           );
-          generatedRepresentations++;
         }
 
         expect(leaks, isEmpty, reason: 'Found Cyrillic leaks in works: $leaks');
-        expect(generatedRepresentations, greaterThan(0));
+        expect(
+          generatedRepresentations,
+          equals(0),
+          reason:
+              'Rights-unknown runtime works must not ship generated full-text representations',
+        );
       },
     );
 

@@ -3,6 +3,8 @@ import 'qalam_colors.dart';
 import 'qalam_typography.dart';
 import 'qalam_spacing.dart';
 import 'qalam_controls.dart';
+import 'qalam_portrait.dart';
+import '../../features/literature/domain/portrait_record.dart';
 
 /// A list item for displaying a poet in the Шоирон (Poets) list.
 ///
@@ -16,6 +18,8 @@ class QalamPoetCard extends StatelessWidget {
   final String? exactDates;
   final String? poemCountBadge;
   final VoidCallback? onTap;
+  final PortraitRecord? portrait;
+  final String? portraitUnavailableLabel;
 
   const QalamPoetCard({
     super.key,
@@ -26,6 +30,8 @@ class QalamPoetCard extends StatelessWidget {
     this.exactDates,
     this.poemCountBadge,
     this.onTap,
+    this.portrait,
+    this.portraitUnavailableLabel,
   });
 
   @override
@@ -53,6 +59,12 @@ class QalamPoetCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              QalamPortrait(
+                portrait: portrait,
+                label: name,
+                unavailableLabel: portraitUnavailableLabel,
+              ),
+              const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -30,6 +30,29 @@ final approvedWorksProvider = FutureProvider<List<LiteraryWork>>((ref) async {
   return repository.getApprovedWorks(works);
 });
 
+/// Loads page-checked works that are safe to discover as review records.
+///
+/// These records may show a title and source citation, but they must remain
+/// outside the approved reader until text and rights gates are complete.
+final searchableLiteraryWorksProvider = FutureProvider<List<LiteraryWork>>((
+  ref,
+) async {
+  final works = await ref.watch(literaryWorksProvider.future);
+  const discoverableReviewLevels = {
+    VerificationLevel.primaryChecked,
+    VerificationLevel.secondWitnessLocated,
+    VerificationLevel.collated,
+    VerificationLevel.editoriallyApproved,
+  };
+  return works
+      .where(
+        (work) =>
+            work.hasAuditableReviewCitation &&
+            discoverableReviewLevels.contains(work.verification.evidenceLevel),
+      )
+      .toList(growable: false);
+});
+
 /// Deterministically selects the daily verse work from approved works.
 final dailyVerseProvider = FutureProvider<LiteraryWork?>((ref) async {
   final repository = ref.watch(literatureRepositoryProvider);
@@ -173,7 +196,12 @@ final worksUnderReviewByAuthorProvider =
     FutureProvider.family<List<LiteraryWork>, String>((ref, authorId) async {
       final works = await ref.watch(literaryWorksProvider.future);
       return works
-          .where((work) => work.authorId == authorId && !work.isDisplayable)
+          .where(
+            (work) =>
+                work.authorId == authorId &&
+                !work.isDisplayable &&
+                work.verification.evidenceLevel != VerificationLevel.rejected,
+          )
           .toList(growable: false);
     });
 

@@ -25,11 +25,15 @@ class _FlashcardsScreenState extends ConsumerState<FlashcardsScreen> {
   @override
   void initState() {
     super.initState();
-    _loadCards();
+    _activeFilter = ref.read(flashcardsFilterProvider);
+    _loadCards(_activeFilter);
   }
 
   void _loadCards([MasteryFilter? filter]) {
     final targetFilter = filter ?? _activeFilter;
+    if (ref.read(flashcardsFilterProvider) != targetFilter) {
+      ref.read(flashcardsFilterProvider.notifier).state = targetFilter;
+    }
     final allProverbs = ref.read(proverbsProvider);
     final masteryMap = ref.read(proverbMasteryProvider);
 

@@ -1,10 +1,25 @@
 import 'rights_record.dart';
+import 'portrait_record.dart';
 
 /// A verified literary author in the Tajik literary canon.
 ///
 /// Contains canonical biographical metadata, curriculum grade associations,
 /// and rights clearance records.
 class LiteraryAuthor {
+  /// Only these provenance values may make a biography auditable in the app.
+  /// Unknown values stay review-only even when a source string looks like it
+  /// contains a page number.
+  static const Set<String> auditableTajikBiographyProvenance = {
+    'SOURCE_BACKED',
+    'EDITORIAL_SUMMARY_FROM_SOURCES',
+  };
+
+  static const Set<String> auditablePersianBiographyProvenance = {
+    'SOURCE_PERSIAN',
+    'SOURCE_TRANSLATION',
+    'EDITORIAL_TRANSLATION',
+  };
+
   /// Unique identifier (e.g. "rudaki", "kamol-khujandi", "tursunzoda").
   final String id;
 
@@ -60,6 +75,13 @@ class LiteraryAuthor {
   /// Optional note explaining why an unsupported paragraph was quarantined.
   final String? biographyQuarantineNote;
 
+  /// Whether this record is eligible for public literature navigation.
+  ///
+  /// Extraction artifacts and confirmed non-author references remain in the
+  /// source catalog for auditability, but are marked `rejected` so they do not
+  /// appear as poets in the app.
+  final String recordStatus;
+
   /// List of IDs of major canonical works by this author.
   final List<String> majorWorkIds;
 
@@ -75,6 +97,9 @@ class LiteraryAuthor {
   /// Intellectual property and copyright clearance record.
   final RightsRecord rights;
 
+  /// Authentic local portrait with an auditable source, when one is available.
+  final PortraitRecord? portrait;
+
   const LiteraryAuthor({
     required this.id,
     required this.canonicalName,
@@ -89,14 +114,16 @@ class LiteraryAuthor {
     required this.biographyTj,
     this.biographyFa,
     required this.biographySource,
-    this.biographyTjProvenance = 'EDITORIAL_SUMMARY_FROM_SOURCES',
-    this.biographyFaProvenance = 'EDITORIAL_TRANSLATION',
+    this.biographyTjProvenance = 'UNSUPPORTED_GENERATED',
+    this.biographyFaProvenance = 'UNSUPPORTED_GENERATED',
     this.biographyQuarantineNote,
+    this.recordStatus = 'active',
     this.majorWorkIds = const [],
     this.officialTitles = const [],
     this.educationGrades = const [],
     this.relatedHistoryEntryIds = const [],
     required this.rights,
+    this.portrait,
   });
 
   /// Whether the author is deceased.
@@ -111,7 +138,7 @@ class LiteraryAuthor {
   /// must not appear as if "Unknown" were a verified poet.
   bool get hasCanonicalName {
     final name = canonicalName.trim().toLowerCase();
-    return name.isNotEmpty && name != 'unknown';
+    return name.isNotEmpty && name != 'unknown' && recordStatus == 'active';
   }
 
   /// Whether the biography citation names a printed page that can be audited.
@@ -121,10 +148,21 @@ class LiteraryAuthor {
   bool get hasAuditableBiographySource {
     final source = biographySource.trim();
     return RegExp(
-      r'(?:с\.|ص\.|page)\s*\d+',
-      caseSensitive: false,
-    ).hasMatch(source);
+          r'(?:с\.|ص\.|page)\s*\d+',
+          caseSensitive: false,
+        ).hasMatch(source) &&
+        auditableTajikBiographyProvenance.contains(biographyTjProvenance);
   }
+
+  /// Whether the Tajik biography is safe to render as source-backed content.
+  bool get hasAuditableTajikBiography =>
+      hasAuditableBiographySource && biographyTj.trim().isNotEmpty;
+
+  /// Whether the Persian biography is safe to render as source-backed content.
+  bool get hasAuditablePersianBiography =>
+      hasAuditableBiographySource &&
+      auditablePersianBiographyProvenance.contains(biographyFaProvenance) &&
+      (biographyFa?.trim().isNotEmpty ?? false);
 
   /// Formatted lifespan representation (e.g. "15.04.1878 – 15.07.1954" or "858 – 941", "1947 – ҳоло").
   String get lifespan {
@@ -172,11 +210,11 @@ class LiteraryAuthor {
       biographySource:
           (json['biographySource'] ?? json['biography_source'] ?? '') as String,
       biographyTjProvenance:
-          (json['biographyTjProvenance'] ?? 'EDITORIAL_SUMMARY_FROM_SOURCES')
-              as String,
+          (json['biographyTjProvenance'] ?? 'UNSUPPORTED_GENERATED') as String,
       biographyFaProvenance:
-          (json['biographyFaProvenance'] ?? 'EDITORIAL_TRANSLATION') as String,
+          (json['biographyFaProvenance'] ?? 'UNSUPPORTED_GENERATED') as String,
       biographyQuarantineNote: json['biographyQuarantineNote'] as String?,
+      recordStatus: (json['recordStatus'] ?? 'active') as String,
       majorWorkIds: _parseStringList(
         json['majorWorkIds'] ?? json['major_work_ids'],
       ),
@@ -189,6 +227,9 @@ class LiteraryAuthor {
       relatedHistoryEntryIds: _parseStringList(
         json['relatedHistoryEntryIds'] ?? json['related_history_entry_ids'],
       ),
+      portrait: json['portrait'] is Map<String, dynamic>
+          ? PortraitRecord.fromJson(json['portrait'] as Map<String, dynamic>)
+          : null,
       rights: rightsJson is Map<String, dynamic>
           ? RightsRecord.fromJson(rightsJson)
           : const RightsRecord(
@@ -220,11 +261,13 @@ class LiteraryAuthor {
       'biographyFaProvenance': biographyFaProvenance,
       if (biographyQuarantineNote != null)
         'biographyQuarantineNote': biographyQuarantineNote,
+      'recordStatus': recordStatus,
       'majorWorkIds': majorWorkIds,
       'officialTitles': officialTitles,
       'educationGrades': educationGrades,
       if (relatedHistoryEntryIds.isNotEmpty)
         'relatedHistoryEntryIds': relatedHistoryEntryIds,
+      if (portrait != null) 'portrait': portrait!.toJson(),
       'rights': rights.toJson(),
     };
   }
@@ -247,11 +290,13 @@ class LiteraryAuthor {
     String? biographyTjProvenance,
     String? biographyFaProvenance,
     String? biographyQuarantineNote,
+    String? recordStatus,
     List<String>? majorWorkIds,
     List<String>? officialTitles,
     List<String>? educationGrades,
     List<String>? relatedHistoryEntryIds,
     RightsRecord? rights,
+    PortraitRecord? portrait,
   }) {
     return LiteraryAuthor(
       id: id ?? this.id,
@@ -273,12 +318,14 @@ class LiteraryAuthor {
           biographyFaProvenance ?? this.biographyFaProvenance,
       biographyQuarantineNote:
           biographyQuarantineNote ?? this.biographyQuarantineNote,
+      recordStatus: recordStatus ?? this.recordStatus,
       majorWorkIds: majorWorkIds ?? this.majorWorkIds,
       officialTitles: officialTitles ?? this.officialTitles,
       educationGrades: educationGrades ?? this.educationGrades,
       relatedHistoryEntryIds:
           relatedHistoryEntryIds ?? this.relatedHistoryEntryIds,
       rights: rights ?? this.rights,
+      portrait: portrait ?? this.portrait,
     );
   }
 

@@ -249,4 +249,53 @@ class SearchNormalizer {
     }
     return false;
   }
+
+  /// Computes a relevance score (0..100) for ranking search results:
+  /// - Exact match (100)
+  /// - Normalized exact match (90)
+  /// - Prefix match (75)
+  /// - Normalized prefix match (65)
+  /// - Word boundary / prefix of a word (50)
+  /// - Partial / substring match (35)
+  /// - Space-agnostic / transliterated match (20)
+  /// - No match (0)
+  static int scoreMatch(String target, String query) {
+    if (query.trim().isEmpty) return 100;
+    if (target.trim().isEmpty) return 0;
+
+    final lowerTarget = target.toLowerCase().trim();
+    final lowerQuery = query.toLowerCase().trim();
+
+    if (lowerTarget == lowerQuery) return 100;
+
+    final normTarget = normalize(target);
+    final normQuery = normalize(query);
+
+    if (normQuery.isEmpty) return 0;
+    if (normTarget == normQuery) return 90;
+    if (lowerTarget.startsWith(lowerQuery)) return 75;
+    if (normTarget.startsWith(normQuery)) return 65;
+
+    // Word prefix matching
+    final words = normTarget.split(' ');
+    for (final w in words) {
+      if (w.startsWith(normQuery)) return 50;
+    }
+
+    if (normTarget.contains(normQuery)) return 35;
+
+    if (matches(target, query)) return 20;
+
+    return 0;
+  }
+
+  /// Returns the highest relevance score among all candidate targets.
+  static int scoreMatchAny(List<String> targets, String query) {
+    var maxScore = 0;
+    for (final t in targets) {
+      final score = scoreMatch(t, query);
+      if (score > maxScore) maxScore = score;
+    }
+    return maxScore;
+  }
 }

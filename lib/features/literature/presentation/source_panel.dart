@@ -5,6 +5,7 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../domain/literary_work.dart';
 import '../domain/rights_record.dart';
+import '../domain/source_edition.dart';
 import '../domain/verification_record.dart';
 
 /// A modal bottom sheet panel displaying full provenance metadata
@@ -106,6 +107,10 @@ class SourcePanel extends ConsumerWidget {
                       _buildSecondarySourceSection(context, lang),
                       const SizedBox(height: 24),
                     ],
+                    if (work.sourceOccurrences.isNotEmpty) ...[
+                      _buildSourceOccurrencesSection(context, lang),
+                      const SizedBox(height: 24),
+                    ],
                     _buildVerificationSection(context, lang),
                     const SizedBox(height: 24),
                     _buildRightsSection(context, lang),
@@ -119,9 +124,15 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildPrimarySourceSection(BuildContext context, DisplayLanguage lang) {
+  Widget _buildPrimarySourceSection(
+    BuildContext context,
+    DisplayLanguage lang,
+  ) {
     final colors = Theme.of(context).colorScheme;
     final primary = work.primarySource;
+    final primaryImagePath =
+        primary?.sourceImagePath ??
+        'assets/data/literature/page_images/${work.id}.png';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -215,90 +226,150 @@ class SourcePanel extends ConsumerWidget {
                     fontSize: 13,
                   ),
                 ),
-                if (primary.sourceImageVerified) ...[
+                if (work.isPageImageDisplayable &&
+                    primary.sourceImageVerified) ...[
                   const SizedBox(height: 12),
-                  InkWell(
+                  Semantics(
+                    button: true,
+                    excludeSemantics: true,
+                    label:
+                        '${AppTranslations.get('lit_source_page_image_title', lang)}. '
+                        '${AppTranslations.get('lit_source_page_image_hint', lang)}',
                     onTap: () => _showPageImageDialog(context, lang),
-                    borderRadius: BorderRadius.circular(6),
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: QalamColors.forest.withValues(alpha: 0.07),
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(
-                          color: QalamColors.forest.withValues(alpha: 0.3),
-                          width: 0.8,
+                    child: InkWell(
+                      onTap: () => _showPageImageDialog(context, lang),
+                      borderRadius: BorderRadius.circular(6),
+                      child: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: QalamColors.forest.withValues(alpha: 0.07),
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(
+                            color: QalamColors.forest.withValues(alpha: 0.3),
+                            width: 0.8,
+                          ),
                         ),
-                      ),
-                      child: Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(4),
-                            child: SizedBox(
-                              width: 48,
-                              height: 64,
-                              child: Image.asset(
-                                'assets/data/literature/page_images/${work.id}.png',
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, _, _) => Container(
-                                  color: colors.surfaceContainerHighest,
-                                  child: const Icon(
-                                    Icons.menu_book,
-                                    size: 24,
-                                    color: QalamColors.forest,
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(4),
+                              child: SizedBox(
+                                width: 48,
+                                height: 64,
+                                child: Image.asset(
+                                  primaryImagePath,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, _, _) => Container(
+                                    color: colors.surfaceContainerHighest,
+                                    child: const Icon(
+                                      Icons.menu_book,
+                                      size: 24,
+                                      color: QalamColors.forest,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.verified,
-                                      size: 16,
-                                      color: QalamColors.forest,
-                                    ),
-                                    const SizedBox(width: 6),
-                                    Expanded(
-                                      child: Text(
-                                        AppTranslations.get(
-                                          'lit_source_page_image_title',
-                                          lang,
-                                        ),
-                                        style: QalamTypography.sectionTitle(
-                                          color: QalamColors.forest,
-                                          fontSize: 14,
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.verified,
+                                        size: 16,
+                                        color: QalamColors.forest,
+                                      ),
+                                      const SizedBox(width: 6),
+                                      Expanded(
+                                        child: Text(
+                                          AppTranslations.get(
+                                            'lit_source_page_image_title',
+                                            lang,
+                                          ),
+                                          style: QalamTypography.sectionTitle(
+                                            color: QalamColors.forest,
+                                            fontSize: 14,
+                                          ),
                                         ),
                                       ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    AppTranslations.get(
+                                      'lit_source_page_image_hint',
+                                      lang,
                                     ),
-                                  ],
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  AppTranslations.get(
-                                    'lit_source_page_image_hint',
-                                    lang,
+                                    style: QalamTypography.meta(
+                                      color: colors.onSurfaceVariant,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                  style: QalamTypography.meta(
-                                    color: colors.onSurfaceVariant,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          const Icon(
-                            Icons.fullscreen,
-                            size: 22,
-                            color: QalamColors.forest,
-                          ),
-                        ],
+                            const Icon(
+                              Icons.fullscreen,
+                              size: 22,
+                              color: QalamColors.forest,
+                            ),
+                          ],
+                        ),
                       ),
+                    ),
+                  ),
+                ] else if (primary.sourceImageVerified &&
+                    primary.sourceImagePaths.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: colors.surfaceContainerHighest.withValues(
+                        alpha: 0.35,
+                      ),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        color: colors.outlineVariant,
+                        width: 0.8,
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(Icons.lock_outline, color: colors.primary),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppTranslations.get(
+                                  'lit_source_page_image_withheld_title',
+                                  lang,
+                                ),
+                                style: QalamTypography.sectionTitle(
+                                  color: colors.onSurface,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                AppTranslations.get(
+                                  'lit_source_page_image_withheld_hint',
+                                  lang,
+                                ),
+                                style: QalamTypography.meta(
+                                  color: colors.onSurfaceVariant,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -317,7 +388,10 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
-  Widget _buildSecondarySourceSection(BuildContext context, DisplayLanguage lang) {
+  Widget _buildSecondarySourceSection(
+    BuildContext context,
+    DisplayLanguage lang,
+  ) {
     final colors = Theme.of(context).colorScheme;
     final secondary = work.secondarySource;
     if (secondary == null) return const SizedBox.shrink();
@@ -362,6 +436,7 @@ class SourcePanel extends ConsumerWidget {
                   colors,
                 ),
               ],
+              _buildCitationBlock(lang, secondary, colors),
               if (work.textMatchResult != null) ...[
                 const SizedBox(height: 8),
                 _buildMetaRow(
@@ -392,8 +467,96 @@ class SourcePanel extends ConsumerWidget {
     );
   }
 
+  Widget _buildSourceOccurrencesSection(
+    BuildContext context,
+    DisplayLanguage lang,
+  ) {
+    final colors = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildSectionHeader(
+          context,
+          icon: Icons.library_books_outlined,
+          title: AppTranslations.get('lit_source_occurrences_title', lang),
+        ),
+        const SizedBox(height: 12),
+        for (final occurrence in work.sourceOccurrences) ...[
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: colors.surfaceContainerHighest.withValues(alpha: 0.35),
+              border: Border.all(color: colors.outlineVariant, width: 0.5),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  occurrence.bookTitle,
+                  style: QalamTypography.sectionTitle(
+                    color: colors.onSurface,
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                _buildMetaRow(
+                  '${AppTranslations.get('lit_source_publisher', lang)}:',
+                  '${occurrence.city}: ${occurrence.publisher}, ${occurrence.year}',
+                  colors,
+                ),
+                if (occurrence.formattedPages != null) ...[
+                  const SizedBox(height: 4),
+                  _buildMetaRow(
+                    '${AppTranslations.get('lit_source_page', lang)}:',
+                    occurrence.formattedPages!,
+                    colors,
+                  ),
+                ],
+                _buildCitationBlock(lang, occurrence, colors),
+              ],
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildCitationBlock(
+    DisplayLanguage lang,
+    SourceEdition source,
+    ColorScheme colors,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Divider(height: 1, color: colors.outlineVariant),
+          const SizedBox(height: 10),
+          Text(
+            AppTranslations.get('lit_source_biblio_citation', lang),
+            style: QalamTypography.meta(color: colors.primary),
+          ),
+          const SizedBox(height: 4),
+          SelectableText(
+            source.citation,
+            key: ValueKey<String>('source-citation-${source.citation}'),
+            style: QalamTypography.bodySecondary(
+              color: colors.onSurfaceVariant,
+              fontSize: 13,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildVerificationSection(BuildContext context, DisplayLanguage lang) {
     final colors = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final ver = work.verification;
 
     final isApproved =
@@ -401,7 +564,9 @@ class SourcePanel extends ConsumerWidget {
     final isRejected = ver.evidenceLevel == VerificationLevel.rejected;
     final statusColor = isApproved
         ? QalamColors.forest
-        : (isRejected ? QalamColors.danger : QalamColors.burgundySoft);
+        : (isRejected
+              ? QalamColors.danger
+              : (isDark ? QalamColors.antiqueGoldSoft : QalamColors.burgundy));
 
     final statusText = isApproved
         ? AppTranslations.get('lit_source_verified_label', lang)
@@ -545,7 +710,10 @@ class SourcePanel extends ConsumerWidget {
                   Expanded(
                     child: Text(
                       isPublic
-                          ? AppTranslations.get('lit_rights_public_domain', lang)
+                          ? AppTranslations.get(
+                              'lit_rights_public_domain',
+                              lang,
+                            )
                           : AppTranslations.get('lit_rights_protected', lang),
                       style: QalamTypography.label(
                         color: isPublic ? QalamColors.forest : colors.primary,
@@ -681,47 +849,106 @@ class SourcePanel extends ConsumerWidget {
   }
 
   void _showPageImageDialog(BuildContext context, DisplayLanguage lang) {
+    if (!work.isPageImageDisplayable) return;
     final primary = work.primarySource;
+    final configuredPaths = primary?.sourceImagePaths ?? const <String>[];
+    final imagePaths = configuredPaths.isNotEmpty
+        ? configuredPaths
+        : <String>[
+            primary?.sourceImagePath ??
+                'assets/data/literature/page_images/${work.id}.png',
+          ];
+    var currentPage = 0;
 
     showDialog<void>(
       context: context,
-      builder: (dialogContext) => Dialog.fullscreen(
-        backgroundColor: Colors.black.withValues(alpha: 0.95),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Colors.black87,
-            foregroundColor: Colors.white,
-            elevation: 0,
-            leading: IconButton(
-              tooltip: AppTranslations.get('lit_source_page_close', lang),
-              icon: const Icon(Icons.close),
-              onPressed: () => Navigator.of(dialogContext).pop(),
-            ),
-            title: Text(
-              primary?.bookTitle != null
-                  ? '${primary!.bookTitle} ${primary.formattedPages != null ? "(${primary.formattedPages})" : ""}'
-                  : AppTranslations.get('lit_source_page_title', lang),
-              style: QalamTypography.sectionTitle(
-                color: Colors.white,
-                fontSize: 16,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (context, setState) => Dialog.fullscreen(
+          backgroundColor: Colors.black.withValues(alpha: 0.95),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              backgroundColor: Colors.black87,
+              foregroundColor: Colors.white,
+              elevation: 0,
+              leading: IconButton(
+                tooltip: AppTranslations.get('lit_source_page_close', lang),
+                icon: const Icon(Icons.close),
+                onPressed: () => Navigator.of(dialogContext).pop(),
               ),
-            ),
-          ),
-          body: Center(
-            child: InteractiveViewer(
-              minScale: 0.5,
-              maxScale: 4.0,
-              child: Image.asset(
-                'assets/data/literature/page_images/${work.id}.png',
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) => Center(
-                  child: Text(
-                    AppTranslations.get('lit_source_image_unavailable', lang),
-                    style: const TextStyle(color: Colors.white70),
-                  ),
+              title: Text(
+                primary?.bookTitle != null
+                    ? '${primary!.bookTitle} ${primary.formattedPages != null ? "(${primary.formattedPages})" : ""}'
+                    : AppTranslations.get('lit_source_page_title', lang),
+                style: QalamTypography.sectionTitle(
+                  color: Colors.white,
+                  fontSize: 16,
                 ),
               ),
+            ),
+            body: Stack(
+              children: [
+                PageView.builder(
+                  itemCount: imagePaths.length,
+                  onPageChanged: (index) => setState(() => currentPage = index),
+                  itemBuilder: (context, index) => Center(
+                    child: InteractiveViewer(
+                      minScale: 0.5,
+                      maxScale: 4.0,
+                      child: Semantics(
+                        image: true,
+                        label:
+                            '${AppTranslations.get('lit_source_page_title', lang)}. '
+                            '${AppTranslations.get('lit_source_page_counter', lang, [index + 1, imagePaths.length])}',
+                        child: Image.asset(
+                          imagePaths[index],
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) => Center(
+                            child: Text(
+                              AppTranslations.get(
+                                'lit_source_image_unavailable',
+                                lang,
+                              ),
+                              style: const TextStyle(color: Colors.white70),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                if (imagePaths.length > 1)
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 16,
+                    child: SafeArea(
+                      top: false,
+                      child: Center(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.black87,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 6,
+                            ),
+                            child: Text(
+                              AppTranslations.get(
+                                'lit_source_page_counter',
+                                lang,
+                                [currentPage + 1, imagePaths.length],
+                              ),
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
         ),

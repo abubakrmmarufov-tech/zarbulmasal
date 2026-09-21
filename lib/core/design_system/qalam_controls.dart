@@ -78,7 +78,7 @@ class QalamScriptSwitch extends ConsumerWidget {
                   horizontal: 16,
                   vertical: 10,
                 ),
-                minimumSize: const Size(44, 40),
+                minimumSize: const Size(48, 48),
               ),
               child: Text(
                 value == DisplayLanguage.persian
@@ -117,6 +117,7 @@ class QalamSectionLink extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
+    final displayNumber = AppTranslations.formatDigits(number, lang);
     final enabled = onTap != null;
     final contentColor = enabled
         ? colors.onSurface
@@ -141,7 +142,7 @@ class QalamSectionLink extends ConsumerWidget {
                 width: 32,
                 alignment: AlignmentDirectional.centerStart,
                 child: Text(
-                  number,
+                  displayNumber,
                   style: QalamTypography.eyebrow(
                     color: enabled
                         ? colors.primary

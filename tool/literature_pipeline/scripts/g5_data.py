@@ -147,7 +147,7 @@ G5_POEMS = [
     {
         "id": "g5_shahidi_balkhi_01",
         "author": "Шаҳиди Балхӣ",
-        "authorId": "01df7214-28b7-44ab-a1f4-898bb7e83950",
+        "authorId": "a6b5eb18-39e9-4fdf-b492-e5956a553436",
         "title": "Дар мадҳи устод Рӯдакӣ",
         "incipit": "Ба сухан монад шеъри шуаро,",
         "genre": "қитъа",

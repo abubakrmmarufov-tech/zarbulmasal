@@ -180,6 +180,14 @@ void main() {
 
       expect(find.widgetWithText(ChoiceChip, 'رویدادها'), findsOneWidget);
       expect(find.widgetWithText(ChoiceChip, 'روایت‌ها'), findsOneWidget);
+      final chips = find.byType(ChoiceChip);
+      for (var index = 0; index < chips.evaluate().length; index++) {
+        expect(
+          tester.getSize(chips.at(index)).height,
+          greaterThanOrEqualTo(48),
+          reason: 'History filters must retain a 48dp touch target.',
+        );
+      }
     },
   );
 

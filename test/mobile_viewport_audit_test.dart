@@ -44,7 +44,8 @@ void main() {
               expect(
                 tester.takeException(),
                 isNull,
-                reason: 'Render or overflow exception on $route at ${size.width}x${size.height} in ${language.name}',
+                reason:
+                    'Render or overflow exception on $route at ${size.width}x${size.height} in ${language.name}',
               );
 
               if (language == DisplayLanguage.persian) {

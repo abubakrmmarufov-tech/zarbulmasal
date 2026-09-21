@@ -1,3 +1,5 @@
+import '../../../core/utils/trusted_url_policy.dart';
+
 /// A Tajik-history textbook record from the official curriculum or uploaded textbook.
 class HistoryBook {
   final String id;
@@ -15,6 +17,15 @@ class HistoryBook {
   final String? localPath;
   final int? pages;
   final String? publisher;
+
+  /// A source link that is safe to hand to the platform's external launcher.
+  ///
+  /// History records are bundled editorial data, but keeping this check at the
+  /// model boundary prevents a malformed future record from invoking a local
+  /// file, application scheme, or insecure web URL.
+  Uri? get externalSourceUri {
+    return TrustedUrlPolicy.parseExternal(sourceUrl);
+  }
 
   const HistoryBook({
     required this.id,

@@ -6,6 +6,12 @@ Extracts 12 core curriculum poems directly from physical textbook PDF pages,
 renders high-resolution PNG page images, and promotes works to editoriallyApproved.
 """
 
+if __name__ == "__main__":
+    raise SystemExit(
+        "Deprecated and disabled: use tool/literature_pipeline/scripts/build_assets.py "
+        "for dry-run candidate generation and index_textbook_pages.py for page review."
+    )
+
 import os
 import json
 import hashlib

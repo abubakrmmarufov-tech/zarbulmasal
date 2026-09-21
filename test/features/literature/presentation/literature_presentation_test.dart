@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +15,12 @@ import 'package:zarbulmasal/features/literature/presentation/presentation.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
+double _contrastRatio(Color a, Color b) {
+  final first = a.computeLuminance();
+  final second = b.computeLuminance();
+  return (math.max(first, second) + .05) / (math.min(first, second) + .05);
+}
+
 // Test fixtures
 const testAuthorRudaki = LiteraryAuthor(
   id: 'rudaki',
@@ -25,6 +33,8 @@ const testAuthorRudaki = LiteraryAuthor(
   biographyTj: 'Сардафтари адабиёти классикии тоҷик.',
   biographyFa: 'بنیان‌گذار ادبیات کلاسیک فارسی و تاجیکی.',
   biographySource: 'Адабиёти тоҷик, синфи 5, Маориф, Душанбе, 2017, с. 49',
+  biographyTjProvenance: 'SOURCE_BACKED',
+  biographyFaProvenance: 'EDITORIAL_TRANSLATION',
   officialTitles: ['Одамушшуаро'],
   educationGrades: ['4', '5', '8', '10'],
   rights: RightsRecord(
@@ -56,6 +66,9 @@ const testWorkRudaki = LiteraryWork(
     pageEnd: 46,
     sourceType: SourceEditionType.criticalEdition,
     sourceImageVerified: true,
+    sourceImagePaths: [
+      'assets/data/literature/page_images/rudaki_gar_bar_sari_nafsi_grade6_2014_p12.png',
+    ],
   ),
   rights: RightsRecord(
     status: RightsStatus.publicDomain,
@@ -112,6 +125,7 @@ Future<void> pumpTestApp(
   List<SchoolCanonEntry> canon = const [testCanonEntry],
   List<OralHeritageEntry> oral = const [testOralEntry],
   DisplayLanguage language = DisplayLanguage.tajik,
+  bool dark = false,
 }) async {
   tester.view.physicalSize = const Size(400, 1600);
   tester.view.devicePixelRatio = 1.0;
@@ -168,6 +182,9 @@ Future<void> pumpTestApp(
               .toList(),
         ),
       ),
+      searchableLiteraryWorksProvider.overrideWith(
+        (ref) => Future.value(works),
+      ),
       schoolCanonByAuthorProvider.overrideWith(
         (ref, id) =>
             Future.value(canon.where((c) => c.authorId == id).toList()),
@@ -188,7 +205,7 @@ Future<void> pumpTestApp(
     UncontrolledProviderScope(
       container: container,
       child: MaterialApp.router(
-        theme: AppTheme.lightTheme,
+        theme: dark ? AppTheme.darkTheme : AppTheme.lightTheme,
         routerConfig: router,
       ),
     ),
@@ -229,6 +246,28 @@ void main() {
         expect(find.text('Ҷустуҷӯ'), findsOneWidget);
       },
     );
+
+    testWidgets('Daily Verse card text meets normal-text contrast', (
+      tester,
+    ) async {
+      for (final dark in [false, true]) {
+        await pumpTestApp(tester, route: '/literature', dark: dark);
+
+        final background = dark ? QalamColors.inkCard : QalamColors.ink;
+        for (final label in [
+          'БАЙТИ РӮЗ',
+          'Абӯабдуллоҳи Рӯдакӣ',
+          'Мутолиаи асар',
+        ]) {
+          final text = tester.widget<Text>(find.text(label));
+          expect(
+            _contrastRatio(text.style!.color!, background),
+            greaterThanOrEqualTo(4.5),
+            reason: '$label on $background',
+          );
+        }
+      }
+    });
 
     testWidgets('Hub labels empty oral heritage as unavailable', (
       tester,
@@ -433,6 +472,7 @@ void main() {
           primarySource: testWorkRudaki.primarySource!.copyWith(
             pageStart: 216,
             pageEnd: 216,
+            sourceReference: 'docs/literature/pdfs/review.pdf',
           ),
           verification: const VerificationRecord(
             evidenceLevel: VerificationLevel.needsReview,
@@ -458,26 +498,24 @@ void main() {
 
         expect(find.text('Осори тасдиқшуда дар барнома (0)'), findsOneWidget);
         expect(find.text('Сабтҳои асар дар санҷиш: 2'), findsOneWidget);
+        expect(
+          find.text(
+            '1 сабти дигар то пайдо шудани истиноди саҳифадор дар рӯйхат нишон дода намешавад.',
+          ),
+          findsOneWidget,
+        );
         await tester.scrollUntilVisible(
           find.text('Модар'),
           300,
           scrollable: find.byType(Scrollable).first,
         );
         expect(find.text('Модар'), findsOneWidget);
-        await tester.scrollUntilVisible(
-          find.text('Асари бе саҳифа'),
-          300,
-          scrollable: find.byType(Scrollable).first,
-        );
-        expect(
-          find.text('Рақами саҳифаи чопӣ ҳанӯз сабт нашудааст'),
-          findsOneWidget,
-        );
+        expect(find.text('Асари бе саҳифа'), findsNothing);
         expect(
           find.textContaining(
             'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
           ),
-          findsNWidgets(2),
+          findsOneWidget,
         );
         expect(find.textContaining('с. 216'), findsOneWidget);
 
@@ -560,6 +598,161 @@ void main() {
     );
 
     testWidgets(
+      'SourcePanel exposes citations for secondary and additional occurrences',
+      (tester) async {
+        final secondary = testWorkRudaki.primarySource!.copyWith(
+          bookTitle: 'Гулшани адаб',
+          publisher: 'Маориф',
+          city: 'Душанбе',
+          year: '2019',
+          pageStart: 88,
+          pageEnd: 89,
+        );
+        final occurrence = secondary.copyWith(
+          bookTitle: 'Адабиёти тоҷик (Синфи 5)',
+          publisher: 'Маориф',
+          year: '2018',
+          pageStart: 153,
+          pageEnd: 153,
+        );
+        final work = testWorkRudaki.copyWith(
+          secondarySource: secondary,
+          sourceOccurrences: [occurrence],
+        );
+
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${work.id}',
+          works: [work],
+        );
+
+        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Гулшани адаб'), findsOneWidget);
+        final panelScrollable = find.descendant(
+          of: find.byType(SourcePanel),
+          matching: find.byType(Scrollable),
+        );
+        final secondaryCitation = find.byKey(
+          ValueKey<String>('source-citation-${secondary.citation}'),
+        );
+        await tester.scrollUntilVisible(
+          secondaryCitation,
+          300,
+          scrollable: panelScrollable.first,
+        );
+        expect(secondaryCitation, findsOneWidget);
+        expect(find.text('Адабиёти тоҷик (Синфи 5)'), findsOneWidget);
+        final occurrenceCitation = find.byKey(
+          ValueKey<String>('source-citation-${occurrence.citation}'),
+        );
+        await tester.scrollUntilVisible(
+          occurrenceCitation,
+          300,
+          scrollable: panelScrollable.first,
+        );
+        expect(occurrenceCitation, findsOneWidget);
+      },
+    );
+
+    testWidgets('SourcePanel review status meets normal-text contrast', (
+      tester,
+    ) async {
+      final pendingWork = testWorkRudaki.copyWith(
+        textStatus: TextStatus.needsReview,
+        verification: const VerificationRecord(
+          evidenceLevel: VerificationLevel.needsReview,
+        ),
+      );
+      for (final dark in [false, true]) {
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${pendingWork.id}',
+          works: [pendingWork],
+          dark: dark,
+        );
+
+        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
+        await tester.pumpAndSettle();
+
+        final statusText = tester.widget<Text>(find.text('Дар баррасӣ'));
+        final statusColor = statusText.style!.color!;
+        final theme = dark ? AppTheme.darkTheme : AppTheme.lightTheme;
+        final badgeBackground = Color.alphaBlend(
+          statusColor.withValues(alpha: .12),
+          theme.colorScheme.surface,
+        );
+        expect(
+          _contrastRatio(statusColor, badgeBackground),
+          greaterThanOrEqualTo(4.5),
+          reason: '${dark ? 'dark' : 'light'} SourcePanel review badge',
+        );
+      }
+    });
+
+    testWidgets(
+      'SourcePanel names the page facsimile action for screen readers',
+      (tester) async {
+        final semantics = tester.ensureSemantics();
+        try {
+          await pumpTestApp(
+            tester,
+            route: '/literature/work/rudaki-boyi-juyi-muliyon',
+          );
+          await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
+          await tester.pumpAndSettle();
+
+          final pageAction = find.ancestor(
+            of: find.text('Тасвири аслии саҳифаи китоб'),
+            matching: find.byType(InkWell),
+          );
+          expect(pageAction, findsOneWidget);
+
+          final description = tester.getSemantics(pageAction).toStringDeep();
+          expect(description, contains('Тасвири аслии саҳифаи китоб'));
+          expect(description, contains('isButton'));
+          expect(description, contains('tap'));
+        } finally {
+          semantics.dispose();
+        }
+      },
+    );
+
+    testWidgets(
+      'Source image viewer exposes every verified page in a multi-page witness',
+      (tester) async {
+        final imagePath = testWorkRudaki.primarySource!.sourceImagePath!;
+        final multiPageWork = testWorkRudaki.copyWith(
+          primarySource: testWorkRudaki.primarySource!.copyWith(
+            sourceImagePaths: [imagePath, imagePath],
+          ),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${multiPageWork.id}',
+          works: [multiPageWork],
+        );
+
+        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
+        await tester.pumpAndSettle();
+        final pageAction = find.ancestor(
+          of: find.text('Тасвири аслии саҳифаи китоб'),
+          matching: find.byType(InkWell),
+        );
+        await tester.tap(pageAction);
+        await tester.pumpAndSettle();
+
+        expect(find.byType(PageView), findsOneWidget);
+        expect(find.text('Саҳифаи 1 аз 2'), findsOneWidget);
+
+        await tester.drag(find.byType(PageView), const Offset(-400, 0));
+        await tester.pumpAndSettle();
+        expect(find.text('Саҳифаи 2 аз 2'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
       'PoemReaderScreen rejects a direct link to an unapproved work',
       (tester) async {
         final blockedWork = testWorkRudaki.copyWith(
@@ -596,6 +789,97 @@ void main() {
         expect(find.text('Асар дар санҷиш аст'), findsOneWidget);
         expect(find.text('Бозгашт'), findsWidgets);
         expect(find.textContaining('Бӯи ҷӯи Мӯлиён ояд ҳаме'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'Pending SourcePanel withholds page scans until publication clearance',
+      (tester) async {
+        final pendingWork = testWorkRudaki.copyWith(
+          textStatus: TextStatus.needsReview,
+          verification: const VerificationRecord(
+            evidenceLevel: VerificationLevel.needsReview,
+          ),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${pendingWork.id}',
+          works: [pendingWork],
+        );
+
+        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(SourcePanel), findsOneWidget);
+        expect(find.text('Тасвири саҳифа маҳфуз аст'), findsOneWidget);
+        expect(find.text('Тасвири аслии саҳифаи китоб'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'Approved poem without a source image has no image affordance',
+      (tester) async {
+        final noImageWork = testWorkRudaki.copyWith(
+          primarySource: testWorkRudaki.primarySource!.copyWith(
+            sourceImageVerified: false,
+          ),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${noImageWork.id}',
+          works: [noImageWork],
+        );
+
+        expect(find.text('Тасвири саҳифа'), findsNothing);
+        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(SourcePanel), findsOneWidget);
+        expect(find.text('Тасвири аслии саҳифаи китоб'), findsNothing);
+        expect(find.text('Тасвири саҳифа маҳфуз аст'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'Verified image flag without a local image path has no image affordance',
+      (tester) async {
+        final noPathWork = testWorkRudaki.copyWith(
+          primarySource: testWorkRudaki.primarySource!.copyWith(
+            sourceImagePaths: const [],
+          ),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${noPathWork.id}',
+          works: [noPathWork],
+        );
+
+        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(SourcePanel), findsOneWidget);
+        expect(find.text('Тасвири аслии саҳифаи китоб'), findsNothing);
+        expect(find.text('Тасвири саҳифа маҳфуз аст'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'Pending reader does not advertise a page image before publication clearance',
+      (tester) async {
+        final pendingWork = testWorkRudaki.copyWith(
+          textStatus: TextStatus.needsReview,
+          verification: const VerificationRecord(
+            evidenceLevel: VerificationLevel.needsReview,
+          ),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/${pendingWork.id}',
+          works: [pendingWork],
+        );
+
+        expect(find.text('Тасвири саҳифа'), findsNothing);
+        expect(find.widgetWithText(OutlinedButton, 'Манбаъ'), findsOneWidget);
       },
     );
 
@@ -647,6 +931,14 @@ void main() {
           find.textContaining('Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ'),
           findsOneWidget,
         );
+        final chips = find.byType(FilterChip);
+        for (var index = 0; index < chips.evaluate().length; index++) {
+          expect(
+            tester.getSize(chips.at(index)).height,
+            greaterThanOrEqualTo(48),
+            reason: 'Oral heritage filters must retain a 48dp touch target.',
+          );
+        }
       },
     );
 
@@ -693,6 +985,23 @@ void main() {
         expect(find.byIcon(Icons.search), findsOneWidget);
       },
     );
+
+    testWidgets('Literature Hub localizes its Persian section indices', (
+      tester,
+    ) async {
+      await pumpTestApp(
+        tester,
+        route: '/literature',
+        language: DisplayLanguage.persian,
+      );
+
+      expect(find.text('۰۰'), findsOneWidget);
+      expect(find.text('۰۱'), findsOneWidget);
+      expect(find.text('۰۶'), findsOneWidget);
+      expect(find.text('00'), findsNothing);
+      expect(find.text('01'), findsNothing);
+      expect(find.text('06'), findsNothing);
+    });
 
     testWidgets(
       'PoetDetailScreen in Persian mode renders Persian canonical name, biography, and formatted lifespan',
@@ -821,6 +1130,7 @@ void main() {
           literaryPeriod: 'Асри XX',
           biographyTj: 'Сарвари адабиёти нави тоҷик.',
           biographySource: 'Сарчашмаи санҷиши тестӣ, с. 1',
+          biographyTjProvenance: 'SOURCE_BACKED',
           rights: RightsRecord(
             status: RightsStatus.publicDomain,
             reasoning: 'PD',
@@ -898,6 +1208,7 @@ void main() {
           literaryPeriod: 'Асри XX',
           biographyTj: 'Сарвари адабиёти нави тоҷик.',
           biographySource: 'Сарчашмаи санҷиши тестӣ, с. 1',
+          biographyTjProvenance: 'SOURCE_BACKED',
           rights: RightsRecord(
             status: RightsStatus.publicDomain,
             reasoning: 'PD',
@@ -966,6 +1277,7 @@ void main() {
         literaryPeriod: 'Асри XX',
         biographyTj: 'Сарвари адабиёти нави тоҷик.',
         biographySource: 'Сарчашмаи санҷиши тестӣ, с. 1',
+        biographyTjProvenance: 'SOURCE_BACKED',
         rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',

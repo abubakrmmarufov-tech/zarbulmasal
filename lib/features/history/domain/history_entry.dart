@@ -1,5 +1,9 @@
 import 'history_epoch.dart';
 
+const _verifiedClaimStatus = 'VERIFIED_UPLOADED_BOOK_PAGE';
+const _sourceLocatedClaimStatus = 'SOURCE_LOCATED';
+const _needsReviewClaimStatus = 'NEEDS_REVIEW';
+
 enum HistoryEntryKind {
   empire,
   dynasty,
@@ -20,8 +24,11 @@ class HistoryClaimProvenance {
   final String sourceBookId;
   final int? printedPage;
   final int? pdfPage;
-  final String status;
+  final String _rawStatus;
   final String? statusNote;
+
+  /// Returns only a status the renderer and validators understand.
+  String get status => _normalizedStatus(_rawStatus);
 
   const HistoryClaimProvenance({
     required this.claim,
@@ -29,9 +36,9 @@ class HistoryClaimProvenance {
     required this.sourceBookId,
     this.printedPage,
     this.pdfPage,
-    this.status = 'VERIFIED_UPLOADED_BOOK_PAGE',
+    String status = _needsReviewClaimStatus,
     this.statusNote,
-  });
+  }) : _rawStatus = status;
 
   factory HistoryClaimProvenance.fromJson(Map<String, dynamic> json) {
     return HistoryClaimProvenance(
@@ -40,9 +47,19 @@ class HistoryClaimProvenance {
       sourceBookId: json['sourceBookId'] as String? ?? '',
       printedPage: (json['printedPage'] as num?)?.toInt(),
       pdfPage: (json['pdfPage'] as num?)?.toInt(),
-      status: json['status'] as String? ?? 'VERIFIED_UPLOADED_BOOK_PAGE',
+      status: _normalizedStatus(json['status']),
       statusNote: json['statusNote'] as String?,
     );
+  }
+
+  static String _normalizedStatus(Object? value) {
+    if (value is! String) return _needsReviewClaimStatus;
+    return switch (value.trim()) {
+      _verifiedClaimStatus => _verifiedClaimStatus,
+      _sourceLocatedClaimStatus => _sourceLocatedClaimStatus,
+      _needsReviewClaimStatus => _needsReviewClaimStatus,
+      _ => _needsReviewClaimStatus,
+    };
   }
 
   Map<String, dynamic> toJson() => {

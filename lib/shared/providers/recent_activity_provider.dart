@@ -31,14 +31,66 @@ class RecentActivity {
     'route': route,
   };
 
-  factory RecentActivity.fromJson(Map<String, dynamic> json) => RecentActivity(
-    id: json['id'] as String,
-    type: RecentActivityType.values.byName(json['type'] as String),
-    title: json['title'] as String,
-    subtitle: json['subtitle'] as String?,
-    timestamp: DateTime.parse(json['timestamp'] as String),
-    route: json['route'] as String,
-  );
+  factory RecentActivity.fromJson(Map<String, dynamic> json) {
+    final activity = tryFromJson(json);
+    if (activity == null) {
+      throw const FormatException('Invalid recent activity record');
+    }
+    return activity;
+  }
+
+  /// Parses untrusted persisted data without allowing one bad record to
+  /// invalidate the rest of the recent-activity history.
+  static RecentActivity? tryFromJson(Map<String, dynamic> json) {
+    final id = _nonEmptyString(json['id']);
+    final title = _nonEmptyString(json['title']);
+    final route = _nonEmptyString(json['route']);
+    final timestampValue = _nonEmptyString(json['timestamp']);
+    final typeValue = _nonEmptyString(json['type']);
+    final type = typeValue == null ? null : _typeFromName(typeValue);
+    final timestamp = timestampValue == null
+        ? null
+        : DateTime.tryParse(timestampValue);
+    final subtitle = json['subtitle'];
+
+    if (id == null ||
+        title == null ||
+        route == null ||
+        timestamp == null ||
+        type == null ||
+        (subtitle != null && subtitle is! String) ||
+        !_isInternalRoute(route)) {
+      return null;
+    }
+
+    return RecentActivity(
+      id: id,
+      type: type,
+      title: title,
+      subtitle: subtitle as String?,
+      timestamp: timestamp,
+      route: route,
+    );
+  }
+
+  static RecentActivityType? _typeFromName(String value) {
+    for (final type in RecentActivityType.values) {
+      if (type.name == value) return type;
+    }
+    return null;
+  }
+
+  static String? _nonEmptyString(dynamic value) {
+    if (value is! String) return null;
+    final normalized = value.trim();
+    return normalized.isEmpty ? null : normalized;
+  }
+
+  static bool _isInternalRoute(String route) {
+    if (!route.startsWith('/') || route.startsWith('//')) return false;
+    final uri = Uri.tryParse(route);
+    return uri != null && uri.scheme.isEmpty && uri.host.isEmpty;
+  }
 }
 
 final recentActivityProvider =
@@ -60,11 +112,20 @@ class RecentActivityNotifier extends StateNotifier<List<RecentActivity>> {
     if (list == null) return [];
     try {
       return list
-          .map(
-            (e) =>
-                RecentActivity.fromJson(jsonDecode(e) as Map<String, dynamic>),
-          )
-          .toList();
+          .map((encoded) {
+            try {
+              final decoded = jsonDecode(encoded);
+              if (decoded is! Map) return null;
+              return RecentActivity.tryFromJson(
+                Map<String, dynamic>.from(decoded),
+              );
+            } catch (_) {
+              return null;
+            }
+          })
+          .whereType<RecentActivity>()
+          .take(_maxItems)
+          .toList(growable: false);
     } catch (_) {
       return [];
     }

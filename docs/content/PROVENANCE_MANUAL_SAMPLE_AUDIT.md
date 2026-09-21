@@ -1,6 +1,6 @@
 # Manual Provenance Sample Audit
 
-Date: 2026-09-19
+Date: 2026-09-20
 Permitted sources opened: the uploaded PDFs under `docs/literature/pdfs/` and
 `pdf books/history_5.pdf`. No external factual source was used.
 
@@ -27,7 +27,7 @@ subject was found in that source. Records without a local page remain in
 | `455f0420-3834-48f0-86b9-7da673a2a684` | `adabiet sinfi 10.pdf` | 117–160 | SOURCE_BACKED |
 | `d1abb54a-9804-4baf-b238-fd2203d7673e` | `adabiyet sinfi 9.pdf` | 162–194 | SOURCE_BACKED |
 | `1a55efdd-6a1f-43b8-834f-94af060b4329` | `adabiyet sinfi 8.pdf` | 127–142 | SOURCE_BACKED |
-| `3853d79b-0951-44c3-a5db-229649fa30b6` | `adabiyet sinfi 8.pdf` | 150–155 | SOURCE_BACKED |
+| `be19709e-c3af-460d-80b9-4c67046e8be3` | `adabiyet sinfi 8.pdf` | 150–155 | SOURCE_BACKED |
 | `d48ec80f-951d-4dfd-b65a-6e409561a712` | `adabiyet sinfi 8.pdf` | 144–149 | SOURCE_BACKED |
 | `282f4c69-1d14-4be2-89d3-d21f867e4964` | `adabiyet sinfi 8.pdf` | 144–149 | SOURCE_BACKED |
 | `1c82210c-343c-4499-9639-93f0a766b5f7` | `adabiyet sinfi 8.pdf` | 145–149 | SOURCE_BACKED |
@@ -41,8 +41,8 @@ source witnesses.
 ## Literary works — 40 samples
 
 All 40 samples below contain `persianScriptSource: generated`. Their Persian
-fields were not treated as source text. The 12 image-backed records were
-re-opened at their listed pages; the remaining samples were opened against
+fields were not treated as source text. The page-backed records listed below
+were re-opened at their listed pages; the remaining samples were opened against
 their available local source locator or confirmed to have no local page
 reference, so they remain under review.
 
@@ -86,11 +86,12 @@ reference, so they remain under review.
 | `038cb153-9ce5-4881-a2a5-26c1970299c0` | no page recorded | NEEDS_REVIEW |
 | `ced3e012-00e7-4c97-bb64-61d3045459b2` | grade 11 / 313 | Tajik page confirmed; Persian generated |
 | `rudaki_buyi_juyi_muliyon_grade5_2017_p54` | grade 5 / 54 | Tajik page confirmed; Persian generated |
-| `kamol_khujandi_guftam_ba_chashm_grade7_2018_p105` | grade 9 / 197 | Tajik page confirmed; Persian generated |
-| `kamol_khujandi_dust_medorad_dilam_grade7_2018_p106_107` | grade 7 / not recorded | NEEDS_REVIEW |
+| `7673c21c-eabd-4f67-954c-99af1028a7a7` | grade 5 / 50; secondary grade 6 / 12 | Tajik page confirmed in both witnesses; exact four-line collation; Persian generated |
+| `kamol_khujandi_guftam_ba_chashm_grade7_2018_p105` | grade 7 / 105; secondary grade 9 / 197 | Tajik page confirmed; minor textual variants collated; Persian generated |
+| `kamol_khujandi_dust_medorad_dilam_grade7_2018_p106_107` | grade 7 / 106–107; secondary current Maorif grade 7 / 102–103 | Tajik pages confirmed in both witnesses; exact 8-line collation; remains `primaryChecked` because rights are unknown |
 
-The other eight image-backed works were re-opened similarly and are included
-in the 12 exact page records retained by the linter.
+The other image-backed works were re-opened similarly and are included in the
+13 exact page records retained by the linter.
 
 ## History — 20 exact page references
 
@@ -132,6 +133,6 @@ listed separately in the data model; it is not being relabeled as a dynasty.
 
 ## Limits
 
-The sample does not upgrade the remaining 1,460 works, 130 unsampled poets, or
+The sample does not upgrade the remaining 5,517 works or unsampled poets, or
 64 history claims to verified status. Those records retain `needsReview` or
 `SOURCE_LOCATED` and are reported as such.

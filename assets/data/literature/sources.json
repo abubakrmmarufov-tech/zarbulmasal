@@ -338,7 +338,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": false
+    "sourceImageVerified": true
   },
   {
     "id": "tj_literature_grade_7_2018",
@@ -367,7 +367,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": false
+    "sourceImageVerified": true
   },
   {
     "id": "tj_literature_grade_9_2026",
@@ -382,7 +382,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": false
+    "sourceImageVerified": true
   },
   {
     "id": "tj_literature_grade_10_2026",
@@ -412,6 +412,36 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
     "accessDate": "2026-09-14",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_7_2025",
+    "bookTitle": "Адабиёти тоҷик",
+    "authorAsPrinted": "У. Тоиров, М. Солеҳов, Н. Ширинзода",
+    "edition": "Нашри шашум",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2025",
+    "isbn": null,
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01KH604RAK569PDJBYDN82T6WE.pdf",
+    "accessDate": "2026-09-21",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_11_2025",
+    "bookTitle": "Адабиёти тоҷик (давраи нав)",
+    "authorAsPrinted": "Х. Асозода, А. Кўчарзода",
+    "edition": "Нашри ҳафтум",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2025",
+    "isbn": "978-99985-61-45-8",
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01KH8MQHJJBRM70Q8FXHNNCGV5.pdf",
+    "accessDate": "2026-09-21",
     "sourceImageVerified": false
   }
 ]

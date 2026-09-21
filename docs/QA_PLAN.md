@@ -16,7 +16,10 @@ Verify and improve the complete offline application experience across Tajik Cyri
 
 ## Completion gates
 
-- No known P0/P1 defects in the verified scope.
+- No unmitigated local P0/P1 defects remain in the verified scope; the issue
+  register still tracks external release gates for provenance/editorial
+  approval, production signing, live deployment, security coverage, and
+  physical-device verification.
 - Full automated checks pass without weakened assertions.
 - Every route and major control has observed runtime evidence.
 - Pending literary material remains visibly pending and has no fabricated citation or verification claim.

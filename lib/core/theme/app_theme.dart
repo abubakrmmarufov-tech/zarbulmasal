@@ -129,7 +129,7 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: accent,
-          minimumSize: const Size(48, 44),
+          minimumSize: const Size(48, 48),
           shape: shape,
         ),
       ),

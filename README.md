@@ -40,7 +40,7 @@ documentation, and code:
 ## What is included
 
 - **Proverbs Catalog**: 149 book-attested traditional proverbs across 20 categories and 6 data-derived levels
-- **Literary Heritage (Мероси адабӣ)**: 171 Tajik poets, 1,472 catalogued works from school textbooks (Grades 5–11), and a dedicated bilingual poem reader with parallel Cyrillic/Persian view and text scaling
+- **Literary Heritage (Мероси адабӣ)**: 159 catalogued author records (145 public, 6 rejected artifacts, 8 pending review) and 5,501 textbook candidates from Grades 5–11. Records without editorial, source, and rights approval remain visibly quarantined; only approved works can enter the bilingual Cyrillic/Persian poem reader.
 - **History of the Tajik People (Таърихи халқи тоҷик)**: Chronological timeline covering 6 canonical epochs (Ancient & Aryan, Samanid Renaissance, Medieval Dynasties, Enlightenment, Soviet, and Independence), curriculum browsing by textbook grade (5–11), and topics
 - **Cultural Knowledge Graph**: Relational cross-linking between historical eras, rulers, and literary figures ("Explore Their World")
 - **Tajik Cyrillic & Persian Arabic Support**: Full bilingual reading modes, RTL text direction isolation, Persian numerals, and phonetic diacritic-tolerant search
@@ -109,35 +109,50 @@ flutter test --coverage
 dart run tool/validate_literature_json.dart
 dart run tool/validate_literary_content.dart
 flutter build web --release --base-href /zarbulmasal/
+flutter build appbundle --release  # requires production signing variables
+python3 tool/verify_android_bundle_alignment.py build/app/outputs/bundle/release/app-release.aab
+bash tool/verify_android_release_artifacts.sh build/app/outputs/bundle/release/app-release.aab
 python3 tool/deep_browser_audit.py https://abubakrmmarufov-tech.github.io/zarbulmasal/
 ```
 
-The regression suite covers 228 automated tests across all routes, 8 viewports (from 320px ultra-compact phones to tablet and desktop), both writing systems (Cyrillic and Persian Arabic RTL), large text, dark mode, filtering, parallel script reading, clipboard behavior, favorites, persisted preferences, quizzes, flashcards, and empty states. `tool/deep_browser_audit.py` validates viewport overflow, console logs, and page errors across all major destinations.
+The regression suite currently covers 392 automated tests across all routes, 8 viewports (from 320px ultra-compact phones to tablet and desktop), both writing systems (Cyrillic and Persian Arabic RTL), large text, dark mode, filtering, parallel script reading, clipboard behavior, favorites, persisted preferences, quizzes, flashcards, and empty states. `tool/deep_browser_audit.py` validates viewport overflow, console errors, page exceptions, failed requests, and route diagnostics across all major destinations, and exits nonzero on a real browser failure.
 
-## Install on Android
+## Android release (currently withheld)
 
 Direct-download APKs for Android devices (Android 7.0+) are staged by the
 release workflow in the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
 only after production signing secrets are configured and the current release
-artifacts pass package, signature, ABI, alignment, and checksum checks:
+artifacts pass package, signature, ABI, alignment, and checksum checks.
 
-Until those checks pass, the public deployment intentionally has no Android
-portal or download links.
+Current status: the public Android portal and download links are intentionally
+withheld. No APK listed in this repository should be treated as a current
+installable release until a production-signed artifact has passed those checks
+and the portal has been verified after publication.
 
-- [Android Portal & Direct APK Downloads](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
-  - **ARM64-v8a** (~20 MB, recommended for modern phones)
-  - **ARMv7a** (~18 MB, for 32-bit devices)
-  - **Universal** (~56 MB, all architectures)
+The source release includes the [static privacy policy](web/privacy.html), and
+the in-app privacy disclosure points to the verified live Pages URL. The current
+web-only deployment returns HTTP 200 for both the app root and
+`/zarbulmasal/privacy.html`; keep the post-deploy verification in CI before
+using it as the Google Play privacy-policy URL.
 
-### Installation instructions:
+The following is the post-publication installation flow; it is not currently
+actionable while the portal is withheld:
+
+- [Intended Android Portal & Direct APK Downloads](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
+  - **ARM64-v8a**, recommended for modern phones
+  - **ARMv7a**, for compatible 32-bit devices
+  - **Universal**, for all supported architectures
+
+### Post-publication installation instructions:
 1. Open the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/) in your mobile browser.
 2. Select your device architecture (ARM64 recommended for modern devices).
-3. Tap **Download anyway** when prompted by Android.
-4. Open the downloaded `.apk` file and tap **Install** (or **Update**).
+3. Verify the published checksum and signing identity before opening the APK.
+4. Open the verified `.apk` file and tap **Install** (or **Update**).
 
 ### Delivery and signing notes:
 - **Direct download**: Release assets are standalone `.apk` binaries hosted directly on the web app distribution portal, requiring no GitHub login and no `.zip` archive extraction.
-- **Signing identity**: Public releases maintain continuity with the v1.0.1 signing certificate (SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`), allowing in-place upgrades.
+- **Signing identity**: Public releases must use a protected `EXPECTED_RELEASE_CERT_SHA256` value that matches the real production keystore. The historical v1.0.1 digest is not trusted as a production identity because device inspection identifies it as `CN=Android Debug`.
+- **Release evidence**: The main workflow archives verified APKs in an APK-rooted public-download artifact and retains the AAB, R8 mapping, Flutter obfuscation symbols, and native debug symbols in a separate evidence artifact for crash diagnosis. Manual release verification also requires `EXPECTED_RELEASE_CERT_SHA256` to be exported alongside the production keystore variables.
 - **Workflow artifacts (CI)**: CI workflow runs also upload test APKs to the [Quality & Pages action runs](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/workflows/ci.yml).
 
 ## Contributing

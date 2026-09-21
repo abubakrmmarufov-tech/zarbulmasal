@@ -268,6 +268,11 @@ void main() {
         final id = work['id'] as String;
         final title = work['title'] as String? ?? '';
         final textTj = work['textTajik'] as String? ?? '';
+        final textFa = work['textPersian'] as String? ?? '';
+        final generatedRepresentation =
+            work['persianScriptRepresentation'] as String? ?? '';
+        final incipit = work['incipit'] as String? ?? '';
+        final rights = work['rights'] as Map<String, dynamic>? ?? {};
         final script = work['scriptSource'] as String? ?? '';
         final persianScriptSrc = work['persianScriptSource'] as String?;
 
@@ -276,30 +281,70 @@ void main() {
         seenIds.add(id);
 
         expect(title.trim(), isNotEmpty, reason: 'Work $id has empty title');
-        expect(
-          textTj.trim(),
-          isNotEmpty,
-          reason: 'Work $id has empty textTajik',
-        );
+        if (work['textStatus'] == 'needsReview') {
+          expect(
+            textTj.trim(),
+            isEmpty,
+            reason: 'Unreviewed work $id must not ship a full text body',
+          );
+        } else {
+          expect(
+            textTj.trim(),
+            isNotEmpty,
+            reason: 'Work $id has empty textTajik',
+          );
+        }
+        if (rights['fullTextAllowed'] != true) {
+          expect(
+            textTj.trim(),
+            isEmpty,
+            reason: 'Work $id without full-text rights ships Tajik text',
+          );
+          expect(
+            textFa.trim(),
+            isEmpty,
+            reason: 'Work $id without full-text rights ships Persian text',
+          );
+          expect(
+            generatedRepresentation.trim(),
+            isEmpty,
+            reason:
+                'Work $id without full-text rights ships a generated representation',
+          );
+        }
+        if (rights['excerptAllowed'] != true) {
+          expect(
+            incipit.trim(),
+            isEmpty,
+            reason: 'Work $id without excerpt rights ships an incipit',
+          );
+        }
 
         // RULE B: scriptSource='both' requires genuine page-image evidence
         if (script == 'both') {
           both++;
           final src = work['primarySource'] as Map<String, dynamic>?;
           final imagePath = src?['sourceImagePath'] as String?;
+          final imagePaths =
+              (src?['sourceImagePaths'] as List?)
+                  ?.whereType<String>()
+                  .toList() ??
+              (imagePath == null ? <String>[] : [imagePath]);
           final imageVerified = src?['sourceImageVerified'] as bool? ?? false;
 
-          if (imageVerified && imagePath != null) {
-            final fname = imagePath.split('/').last;
-            expect(
-              existingImages.contains(fname),
-              isTrue,
-              reason:
-                  'Work $id claims scriptSource=both with sourceImageVerified=true '
-                  'but image file $fname does not exist. '
-                  'This is fabricated dual-script provenance.',
-            );
-          } else if (imageVerified && imagePath == null) {
+          if (imageVerified && imagePaths.isNotEmpty) {
+            for (final path in imagePaths) {
+              final fname = path.split('/').last;
+              expect(
+                existingImages.contains(fname),
+                isTrue,
+                reason:
+                    'Work $id claims scriptSource=both with sourceImageVerified=true '
+                    'but image file $fname does not exist. '
+                    'This is fabricated dual-script provenance.',
+              );
+            }
+          } else if (imageVerified && imagePaths.isEmpty) {
             fakeVerifiedImage++;
           }
         } else if (script == 'tajikOnly') {
@@ -341,8 +386,11 @@ void main() {
         final src = work['primarySource'] as Map<String, dynamic>?;
         final imageVerified = src?['sourceImageVerified'] as bool? ?? false;
         final imagePath = src?['sourceImagePath'] as String?;
+        final imagePaths =
+            (src?['sourceImagePaths'] as List?)?.whereType<String>().toList() ??
+            (imagePath == null ? <String>[] : [imagePath]);
 
-        if (imageVerified && imagePath == null) {
+        if (imageVerified && imagePaths.isEmpty) {
           fakeVerifiedImage++;
         }
       }

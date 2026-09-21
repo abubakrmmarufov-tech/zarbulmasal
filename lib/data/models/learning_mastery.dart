@@ -30,8 +30,12 @@ class ProverbMastery {
         (l) => l.name == (json['level'] as String?),
         orElse: () => MasteryLevel.unseen,
       ),
-      reviewCount: (json['reviewCount'] as num?)?.toInt() ?? 0,
-      correctCount: (json['correctCount'] as num?)?.toInt() ?? 0,
+      reviewCount: json['reviewCount'] is num
+          ? (json['reviewCount'] as num).toInt()
+          : int.tryParse(json['reviewCount']?.toString() ?? '') ?? 0,
+      correctCount: json['correctCount'] is num
+          ? (json['correctCount'] as num).toInt()
+          : int.tryParse(json['correctCount']?.toString() ?? '') ?? 0,
       lastReviewedAt:
           DateTime.tryParse(json['lastReviewedAt'] as String? ?? '') ??
           DateTime.fromMillisecondsSinceEpoch(0),

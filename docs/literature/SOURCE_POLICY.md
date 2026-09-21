@@ -21,6 +21,13 @@ Because Zarbulmasal serves as an educational and cultural reference, accuracy an
 3. **Mandatory Sourcing for Biographies**: Every biographical fact, date, birthplace, career milestone, and award must carry explicit Tier A or Tier B bibliographic citations.
 4. **Jurisdictional Copyright Gate**: No text may be ingested or displayed without legal clearance under the copyright laws of the Republic of Tajikistan (see `RIGHTS_POLICY.md`).
 
+5. **Optional Page Imagery**: A poem does not require a page image to remain in
+   the catalogue or to be reviewed. When a reliable book-page image cannot be
+   located, the record must remain image-free; the app must not substitute an
+   invented, unrelated, or decorative image. A page image may be shown only
+   when its source, exact page, and local inspection are recorded and the
+   publication gate permits the facsimile to be displayed.
+
 ---
 
 ## 2. Source Hierarchy

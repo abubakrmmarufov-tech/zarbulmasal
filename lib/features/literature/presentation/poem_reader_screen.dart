@@ -50,8 +50,11 @@ class PoemReaderScreen extends ConsumerWidget {
             title: AppTranslations.get('lit_work_error_title', lang),
             subtitle: AppTranslations.get('lit_work_error_sub', lang),
             action: OutlinedButton(
-              onPressed: () => qalamBack(context),
-              child: Text(AppTranslations.get('back', lang)),
+              onPressed: () {
+                ref.invalidate(literaryWorksProvider);
+                ref.invalidate(approvedWorksProvider);
+              },
+              child: Text(AppTranslations.get('btn_retry', lang)),
             ),
           ),
         ),
@@ -263,7 +266,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                 VerificationLevel.editoriallyApproved,
                             label: AppTranslations.get('lit_verified', lang),
                           ),
-                          if (work.primarySource?.sourceImageVerified == true)
+                          if (work.isPageImageDisplayable)
                             InkWell(
                               onTap: () => SourcePanel.show(context, work),
                               borderRadius: BorderRadius.circular(4),

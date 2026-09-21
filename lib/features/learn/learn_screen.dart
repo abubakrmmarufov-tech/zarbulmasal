@@ -92,9 +92,7 @@ class LearnScreen extends ConsumerWidget {
               context,
               icon: Icons.play_arrow_rounded,
               title: lastLevelActivity.title,
-              subtitle:
-                  lastLevelActivity.subtitle ??
-                  tr('learn_continue_hint'),
+              subtitle: lastLevelActivity.subtitle ?? tr('learn_continue_hint'),
               onTap: () => context.push(lastLevelActivity.route),
               primary: true,
             ),

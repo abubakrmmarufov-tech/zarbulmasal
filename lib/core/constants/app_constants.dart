@@ -2,6 +2,8 @@ class AppConstants {
   AppConstants._();
 
   static const String appName = 'Зарбулмасал';
+  static const String privacyPolicyUrl =
+      'https://abubakrmmarufov-tech.github.io/zarbulmasal/privacy.html';
   static const String prefsDarkMode = 'dark_mode';
   static const String prefsFavorites = 'favorites';
   static const String prefsLanguage = 'display_language';

@@ -2,13 +2,19 @@
 """
 Comprehensive Curriculum and Heritage Expansion Script for Zarbulmasal.
 Implements Loop 1 with complete epistemic integrity:
-1. Deduplicates poets in poets.json while honoring explicit tests (e.g. Jami dual witness).
+1. Deduplicates poets in poets.json while preserving one canonical record per author.
 2. Adds missing curriculum authors (Ahmad Donish, Sotim Ulughzoda, etc.).
 3. Enriches curriculum poets with full, authentic biographies from EXTRACTED_BIOGRAPHIES.json.
 4. Updates school_canon.json with authentic curriculum entries across Grades 5-11.
 5. Ensures exact alignment with sources.json and unit test expectations.
 6. Verifies 0 dangling references.
 """
+
+if __name__ == "__main__":
+    raise SystemExit(
+        "Deprecated and disabled: use tool/literature_pipeline/scripts/build_assets.py "
+        "for the reviewed, dry-run-first literature pipeline."
+    )
 
 import json
 import re
@@ -52,7 +58,6 @@ def run_expansion(dry_run=False):
     sources_by_id = {s["id"]: s for s in sources}
 
     # 1. Complete merge map of duplicate poet entities (old_id -> canonical_id)
-    # NOTE: Keep 358dda13-365c-4434-87f0-d404b305adcb as explicitly mandated by Jami dual-record unit test
     merge_map = {
         # Firdawsi
         "ac759bd8-fe4e-4ef3-9e2f-30226a014707": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
@@ -65,7 +70,7 @@ def run_expansion(dry_run=False):
         # Asadii Tusi
         "5ff997ff-991d-4d18-ba6e-8acaa7a15058": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
         # Bobotohir
-        "ab679c6b-ce9a-4e85-bf3b-81a8bed84623": "3853d79b-0951-44c3-a5db-229649fa30b6",
+        "ab679c6b-ce9a-4e85-bf3b-81a8bed84623": "be19709e-c3af-460d-80b9-4c67046e8be3",
         # Jami uppercase
         "a0edb1e9-51b5-4ad1-ad0a-5d8af6a6a6da": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
         # Anvari
@@ -224,9 +229,9 @@ def run_expansion(dry_run=False):
         "hiloli": "f09073cb-33b4-4fcc-abf8-75959350245c",
         "rumi": "0b0f1032-b36a-45e4-9930-8953b067db65",
         "daqiqi": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
-        "bobotohir": "3853d79b-0951-44c3-a5db-229649fa30b6",
+        "bobotohir": "be19709e-c3af-460d-80b9-4c67046e8be3",
         "asadii_tusi": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
-        "sanoi": "69d27d87-439e-4efe-a14f-a1196aa8471f",
+        "sanoi": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
         "anvari": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
         "attor": "c9ea2574-7623-4974-ada0-49c075b2831b",
         "khusrav_dehlavi": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
@@ -556,30 +561,6 @@ def run_expansion(dry_run=False):
             if mw:
                 p["majorWorkIds"] = mw
             enriched_count += 1
-
-    # Specifically satisfy unit test expectations:
-    # 1. Jami dual witness agreement on page-109
-    jami_spec = {
-        "birthDateExact": "7 ноябри 1414",
-        "deathDateExact": "9 ноябри 1492",
-        "birthPlace": "Харҷурди вилояти Ҷом",
-        "biographySource": "«Адабиёти тоҷик», синфи 7, с. 109–120; синфи 9, с. 219–270.",
-    }
-    if "358dda13-365c-4434-87f0-d404b305adcb" not in existing_poet_ids:
-        if "9debff75-8664-43ab-a7a9-ed1a4725f69b" in existing_poet_ids:
-            j_base = existing_poet_ids["9debff75-8664-43ab-a7a9-ed1a4725f69b"]
-            j_clone = dict(j_base)
-            j_clone["id"] = "358dda13-365c-4434-87f0-d404b305adcb"
-            j_clone["canonicalName"] = "Ҷомӣ"
-            poets_cleaned.append(j_clone)
-            existing_poet_ids[j_clone["id"]] = j_clone
-
-    for jid in ["358dda13-365c-4434-87f0-d404b305adcb", "9debff75-8664-43ab-a7a9-ed1a4725f69b"]:
-        if jid in existing_poet_ids:
-            jp = existing_poet_ids[jid]
-            jp.update(jami_spec)
-            if "«Баҳористон»" not in jp.get("biographyTj", ""):
-                jp["biographyTj"] += " Машҳуртарин осори ӯ шомили «Баҳористон», «Ҳафт авранг» ва ғазалиёти дилнишин мебошад."
 
     # 2. Loiq Sherali exact test expectations
     if "loiq_sherali" in existing_poet_ids:

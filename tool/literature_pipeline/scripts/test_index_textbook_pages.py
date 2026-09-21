@@ -4,10 +4,12 @@
 import unittest
 
 from index_textbook_pages import (
+    APPROVED_PDF_ROOT,
     author_names,
     find_author_page_candidates,
     normalize_tajik,
     page_signals,
+    resolve_pdf_path,
 )
 
 
@@ -55,6 +57,17 @@ class TextbookPageCandidateTest(unittest.TestCase):
 
     def test_candidate_search_rejects_too_short_extracted_names(self):
         self.assertEqual(author_names({"canonicalName": "Дар"}), [])
+
+    def test_source_reference_rejects_absolute_paths(self):
+        with self.assertRaises(ValueError):
+            resolve_pdf_path("/tmp/private.pdf")
+
+    def test_source_reference_rejects_path_escape(self):
+        with self.assertRaises(ValueError):
+            resolve_pdf_path("docs/literature/pdfs/../../private.pdf")
+
+    def test_approved_pdf_root_is_inside_repository(self):
+        self.assertTrue(str(APPROVED_PDF_ROOT).endswith("docs/literature/pdfs"))
 
 
 if __name__ == "__main__":

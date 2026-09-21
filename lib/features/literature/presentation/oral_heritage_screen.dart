@@ -64,11 +64,12 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
             // Type Filter Chips
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 44,
+                height: 72,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(
                     horizontal: QalamSpacing.pageH,
+                    vertical: 12,
                   ),
                   children: [
                     FilterChip(
@@ -145,10 +146,7 @@ class _OralHeritageScreenState extends ConsumerState<OralHeritageScreen> {
                 return SliverMainAxisGroup(
                   slivers: [
                     SliverToBoxAdapter(
-                      child: _OralLogicGuide(
-                        lang: lang,
-                        isPersian: isPersian,
-                      ),
+                      child: _OralLogicGuide(lang: lang, isPersian: isPersian),
                     ),
                     if (textbookOral.isNotEmpty) ...[
                       SliverList(
@@ -208,10 +206,7 @@ class _OralLogicGuide extends StatelessWidget {
   final DisplayLanguage lang;
   final bool isPersian;
 
-  const _OralLogicGuide({
-    required this.lang,
-    required this.isPersian,
-  });
+  const _OralLogicGuide({required this.lang, required this.isPersian});
 
   @override
   Widget build(BuildContext context) {
@@ -293,11 +288,9 @@ class _TextbookOralCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final gradeLabel = AppTranslations.translate(
-      'lit_grade',
-      lang,
-      [AppTranslations.formatDigits(entry.grade, lang)],
-    );
+    final gradeLabel = AppTranslations.translate('lit_grade', lang, [
+      AppTranslations.formatDigits(entry.grade, lang),
+    ]);
 
     return Container(
       margin: const EdgeInsets.fromLTRB(24, 6, 24, 6),

@@ -172,6 +172,7 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
         controller: _searchController,
+        maxLength: 256,
         onChanged: (value) => setState(() => _query = value),
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.search),
@@ -260,10 +261,14 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
         .expand((book) => book.categoryIds)
         .toSet()
         .toList(growable: false);
+    // Keep the horizontal filter rail at least 48 logical pixels high. The
+    // previous 54px viewport left only 38px for the chip after vertical
+    // padding, which made the visible control smaller than the Android
+    // touch-target guidance on physical devices.
     return SizedBox(
-      height: 54,
+      height: 72,
       child: ListView.separated(
-        padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
         scrollDirection: Axis.horizontal,
         itemCount: categories.length + 1,
         separatorBuilder: (_, _) => const SizedBox(width: 8),
@@ -331,7 +336,7 @@ class _BookListTile extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BookCover(book: book),
+              BookCover(book: book, placeholderTitle: book.titleFor(lang)),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
@@ -346,17 +351,16 @@ class _BookListTile extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
-                    if (book.authorFor(lang) != null) ...[
-                      const SizedBox(height: 5),
-                      Text(
-                        book.authorFor(lang)!,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: QalamTypography.bodySecondary(
-                          color: colors.onSurfaceVariant,
-                        ),
+                    const SizedBox(height: 5),
+                    Text(
+                      book.authorFor(lang) ??
+                          AppTranslations.get('books_author_unavailable', lang),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: QalamTypography.bodySecondary(
+                        color: colors.onSurfaceVariant,
                       ),
-                    ],
+                    ),
                     const SizedBox(height: 8),
                     Wrap(
                       spacing: 6,

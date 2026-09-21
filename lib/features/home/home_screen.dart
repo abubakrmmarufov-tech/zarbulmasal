@@ -57,7 +57,9 @@ class HomeScreen extends ConsumerWidget {
             // Search Bar
             Semantics(
               button: true,
+              excludeSemantics: true,
               label: tr('search_hint_global'),
+              onTap: () => context.push('/search'),
               child: GestureDetector(
                 onTap: () => context.push('/search'),
                 child: Container(

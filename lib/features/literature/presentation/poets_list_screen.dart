@@ -73,6 +73,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
                 child: TextField(
                   controller: _filterController,
+                  maxLength: 256,
                   onChanged: (val) {
                     setState(() {
                       _filterQuery = LiteratureRepository.normalizeSearchText(
@@ -196,36 +197,31 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                         : null;
                     final dates = poet.hasAuditableBiographySource
                         ? AppTranslations.formatDigits(poet.lifespan, lang)
-                        : AppTranslations.get(
-                            'lit_search_dates_pending',
-                            lang,
-                          );
+                        : AppTranslations.get('lit_search_dates_pending', lang);
                     final exactDates =
                         (poet.hasAuditableBiographySource &&
                             (poet.birthDateExact != null ||
                                 poet.deathDateExact != null))
-                        ? AppTranslations.translate(
-                            'lit_author_dates',
-                            lang,
-                            [
-                              AppTranslations.formatDigits(
-                                poet.birthDateExact ?? poet.birthYear ?? '—',
-                                lang,
-                              ),
-                              AppTranslations.formatDigits(
-                                poet.deathDateExact ??
-                                    poet.deathYear ??
-                                    AppTranslations.get(
-                                      'lit_author_alive',
-                                      lang,
-                                    ),
-                                lang,
-                              ),
-                            ],
-                          )
+                        ? AppTranslations.translate('lit_author_dates', lang, [
+                            AppTranslations.formatDigits(
+                              poet.birthDateExact ?? poet.birthYear ?? '—',
+                              lang,
+                            ),
+                            AppTranslations.formatDigits(
+                              poet.deathDateExact ??
+                                  poet.deathYear ??
+                                  AppTranslations.get('lit_author_alive', lang),
+                              lang,
+                            ),
+                          ])
                         : null;
                     return QalamPoetCard(
                       name: name,
+                      portrait: poet.portrait,
+                      portraitUnavailableLabel: AppTranslations.get(
+                        'lit_portrait_unavailable',
+                        lang,
+                      ),
                       dates: dates,
                       exactDates: exactDates,
                       period: poet.literaryPeriod,

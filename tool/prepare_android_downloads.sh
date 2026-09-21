@@ -7,10 +7,20 @@ web_root="${2:-$project_root/build/web}"
 download_root="$web_root/downloads"
 android_sdk="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-$HOME/Library/Android/sdk}}"
 build_tools_root="$android_sdk/build-tools"
-expected_certificate="93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e"
+expected_certificate="${EXPECTED_RELEASE_CERT_SHA256:-}"
+if [[ ! "$expected_certificate" =~ ^[[:xdigit:]]{64}$ ]]; then
+  echo "EXPECTED_RELEASE_CERT_SHA256 must be a 64-character SHA-256 certificate digest" >&2
+  exit 1
+fi
+expected_certificate="$(printf '%s' "$expected_certificate" | tr '[:upper:]' '[:lower:]')"
 expected_package="com.zarbulmasal.zarbulmasal"
-expected_version="$(sed -n 's/^version: *\([^+ ]*\)+.*/\1/p' "$project_root/pubspec.yaml")"
-minimum_version_code=2002
+version_parts="$(sed -n 's/^version:[[:space:]]*\([^+[:space:]]*\)+\([0-9][0-9]*\)[[:space:]]*$/\1 \2/p' "$project_root/pubspec.yaml")"
+read -r expected_version base_version_code <<< "$version_parts"
+
+if [[ -z "$expected_version" || -z "$base_version_code" ]]; then
+  echo "Could not read version and versionCode from pubspec.yaml" >&2
+  exit 1
+fi
 
 declare -a source_files=(
   "$apk_root/app-arm64-v8a-release.apk"
@@ -44,18 +54,35 @@ done
 
 for source_file in "${source_files[@]}"; do
   badging="$("$aapt" dump badging "$source_file")"
-  certificate="$("$apksigner" verify --print-certs "$source_file" 2>/dev/null \
-    | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')"
+  certificate_details="$("$apksigner" verify --print-certs "$source_file" 2>/dev/null)"
+  certificate="$(printf '%s\n' "$certificate_details" \
+    | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' \
+    | tr '[:upper:]' '[:lower:]')"
   if [[ "$certificate" != "$expected_certificate" ]]; then
     echo "Signing certificate mismatch for $source_file" >&2
+    exit 1
+  fi
+  if grep -qi 'CN=Android Debug' <<<"$certificate_details"; then
+    echo "Development/debug signing certificate is not allowed for public downloads: $source_file" >&2
     exit 1
   fi
 
   version_code="$(printf '%s\n' "$badging" \
     | sed -n "s/.*versionCode='\\([0-9][0-9]*\\)'.*/\\1/p" \
     | head -n 1)"
-  if [[ -z "$version_code" || "$version_code" -le "$minimum_version_code" ]]; then
-    echo "Android versionCode must exceed $minimum_version_code: $source_file" >&2
+  case "$(basename "$source_file")" in
+    app-arm64-v8a-release.apk)
+      expected_abi_version_code=$((base_version_code + 2000))
+      ;;
+    app-armeabi-v7a-release.apk)
+      expected_abi_version_code=$((base_version_code + 1000))
+      ;;
+    app-release.apk)
+      expected_abi_version_code="$base_version_code"
+      ;;
+  esac
+  if [[ -z "$version_code" || "$version_code" -ne "$expected_abi_version_code" ]]; then
+    echo "Android versionCode mismatch for $source_file: expected $expected_abi_version_code, got $version_code" >&2
     exit 1
   fi
 
@@ -95,6 +122,13 @@ for source_file in "${source_files[@]}"; do
   "$zipalign" -c -P 16 -v 4 "$source_file" >/dev/null
 done
 
+if [[ -L "$download_root" ]]; then
+  echo "Refusing to clean symlinked Android download output: $download_root" >&2
+  exit 1
+fi
+if [[ -d "$download_root" ]]; then
+  find "$download_root" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+fi
 mkdir -p "$download_root"
 cp "$apk_root/app-arm64-v8a-release.apk" "$download_root/zarbulmasal-arm64-v8a.apk"
 cp "$apk_root/app-armeabi-v7a-release.apk" "$download_root/zarbulmasal-armeabi-v7a.apk"

@@ -25,14 +25,16 @@ void main() {
   final works = jsonDecode(worksFile.readAsStringSync()) as List;
   final sources = jsonDecode(sourcesFile.readAsStringSync()) as List;
   jsonDecode(canonFile.readAsStringSync()) as List;
-  jsonDecode(oralFile.readAsStringSync()) as List;
+  final oralEntries = jsonDecode(oralFile.readAsStringSync()) as List;
 
   int approved = 0;
+  int primaryChecked = 0;
   int rejected = 0;
   int needsReview = 0;
   int publicDomain = 0;
   int excerptOnly = 0;
   int missingSecondSource = 0;
+  int primaryCheckedMissingSecondSource = 0;
   int missingPage = 0;
   int missingRights = 0;
   int pendingMissingSecondSource = 0;
@@ -44,6 +46,17 @@ void main() {
   final poetIds = <String>{};
   final workIds = <String>{};
   final sourceIds = <String>{};
+  final oralIds = <String>{};
+  const recognizedEvidenceLevels = {
+    'extracted',
+    'sourceLocated',
+    'primaryChecked',
+    'secondWitnessLocated',
+    'collated',
+    'editoriallyApproved',
+    'rejected',
+    'needsReview',
+  };
 
   // Validate sources
   for (final source in sources) {
@@ -52,6 +65,39 @@ void main() {
       exit(1);
     }
     sourceIds.add(source['id']);
+  }
+
+  // Validate oral heritage rights and distribution boundaries.
+  for (final oral in oralEntries) {
+    final id = oral['id'];
+    if (id is! String || id.trim().isEmpty || !oralIds.add(id)) {
+      print('Violation: Duplicate or missing oral heritage ID: $id');
+      exit(1);
+    }
+    final rights = oral['rights'];
+    if (rights is! Map || rights['status'] is! String) {
+      print('Violation: Oral entry missing rights record: $id');
+      exit(1);
+    }
+    final hasText =
+        oral['text'] is String && (oral['text'] as String).trim().isNotEmpty;
+    final hasPersianText =
+        oral['textPersian'] is String &&
+        (oral['textPersian'] as String).trim().isNotEmpty;
+    if (rights['status'] == 'unknown' &&
+        (rights['fullTextAllowed'] == true ||
+            rights['excerptAllowed'] == true)) {
+      print('Violation: Oral entry has inconsistent unknown rights: $id');
+      exit(1);
+    }
+    if (rights['fullTextAllowed'] != true && (hasText || hasPersianText)) {
+      print('Violation: Oral entry without full-text rights ships text: $id');
+      exit(1);
+    }
+    if (rights['fullTextAllowed'] == true && !hasText) {
+      print('Violation: Cleared oral entry is missing Tajik text: $id');
+      exit(1);
+    }
   }
 
   // Validate poets
@@ -88,6 +134,15 @@ void main() {
     final verification = work['verification'];
     final rights = work['rights'];
     final textStatus = work['textStatus'];
+
+    final evidenceLevel = verification is Map
+        ? verification['evidenceLevel']
+        : null;
+    if (evidenceLevel is! String ||
+        !recognizedEvidenceLevels.contains(evidenceLevel)) {
+      print('Violation: Work has unknown evidence level: ${work['id']}');
+      exit(1);
+    }
 
     if (verification is! Map ||
         verification['evidenceLevel'] is! String ||
@@ -128,7 +183,33 @@ void main() {
     final hasCity =
         primary['city'] is String &&
         primary['city'].toString().trim().isNotEmpty;
-    final isPending = verification['evidenceLevel'] == 'needsReview';
+    final isPending = evidenceLevel == 'needsReview';
+
+    final hasTajikText =
+        work['textTajik'] is String &&
+        work['textTajik'].toString().trim().isNotEmpty;
+    final hasPersianText =
+        work['textPersian'] is String &&
+        work['textPersian'].toString().trim().isNotEmpty;
+    final hasGeneratedRepresentation =
+        work['persianScriptRepresentation'] is String &&
+        work['persianScriptRepresentation'].toString().trim().isNotEmpty;
+    final hasIncipit =
+        work['incipit'] is String &&
+        work['incipit'].toString().trim().isNotEmpty;
+    if (rights['fullTextAllowed'] != true &&
+        (hasTajikText || hasPersianText || hasGeneratedRepresentation)) {
+      print(
+        'Violation: Work without full-text rights ships text content: ${work['id']}',
+      );
+      exit(1);
+    }
+    if (rights['excerptAllowed'] != true && hasIncipit) {
+      print(
+        'Violation: Work without excerpt rights ships an incipit: ${work['id']}',
+      );
+      exit(1);
+    }
 
     final compositionDate = work['compositionDate'];
     final compositionContext = work['compositionContext'];
@@ -136,7 +217,7 @@ void main() {
         (compositionDate is String && compositionDate.trim().isNotEmpty) ||
         (compositionContext is String && compositionContext.trim().isNotEmpty);
     if (hasCompositionMetadata &&
-        (!hasPage || verification['pageChecked'] != true)) {
+        (!hasPage || verification['pageVerified'] != true)) {
       print(
         'Violation: Composition metadata lacks a page-checked source: ${work['id']}',
       );
@@ -156,7 +237,22 @@ void main() {
       if (!hasPublisher || !hasCity) pendingIncompleteSource++;
     }
 
-    if (verification['evidenceLevel'] == 'approved') {
+    if (evidenceLevel == 'primaryChecked') {
+      primaryChecked++;
+      if (!hasSecondSource) primaryCheckedMissingSecondSource++;
+      if (!hasPage || verification['pageVerified'] != true) {
+        print(
+          'Violation: Primary-checked work is missing a documented page: ${work['id']}',
+        );
+        exit(1);
+      }
+      if (rights['fullTextAllowed'] == true) {
+        print(
+          'Violation: Primary-checked work cannot allow full-text publication: ${work['id']}',
+        );
+        exit(1);
+      }
+    } else if (evidenceLevel == 'editoriallyApproved') {
       approved++;
       if (textStatus != 'verified') {
         print(
@@ -181,7 +277,7 @@ void main() {
         exit(1);
       }
 
-      if (!hasPage || verification['pageChecked'] != true) {
+      if (!hasPage || verification['pageVerified'] != true) {
         print(
           'Violation: Approved work is missing a documented primary-source page: ${work['id']}',
         );
@@ -198,7 +294,7 @@ void main() {
         );
         exit(1);
       }
-    } else if (verification['evidenceLevel'] == 'rejected') {
+    } else if (evidenceLevel == 'rejected') {
       rejected++;
     }
   }
@@ -209,11 +305,13 @@ Validation Summary:
 TOTAL AUTHORS: ${poets.length}
 TOTAL WORKS: ${works.length}
 APPROVED: $approved
+PRIMARY CHECKED: $primaryChecked
 REJECTED: $rejected
 NEEDS REVIEW: $needsReview
 PUBLIC DOMAIN AUTHORS: $publicDomain
 EXCERPT ONLY AUTHORS: $excerptOnly
 MISSING SECOND SOURCE: $missingSecondSource
+PRIMARY CHECKED MISSING SECOND SOURCE: $primaryCheckedMissingSecondSource
 MISSING PAGE NUMBER: $missingPage
 MISSING RIGHTS EVIDENCE: $missingRights
 PENDING MISSING SECOND SOURCE: $pendingMissingSecondSource

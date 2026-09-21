@@ -359,10 +359,13 @@ class _DailyVerseCard extends ConsumerWidget {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
+    // The daily card uses an ink surface in both themes. Keep normal-sized
+    // eyebrow, author, and supporting copy on the accessible paper-text ramp;
+    // burgundySoft and inkMute fall below WCAG 4.5:1 on the light card.
     final accentColor = isDark
         ? QalamColors.antiqueGoldSoft
-        : QalamColors.burgundySoft;
-    final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
+        : QalamColors.antiqueGold;
+    final mutedColor = QalamColors.paperTextSoft;
     final borderColor = isDark
         ? QalamColors.hairlineDark
         : QalamColors.hairline;

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zarbulmasal/core/constants/app_constants.dart';
+import 'package:zarbulmasal/core/design_system/qalam_flash_card.dart';
 import 'package:zarbulmasal/core/l10n/app_translations.dart';
 import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/data/models/learning_mastery.dart';
@@ -214,6 +215,45 @@ void main() {
           AppTranslations.get('flashcards_empty_hint', DisplayLanguage.tajik),
         ),
         findsOneWidget,
+      );
+    });
+
+    testWidgets('honors a missed-review filter selected before navigation', (
+      tester,
+    ) async {
+      final missed = seedProverbs.first;
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      final container = ProviderContainer(
+        overrides: [
+          sharedPreferencesProvider.overrideWithValue(prefs),
+          proverbsProvider.overrideWithValue([missed, seedProverbs[1]]),
+        ],
+      );
+      addTearDown(container.dispose);
+      await container
+          .read(proverbMasteryProvider.notifier)
+          .recordReview(missed.id, MasteryLevel.again, isCorrect: false);
+      container.read(flashcardsFilterProvider.notifier).state =
+          MasteryFilter.again;
+
+      await tester.pumpWidget(
+        UncontrolledProviderScope(
+          container: container,
+          child: MaterialApp(
+            theme: AppTheme.lightTheme,
+            home: const FlashcardsScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final againChip = find.widgetWithText(ChoiceChip, 'Бозхонӣ (1)');
+      expect(againChip, findsOneWidget);
+      expect(tester.widget<ChoiceChip>(againChip).selected, isTrue);
+      expect(
+        tester.widget<QalamFlashCard>(find.byType(QalamFlashCard)).proverb.id,
+        missed.id,
       );
     });
   });

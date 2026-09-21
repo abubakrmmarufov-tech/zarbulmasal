@@ -7,36 +7,54 @@ class BookCover extends StatelessWidget {
   final Book book;
   final double width;
   final double height;
+  final String? placeholderTitle;
 
   const BookCover({
     super.key,
     required this.book,
     this.width = 72,
     this.height = 104,
+    this.placeholderTitle,
   });
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final edition = book.primaryEdition;
-    final coverUrl = edition?.coverUrl;
+    final coverUri = edition?.coverUri;
+    final coverAssetPath = edition?.coverAssetPath;
     final placeholder = _PlaceholderCover(
       book: book,
       width: width,
       height: height,
+      title: placeholderTitle ?? book.titleTj,
     );
 
+    if (coverAssetPath != null && coverAssetPath.trim().isNotEmpty) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
+        child: Image.asset(
+          coverAssetPath,
+          width: width,
+          height: height,
+          fit: BoxFit.cover,
+          errorBuilder: (_, _, _) => placeholder,
+        ),
+      );
+    }
+
     // Kitobkhon does not send CORS headers for its cover assets. Native
-    // clients can display the verified remote image, while web safely uses
-    // the truthful placeholder instead of emitting a broken-image request.
-    if (kIsWeb || coverUrl == null || coverUrl.trim().isEmpty) {
+    // clients can display the verified remote image when no checked-in copy
+    // exists; web safely uses the truthful placeholder rather than emitting
+    // a broken-image request.
+    if (kIsWeb || coverUri == null) {
       return placeholder;
     }
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
       child: Image.network(
-        coverUrl,
+        coverUri.toString(),
         width: width,
         height: height,
         fit: BoxFit.cover,
@@ -71,11 +89,13 @@ class _PlaceholderCover extends StatelessWidget {
   final Book book;
   final double width;
   final double height;
+  final String title;
 
   const _PlaceholderCover({
     required this.book,
     required this.width,
     required this.height,
+    required this.title,
   });
 
   @override
@@ -96,7 +116,7 @@ class _PlaceholderCover extends StatelessWidget {
           Icon(Icons.menu_book_outlined, color: colors.primary, size: 24),
           const SizedBox(height: 6),
           Text(
-            book.titleTj,
+            title,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,

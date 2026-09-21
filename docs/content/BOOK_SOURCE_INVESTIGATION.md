@@ -41,10 +41,13 @@ Zarbulmasal therefore models these records as `readableExternal` PDF
 availability and opens the provider's real PDF URL. It does not copy PDFs into
 the app, claim an internal reader, or fabricate reading progress.
 
-Seven provider cover URLs resolved successfully during link QA. Native clients
-can use those verified remote assets; the web build uses the honest cover
-placeholder because the provider does not send CORS headers, and Zarbulmasal
-does not proxy or rehost the images.
+Eight provider cover URLs resolved successfully during link QA. Their exact
+JPEG responses are now bundled under `assets/data/books/covers/` for reliable
+web and offline rendering. Each edition retains the original `coverUrl` as
+source/provenance metadata and the checked-in `coverAssetPath` only as a
+rendering copy; Zarbulmasal does not proxy or rehost the provider URLs. The
+other ten canonical books retain the truthful no-cover placeholder because
+their provider pages exposed no dedicated matching cover.
 
 ## Rights and source separation
 
@@ -71,3 +74,23 @@ No duplicate editions were turned into duplicate canonical books. Exact author
 relationships are linked only when the provider name matches an existing
 literary-author ID; no biography or history claim is inferred from a book
 listing.
+
+## Author and Literature relationships
+
+The 18 canonical records were re-audited on 2026-09-21. All existing
+`authorId` and `relatedPoetIds` values resolve to the current Literature
+catalogue, and no dangling relationship IDs were found. Seven records retain
+their provider-supplied `authorNameTj` without a Literature ID:
+
+- `osori-muntakhab-tirmizi` — Адиб Собири Тирмизӣ;
+- `sukhandoru` and `tojik-maqolaho` — Муҳтарам Ҳотам;
+- `zaboni-tojiki-11` — Баҳриддин Камолиддинов;
+- `panjakenti-qadim` — Абдуллоҷон Исҳоқов;
+- `tarikhi-darvoz` — Ҳайдаршо Пирумшоев;
+- `menejment` — no author supplied by the provider.
+
+These names are displayed as source-catalogue metadata, not as clickable
+Literature profiles. No author profile, biography, portrait, poem, or work
+relationship is inferred from the provider listing alone. A future profile can
+be linked only after independent source evidence is admitted under the
+Literature provenance policy.

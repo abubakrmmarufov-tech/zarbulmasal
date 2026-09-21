@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/utils/trusted_url_launcher.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/books_providers.dart';
 import '../domain/book_domain.dart';
+import '../../literature/data/literature_providers.dart';
+import '../../literature/domain/domain.dart';
 import 'book_cover.dart';
 
 class BookDetailScreen extends ConsumerWidget {
@@ -30,6 +32,13 @@ class BookDetailScreen extends ConsumerWidget {
           icon: Icons.error_outline,
           title: AppTranslations.get('books_load_error', lang),
           subtitle: AppTranslations.get('books_load_error_sub', lang),
+          action: OutlinedButton(
+            onPressed: () {
+              ref.invalidate(booksProvider);
+              ref.invalidate(bookByIdProvider(bookId));
+            },
+            child: Text(AppTranslations.get('btn_retry', lang)),
+          ),
         ),
       ),
       data: (book) => book == null
@@ -68,6 +77,22 @@ class _BookDetailBody extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final edition = book.primaryEdition;
     final isFavorite = ref.watch(bookFavoritesProvider).contains(book.id);
+    final relatedPoetIds = book.relatedPoetIds
+        .where((id) => id != book.authorId)
+        .toSet()
+        .toList(growable: false);
+    final relatedPoets = <LiteraryAuthor>[];
+    for (final id in relatedPoetIds) {
+      ref
+          .watch(authorByIdProvider(id))
+          .when(
+            data: (author) {
+              if (author != null) relatedPoets.add(author);
+            },
+            loading: () {},
+            error: (_, _) {},
+          );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -99,7 +124,12 @@ class _BookDetailBody extends ConsumerWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    BookCover(book: book, width: 116, height: 170),
+                    BookCover(
+                      book: book,
+                      width: 116,
+                      height: 170,
+                      placeholderTitle: book.titleFor(lang),
+                    ),
                     const SizedBox(width: 18),
                     Expanded(
                       child: Column(
@@ -112,15 +142,17 @@ class _BookDetailBody extends ConsumerWidget {
                               fontSize: 26,
                             ),
                           ),
-                          if (book.authorFor(lang) != null) ...[
-                            const SizedBox(height: 10),
-                            Text(
-                              book.authorFor(lang)!,
-                              style: QalamTypography.bodySecondary(
-                                color: colors.onSurfaceVariant,
-                              ),
+                          const SizedBox(height: 10),
+                          Text(
+                            book.authorFor(lang) ??
+                                AppTranslations.get(
+                                  'books_author_unavailable',
+                                  lang,
+                                ),
+                            style: QalamTypography.bodySecondary(
+                              color: colors.onSurfaceVariant,
                             ),
-                          ],
+                          ),
                           const SizedBox(height: 14),
                           if (edition != null)
                             _AvailabilityBadge(edition: edition, lang: lang),
@@ -157,17 +189,57 @@ class _BookDetailBody extends ConsumerWidget {
                   ),
                 ),
               ),
-            if (book.authorId != null)
+            if (book.authorFor(lang)?.trim().isNotEmpty == true)
               SliverToBoxAdapter(
                 child: _Section(
-                  title: AppTranslations.get('books_related_author', lang),
+                  title: AppTranslations.get(
+                    book.authorId == null
+                        ? 'books_source_author'
+                        : 'books_related_author',
+                    lang,
+                  ),
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: Icon(Icons.person_outline, color: colors.primary),
                     title: Text(book.authorFor(lang) ?? ''),
-                    trailing: const QalamChevron(size: 20),
-                    onTap: () =>
-                        context.push('/literature/poet/${book.authorId}'),
+                    trailing: book.authorId == null
+                        ? null
+                        : const QalamChevron(size: 20),
+                    onTap: book.authorId == null
+                        ? null
+                        : () =>
+                              context.push('/literature/poet/${book.authorId}'),
+                  ),
+                ),
+              ),
+            if (relatedPoets.isNotEmpty)
+              SliverToBoxAdapter(
+                child: _Section(
+                  title: AppTranslations.get('books_related_poets', lang),
+                  child: Column(
+                    children: relatedPoets
+                        .map((author) {
+                          final title =
+                              lang == DisplayLanguage.persian &&
+                                  (author.canonicalNamePersian
+                                          ?.trim()
+                                          .isNotEmpty ??
+                                      false)
+                              ? author.canonicalNamePersian!
+                              : author.canonicalName;
+                          return ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: Icon(
+                              Icons.auto_stories_outlined,
+                              color: colors.primary,
+                            ),
+                            title: Text(title),
+                            trailing: const QalamChevron(size: 20),
+                            onTap: () =>
+                                context.push('/literature/poet/${author.id}'),
+                          );
+                        })
+                        .toList(growable: false),
                   ),
                 ),
               ),
@@ -195,7 +267,7 @@ class _BookDetailBody extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Китобхон · kitobkhon.net',
+                      AppTranslations.get('books_provider_name', lang),
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
                     const SizedBox(height: 8),
@@ -228,11 +300,8 @@ class _ActionPanel extends StatelessWidget {
     required this.lang,
   });
 
-  Future<void> _open(BuildContext context, String url) async {
-    final didLaunch = await launchUrl(
-      Uri.parse(url),
-      mode: LaunchMode.externalApplication,
-    );
+  Future<void> _open(BuildContext context, Uri uri) async {
+    final didLaunch = await launchTrustedExternal(uri);
     if (!didLaunch && context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(AppTranslations.get('books_link_error', lang))),
@@ -248,16 +317,16 @@ class _ActionPanel extends StatelessWidget {
       children: [
         FilledButton.icon(
           onPressed: edition.canRead
-              ? () => _open(context, edition.readUrl!)
+              ? () => _open(context, edition.readUri!)
               : null,
           icon: const Icon(Icons.open_in_new),
           label: Text(AppTranslations.get('books_read_on_provider', lang)),
         ),
         const SizedBox(height: 8),
         OutlinedButton.icon(
-          onPressed: edition.sourceUrl.isEmpty
+          onPressed: edition.sourceUri == null
               ? null
-              : () => _open(context, edition.sourceUrl),
+              : () => _open(context, edition.sourceUri!),
           icon: const Icon(Icons.source_outlined),
           label: Text(AppTranslations.get('books_source_page', lang)),
         ),

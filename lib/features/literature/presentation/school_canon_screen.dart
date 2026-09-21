@@ -85,7 +85,10 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                     child: Center(
                       child: EmptyState(
                         icon: Icons.school_outlined,
-                        title: AppTranslations.get('lit_canon_empty_title', lang),
+                        title: AppTranslations.get(
+                          'lit_canon_empty_title',
+                          lang,
+                        ),
                       ),
                     ),
                   );
@@ -127,7 +130,10 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                           children: [
                             ChoiceChip(
                               label: Text(
-                                AppTranslations.get('lit_filter_all_grades', lang),
+                                AppTranslations.get(
+                                  'lit_filter_all_grades',
+                                  lang,
+                                ),
                               ),
                               selected: _selectedGrade == null,
                               onSelected: (selected) {
@@ -140,7 +146,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                             for (final grade in grades) ...[
                               ChoiceChip(
                                 label: Text(
-                                  AppTranslations.get('lit_grade', lang, [grade]),
+                                  AppTranslations.get('lit_grade', lang, [
+                                    grade,
+                                  ]),
                                 ),
                                 selected: _selectedGrade == grade,
                                 onSelected: (selected) {
@@ -173,7 +181,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                           child: Row(
                             children: [
                               Text(
-                                AppTranslations.get('lit_grade', lang, [grade]).toUpperCase(),
+                                AppTranslations.get('lit_grade', lang, [
+                                  grade,
+                                ]).toUpperCase(),
                                 style: QalamTypography.eyebrow(
                                   color: colors.primary,
                                   fontSize: 14,
