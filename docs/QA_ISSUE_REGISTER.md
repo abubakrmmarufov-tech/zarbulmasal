@@ -2,6 +2,13 @@
 
 Current snapshot: branch `provenance-repair-2026-09-19` at audited source checkpoint `49f54cf`. The same app/data/assets/tests are published on GitHub branch `audit-publish-2026-09-22` at `8b09517`; its workflow file intentionally remains unchanged because the connected OAuth credential lacks the `workflow` scope. The current web-only Pages deployment is `gh-pages` commit `3020730` with cache `75792ceb8692e786ace2`; the former ignored v1.1.0 APK set has been moved to a recoverable temporary quarantine outside the checkout; neither is evidence for the current source release. No public-download APKs remain in the repository checkout.
 
+GitHub manual workflow evidence: run `35664585090` reached the full 396-test
+job, but reported three contract-test failures against the intentionally older
+workflow on that published branch (missing the newer signing-preflight and
+Pages checkout-token guards, plus no signed APK portal). The local current
+workflow passes those guards; publishing that workflow still requires the
+GitHub OAuth `workflow` scope.
+
 Status values: OPEN, PARTIAL, FIXED/VERIFIED, UNVERIFIED.
 
 Current literary evidence override (2026-09-22): the validator now reports
