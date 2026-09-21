@@ -77,9 +77,26 @@ BIO_FA_PROVENANCE = {
 }
 
 
+class DuplicateJsonKeyError(ValueError):
+    """Raised when a JSON object repeats a key that a parser could overwrite."""
+
+    def __init__(self, path: Path, key: str) -> None:
+        super().__init__(f"{path}: duplicate object key {key!r}")
+        self.path = path
+        self.key = key
+
+
 def load(path: Path) -> Any:
     with path.open(encoding="utf-8") as handle:
-        return json.load(handle)
+        def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+            result: dict[str, Any] = {}
+            for key, value in pairs:
+                if key in result:
+                    raise DuplicateJsonKeyError(path, key)
+                result[key] = value
+            return result
+
+        return json.load(handle, object_pairs_hook=reject_duplicate_keys)
 
 
 def text(value: Any) -> str:
@@ -87,13 +104,17 @@ def text(value: Any) -> str:
 
 
 def main() -> int:
-    works = load(WORKS_PATH)
-    oral = load(ORAL_PATH)
-    poets = load(POETS_PATH)
-    history = load(HISTORY_PATH)
-    books = load(BOOKS_PATH)
-    app_books = load(APP_BOOKS_PATH)
-    providers = load(PROVIDERS_PATH)
+    try:
+        works = load(WORKS_PATH)
+        oral = load(ORAL_PATH)
+        poets = load(POETS_PATH)
+        history = load(HISTORY_PATH)
+        books = load(BOOKS_PATH)
+        app_books = load(APP_BOOKS_PATH)
+        providers = load(PROVIDERS_PATH)
+    except DuplicateJsonKeyError as error:
+        print(f"JSON_DUPLICATE_KEY: {error}", file=sys.stderr)
+        return 1
     errors: list[str] = []
 
     def fail(rule: str, record: str, detail: str) -> None:
@@ -339,17 +360,17 @@ def main() -> int:
             re.sub(r"\W+", "", text(work.get("title")).lower()),
             re.sub(r"\W+", "", text(work.get("incipit")).lower()),
         )
-        if work_key[1] and work_key in canonical_work_keys:
+        verification = work.get("verification") or {}
+        level = verification.get("evidenceLevel")
+        if level != "rejected" and work_key[1] and work_key in canonical_work_keys:
             fail(
                 "WORK_CANONICAL_DUPLICATE",
                 record,
                 f"duplicates {canonical_work_keys[work_key]} for the same author/title/incipit",
             )
-        elif work_key[1]:
+        elif level != "rejected" and work_key[1]:
             canonical_work_keys[work_key] = str(work.get("id"))
 
-        verification = work.get("verification") or {}
-        level = verification.get("evidenceLevel")
         if level not in VERIFICATION_LEVELS:
             fail("VERIFICATION_ENUM", record, f"invalid evidenceLevel {level!r}")
 
