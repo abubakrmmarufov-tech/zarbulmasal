@@ -6,12 +6,12 @@
 Play-release signoff.**
 
 This is a current evidence snapshot, not a release sign-off. The repository
-still contains preserved uncommitted worktree changes; the web-only Pages
-deployment is explicitly recorded below, while no source-branch push occurred.
+working tree is clean; the web-only Pages deployment is explicitly recorded
+below, while the source branch remains separately published for review.
 
 Fresh content-repair evidence (2026-09-22): the rebuilt web artifact uses
-cache ID `e890bebc7d47173fc625`; the web-only Pages deployment is `gh-pages`
-commit `ee17ec5`; and the live app root and
+cache ID `ae73b539cead9204089e`; the web-only Pages deployment is `gh-pages`
+commit `a195e4c`; and the live app root and
 `privacy.html` return HTTP 200.
 The live browser sweep covers 8 viewports and 209 route/mode visits with zero
 errors, overflows, console errors, page errors, or request failures. Android
