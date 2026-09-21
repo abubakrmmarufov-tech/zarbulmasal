@@ -392,9 +392,17 @@ class _MetadataGrid extends StatelessWidget {
           AppTranslations.get('books_pages', lang),
           edition.pageCount.toString(),
         ),
-      (AppTranslations.get('books_language', lang), edition.language),
+      (
+        AppTranslations.get('books_language', lang),
+        _localizedBookLanguage(edition.language, lang),
+      ),
       if (edition.scripts.isNotEmpty)
-        (AppTranslations.get('books_script', lang), edition.scripts.join(', ')),
+        (
+          AppTranslations.get('books_script', lang),
+          edition.scripts
+              .map((script) => _localizedBookScript(script, lang))
+              .join(', '),
+        ),
     ];
     return Wrap(
       spacing: 8,
@@ -434,6 +442,28 @@ class _MetadataGrid extends StatelessWidget {
     );
   }
 }
+
+String _localizedBookLanguage(String value, DisplayLanguage lang) {
+  if (!_isPersian(lang)) return value;
+  final normalized = value.trim().toLowerCase();
+  if (normalized == 'тоҷикӣ' || normalized == 'tajik') {
+    return AppTranslations.get('books_language_tajik', lang);
+  }
+  return value;
+}
+
+String _localizedBookScript(String value, DisplayLanguage lang) {
+  final normalized = value.trim().toLowerCase();
+  final key = switch (normalized) {
+    'cyrillic' || 'кириллӣ' => 'books_script_cyrillic',
+    'arabic' || 'арабӣ' || 'persian' || 'форсӣ' => 'books_script_arabic',
+    'latin' || 'лотинӣ' => 'books_script_latin',
+    _ => null,
+  };
+  return key == null ? value : AppTranslations.get(key, lang);
+}
+
+bool _isPersian(DisplayLanguage lang) => lang == DisplayLanguage.persian;
 
 class _Section extends StatelessWidget {
   final String title;

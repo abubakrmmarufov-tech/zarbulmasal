@@ -189,6 +189,9 @@ void main() {
       scrollable: find.byType(Scrollable).first,
     );
     expect(find.text('Kitobkhon · kitobkhon.net'), findsOneWidget);
+    expect(find.text('زبان تاجیکی'), findsOneWidget);
+    expect(find.text('خط سیریلیک'), findsOneWidget);
+    expect(find.text('cyrillic'), findsNothing);
   });
 
   testWidgets('invalid book id shows a truthful unavailable state', (
