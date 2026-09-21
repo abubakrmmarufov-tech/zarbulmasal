@@ -85,6 +85,10 @@ data; rights remain unknown, so all checked works stay withheld.
   Мулиён» (Grade 5 p. 56, 2025; minor orthographic variant).
   The remaining Hafez and Qanoat occurrences are retained as additional source
   citations.
+- The uploaded Grade 9 textbook also supplies a visually inspected six-line
+  Hiloli occurrence on printed p. 316. It is retained as `sourceOccurrences`
+  only because the complete 12-line primary poem is not reproduced there; the
+  six-record missing-secondary-witness count is unchanged.
 - A further read-only sweep of current Maorif library editions for Grades 5, 6,
   7, 9, 10, and 11 found complete witnesses for the two Qanoat sections above
   and Rudaki’s «Бӯйи Ҷӯйи Мулиён». A phrase-level negative sweep of the current

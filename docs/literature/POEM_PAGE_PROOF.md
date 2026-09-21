@@ -29,6 +29,7 @@ release-content approval.
 | 18 | **Мурғи беболупаре дидам, дилам ...** (`d232629e-c77a-4a33-9584-9fc2d25b6dfa`) | Синфи 10, с. 74; шоҳиди дуюм: синфи 7, с. 161, minor orthographic variant | `unknown` | [`sayyido_grade10_p74.png`](assets/data/literature/page_images/sayyido_grade10_p74.png); [`sayyido_grade7_p161.png`](assets/data/literature/page_images/sayyido_grade7_p161.png) | 9 |
 | 19 | **Агар ду бародар ниҳад пушт- пу...** (`c03e8139-0ed8-4167-9ded-212ba3c7c564`) | Синфи 7, с. 47; шоҳиди дуюм: Ministry-hosted синфи 7, с. 46, minor typographic variant | `unknown` | [`firdavsi_grade7_p47.png`](assets/data/literature/page_images/firdavsi_grade7_p47.png); [`firdavsi_pandu_maorif_2025_p46.png`](assets/data/literature/page_images/firdavsi_pandu_maorif_2025_p46.png) | 2 |
 | 20 | **Камол, аз Каъба рафтӣ бар дари...** (`385117c7-814a-480e-8959-5dd84b006a81`) | Синфи 7, с. 125; шоҳиди дуюм: Ministry-hosted синфи 7, с. 272, exact | `unknown` | [`kamol_grade7_p125.png`](assets/data/literature/page_images/kamol_grade7_p125.png); [`kamol_maorif_2025_p272.png`](assets/data/literature/page_images/kamol_maorif_2025_p272.png) | 2 |
+| 21 | **Сад ҷон фидои дӯст** (`f9f475b2-5a47-4128-8c13-16d828359c3f`) | Синфи 5, с. 148; source occurrence: синфи 9, с. 316, six-line partial excerpt; not a complete second witness | `unknown` | [`hiloli_grade5_p148.png`](assets/data/literature/page_images/hiloli_grade5_p148.png); [`hiloli_grade9_p316.png`](assets/data/literature/page_images/hiloli_grade9_p316.png) | partial occurrence |
 
 ---
 ## Source-link correction — Kamoli Khujandi, printed page 106
@@ -62,6 +63,12 @@ The six remaining records are: Khayyam’s «Ман бода хурам, вал�
 дӯст»; and Ahmadi Jami’s «Ҳеч нест». No complete admissible second witness
 was found for these six records, so no source, page, image, or attribution was
 invented. The records remain review-only with full text withheld.
+
+Hiloli’s record now carries one additional, visually inspected source
+occurrence: the uploaded Grade 9 textbook prints six lines of the poem on
+printed p. 316. Because the 12-line primary witness is not reproduced in full,
+this is retained as an occurrence only and does not reduce the six-record
+missing-secondary-witness count.
 
 The follow-up phrase sweep also rejected several tempting false matches: the
 «Ҳеч нест» phrase on `adabiet sinfi 10.pdf`, printed p. 27, is a different
@@ -490,6 +497,13 @@ witness.
 - **Шоҳиди дуюм:** Синфи 7, саҳифаи 161 (`adabiyot sinfi 7.pdf`); ҳамаи 9 мисраъ ва пайдарпаии онҳо мувофиқанд. Фарқи хурди имлоӣ «Теғиноҳақхурда» / «Теғиноҳақхӯрда» сабт шудааст.
 - **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the textbook evidence; page evidence alone does not authorize publication.)
 - **Тасвири саҳифа:** `assets/data/literature/page_images/sayyido_grade10_p74.png`; `assets/data/literature/page_images/sayyido_grade7_p161.png`
+
+### 24. Сад ҷон фидои дӯст — source occurrence only (`f9f475b2-5a47-4128-8c13-16d828359c3f`)
+- **Муаллиф (ID):** `f09073cb-33b4-4fcc-abf8-75959350245c`
+- **Сарчашмаи асосӣ:** Синфи 5, саҳифаи 148 (`adabiet sinfi 5.pdf`), complete 12-line primary witness.
+- **Source occurrence:** Синфи 9, саҳифаи чопии 316 (`adabiyet sinfi 9.pdf`); six lines are printed in a discussion of Hiloli’s social and ethical ghazals, but the complete 12-line poem is not reproduced.
+- **Ҳолати далел:** occurrence only; `secondarySource` remains `null`, `rights=unknown`, and full text remains withheld.
+- **Тасвири саҳифа:** `assets/data/literature/page_images/hiloli_grade5_p148.png`; `assets/data/literature/page_images/hiloli_grade9_p316.png`
 
 ## Page references verified from textbook dumps without page images
 

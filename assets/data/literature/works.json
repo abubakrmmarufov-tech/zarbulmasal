@@ -1502,6 +1502,24 @@
       "pageEnd": 148
     },
     "secondarySource": null,
+    "sourceOccurrences": [
+      {
+        "bookTitle": "Адабиёти тоҷик",
+        "authorAsPrinted": "Т. Мирзод, С. Давлатзода, Ф. Мирзода",
+        "edition": "Нашри панҷум",
+        "publisher": "Маориф",
+        "city": "Душанбе",
+        "year": "2026",
+        "pageStart": 316,
+        "pageEnd": 316,
+        "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+        "sourceType": "official-textbook",
+        "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+        "accessDate": "2026-09-22",
+        "sourceImageVerified": true,
+        "sourceImagePath": "assets/data/literature/page_images/hiloli_grade9_p316.png"
+      }
+    ],
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {

@@ -20,6 +20,9 @@ recorded and the page proof is retained.
 The current source audit also removed a cross-linked 2025 witness from the
 distinct «Ошӯби ҷонӣ» record and retained it only on the matching «Дӯст медорад
 дилам ҷавру ҷафои дӯстро» record; both remain review-only.
+The same sweep added a visually inspected six-line Hiloli occurrence from the
+uploaded Grade 9 p. 316 page; it is recorded as `sourceOccurrences` only and
+does not count as a complete second witness.
 The pending audit also currently reports 5,217 records still missing the
 line/script audit gates and 0 missing printed primary pages; none are
 displayable.
