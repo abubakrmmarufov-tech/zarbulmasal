@@ -8,8 +8,8 @@ Play-release signoff.**
 This is a current evidence snapshot, not a release sign-off. The repository
 working tree is clean; the web-only Pages deployment is explicitly recorded
 below, while the source branch remains separately published for review.
-The current local source checkpoint is `8b6b8dc`; the review branch is
-`audit-publish-2026-09-22` at `78691f7`. Its workflow file remains at the
+The current local source checkpoint is `8b6b8dc`; the review branch
+`audit-publish-2026-09-22` includes that source at `78691f7`. Its workflow file remains at the
 previous published revision because the connected GitHub OAuth credential does
 not have the `workflow` scope.
 
