@@ -187,8 +187,9 @@ void main() {
       final work = works.cast<Map<String, dynamic>>().firstWhere(
         (item) => item['id'] == 'f9f475b2-5a47-4128-8c13-16d828359c3f',
       );
-      final occurrence = (work['sourceOccurrences'] as List<dynamic>).single
-          as Map<String, dynamic>;
+      final occurrence =
+          (work['sourceOccurrences'] as List<dynamic>).single
+              as Map<String, dynamic>;
 
       expect(work['secondarySource'], isNull);
       expect(occurrence['pageStart'], 316);
@@ -202,7 +203,10 @@ void main() {
         occurrence['sourceImagePath'],
         'assets/data/literature/page_images/hiloli_grade9_p316.png',
       );
-      expect(File(occurrence['sourceImagePath'] as String).existsSync(), isTrue);
+      expect(
+        File(occurrence['sourceImagePath'] as String).existsSync(),
+        isTrue,
+      );
       expect(work['textMatchResult'], isNull);
       expect(work['textTajik'], isNull);
       expect(work['textPersian'], isNull);
