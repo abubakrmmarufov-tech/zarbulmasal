@@ -44,6 +44,45 @@ class ExtractPortraitsTest(unittest.TestCase):
         )
         self.assertTrue(all(Path(entry["pdf"]).name == entry["pdf"] for entry in entries))
 
+    def test_manifest_matches_poet_assets_and_provenance(self):
+        root = extract_portraits.ROOT
+        poets = json.loads(
+            (root / "assets/data/literature/poets.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        entries = extract_portraits.load_manifest()
+        poet_by_id = {poet["id"]: poet for poet in poets}
+        portrait_poets = {
+            poet["id"]: poet
+            for poet in poets
+            if isinstance(poet.get("portrait"), dict)
+        }
+
+        self.assertEqual(set(portrait_poets), {entry["authorId"] for entry in entries})
+        for entry in entries:
+            poet = poet_by_id[entry["authorId"]]
+            portrait = poet["portrait"]
+            asset_path = portrait["assetPath"]
+            self.assertTrue(
+                asset_path.startswith("assets/data/literature/portraits/"),
+                entry["authorId"],
+            )
+            self.assertTrue((root / asset_path).is_file(), asset_path)
+            self.assertIn(
+                portrait["sourceType"],
+                {"uploaded_book", "user_upload", "maorif_tj"},
+            )
+            self.assertIsInstance(portrait["sourcePage"], int)
+            self.assertGreater(portrait["sourcePage"], 0)
+            source_reference = portrait["sourceReference"]
+            self.assertTrue(
+                source_reference.startswith("docs/literature/pdfs/")
+                or "maorif.tj" in source_reference,
+                source_reference,
+            )
+            self.assertEqual(portrait["rightsStatus"], "unknown")
+
     def test_duplicate_author_mapping_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             manifest = Path(directory) / "manifest.json"
