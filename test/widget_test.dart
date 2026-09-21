@@ -16,6 +16,7 @@ import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
+import 'package:zarbulmasal/shared/providers/recent_activity_provider.dart';
 import 'package:zarbulmasal/shared/widgets/onboarding_overlay.dart';
 
 class TestApp {
@@ -190,6 +191,45 @@ void main() {
     );
   }
 
+  testWidgets('reading localizes section indices in Persian mode', (
+    tester,
+  ) async {
+    final target = seedProverbs.first;
+    await openApp(
+      tester,
+      route: '/proverb/${target.id}',
+      language: DisplayLanguage.persian,
+    );
+
+    await tester.scrollUntilVisible(
+      find.textContaining('۰۱ /'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.textContaining('۰۱ /'), findsOneWidget);
+    expect(find.textContaining('01 /'), findsNothing);
+  });
+
+  testWidgets('shared reading and daily actions meet the 48px target', (
+    tester,
+  ) async {
+    await openApp(tester, route: '/proverb/${seedProverbs.first.id}');
+
+    final scriptSwitch = find.widgetWithText(OutlinedButton, 'فارسی (عربی)');
+    await tester.ensureVisible(scriptSwitch);
+    expect(tester.getSize(scriptSwitch).width, greaterThanOrEqualTo(48));
+    expect(tester.getSize(scriptSwitch).height, greaterThanOrEqualTo(48));
+
+    await openApp(tester);
+    final dailyRead = find.widgetWithText(
+      TextButton,
+      AppTranslations.get('home_read', DisplayLanguage.tajik),
+    );
+    await tester.ensureVisible(dailyRead);
+    expect(tester.getSize(dailyRead).width, greaterThanOrEqualTo(48));
+    expect(tester.getSize(dailyRead).height, greaterThanOrEqualTo(48));
+  });
+
   for (final language in DisplayLanguage.values) {
     testWidgets(
       'physical flashcard swipes advance and return in ${language.name}',
@@ -355,6 +395,14 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('۲ سطح موجود'), findsOneWidget);
     expect(find.textContaining('2 سطح'), findsNothing);
+
+    final levelTwo = find.byWidgetPredicate(
+      (widget) => widget is QalamLevelCard && widget.level == 2,
+    );
+    await tester.ensureVisible(levelTwo);
+    await tester.tap(levelTwo);
+    await tester.pumpAndSettle();
+    expect(app.container.read(recentActivityProvider).first.title, 'سطح ۲');
   });
 
   testWidgets('compact routes remain usable with enlarged system text', (

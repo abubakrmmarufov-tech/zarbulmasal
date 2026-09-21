@@ -77,28 +77,26 @@ def split_lifespan(value: Any) -> tuple[str | None, str | None]:
 
 def candidate_rights() -> dict[str, Any]:
     return {
-        "status": "excerptOnly",
+        "status": "unknown",
         "reasoning": "Extracted candidate; rights and edition provenance require per-record review.",
         "rightsSource": None,
         "fullTextAllowed": False,
-        "excerptAllowed": True,
+        "excerptAllowed": False,
         "permissionReference": None,
     }
 
 
 def candidate_verification() -> dict[str, Any]:
     return {
-        "verifiedBy": None,
-        "verifiedDate": None,
-        "primarySourceChecked": False,
-        "secondSourceChecked": False,
-        "titleChecked": False,
-        "authorshipChecked": False,
-        "pageChecked": False,
-        "textLineByLineChecked": False,
-        "scriptChecked": False,
-        "copyrightChecked": False,
-        "finalStatus": "needsReview",
+        "evidenceLevel": "needsReview",
+        "verificationMethod": "automatedCandidateExtraction",
+        "verifiedAt": None,
+        "pageVerified": False,
+        "evidenceHash": None,
+        "rejectionReason": (
+            "Extracted candidate; source page, second witness, line collation, "
+            "script audit, and rights review are pending."
+        ),
     }
 
 
@@ -179,9 +177,20 @@ def build_candidates(
                     "deathYear": death,
                     "birthPlace": None,
                     "literaryPeriod": "Extracted literature candidate; verify before publication",
-                    "biographyTj": str(record.get("bio") or "").strip(),
+                    # Extracted biographies are leads for editorial review, not
+                    # publication-ready text. Keep the source locator for the
+                    # audit trail, but quarantine the paragraph explicitly so
+                    # LiteraryAuthor.fromJson cannot apply its editorial
+                    # default provenance if this candidate is ever written.
+                    "biographyTj": "",
                     "biographyFa": None,
                     "biographySource": record["_source"],
+                    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
+                    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
+                    "biographyQuarantineNote": (
+                        "Extracted candidate biography is withheld until a "
+                        "page-cited source and editorial review are recorded."
+                    ),
                     "majorWorkIds": [],
                     "officialTitles": [],
                     "educationGrades": [],
@@ -206,10 +215,15 @@ def build_candidates(
                     "authorId": author_id,
                     "title": title,
                     "titlePersian": None,
-                    "incipit": text.splitlines()[0].strip() if text else None,
+                    # Candidate excerpts remain in the review workspace only.
+                    # Do not distribute even a short excerpt before rights
+                    # and editorial review are complete.
+                    "incipit": None,
                     "type": "poem",
                     "scriptSource": "tajikCyrillic",
-                    "textTajik": text,
+                    # Full extracted text stays in the review workspace only.
+                    # Never bundle an unreviewed candidate body into the app.
+                    "textTajik": None,
                     "textPersian": None,
                     "textStatus": "needsReview",
                     "editorial": "none",

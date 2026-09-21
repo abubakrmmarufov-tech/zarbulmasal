@@ -35,6 +35,7 @@ void main() {
     ),
     verification: VerificationRecord(
       evidenceLevel: VerificationLevel.editoriallyApproved,
+      pageVerified: true,
     ),
   );
 

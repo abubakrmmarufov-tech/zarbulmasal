@@ -74,7 +74,7 @@ void main() {
 
         // Now on settings screen
         expect(find.byType(SettingsScreen), findsOneWidget);
-        expect(find.text('Ҳолати торик'), findsOneWidget);
+        expect(find.text('Ҳолати зоҳирӣ'), findsOneWidget);
 
         // Tap back button
         final backButton = find.byTooltip('Бозгашт');

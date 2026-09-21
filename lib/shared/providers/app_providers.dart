@@ -23,10 +23,41 @@ final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   final SharedPreferences? _prefs;
 
+  /// Tri-state storage key. The legacy binary `dark_mode` flag is only read
+  /// for migration and is never written again.
+  static const String prefsThemeMode = 'theme_mode';
+
   static ThemeMode _resolveInitial(SharedPreferences? prefs) {
-    if (prefs == null) return ThemeMode.light;
-    final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
+    if (prefs == null) return ThemeMode.system;
+    final stored = prefs.getString(prefsThemeMode);
+    if (stored != null) return _fromStorage(stored);
+    // Migration path: preserve any previously stored binary choice so
+    // existing users never lose their appearance preference.
+    final isDark = prefs.getBool(AppConstants.prefsDarkMode);
+    if (isDark == null) return ThemeMode.system;
     return isDark ? ThemeMode.dark : ThemeMode.light;
+  }
+
+  static ThemeMode _fromStorage(String value) {
+    switch (value) {
+      case 'dark':
+        return ThemeMode.dark;
+      case 'light':
+        return ThemeMode.light;
+      default:
+        return ThemeMode.system;
+    }
+  }
+
+  static String _toStorage(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.dark:
+        return 'dark';
+      case ThemeMode.light:
+        return 'light';
+      case ThemeMode.system:
+        return 'system';
+    }
   }
 
   ThemeModeNotifier([SharedPreferences? prefs])
@@ -39,15 +70,20 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 
   Future<void> _loadTheme() async {
     final prefs = _prefs ?? await SharedPreferences.getInstance();
-    final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
-    state = isDark ? ThemeMode.dark : ThemeMode.light;
+    state = _resolveInitial(prefs);
   }
 
-  Future<void> toggleTheme() async {
+  Future<void> setThemeMode(ThemeMode mode) async {
     final prefs = _prefs ?? await SharedPreferences.getInstance();
-    final isDark = state == ThemeMode.light;
-    await prefs.setBool(AppConstants.prefsDarkMode, isDark);
-    state = isDark ? ThemeMode.dark : ThemeMode.light;
+    await prefs.setString(prefsThemeMode, _toStorage(mode));
+    state = mode;
+  }
+
+  /// Convenience shim for the light/dark flip used by tests and legacy UI.
+  Future<void> toggleTheme() async {
+    await setThemeMode(
+      state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark,
+    );
   }
 }
 

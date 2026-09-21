@@ -21,6 +21,8 @@ from typing import Any, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[3]
+APPROVED_PDF_ROOT = (ROOT / "docs/literature/pdfs").resolve()
+MAX_PDF_BYTES = 50 * 1024 * 1024
 DEFAULT_SOURCES = ROOT / "assets/data/literature/sources.json"
 DEFAULT_AUTHORS = ROOT / "assets/data/literature/poets.json"
 DEFAULT_OUTPUT = ROOT / "docs/literature/TEXTBOOK_AUTHOR_PAGE_CANDIDATES.json"
@@ -121,6 +123,25 @@ def page_signals(page_text: str) -> list[str]:
     return signals or ["name_hit_only"]
 
 
+def resolve_pdf_path(source_reference: str) -> Path:
+    """Resolve only regular PDFs contained in the approved textbook directory."""
+    reference = Path(source_reference)
+    if reference.is_absolute() or "\x00" in source_reference:
+        raise ValueError("sourceReference must be a relative PDF path")
+    resolved = (ROOT / reference).resolve()
+    try:
+        resolved.relative_to(APPROVED_PDF_ROOT)
+    except ValueError as exc:
+        raise ValueError("sourceReference escapes the approved PDF directory") from exc
+    if resolved.suffix.lower() != ".pdf":
+        raise ValueError("sourceReference must point to a PDF")
+    if not resolved.is_file():
+        raise FileNotFoundError(resolved)
+    if resolved.stat().st_size > MAX_PDF_BYTES:
+        raise ValueError("sourceReference PDF exceeds the 50 MiB safety limit")
+    return resolved
+
+
 def build_candidate_index(
     sources: Iterable[dict[str, Any]], authors: Iterable[dict[str, Any]]
 ) -> dict[str, Any]:
@@ -133,14 +154,26 @@ def build_candidate_index(
     ]
     results: list[dict[str, Any]] = []
     for source in textbook_sources:
-        reference = Path(str(source["sourceReference"]))
-        pdf_path = reference if reference.is_absolute() else ROOT / reference
-        if not pdf_path.is_file():
+        reference = str(source["sourceReference"])
+        try:
+            pdf_path = resolve_pdf_path(reference)
+        except FileNotFoundError:
             results.append(
                 {
                     "sourceId": source.get("id"),
-                    "sourceReference": str(reference),
+                    "sourceReference": reference,
                     "reviewStatus": "sourceUnavailable",
+                    "candidates": [],
+                }
+            )
+            continue
+        except ValueError as error:
+            results.append(
+                {
+                    "sourceId": source.get("id"),
+                    "sourceReference": reference,
+                    "reviewStatus": "invalidSourceReference",
+                    "rejectionReason": str(error),
                     "candidates": [],
                 }
             )
@@ -162,7 +195,7 @@ def build_candidate_index(
         results.append(
             {
                 "sourceId": source.get("id"),
-                "sourceReference": str(reference),
+                "sourceReference": reference,
                 "pdfPageCount": len(pages),
                 "reviewStatus": "candidateOnly",
                 "candidates": candidates,

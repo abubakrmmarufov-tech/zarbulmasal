@@ -49,7 +49,15 @@
     "birthDateExact": null,
     "deathDateExact": null,
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/rudaki.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 49,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "nasir_khusraw",
@@ -93,7 +101,15 @@
     "deathDateExact": "Тақрибан 1088",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/nasir_khusraw.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
+      "sourcePage": 179,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "kamol_khujandi",
@@ -135,7 +151,15 @@
     "deathDateExact": "Тақрибан 1400",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/kamol_khujandi.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 191,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "tursunzoda",
@@ -184,7 +208,15 @@
       "event-world-war-two"
     ],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/tursunzoda.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 216,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "qanoat",
@@ -226,7 +258,15 @@
     "deathDateExact": "18 майи 2018",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/qanoat.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
+      "sourcePage": 147,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "loiq_sherali",
@@ -273,7 +313,15 @@
       "event-independence"
     ],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/loiq_sherali.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 288,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "bozor_sobir",
@@ -314,7 +362,15 @@
       "event-independence"
     ],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/bozor_sobir.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 308,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "gulnazar_keldi",
@@ -352,7 +408,15 @@
       "event-independence"
     ],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/gulnazar_keldi.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 281,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "gulrukhsor",
@@ -467,7 +531,15 @@
       "person-ayni"
     ],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/47c1dc67-363a-4506-8a9c-bbbb38f98d20.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 153,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "455f0420-3834-48f0-86b9-7da673a2a684",
@@ -509,7 +581,15 @@
     "deathDateExact": "5 декабри 1720",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/455f0420-3834-48f0-86b9-7da673a2a684.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 117,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "d1abb54a-9804-4baf-b238-fd2203d7673e",
@@ -551,7 +631,15 @@
     "deathDateExact": "1390",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/d1abb54a-9804-4baf-b238-fd2203d7673e.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
+      "sourcePage": 97,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "1a55efdd-6a1f-43b8-834f-94af060b4329",
@@ -595,36 +683,15 @@
     "deathDateExact": "18 июни 1037",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
-  },
-  {
-    "id": "3853d79b-0951-44c3-a5db-229649fa30b6",
-    "canonicalName": "Боботоҳири Урён",
-    "canonicalNamePersian": "باباطاهر عریان",
-    "aliases": [
-      "БОБОТОҲИРИ УРЁН"
-    ],
-    "birthYear": "~990",
-    "deathYear": "~1055",
-    "birthPlace": "Ҳамадон",
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Боботоҳири Урён (тахминан 980 – тахминан 1055) дар шаҳри Ҳамадон зистааст ва дубайтию ғазал ба шеваи ҳамадонӣ гуфтааст. Дубайтиҳои ӯ ба адабиёти даҳонӣ (шифоҳӣ) наздиктар мебошанд.",
-    "biographyFa": "باباطاهر عریان همدانی (سده پنجم هجری) از نامدارترین سرایندگان دوبیتی‌های شورانگیز، عارفانه و صمیمانه در تاریخ ادبیات است که کلام ساده، عمیق و دلنشین او بیانگر سوز درون و عشق الهی است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 150–155.",
-    "majorWorkIds": [],
-    "officialTitles": [],
-    "educationGrades": [],
-    "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
-    },
-    "birthDateExact": "Тақрибан 990",
-    "deathDateExact": "Тақрибан 1055",
-    "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "SOURCE_BACKED",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/1a55efdd-6a1f-43b8-834f-94af060b4329.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 62,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "d48ec80f-951d-4dfd-b65a-6e409561a712",
@@ -767,33 +834,6 @@
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
-    "id": "69d27d87-439e-4efe-a14f-a1196aa8471f",
-    "canonicalName": "САНОӢ",
-    "canonicalNamePersian": "سنایی غزنوی",
-    "aliases": [],
-    "birthYear": "1080",
-    "deathYear": "1131",
-    "birthPlace": "Ғазна",
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "САНОИИ ҒАЗНАВӢ (1080/81 – 1141/42) Саноии Ғазнавӣ шоире буд, ки бузургтарин сӯфии дунё Мавлоно Ҷалолиддини Балхӣ худро аз ҷумлаи пайравони ӯ шуморидааст. Аттор руҳ буду Саноӣ ду чашми ӯ, Мо аз пайи Саноию Аттор омадем. Саноӣ дар зодгоҳаш таълиму тарбият ёфта, дар баробари омӯзиши илмҳои динӣ ва адаб аз илмҳои нуҷум, тиб, мусиқӣ ва ҳикмат баҳра бардоштааст. Вай бо унвони «ҳаким» шуҳрат меёбад ва дар сафаре, ки баъдҳо ба Нишопур карда буд, бо ҳаким Умари Хайём ошно мешавад. Пас аз он ба сабаби озурдагии хотире, ки аз аҳли Ғазна дошт, ба Балх меравад ва дар он ҷо дӯстони қадрдоне пайдо менамояд. Аз Балх ба Сарахс меояд ва дар он ҷо нисбатан тулонӣ боқӣ мемонад. Саноӣ дар тули умраш ба Ҳирот, Марв ва Хоразм низ сафарҳо доштааст ва пас аз бист соли дурӣ аз зодгоҳаш дар соли 1124/1125 ба Ғазна бозгаштааст ва умрашро дар ҳамин ҷо дар манзиле, ки яке аз дӯстони мухлисаш барояш фароҳам оварда буд, ба поён расонидааст. Бинобар ривояте дар вопасин",
-    "biographyFa": "ابوالمجد مجدود بن آدم سنایی غزنوی (۱۰۸۰–۱۱۴۱ م) حکیم و عارف بزرگ و آغازگر ورود عرفان و اندیشه‌های زاهدانه به شعر فارسی است. منظومه «حدیقةالحقیقه» و دیوان اشعار او سرچشمه الهام عطار و مولوی بوده است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 212–219",
-    "majorWorkIds": [],
-    "officialTitles": [],
-    "educationGrades": [],
-    "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
-    },
-    "birthDateExact": "1080",
-    "deathDateExact": "1131",
-    "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
-  },
-  {
     "id": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
     "canonicalName": "АНВАРӢ",
     "canonicalNamePersian": "انوری ابیوردی",
@@ -864,16 +904,27 @@
     "deathDateExact": "4 декабри 1131",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/5fc69b51-c38a-4427-a362-5c8a14bca835.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
+      "sourcePage": 201,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
     "canonicalName": "Саноии Ғазнавӣ",
     "canonicalNamePersian": "حکیم سنایی غزنوی",
-    "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "aliases": [
+      "Саноӣ",
+      "САНОӢ"
+    ],
+    "birthYear": "1080/81",
+    "deathYear": "1141/42",
+    "birthPlace": "Ғазна",
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "САНОИИ ҒАЗНАВӢ (1080/81 – 1141/42) Саноии Ғазнавӣ шоире буд, ки бузургтарин сӯфии дунё Мавлоно Ҷалолиддини Балхӣ худро аз ҷумлаи пайравони ӯ шуморидааст. Аттор руҳ буду Саноӣ ду чашми ӯ, Мо аз пайи Саноию Аттор омадем. Саноӣ дар зодгоҳаш таълиму тарбият ёфта, дар баробари омӯзиши илмҳои динӣ ва адаб аз илмҳои нуҷум, тиб, мусиқӣ ва ҳикмат баҳра бардоштааст. Вай бо унвони «ҳаким» шуҳрат меёбад ва дар сафаре, ки баъдҳо ба Нишопур карда буд, бо ҳаким Умари Хайём ошно мешавад. Пас аз он ба сабаби озурдагии хотире, ки аз аҳли Ғазна дошт, ба Балх меравад ва дар он ҷо дӯстони қадрдоне пайдо менамояд. Аз Балх ба Сарахс меояд ва дар он ҷо нисбатан тулонӣ боқӣ мемонад. Саноӣ дар тули умраш ба Ҳирот, Марв ва Хоразм низ сафарҳо доштааст ва пас аз бист соли дурӣ аз зодгоҳаш дар соли 1124/1125 ба Ғазна бозгаштааст ва умрашро дар ҳамин ҷо дар манзиле, ки яке аз дӯстони мухлисаш барояш фароҳам оварда буд, ба поён расонидааст. Бинобар ривояте дар вопасин",
     "biographyFa": "حکیم سنایی غزنوی شاعر نامدار سده ششم هجری است که شعر فارسی را از ستایش شاهان به سوی ستایش فضیلت، حقیقت، معرفت توحیدی و عرفان دگرگون ساخت.",
@@ -932,7 +983,15 @@
     "deathDateExact": "Тақрибан 1292",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/3ec91317-fcfe-4960-9ca0-fd87f3e96875.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 100,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
@@ -986,7 +1045,15 @@
     "deathDateExact": "1529",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/f09073cb-33b4-4fcc-abf8-75959350245c.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 146,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "ef5a57a2-8949-43dd-85eb-8ceaf78335f3",
@@ -1013,7 +1080,15 @@
     "deathDateExact": "10 октябри 1989",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/ef5a57a2-8949-43dd-85eb-8ceaf78335f3.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 222,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "a7feaa09-c83f-44f2-a69e-0a46ba957dbc",
@@ -1040,7 +1115,15 @@
     "deathDateExact": "1 августи 1993",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/a7feaa09-c83f-44f2-a69e-0a46ba957dbc.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 273,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "400b9785-ae80-4957-a653-d65c72cdbf79",
@@ -1065,7 +1148,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/400b9785-ae80-4957-a653-d65c72cdbf79.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 295,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "310a8288-d554-4b9c-9ad1-3273b1edce85",
@@ -1109,20 +1200,30 @@
     "deathDateExact": "16 марти 1957",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/310a8288-d554-4b9c-9ad1-3273b1edce85.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
+      "sourcePage": 141,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "be19709e-c3af-460d-80b9-4c67046e8be3",
-    "canonicalName": "Бобо Тоҳири Урён",
-    "canonicalNamePersian": "باباطاهر عریان همدانی",
-    "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
+    "canonicalName": "Боботоҳири Урён",
+    "canonicalNamePersian": "باباطاهر عریان",
+    "aliases": [
+      "БОБОТОҲИРИ УРЁН"
+    ],
+    "birthYear": "~990",
+    "deathYear": "~1055",
+    "birthPlace": "Ҳамадон",
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "БОБОТОҲИРИ УРЁН (тахминан 980 – тахминан 1055) Дар бораи Боботоҳири Урён ба ҷуз он ки чунин ном дорад ва дар шаҳри Ҳамадон зистааст ва дубайтию ғазал ба шеваи ҳамадонӣ гуфтааст, дигар маълумоти боэътимоде нест. Му1 аз рӯзи азал тоҳир бизодам, Аз он рӯ ном Боботоҳир астам2. Номи Боботоҳири Урён дар миёни мардуми форсу тоҷик ба воситаи дубайтиҳояш маълум аст. Миқдори онҳо дар ҳудуди 300-то буда, нисбат ба адабиёти китобӣ ба адабиёти даҳонӣ наздиктар мебошанд. Баробари хондан ва шунидани онҳо фавран ба хотир дубайтиҳои мардумони минтақаҳои гуногуни Тоҷикистон мерасанд. Дар байни дубайтиҳои имрӯзаи мардумӣ миқдоре аз дубайтиҳое низ ҳастанд, ки ба Боботоҳири Урён нисбат дода мешаванд. Агарчи намунаҳои дубайтӣ дар адабиёти китобатӣ ба назар мерасад, дар асл навъи шеърии вижаи адабиёти шифоҳӣ мебошад ва маҳз аз он ба адабиёти китобӣ ворид гардида, табиати хосси лафзию маънавии худро нигоҳ доштааст. Дубайтӣ мисли он ки дар даврони Боботоҳири Ур",
-    "biographyFa": "باباطاهر عریان همدانی از صوفیان و شاعران بزرگ سده پنجم هجری است که دوبیتی‌های ترانه‌مانند و جان‌سوز وی از دیرباز در حافظه جمعی اهل ادب و عرفان ثبت شده است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 150–154",
+    "biographyTj": "Боботоҳири Урён (тахминан 980 – тахминан 1055) дар шаҳри Ҳамадон зистааст ва дубайтию ғазал ба шеваи ҳамадонӣ гуфтааст. Дубайтиҳои ӯ ба адабиёти даҳонӣ (шифоҳӣ) наздиктар мебошанд.",
+    "biographyFa": "باباطاهر عریان همدانی (سده پنجم هجری) از نامدارترین سرایندگان دوبیتی‌های شورانگیز، عارفانه و صمیمانه در تاریخ ادبیات است که کلام ساده، عمیق و دلنشین او بیانگر سوز درون و عشق الهی است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 150–155.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -1133,8 +1234,10 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "birthDateExact": "Тақрибан 990",
+    "deathDateExact": "Тақрибан 1055"
   },
   {
     "id": "9ab32712-ce1d-4054-a7cc-163ca4a8f11f",
@@ -1159,31 +1262,6 @@
     },
     "birthDateExact": "7 ноябри 1414",
     "deathDateExact": "9 ноябри 1492",
-    "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
-  },
-  {
-    "id": "9a3f7c2a-a41d-4064-9ea7-766941c9ae35",
-    "canonicalName": "Саъдии Шерозӣ",
-    "canonicalNamePersian": "مصلح‌الدین سعدی شیرازی",
-    "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "УБАЙДИ ЗОКОНӢ Гар кунӣ бо дтгарон ҷабру ҷафо, Бо Убайдуллоҳи Зоконӣ макун. Гузаштагони Убайди Зоконӣ аз Арабистон ба Эрон кӯчида, дар Зокони Қазвин сукунат ихтиёр намуданд. Убайд соли 1270 дар хонадони вазири собиқ ба дунё омадааст. Ӯ таълими ибтидоиро дар зодгоҳаш Зокон гирифта, баъдан дар мадрасаҳои шаҳри Бағдод таҳсил намудааст. Вале даҳшатҳои ҳаёти замони феодалӣ боиси дар муҳтоҷӣ зиндагӣ кардани Убайди Зоконӣ гаштаанд. Ин ҳақиқатро дар ашъори дорои мазмуни тарҷумаиҳолии ӯ дучор меоем: Дар хонаи ман зи неку бад чизе нест, Ҷуз бодею пораи намад чизе нест. Аз ҳар чӣ пазанд, нест ғайр аз савдо В-аз дар чӣ хӯранд, ҷуз лагад чизе нест... Ӯ соли 1370 аз олам чашм пӯшидааст. Убайди Зоконӣ нависандаи шӯхтабъ аст. Ҳаҷв равияи хосси эҷодиёти ӯ шинохта шудааст. Асарҳои ӯ дар шакли назм ва наср таълиф шудаанд. Мероси адабии Зокониро «Наводир-ул-амсол», рисолаҳои «Ахлоқ-ул-ашроф», «Садпанд», «Даҳфасл», «Дилкушо», «Ришнома», достонҳои «Ушшоқнома»",
-    "biographyFa": "شیخ سعدی شیرازی آموزگار بزرگ اخلاق، حکمت و فصاحت است که آثار ماندگار او دستور زبان، اخلاق و انسانیت را به نسل‌های پی در پی در سراسر جهان آموخته است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 98–108; синфи 5 (2017), с. 100–128",
-    "majorWorkIds": [],
-    "officialTitles": [],
-    "educationGrades": [],
-    "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
-    },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
@@ -1262,7 +1340,15 @@
       "dynasty-ghaznavid"
     ],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/a6dd1c54-753d-4a52-8e5b-5365b7908aa3.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
+      "sourcePage": 77,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "92a7c4fa-3191-4301-ba53-8087ce7ef3d8",
@@ -1289,7 +1375,15 @@
     "deathDateExact": "1588",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/92a7c4fa-3191-4301-ba53-8087ce7ef3d8.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 26,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "cef7fd49-54c8-4e46-9361-123cc52de5eb",
@@ -1300,9 +1394,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Ғании Кашмирӣ дар ташаккули сабки ҳиндӣ мақоми арзанда дошт.",
+    "biographyFa": "غنی کشمیری در شکل‌گیری سبک هندی جایگاهی شایسته داشت.",
+    "biographySource": "«Адабиёти тоҷик», синфи 10 (2026), с. 168.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -1313,9 +1407,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "6b080d51-336b-48ba-92cd-85fe29149e0d",
@@ -1340,7 +1433,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/6b080d51-336b-48ba-92cd-85fe29149e0d.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
+      "sourcePage": 58,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "79b50923-ea65-4554-b65d-bbf3ee49f35c",
@@ -1372,13 +1473,13 @@
     "canonicalName": "Шаҳиди Балхӣ",
     "canonicalNamePersian": "شهید بلخی",
     "aliases": [],
-    "birthYear": "~885",
-    "deathYear": "~935",
-    "birthPlace": "Балх / Вахш",
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "АБУАБДУЛЛОҲИ РӮДАКӢ (858 – 941) МАҚОМИ ШОИР Абуабдуллоҳи Рӯдакиро ҳамасронаш ва адибони асрҳои баъдӣ ҳамчун «Одамушшуаро», «устод», «сари шоирон» ва «соҳибқирони шоирӣ» эътироф доштанд. Кисоии Марвазӣ (охири а. Х ва ибтидои а. ХI ) аз Рӯдакӣ ҳамчун «устоди шоирони ҷаҳон» ном бурдааст: Рӯдакӣ устоди шоирони ҷаҳон буд, Садяк аз ӯ туӣ, Кисоӣ, яргист! Рашидии Самарқандӣ (а. ХII) гуфтааст: Гар сарӣ ёбад ба олам кас ба некушоирӣ, Рӯдакиро бар сари он шоирон зебад сарӣ. Низомии Арӯзии Самарқандӣ (а. ХII) ӯро ҳам «соҳибқирони шоирӣ» ва ҳам «устод» номидааст: Он кас ки шеър донад, донад, ки дар ҷаҳон Соҳибқирони шоирӣ устод Рӯдакист. Шуҳрати Рӯдакӣ на танҳо дар Самарқанду Бухоро – ду пойтахти Сомониён, балки тамоми Хуросони бузургро фаро гирифта буд. Шеъри ӯро дар ҳама ҷо замзама ва пайравӣ мекарданд, чунонки худ мегӯяд: Шуд он замона, ки шеъраш ҳама ҷаҳон бинвашт, Шуд он замона, ки ӯ шоири Хуросон буд. Самъонӣ (ваф. 1167) дар тазкирааш бо номи",
-    "biographyFa": "ابوالحسن شهید بن حسین بلخی (درگذشته ۹۳۶ م) از پیشگامان شعر فارسی و فلاسفه عهد سامانی و از یاران نزدیک رودکی بود که رودکی در رثای او مرثیه‌ای ماندگار سروده است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 43–45",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Асри X",
+    "biographyTj": "Шаҳиди Балхӣ дар китоби дарсӣ ҳамчун яке аз шоирони асри X ёд мешавад. Дар ҳамон манбаъ намунаи шеъри ӯ «Абр ҳамегиряд чун ошиқон...» оварда шудааст.",
+    "biographyFa": "شهید بلخی در کتاب درسی از شاعران سده دهم میلادی معرفی شده و نمونه‌ای از شعر او «ابر همچون عاشقان می‌گرید…» آمده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 37; синфи 5 (2017), с. 55–56.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -1391,7 +1492,7 @@
     "birthDateExact": null,
     "deathDateExact": null,
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -1419,7 +1520,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/d5abab06-07e9-4247-b8a8-f4801b6a5be4.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
+      "sourcePage": 44,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "3d5d70c0-6294-4b7d-b830-79db08edd6b8",
@@ -1428,12 +1537,12 @@
     "aliases": [
       "Робиаи Қуздорӣ (Робиаи Балхӣ)"
     ],
-    "birthYear": "Асри X",
-    "deathYear": "Асри X",
+    "birthYear": "Нимаи дуюми асри IX",
+    "deathYear": null,
     "birthPlace": "Балх",
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "5. Мутадорик = фо-ъи-лун. - v - Супориш: Байти зеринро ба рукнҳо қисмат намоед. Ҳиҷоҳои дароз ва кӯтоҳи онро муқаррар кунед. Пас муайян намоед, ки байт дар кадом баҳр суруда шудааст: Қалам гуфто, ки ман шоҳи ҷаҳонам, Қаламкашро ба мақсад мерасонам. РОБИАИ БАЛХӢ Робиаи Балхӣ дар нимаи дуюми асри lX ба дунё омадааст. Робиа духтари ҳокими Балх буд. Ӯ илмҳои маъмули замонаашро аз худ кард. Шеър менавишт. Падараш ба шеъргӯии духтараш монеъ намешуд. Як намунаи шеъри вай: Фишонд аз савсану гул симу зар бод. Зиҳӣ боде, ки раҳмат бод бар бод! Бидод аз нақши озар сад нишон об, Намуд аз сеҳри монӣ сад асар бод. Мисоли чашми Одам шуд магар абр. Далели лутфи Исо шуд магар бод, Ки дур борид ҳар дам дар чаман абр, Ки ҷон афзуд хуш-хуш дар шаҷар бод. Агар девона абр омад, чиро пас, Кунад арза сабӯҳӣ ҷоми зар бод? Гули хушбӯй, тарсам, оварад ранг Аз ин ғаммози субҳи пардадар бод. Барои чашми ҳар ноаҳл, гӯйӣ, Арӯси боғро шуд ҷилвагар бод. Аҷаб чун субҳ х",
-    "biographyFa": "رابعه بنت کعب قزداری (بلخی) نخستین بانوی شناخته‌شده شعر پارسی در سده چهارم هجری است که غزلیات پرشور و سرگذشت عاشقانه و پرشور او الهام‌بخش نسل‌ها بوده است.",
+    "literaryPeriod": "Асри IX",
+    "biographyTj": "Робиаи Балхӣ дар нимаи дуюми асри IX ба дунё омадааст. Матни дарсӣ ӯро духтари ҳокими Балх ва шеърнавис муаррифӣ мекунад ва намунаи шеъри ӯро меорад.",
+    "biographyFa": "رابعه بلخی در نیمه دوم سده نهم میلادی زاده شد. کتاب درسی او را دختر حاکم بلخ و شاعر معرفی می‌کند و نمونه‌ای از شعرش را می‌آورد.",
     "biographySource": "«Адабиёти тоҷик», синфи 5 (2017), с. 60–61",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1444,37 +1553,10 @@
       "fullTextAllowed": false,
       "excerptAllowed": false
     },
-    "birthDateExact": "Асри X",
-    "deathDateExact": "Асри X",
+    "birthDateExact": "Нимаи дуюми асри IX",
+    "deathDateExact": null,
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
-  },
-  {
-    "id": "bb00bac5-e207-4cc7-9539-a2af92b71281",
-    "canonicalName": "Абӯалӣ ибни Сино",
-    "canonicalNamePersian": "شیخ‌الرئیس ابوعلی سینا",
-    "aliases": [],
-    "birthYear": "980",
-    "deathYear": "1037",
-    "birthPlace": "Афшана, наздикии Бухоро",
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "АБУАЛӢ ИБНИ СИНО (16 – 17-уми августи соли 980 – 24-уми июни соли 1037) Абуалӣ ибни Сино яке аз абармардони илмҳои ҳикмат, мантиқ, илоҳиёт, табииёт, риёзиёт, тиб, ҳайат, забон, улуми адабӣ ва фанни шеър на танҳо дар Шарқ, балки дар Ғарб мебошад. Ин гуна касони фавқулодаро дар Машриқзамин «нобиға» ва дар кишварҳои ғарбӣ «гений» мегуфтанд. Дар феҳристи китобҳои ӯ, ки онро шогирди бовафояш Абуубайди Ҷузҷонӣ тартиб додааст ва ҳамроҳаш солҳои дароз то вопасин нафасҳояш буд, яксаду чиҳилу ҳашт номгӯй омадааст, ки бисёре аз онҳо ҳар як аз ду то бист-бисту як ҷилд иборат мебошад. Китоби машҳури ӯ дар илми тиб «Ал-Қонун фӣ-т-тиб» дар Италия аз тарафи Ҳерарди Кремонӣ дар соли 1180 ба забони лотинӣ тарҷума шуда, дувумин асарест, ки пас аз китоби муқаддаси яҳудиён «Таврот» ба табъ расида буд ва то асри ХVIII дар донишгоҳҳои ғарбӣ ҳамчун китоби дарсӣ таълим дода мешуд. Имом Ғазолӣ (охири а. ХI ва ибтидои а. ХII) бо вуҷуди ихтилофи назаре, ки бо Ибни",
-    "biographyFa": "حکیم ابوعلی ابن سینا (۹۸۰–۱۰۳۷ م) متفکر جهانی و طبیب بزرگ برخاسته از ماوراءالنهر است. او علاوه بر تألیف آثار سترگ در طب و فلسفه، در ادب و حکمت نیز اشعاری فصیح و پرمعنا از خود بر جای گذاشت.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 127–143; синфи 5 (2017), с. 62–72",
-    "majorWorkIds": [],
-    "officialTitles": [],
-    "educationGrades": [],
-    "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
-    },
-    "birthDateExact": "Августи 980",
-    "deathDateExact": "18 июни 1037",
-    "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -1500,7 +1582,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/a4b182d3-1c06-4c82-9858-0e71d95edeb3.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 73,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "da40ae16-883d-4232-86a1-976aa9ffc941",
@@ -1536,8 +1626,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "АДАБИЁТИ ҶАДИДИЯ ВА НАМОЯНДАГОНИ ДИГАРИ АДАБИЁТ Дар адабиёти ҷадидия анъанаи тазкиранависӣ давом ёфт. Аз ҷумла, Ҳоҷӣ Неъматуллоҳи Муҳтарам дар «Тазки­рат-уш-шуаро» (1908) дар бораи 175 шоир, Садри Зиё дар «Тазкори ашъор» (1905– 07) роҷеъ ба 200 шоир1, Мирзо Салимбек дар иловаи «Туҳфат-улаҳбоб фи тазкират-ул-асҳоб»-и Возеҳ (1914) дар бораи 87 шоир мухтасаран маълумот додаанд, ки ба ин ҷумла шоирони адаби­ ёти ҷадидия низ шомиланд. Махсусан, дар «Намунаи адабиёти тоҷик»-и С.Айнӣ, ки соли 1926 дар Маскав ба табъ расид, роҷеъ ба адибони аҳди ҷадидия маълумоти амиқу муфассал дода шуда­ аст. Тазкираҳои номбурда барои омӯхтани адабиёти ин давра чун сарчашмаи муҳимми адабӣ хидмат мекунанд. Адибони ин давраро аз рӯйи тарзи ифода ва сухангустарӣ ба ду гурӯҳ ҷудо кардан мумкин аст. Ба гурӯҳи аввал шоирон Нақибхони Туғрал (1865–1919), Ҳоҷӣ Ҳусайнӣ Кангуртӣ (1868–1917), Зуфар­ хон Ҷавҳарӣ (1860–1945), Муҳаммад Содиқхоҷаи Гулшанӣ (1861– 1910), Сайида",
-    "biographyFa": "میرزا شریف‌جان مخدوم صدر ضیاء (۱۸۶۷–۱۹۳۲ م) ادیب، قاضی‌کلان، تذکره‌نویس و دولتمرد روشن‌ضمیر بخارا و صاحب تذکره‌های ارزشمند در باب فرهنگ و ادب پایان عصر امارت بخاراست.",
+    "biographyTj": "Матни дарсӣ Садри Зиёро ҳамчун тазкиранигор ёд мекунад ва менависад, ки ӯ дар «Тазкори ашъор» (1905–1907) дар бораи тақрибан 200 шоир маълумот додааст.",
+    "biographyFa": "کتاب درسی صدر ضیاء را تذکره‌نگار معرفی می‌کند و می‌نویسد که او در «تذکره اشعار» (۱۹۰۵–۱۹۰۷) درباره حدود ۲۰۰ شاعر اطلاعات داده است.",
     "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 14–21",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1549,7 +1639,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -1561,8 +1651,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "АДАБИЁТИ ҶАДИДИЯ ВА НАМОЯНДАГОНИ ДИГАРИ АДАБИЁТ Дар адабиёти ҷадидия анъанаи тазкиранависӣ давом ёфт. Аз ҷумла, Ҳоҷӣ Неъматуллоҳи Муҳтарам дар «Тазки­рат-уш-шуаро» (1908) дар бораи 175 шоир, Садри Зиё дар «Тазкори ашъор» (1905– 07) роҷеъ ба 200 шоир1, Мирзо Салимбек дар иловаи «Туҳфат-улаҳбоб фи тазкират-ул-асҳоб»-и Возеҳ (1914) дар бораи 87 шоир мухтасаран маълумот додаанд, ки ба ин ҷумла шоирони адаби­ ёти ҷадидия низ шомиланд. Махсусан, дар «Намунаи адабиёти тоҷик»-и С.Айнӣ, ки соли 1926 дар Маскав ба табъ расид, роҷеъ ба адибони аҳди ҷадидия маълумоти амиқу муфассал дода шуда­ аст. Тазкираҳои номбурда барои омӯхтани адабиёти ин давра чун сарчашмаи муҳимми адабӣ хидмат мекунанд. Адибони ин давраро аз рӯйи тарзи ифода ва сухангустарӣ ба ду гурӯҳ ҷудо кардан мумкин аст. Ба гурӯҳи аввал шоирон Нақибхони Туғрал (1865–1919), Ҳоҷӣ Ҳусайнӣ Кангуртӣ (1868–1917), Зуфар­ хон Ҷавҳарӣ (1860–1945), Муҳаммад Содиқхоҷаи Гулшанӣ (1861– 1910), Сайида",
-    "biographyFa": "سید احمد عجزی سمرقندی (۱۸۶۸–۱۹۲۷ م) شاعر، اندیشمند و معارف‌پرور پیشگام سمرقند بود که در گسترش آموزش نوین و بیداری جامعه نقش فعالی داشت.",
+    "biographyTj": "Аҷзии Самарқандӣ шоир ва маорифпарвари аҳди ҷадидия буд. Матни дарсӣ менависад, ки ӯ дар «Ганҷинаи ҳикмат» ва «Миръоти ибрат» масъалаи мактабу маорифро тасвир карда, солҳои 1901–1903 дар Ҳалвоӣ мактаби нав кушодааст.",
+    "biographyFa": "عجزی سمرقندی شاعر و معارف‌پرور دوره جدید بود. کتاب درسی می‌نویسد که او در «گنجینه حکمت» و «مرآت عبرت» به موضوع مدرسه و آموزش پرداخت و در سال‌های ۱۹۰۱–۱۹۰۳ در حلواوی مدرسه‌ای نو گشود.",
     "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 14–21",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1574,7 +1664,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -1586,8 +1676,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "АДАБИЁТИ ҶАДИДИЯ ВА НАМОЯНДАГОНИ ДИГАРИ АДАБИЁТ Дар адабиёти ҷадидия анъанаи тазкиранависӣ давом ёфт. Аз ҷумла, Ҳоҷӣ Неъматуллоҳи Муҳтарам дар «Тазки­рат-уш-шуаро» (1908) дар бораи 175 шоир, Садри Зиё дар «Тазкори ашъор» (1905– 07) роҷеъ ба 200 шоир1, Мирзо Салимбек дар иловаи «Туҳфат-улаҳбоб фи тазкират-ул-асҳоб»-и Возеҳ (1914) дар бораи 87 шоир мухтасаран маълумот додаанд, ки ба ин ҷумла шоирони адаби­ ёти ҷадидия низ шомиланд. Махсусан, дар «Намунаи адабиёти тоҷик»-и С.Айнӣ, ки соли 1926 дар Маскав ба табъ расид, роҷеъ ба адибони аҳди ҷадидия маълумоти амиқу муфассал дода шуда­ аст. Тазкираҳои номбурда барои омӯхтани адабиёти ин давра чун сарчашмаи муҳимми адабӣ хидмат мекунанд. Адибони ин давраро аз рӯйи тарзи ифода ва сухангустарӣ ба ду гурӯҳ ҷудо кардан мумкин аст. Ба гурӯҳи аввал шоирон Нақибхони Туғрал (1865–1919), Ҳоҷӣ Ҳусайнӣ Кангуртӣ (1868–1917), Зуфар­ хон Ҷавҳарӣ (1860–1945), Муҳаммад Содиқхоҷаи Гулшанӣ (1861– 1910), Сайида",
-    "biographyFa": "احمدجان حمدی از شاعران و معارف‌پروران اواخر سده نوزدهم و آغاز سده بیستم میلادی در سمرقند و بخاراست که اشعار روشنگرانه سروده است.",
+    "biographyTj": "Аҳмадҷони Ҳамдӣ аз адибони аҳди ҷадидия буд. Матни дарсӣ ӯро дар қатори зиёиёни тоҷикони ин давра меорад ва дар с. 16 як ғазали ӯро ҳамчун намунаи баёни нави шеърӣ пешниҳод мекунад.",
+    "biographyFa": "احمدجان حمدی از ادیبان دوره جدید بود. کتاب درسی او را در شمار روشنفکران تاجیک این دوره می‌آورد و در صفحه ۱۶ غزلی از او را نمونه‌ای از بیان نو در شعر معرفی می‌کند.",
     "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 14–21",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1599,7 +1689,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -1641,7 +1731,15 @@
     "deathDateExact": "1894",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/6ab9cd0a-0ff0-4a73-99ba-6604d9c61847.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 282,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
@@ -1668,7 +1766,15 @@
     "deathDateExact": "1919",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/43004ccf-0d32-463c-aad5-b6aaec73fbb4.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 22,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "2e7a713f-c3d2-449e-bd6a-a4b5b7350201",
@@ -1695,11 +1801,20 @@
     "deathDateExact": "1916",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/2e7a713f-c3d2-449e-bd6a-a4b5b7350201.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 31,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "8c4bf813-284a-4938-9c1b-ac9eb6cc53e4",
     "canonicalName": "Дар",
+    "recordStatus": "rejected",
     "canonicalNamePersian": "در (موضوعات ادبی)",
     "aliases": [],
     "birthYear": null,
@@ -1726,6 +1841,7 @@
   {
     "id": "404226c8-acbc-47e5-819e-4c63f93cb4d4",
     "canonicalName": "Мисраъҳои",
+    "recordStatus": "rejected",
     "canonicalNamePersian": "ابیات و مصراع‌های منظوم",
     "aliases": [],
     "birthYear": null,
@@ -1777,6 +1893,7 @@
   {
     "id": "3537f811-9658-4f9b-a29b-6311e802e60e",
     "canonicalName": "Номаълум",
+    "recordStatus": "rejected",
     "canonicalNamePersian": "فولکلور و ادبیات شفاهی",
     "aliases": [],
     "birthYear": null,
@@ -1809,9 +1926,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Яҳёхоҷа ҳаҷвнигори бомаҳорат ва шоири Бухоро буд; ӯ норасоӣ ва ноадолатиҳои даврро дар ҳикояҳо ва шеърҳои ҳаҷвӣ ошкор мекард.",
+    "biographyFa": "یحیی‌خواجه طنزپرداز ماهر و شاعر بخارا بود؛ او کاستی‌ها و بی‌عدالتی‌های زمانه را در داستان‌ها و شعرهای طنز آشکار می‌کرد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 95–96.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -1822,9 +1939,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "604d62c2-62fc-4aa3-a7d2-8348e714b52d",
@@ -1849,7 +1965,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/604d62c2-62fc-4aa3-a7d2-8348e714b52d.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 312,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "bdca68f7-2ee1-49bf-9780-27da55cea473",
@@ -1885,8 +2009,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Озарбоди Меҳроспандон аз чеҳраҳои шинохтаи мазҳабии давраи Сосониён буд ва дар танзим ва шарҳи «Авесто» нақши бузург дошт. Ӯ «Андарзнома»-ро барои писараш Зардушт навишта, дар он аз одоби сухан, ростгӯӣ, некандешӣ, донишомӯзӣ, эҳтироми падару модар ва интихоби дӯст сухан гуфтааст. Ин асар аз 124 панд иборат аст.",
+    "biographyFa": "آذرباد مهراسپندان از چهره‌های شناخته‌شدهٔ دینی دورهٔ ساسانی بود و در تنظیم و شرح اوستا نقش مهمی داشت. او «اندرزنامه» را برای پسرش زرتشت نوشت و در آن از آداب سخن، راست‌گویی، نیک‌اندیشی، دانش‌آموزی، احترام به پدر و مادر و انتخاب دوست سخن گفت. این اثر ۱۲۴ پند دارد.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 13–14.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1898,9 +2022,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "2c8b026f-bab7-4cd8-9d86-26794a1573eb",
@@ -1911,8 +2034,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Шоири охири асри VII ва ибтидои асри VIII, аз қадимтарин шоироне, ки ба забони порсии дарӣ шеър гуфтааст.",
-    "biographyFa": "ابوحفص سغدی از نخستین خنیاگران و سرایندگان شعر دری در ماوراءالنهر در آغاز دوران اسلامی است.",
+    "biographyTj": "Абуҳафси Суғдӣ шоири Самарқанд аз охири асри VII ва ибтидои асри VIII будааст; аз ӯ як байт боқӣ мондааст.",
+    "biographyFa": "ابوحفص سغدی شاعری سمرقندی از اواخر سدهٔ هفتم و آغاز سدهٔ هشتم میلادی بود؛ یک بیت از او باقی مانده است.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 30.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1924,7 +2047,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -1961,8 +2084,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Шоири асри IX, яке аз аввалинҳо, ки бо амри Яъқуб бинни Лайси Саффорӣ ба забони порсӣ қасида гуфт.",
-    "biographyFa": "محمد بن وصیف سیگزی دبیر رسایل یعقوب لیث صفاری و از نخستین کسانی است که به فرمان یعقوب شعر به پارسی دری سرود.",
+    "biographyTj": "Муҳаммад бинни Васиф ас-Сиҷзӣ аз аввалин касоне буд, ки бо хоҳиши Яъқуб бинни Лайси Саффорӣ ба порсӣ шеър гуфт; аз мероси ӯ пораҳои шеърӣ, аз ҷумла қасидае дар мадҳи Яъқуб, боқӣ мондааст.",
+    "biographyFa": "محمد بن وصیف سیگزی از نخستین کسانی بود که به خواست یعقوب بن لیث صفاری به پارسی شعر گفت؛ از میراث او پاره‌هایی شعری، از جمله قصیده‌ای در مدح یعقوب، باقی مانده است.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–32.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1974,7 +2097,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -1986,8 +2109,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Бассоми Курд аз шоироне буд, ки дар пайравии Муҳаммад бинни Васиф ба порсии дарӣ мадҳ сурудааст.",
+    "biographyFa": "بسام کرد از شاعرانی بود که در پیروی از محمد بن وصیف، به فارسی دری مدیحه سرود.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–32.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -1999,9 +2122,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "c76a0058-db4d-4bd3-83dd-a66f2b3578b4",
@@ -2012,8 +2134,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Муҳаммад бинни Мухаллад ас-Сиҷзӣ аз шоироне буд, ки дар пайравии Муҳаммад бинни Васиф ба порсии дарӣ мадҳ сурудааст.",
+    "biographyFa": "محمد بن مخلد سیگزی از شاعرانی بود که در پیروی از محمد بن وصیف، به فارسی دری مدیحه سرود.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–32.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2025,9 +2147,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "1b65d9d8-0e3d-4e02-8c65-30f98e84e109",
@@ -2035,11 +2156,11 @@
     "canonicalNamePersian": "محمود وراق هروی",
     "aliases": [],
     "birthYear": null,
-    "deathYear": null,
+    "deathYear": "835/836",
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Маҳмуди Варроқи Ҳиравии ас-Сиҷзӣ (ваф. 835/836) аз шоирони нахустини порсии дарӣ буд; аз ӯ порчаи шеърӣ дар васфи нигор боқӣ мондааст.",
+    "biographyFa": "محمود وراق هروی سیگزی (درگذشته ۸۳۵/۸۳۶ م.) از شاعران نخستین فارسی دری بود و قطعه‌ای از شعر او در وصف یار باقی مانده است.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2051,9 +2172,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "cf6c66fa-1c48-4819-a4d9-287225e766b2",
@@ -2061,11 +2181,11 @@
     "canonicalNamePersian": "فیروز مشرقی",
     "aliases": [],
     "birthYear": null,
-    "deathYear": null,
+    "deathYear": "896/897",
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Фирӯзи Машриқӣ (ваф. 896/897) аз шоирони нахустини порсии дарӣ буд, ки дар гуфтани шеър аз арӯзи форсӣ истифода мекарданд.",
+    "biographyFa": "فیروزی مشرقی (درگذشته ۸۹۶/۸۹۷ م.) از شاعران نخستین پارسی‌گوی بود که در سرودن شعر از عروض فارسی استفاده می‌کرد.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2077,9 +2197,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "d1bb3938-3e96-42a9-b73d-bafbabf8554f",
@@ -2090,8 +2209,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Абусулайки Ҷурҷонӣ аз шоироне буд, ки ба порсии дарӣ мадҳ сурудааст; ӯ маънии ошиқонаро бо ҳазли малеҳ омехта мекард.",
+    "biographyFa": "ابوسلیک گرگانی از شاعرانی بود که به فارسی دری مدیحه سرود و مضمون عاشقانه را با طنزی دلنشین درآمیخت.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–32.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2103,9 +2222,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "58010d8f-2575-4b92-89e0-373f05b32929",
@@ -2116,9 +2234,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31, 34.",
+    "biographyTj": "Масъуди Марвазӣ аз шоирони охири асри IX будааст. Аз ӯ се байт боқӣ мондааст, ки нишон медиҳанд таърихи Аҷамро аз оғоз то фурӯпошии Сосониён дар қолаби маснавӣ ба назм дароварда будааст.",
+    "biographyFa": "مسعود مروزی از شاعران اواخر سدهٔ نهم میلادی بود. سه بیت از او باقی مانده است که نشان می‌دهد تاریخ عجم را از آغاز تا فروپاشی ساسانیان در قالب مثنوی به نظم کشیده بود.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 31–34.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2129,9 +2247,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "896648b7-c7b7-4451-b8b3-cd37e4710fa1",
@@ -2163,13 +2280,13 @@
     "canonicalName": "Абушакури Балхӣ",
     "canonicalNamePersian": "ابوشکور بلخی",
     "aliases": [],
-    "birthYear": "~915",
-    "deathYear": "Асри X",
-    "birthPlace": "Балх / Вахш",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
+    "biographyTj": "Абушакури Балхӣ дар китоби дарсӣ дар қатори шоирони пуштибони навъи «шеъри нағз» ёд мешавад; аз ӯ намунаи пандомез низ оварда шудааст.",
+    "biographyFa": "ابوشکور بلخی در کتاب درسی در شمار شاعرانی معرفی می‌شود که از گونهٔ «شعر نغز» پشتیبانی کردند؛ نمونه‌ای پندآموز از شعر او نیز آمده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35–37.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2182,9 +2299,8 @@
     "birthDateExact": null,
     "deathDateExact": null,
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "2b5af239-bce6-4b05-98ad-fbeef1a54c12",
@@ -2220,8 +2336,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Абузироаи Ҷурҷонӣ аз шоирони ҳамасри Рӯдакӣ буд ва дар дарбори Сомониён ба шоирӣ машғул мешуд; китоби дарсӣ ӯро дар заминаи баҳси мақоми Рӯдакӣ ёд мекунад.",
+    "biographyFa": "ابوزراعه جرجانی از شاعران هم‌عصر رودکی بود و در دربار سامانیان شاعری می‌کرد؛ کتاب درسی او را در زمینهٔ بحث دربارهٔ جایگاه رودکی یاد می‌کند.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 45.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2233,9 +2349,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "ec7e9596-18d3-47dc-b952-bcbdfa023934",
@@ -2267,13 +2382,13 @@
     "canonicalName": "Абулаббоси Марвазӣ",
     "canonicalNamePersian": "ابوالعباس مروزی",
     "aliases": [],
-    "birthYear": "Асри IX",
-    "deathYear": "Асри X",
-    "birthPlace": "Марв",
-    "literaryPeriod": "Асри IX–X (Аҳди Сомониён)",
-    "biographyTj": "Аз нахустин шоирони форсигӯй ва адибони бузурги шаҳри Марв дар давраи Сомониён, ки дар ташаккули шеъри форсии тоҷикӣ нақши муҳим бозидааст.",
-    "biographyFa": "ابوالعباس مروزی از سرایندگان کهن حوزه ادبی مرو در عهد مامون عباسی است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Асри X",
+    "biographyTj": "Абулаббоси Марвазӣ дар китоби дарсӣ дар қатори шоирони адабиёти асри X ёд мешавад; намунаи ду мисраъ аз ӯ оварда шудааст.",
+    "biographyFa": "ابوالعباس مروزی در کتاب درسی در شمار شاعران ادبیات سده دهم میلادی آمده و دو مصراع از او نقل شده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 38.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2284,7 +2399,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -2321,8 +2436,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Кисоии Марвазӣ шоири Марв дар охири асри X ва ибтидои асри XI буд; дар китоби дарсӣ ӯ Рӯдакиро «устоди шоирони ҷаҳон» меномад.",
+    "biographyFa": "کسایی مروزی شاعر مرو در اواخر سدهٔ دهم و آغاز سدهٔ یازدهم بود؛ کتاب درسی او را ستایشگر رودکی به‌عنوان «استاد شاعران جهان» معرفی می‌کند.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 43.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2334,21 +2449,20 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "ed2d18a8-f33e-4a66-8052-65128fe6295a",
     "canonicalName": "Абулмуайяди Балхӣ",
     "canonicalNamePersian": "ابوالمؤید بلخی",
     "aliases": [],
-    "birthYear": "Асри X",
-    "deathYear": "Асри X",
-    "birthPlace": "Балх / Вахш",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Дар китоби дарсии синфи 8 Абулмуайяди Балхӣ дар қатори шоирону нависандагони бузурги адабиёти асри X зикр мешавад.",
+    "biographyFa": "در کتاب درسی صنف هشتم، ابوالْمؤید بلخی در شمار شاعران و نویسندگان بزرگ ادبیات سدهٔ دهم یاد شده است.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2362,9 +2476,8 @@
     "birthDateExact": null,
     "deathDateExact": null,
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "483ec51d-a691-4b78-918a-0fbc13f29a46",
@@ -2401,10 +2514,10 @@
     "birthYear": null,
     "deathYear": null,
     "birthPlace": null,
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
+    "literaryPeriod": "Охири асри X",
+    "biographyTj": "Хусравонӣ (Хусравӣ) аз адибони охири асри X буд, ки истилоҳи «шеъри нағз»-ро барои шеър бо маънии равшан ба кор бурдааст.",
+    "biographyFa": "خسروانی (خسروی) از ادیبان اواخر سدهٔ دهم بود که اصطلاح «شعر نغز» را برای شعری با معنای روشن به کار برد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35–36.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2415,9 +2528,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "4ea4300f-493d-40bd-bf55-a83d9b397bf3",
@@ -2503,8 +2615,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Дар китоби дарсии синфи 8 Абуабдуллоҳи Ҷайҳонӣ дар қатори шоирону нависандагони бузурги адабиёти асри X зикр мешавад.",
+    "biographyFa": "در کتاب درسی صنف هشتم، ابوعبدالله جیهانی در شمار شاعران و نویسندگان بزرگ ادبیات سدهٔ دهم یاد شده است.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2516,9 +2628,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "cfe58486-55c2-474d-b329-248040b519ee",
@@ -2529,8 +2640,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Абулфазли Балъамӣ вазири номии Сомониён ва дӯсти наздики Рӯдакӣ буд; дар матни дарсӣ гуфта мешавад, ки аз дарбор соли 937 рафт.",
+    "biographyFa": "ابوالفضل بلعمی وزیر نامدار سامانیان و دوست نزدیک رودکی بود؛ متن درسی می‌گوید که او در سال ۹۳۷ از دربار رفت.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 44–45.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2542,9 +2653,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "9becac52-2650-408f-8ecf-d496a233d71a",
@@ -2555,8 +2665,8 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
+    "biographyTj": "Дар китоби дарсии синфи 8 Абуалии Балъамӣ дар қатори шоирону нависандагони бузурги адабиёти асри X зикр мешавад.",
+    "biographyFa": "در کتاب درسی صنف هشتم، ابوعلی بلعمی در شمار شاعران و نویسندگان بزرگ ادبیات سدهٔ دهم یاد شده است.",
     "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
     "majorWorkIds": [],
     "officialTitles": [],
@@ -2568,9 +2678,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "8648e50d-ff7d-413d-a0fb-e1829ff940bb",
@@ -2602,13 +2711,13 @@
     "canonicalName": "Абулҳасани Оғоҷӣ",
     "canonicalNamePersian": "ابوالحسن آغاجی",
     "aliases": [],
-    "birthYear": "Асри X",
-    "deathYear": "Асри X",
-    "birthPlace": "Бухоро",
-    "literaryPeriod": "Асри X (Аҳди Сомониён)",
-    "biographyTj": "Шоир ва сипаҳсолори даврони Сомониён (замони амир Нӯҳ ибни Мансур), ки шеърҳои баландмазмун эҷод намуда, мавриди ситоиши шоирони баъдӣ қарор гирифтааст.",
-    "biographyFa": "ابوالحسن علی بن الیاس آغاجی شاعر و سپه‌سالار دربار سامانی در بخاراست.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Асри X",
+    "biographyTj": "Абулҳасани Оғоҷӣ дар китоби дарсӣ бо намунаи шеъре дар бораи парвози барф муаррифӣ шудааст.",
+    "biographyFa": "ابوالحسن آغاجی در کتاب درسی با نمونه‌ای از شعر او درباره پرواز برف معرفی شده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 37.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2619,7 +2728,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -2627,13 +2736,13 @@
     "canonicalName": "Қамарии Ҷурҷонӣ",
     "canonicalNamePersian": "قمری جرجانی",
     "aliases": [],
-    "birthYear": "Асри X",
-    "deathYear": "Асри X",
-    "birthPlace": "Ҷурҷон",
-    "literaryPeriod": "Асри X (Аҳди Сомониён)",
-    "biographyTj": "Шоири зуллисонайн ва донишманди охири асри Х аз вилояти Ҷурҷон, ки дар рушди шеъри ғиноӣ ва сурудани ашъори дилнишини форсӣ-тоҷикӣ саҳм гузоштааст.",
-    "biographyFa": "سراج‌الدین قمری جرجانی از شاعران قصیده‌سرا و مدیحه‌سرای اواخر عهد سامانی و آل زیار است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35.",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Асри X",
+    "biographyTj": "Қамарии Ҷурҷонӣ дар китоби дарсӣ бо намунаи ду байти шеърӣ дар бораи моҳ муаррифӣ шудааст.",
+    "biographyFa": "قمری جرجانی در کتاب درسی با نمونه‌ای دو بیتی درباره ماه معرفی شده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 35, 38.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2644,7 +2753,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -2675,34 +2784,9 @@
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
-    "id": "beea5538-c891-4044-a75b-9bf21d1ef897",
-    "canonicalName": "Абулаббоси Марвазӣ",
-    "canonicalNamePersian": "ابوالعباس مروزی (شاعر)",
-    "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
-    "majorWorkIds": [],
-    "officialTitles": [],
-    "educationGrades": [],
-    "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
-    },
-    "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
-  },
-  {
     "id": "19750e0a-7629-436e-9715-a1530d0b1571",
     "canonicalName": "Фарҳат",
+    "recordStatus": "review",
     "canonicalNamePersian": "فرهت",
     "aliases": [],
     "birthYear": null,
@@ -2711,7 +2795,7 @@
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "",
     "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographySource": "«Таърихи халқи тоҷик», китоби дарсӣ барои синфи 11 (2022), с. 61 (PDF p. 60), maorif.tj: https://maorif.tj/storage/libraries/01J3EZGFEHMVAZJNQFQSYT9NCY.pdf",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2724,7 +2808,7 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "UNSUPPORTED_GENERATED",
     "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyQuarantineNote": "Review-only source lead: the Ministry-hosted textbook lists «М. Фарҳат» among talented Tajik poets and writers on printed page 61, but it does not establish the full identity, dates, biography, works, or portrait for this record; no promotion or portrait assignment is made."
   },
   {
     "id": "82f30a4e-f468-4a7d-bf03-bd29d3279fe0",
@@ -2735,9 +2819,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Салмони Соваҷӣ дар китоби дарсӣ ҳамчун шоири байти намунавии вазни арӯзӣ оварда шудааст.",
+    "biographyFa": "سلمانی ساوجی در کتاب درسی به‌عنوان شاعر بیتی نمونه در وزن عروضی معرفی شده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 76.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2748,35 +2832,7 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
-  },
-  {
-    "id": "358dda13-365c-4434-87f0-d404b305adcb",
-    "canonicalName": "Ҷомӣ",
-    "canonicalNamePersian": "عبدالرحمان جامی",
-    "aliases": [],
-    "birthYear": "1414",
-    "deathYear": "1492",
-    "birthPlace": "Харҷурди вилояти Ҷом",
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "Абдурраҳмони Ҷомӣ 7 ноябри соли 1414 дар деҳаи Харҷурди вилояти Ҷом ба дунё омадааст. Ӯ 9 ноябри соли 1492 дар Ҳирот фавтидааст. Аз ӯ асарҳои бисёри манзуму мансур, аз ҷумла «Баҳористон», «Ҳафт авранг» ва «Девони Ҷомӣ» мерос мондаанд.",
-    "biographyFa": "نورالدین عبدالرحمان جامی (۱۴۱۴–۱۴۹۲ م) متولد خرجرد جام، ملقب به خاتم‌الشعرا و صاحب هفت‌اورنگ، بهارستان و نفحات‌الانس است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 109–120; синфи 9 (2026), с. 219–270.",
-    "majorWorkIds": [],
-    "officialTitles": [],
-    "educationGrades": [],
-    "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
-    },
-    "birthDateExact": "7 ноябри 1414",
-    "deathDateExact": "9 ноябри 1492",
-    "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
@@ -2803,32 +2859,6 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
-  },
-  {
-    "id": "01df7214-28b7-44ab-a1f4-898bb7e83950",
-    "canonicalName": "Шаҳиди шоир",
-    "canonicalNamePersian": "شهید بلخی (حکیم)",
-    "aliases": [],
-    "birthYear": null,
-    "deathYear": null,
-    "birthPlace": null,
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
-    "majorWorkIds": [],
-    "officialTitles": [],
-    "educationGrades": [],
-    "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
-    },
-    "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
   },
   {
     "id": "ec41abdc-c530-4745-825f-a23cd7515ca5",
@@ -2910,13 +2940,13 @@
     "canonicalName": "Мавлоно Наҳвии Ҳиротӣ",
     "canonicalNamePersian": "مولانا نحوی هروی",
     "aliases": [],
-    "birthYear": "1207",
-    "deathYear": "1273",
-    "birthPlace": "Балх / Вахш",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Дар китоби дарсии синфи 6 Мавлоно Наҳвии Ҳиротӣ аз шоирони машҳури Хуросон номбар мешавад.",
+    "biographyFa": "در کتاب درسی صنف ششم، مولانا نحوی هروی در شمار شاعران مشهور خراسان یاد می‌شود.",
+    "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 108.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2929,9 +2959,8 @@
     "birthDateExact": null,
     "deathDateExact": null,
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "eb037eb9-ba72-49bd-b009-8f9c84d46105",
@@ -2942,9 +2971,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Дар китоби дарсии синфи 6 Қозизода ҳамчун писари қозии Сиистон, ҷавони зарифу хуштабъ ва толибилм муаррифӣ мешавад; ӯ ба қасидаи Мавлоно Наҳвии Ҳиротӣ ҷавоб гуфта, бо Мир Алишер ва Ҷомӣ вохӯрдааст.",
+    "biographyFa": "در کتاب درسی صنف ششم، قاضی‌زاده به‌عنوان پسر قاضی سیستان، جوانی ظریف، خوش‌طبع و دانش‌جو معرفی می‌شود؛ او به قصیدهٔ مولانا نحوی هروی پاسخ گفته و با میر علی‌شیر و جامی دیدار کرده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 108–110.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -2955,9 +2984,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "228feecd-8a97-4aaf-9b92-b9896c3a7d7d",
@@ -2996,7 +3024,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/228feecd-8a97-4aaf-9b92-b9896c3a7d7d.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 271,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "7c389f92-ffdc-4f8e-b901-1de71acc34a9",
@@ -3021,7 +3057,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/7c389f92-ffdc-4f8e-b901-1de71acc34a9.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 328,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "465d3f4a-4924-4ca6-9371-7266ae4393c7",
@@ -3048,7 +3092,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/465d3f4a-4924-4ca6-9371-7266ae4393c7.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 50,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
@@ -3084,9 +3136,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Амир Шоҳии Сабзворӣ дар китоби дарсӣ ҳамчун шоири байти машҳури «Аз кӯйи бутон, Шоҳӣ, кам ҷӯ раҳи баргаштан» ёд мешавад.",
+    "biographyFa": "امیر شاهی سبزواری در کتاب درسی به‌عنوان شاعر بیت مشهور «از کوی بتان، شاهی، کم جو ره برگشتن» یاد شده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 233.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3097,9 +3149,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "c9ea2574-7623-4974-ada0-49c075b2831b",
@@ -3129,7 +3180,15 @@
     "deathDateExact": "1221",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/c9ea2574-7623-4974-ada0-49c075b2831b.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 92,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "fd212071-6a30-4b8d-870a-ae784002e8f2",
@@ -3179,7 +3238,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 87,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
@@ -3224,7 +3291,15 @@
     "deathDateExact": "9 ноябри 1492",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/9debff75-8664-43ab-a7a9-ed1a4725f69b.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 219,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "e859c1ae-03b9-4add-8079-7fa5bcf64ef7",
@@ -3251,7 +3326,15 @@
     "deathDateExact": "9 июни 1933",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/e859c1ae-03b9-4add-8079-7fa5bcf64ef7.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 132,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "26c985a4-88ca-47ea-8981-ba5529b62a7c",
@@ -3278,11 +3361,20 @@
     "deathDateExact": "22 феврали 1945",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/26c985a4-88ca-47ea-8981-ba5529b62a7c.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 144,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "b081ddd8-af07-4bb5-919a-7f3edce5108a",
     "canonicalName": "Александр Пушкин",
+    "recordStatus": "review",
     "canonicalNamePersian": "الکساندر پوشکین",
     "aliases": [],
     "birthYear": null,
@@ -3291,7 +3383,7 @@
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "",
     "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 11, 119",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3304,11 +3396,12 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "UNSUPPORTED_GENERATED",
     "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyQuarantineNote": "Review-only source lead: the Ministry textbook names А. С. Пушкин in its overview of Russian literature on printed page 11 and lists translated works by С. Пушкин on printed page 119, but it does not establish a complete biography or portrait for this record; no promotion or portrait assignment is made."
   },
   {
     "id": "7cb0a909-f92c-4abe-9087-038d37da9d98",
     "canonicalName": "Михаил Лермонтов",
+    "recordStatus": "review",
     "canonicalNamePersian": "میخائیل لرمانتوف",
     "aliases": [],
     "birthYear": null,
@@ -3317,7 +3410,7 @@
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "",
     "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 275",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3330,11 +3423,12 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "UNSUPPORTED_GENERATED",
     "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyQuarantineNote": "Review-only source lead: the Ministry textbook identifies М. Ю. Лермонтов with dates in a dedication note on printed page 275, but it does not establish a complete biography or portrait for this record; no promotion or portrait assignment is made."
   },
   {
     "id": "6717d5d5-30d8-4bcc-ad04-20251c567127",
     "canonicalName": "Самуил Маршак",
+    "recordStatus": "review",
     "canonicalNamePersian": "ساموئل مارشاک",
     "aliases": [],
     "birthYear": null,
@@ -3343,7 +3437,7 @@
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "",
     "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 119",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3356,11 +3450,12 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "UNSUPPORTED_GENERATED",
     "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyQuarantineNote": "Review-only source lead: the Ministry textbook names С. Маршак in a list of translated children's works on printed page 119, but it does not establish a complete biography or portrait for this record; no promotion or portrait assignment is made."
   },
   {
     "id": "b2369b52-f62a-4e5c-8f12-6f50816538cd",
     "canonicalName": "Виктор Гюго",
+    "recordStatus": "review",
     "canonicalNamePersian": "ویکتور هوگو",
     "aliases": [],
     "birthYear": null,
@@ -3369,7 +3464,7 @@
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "",
     "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 12, 119",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3382,11 +3477,12 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "UNSUPPORTED_GENERATED",
     "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyQuarantineNote": "Review-only source lead: the Ministry textbook names Виктор Гюго with dates on printed page 12 and lists a translated work on printed page 119, but it does not establish a complete biography or portrait for this record; no promotion or portrait assignment is made."
   },
   {
     "id": "0c10d530-e56e-4b4a-b6ba-67623f374474",
     "canonicalName": "Рафаэл Патканян",
+    "recordStatus": "review",
     "canonicalNamePersian": "رافائل پاتکانیان",
     "aliases": [],
     "birthYear": null,
@@ -3395,7 +3491,7 @@
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "",
     "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 119",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3408,11 +3504,12 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "UNSUPPORTED_GENERATED",
     "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyQuarantineNote": "Review-only source lead: the Ministry textbook names Р. Патканян in a list of translated children's works on printed page 119, but it does not establish a complete biography or portrait for this record; no promotion or portrait assignment is made."
   },
   {
     "id": "0b236c58-9f18-4730-9dbc-0b1f70e5118c",
     "canonicalName": "султон Муҳаммад",
+    "recordStatus": "rejected",
     "canonicalNamePersian": "سلطان محمد خوارزمشاه",
     "aliases": [],
     "birthYear": null,
@@ -3439,6 +3536,7 @@
   {
     "id": "9cc6b7f2-3aa2-4ecf-abec-17eec77b198b",
     "canonicalName": "Темурмалик",
+    "recordStatus": "rejected",
     "canonicalNamePersian": "تیمورملک (شخصیت تاریخی-ادبی)",
     "aliases": [],
     "birthYear": null,
@@ -3485,7 +3583,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/10a9ad7d-fd0d-462f-8cb4-594a869f8229.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 239,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "eff956d5-9b8c-4522-9ac6-8791f15495ce",
@@ -3512,7 +3618,15 @@
     "deathDateExact": "30 январи 1980",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/eff956d5-9b8c-4522-9ac6-8791f15495ce.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
+      "sourcePage": 217,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "12fb0e82-f108-4e71-8207-74d0540639d3",
@@ -3537,7 +3651,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/12fb0e82-f108-4e71-8207-74d0540639d3.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
+      "sourcePage": 222,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "65bd67be-a18d-4679-8721-cd13818933b1",
@@ -3564,7 +3686,15 @@
     "deathDateExact": "10 августи 1979",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/65bd67be-a18d-4679-8721-cd13818933b1.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
+      "sourcePage": 249,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
@@ -3575,9 +3705,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Заҳири Форёбӣ аз шоирони қасидасарои асри XII буд.",
+    "biographyFa": "ظهیر فاریابی از قصیده‌سرایان سدهٔ دوازدهم بود.",
+    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 33.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3588,9 +3718,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "ada69601-01d5-493f-b1a0-9b886be8daa8",
@@ -3601,9 +3730,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Муҳаммад ибни Алӣ ибни Ҳасан Заҳирии Самарқандӣ аз дабирон ва адибони асри XII форс-тоҷик буд. Муддате дар дарбори Қарохониёни Самарқанд котибӣ карда, соҳиби девони иншои Рукнуддин Масъуд будааст. Асари муҳимми ӯ «Синдбоднома» мебошад.",
+    "biographyFa": "محمد بن علی بن حسن ظهیری سمرقندی از دبیران و ادیبان فارسی‌تاجیکی سدهٔ دوازدهم بود. مدتی در دربار قراخانیان سمرقند کاتب بود و صاحب دیوان انشای رکن‌الدین مسعود به شمار می‌رفت. اثر مهم او «سندبادنامه» است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 51–53.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3614,9 +3743,16 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/ada69601-01d5-493f-b1a0-9b886be8daa8.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
+      "sourcePage": 51,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "16d7d64a-fca1-43cc-be01-86d776cde770",
@@ -3627,9 +3763,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Рашиди Ватвот дар китоби дарсӣ ҳамчун яке аз шоирони замони Хоқонии Шарвонӣ ёд мешавад.",
+    "biographyFa": "رشیدی وطواط در کتاب درسی یکی از شاعران روزگار خاقانی شروانی معرفی شده است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 251.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3640,13 +3776,13 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "a65c552b-8432-4f3b-bd72-0e48b99921a7",
     "canonicalName": "Раҳимӣ",
+    "recordStatus": "review",
     "canonicalNamePersian": "رحیمی (شاعر)",
     "aliases": [],
     "birthYear": null,
@@ -3673,6 +3809,7 @@
   {
     "id": "f8658458-ab69-4c48-a295-441a25a5fdb5",
     "canonicalName": "Бадри Чочӣ",
+    "recordStatus": "review",
     "canonicalNamePersian": "بدر چاچی",
     "aliases": [],
     "birthYear": null,
@@ -3681,7 +3818,7 @@
     "literaryPeriod": "Адабиёти тоҷик",
     "biographyTj": "",
     "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographySource": "«Адабиёти тоҷик», синфи 9 (2023), с. 8 (PDF p. 6), maorif.tj: https://maorif.tj/storage/libraries/01J3F20TCS153WXVYZ6XFCVGXM.pdf",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3694,7 +3831,7 @@
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "UNSUPPORTED_GENERATED",
     "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyQuarantineNote": "Review-only source lead: the Ministry-hosted Grade 9 textbook names Бадри Чочӣ among poets who traveled to India and Iran on printed page 8, but it does not establish a complete biography, works, portrait, or unambiguous identity beyond the printed name; no promotion or portrait assignment is made."
   },
   {
     "id": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
@@ -3703,11 +3840,11 @@
     "aliases": [],
     "birthYear": null,
     "deathYear": null,
-    "birthPlace": null,
+    "birthPlace": "Лоҳур",
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Масъуди Саъди Салмон дар Лоҳур, дар оилаи дафтардори дарбори Маҷдуд ибни Масъуди Ғазнавӣ ба дунё омадааст. Ӯ дар Лоҳур ва Ғазна таҳсил карда, дар муҳити дарбори Ғазнавиён ҳамчун шоири хуштабъи қасидасаро шинохта шуд. Китоби дарсӣ осори зиндонӣ ва жанрҳои қасида, ғазал, рубоӣ ва маснавии ӯро бо номи «Ҳабсиёт» муаррифӣ мекунад.",
+    "biographyFa": "مسعود سعد سلمان در لاهور، در خانوادهٔ دبیرِ دربار مجدود بن مسعود غزنوی زاده شد. او در لاهور و غزنه تحصیل کرد و در محیط دربار غزنویان به‌عنوان قصیده‌سرایی خوش‌طبع شناخته شد. کتاب درسی آثار زندان و قالب‌های قصیده، غزل، رباعی و مثنوی او را با نام «حبسیات» معرفی می‌کند.",
+    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 62–64.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3718,9 +3855,16 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
+      "sourcePage": 62,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "1b50e1c6-7881-47ee-8965-4c19164dbf4a",
@@ -3731,9 +3875,9 @@
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Шамси Табрезӣ шайхе буд, ки Ҷалолиддини Балхӣ соли 1244 дар назди ӯ аз тасаввуф дарс гирифт.",
+    "biographyFa": "شمس تبریزی شیخی بود که جلال‌الدین بلخی در سال ۱۲۴۴ نزد او تصوف آموخت.",
+    "biographySource": "«Адабиёти тоҷик», синфи 9 (2026), с. 60–61.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3744,9 +3888,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "0b0f1032-b36a-45e4-9930-8953b067db65",
@@ -3760,10 +3903,10 @@
     "birthYear": "1207",
     "deathYear": "1273",
     "birthPlace": "Балх / Вахш",
-    "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "САНОИИ ҒАЗНАВӢ (1080/81 – 1141/42) Саноии Ғазнавӣ шоире буд, ки бузургтарин сӯфии дунё Мавлоно Ҷалолиддини Балхӣ худро аз ҷумлаи пайравони ӯ шуморидааст. Аттор руҳ буду Саноӣ ду чашми ӯ, Мо аз пайи Саноию Аттор омадем. Саноӣ дар зодгоҳаш таълиму тарбият ёфта, дар баробари омӯзиши илмҳои динӣ ва адаб аз илмҳои нуҷум, тиб, мусиқӣ ва ҳикмат баҳра бардоштааст. Вай бо унвони «ҳаким» шуҳрат меёбад ва дар сафаре, ки баъдҳо ба Нишопур карда буд, бо ҳаким Умари Хайём ошно мешавад. Пас аз он ба сабаби озурдагии хотире, ки аз аҳли Ғазна дошт, ба Балх меравад ва дар он ҷо дӯстони қадрдоне пайдо менамояд. Аз Балх ба Сарахс меояд ва дар он ҷо нисбатан тулонӣ боқӣ мемонад. Саноӣ дар тули умраш ба Ҳирот, Марв ва Хоразм низ сафарҳо доштааст ва пас аз бист соли дурӣ аз зодгоҳаш дар соли 1124/1125 ба Ғазна бозгаштааст ва умрашро дар ҳамин ҷо дар манзиле, ки яке аз дӯстони мухлисаш барояш фароҳам оварда буд, ба поён расонидааст. Бинобар ривояте дар вопасин",
-    "biographyFa": "مولانا جلال‌الدین محمد بلخی رومی (۱۲۰۷–۱۲۷۳ م) عارف، متفکر و شاعر جهان‌شمول متولد بلخ و سراینده «مثنوی معنوی» و «دیوان کبیر» (شمس) است.",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 212–215",
+    "literaryPeriod": "Асри XIII",
+    "biographyTj": "Мавлоно Ҷалолиддини Балхӣ соли 1207 дар Балх ба дунё омада, дар Куния ба таълиму тарбияи шогирдон машғул шудааст. Китоби дарсӣ ӯро адибу файласуф мешуморад ва мероси адабиашро асосан «Маснавии маънавӣ», «Фиҳи мо фиҳӣ», «Девони кабир» ва «Мактубот» ном мебарад.",
+    "biographyFa": "مولانا جلال‌الدین بلخی در سال ۱۲۰۷ در بلخ زاده شد و در قونیه به آموزش شاگردان پرداخت. کتاب درسی او را ادیب و فیلسوف می‌داند و میراث ادبی او را عمدتاً شامل «مثنوی معنوی»، «فیه ما فیه»، «دیوان کبیر» و «مکتوبات» معرفی می‌کند.",
+    "biographySource": "«Адабиёти тоҷик», синфи 9 (2026), с. 59–66.",
     "majorWorkIds": [],
     "officialTitles": [],
     "educationGrades": [],
@@ -3773,11 +3916,19 @@
       "fullTextAllowed": false,
       "excerptAllowed": false
     },
-    "birthDateExact": "30 сентябри 1207",
+    "birthDateExact": null,
     "deathDateExact": "17 декабри 1273",
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/0b0f1032-b36a-45e4-9930-8953b067db65.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 59,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "0e91d643-d947-4f0d-b3ac-ec2715a4b87c",
@@ -3804,7 +3955,15 @@
     "deathDateExact": "Тақрибан 1370",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/0e91d643-d947-4f0d-b3ac-ec2715a4b87c.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 150,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "ea87e35a-6a03-44f2-837e-648d1c84aecc",
@@ -3829,7 +3988,15 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/ea87e35a-6a03-44f2-837e-648d1c84aecc.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
+      "sourcePage": 279,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "06b70024-a028-43dd-8c23-cdb75e96fac8",
@@ -3854,23 +4021,34 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/06b70024-a028-43dd-8c23-cdb75e96fac8.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
+      "sourcePage": 141,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "7a4cc3dc-3d9c-4cf2-aa27-a9b66f68937f",
     "canonicalName": "Ҳасанбеки Рафеъ",
+    "recordStatus": "active",
     "canonicalNamePersian": "حسن‌بیک رفیع",
     "aliases": [],
     "birthYear": null,
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Дар китоби дарсии синфи 7 (2018), Ҳасанбеки Рафеъ дар ривояти омадани Надирмуҳаммадхон ба Ҳисор ҳамчун шахсе муаррифӣ мешавад, ки ин рубоиро аз рӯи табъ имло кардааст. Ин саҳифа танҳо ҳамин нисбатдиҳӣ ва намунаи рубоиро ҳуҷҷат мекунад; барои тарҷумаи ҳоли пурра ё мероси осори ӯ далели иловагӣ пешниҳод намекунад.",
+    "biographyFa": "در کتاب درسی پایه هفتم (۲۰۱۸)، حسن‌بیک رفیع در روایت آمدن نادرمحمدخان به حصار، به‌عنوان سراینده بداهه این رباعی معرفی می‌شود. این صفحه فقط همین انتساب و نمونه رباعی را مستند می‌کند و اطلاعاتی برای زندگی‌نامه کامل یا مجموعه آثار او ارائه نمی‌دهد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 150.",
     "majorWorkIds": [],
     "officialTitles": [],
-    "educationGrades": [],
+    "educationGrades": [
+      "7"
+    ],
     "rights": {
       "status": "unknown",
       "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
@@ -3878,9 +4056,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "121ce628-ff4b-44d2-a702-81db93040dee",
@@ -3909,23 +4086,34 @@
     "deathDateExact": "1676",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/121ce628-ff4b-44d2-a702-81db93040dee.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 96,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "b28a4de3-06a8-406c-b2e9-db363f7aa2d5",
     "canonicalName": "Абӯсаиди Абулхайр",
+    "recordStatus": "active",
     "canonicalNamePersian": "ابوسعید ابوالخیر",
     "aliases": [],
     "birthYear": null,
     "deathYear": null,
     "birthPlace": null,
     "literaryPeriod": "Адабиёти тоҷик",
-    "biographyTj": "",
-    "biographyFa": null,
-    "biographySource": "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе",
+    "biographyTj": "Китоби дарсии синфи 7 (2018) чор мисраъро ҳамчун сухани Абӯсаиди Абулхайр меорад. Ин саҳифа танҳо ҳамин нисбатдиҳии матнро ҳуҷҷат мекунад ва барои тарҷумаи ҳоли пурра ё феҳристи осори ӯ далели иловагӣ намедиҳад.",
+    "biographyFa": "کتاب درسی پایه هفتم (۲۰۱۸) چهار مصراع را به‌عنوان سخن ابوسعید ابوالخیر نقل می‌کند. این صفحه فقط همین انتساب متن را مستند می‌کند و برای زندگی‌نامه کامل یا فهرست آثار او اطلاعات دیگری نمی‌دهد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 159.",
     "majorWorkIds": [],
     "officialTitles": [],
-    "educationGrades": [],
+    "educationGrades": [
+      "7"
+    ],
     "rights": {
       "status": "unknown",
       "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
@@ -3933,9 +4121,8 @@
       "excerptAllowed": false
     },
     "relatedHistoryEntryIds": [],
-    "biographyTjProvenance": "UNSUPPORTED_GENERATED",
-    "biographyFaProvenance": "UNSUPPORTED_GENERATED",
-    "biographyQuarantineNote": "Removed from active display: unsupported/generated biography had no auditable permitted-source page."
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
   },
   {
     "id": "5633556b-df45-4cab-83dc-760016db1ef2",
@@ -3977,7 +4164,15 @@
     "deathDateExact": "1711",
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/5633556b-df45-4cab-83dc-760016db1ef2.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 67,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "a74ea72d-864f-4c25-b42e-95435794a42d",
@@ -4002,11 +4197,20 @@
     },
     "relatedHistoryEntryIds": [],
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/a74ea72d-864f-4c25-b42e-95435794a42d.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 253,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "ea3b9aa8-b892-4128-88bc-07e7946bf584",
     "canonicalName": "Unknown",
+    "recordStatus": "rejected",
     "canonicalNamePersian": "فولکلور و میراث شفاهی",
     "aliases": [],
     "birthYear": null,
@@ -4069,7 +4273,15 @@
     },
     "biographyFa": "احمد مخدوم بن ناصر معروف به احمد دانش (۱۸۲۷–۱۸۹۷ م) متفکر، معارف‌پرور و فیلسوف برجسته بخارا و صاحب شاهکار منثور «نوادرالوقایع» است.",
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/ahmad_donish.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 238,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "gulchehra_sulaymoni",
@@ -4132,7 +4344,15 @@
     },
     "biographyFa": "ساتم الغ‌زاده (۱۹۱۱–۱۹۹۷ م) متولد پاپ فرغانه، نویسنده خلق تاجیکستان، پژوهشگر نامی و مؤلف رمان‌های پرشکوه «فردوسی»، «واسط» و نمایشنامه‌های تاریخی درخشان است.",
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 182,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c",
@@ -4162,7 +4382,15 @@
     },
     "biographyFa": "جلال اکرامی (۱۹۰۹–۱۹۹۳ م) متولد بخارا، نویسنده خلق تاجیکستان و از پایه‌گذاران رمان‌نویسی تاجیک و مؤلف شاهکار «دختر آتش» و «دوازده دروازه بخارا» است.",
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 207,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "b2c3d4e5-c6d7-4e8f-9a0b-1c2d3e4f5a6b",
@@ -4257,7 +4485,15 @@
     },
     "biographyFa": "فاتح نیازی (۱۹۱۴–۱۹۹۱ م) متولد سمرقند، نویسنده خلق تاجیکستان، روزنامه‌نگار و مؤلف رمان معروف جنگی «وفا» و آثار داستانی پرشمار است.",
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5e.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 250,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6f",
@@ -4287,7 +4523,15 @@
     },
     "biographyFa": "عبدالملک بهاری (۱۹۲۷–۲۰۱۰ م) متولد خجند، نویسنده خلق تاجیکستان و از پیشگامان ادبیات علمی-تخیلی و کودک و نوجوان در تاجیکستان است.",
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6f.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
+      "sourcePage": 286,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
@@ -4318,7 +4562,15 @@
     },
     "biographyFa": "صفرمحمد ایوبی (۱۹۴۵–۲۰۱۱ م) شاعر و نمایشنامه‌نویس نامدار تاجیکستان و مؤلف نمایشنامه‌های تاریخی برجسته‌ای چون «امیر اسماعیل سامانی» و «دقیقی» است.",
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
-    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
+      "sourcePage": 163,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   },
   {
     "id": "b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9e",
@@ -4327,18 +4579,16 @@
     "aliases": [
       "Тарсусӣ"
     ],
-    "birthYear": "асри XII",
-    "deathYear": "асри XII",
-    "birthPlace": "Тарсус",
-    "literaryPeriod": "Асри XII (Адабиёти ривоятии қаҳрамонӣ)",
-    "biographyTj": "ФАРОМУЗ ИБНИ ХУДОДОД ВА КИТОБИ «САМАКИ АЙЁР» Фаромуз ибни Худодод ҷамъкунандаи китоби «Самаки Айёр» мебошад, на муаллифи он. Ӯ дар оғози ин асар дар ин бора равшан навиштааст: «Чунин гӯяд ҷамъкунандаи ин китоб Фаромуз». Китобҳое монанди «Самаки Айёр» муаллифи муайяне надоранд, зеро онҳо аз ҷумлаи насри ривоятӣ буда, аз тарафи касони зиёде нақл шудаанд. Чунончи, муҳтавои «Самаки Айёр» чанд аср пештар аз он ки аз тарафи Фаромуз ибни Худодод дар шакли китобе ҷамъоварӣ шавад, дар шакли достон – қиссаву ривоятҳои ҷудогона дар бораи корномаҳои Самак, Шағоли Пилзӯр, Сурхвард ва айёрони дигар, ишқи Маҳпарию Хуршедшоҳ дар байни мардум маълум будаанд ва онҳоро ровиён, гӯяндагону қиссахонон – қавволон мехондаанд. Яке аз ҳамин гуна гӯяндагон Садақа бинни Абулқосими Шерозӣ будааст, ки аз забони ӯ Фаромуз ибни Худодод достони «Самаки Айёр»-ро дар охирҳои давраи салҷуқӣ ва замони муғул китобат намудааст. «Самаки Айёр» достони бузург мебошад, ки онро б",
-    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 226–231",
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Насри ривоятии қаҳрамонӣ",
+    "biographyTj": "Матни дарсӣ Абӯтоҳири Тарсусиро муаллиф ва гузорандаи асрори «Доробнома» меномад. Дарси синфи 7 аз ин асар достони «Бӯрондухт ва Искандар»-ро меорад.",
+    "biographySource": "«Адабиёти тоҷик», синфи 7 (2018), с. 6–21.",
     "educationGrades": [
       "7"
     ],
-    "officialTitles": [
-      "Достонсарои қадим"
-    ],
+    "officialTitles": [],
     "majorWorkIds": [],
     "rights": {
       "status": "unknown",
@@ -4346,8 +4596,527 @@
       "fullTextAllowed": false,
       "excerptAllowed": false
     },
-    "biographyFa": "ابوطاهر محمد بن حسن بن علی بن موسی طرسوسی (سده ششم هجری) از بزرگ‌ترین داستان‌سرایان کهن ادب فارسی و گردآورنده حماسه‌های عامیانه مانند «داراب‌نامه» و «سمک عیار» است.",
-    "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
+    "biographyFa": "کتاب درسی ابوطاهر طرسوسی را نویسنده و راوی «داراب‌نامه» معرفی می‌کند و درسی از «ادبیات تاجیک» داستان «بوراندخت و اسکندر» را از این اثر نقل می‌کند.",
+    "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+  },
+  {
+    "id": "juma_odina",
+    "canonicalName": "Ҷумъа Одина",
+    "canonicalNamePersian": "جمعه ادینه",
+    "aliases": [],
+    "birthYear": "1930",
+    "deathYear": "1982",
+    "birthPlace": "деҳаи Некноти ноҳияи Панҷакент",
+    "literaryPeriod": "Адабиёти тоҷики асри XX",
+    "biographyTj": "Ҷумъа Одина аз нависандагони соҳибзавқи тоҷик буд. Ӯ соли 1930 дар деҳаи Некноти ноҳияи Панҷакент ба дунё омадааст. Повести «Иншо дар мавзӯи озод», романи «Гузашти айём» ва як силсила ҳикояву очерк ва қиссаҳо ба қалами ӯ тааллуқ доранд. Ӯ ҳамчунин тарҷумон буд ва соли 1982 аз олам чашм пӯшидааст.",
+    "biographyFa": "جمعه ادینه از نویسندگان خوش‌قریحه تاجیک بود. او در سال ۱۹۳۰ در روستای نک‌نوت ناحیه پنجکنت زاده شد و آثاری چون «انشا در موضوع آزاد» و رمان «گذر ایام» را نوشت. او مترجم نیز بود و در سال ۱۹۸۲ درگذشت.",
+    "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 155",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "6"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Права не установлены.",
+      "fullTextAllowed": false
+    },
+  "biographyTjProvenance": "SOURCE_BACKED",
+  "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/juma_odina.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
+      "sourcePage": 155,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "buzurgmehr",
+    "canonicalName": "Бузургмеҳри Ҳаким",
+    "canonicalNamePersian": "بزرگمهر حکیم",
+    "aliases": [
+      "Бузурҷмеҳр"
+    ],
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Асрҳои V–VI",
+    "biographyTj": "Бузургмеҳри Бухтагон дар китоби дарсӣ ҳамчун вазири шоҳи сосонӣ Хусрави I (Хусрави Анӯшервон) ва шахсияти донишманду хирадманд ёд мешавад. «Ёдгори Бузургмеҳр» ё «Андарзнома»-и ӯ дар шакли пурсишу посух танзим шудааст ва пандҳои он росткорӣ ва кори некро таъкид мекунанд.",
+    "biographyFa": "بزرگمهر بختگان در کتاب درسی وزیر شاه ساسانی خسرو یکم (خسرو انوشیروان) و شخصیتی دانشمند و خردمند معرفی شده است. «یادگار بزرگمهر» یا «اندرزنامه»ٔ او به صورت پرسش و پاسخ تنظیم شده و بر راستی و کردار نیک تأکید دارد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 19–21",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "8"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+  },
+  {
+    "id": "nasrulloh",
+    "canonicalName": "Абулмаолии Насруллоҳ",
+    "canonicalNamePersian": "ابوالمعالی نصرالله",
+    "aliases": [
+      "Насруллоҳ Мунши"
+    ],
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Асри XII",
+    "biographyTj": "Абулмаолии Насруллоҳ дар китоби дарсӣ ҳамчун яке аз нависандагони «Калила ва Димна» муаррифӣ мешавад. Манбаъ мегӯяд, ки ӯ дар дарбори Баҳромшоҳи Ғазнавӣ ва Хусравмалики Ғазнавӣ дабир ва муддате вазир буд; ӯ «Калила ва Димна»-ро соли 1144 таълиф карда, ба Баҳромшоҳ бахшидааст.",
+    "biographyFa": "ابوالمعالی نصرالله در کتاب درسی از نویسندگان «کلیله و دمنه» معرفی شده است. منبع می‌گوید او در دربار بهرام‌شاه و خسرو ملک غزنوی دبیر و مدتی وزیر بود و «کلیله و دمنه» را در سال ۱۱۴۴ تألیف و به بهرام‌شاه تقدیم کرد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 220–221",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "8"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+  },
+  {
+    "id": "faromuz",
+    "canonicalName": "Фаромуз ибни Худодод",
+    "canonicalNamePersian": "فرامرز بن خداداد",
+    "aliases": [],
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Асри XI",
+    "biographyTj": "Фаромуз ибни Худодод дар манбаи дарсӣ ҳамчун ҷамъкунандаи китоби «Самаки Айёр» тавсиф шудааст, на муаллифи он. Манбаъ мефаҳмонад, ки ӯ ривоятҳои паҳншударо дар охири давраи Салҷуқӣ ва замони муғул китобат кардааст.",
+    "biographyFa": "فرامرز بن خداداد در منبع درسی گردآورندهٔ کتاب «سمک عیار» معرفی شده است، نه نویسندهٔ آن. منبع توضیح می‌دهد که او روایت‌های رواج‌یافته را در اواخر دورهٔ سلجوقی و زمان مغول به صورت کتاب گرد آورد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 8 (2026), с. 226",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "8"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+  },
+  {
+    "id": "mirzosodiq",
+    "canonicalName": "Мирзосодиқи Муншӣ",
+    "canonicalNamePersian": "میرزا صادق منشی",
+    "aliases": [],
+    "birthYear": null,
+    "deathYear": null,
+    "birthPlace": null,
+    "literaryPeriod": "Адабиёти тоҷики асри XVIII–XIX",
+    "biographyTj": "Мирзосодиқи Муншӣ аз эҷодкорони доираи адабии Бухоро буд. Манбаи дарсӣ ӯро аз ғазалсароёни машҳури ин давра ном мебарад ва мегӯяд, ки дар девонаш ду қасида ва дар эҷодиёташ намунаҳои рубоӣ ва қитъа низ мавҷуданд.",
+    "biographyFa": "میرزاصادق منشی از آفرینندگان حوزهٔ ادبی بخارا بود. منبع درسی او را از غزل‌سرایان مشهور این دوره می‌داند و می‌گوید در دیوانش دو قصیده و در آثارش نمونه‌هایی از رباعی و قطعه نیز وجود دارد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 10 (2026), с. 163–165",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "10"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/mirzosodiq.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 173,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "hoziq",
+    "canonicalName": "Ҷунайдуллоҳи Ҳозиқ",
+    "canonicalNamePersian": "جنیدالله حاذق",
+    "aliases": [],
+    "birthYear": "миёнаи солҳои 80-уми асри XVIII",
+    "deathYear": "1843",
+    "birthPlace": "маҳаллаи Кархи Ҳирот",
+    "literaryPeriod": "Адабиёти тоҷики асри XIX",
+    "biographyTj": "Ҷунайдуллоҳ ибни Шайхислом Ҳозиқ аз шоирони тавонои асри XIX буд. Ӯ миёнаи солҳои 80-уми асри XVIII дар маҳаллаи Кархи Ҳирот ба дунё омада, соли 1805 мадрасаро хатм кард ва муддате дар Бухоро, Хӯқанд ва Хоразм зиндагӣ намуд. Аз ӯ «Девони ғазалиёт», достони «Юсуфу Зулайхо» ва рисолаҳои «Воқеоти исломӣ» ва «Таҳқиқ-ул-қавоид» боқӣ мондаанд. Ҳозиқ 14-уми январи соли 1843 дар вилояти Шаҳрисабз кушта шуд.",
+    "biographyFa": "جنیدالله بن شیخ‌الاسلام حاذق از شاعران توانای سدهٔ نوزدهم بود. او در میانهٔ دههٔ ۱۷۸۰ میلادی در محلهٔ کرخ هرات زاده شد، در سال ۱۸۰۵ مدرسه را به پایان رساند و مدتی در بخارا، خوقند و خوارزم زندگی کرد. از او «دیوان غزلیات»، منظومهٔ «یوسف و زلیخا» و رساله‌های «وقایع اسلامی» و «تحقیق‌القواعد» باقی مانده است. حاذق در ۱۴ ژانویهٔ ۱۸۴۳ در ولایت شهرسبز کشته شد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 10 (2026), с. 185–189",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "10"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/hoziq.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 185,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "gulkhani",
+    "canonicalName": "Гулханӣ",
+    "canonicalNamePersian": "گلخنی",
+    "aliases": [],
+    "birthYear": "тақрибан солҳои 1770",
+    "deathYear": "1826–1827",
+    "birthPlace": "деҳаи Булқоси Қаротегин",
+    "literaryPeriod": "Адабиёти тоҷики асри XIX",
+    "biographyTj": "Муҳаммадшарифи Гулханӣ адиби зуллисонайн, шоир ва нависанда буд. Ӯ тақрибан солҳои 70-уми асри XVIII дар деҳаи Булқоси Қаротегин ба дунё омада, баъд ба Намангон ва дарбори Умархон рафта, ба доираи адабии Хӯқанд пайваст. Аз ӯ ғазалҳо, як қасида ва қиссаи тамсилии «Зарбулмасал» ба мерос мондааст; охири умраш дар Хӯқанд гузашта, соли 1826 ё 1827 вафот кардааст.",
+    "biographyFa": "محمدشریف گلخنی ادیب دوزبانه، شاعر و نویسنده بود. او حدود دههٔ ۱۷۷۰ میلادی در روستای بلقوس قراتگین زاده شد، سپس به نمنگان و دربار عمرخان رفت و به حوزهٔ ادبی خوقند پیوست. از او غزل‌ها، یک قصیده و داستان تمثیلی «ضرب‌المثل» باقی مانده و در سال ۱۸۲۶ یا ۱۸۲۷ درگذشته است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 10 (2026), с. 207–209",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "10"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/gulkhani.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 207,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "qooni",
+    "canonicalName": "Қоонӣ (Мирзо Ҳабиби Шерозӣ)",
+    "canonicalNamePersian": "قاآنی",
+    "aliases": [
+      "Мирзо Ҳабиб Шерозӣ"
+    ],
+    "birthYear": "1808",
+    "deathYear": "1854",
+    "birthPlace": "Шероз",
+    "literaryPeriod": "Адабиёти форсии асри XIX",
+    "biographyTj": "Мирзо Ҳабибуллоҳи Қоонӣ 20-уми октябри соли 1808 дар Шероз ба дунё омадааст. Ӯ илмҳои гуногун ва арӯзро омӯхта, баъд дар хидмати ҳокимони Машҳад ва подшоҳони Қоҷор кор кард. Манбаъ мероси ӯро беш аз сад ҳазор байт медонад, ки аз қасида, ғазал, қитъа ва рубоӣ иборат аст; Қоонӣ 3-уми майи соли 1854 вафот кардааст.",
+    "biographyFa": "میرزا حبیب‌الله قاآنی در ۲۰ اکتبر ۱۸۰۸ در شیراز زاده شد. او علوم گوناگون و عروض را آموخت و سپس در خدمت حاکمان مشهد و پادشاهان قاجار کار کرد. منبع میراث او را بیش از صد هزار بیت، شامل قصیده، غزل، قطعه و رباعی می‌داند؛ قاآنی در ۳ مه ۱۸۵۴ درگذشت.",
+    "biographySource": "«Адабиёти тоҷик», синфи 10 (2026), с. 216–217",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "10"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION"
+  },
+  {
+    "id": "savdo",
+    "canonicalName": "Абдулқодирхоҷаи Савдо",
+    "canonicalNamePersian": "عبدالقادرخواجه سودا",
+    "aliases": [
+      "Савдо"
+    ],
+    "birthYear": "1823–1825",
+    "deathYear": "1873",
+    "birthPlace": "Бухоро",
+    "literaryPeriod": "Адабиёти тоҷики асри XIX",
+    "biographyTj": "Абдулқодирхоҷаи Савдо яке аз шоирони хушзавқи нимаи дуюми асри XIX ва асосан ғазалсарои Бухоро буд. Санаи валодати ӯро миёнаи солҳои 1823–1825 муқаррар кардаанд. Ӯ дар мадраса таҳсил намуда, дар ғазалиёт ва мусамматҳо тахаллуси «Савдо» ва дар осори танзомез тахаллуси «Бепул»-ро истифода мебурд. Соли 1873 ҳангоми сафар ба Балҷувон дар дарёи Вахш ғарқ шудааст.",
+    "biographyFa": "عبدالقادرخواجه سودا از شاعران خوش‌ذوق نیمهٔ دوم سدهٔ نوزدهم و عمدتاً غزل‌سرای بخارا بود. تولد او را به میانهٔ سال‌های ۱۸۲۳ تا ۱۸۲۵ نسبت داده‌اند. او در مدرسه تحصیل کرد و در غزل‌ها و مسمط‌ها تخلص «سودا» و در آثار طنز تخلص «بی‌پول» را به کار می‌برد. در سال ۱۸۷۳ هنگام سفر به بلجوان در رود وخش غرق شد.",
+    "biographySource": "«Адабиёти тоҷик», синфи 10 (2026), с. 270–272",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "10"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/savdo.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 270,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "vozeh",
+    "canonicalName": "Қорӣ Раҳматуллоҳи Возеҳ",
+    "canonicalNamePersian": "قاری رحمت‌الله واضح",
+    "aliases": [
+      "Возеҳ"
+    ],
+    "birthYear": "1818",
+    "deathYear": "1894",
+    "birthPlace": "Бухоро",
+    "literaryPeriod": "Адабиёти тоҷики асри XIX",
+    "biographyTj": "Қорӣ Раҳматуллоҳи Возеҳ аз шоирони тавонои адабиёти тоҷик дар нимаи дуюми асри XIX буд. Ӯ соли 1818 дар Бухоро ба дунё омада, дар мадраса таҳсил кард ва соли 1871 тазкираи «Туҳфат-ул-аҳбоб фӣ тазкират-ил-асҳоб»-ро ба анҷом расонд, ки дар он 145 адиб ёд шудаанд. Возеҳ инчунин асарҳои насрӣ, сафарнома ва осори манзум ба мерос гузошта, соли 1894 дар Бухоро вафот кардааст.",
+    "biographyFa": "قاری رحمت‌الله واضح از شاعران توانای ادبیات تاجیک در نیمهٔ دوم سدهٔ نوزدهم بود. او در سال ۱۸۱۸ در بخارا زاده شد، در مدرسه تحصیل کرد و در سال ۱۸۷۱ تذکرهٔ «تحفة‌الاحباب فی تذکرة‌الاصحاب» را به پایان رساند که در آن از ۱۴۵ ادیب یاد شده است. از واضح آثار منثور، سفرنامه و شعر نیز باقی مانده و او در سال ۱۸۹۴ در بخارا درگذشت.",
+    "biographySource": "«Адабиёти тоҷик», синфи 10 (2026), с. 319–322",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "10"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/vozeh.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
+      "sourcePage": 319,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "kangurti",
+    "canonicalName": "Ҳоҷӣ Ҳусайни Кангуртӣ",
+    "canonicalNamePersian": "حاجی حسین کنگرتی",
+    "aliases": [],
+    "birthYear": "1868",
+    "deathYear": "1917",
+    "birthPlace": "деҳаи Қарақамиши Кангурти вилояти Хатлон",
+    "literaryPeriod": "Адабиёти тоҷики асри XX",
+    "biographyTj": "Ҳоҷӣ Ҳусайни Кангуртӣ, ё Ҳоҷӣ Ҳусайни Хатлонӣ, шоири тавонои охири асри XIX ва ибтидои асри XX буд. Ӯ соли 1868 дар деҳаи Қарақамиши Кангурти вилояти Хатлон ба дунё омада, баъди таҳсил дар Бухоро ба зодгоҳаш баргашт ва дар мадраса дарс дод. Куллиёти ӯ соли 1913 дар Тошканд чоп шуда, ғазалиёт, қасидаҳо, рубоиёт ва маснавии «Комде ва Мадан»-ро дар бар мегирад. Шоир соли 1917 вафот кардааст.",
+    "biographyFa": "حاجی حسین کنگرتی، یا حاجی حسین ختلانی، شاعر توانای اواخر سدهٔ نوزدهم و آغاز سدهٔ بیستم بود. او در سال ۱۸۶۸ در روستای قره‌قَمیش کنگرت ولایت ختلان زاده شد، پس از تحصیل در بخارا به زادگاهش بازگشت و در مدرسه تدریس کرد. کلیات او در سال ۱۹۱۳ در تاشکند چاپ شد و غزل‌ها، قصیده‌ها، رباعی‌ها و منظومهٔ «کمده و مدن» را دربر می‌گیرد. شاعر در سال ۱۹۱۷ درگذشت.",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2026), с. 40–44",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/kangurti.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 40,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "sattor_tursun",
+    "canonicalName": "Саттор Турсун",
+    "canonicalNamePersian": "ستار تورسون",
+    "aliases": [],
+    "birthYear": "1947",
+    "deathYear": null,
+    "birthPlace": "деҳаи Пасурхии ноҳияи Бойсун, вилояти Сурхандарёи Ӯзбекистон",
+    "literaryPeriod": "Адабиёти тоҷики асри XX–XXI",
+    "biographyTj": "Нависандаи халқии Тоҷикистон Саттор Турсун соли 1946 дар деҳаи Пасурхии ноҳияи Бойсун, вилояти Сурхандарёи Ӯзбекистон, ба дунё омадааст. Ӯ соли 1970 Донишгоҳи давлатии Тоҷикистонро хатм карда, солҳои 1970–1990 дар маҷаллаи «Садои Шарқ» кор кардааст. Аз осори ӯ маҷмӯаи «Дили гарм», қиссаи «Сукути қуллаҳо» ва романи «Се рӯзи як баҳор» мебошанд.",
+    "biographyFa": "ستار تورسون، نویسندهٔ خلقی تاجیکستان، در سال ۱۹۴۶ در روستای پاسورخی ناحیهٔ بایسون ولایت سرخندریای ازبکستان زاده شد. او در سال ۱۹۷۰ دانشگاه دولتی تاجیکستان را به پایان رساند و از ۱۹۷۰ تا ۱۹۹۰ در مجلهٔ «صدای شرق» کار کرد. از آثار او مجموعهٔ «دل گرم»، داستان «سکوت قله‌ها» و رمان «سه روز یک بهار» است.",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2026), с. 326–327",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Права не установлены.",
+      "fullTextAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/sattor_tursun.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 326,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "mehmon_bakhti",
+    "canonicalName": "Меҳмон Бахтӣ",
+    "canonicalNamePersian": "مهمان بختی",
+    "aliases": [],
+    "birthYear": "1940",
+    "deathYear": null,
+    "birthPlace": "деҳаи Шули ноҳияи Ғарм (ҳоло ноҳияи Рашт)",
+    "literaryPeriod": "Адабиёти тоҷики асри XX–XXI",
+    "biographyTj": "Меҳмон Бахтӣ, Нависандаи халқии Тоҷикистон ва барандаи Ҷоизаи давлатии ба номи Рӯдакӣ, 25 марти соли 1940 дар деҳаи Шули ноҳияи Ғарм (ҳоло ноҳияи Рашт) ба дунё омадааст. Ӯ омӯзишгоҳи омӯзгории Навобод ва факултети таъриху филологияи Донишгоҳи давлатии омӯзгории Душанберо хатм карда, дар муассисаҳои фарҳангӣ ва Иттифоқи нависандагони Тоҷикистон фаъолият намудааст. Дар эҷодиёти ӯ назм, наср ва драма ҷой доранд.",
+    "biographyFa": "مهمان بختی، نویسندهٔ خلقی تاجیکستان و برندهٔ جایزهٔ دولتی رودکی، در ۲۵ مارس ۱۹۴۰ در روستای شولی ناحیهٔ غرم (امروزه ناحیهٔ رشت) زاده شد. او آموزشگاه تربیت معلم نوآباد و دانشکدهٔ تاریخ و زبان و ادبیات دانشگاه تربیتی دولتی دوشنبه را به پایان رساند و در نهادهای فرهنگی و اتحادیهٔ نویسندگان تاجیکستان فعالیت کرد. شعر، نثر و نمایشنامه در آثار او جای دارند.",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2026), с. 355–357",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Права не установлены.",
+      "fullTextAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/mehmon_bakhti.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 355,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "abdulhamid_samad",
+    "canonicalName": "Абдулҳамид Самад",
+    "canonicalNamePersian": "عبدالحمید صمد",
+    "aliases": [],
+    "birthYear": "1947",
+    "deathYear": null,
+    "birthPlace": "деҳаи Шикоргаҳи ноҳияи Ховалинги вилояти Хатлон",
+    "literaryPeriod": "Адабиёти тоҷики асри XX–XXI",
+    "biographyTj": "Нависандаи халқии Тоҷикистон Абдулҳамид Самад зодаи деҳаи Шикоргаҳи ноҳияи Ховалинги вилояти Хатлон аст. Ӯ соли 1969 баъди хатми Донишгоҳи давлатии омӯзгории Душанбе ба рӯзномаи «Тоҷикистони советӣ» ба кор омада, солҳои 1977–1987 дар шуъбаи насри маҷаллаи «Садои Шарқ» фаъолият кардааст. Нахустин маҷмӯаи ӯ «Шохи чанор» соли 1981 чоп шуда, аз осори маъруфаш «Паррончакҳо», «Пиёлаи шикаста» ва «Аспи бобом» мебошанд.",
+    "biographyFa": "عبدالحمید صمد، نویسندهٔ خلقی تاجیکستان، زادهٔ روستای شکارگاه ناحیهٔ خاولینگ ولایت ختلان است. او پس از پایان دانشگاه تربیتی دولتی دوشنبه در سال ۱۹۶۹ به روزنامهٔ «تاجیکستان شوروی» پیوست و از ۱۹۷۷ تا ۱۹۸۷ در بخش نثر مجلهٔ «صدای شرق» کار کرد. نخستین مجموعهٔ او «شاخهٔ چنار» در سال ۱۹۸۱ منتشر شد و «پرّانچک‌ها»، «پیالهٔ شکسته» و «اسب پدربزرگم» از آثار شناخته‌شدهٔ او هستند.",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2026), с. 381–382",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Права не установлены.",
+      "fullTextAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/abdulhamid_samad.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 381,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "karomatullohi_mirzo",
+    "canonicalName": "Кароматуллоҳи Мирзо",
+    "canonicalNamePersian": "کرامت‌الله میرزا",
+    "aliases": [],
+    "birthYear": "1942",
+    "deathYear": null,
+    "birthPlace": "деҳаи Нилкони ноҳияи Ленин (ҳозира ноҳияи Рӯдакӣ)",
+    "literaryPeriod": "Адабиёти тоҷики асри XX–XXI",
+    "biographyTj": "Кароматуллоҳи Мирзо, Нависандаи халқии Тоҷикистон ва барандаи Ҷоизаи давлатии ба номи Абӯабдуллоҳи Рӯдакӣ, 25-уми апрели соли 1942 дар деҳаи Нилкони ноҳияи Ленин (ҳозира ноҳияи Рӯдакӣ) ба дунё омадааст. Ӯ аз ибтидои солҳои 60-уми асри XX ба таълифи осори бадеӣ пардохта, нахустин китобаш «Ситораи умед» соли 1980 чоп шудааст. Романҳои «Дар орзуи падар», «Марги бегуноҳ» ва «Маҷрои зиндагӣ» аз осори ӯянд.",
+    "biographyFa": "کرامت‌الله میرزا، نویسندهٔ خلقی تاجیکستان و برندهٔ جایزهٔ دولتی رودکی، در ۲۵ آوریل ۱۹۴۲ در روستای نیلکان ناحیهٔ لنین (امروزه ناحیهٔ رودکی) زاده شد. او از آغاز دههٔ ۱۹۶۰ به نوشتن آثار ادبی پرداخت و نخستین کتابش «ستارهٔ امید» در سال ۱۹۸۰ منتشر شد. رمان‌های «در آرزوی پدر»، «مرگ بی‌گناه» و «مسیر زندگی» از آثار او هستند.",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2026), с. 390–392",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Права не установлены.",
+      "fullTextAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/karomatullohi_mirzo.png",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 390,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
+  },
+  {
+    "id": "sayf_rahimzod",
+    "canonicalName": "Сайф Раҳимзоди Афардӣ",
+    "canonicalNamePersian": "سیف رحیم‌زاده افردی",
+    "aliases": [
+      "Сайф Раҳимзод"
+    ],
+    "birthYear": "1953",
+    "deathYear": "2000",
+    "birthPlace": "деҳаи Дектури ноҳияи Восеъ",
+    "literaryPeriod": "Адабиёти тоҷики асри XX",
+    "biographyTj": "Сайф Раҳимзоди Афардӣ 20 ноябри соли 1953 дар деҳаи Дектури ноҳияи Восеъ ба дунё омадааст. Ӯ соли 1975 шуъбаи рӯзноманигории Донишгоҳи давлатии Тоҷикистонро хатм карда, дар телевизион ва радио, инчунин дар Кумитаи киносозии ҷумҳурӣ фаъолият намудааст. Аввалин ҳикояаш «Гунҷишки сафед» соли 1975 ва нахустин маҷмӯааш «Ситораҳои сари танӯр» соли 1984 чоп шудаанд. Ӯ 20 майи соли 2000 даргузаштааст.",
+    "biographyFa": "سیف رحیم‌زاده افردی در ۲۰ نوامبر ۱۹۵۳ در روستای دکتور ناحیهٔ وسع زاده شد. او در سال ۱۹۷۵ رشتهٔ روزنامه‌نگاری دانشگاه دولتی تاجیکستان را به پایان رساند و در تلویزیون و رادیو و نیز کمیتهٔ سینمای جمهوری فعالیت کرد. نخستین داستانش «گنجشک سفید» در سال ۱۹۷۵ و نخستین مجموعه‌اش «ستاره‌های سر تنور» در سال ۱۹۸۴ منتشر شد. او در ۲۰ مه ۲۰۰۰ درگذشت.",
+    "biographySource": "«Адабиёти тоҷик», синфи 11 (2026), с. 317–318",
+    "majorWorkIds": [],
+    "officialTitles": [],
+    "educationGrades": [
+      "11"
+    ],
+    "rights": {
+      "status": "unknown",
+      "reasoning": "Rights status is not established by the uploaded source record or maorif.tj; previous claim removed.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
+    },
+    "biographyTjProvenance": "SOURCE_BACKED",
+    "biographyFaProvenance": "EDITORIAL_TRANSLATION",
+    "portrait": {
+      "assetPath": "assets/data/literature/portraits/sayf_rahimzod.jpeg",
+      "sourceType": "uploaded_book",
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "sourcePage": 317,
+      "sourceNote": "Portrait extracted from the author profile on the cited textbook page; scan polarity was normalized only where the source was a photographic negative; rights status remains unknown.",
+      "rightsStatus": "unknown"
+    }
   }
 ]

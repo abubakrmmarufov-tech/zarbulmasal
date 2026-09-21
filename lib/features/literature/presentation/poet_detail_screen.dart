@@ -137,14 +137,17 @@ class _PoetDetailContent extends ConsumerWidget {
         ? poet.canonicalName
         : poet.canonicalNamePersian;
 
-    final biography = (isPersian && poet.biographyFa != null)
+    final showPersianBiography = isPersian && poet.hasAuditablePersianBiography;
+    final biography = showPersianBiography
         ? poet.biographyFa!
         : poet.biographyTj;
-    final hasAuditableBiography = poet.hasAuditableBiographySource;
-    final biographySourceLabel = poet.hasAuditableBiographySource
+    final hasAuditableBiography = showPersianBiography
+        ? poet.hasAuditablePersianBiography
+        : poet.hasAuditableTajikBiography;
+    final biographySourceLabel = hasAuditableBiography
         ? AppTranslations.get('lit_poet_bio_source_verified', lang)
         : AppTranslations.get('lit_poet_bio_source_unverified', lang);
-    final biographySourceText = poet.hasAuditableBiographySource
+    final biographySourceText = hasAuditableBiography
         ? poet.biographySource
         : AppTranslations.translate('lit_poet_source_tag', lang, [
             poet.biographySource,
@@ -211,32 +214,57 @@ class _PoetDetailContent extends ConsumerWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                // Main Name
-                Text(
-                  name,
-                  textDirection:
-                      (isPersian && poet.canonicalNamePersian != null)
-                      ? TextDirection.rtl
-                      : TextDirection.ltr,
-                  style: QalamTypography.pageTitle(
-                    color: colors.onSurface,
-                    fontSize: 34,
-                  ),
-                ),
-                if (altName != null && altName.isNotEmpty) ...[
-                  const SizedBox(height: 6),
-                  Text(
-                    altName,
-                    textDirection:
-                        (isPersian && poet.canonicalNamePersian != null)
-                        ? TextDirection.ltr
-                        : TextDirection.rtl,
-                    style: QalamTypography.heroProverb(
-                      color: colors.onSurfaceVariant,
-                      fontSize: 20,
+                // Keep the source-backed portrait and canonical names
+                // together in both Tajik/LTR and Persian/RTL layouts.
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    QalamPortrait(
+                      portrait: poet.portrait,
+                      label: name,
+                      width: 112,
+                      height: 144,
+                      unavailableLabel: AppTranslations.get(
+                        'lit_portrait_unavailable',
+                        lang,
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
+                            textDirection:
+                                (isPersian && poet.canonicalNamePersian != null)
+                                ? TextDirection.rtl
+                                : TextDirection.ltr,
+                            style: QalamTypography.pageTitle(
+                              color: colors.onSurface,
+                              fontSize: 34,
+                            ),
+                          ),
+                          if (altName != null && altName.isNotEmpty) ...[
+                            const SizedBox(height: 6),
+                            Text(
+                              altName,
+                              textDirection:
+                                  (isPersian &&
+                                      poet.canonicalNamePersian != null)
+                                  ? TextDirection.ltr
+                                  : TextDirection.rtl,
+                              style: QalamTypography.heroProverb(
+                                color: colors.onSurfaceVariant,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 14),
                 // Dates and birthplace
                 if (hasAuditableBiography) ...[
@@ -487,7 +515,7 @@ class _PoetDetailContent extends ConsumerWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (isPersian && poet.biographyFa == null) ...[
+                      if (isPersian && !showPersianBiography) ...[
                         Text(
                           AppTranslations.get(
                             'lit_poet_bio_cyrillic_fallback',
@@ -644,27 +672,56 @@ class _PoetDetailContent extends ConsumerWidget {
                 ),
                 const SizedBox(height: 12),
                 reviewWorksAsync.maybeWhen(
-                  data: (reviewWorks) => reviewWorks.isEmpty
-                      ? const SizedBox.shrink()
-                      : Padding(
-                          padding: const EdgeInsets.only(bottom: 4),
-                          child: Text(
-                            AppTranslations.translate(
-                              'lit_poet_works_in_review_label',
-                              lang,
-                              [
-                                AppTranslations.formatDigits(
-                                  reviewWorks.length.toString(),
-                                  lang,
+                  data: (reviewWorks) {
+                    final unlinkedReviewCount = reviewWorks
+                        .where((work) => !work.hasAuditableReviewCitation)
+                        .length;
+                    return reviewWorks.isEmpty
+                        ? const SizedBox.shrink()
+                        : Padding(
+                            padding: const EdgeInsets.only(bottom: 4),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppTranslations.translate(
+                                    'lit_poet_works_in_review_label',
+                                    lang,
+                                    [
+                                      AppTranslations.formatDigits(
+                                        reviewWorks.length.toString(),
+                                        lang,
+                                      ),
+                                    ],
+                                  ),
+                                  style: QalamTypography.meta(
+                                    color: colors.primary,
+                                    fontSize: 13,
+                                  ),
                                 ),
+                                if (unlinkedReviewCount > 0) ...[
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    AppTranslations.translate(
+                                      'lit_poet_review_unlinked',
+                                      lang,
+                                      [
+                                        AppTranslations.formatDigits(
+                                          unlinkedReviewCount.toString(),
+                                          lang,
+                                        ),
+                                      ],
+                                    ),
+                                    style: QalamTypography.meta(
+                                      color: colors.onSurfaceVariant,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
                               ],
                             ),
-                            style: QalamTypography.meta(
-                              color: colors.primary,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
+                          );
+                  },
                   orElse: () => const SizedBox.shrink(),
                 ),
               ],
@@ -869,13 +926,16 @@ class _PoetDetailContent extends ConsumerWidget {
           loading: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
           error: (_, _) => const SliverToBoxAdapter(child: SizedBox.shrink()),
           data: (reviewWorks) {
-            if (reviewWorks.isEmpty) {
+            final sourcedReviewWorks = reviewWorks
+                .where((work) => work.hasAuditableReviewCitation)
+                .toList(growable: false);
+            if (sourcedReviewWorks.isEmpty) {
               return const SliverToBoxAdapter(child: SizedBox.shrink());
             }
 
             return SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
-                final work = reviewWorks[index];
+                final work = sourcedReviewWorks[index];
                 final workTitle = (isPersian && work.titlePersian != null)
                     ? work.titlePersian!
                     : work.title;
@@ -970,7 +1030,7 @@ class _PoetDetailContent extends ConsumerWidget {
                     ),
                   ),
                 );
-              }, childCount: reviewWorks.length),
+              }, childCount: sourcedReviewWorks.length),
             );
           },
         ),
@@ -995,7 +1055,12 @@ class _PoetDetailContent extends ConsumerWidget {
                   horizontal: 24,
                   vertical: 6,
                 ),
-                leading: BookCover(book: book, width: 48, height: 68),
+                leading: BookCover(
+                  book: book,
+                  width: 48,
+                  height: 68,
+                  placeholderTitle: book.titleFor(lang),
+                ),
                 title: Text(
                   book.titleFor(lang),
                   maxLines: 2,

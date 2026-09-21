@@ -1,4 +1,5 @@
 import '../../../core/utils/search_normalizer.dart';
+import '../../../core/utils/trusted_url_policy.dart';
 import '../../../shared/providers/app_providers.dart';
 
 /// The source role for a book record. Provider metadata must never become
@@ -48,6 +49,10 @@ class BookProvider {
     required this.sourcePurpose,
   });
 
+  /// Provider catalogue links are untrusted metadata until they pass the
+  /// central external-link policy.
+  Uri? get catalogueUri => TrustedUrlPolicy.parseExternal(catalogueUrl);
+
   factory BookProvider.fromJson(Map<String, dynamic> json) {
     return BookProvider(
       id: json['id'] as String? ?? '',
@@ -81,6 +86,10 @@ class BookEdition {
   final String? readUrl;
   final String? downloadUrl;
   final String? coverUrl;
+
+  /// Checked-in copy of the provider cover for web/offline rendering.
+  /// [coverUrl] remains the source/provenance link.
+  final String? coverAssetPath;
   final String? publisher;
   final String? city;
   final String? publicationYear;
@@ -103,6 +112,7 @@ class BookEdition {
     this.readUrl,
     this.downloadUrl,
     this.coverUrl,
+    this.coverAssetPath,
     this.publisher,
     this.city,
     this.publicationYear,
@@ -118,8 +128,21 @@ class BookEdition {
     required this.metadataNote,
   });
 
-  bool get hasCover => coverUrl != null && coverUrl!.trim().isNotEmpty;
-  bool get canRead => readUrl != null && readUrl!.trim().isNotEmpty;
+  /// URLs supplied by catalog metadata must remain safe even when a caller
+  /// constructs a [BookEdition] outside the repository validation boundary.
+  Uri? get sourceUri => _secureExternalUri(sourceUrl);
+  Uri? get readUri => _secureExternalUri(readUrl);
+  Uri? get downloadUri => _secureExternalUri(downloadUrl);
+  Uri? get coverUri => _secureExternalUri(coverUrl);
+
+  bool get hasCover =>
+      coverAssetPath != null && coverAssetPath!.trim().isNotEmpty ||
+      coverUri != null;
+  bool get canRead => readUri != null;
+
+  static Uri? _secureExternalUri(String? value) {
+    return TrustedUrlPolicy.parseExternal(value);
+  }
 
   factory BookEdition.fromJson(Map<String, dynamic> json) {
     return BookEdition(
@@ -130,6 +153,7 @@ class BookEdition {
       readUrl: json['readUrl'] as String?,
       downloadUrl: json['downloadUrl'] as String?,
       coverUrl: json['coverUrl'] as String?,
+      coverAssetPath: json['coverAssetPath'] as String?,
       publisher: json['publisher'] as String?,
       city: json['city'] as String?,
       publicationYear: json['publicationYear']?.toString(),

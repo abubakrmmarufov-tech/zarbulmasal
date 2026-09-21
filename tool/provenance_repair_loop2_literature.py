@@ -63,6 +63,8 @@ def main():
     repaired_persian_fields = 0
     repaired_rights = 0
     repaired_text_status = 0
+    quarantined_full_text = 0
+    quarantined_excerpts = 0
     removed_biographies = 0
     manual_bio_ids = {
         # These records were re-opened against the cited local textbook pages
@@ -81,7 +83,7 @@ def main():
         "455f0420-3834-48f0-86b9-7da673a2a684",
         "d1abb54a-9804-4baf-b238-fd2203d7673e",
         "1a55efdd-6a1f-43b8-834f-94af060b4329",
-        "3853d79b-0951-44c3-a5db-229649fa30b6",
+        "be19709e-c3af-460d-80b9-4c67046e8be3",
         "d48ec80f-951d-4dfd-b65a-6e409561a712",
         "282f4c69-1d14-4be2-89d3-d21f867e4964",
         "1c82210c-343c-4499-9639-93f0a766b5f7",
@@ -167,6 +169,29 @@ def main():
             repaired_rights += 1
             changed = True
 
+        # ── Fix 5: distribution quarantine ──────────────────────
+        # A textbook scan is evidence of location, not permission to ship its
+        # text.  Keep titles and source metadata, but remove full text and
+        # excerpts until a separate rights record authorizes publication.
+        if rights.get("fullTextAllowed") is not True:
+            for field in (
+                "textTajik",
+                "textPersian",
+                "persianScriptRepresentation",
+            ):
+                if w.get(field):
+                    w[field] = None
+                    quarantined_full_text += 1
+                    changed = True
+            if w.get("textStatus") != "needsReview":
+                w["textStatus"] = "needsReview"
+                repaired_text_status += 1
+                changed = True
+        if rights.get("excerptAllowed") is not True and w.get("incipit"):
+            w["incipit"] = None
+            quarantined_excerpts += 1
+            changed = True
+
         repaired_works.append(w)
 
     print(f"\nREPAIRS MADE:")
@@ -174,6 +199,8 @@ def main():
     print(f"  Persian fields moved: {repaired_persian_fields}")
     print(f"  rights claims reset: {repaired_rights}")
     print(f"  textStatus corrected: {repaired_text_status}")
+    print(f"  full-text fields quarantined: {quarantined_full_text}")
+    print(f"  excerpts quarantined: {quarantined_excerpts}")
 
     repaired_poets = []
     template_source = "«Адабиёти тоҷик», нашрияи «Маориф», Душанбе"
@@ -181,11 +208,11 @@ def main():
     template_phrase = "аз чеҳраҳои шинохташудаи мероси адабӣ"
     for poet in poets:
         poet = copy.deepcopy(poet)
-        source = poet.get("biographySource", "")
+        source = poet.get("biographySource") or ""
         bio = poet.get("biographyTj", "") or ""
         is_template = source == template_source or template_phrase in bio
         has_page = bool(page_pattern.search(source))
-        if is_template or not has_page:
+        if is_template or not has_page or not bio.strip():
             poet["biographyTj"] = ""
             poet["biographyFa"] = None
             poet["biographyTjProvenance"] = "UNSUPPORTED_GENERATED"
@@ -223,6 +250,8 @@ def main():
         "persian_fields_moved": repaired_persian_fields,
         "rights_reset": repaired_rights,
         "textStatus_fixed": repaired_text_status,
+        "full_text_quarantined": quarantined_full_text,
+        "excerpts_quarantined": quarantined_excerpts,
         "unsupported_biographies_removed": removed_biographies,
     }
 

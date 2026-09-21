@@ -37,7 +37,7 @@ class _LiteratureSearchScreenState
     final isPersian = lang == DisplayLanguage.persian;
 
     final authorsAsync = ref.watch(literaryAuthorsProvider);
-    final worksAsync = ref.watch(approvedWorksProvider);
+    final worksAsync = ref.watch(searchableLiteraryWorksProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -48,6 +48,7 @@ class _LiteratureSearchScreenState
         ),
         title: TextField(
           controller: _controller,
+          maxLength: 256,
           autofocus: true,
           decoration: InputDecoration(
             hintText: AppTranslations.get('lit_search_hint', lang),
@@ -86,7 +87,7 @@ class _LiteratureSearchScreenState
                 action: OutlinedButton(
                   onPressed: () {
                     ref.invalidate(literaryAuthorsProvider);
-                    ref.invalidate(approvedWorksProvider);
+                    ref.invalidate(searchableLiteraryWorksProvider);
                   },
                   child: Text(AppTranslations.get('btn_retry', lang)),
                 ),
@@ -227,6 +228,11 @@ class _LiteratureSearchScreenState
               name: (isPersian && author.canonicalNamePersian != null)
                   ? author.canonicalNamePersian!
                   : author.canonicalName,
+              portrait: author.portrait,
+              portraitUnavailableLabel: AppTranslations.get(
+                'lit_portrait_unavailable',
+                lang,
+              ),
               dates: author.hasAuditableBiographySource
                   ? AppTranslations.formatDigits(author.lifespan, lang)
                   : AppTranslations.get('lit_search_dates_pending', lang),
@@ -234,22 +240,18 @@ class _LiteratureSearchScreenState
                   (author.hasAuditableBiographySource &&
                       (author.birthDateExact != null ||
                           author.deathDateExact != null))
-                  ? AppTranslations.translate(
-                      'lit_author_dates',
-                      lang,
-                      [
-                        AppTranslations.formatDigits(
-                          author.birthDateExact ?? author.birthYear ?? '—',
-                          lang,
-                        ),
-                        AppTranslations.formatDigits(
-                          author.deathDateExact ??
-                              author.deathYear ??
-                              AppTranslations.get('lit_author_alive', lang),
-                          lang,
-                        ),
-                      ],
-                    )
+                  ? AppTranslations.translate('lit_author_dates', lang, [
+                      AppTranslations.formatDigits(
+                        author.birthDateExact ?? author.birthYear ?? '—',
+                        lang,
+                      ),
+                      AppTranslations.formatDigits(
+                        author.deathDateExact ??
+                            author.deathYear ??
+                            AppTranslations.get('lit_author_alive', lang),
+                        lang,
+                      ),
+                    ])
                   : null,
               period: author.literaryPeriod,
               isPublicDomain: author.isPublicDomain,
@@ -271,6 +273,13 @@ class _LiteratureSearchScreenState
                 horizontal: 24,
                 vertical: 4,
               ),
+              leading: work.isDisplayable
+                  ? null
+                  : Icon(
+                      Icons.hourglass_empty,
+                      size: 18,
+                      color: colors.primary,
+                    ),
               title: Text(
                 (isPersian && work.titlePersian != null)
                     ? work.titlePersian!
@@ -280,17 +289,24 @@ class _LiteratureSearchScreenState
                   fontSize: 17,
                 ),
               ),
-              subtitle: work.incipit != null
-                  ? Text(
-                      '«${work.incipit}»',
-                      style: QalamTypography.bodySecondary(
-                        color: colors.onSurfaceVariant,
-                        fontSize: 13,
-                      ),
-                      maxLines: 1,
+              subtitle: work.isDisplayable
+                  ? (work.incipit != null
+                        ? Text(
+                            '«${work.incipit}»',
+                            style: QalamTypography.bodySecondary(
+                              color: colors.onSurfaceVariant,
+                              fontSize: 13,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        : null)
+                  : Text(
+                      AppTranslations.get('lit_poet_work_in_review_sub', lang),
+                      style: QalamTypography.meta(color: colors.primary),
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                    )
-                  : null,
+                    ),
               trailing: const QalamChevron(size: 20),
               onTap: () => context.push('/literature/work/${work.id}'),
             ),

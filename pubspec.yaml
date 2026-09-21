@@ -37,11 +37,12 @@ flutter:
     - assets/data/literature/sources.json
     - assets/data/literature/school_canon.json
     - assets/data/literature/oral_heritage.json
-    - assets/data/literature/page_images/
+    - assets/data/literature/portraits/
     - assets/data/history/books.json
     - assets/data/history/entries.json
     - assets/data/books/providers.json
     - assets/data/books/books.json
+    - assets/data/books/covers/
   fonts:
     - family: NotoSans
       fonts:

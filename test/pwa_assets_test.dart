@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zarbulmasal/core/constants/app_constants.dart';
+import 'package:zarbulmasal/core/l10n/app_translations.dart';
 
 void main() {
   test('web manifest is installable and scoped to the deployed app', () {
@@ -33,6 +35,68 @@ void main() {
     expect(index, isNot(contains('user-scalable=no')));
   });
 
+  test(
+    'public privacy policy is source-controlled and matches app behavior',
+    () {
+      final policy = File('web/privacy.html');
+
+      expect(policy.existsSync(), isTrue);
+      final content = policy.readAsStringSync();
+      expect(content, contains('Zarbulmasal Privacy Policy'));
+      expect(content, contains('Last updated: 21 September 2026'));
+      expect(content, contains('Навсозии охирин: 21 сентябри 2026'));
+      expect(content, contains('آخرین به‌روزرسانی: ۲۱ سپتامبر ۲۰۲۶'));
+      expect(
+        content,
+        contains('does not collect, sell, or share personal information'),
+      );
+      expect(content, contains('stores ordinary app state locally'));
+      expect(
+        content,
+        contains('no advertising, analytics, tracking, or cloud-sync service'),
+      );
+      expect(content, contains('Сиёсати махфияти «Зарбулмасал»'));
+      expect(content, contains('سیاست حفظ حریم خصوصی «ضرب‌المثل»'));
+      expect(content, contains(AppConstants.privacyPolicyUrl));
+      expect(
+        AppTranslations.tj['settings_privacy_text'],
+        contains(AppConstants.privacyPolicyUrl),
+      );
+      expect(
+        AppTranslations.fa['settings_privacy_text'],
+        contains(AppConstants.privacyPolicyUrl),
+      );
+    },
+  );
+
+  test(
+    'web release preparation refuses to package without a valid privacy artifact',
+    () {
+      final script = File('tool/prepare_web_release.sh').readAsStringSync();
+
+      expect(script, contains('privacy.html'));
+      expect(script, contains('Zarbulmasal Privacy Policy'));
+      expect(
+        script,
+        contains(r'test -s "$web_dir/privacy.html"'),
+        reason:
+            'Prepared web releases must contain a non-empty privacy policy.',
+      );
+      expect(
+        script,
+        contains(r'! -path "$web_dir/.git/*"'),
+        reason: 'Release cache IDs must not depend on local Git metadata.',
+      );
+      expect(
+        script,
+        contains(r'! -path "$web_dir/.git"'),
+        reason: 'Release cache IDs must also ignore Git worktree files.',
+      );
+      expect(script, contains('Invalid deployed base href'));
+      expect(script, contains('<base href="/zarbulmasal/">'));
+    },
+  );
+
   test('all application fonts and licenses are bundled locally', () {
     const bundledFonts = ['NotoSans', 'NotoSerif', 'NotoNaskhArabic'];
     final pubspec = File('pubspec.yaml').readAsStringSync();
@@ -42,6 +106,17 @@ void main() {
       expect(File('assets/fonts/$family.ttf').existsSync(), isTrue);
       expect(File('assets/fonts/$family-OFL.txt').existsSync(), isTrue);
     }
+  });
+
+  test('book-page evidence remains audit-only unless explicitly approved', () {
+    final pubspec = File('pubspec.yaml').readAsStringSync();
+
+    expect(
+      pubspec,
+      isNot(contains('assets/data/literature/page_images/')),
+      reason:
+          'Inspected book pages must not enter a public bundle without a deliberate rights and asset review.',
+    );
   });
 
   test('main branch CI verifies and deploys the prepared web release', () {
@@ -58,10 +133,39 @@ void main() {
     expect(workflow, contains('Remove unavailable Android downloads portal'));
     expect(workflow, contains('rm -rf build/web/android build/web/downloads'));
     expect(webJob, contains('persist-credentials: false'));
+    expect(
+      publishJob,
+      contains('persist-credentials: false'),
+      reason:
+          'Pages publication must not leave the checkout token in local git config.',
+    );
     expect(webJob, isNot(contains('contents: write')));
     expect(publishJob, contains('contents: write'));
+    expect(publishJob, contains('GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}'));
+    expect(
+      publishJob,
+      contains(
+        'git remote set-url origin '
+        '"https://x-access-token:\${GITHUB_TOKEN}@github.com/\${GITHUB_REPOSITORY}.git"',
+      ),
+    );
     expect(workflow, contains('git worktree add --detach'));
-    expect(workflow, contains('git push origin HEAD:gh-pages'));
+    expect(publishJob, contains('pages_base_sha='));
+    expect(
+      publishJob,
+      contains(
+        'git push --force-with-lease="refs/heads/gh-pages:\${pages_base_sha}" '
+        'origin HEAD:gh-pages',
+      ),
+    );
+    expect(publishJob, contains('Verify published privacy policy'));
+    expect(
+      publishJob,
+      contains(
+        'https://abubakrmmarufov-tech.github.io/zarbulmasal/privacy.html',
+      ),
+    );
+    expect(publishJob, contains('Zarbulmasal Privacy Policy'));
   });
 
   test('offline worker uses build-isolated caches and bounded navigation', () {
@@ -92,6 +196,9 @@ void main() {
       );
       addTearDown(() => directory.deleteSync(recursive: true));
       File('${directory.path}/main.dart.js').writeAsStringSync('same app');
+      File(
+        '${directory.path}/index.html',
+      ).writeAsStringSync('<base href="/zarbulmasal/">');
       File('${directory.path}/flutter_bootstrap.js').writeAsStringSync(
         'const worker = "qalam_service_worker.js?build='
         '__ZARBULMASAL_BUILD_ID__&variant=full";',
@@ -100,6 +207,9 @@ void main() {
         "const BUILD_ID = WORKER_URL.searchParams.get('build') || "
         "'__ZARBULMASAL_BUILD_ID__';",
       );
+      File(
+        '${directory.path}/privacy.html',
+      ).writeAsStringSync('<title>Zarbulmasal Privacy Policy</title>');
       File('${directory.path}/manifest.json').writeAsStringSync(asset);
 
       final result = Process.runSync('bash', [
@@ -134,6 +244,12 @@ void main() {
         "'__ZARBULMASAL_BUILD_ID__';",
       );
     File('${directory.path}/main.dart.js').writeAsStringSync('same app');
+    File(
+      '${directory.path}/index.html',
+    ).writeAsStringSync('<base href="/zarbulmasal/">');
+    File(
+      '${directory.path}/privacy.html',
+    ).writeAsStringSync('<title>Zarbulmasal Privacy Policy</title>');
     final manifest = File('${directory.path}/manifest.json')
       ..writeAsStringSync('version one');
 

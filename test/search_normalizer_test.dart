@@ -76,5 +76,42 @@ void main() {
       expect(SearchNormalizer.matches('Ҳофизи Шерозӣ', 'hafiz'), isTrue);
       expect(SearchNormalizer.matches('Абдурраҳмони Ҷомӣ', 'jami'), isTrue);
     });
+
+    test('relevance scoring ranks exact > normalized > prefix > partial', () {
+      final exactScore = SearchNormalizer.scoreMatch('Рӯдакӣ', 'Рӯдакӣ');
+      final normScore = SearchNormalizer.scoreMatch('Рӯдакӣ', 'рудаки');
+      final prefixScore = SearchNormalizer.scoreMatch(
+        'Рӯдакӣ ва замони ӯ',
+        'рудаки',
+      );
+      final wordPrefixScore = SearchNormalizer.scoreMatch(
+        'Шеъри Рӯдакӣ дар мактаб',
+        'рудаки',
+      );
+      final midWordPartialScore = SearchNormalizer.scoreMatch(
+        'Самарқандиён',
+        'канд',
+      );
+      final noScore = SearchNormalizer.scoreMatch('Фирдавсӣ', 'рудаки');
+
+      expect(exactScore, equals(100));
+      expect(normScore, equals(90));
+      expect(prefixScore, equals(65));
+      expect(wordPrefixScore, equals(50));
+      expect(midWordPartialScore, equals(35));
+      expect(noScore, equals(0));
+
+      expect(exactScore, greaterThan(normScore));
+      expect(normScore, greaterThan(prefixScore));
+      expect(prefixScore, greaterThan(wordPrefixScore));
+      expect(wordPrefixScore, greaterThan(midWordPartialScore));
+      expect(midWordPartialScore, greaterThan(noScore));
+
+      // scoreMatchAny returns highest score
+      expect(
+        SearchNormalizer.scoreMatchAny(['Фирдавсӣ', 'Рӯдакӣ'], 'рудаки'),
+        equals(90),
+      );
+    });
   });
 }

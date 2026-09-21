@@ -80,6 +80,7 @@ class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: TextField(
                   controller: _searchController,
+                  maxLength: 256,
                   textDirection: lang == DisplayLanguage.persian
                       ? TextDirection.rtl
                       : TextDirection.ltr,

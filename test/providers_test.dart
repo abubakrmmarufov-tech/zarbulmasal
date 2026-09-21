@@ -209,26 +209,49 @@ void main() {
     );
   });
 
-  test('light/dark theme survives restart and toggles back', () async {
+  test('theme mode (system/light/dark) survives restart and toggles', () async {
     final notifier = ThemeModeNotifier();
     addTearDown(notifier.dispose);
     await preferencesLoaded();
-    expect(notifier.state, ThemeMode.light);
-    await notifier.toggleTheme();
+    // Fresh install defaults to following the system appearance.
+    expect(notifier.state, ThemeMode.system);
+    await notifier.setThemeMode(ThemeMode.dark);
     expect(notifier.state, ThemeMode.dark);
     final recreated = ThemeModeNotifier();
     addTearDown(recreated.dispose);
     await preferencesLoaded();
     expect(recreated.state, ThemeMode.dark);
-    await recreated.toggleTheme();
+    await recreated.setThemeMode(ThemeMode.light);
     expect(recreated.state, ThemeMode.light);
+    await recreated.setThemeMode(ThemeMode.system);
+    expect(recreated.state, ThemeMode.system);
     expect(
-      (await SharedPreferences.getInstance()).getBool(
-        AppConstants.prefsDarkMode,
+      (await SharedPreferences.getInstance()).getString(
+        ThemeModeNotifier.prefsThemeMode,
       ),
-      isFalse,
+      'system',
     );
   });
+
+  test(
+    'legacy dark_mode flag migrates without losing user preference',
+    () async {
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefsDarkMode: true,
+      });
+      final notifier = ThemeModeNotifier();
+      addTearDown(notifier.dispose);
+      await preferencesLoaded();
+      expect(notifier.state, ThemeMode.dark);
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefsDarkMode: false,
+      });
+      final light = ThemeModeNotifier();
+      addTearDown(light.dispose);
+      await preferencesLoaded();
+      expect(light.state, ThemeMode.light);
+    },
+  );
 
   test('onboarding completion survives provider recreation', () async {
     final first = ProviderContainer();

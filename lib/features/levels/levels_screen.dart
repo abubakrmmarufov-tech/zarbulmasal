@@ -84,6 +84,10 @@ class LevelsScreen extends ConsumerWidget {
                   itemCount: availableLevels.length,
                   itemBuilder: (context, index) {
                     final level = availableLevels[index];
+                    final formattedLevel = AppTranslations.formatNumber(
+                      level,
+                      language,
+                    );
                     return QalamLevelCard(
                       level: level,
                       isSelected: selected == level,
@@ -100,7 +104,7 @@ class LevelsScreen extends ConsumerWidget {
                                 id: 'level-$level',
                                 type: RecentActivityType.level,
                                 title: isPersian
-                                    ? 'سطح $level'
+                                    ? 'سطح $formattedLevel'
                                     : 'Сатҳи $level',
                                 subtitle: isPersian
                                     ? 'آموزش گام به گام'

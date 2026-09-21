@@ -27,28 +27,34 @@ class ExploreScreen extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         children: [
           // Search Hero
-          GestureDetector(
+          Semantics(
+            button: true,
+            excludeSemantics: true,
+            label: AppTranslations.get('explore_search_placeholder', lang),
             onTap: () => context.push('/search'),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: colors.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: colors.outlineVariant),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.search, color: colors.primary),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      AppTranslations.get('explore_search_placeholder', lang),
-                      style: QalamTypography.body(
-                        color: colors.onSurfaceVariant,
+            child: GestureDetector(
+              onTap: () => context.push('/search'),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: colors.surfaceContainerLow,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: colors.outlineVariant),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.search, color: colors.primary),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        AppTranslations.get('explore_search_placeholder', lang),
+                        style: QalamTypography.body(
+                          color: colors.onSurfaceVariant,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

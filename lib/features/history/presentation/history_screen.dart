@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
@@ -9,6 +8,7 @@ import '../../../shared/widgets/empty_state.dart';
 import '../../literature/data/literature_providers.dart';
 import '../data/history_providers.dart';
 import '../domain/history_domain.dart';
+import 'history_source_launcher.dart';
 
 class HistoryScreen extends ConsumerStatefulWidget {
   const HistoryScreen({super.key});
@@ -74,6 +74,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                 padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
                 child: TextField(
                   controller: _searchController,
+                  maxLength: 256,
                   onChanged: (value) => setState(() => _query = value),
                   decoration: InputDecoration(
                     labelText: AppTranslations.get('hist_search_hint', lang),
@@ -145,7 +146,7 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                         ),
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.symmetric(horizontal: 4),
-                          minimumSize: const Size(48, 40),
+                          minimumSize: const Size(48, 48),
                         ),
                       ),
                     ],
@@ -446,204 +447,237 @@ class _FilterBar extends StatelessWidget {
             ),
           ),
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.fromLTRB(24, 6, 24, 12),
-          child: Row(
-            children: switch (viewMode) {
-              HistoryViewMode.timeline => [
-                ChoiceChip(
-                  label: Text(AppTranslations.get('hist_filter_all', lang)),
-                  selected:
-                      selectedEpoch == null &&
-                      selectedGrade == null &&
-                      selectedKind == null,
-                  onSelected: (_) {
-                    onEpochChanged(null);
-                    onGradeChanged(null);
-                    onKindChanged(null);
-                  },
-                ),
-                ...HistoryEpoch.values.map(
-                  (epoch) => Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 8),
-                    child: ChoiceChip(
-                      label: Text(epoch.label(lang)),
-                      selected: selectedEpoch == epoch,
-                      onSelected: (selected) {
-                        onEpochChanged(selected ? epoch : null);
-                        if (selected) {
-                          onGradeChanged(null);
-                          onKindChanged(null);
-                        }
-                      },
-                    ),
+        SizedBox(
+          height: 72,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+            child: Row(
+              children: switch (viewMode) {
+                HistoryViewMode.timeline => [
+                  ChoiceChip(
+                    label: Text(AppTranslations.get('hist_filter_all', lang)),
+                    selected:
+                        selectedEpoch == null &&
+                        selectedGrade == null &&
+                        selectedKind == null,
+                    onSelected: (_) {
+                      onEpochChanged(null);
+                      onGradeChanged(null);
+                      onKindChanged(null);
+                    },
                   ),
-                ),
-                ...grades.map(
-                  (grade) => Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 8),
-                    child: ChoiceChip(
-                      label: Text(
-                        AppTranslations.get('hist_filter_grade', lang, [grade]),
+                  ...HistoryEpoch.values.map(
+                    (epoch) => Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 8),
+                      child: ChoiceChip(
+                        label: Text(epoch.label(lang)),
+                        selected: selectedEpoch == epoch,
+                        onSelected: (selected) {
+                          onEpochChanged(selected ? epoch : null);
+                          if (selected) {
+                            onGradeChanged(null);
+                            onKindChanged(null);
+                          }
+                        },
                       ),
-                      selected: selectedGrade == grade,
-                      onSelected: (selected) {
-                        onGradeChanged(selected ? grade : null);
-                        if (selected) {
-                          onEpochChanged(null);
-                          onKindChanged(null);
-                        }
-                      },
                     ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.account_balance_outlined, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_states', lang)),
-                  selected: selectedKind == HistoryEntryKind.empire,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.empire : null);
-                    if (selected) {
-                      onEpochChanged(null);
-                      onGradeChanged(null);
-                    }
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.person_outline, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_figures', lang)),
-                  selected: selectedKind == HistoryEntryKind.person,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.person : null);
-                    if (selected) {
-                      onEpochChanged(null);
-                      onGradeChanged(null);
-                    }
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.auto_stories_outlined, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_heritage', lang)),
-                  selected: selectedKind == HistoryEntryKind.poem,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.poem : null);
-                    if (selected) {
-                      onEpochChanged(null);
-                      onGradeChanged(null);
-                    }
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.timeline_outlined, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_events', lang)),
-                  selected: selectedKind == HistoryEntryKind.event,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.event : null);
-                    if (selected) {
-                      onEpochChanged(null);
-                      onGradeChanged(null);
-                    }
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(
-                    Icons.record_voice_over_outlined,
-                    size: 16,
-                  ),
-                  label: Text(AppTranslations.get('hist_filter_narratives', lang)),
-                  selected: selectedKind == HistoryEntryKind.oral,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.oral : null);
-                    if (selected) {
-                      onEpochChanged(null);
-                      onGradeChanged(null);
-                    }
-                  },
-                ),
-              ],
-              HistoryViewMode.canon => [
-                ChoiceChip(
-                  label: Text(AppTranslations.get('hist_filter_all', lang)),
-                  selected: selectedGrade == null,
-                  onSelected: (_) => onGradeChanged(null),
-                ),
-                ...grades.map(
-                  (grade) => Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 8),
-                    child: ChoiceChip(
-                      label: Text(
-                        AppTranslations.get('hist_filter_grade', lang, [grade]),
+                  ...grades.map(
+                    (grade) => Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 8),
+                      child: ChoiceChip(
+                        label: Text(
+                          AppTranslations.get('hist_filter_grade', lang, [
+                            grade,
+                          ]),
+                        ),
+                        selected: selectedGrade == grade,
+                        onSelected: (selected) {
+                          onGradeChanged(selected ? grade : null);
+                          if (selected) {
+                            onEpochChanged(null);
+                            onKindChanged(null);
+                          }
+                        },
                       ),
-                      selected: selectedGrade == grade,
-                      onSelected: (selected) =>
-                          onGradeChanged(selected ? grade : null),
                     ),
                   ),
-                ),
-              ],
-              HistoryViewMode.topics => [
-                ChoiceChip(
-                  label: Text(AppTranslations.get('hist_filter_all', lang)),
-                  selected: selectedKind == null,
-                  onSelected: (_) => onKindChanged(null),
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.account_balance_outlined, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_states', lang)),
-                  selected: selectedKind == HistoryEntryKind.empire,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.empire : null);
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.person_outline, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_figures', lang)),
-                  selected: selectedKind == HistoryEntryKind.person,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.person : null);
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.auto_stories_outlined, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_heritage', lang)),
-                  selected: selectedKind == HistoryEntryKind.poem,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.poem : null);
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(Icons.timeline_outlined, size: 16),
-                  label: Text(AppTranslations.get('hist_filter_events', lang)),
-                  selected: selectedKind == HistoryEntryKind.event,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.event : null);
-                  },
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  avatar: const Icon(
-                    Icons.record_voice_over_outlined,
-                    size: 16,
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(
+                      Icons.account_balance_outlined,
+                      size: 16,
+                    ),
+                    label: Text(
+                      AppTranslations.get('hist_filter_states', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.empire,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.empire : null);
+                      if (selected) {
+                        onEpochChanged(null);
+                        onGradeChanged(null);
+                      }
+                    },
                   ),
-                  label: Text(AppTranslations.get('hist_filter_narratives', lang)),
-                  selected: selectedKind == HistoryEntryKind.oral,
-                  onSelected: (selected) {
-                    onKindChanged(selected ? HistoryEntryKind.oral : null);
-                  },
-                ),
-              ],
-            },
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(Icons.person_outline, size: 16),
+                    label: Text(
+                      AppTranslations.get('hist_filter_figures', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.person,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.person : null);
+                      if (selected) {
+                        onEpochChanged(null);
+                        onGradeChanged(null);
+                      }
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(Icons.auto_stories_outlined, size: 16),
+                    label: Text(
+                      AppTranslations.get('hist_filter_heritage', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.poem,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.poem : null);
+                      if (selected) {
+                        onEpochChanged(null);
+                        onGradeChanged(null);
+                      }
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(Icons.timeline_outlined, size: 16),
+                    label: Text(
+                      AppTranslations.get('hist_filter_events', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.event,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.event : null);
+                      if (selected) {
+                        onEpochChanged(null);
+                        onGradeChanged(null);
+                      }
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(
+                      Icons.record_voice_over_outlined,
+                      size: 16,
+                    ),
+                    label: Text(
+                      AppTranslations.get('hist_filter_narratives', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.oral,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.oral : null);
+                      if (selected) {
+                        onEpochChanged(null);
+                        onGradeChanged(null);
+                      }
+                    },
+                  ),
+                ],
+                HistoryViewMode.canon => [
+                  ChoiceChip(
+                    label: Text(AppTranslations.get('hist_filter_all', lang)),
+                    selected: selectedGrade == null,
+                    onSelected: (_) => onGradeChanged(null),
+                  ),
+                  ...grades.map(
+                    (grade) => Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 8),
+                      child: ChoiceChip(
+                        label: Text(
+                          AppTranslations.get('hist_filter_grade', lang, [
+                            grade,
+                          ]),
+                        ),
+                        selected: selectedGrade == grade,
+                        onSelected: (selected) =>
+                            onGradeChanged(selected ? grade : null),
+                      ),
+                    ),
+                  ),
+                ],
+                HistoryViewMode.topics => [
+                  ChoiceChip(
+                    label: Text(AppTranslations.get('hist_filter_all', lang)),
+                    selected: selectedKind == null,
+                    onSelected: (_) => onKindChanged(null),
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(
+                      Icons.account_balance_outlined,
+                      size: 16,
+                    ),
+                    label: Text(
+                      AppTranslations.get('hist_filter_states', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.empire,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.empire : null);
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(Icons.person_outline, size: 16),
+                    label: Text(
+                      AppTranslations.get('hist_filter_figures', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.person,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.person : null);
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(Icons.auto_stories_outlined, size: 16),
+                    label: Text(
+                      AppTranslations.get('hist_filter_heritage', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.poem,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.poem : null);
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(Icons.timeline_outlined, size: 16),
+                    label: Text(
+                      AppTranslations.get('hist_filter_events', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.event,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.event : null);
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  ChoiceChip(
+                    avatar: const Icon(
+                      Icons.record_voice_over_outlined,
+                      size: 16,
+                    ),
+                    label: Text(
+                      AppTranslations.get('hist_filter_narratives', lang),
+                    ),
+                    selected: selectedKind == HistoryEntryKind.oral,
+                    onSelected: (selected) {
+                      onKindChanged(selected ? HistoryEntryKind.oral : null);
+                    },
+                  ),
+                ],
+              },
+            ),
           ),
         ),
       ],
@@ -771,7 +805,9 @@ class _HistoryCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
-                      AppTranslations.get('hist_filter_grade', lang, [entry.grade]),
+                      AppTranslations.get('hist_filter_grade', lang, [
+                        entry.grade,
+                      ]),
                       style: QalamTypography.meta(
                         color: colors.onSurfaceVariant,
                       ),
@@ -1019,7 +1055,9 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        AppTranslations.get('hist_filter_grade', lang, [entry.grade]),
+                        AppTranslations.get('hist_filter_grade', lang, [
+                          entry.grade,
+                        ]),
                         style: QalamTypography.meta(
                           color: colors.onSurfaceVariant,
                         ),
@@ -1084,7 +1122,10 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                             const Divider(height: 16),
                           _DetailRow(
                             icon: Icons.people_outline,
-                            label: AppTranslations.get('hist_key_figures_and_rulers', lang),
+                            label: AppTranslations.get(
+                              'hist_key_figures_and_rulers',
+                              lang,
+                            ),
                             value: keyFigures.join(', '),
                           ),
                         ],
@@ -1163,94 +1204,103 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                     },
                   ),
                 ],
-              const SizedBox(height: 20),
-              Container(
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: colors.surfaceContainerLow,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: colors.outlineVariant),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.menu_book, size: 16, color: colors.primary),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            AppTranslations.get('hist_official_textbook', lang),
-                            style: QalamTypography.eyebrow(
-                              color: colors.primary,
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: colors.surfaceContainerLow,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: colors.outlineVariant),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.menu_book,
+                            size: 16,
+                            color: colors.primary,
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              AppTranslations.get(
+                                'hist_official_textbook',
+                                lang,
+                              ),
+                              style: QalamTypography.eyebrow(
+                                color: colors.primary,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])} · $section',
-                      style: QalamTypography.meta(color: colors.onSurface),
-                    ),
-                    if (sourceBook != null) ...[
-                      const SizedBox(height: 4),
-                      Text(
-                        isPersian && sourceBook!.titlePersian != null
-                            ? '${sourceBook!.titlePersian!} (${sourceBook!.authorPersian ?? sourceBook!.author})'
-                            : '${sourceBook!.title} (${sourceBook!.author})',
-                        style: QalamTypography.meta(
-                          color: colors.onSurfaceVariant,
-                        ),
+                        ],
                       ),
-                      if (sourceBook!.sourceUrl.isNotEmpty) ...[
-                        const SizedBox(height: 12),
-                        SizedBox(
-                          width: double.infinity,
-                          child: FilledButton.tonalIcon(
-                            onPressed: () async {
-                              final uri = Uri.parse(sourceBook!.sourceUrl);
-                              if (await canLaunchUrl(uri)) {
-                                await launchUrl(
-                                  uri,
-                                  mode: LaunchMode.externalApplication,
-                                );
-                              }
-                            },
-                            icon: const Icon(Icons.open_in_browser, size: 18),
-                            label: Text(
-                              (sourceBook!.isUploadedBook || sourceBook!.localPath != null)
-                                  ? AppTranslations.get('hist_source_study_local', lang)
-                                  : AppTranslations.get('hist_source_study', lang),
-                            ),
+                      const SizedBox(height: 8),
+                      Text(
+                        '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])} · $section',
+                        style: QalamTypography.meta(color: colors.onSurface),
+                      ),
+                      if (sourceBook != null) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          isPersian && sourceBook!.titlePersian != null
+                              ? '${sourceBook!.titlePersian!} (${sourceBook!.authorPersian ?? sourceBook!.author})'
+                              : '${sourceBook!.title} (${sourceBook!.author})',
+                          style: QalamTypography.meta(
+                            color: colors.onSurfaceVariant,
                           ),
                         ),
+                        if (sourceBook!.externalSourceUri != null) ...[
+                          const SizedBox(height: 12),
+                          SizedBox(
+                            width: double.infinity,
+                            child: FilledButton.tonalIcon(
+                              onPressed: () async {
+                                final uri = sourceBook!.externalSourceUri!;
+                                await openHistorySource(context, uri, lang);
+                              },
+                              icon: const Icon(Icons.open_in_browser, size: 18),
+                              label: Text(
+                                (sourceBook!.isUploadedBook ||
+                                        sourceBook!.localPath != null)
+                                    ? AppTranslations.get(
+                                        'hist_source_study_local',
+                                        lang,
+                                      )
+                                    : AppTranslations.get(
+                                        'hist_source_study',
+                                        lang,
+                                      ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ],
                     ],
-                  ],
-                ),
-              ),
-              const SizedBox(height: 12),
-              SizedBox(
-                width: double.infinity,
-                child: OutlinedButton.icon(
-                  icon: const Icon(Icons.fullscreen, size: 18),
-                  label: Text(
-                    AppTranslations.get('hist_fullscreen_view', lang),
                   ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    context.push('/history/${entry.id}');
-                  },
                 ),
-              ),
-            ],
+                const SizedBox(height: 12),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    icon: const Icon(Icons.fullscreen, size: 18),
+                    label: Text(
+                      AppTranslations.get('hist_fullscreen_view', lang),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      context.push('/history/${entry.id}');
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 }
 
 class _DetailRow extends StatelessWidget {
@@ -1322,7 +1372,9 @@ void _showHistoryBookDetails(
                       Icon(Icons.menu_book, size: 22, color: colors.primary),
                       const SizedBox(width: 8),
                       Text(
-                        AppTranslations.get('hist_textbook_grade', lang, [book.grade]),
+                        AppTranslations.get('hist_textbook_grade', lang, [
+                          book.grade,
+                        ]),
                         style: QalamTypography.eyebrow(color: colors.primary),
                       ),
                     ],
@@ -1341,11 +1393,11 @@ void _showHistoryBookDetails(
                   Text(
                     isPersian && book.authorPersian != null
                         ? (book.year.isEmpty
-                            ? book.authorPersian!
-                            : '${book.authorPersian!} · ${AppTranslations.formatDigits(book.year, lang)}')
+                              ? book.authorPersian!
+                              : '${book.authorPersian!} · ${AppTranslations.formatDigits(book.year, lang)}')
                         : (book.year.isEmpty
-                            ? book.author
-                            : '${book.author} · ${book.year}'),
+                              ? book.author
+                              : '${book.author} · ${book.year}'),
                     style: QalamTypography.meta(color: colors.onSurfaceVariant),
                   ),
                   if (book.description.isNotEmpty) ...[
@@ -1360,24 +1412,22 @@ void _showHistoryBookDetails(
                     ),
                   ],
                   const SizedBox(height: 20),
-                  if (book.sourceUrl.isNotEmpty) ...[
+                  if (book.externalSourceUri != null) ...[
                     SizedBox(
                       width: double.infinity,
                       child: OutlinedButton.icon(
                         icon: const Icon(Icons.open_in_browser),
                         label: Text(
                           (book.isUploadedBook || book.localPath != null)
-                              ? AppTranslations.get('hist_source_study_local', lang)
+                              ? AppTranslations.get(
+                                  'hist_source_study_local',
+                                  lang,
+                                )
                               : AppTranslations.get('hist_source_study', lang),
                         ),
                         onPressed: () async {
-                          final uri = Uri.parse(book.sourceUrl);
-                          if (await canLaunchUrl(uri)) {
-                            await launchUrl(
-                              uri,
-                              mode: LaunchMode.externalApplication,
-                            );
-                          }
+                          final uri = book.externalSourceUri!;
+                          await openHistorySource(context, uri, lang);
                         },
                       ),
                     ),
@@ -1388,7 +1438,9 @@ void _showHistoryBookDetails(
                     child: FilledButton.icon(
                       icon: const Icon(Icons.filter_list),
                       label: Text(
-                        AppTranslations.get('hist_view_grade_topics', lang, [book.grade]),
+                        AppTranslations.get('hist_view_grade_topics', lang, [
+                          book.grade,
+                        ]),
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();

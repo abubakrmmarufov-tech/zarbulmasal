@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('Provenance linter invariants', () {
     late List<Map<String, dynamic>> works;
+    late List<Map<String, dynamic>> oral;
     late List<Map<String, dynamic>> poets;
     late List<Map<String, dynamic>> history;
 
@@ -14,6 +15,14 @@ void main() {
           (jsonDecode(
                     File(
                       'assets/data/literature/works.json',
+                    ).readAsStringSync(),
+                  )
+                  as List)
+              .cast<Map<String, dynamic>>();
+      oral =
+          (jsonDecode(
+                    File(
+                      'assets/data/literature/oral_heritage.json',
                     ).readAsStringSync(),
                   )
                   as List)
@@ -40,7 +49,11 @@ void main() {
         if (work['persianScriptSource'] == 'generated') {
           expect(work['scriptSource'], isNot(equals('both')));
           expect(work['textPersian'], isNull);
-          expect(work['persianScriptRepresentation'], isNotEmpty);
+          if (work['textStatus'] == 'needsReview') {
+            expect(work['persianScriptRepresentation'], anyOf(isNull, isEmpty));
+          } else {
+            expect(work['persianScriptRepresentation'], isNotEmpty);
+          }
         }
       }
     });
@@ -79,6 +92,10 @@ void main() {
           }, contains(bioStatus));
           if (bioStatus == 'UNSUPPORTED_GENERATED') {
             expect((poet['biographyTj'] as String?)?.trim(), isEmpty);
+            expect(
+              (poet['biographyQuarantineNote'] as String?)?.trim(),
+              isNotEmpty,
+            );
           }
           expect((poet['rights'] as Map?)?['status'], equals('unknown'));
         }
@@ -87,5 +104,39 @@ void main() {
         }
       },
     );
+
+    test('rights-unknown oral heritage does not ship full text', () {
+      expect(oral, isNotEmpty);
+      for (final entry in oral) {
+        final rights = (entry['rights'] as Map?) ?? const {};
+        if (rights['fullTextAllowed'] != true) {
+          expect((entry['text'] as String?)?.trim(), isEmpty);
+          expect(
+            (entry['textPersian'] as String?)?.trim(),
+            anyOf(isNull, isEmpty),
+          );
+        }
+      }
+    });
+
+    test('secondary witnesses declare an explicit line collation', () {
+      for (final work in works) {
+        if (work['secondarySource'] == null) {
+          continue;
+        }
+        expect(
+          {'exact', 'minor-variant'},
+          contains(work['textMatchResult']),
+          reason:
+              'Secondary witness lacks a supported collation result for ${work['id']}',
+        );
+        expect(
+          (work['variantNotes'] as String?)?.trim(),
+          isNotEmpty,
+          reason:
+              'Secondary witness lacks line-collation notes for ${work['id']}',
+        );
+      }
+    });
   });
 }

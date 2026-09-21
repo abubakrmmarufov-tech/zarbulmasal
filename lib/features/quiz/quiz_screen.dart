@@ -38,11 +38,13 @@ class _QuizScreenState extends ConsumerState<QuizScreen> {
   }
 
   void _loadQuestions() {
-    final catalog = ref.read(proverbsProvider);
-    final questions = QuizEngine.generateQuiz(
-      catalog: catalog,
-      questionCount: 5,
-    );
+    List<QuizQuestion> questions = [];
+    try {
+      final catalog = ref.read(proverbsProvider);
+      questions = QuizEngine.generateQuiz(catalog: catalog, questionCount: 5);
+    } catch (_) {
+      questions = [];
+    }
     setState(() {
       _quizQuestions = questions;
       _currentIndex = 0;

@@ -1,3 +1,4 @@
+import '../constants/app_constants.dart';
 import '../../shared/providers/app_providers.dart';
 
 class AppTranslations {
@@ -110,6 +111,32 @@ class AppTranslations {
     'settings_subtitle': 'Танзимоти барнома',
     'settings_display': 'Намоиш',
     'settings_dark_mode': 'Ҳолати торик',
+    'settings_theme_mode': 'Ҳолати зоҳирӣ',
+    'settings_theme_system': 'Мутобиқи система',
+    'settings_theme_light': 'Рӯшан',
+    'settings_theme_dark': 'Торик',
+    'settings_reading': 'Хондан',
+    'settings_font_size': 'Андозаи матн',
+    'settings_font_size_default': 'Муқаррарӣ',
+    'settings_font_size_large': 'Калон',
+    'settings_font_size_xlarge': 'Хеле калон',
+    'settings_poem_font_size': 'Андозаи шеър',
+    'settings_line_spacing': 'Фосилаи сатрҳо',
+    'settings_line_spacing_compact': 'Зич',
+    'settings_line_spacing_normal': 'Муқаррарӣ',
+    'settings_line_spacing_relaxed': 'Васеъ',
+    'settings_reader_mode': 'Ҳолати хониш',
+    'settings_reader_mode_standard': 'Муқаррарӣ',
+    'settings_reader_mode_parallel': 'Мувозӣ (духатта)',
+    'settings_data': 'Маълумот ва таърих',
+    'settings_clear_recent': 'Пок кардани таърихи фаъолият',
+    'settings_clear_recent_desc': 'Таърихи саҳифаҳои дидашуда пок мешавад',
+    'settings_clear_recent_success': 'Таърихи фаъолият пок шуд',
+    'settings_privacy': 'Сиёсати махфият',
+    'settings_privacy_title': 'Махфият ва амнияти додаҳо',
+    'settings_privacy_text':
+        'Барномаи «Зарбулмасал» ҳисоб талаб намекунад ва маълумоти шахсиро ҷамъоварӣ намекунад, намефурӯшад ва ба дигарон намефиристад. Забон, мавзӯъ, танзимоти хондан, мунтахабҳо, таърихи фаъолият ва пешрафти омӯзиш дар дастгоҳи шумо нигоҳ дошта мешаванд. Дар Android системаи амалкунанда метавонад мувофиқи танзимоти дастгоҳ ё ҳисоб нусхаи ин маълумотро нигоҳ дорад; барнома ба чунин нусхаҳо дастрасӣ ё назорат надорад. Дар барнома реклама, таҳлил, пайгирӣ ё ҳамоҳангсозии абрӣ нест ва иҷозати вақти иҷро талаб намекунад. Пайвандҳои сарчашма танҳо пас аз интихоби шумо дар сомонаи беруна кушода мешаванд. Таърихи фаъолиятро аз «Танзимот» пок кунед; барои ҳазфи боқимонда захираи барномаро тоза ё барномаро нест кунед. Сиёсати пурра: ${AppConstants.privacyPolicyUrl}',
+    'settings_licenses': 'Иҷозатномаҳои кушодаасос',
     'settings_language': 'Забон',
     'settings_info': 'Маълумот',
     'settings_about': 'Дар бораи барнома',
@@ -444,6 +471,7 @@ class AppTranslations {
     'lit_poet_curriculum': 'Дар китобҳои дарсӣ',
     'lit_poet_related_history': 'Давраи таърихӣ',
     'lit_poet_sources': 'Сарчашмаҳо',
+    'lit_portrait_unavailable': 'Портрет дастрас нест',
     'lit_source_panel_title': 'Сарчашма ва санҷиш',
     'lit_source_tier_a': 'Сарчашмаи асосӣ (Tier A)',
     'lit_source_book': 'Китоб',
@@ -557,6 +585,7 @@ class AppTranslations {
     'hist_detail_source_book': 'Китоби дарсӣ',
     'hist_detail_source_section': 'Боби дарсӣ',
     'hist_detail_page_citation': 'Саҳифаи китоб',
+    'hist_source_open_error': 'Манбаи беруна кушода нашуд.',
 
     // Literature Common & Screens
     'lit_search_clear_tooltip': 'Пок кардани ҷустуҷӯ',
@@ -607,6 +636,8 @@ class AppTranslations {
         'Давлатҳо, чеҳраҳо ва воқеаҳои таърихии ҳамзамон дар таърихи халқи тоҷик',
     'lit_poet_approved_works_header': 'Осори тасдиқшуда дар барнома (\${0})',
     'lit_poet_works_in_review_label': 'Сабтҳои асар дар санҷиш: \${0}',
+    'lit_poet_review_unlinked':
+        '\${0} сабти дигар то пайдо шудани истиноди саҳифадор дар рӯйхат нишон дода намешавад.',
     'lit_poet_works_review_desc':
         'Матнҳои осори ин шоир дар марҳилаи муқобала ва санҷиши сарчашмаҳо қарор доранд.',
     'lit_poet_bio_source_verified': 'Сарчашмаи истинод:',
@@ -653,10 +684,14 @@ class AppTranslations {
 
     // Source Panel
     'lit_source_sec_proof': 'Сарчашмаи дуввум (Муқобала)',
+    'lit_source_occurrences_title': 'Ҳамаи мавридҳои сарчашма',
     'lit_source_biblio_citation': 'Иқтибоси библиографӣ:',
     'lit_source_page_image_title': 'Тасвири аслии саҳифаи китоб',
     'lit_source_page_image_hint':
         'Барои дидан ва калон кардани саҳифаи аслӣ пахш кунед',
+    'lit_source_page_image_withheld_title': 'Тасвири саҳифа маҳфуз аст',
+    'lit_source_page_image_withheld_hint':
+        'То тасдиқи ҳуқуқи нашр тасвири китоб дар барнома намоиш дода намешавад.',
     'lit_source_not_registered':
         'Сарчашмаи чопӣ ҳанӯз ба қайд гирифта нашудааст.',
     'lit_source_comparison_result': 'Натиҷаи муқобала:',
@@ -685,6 +720,7 @@ class AppTranslations {
     'lit_source_institution': 'Муассиса',
     'lit_source_page_title': 'Тасвири саҳифа',
     'lit_source_page_close': 'Пӯшидан',
+    'lit_source_page_counter': 'Саҳифаи \${0} аз \${1}',
     'lit_rights_public_domain': 'Моликияти умумӣ (Public Domain)',
     'lit_rights_protected': 'Ҳифзшуда / Таҳти ҳимоя',
     'lit_poet_bio_cyrillic_fallback':
@@ -758,6 +794,9 @@ class AppTranslations {
     'books_load_error_sub':
         'Феҳристи китобхона дастрас нест. Дубора кӯшиш кунед.',
     'books_provider': 'Манбаъ',
+    'books_provider_name': 'Китобхон · kitobkhon.net',
+    'books_author_unavailable':
+        'Муаллиф дар маълумоти манбаъ нишон дода нашудааст',
     'books_source_page': 'Саҳифаи манбаъ',
     'books_read': 'Хондан',
     'books_read_on_provider': 'Хондан дар Китобхон',
@@ -774,6 +813,8 @@ class AppTranslations {
     'books_category': 'Бахш',
     'books_description': 'Дар бораи китоб',
     'books_related_author': 'Муаллиф дар Мероси адабӣ',
+    'books_related_poets': 'Шоирони вобаста дар Мероси адабӣ',
+    'books_source_author': 'Муаллиф дар феҳристи манбаъ',
     'books_author_books': 'Китобҳои дастрас аз ҳамин муаллиф',
     'books_saved': 'Китобҳои маҳфузшуда',
     'books_saved_empty': 'Ҳоло китобе маҳфуз нашудааст.',
@@ -892,6 +933,32 @@ class AppTranslations {
     'settings_subtitle': 'تنظیمات برنامه',
     'settings_display': 'نمایش',
     'settings_dark_mode': 'حالت تاریک',
+    'settings_theme_mode': 'حالت ظاهری',
+    'settings_theme_system': 'مطابق سیستم',
+    'settings_theme_light': 'روشن',
+    'settings_theme_dark': 'تاریک',
+    'settings_reading': 'خوانش',
+    'settings_font_size': 'اندازهٔ قلم',
+    'settings_font_size_default': 'پیش‌فرض',
+    'settings_font_size_large': 'بزرگ',
+    'settings_font_size_xlarge': 'خیلی بزرگ',
+    'settings_poem_font_size': 'اندازهٔ شعر',
+    'settings_line_spacing': 'فاصلهٔ سطرها',
+    'settings_line_spacing_compact': 'فشرده',
+    'settings_line_spacing_normal': 'معمولی',
+    'settings_line_spacing_relaxed': 'گشاده',
+    'settings_reader_mode': 'حالت خواندن',
+    'settings_reader_mode_standard': 'استاندارد',
+    'settings_reader_mode_parallel': 'موازی (دوخطی)',
+    'settings_data': 'داده‌ها و تاریخچه',
+    'settings_clear_recent': 'پاک کردن تاریخچهٔ فعالیت',
+    'settings_clear_recent_desc': 'تاریخچهٔ صفحه‌های بازدیدشده پاک می‌شود',
+    'settings_clear_recent_success': 'تاریخچهٔ فعالیت پاک شد',
+    'settings_privacy': 'سیاست حفظ حریم خصوصی',
+    'settings_privacy_title': 'حریم خصوصی و امنیت داده‌ها',
+    'settings_privacy_text':
+        'برنامهٔ «ضرب‌المثل» به حساب کاربری نیاز ندارد و اطلاعات شخصی را جمع‌آوری نمی‌کند، نمی‌فروشد و با دیگران به اشتراک نمی‌گذارد. زبان، پوسته، تنظیمات خواندن، موارد ذخیره‌شده، فعالیت اخیر و پیشرفت یادگیری روی دستگاه شما نگهداری می‌شوند. در اندروید، سیستم‌عامل ممکن است طبق تنظیمات دستگاه یا حساب شما از این داده‌ها پشتیبان بگیرد؛ برنامه به این نسخه‌ها دسترسی یا کنترلی ندارد. تبلیغات، تحلیل‌گر، ردیابی و همگام‌سازی ابری ندارد و مجوز زمان اجرا درخواست نمی‌کند. پیوندهای منبع فقط با انتخاب شما در وب‌سایت خارجی باز می‌شوند. فعالیت اخیر را از «تنظیمات» پاک کنید؛ برای حذف داده‌های باقی‌مانده، حافظهٔ برنامه را پاک یا برنامه را حذف کنید. سیاست کامل: ${AppConstants.privacyPolicyUrl}',
+    'settings_licenses': 'مجوزهای منبع‌باز',
     'settings_language': 'زبان',
     'settings_info': 'اطلاعات',
     'settings_about': 'درباره برنامه',
@@ -1223,6 +1290,7 @@ class AppTranslations {
     'lit_poet_curriculum': 'در کتاب‌های درسی',
     'lit_poet_related_history': 'دورهٔ تاریخی',
     'lit_poet_sources': 'منابع',
+    'lit_portrait_unavailable': 'پرتره در دسترس نیست',
     'lit_source_panel_title': 'منبع و بررسی اصالت',
     'lit_source_tier_a': 'منبع اصلی (Tier A)',
     'lit_source_book': 'کتاب',
@@ -1334,6 +1402,7 @@ class AppTranslations {
     'hist_detail_source_book': 'کتاب درسی',
     'hist_detail_source_section': 'فصل درسی',
     'hist_detail_page_citation': 'صفحهٔ کتاب',
+    'hist_source_open_error': 'منبع بیرونی باز نشد.',
 
     // Literature Common & Screens
     'lit_search_clear_tooltip': 'پاک کردن جست‌وجو',
@@ -1382,6 +1451,8 @@ class AppTranslations {
         'دوره‌ها، حاکمان و وقایع تاریخی هم‌دوره در برنامه',
     'lit_poet_approved_works_header': 'آثار تأییدشده در برنامه (\${0})',
     'lit_poet_works_in_review_label': 'رکوردهای آثار در بررسی: \${0}',
+    'lit_poet_review_unlinked':
+        '\${0} رکورد دیگر تا یافتن ارجاع صفحه‌دار در فهرست نشان داده نمی‌شود.',
     'lit_poet_works_review_desc':
         'اشعار این شاعر در حال تطبیق با نسخه‌های خطی و چاپی معتبر است.',
     'lit_poet_bio_source_verified': 'منبع استناد زندگینامه:',
@@ -1425,10 +1496,14 @@ class AppTranslations {
 
     // Source Panel
     'lit_source_sec_proof': 'منبع دوم (مقابله)',
+    'lit_source_occurrences_title': 'همهٔ موارد منبع',
     'lit_source_biblio_citation': 'ارجاع کتاب‌شناختی:',
     'lit_source_page_image_title': 'تصویر اصلی صفحهٔ کتاب',
     'lit_source_page_image_hint':
         'برای مشاهده و بزرگ‌نمایی صفحهٔ اصلی کلیک کنید',
+    'lit_source_page_image_withheld_title': 'تصویر صفحه فعلاً محفوظ است',
+    'lit_source_page_image_withheld_hint':
+        'تا زمان تأیید حق انتشار، تصویر کتاب در برنامه نمایش داده نمی‌شود.',
     'lit_source_not_registered': 'منبع چاپی هنوز ثبت نشده است.',
     'lit_source_comparison_result': 'نتیجهٔ مقابله:',
     'lit_source_variant_notes': 'یادداشت‌های نسخه‌بدل:',
@@ -1456,6 +1531,7 @@ class AppTranslations {
     'lit_source_institution': 'مؤسسه',
     'lit_source_page_title': 'تصویر صفحه',
     'lit_source_page_close': 'بستن',
+    'lit_source_page_counter': 'صفحهٔ \${0} از \${1}',
     'lit_rights_public_domain': 'مالکیت عمومی (Public Domain)',
     'lit_rights_protected': 'دارای کپی‌رایت / تحت حفاظت',
     'lit_poet_bio_cyrillic_fallback':
@@ -1527,6 +1603,8 @@ class AppTranslations {
     'books_load_error': 'کتاب‌ها بارگیری نشدند',
     'books_load_error_sub': 'فهرست کتابخانه در دسترس نیست. دوباره تلاش کنید.',
     'books_provider': 'منبع',
+    'books_provider_name': 'Kitobkhon · kitobkhon.net',
+    'books_author_unavailable': 'نام نویسنده در اطلاعات منبع ذکر نشده است',
     'books_source_page': 'صفحهٔ منبع',
     'books_read': 'خواندن',
     'books_read_on_provider': 'خواندن در کتاب‌خوان',
@@ -1543,6 +1621,8 @@ class AppTranslations {
     'books_category': 'بخش',
     'books_description': 'دربارهٔ کتاب',
     'books_related_author': 'نویسنده در میراث ادبی',
+    'books_related_poets': 'شاعران مرتبط در میراث ادبی',
+    'books_source_author': 'نویسنده در فهرست منبع',
     'books_author_books': 'کتاب‌های در دسترس از همین نویسنده',
     'books_saved': 'کتاب‌های ذخیره‌شده',
     'books_saved_empty': 'هنوز کتابی ذخیره نشده است.',

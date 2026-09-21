@@ -107,21 +107,18 @@ async def run(url: str) -> int:
 
             if width in (320, 390):
                 artifact_suffix = "" if width == 390 else f"-{width}"
-                # Dismiss the first-launch tour, then open the real proverb
-                # search form from the bottom navigation at both supported
-                # portrait phone sizes.
-                await page.mouse.click(80, height - 140)
-                await page.wait_for_timeout(400)
-                await page.mouse.click(width * 0.31, height - 30)
-                await page.wait_for_timeout(800)
+                # Navigate directly to the proverb catalogue before testing
+                # search. Tapping the Daily card first opens a detail route,
+                # which has no bottom navigation and made the old coordinate
+                # sequence test the wrong screen.
+                await load_app(page, f"{url.rstrip('/')}/#/proverbs")
                 before_search = await screenshot_bytes(
                     page,
                     f"/tmp/zarbulmasal-proverbs-before-search{artifact_suffix}.png",
                 )
-                # The search field sits near the top of the compact hub on
-                # both supported portrait widths; y=190 lands on the first
-                # content card and never focuses the field at 320 px.
-                await page.mouse.click(width * 0.41, 120)
+                # The search field is below the catalogue heading at both
+                # supported portrait widths.
+                await page.mouse.click(width * 0.5, 230)
                 await page.keyboard.type("модар")
                 await page.wait_for_timeout(700)
                 after_search = await screenshot_bytes(

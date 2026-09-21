@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
@@ -10,6 +9,7 @@ import '../../../shared/widgets/empty_state.dart';
 import '../../literature/data/literature_providers.dart';
 import '../data/history_providers.dart';
 import '../domain/history_domain.dart';
+import 'history_source_launcher.dart';
 
 /// Full-screen detail view for a specific historical entry (dynasty, person, event, or site).
 class HistoryDetailScreen extends ConsumerWidget {
@@ -67,7 +67,10 @@ class HistoryDetailScreen extends ConsumerWidget {
               child: EmptyState(
                 icon: Icons.search_off,
                 title: AppTranslations.get('hist_detail_not_found_title', lang),
-                subtitle: AppTranslations.get('hist_detail_not_found_sub', lang),
+                subtitle: AppTranslations.get(
+                  'hist_detail_not_found_sub',
+                  lang,
+                ),
                 action: OutlinedButton(
                   onPressed: () => context.go('/history'),
                   child: Text(
@@ -169,7 +172,9 @@ class HistoryDetailScreen extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        AppTranslations.get('hist_filter_grade', lang, [entry.grade]),
+                        AppTranslations.get('hist_filter_grade', lang, [
+                          entry.grade,
+                        ]),
                         style: QalamTypography.meta(
                           color: colors.onSurfaceVariant,
                         ),
@@ -249,7 +254,10 @@ class HistoryDetailScreen extends ConsumerWidget {
                             const Divider(height: 20),
                           _DetailLine(
                             icon: Icons.people_outline,
-                            label: AppTranslations.get('hist_key_figures_and_rulers', lang),
+                            label: AppTranslations.get(
+                              'hist_key_figures_and_rulers',
+                              lang,
+                            ),
                             value: keyFigures.join(', '),
                           ),
                         ],
@@ -398,7 +406,10 @@ class HistoryDetailScreen extends ConsumerWidget {
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              AppTranslations.get('hist_official_textbook', lang),
+                              AppTranslations.get(
+                                'hist_official_textbook',
+                                lang,
+                              ),
                               style: QalamTypography.eyebrow(
                                 color: colors.primary,
                               ),
@@ -425,26 +436,28 @@ class HistoryDetailScreen extends ConsumerWidget {
                             fontSize: 14,
                           ),
                         ),
-                        if (sourceBook.sourceUrl.isNotEmpty) ...[
+                        if (sourceBook.externalSourceUri != null) ...[
                           const SizedBox(height: 14),
                           FilledButton.tonalIcon(
                             style: FilledButton.styleFrom(
-                              minimumSize: const Size.fromHeight(46),
+                              minimumSize: const Size(48, 48),
                             ),
                             icon: const Icon(Icons.open_in_browser, size: 20),
                             label: Text(
-                              (sourceBook.isUploadedBook || sourceBook.localPath != null)
-                                  ? AppTranslations.get('hist_source_study_local', lang)
-                                  : AppTranslations.get('hist_source_study', lang),
+                              (sourceBook.isUploadedBook ||
+                                      sourceBook.localPath != null)
+                                  ? AppTranslations.get(
+                                      'hist_source_study_local',
+                                      lang,
+                                    )
+                                  : AppTranslations.get(
+                                      'hist_source_study',
+                                      lang,
+                                    ),
                             ),
                             onPressed: () async {
-                              final uri = Uri.parse(sourceBook.sourceUrl);
-                              if (await canLaunchUrl(uri)) {
-                                await launchUrl(
-                                  uri,
-                                  mode: LaunchMode.externalApplication,
-                                );
-                              }
+                              final uri = sourceBook.externalSourceUri!;
+                              await openHistorySource(context, uri, lang);
                             },
                           ),
                         ],
@@ -473,10 +486,7 @@ class HistoryDetailScreen extends ConsumerWidget {
     HistoryEntryKind.oral => Icons.record_voice_over,
   };
 
-  static String _kindLabel(
-    HistoryEntryKind kind,
-    bool isPersian,
-  ) {
+  static String _kindLabel(HistoryEntryKind kind, bool isPersian) {
     final key = switch (kind) {
       HistoryEntryKind.empire => 'hist_kind_empire',
       HistoryEntryKind.dynasty => 'hist_kind_dynasty',

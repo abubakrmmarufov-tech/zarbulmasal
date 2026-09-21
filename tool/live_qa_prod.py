@@ -10,10 +10,13 @@ async def run_live_qa(url):
         
         errors = []
         page.on("console", lambda msg: errors.append(f"Console {msg.type}: {msg.text}") if msg.type in ["error"] else None)
+        page.on("pageerror", lambda error: errors.append(f"Page error: {error}"))
         page.on("requestfailed", lambda req: errors.append(f"Failed to load: {req.url}"))
 
         print(f"Loading {url} ...")
-        await page.goto(url, wait_until="networkidle", timeout=30000)
+        response = await page.goto(url, wait_until="networkidle", timeout=30000)
+        if response is not None and response.status >= 400:
+            errors.append(f"HTTP {response.status}: {url}")
         
         # Test 1: no blank screen (wait for flutter to render)
         await asyncio.sleep(5)
@@ -37,6 +40,8 @@ async def run_live_qa(url):
         print(f"Errors encountered: {errors}")
         print(f"CSP Errors: {csp_errors}")
         await browser.close()
+        if errors:
+            raise SystemExit(1)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

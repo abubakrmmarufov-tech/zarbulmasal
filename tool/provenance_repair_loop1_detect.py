@@ -9,6 +9,7 @@ Does NOT modify any data.
 import json
 import os
 import collections
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
@@ -26,6 +27,18 @@ def load_json(path):
         return json.load(f)
 
 
+def source_image_paths(source):
+    """Return all declared source-image paths, including legacy metadata."""
+    source = source or {}
+    paths = source.get("sourceImagePaths")
+    if isinstance(paths, list):
+        normalized = [path for path in paths if isinstance(path, str) and path]
+        if normalized:
+            return normalized
+    legacy_path = source.get("sourceImagePath")
+    return [legacy_path] if isinstance(legacy_path, str) and legacy_path else []
+
+
 def section(title):
     print(f"\n{'='*70}")
     print(f"  {title}")
@@ -38,6 +51,17 @@ def main():
     history = load_json(HISTORY_PATH)
     books = load_json(BOOKS_PATH)
     sources = load_json(SOURCES_PATH)
+
+    generated_representation_count = sum(
+        1
+        for w in works
+        if w.get("persianScriptSource") == "generated"
+        and isinstance(w.get("persianScriptRepresentation"), str)
+        and w.get("persianScriptRepresentation", "").strip()
+    )
+    generated_representation_source_count = sum(
+        1 for w in works if w.get("persianScriptSource") == "generated"
+    )
 
     existing_images = set()
     if PAGE_IMAGES_DIR.exists():
@@ -65,8 +89,10 @@ def main():
     needs_script_review = []
     for w in scriptSource_both:
         src = w.get("primarySource") or {}
-        has_real_image = bool(src.get("sourceImagePath") and
-                              os.path.basename(src.get("sourceImagePath", "")) in existing_images)
+        has_real_image = any(
+            os.path.basename(path) in existing_images
+            for path in source_image_paths(src)
+        )
         needs_script_review.append({
             "id": w["id"],
             "title": w.get("title", "?")[:60],
@@ -105,13 +131,11 @@ def main():
     for w in works:
         src = w.get("primarySource") or {}
         if src.get("sourceImageVerified") is True:
-            path = src.get("sourceImagePath", "")
-            if not path:
+            paths = source_image_paths(src)
+            if not paths:
                 fake_verified_image.append(w["id"])
-            else:
-                fname = os.path.basename(path)
-                if fname not in existing_images:
-                    fake_verified_image.append(w["id"])
+            elif not all(os.path.basename(path) in existing_images for path in paths):
+                fake_verified_image.append(w["id"])
 
     print(f"Works claiming sourceImageVerified=True: {sum(1 for w in works if (w.get('primarySource') or {}).get('sourceImageVerified') is True)}")
     print(f"Works with fabricated sourceImageVerified=True (no file): {len(fake_verified_image)}")
@@ -369,7 +393,8 @@ def main():
     print(f"  textStatus=verified but evidenceLevel=needsReview: {stats['works_text_verified_no_evidence']}")
     print(f"  With real page number: {stats['works_with_page']}")
     print(f"  Without page number: {stats['works_without_page']}")
-    print(f"  Generated Persian-script representations: {sum(1 for w in works if w.get('persianScriptSource') == 'generated')}")
+    print(f"  Generated Persian-script representations with content: {generated_representation_count}")
+    print(f"  Works with persianScriptSource=generated metadata: {generated_representation_source_count}")
     print(f"  Source Persian works: {sum(1 for w in works if w.get('persianScriptSource') == 'source')}")
     print(f"  Semantic Persian translations: {sum(1 for w in works if w.get('persianScriptSource') == 'translation')}")
     print()
@@ -383,7 +408,22 @@ def main():
     print(f"  Rights status unknown: {stats['poets_rights_unknown']}")
     print(f"  With Persian biography: {sum(1 for p in poets if p.get('biographyFa'))}")
     print(f"  Unsupported biographies removed from active content: {sum(1 for p in poets if p.get('biographyTjProvenance') == 'UNSUPPORTED_GENERATED')}")
-    print(f"  Without portrait field: {len(poets)} (no portrait system exists yet)")
+    portrait_count = sum(
+        1
+        for p in poets
+        if isinstance(p.get('portrait'), dict)
+        and isinstance(p['portrait'].get('assetPath'), str)
+        and p['portrait']['assetPath'].startswith('assets/data/literature/portraits/')
+    )
+    portrait_source_count = sum(
+        1
+        for p in poets
+        if isinstance(p.get('portrait'), dict)
+        and p['portrait'].get('sourceReference')
+        and p['portrait'].get('sourcePage') is not None
+    )
+    print(f"  Source-backed local portraits: {portrait_count}")
+    print(f"  Portraits with exact source page metadata: {portrait_source_count}")
 
     # ─────────────────────────────────────────────────────────────
     # Write PROVENANCE_PAGE_AUDIT.md
@@ -391,9 +431,9 @@ def main():
     lines = [
         "# PROVENANCE_PAGE_AUDIT.md",
         "",
-        "**Generated by:** `tool/provenance_repair_loop1_detect.py`  ",
-        "**Baseline commit:** `80b0fc870ce78ca3ce8c1f203a744ff697476ad4`  ",
-        "**Date:** 2026-09-19  ",
+        "**Generated by:** `tool/provenance_repair_loop1_detect.py`",
+        "**Baseline commit:** `80b0fc870ce78ca3ce8c1f203a744ff697476ad4`",
+        f"**Date:** {date.today().isoformat()}",
         "",
         "---",
         "",
@@ -408,7 +448,8 @@ def main():
         f"| Works `textStatus: verified` contradicted by `evidenceLevel: needsReview` | {stats['works_text_verified_no_evidence']} |",
         f"| Works with a real pageStart | {stats['works_with_page']} |",
         f"| Works WITHOUT pageStart | {stats['works_without_page']} |",
-        f"| Generated Persian-script representations | {sum(1 for w in works if w.get('persianScriptSource') == 'generated')} |",
+        f"| Generated Persian-script representations with content | {generated_representation_count} |",
+        f"| Works with `persianScriptSource: generated` metadata | {generated_representation_source_count} |",
         f"| Source Persian works | {sum(1 for w in works if w.get('persianScriptSource') == 'source')} |",
         f"| Semantic Persian translations | {sum(1 for w in works if w.get('persianScriptSource') == 'translation')} |",
         f"| History entries | {len(history)} |",
@@ -416,6 +457,8 @@ def main():
         f"| History VERIFIED_UPLOADED_BOOK_PAGE with page=1 | {stats['history_VERIFIED_UPLOADED_page1']} |",
         f"| History VERIFIED_CURRICULUM_MAORIF with page=1 | {stats['history_VERIFIED_MAORIF_page1']} |",
         f"| Poets | {len(poets)} |",
+        f"| Source-backed local portraits | {portrait_count} |",
+        f"| Portraits with exact source page metadata | {portrait_source_count} |",
         f"| Poets marked publicDomain with weak reasoning | {stats['poets_publicDomain_weak_reasoning']} |",
         f"| Poets with rights status unknown | {stats['poets_rights_unknown']} |",
         f"| Unsupported biographies removed from active content | {sum(1 for p in poets if p.get('biographyTjProvenance') == 'UNSUPPORTED_GENERATED')} |",
@@ -450,20 +493,22 @@ def main():
         lines.append("")
 
     lines += [
-        "## BEFORE / AFTER METRICS",
+        "## HISTORICAL BASELINE / CURRENT METRICS",
         "",
-        "The baseline values below were read from commit `80b0fc8` before the repair work began.",
+        "The baseline values below were read from commit `80b0fc8` before the repair work began. Current values are computed from the JSON files loaded by this run.",
         "",
-        "| Metric | Before | After |",
+        "| Metric | Historical baseline | Current snapshot |",
         "|---|---:|---:|",
-        "| Synthetic/default history pages | 64 | 0 |",
-        "| Fake `sourceImageVerified` records | 1,460 | 0 |",
-        "| Works labeled `scriptSource: both` | 1,472 | 0 |",
-        "| Works with generated Persian-script representation | 0 explicit | 1,472 |",
-        "| Poet public-domain/excerpt claims without attached rights evidence | 150 | 0 |",
-        "| Active unsupported/generated biographies | 0 quarantined | 44 removed |",
+        f"| Synthetic/default history pages | 64 | {stats['history_fake_page1']} |",
+        f"| Fake `sourceImageVerified` records | 1,460 | {stats['works_fake_sourceImageVerified']} |",
+        f"| Works labeled `scriptSource: both` | 1,472 | {stats['works_scriptSource_both_total']} |",
+        f"| Works with generated Persian-script content | 0 explicit | {generated_representation_count} |",
+        f"| Works with `persianScriptSource: generated` metadata | 1,472 | {generated_representation_source_count} |",
+        f"| Poet public-domain claims without attached rights evidence | 150 | {stats['poets_publicDomain_weak_reasoning']} |",
+        f"| Source-backed local portraits | 0 | {portrait_count} |",
+        f"| Active unsupported/generated biographies | 0 quarantined | {sum(1 for p in poets if p.get('biographyTjProvenance') == 'UNSUPPORTED_GENERATED')} |",
         "",
-        "Verification counts after repair: 21 exact uploaded-book-page claims, 64 `SOURCE_LOCATED` history claims, 12 page-backed literary works, and 1,460 works still needing review.",
+        f"Current verification counts: {sum(1 for e in history for cp in (e.get('claimProvenance') or []) if cp.get('status') == 'VERIFIED_UPLOADED_BOOK_PAGE')} exact uploaded-book-page claims, {sum(1 for e in history for cp in (e.get('claimProvenance') or []) if cp.get('status') == 'SOURCE_LOCATED')} `SOURCE_LOCATED` history claims, {sum(1 for w in works if (w.get('verification') or {}).get('evidenceLevel') == 'primaryChecked')} page-backed literary works, and {sum(1 for w in works if (w.get('verification') or {}).get('evidenceLevel') == 'needsReview')} works still needing review.",
         "",
         "---",
         "",
@@ -474,7 +519,7 @@ def main():
         "3. Completed: contradictory text verification states were downgraded.",
         "4. Completed: repeated page-1 placeholders were removed; un-rechecked claims are `SOURCE_LOCATED`.",
         "5. Completed: unsupported rights claims were reset to `unknown`.",
-        "6. Remaining: no portraits were added; this mission did not expand content.",
+        f"6. Completed: {portrait_count} source-backed local portraits are recorded with exact source-page metadata; the remaining authors use the consistent placeholder until a reliable image is verified.",
         "",
     ]
 

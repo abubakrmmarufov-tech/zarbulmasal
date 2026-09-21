@@ -53,6 +53,10 @@ void main() {
           isTrue,
           reason: 'Invalid Tajik biography provenance for ${a.id}',
         );
+        if (a.portrait != null) {
+          expect(a.portrait!.isSourceBacked, isTrue);
+          expect(File(a.portrait!.assetPath).existsSync(), isTrue);
+        }
       }
     });
 
@@ -74,7 +78,43 @@ void main() {
         expect(work.id, isNotEmpty);
         expect(work.authorId, isNotEmpty);
         expect(work.title, isNotEmpty);
-        expect(work.textTajik, isNotEmpty);
+        if (work.textStatus == TextStatus.needsReview) {
+          expect(
+            work.textTajik,
+            anyOf(isNull, isEmpty),
+            reason: 'Unreviewed work ${work.id} must not ship a full text body',
+          );
+        } else {
+          expect(work.textTajik, isNotEmpty);
+        }
+        if (!work.rights.fullTextAllowed) {
+          expect(
+            work.textTajik,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without full-text rights must not ship Tajik text',
+          );
+          expect(
+            work.textPersian,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without full-text rights must not ship Persian text',
+          );
+          expect(
+            work.persianScriptRepresentation,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without full-text rights must not ship a generated full-text representation',
+          );
+        }
+        if (!work.rights.excerptAllowed) {
+          expect(
+            work.incipit,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without excerpt rights must not ship an incipit',
+          );
+        }
         expect(work.primarySource, isNotNull);
         expect(work.hasAuditableCompositionEvidence, isFalse);
         expect(work.textPersian, isNull);
@@ -96,6 +136,32 @@ void main() {
       expect(approvedCount, greaterThanOrEqualTo(0));
     });
 
+    test('primary-checked works remain page-cited and unpublished', () {
+      final file = File('assets/data/literature/works.json');
+      final works = (jsonDecode(file.readAsStringSync()) as List<dynamic>)
+          .cast<Map<String, dynamic>>();
+
+      final primaryChecked = works.where((work) {
+        final verification = work['verification'];
+        return verification is Map &&
+            verification['evidenceLevel'] == 'primaryChecked';
+      });
+
+      expect(primaryChecked, isNotEmpty);
+      for (final work in primaryChecked) {
+        final verification = work['verification'] as Map;
+        final source = work['primarySource'] as Map?;
+        expect(verification['pageVerified'], isTrue);
+        expect(source?['pageStart'], isNotNull);
+        expect(work['rights'], isA<Map>());
+        expect(
+          (work['rights'] as Map)['fullTextAllowed'],
+          isNot(true),
+          reason: 'Primary evidence is not editorial or rights clearance.',
+        );
+      }
+    });
+
     test('Loic Sherali textbook biography facts are page-cited', () {
       final poets =
           jsonDecode(
@@ -114,7 +180,7 @@ void main() {
       expect(loiq['biographyTj'], contains('«Ном»'));
     });
 
-    test('Jami duplicate author records agree with the page-109 witness', () {
+    test('Jami has one canonical author record with the page-109 witness', () {
       final poets =
           jsonDecode(
                 File('assets/data/literature/poets.json').readAsStringSync(),
@@ -125,18 +191,14 @@ void main() {
           item['id'] as String: Map<String, dynamic>.from(item),
       };
 
-      for (final id in [
-        '358dda13-365c-4434-87f0-d404b305adcb',
-        '9debff75-8664-43ab-a7a9-ed1a4725f69b',
-      ]) {
-        final jami = byId[id];
-        expect(jami, isNotNull, reason: 'Missing Jami record $id');
-        expect(jami!['birthDateExact'], '7 ноябри 1414');
-        expect(jami['deathDateExact'], '9 ноябри 1492');
-        expect(jami['birthPlace'], 'Харҷурди вилояти Ҷом');
-        expect(jami['biographySource'], contains('с. 109'));
-        expect(jami['biographyTj'], contains('«Баҳористон»'));
-      }
+      final jami = byId['9debff75-8664-43ab-a7a9-ed1a4725f69b'];
+      expect(jami, isNotNull, reason: 'Missing canonical Jami record');
+      expect(byId.containsKey('358dda13-365c-4434-87f0-d404b305adcb'), isFalse);
+      expect(jami!['birthDateExact'], '7 ноябри 1414');
+      expect(jami['deathDateExact'], '9 ноябри 1492');
+      expect(jami['birthPlace'], 'Харҷурди вилояти Ҷом');
+      expect(jami['biographySource'], contains('с. 109'));
+      expect(jami['biographyTj'], contains('«Баҳористон»'));
     });
 
     test('sources.json is valid and conforms to SourceEdition model', () {
@@ -202,12 +264,40 @@ void main() {
           expect(source['sourceReference'], endsWith('.pdf'));
           expect(
             source['sourceImageVerified'],
-            entry.key == 'tj_literature_grade_5_2017' ||
-                entry.key == 'tj_literature_grade_7_2018',
+            <String>{
+              'tj_literature_grade_5_2017',
+              'tj_literature_grade_6_2014',
+              'tj_literature_grade_7_2018',
+              'tj_literature_grade_8_2026',
+              'tj_literature_grade_9_2026',
+            }.contains(entry.key),
           );
         }
       },
     );
+
+    test('official 2025 Grade 11 edition is tracked as a reviewed lead', () {
+      final sources =
+          jsonDecode(
+                File('assets/data/literature/sources.json').readAsStringSync(),
+              )
+              as List<dynamic>;
+      final source = sources
+          .whereType<Map>()
+          .map((item) => Map<String, dynamic>.from(item))
+          .singleWhere((item) => item['id'] == 'tj_literature_grade_11_2025');
+
+      expect(source['bookTitle'], 'Адабиёти тоҷик (давраи нав)');
+      expect(source['authorAsPrinted'], 'Х. Асозода, А. Кўчарзода');
+      expect(source['edition'], 'Нашри ҳафтум');
+      expect(source['publisher'], 'Маориф');
+      expect(source['year'], '2025');
+      expect(
+        source['sourceReference'],
+        'https://maorif.tj/storage/libraries/01KH8MQHJJBRM70Q8FXHNNCGV5.pdf',
+      );
+      expect(source['sourceImageVerified'], isFalse);
+    });
 
     test('school_canon.json is valid with proper mappings', () {
       final file = File('assets/data/literature/school_canon.json');
@@ -314,6 +404,10 @@ void main() {
         expect(entry.collectionSource, isNotEmpty);
         expect(entry.publisher, isNotEmpty);
         expect(entry.year, isNotEmpty);
+        if (!entry.rights.fullTextAllowed) {
+          expect(entry.text.trim(), isEmpty);
+          expect(entry.textPersian?.trim(), anyOf(isNull, isEmpty));
+        }
       }
     });
 
@@ -335,29 +429,54 @@ void main() {
         }
       }
 
-      expect(approvedWorks, isNotEmpty);
+      expect(
+        approvedWorks,
+        isEmpty,
+        reason:
+            'No work has dual-witness, rights, and editorial evidence required for publication.',
+      );
       expect(primaryCheckedWorks, isNotEmpty);
-      for (final work in [...primaryCheckedWorks, ...approvedWorks]) {
+      for (final work in primaryCheckedWorks) {
         expect(work.isDisplayable, isFalse);
+        expect(
+          work.isPageImageDisplayable,
+          isFalse,
+          reason: 'Rights-unknown page scans must not be displayable assets.',
+        );
         expect(work.rights.status, RightsStatus.unknown);
         expect(work.verification.pageVerified, isTrue);
         expect(work.primarySource!.pageStart, isNotNull);
         expect(work.primarySource!.sourceImageVerified, isTrue);
 
-        final imageFile = File(
-          'assets/data/literature/page_images/${work.id}.png',
-        );
-        expect(
-          imageFile.existsSync(),
-          isTrue,
-          reason: 'Page image missing for work ${work.id}',
-        );
-        expect(
-          imageFile.lengthSync(),
-          greaterThan(10000),
-          reason: 'Page image too small for work ${work.id}',
-        );
+        final source = work.primarySource!;
+        final imagePaths = source.sourceImagePaths.isNotEmpty
+            ? source.sourceImagePaths
+            : <String>['assets/data/literature/page_images/${work.id}.png'];
+        expect(imagePaths, isNotEmpty);
+        for (final imagePath in imagePaths) {
+          final imageFile = File(imagePath);
+          expect(
+            imageFile.existsSync(),
+            isTrue,
+            reason: 'Page image missing for work ${work.id}: $imagePath',
+          );
+          expect(
+            imageFile.lengthSync(),
+            greaterThan(10000),
+            reason: 'Page image too small for work ${work.id}: $imagePath',
+          );
+        }
       }
+    });
+
+    test('Rights-unknown page scans are not bundled as Flutter assets', () {
+      final pubspec = File('pubspec.yaml').readAsStringSync();
+      expect(
+        pubspec,
+        isNot(contains('assets/data/literature/page_images/')),
+        reason:
+            'Source scans remain audit evidence until publication rights are cleared.',
+      );
     });
   });
 }

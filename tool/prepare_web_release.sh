@@ -6,14 +6,28 @@ web_dir="${1:-$repo_root/build/web}"
 main_js="$web_dir/main.dart.js"
 bootstrap="$web_dir/flutter_bootstrap.js"
 worker="$web_dir/qalam_service_worker.js"
+index="$web_dir/index.html"
 placeholder='__ZARBULMASAL_BUILD_ID__'
 
-for required_file in "$main_js" "$bootstrap" "$worker"; do
+for required_file in "$main_js" "$bootstrap" "$worker" "$index"; do
   if [[ ! -f "$required_file" ]]; then
     echo "Missing production web artifact: $required_file" >&2
     exit 1
   fi
 done
+
+# GitHub Pages hosts this app below /zarbulmasal/. A root-relative Flutter
+# shell would appear to work at the first URL but fail to load the bootstrap
+# and assets on the real public deployment, so refuse to publish it.
+if ! grep -Fq '<base href="/zarbulmasal/">' "$index"; then
+  echo 'Invalid deployed base href: expected /zarbulmasal/.' >&2
+  exit 1
+fi
+
+# The release artifact must carry the public policy before it can be staged or
+# published. Keep this gate here so every caller shares the same contract.
+test -s "$web_dir/privacy.html"
+grep -Fq "Zarbulmasal Privacy Policy" "$web_dir/privacy.html"
 
 hash_file() {
   if command -v sha256sum >/dev/null 2>&1; then
@@ -42,7 +56,12 @@ while IFS= read -r artifact; do
   fi
   printf '%s %s\n' "$(hash_file "$artifact")" "$relative_path" \
     >> "$release_manifest"
-done < <(find "$web_dir" -type f -print | LC_ALL=C sort)
+done < <(
+  find "$web_dir" -type f \
+    ! -path "$web_dir/.git" \
+    ! -path "$web_dir/.git/*" \
+    -print | LC_ALL=C sort
+)
 
 for source_template in \
   "$repo_root/web/flutter_bootstrap.js" \

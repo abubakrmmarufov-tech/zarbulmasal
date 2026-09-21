@@ -25,6 +25,7 @@ class GlobalSearchScreen extends ConsumerStatefulWidget {
 class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
   final TextEditingController _controller = TextEditingController();
   String _query = '';
+  String _rawQuery = '';
 
   @override
   void dispose() {
@@ -52,6 +53,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ),
         title: TextField(
           controller: _controller,
+          maxLength: 256,
           autofocus: true,
           decoration: InputDecoration(
             hintText: AppTranslations.get('search_hint_global', lang),
@@ -63,6 +65,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
           style: QalamTypography.body(color: colors.onSurface),
           onChanged: (val) {
             setState(() {
+              _rawQuery = val;
               _query = SearchNormalizer.normalize(val);
             });
           },
@@ -74,7 +77,10 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
               icon: const Icon(Icons.clear),
               onPressed: () {
                 _controller.clear();
-                setState(() => _query = '');
+                setState(() {
+                  _rawQuery = '';
+                  _query = '';
+                });
               },
             ),
         ],
@@ -162,47 +168,108 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
   ) {
     final isPersian = lang == DisplayLanguage.persian;
 
-    final matchingAuthors = authors.where((a) {
-      if (!a.hasCanonicalName) return false;
-      return SearchNormalizer.matchesAny([
-        a.canonicalName,
-        a.canonicalNamePersian ?? '',
-        a.literaryPeriod,
-        a.birthPlace ?? '',
-        ...a.aliases,
-      ], _query);
-    }).toList();
+    final matchingAuthors =
+        authors.where((a) {
+          if (!a.hasCanonicalName) return false;
+          return SearchNormalizer.matchesAny([
+            a.canonicalName,
+            a.canonicalNamePersian ?? '',
+            a.literaryPeriod,
+            a.birthPlace ?? '',
+            ...a.aliases,
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.canonicalName,
+            a.canonicalNamePersian ?? '',
+            ...a.aliases,
+            a.literaryPeriod,
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.canonicalName,
+            b.canonicalNamePersian ?? '',
+            ...b.aliases,
+            b.literaryPeriod,
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
 
-    final matchingWorks = works.where((w) {
-      return SearchNormalizer.matchesAny([
-        w.title,
-        w.titlePersian ?? '',
-        w.incipit ?? '',
-      ], _query);
-    }).toList();
+    final matchingWorks =
+        works.where((w) {
+          return SearchNormalizer.matchesAny([
+            w.title,
+            w.titlePersian ?? '',
+            w.incipit ?? '',
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.title,
+            a.titlePersian ?? '',
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.title,
+            b.titlePersian ?? '',
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
 
-    final matchingProverbs = proverbs.where((p) {
-      return SearchNormalizer.matchesAny([
-        p.tajikCyrillic,
-        p.persianText,
-        p.meaningTj,
-        p.simpleExplanationTj,
-      ], _query);
-    }).toList();
+    final matchingProverbs =
+        proverbs.where((p) {
+          return SearchNormalizer.matchesAny([
+            p.tajikCyrillic,
+            p.persianText,
+            p.meaningTj,
+            p.simpleExplanationTj,
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.tajikCyrillic,
+            a.persianText,
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.tajikCyrillic,
+            b.persianText,
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
 
-    final matchingHistory = history.where((h) {
-      return SearchNormalizer.matchesAny([
-        h.title,
-        h.titlePersian ?? '',
-        h.summary,
-        h.summaryPersian ?? '',
-        ...h.keywords,
-        ...h.keyFigures,
-        ...h.keyFiguresPersian,
-      ], _query);
-    }).toList();
+    final matchingHistory =
+        history.where((h) {
+          return SearchNormalizer.matchesAny([
+            h.title,
+            h.titlePersian ?? '',
+            h.summary,
+            h.summaryPersian ?? '',
+            ...h.keywords,
+            ...h.keyFigures,
+            ...h.keyFiguresPersian,
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.title,
+            a.titlePersian ?? '',
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.title,
+            b.titlePersian ?? '',
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
 
-    final matchingBooks = books.where((book) => book.matches(_query)).toList();
+    final matchingBooks = books.where((book) => book.matches(_query)).toList()
+      ..sort((a, b) {
+        final scoreA = SearchNormalizer.scoreMatchAny([
+          a.titleTj,
+          a.titleFa ?? '',
+          a.canonicalTitle,
+        ], _query);
+        final scoreB = SearchNormalizer.scoreMatchAny([
+          b.titleTj,
+          b.titleFa ?? '',
+          b.canonicalTitle,
+        ], _query);
+        return scoreB.compareTo(scoreA);
+      });
 
     if (matchingAuthors.isEmpty &&
         matchingWorks.isEmpty &&
@@ -214,7 +281,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
           icon: Icons.search_off,
           title: AppTranslations.get('lit_no_results', lang),
           subtitle: AppTranslations.translate('search_no_results_for', lang, [
-            _query,
+            _rawQuery.trim().isNotEmpty ? _rawQuery.trim() : _query,
           ]),
         ),
       );
