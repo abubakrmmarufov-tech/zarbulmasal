@@ -84,7 +84,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > A source-controlled privacy policy is now included in `web/privacy.html`,
 > copied into the local release web artifact, and reflected in the in-app
 > disclosure. The current web-only Pages deployment (`gh-pages` commit
-> `ee17ec5`) returns HTTP 200 for both the app root and privacy-policy URL, and
+> `a195e4c`) returns HTTP 200 for both the app root and privacy-policy URL, and
 > the live browser sweep passes. Android download publication remains withheld
 > until signing.
 > No production signing keystore is available. A fresh local release-mode AAB
