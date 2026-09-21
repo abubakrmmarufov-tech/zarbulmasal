@@ -59,7 +59,7 @@ _flutter.loader.load({
         typeof Intl.Segmenter !== 'undefined';
       const variant = usesChromiumCanvasKit ? 'chromium' : 'full';
       navigator.serviceWorker.register(
-        `qalam_service_worker.js?build=682102a369bcf213653c&variant=${variant}`,
+        `qalam_service_worker.js?build=e890bebc7d47173fc625&variant=${variant}`,
         { updateViaCache: 'none' },
       )
         .catch(error => console.warn('Offline preparation unavailable:', error));
