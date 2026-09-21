@@ -183,6 +183,31 @@ void main() {
       }
     });
 
+    test('Hiloli partial occurrence is not promoted to a second witness', () {
+      final work = works.cast<Map<String, dynamic>>().firstWhere(
+        (item) => item['id'] == 'f9f475b2-5a47-4128-8c13-16d828359c3f',
+      );
+      final occurrence = (work['sourceOccurrences'] as List<dynamic>).single
+          as Map<String, dynamic>;
+
+      expect(work['secondarySource'], isNull);
+      expect(occurrence['pageStart'], 316);
+      expect(occurrence['pageEnd'], 316);
+      expect(
+        occurrence['sourceReference'],
+        'docs/literature/pdfs/adabiyet sinfi 9.pdf',
+      );
+      expect(occurrence['sourceImageVerified'], isTrue);
+      expect(
+        occurrence['sourceImagePath'],
+        'assets/data/literature/page_images/hiloli_grade9_p316.png',
+      );
+      expect(File(occurrence['sourceImagePath'] as String).existsSync(), isTrue);
+      expect(work['textMatchResult'], isNull);
+      expect(work['textTajik'], isNull);
+      expect(work['textPersian'], isNull);
+    });
+
     test('Rudaki textbook witnesses are exactly collated', () {
       final work = works.cast<Map<String, dynamic>>().firstWhere(
         (item) => item['id'] == '7673c21c-eabd-4f67-954c-99af1028a7a7',

@@ -135,7 +135,8 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > Grade 5 2025 second witness on p. 56 with a minor orthographic variant;
 > Qanoat’s «Мавҷи одам» (pp. 149–150) and «Мавҷи бародарӣ» (pp. 150–151)
 > have exact Ministry Grade 6 second witnesses. Rights and publication
-> approval remain unresolved.
+> approval remain unresolved. Hiloli’s uploaded Grade 9 p. 316 six-line
+> occurrence is recorded separately and is not promoted to a complete witness.
 > Sayyido’s nine-line «ОМАД БА ЁД» is now collated between Grade 10 p. 74 and
 > independent Grade 7 p. 161 witnesses with a recorded minor spelling variant;
 > the local page proof is retained and the work remains review-only.
