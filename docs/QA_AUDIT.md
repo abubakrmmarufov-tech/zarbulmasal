@@ -7,7 +7,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > **Current-state override — 2026-09-22:** The dated audit below is a historical
 > record from 2026-09-14 and is not current Play release signoff. The current
 > worktree is branch `provenance-repair-2026-09-19` at audited source checkpoint
-> `3730df8` with 395 tests
+> `49f54cf` with 396 tests
 > passing and 82.19% line coverage (7,736/9,412 lines), clean analysis, strict Gradle dependency
 > verification with valid metadata and a successful offline `assembleDebug`, and passing
 > CI-equivalent web and browser audits. The CI web job now repeats the prepared-release
@@ -84,13 +84,13 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > A source-controlled privacy policy is now included in `web/privacy.html`,
 > copied into the local release web artifact, and reflected in the in-app
 > disclosure. The current web-only Pages deployment (`gh-pages` commit
-> `4c4b20c`) returns HTTP 200 for both the app root and privacy-policy URL, and
+> `3020730`) returns HTTP 200 for both the app root and privacy-policy URL, and
 > the live browser sweep passes. Android download publication remains withheld
 > until signing.
 > No production signing keystore is available. A fresh local release-mode AAB
 > was built with a temporary QA certificate only; it is not a public release
 > artifact. The current QA AAB is 59,676,619 bytes with SHA-256
-> `ba25488a612800add6beea4b16af304e2196b0ac553afa00ab99c5a788b98823`, and its
+> `2b96592226b8824a2722f791c71c6a34e428e036d45495a835d820d21043be80`, and its
 > temporary QA certificate SHA-256 is
 > `e6c4a6a69ad368c6cea3e485f25de825b5d2437f6c4ef33dd10cc7a567b82c9d`.
 > After normalizing the extracted certificate digest to lowercase,
@@ -192,7 +192,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > The portrait fallback accessibility label is now localized through the
 > Tajik/Persian translation maps; failed source-backed assets now switch to
 > unavailable semantics instead of retaining a false citation, the focused
-> portrait and Persian zero-leak checks pass, and the full suite is 395/395.
+> portrait and Persian zero-leak checks pass, and the full suite is 396/396.
 
 > **Post-scrub browser spot check — 2026-09-20:** The rebuilt Works route
 > rendered the review-only empty state rather than snippets, and the known
@@ -284,7 +284,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
   - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
-- **Quality Checks**: Static analysis (0 issues), the current local regression suite (395/395 tests passing at 82.19% line coverage), and browser coverage across navigation, persistence, quiz, flashcards, Persian RTL, dark mode, and real pointer actions.
+- **Quality Checks**: Static analysis (0 issues), the current local regression suite (396/396 tests passing at 82.19% line coverage), and browser coverage across navigation, persistence, quiz, flashcards, Persian RTL, dark mode, and real pointer actions.
 
 ---
 
@@ -381,7 +381,7 @@ Marked **UNVERIFIED**. Due to the absence of the user friend phone model, Androi
 
 1. `dart format --output=none --set-exit-if-changed lib test tool/validate_literature_json.dart tool/validate_literary_content.dart`: **PASS** (0 files changed).
 2. `flutter analyze`: **PASS** (No issues found).
-3. `flutter test --coverage`: **PASS** (395 tests passing in the current worktree; historical published-commit counts below are retained only as dated evidence).
+3. `flutter test --coverage`: **PASS** (396 tests passing in the current worktree; historical published-commit counts below are retained only as dated evidence).
 4. Current source `flutter build apk --release --target-platform android-arm64`: **EXPECTED FAIL-CLOSED** without signing secrets (`Release signing config missing`). No unsigned release artifact is produced.
 5. Current source `flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run`: **PASS**.
 6. Current source `bash tool/prepare_web_release.sh`: **PASS** (deterministic build cache generated and injected).

@@ -10,8 +10,8 @@ working tree is clean; the web-only Pages deployment is explicitly recorded
 below, while the source branch remains separately published for review.
 
 Fresh content-repair evidence (2026-09-22): the rebuilt web artifact uses
-cache ID `0311164dda2efc61437b`; the web-only Pages deployment is `gh-pages`
-commit `4c4b20c`; and the live app root and
+cache ID `75792ceb8692e786ace2`; the web-only Pages deployment is `gh-pages`
+commit `3020730`; and the live app root and
 `privacy.html` return HTTP 200.
 The live browser sweep covers 8 viewports and 209 route/mode visits with zero
 errors, overflows, console errors, page errors, or request failures. Android
@@ -132,7 +132,7 @@ author-reference and rights-consistency validation; it is not shipped data.
 
 The latest local checks on this worktree report:
 
-- `flutter test --no-pub --coverage --reporter compact`: **395/395 passed**
+- `flutter test --no-pub --coverage --reporter compact`: **396/396 passed**
 - Coverage: **7,736/9,412 lines (82.19%)**
 - `python3 tool/check_coverage.py coverage/lcov.info --minimum 80`: **pass**;
   the CI gate enforces the documented 80% minimum.
@@ -205,9 +205,9 @@ The latest local checks on this worktree report:
   Play identity.
 - Fresh current-data AAB evidence (2026-09-22): QA certificate SHA-256
   `e6c4a6a69ad368c6cea3e485f25de825b5d2437f6c4ef33dd10cc7a567b82c9d`, AAB
-  SHA-256 `ba25488a612800add6beea4b16af304e2196b0ac553afa00ab99c5a788b98823`,
-  size 59,676,619 bytes, and source/embedded `works.json` SHA-256 match
-  (`c7bc8b4227c124ee80fa910c3fb36b16dd468e849920025177fe2da0199d6ce4`).
+  SHA-256 `2b96592226b8824a2722f791c71c6a34e428e036d45495a835d820d21043be80`,
+  size 59,676,653 bytes, and source/embedded `works.json` SHA-256 match
+  (`05952593836eb3a8c52982281f29dd4b721f7f01bb4a63c729fd462cc37aa06b`).
   Mapping SHA-256 is `e88f938cedcbefc5e0a1a6a4d479a158d5d1764fa525d124b128c7e736e8f1f2`;
   native-symbol SHA-256 is `d52af33b2d5414431bedd175daa9d9b5a1b2f473579088daaed85053a1ef993e`;
   3 Dart-symbol and 6 native-symbol files were retained. This is a diagnostic QA
