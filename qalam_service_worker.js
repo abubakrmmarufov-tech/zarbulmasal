@@ -7,7 +7,7 @@ const CACHE_NAMESPACE = 'zarbulmasal-offline:';
 const LEGACY_CACHE_NAMESPACE = 'zarbulmasal-offline-v1:';
 const WORKER_URL = new URL(self.location.href);
 const BUILD_ID = WORKER_URL.searchParams.get('build') ||
-  '5caeffb339c8d3307b4d';
+  '40085c528d691481e826';
 const CANVASKIT_VARIANT = WORKER_URL.searchParams.get('variant') === 'chromium'
   ? 'chromium'
   : 'full';
