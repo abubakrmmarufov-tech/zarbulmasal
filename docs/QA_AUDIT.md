@@ -7,8 +7,8 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > **Current-state override — 2026-09-22:** The dated audit below is a historical
 > record from 2026-09-14 and is not current Play release signoff. The current
 > worktree is branch `provenance-repair-2026-09-19` at audited source checkpoint
-> `49f54cf` with 396 tests
-> passing and 82.19% line coverage (7,736/9,412 lines), clean analysis, strict Gradle dependency
+> `8b6b8dc` with 397 tests
+> passing and 82.23% line coverage (7,746/9,420 lines), clean analysis, strict Gradle dependency
 > verification with valid metadata and a successful offline `assembleDebug`, and passing
 > CI-equivalent web and browser audits. The CI web job now repeats the prepared-release
 > Chromium audit with pinned Playwright 1.62.0 before publication, and the Pages publish
@@ -84,7 +84,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > A source-controlled privacy policy is now included in `web/privacy.html`,
 > copied into the local release web artifact, and reflected in the in-app
 > disclosure. The current web-only Pages deployment (`gh-pages` commit
-> `3020730`) returns HTTP 200 for both the app root and privacy-policy URL, and
+> `af0a7c8`) returns HTTP 200 for both the app root and privacy-policy URL, and
 > the live browser sweep passes. Android download publication remains withheld
 > until signing.
 > No production signing keystore is available. A fresh local release-mode AAB
@@ -192,7 +192,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > The portrait fallback accessibility label is now localized through the
 > Tajik/Persian translation maps; failed source-backed assets now switch to
 > unavailable semantics instead of retaining a false citation, the focused
-> portrait and Persian zero-leak checks pass, and the full suite is 396/396.
+> portrait and Persian zero-leak checks pass, and the full suite is 397/397.
 
 > **Post-scrub browser spot check — 2026-09-20:** The rebuilt Works route
 > rendered the review-only empty state rather than snippets, and the known
@@ -284,7 +284,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
   - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
-- **Quality Checks**: Static analysis (0 issues), the current local regression suite (396/396 tests passing at 82.19% line coverage), and browser coverage across navigation, persistence, quiz, flashcards, Persian RTL, dark mode, and real pointer actions.
+- **Quality Checks**: Static analysis (0 issues), the current local regression suite (397/397 tests passing at 82.23% line coverage), and browser coverage across navigation, persistence, quiz, flashcards, Persian RTL, dark mode, and real pointer actions.
 
 ---
 
