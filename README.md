@@ -115,9 +115,12 @@ bash tool/verify_android_release_artifacts.sh build/app/outputs/bundle/release/a
 python3 tool/deep_browser_audit.py https://abubakrmmarufov-tech.github.io/zarbulmasal/
 ```
 
-The regression suite currently covers 392 automated tests across all routes, 8 viewports (from 320px ultra-compact phones to tablet and desktop), both writing systems (Cyrillic and Persian Arabic RTL), large text, dark mode, filtering, parallel script reading, clipboard behavior, favorites, persisted preferences, quizzes, flashcards, and empty states. `tool/deep_browser_audit.py` validates viewport overflow, console errors, page exceptions, failed requests, and route diagnostics across all major destinations, and exits nonzero on a real browser failure.
+The regression suite currently covers 393 automated tests across all routes, 8 viewports (from 320px ultra-compact phones to tablet and desktop), both writing systems (Cyrillic and Persian Arabic RTL), large text, dark mode, filtering, parallel script reading, clipboard behavior, favorites, persisted preferences, quizzes, flashcards, and empty states. `tool/deep_browser_audit.py` validates viewport overflow, console errors, page exceptions, failed requests, and route diagnostics across all major destinations, and exits nonzero on a real browser failure.
 
 ## Android release (currently withheld)
+
+See [`docs/RELEASE_RUNBOOK.md`](docs/RELEASE_RUNBOOK.md) for the protected
+release, rollback, and incident-evidence procedure.
 
 Direct-download APKs for Android devices (Android 7.0+) are staged by the
 release workflow in the [Android Downloads Portal](https://abubakrmmarufov-tech.github.io/zarbulmasal/android/)
