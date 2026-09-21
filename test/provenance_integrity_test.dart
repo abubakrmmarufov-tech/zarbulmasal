@@ -147,6 +147,42 @@ void main() {
       expect(work['variantNotes'], contains('Complete 8-line ghazal witness'));
     });
 
+    test('Firdausi and Kamol couplets retain verified second witnesses', () {
+      final expected = {
+        'c03e8139-0ed8-4167-9ded-212ba3c7c564': {
+          'page': 46,
+          'image':
+              'assets/data/literature/page_images/firdavsi_pandu_maorif_2025_p46.png',
+          'match': 'minor-variant',
+        },
+        '385117c7-814a-480e-8959-5dd84b006a81': {
+          'page': 272,
+          'image':
+              'assets/data/literature/page_images/kamol_maorif_2025_p272.png',
+          'match': 'exact',
+        },
+      };
+
+      for (final entry in expected.entries) {
+        final work = works.cast<Map<String, dynamic>>().firstWhere(
+          (item) => item['id'] == entry.key,
+        );
+        final secondary = work['secondarySource'] as Map<String, dynamic>;
+
+        expect(secondary['pageStart'], entry.value['page']);
+        expect(secondary['pageEnd'], entry.value['page']);
+        expect(secondary['sourceImageVerified'], isTrue);
+        expect(secondary['sourceImagePath'], entry.value['image']);
+        expect(File(entry.value['image']! as String).existsSync(), isTrue);
+        expect(secondary['sourceReference'], contains('maorif.tj'));
+        expect(work['textMatchResult'], entry.value['match']);
+        expect(
+          (work['rights'] as Map<String, dynamic>)['fullTextAllowed'],
+          isFalse,
+        );
+      }
+    });
+
     test('Rudaki textbook witnesses are exactly collated', () {
       final work = works.cast<Map<String, dynamic>>().firstWhere(
         (item) => item['id'] == '7673c21c-eabd-4f67-954c-99af1028a7a7',
@@ -257,8 +293,6 @@ void main() {
         'd8035663-2d5c-46f7-bc9a-c20a98beb7b6',
         'f9f475b2-5a47-4128-8c13-16d828359c3f',
         'fd2474e2-427e-4c38-8a72-4fe9b3581779',
-        'c03e8139-0ed8-4167-9ded-212ba3c7c564',
-        '385117c7-814a-480e-8959-5dd84b006a81',
       };
 
       final actualUnresolvedIds = works

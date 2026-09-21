@@ -27,6 +27,8 @@ release-content approval.
 | 16 | **Мавҷи бародарӣ** (`qanoat_mavji_barodari_grade6_2014_p150_151`) | Синфи 6, с. 150–151; шоҳиди дуюм: Ministry-hosted синфи 6, с. 150–151 (2022), exact; occurrence: синфи 11, с. 278 | `unknown` | [`p150.png`](assets/data/literature/page_images/qanoat_mavj_grade6_2014_p150.png), [`p151.png`](assets/data/literature/page_images/qanoat_mavj_grade6_2014_p151.png), [`2022 p150.png`](assets/data/literature/page_images/qanoat_mavj_maorif_2024_p150.png), [`2022 p151.png`](assets/data/literature/page_images/qanoat_mavj_maorif_2024_p151.png), [`grade11_p278.png`](assets/data/literature/page_images/qanoat_mavj_grade11_2018_p278.png) | review evidence only |
 | 17 | **Имрӯз бикун чу метавонӣ коре** (`dce12ea8-57c0-4c8e-a45e-cab1bd215437`) | Синфи 5, с. 62; шоҳиди дуюм: синфи 8, с. 142 | `unknown` | [`ibn_sina_imruz_bikun_grade5_2017_p62.png`](assets/data/literature/page_images/ibn_sina_imruz_bikun_grade5_2017_p62.png); [`ibn_sina_imruz_bikun_grade8_2026_p142.png`](assets/data/literature/page_images/ibn_sina_imruz_bikun_grade8_2026_p142.png) | 4 |
 | 18 | **Мурғи беболупаре дидам, дилам ...** (`d232629e-c77a-4a33-9584-9fc2d25b6dfa`) | Синфи 10, с. 74; шоҳиди дуюм: синфи 7, с. 161, minor orthographic variant | `unknown` | [`sayyido_grade10_p74.png`](assets/data/literature/page_images/sayyido_grade10_p74.png); [`sayyido_grade7_p161.png`](assets/data/literature/page_images/sayyido_grade7_p161.png) | 9 |
+| 19 | **Агар ду бародар ниҳад пушт- пу...** (`c03e8139-0ed8-4167-9ded-212ba3c7c564`) | Синфи 7, с. 47; шоҳиди дуюм: Ministry-hosted синфи 7, с. 46, minor typographic variant | `unknown` | [`firdavsi_grade7_p47.png`](assets/data/literature/page_images/firdavsi_grade7_p47.png); [`firdavsi_pandu_maorif_2025_p46.png`](assets/data/literature/page_images/firdavsi_pandu_maorif_2025_p46.png) | 2 |
+| 20 | **Камол, аз Каъба рафтӣ бар дари...** (`385117c7-814a-480e-8959-5dd84b006a81`) | Синфи 7, с. 125; шоҳиди дуюм: Ministry-hosted синфи 7, с. 272, exact | `unknown` | [`kamol_grade7_p125.png`](assets/data/literature/page_images/kamol_grade7_p125.png); [`kamol_maorif_2025_p272.png`](assets/data/literature/page_images/kamol_maorif_2025_p272.png) | 2 |
 
 ---
 ## Source-link correction — Kamoli Khujandi, printed page 106
@@ -47,19 +49,18 @@ unknown rights and no distributed full text or page image.
 
 ## Negative/positive second-witness search — 2026-09-22
 
-The current validator reports 31 primary-page-checked records, 23 completed
-secondary-witness collations, and 8 checked records that still lack a
+The current validator reports 31 primary-page-checked records, 25 completed
+secondary-witness collations, and 6 checked records that still lack a
 `secondarySource`. The held curriculum PDFs and reviewed official `maorif.tj`
 editions were re-scanned using title and phrase matching. Apparent matches were
 kept only as source occurrences when they were partial, contextual, or
 question-bank mentions; none of those were promoted to a complete witness.
 
-The eight remaining records are: Khayyam’s «Ман бода хурам, валек мастӣ
+The six remaining records are: Khayyam’s «Ман бода хурам, валек мастӣ
 накунам», «Майлам ба шароби ноб бошад доим...» and «Асрори азалро на ту
 донию на ман...»; Lo(iq) Sherali’s «Қасидаи модар»; Hiloli’s «Сад ҷон фидои
-дӯст»; Ahmadi Jami’s «Ҳеч нест»; Firdausi’s «Агар ду бародар ниҳад
-пушт-пушт...»; and Kamol’s «Камол, аз Каъба рафтӣ бар дари...». No complete admissible second witness
-was found for these records, so no source, page, image, or attribution was
+дӯст»; and Ahmadi Jami’s «Ҳеч нест». No complete admissible second witness
+was found for these six records, so no source, page, image, or attribution was
 invented. The records remain review-only with full text withheld.
 
 The follow-up phrase sweep also rejected several tempting false matches: the
@@ -75,13 +76,15 @@ dump has no independently traceable book/edition witness, it remains an
 unlinked extraction lead and is not admitted as a `secondarySource` or a
 verified `sourceOccurrence`.
 
-A fresh exact-title search of the official Ministry library also did not produce
-an admissible second witness for the remaining records: the only relevant
-result for «Қасидаи модар» was a question-bank reference identifying the title,
-not the poem text or a separate page witness
-(`https://maorif.tj/storage/libraries/01J3F02T45W6EQD3B5FPGGTTXJ.pdf`); the
-other exact-title searches returned no result. This evidence does not change
-the review-only status.
+A fresh exact-title search of the official Ministry library supplied two
+admissible image-backed witnesses in the 2025 Grade 7 edition: Firdausi’s
+two-line maxim on printed p. 46 and Kamol’s two-line couplet on printed p. 272.
+Both were visually inspected and line-collated against their uploaded Grade 7
+2018 pages. The remaining six records still had no complete admissible second
+witness; the relevant result for «Қасидаи модар» remains only a question-bank
+reference identifying the title, not the poem text or a separate page witness
+(`https://maorif.tj/storage/libraries/01J3F02T45W6EQD3B5FPGGTTXJ.pdf`). This
+evidence does not change the review-only status.
 
 The completed official collations include Hafez’s 16-line ghazal (Grade 9,
 p. 173, 2023; exact), Qanoat’s «Мавҷ дар саҳро» (Grade 6, p. 148, 2022;
@@ -112,15 +115,18 @@ complete Ministry Grade 5 2025 witness on printed page 56; visual comparison
 found the same 12-line sequence with a minor orthographic variation. The
 current Grade 7, 2025 Maorif edition also prints the complete eight-line
 Kamoli Khujandi ghazal on printed pages 102–103; visual comparison found an
-exact line-by-line match, and both local facsimiles are retained. Eight
-page-checked records still lack a `secondarySource`; the complete list is given
-above. Title-list mentions and explanatory excerpts remain insufficient for
-those records. The Grade 11 2022
+exact line-by-line match, and both local facsimiles are retained. The same
+edition supplies the two-line Firdausi maxim on printed p. 46 and Kamol’s
+two-line couplet on printed p. 272; their image-backed secondary witnesses are
+now retained with a minor typographic variant and an exact collation,
+respectively. Six page-checked records still lack a `secondarySource`; the
+complete list is given above. Title-list mentions and explanatory excerpts
+remain insufficient for those records. The Grade 11 2022
 Maorif edition also records the Lo(iq) title and identifying couplet in a test
 question on printed p. 304; that page was visually inspected and retained as a
 `sourceOccurrences` citation with local page evidence, not as a complete
 secondary witness. The remaining phrase-level negative sweep found no complete
-distinct witness for the eight records listed above.
+distinct witness for the six records listed above.
 
 The official [Grade 7, 2025 edition](https://maorif.tj/storage/libraries/01KH604RAK569PDJBYDN82T6WE.pdf)
 was also visually inspected on 2026-09-21. It prints the complete Kamoli
@@ -436,35 +442,49 @@ witness.
 - **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the uploaded source record; page evidence alone does not authorize publication.)
 - **Тасвири шоҳиди дуюм:** `assets/data/literature/page_images/qanoat_mavj_maorif_2024_p150.png`, `assets/data/literature/page_images/qanoat_mavj_maorif_2024_p151.png`
 
-### 17. Далели корвони ашкам, оҳи сард... (`b95406e4-47f1-4287-8bd4-b4a88a7a6709`)
+### 17. Агар ду бародар ниҳад пушт- пу... (`c03e8139-0ed8-4167-9ded-212ba3c7c564`)
+- **Муаллиф (ID):** `a6dd1c54-753d-4a52-8e5b-5365b7908aa3`
+- **Сарчашмаи асосӣ:** Синфи 7, саҳифаи 47 (`adabiyot sinfi 7.pdf`)
+- **Шоҳиди дуюм:** «Адабиёти тоҷик», синфи 7, нашри шашум (Маориф, 2025), саҳифаи 46, Ministry PDF: `https://maorif.tj/storage/libraries/01KH604RAK569PDJBYDN82T6WE.pdf`; ду мисраъ ва пайдарпаии онҳо мувофиқанд. Тафовути хурд танҳо фосилаи типографӣ дар «пушт- пушт» / «пушт-пушт» аст.
+- **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the textbook evidence; page evidence alone does not authorize publication.)
+- **Тасвири саҳифа:** `assets/data/literature/page_images/firdavsi_grade7_p47.png`; `assets/data/literature/page_images/firdavsi_pandu_maorif_2025_p46.png`
+
+### 18. Камол, аз Каъба рафтӣ бар дари... (`385117c7-814a-480e-8959-5dd84b006a81`)
+- **Муаллиф (ID):** `kamol_khujandi`
+- **Сарчашмаи асосӣ:** Синфи 7, саҳифаи 125 (`adabiyot sinfi 7.pdf`)
+- **Шоҳиди дуюм:** «Адабиёти тоҷик», синфи 7, нашри шашум (Маориф, 2025), саҳифаи 272, Ministry PDF: `https://maorif.tj/storage/libraries/01KH604RAK569PDJBYDN82T6WE.pdf`; ду мисраъ ва пайдарпаии онҳо exact мебошанд.
+- **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the textbook evidence; page evidence alone does not authorize publication.)
+- **Тасвири саҳифа:** `assets/data/literature/page_images/kamol_grade7_p125.png`; `assets/data/literature/page_images/kamol_maorif_2025_p272.png`
+
+### 19. Далели корвони ашкам, оҳи сард... (`b95406e4-47f1-4287-8bd4-b4a88a7a6709`)
 - **Муаллиф (ID):** `455f0420-3834-48f0-86b9-7da673a2a684`
 - **Сарчашма:** Синфи 5, саҳифаи 167 (`adabiet sinfi 5.pdf`)
 - **Шоҳиди дуюм:** «Адабиёти тоҷик», Маориф, 2022, саҳифаи 146, Ministry PDF: `https://maorif.tj/storage/libraries/01J3F0Y279HFXYHRM4396KWW0C.pdf`; шаш мисраъ exact мебошанд.
 - **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the textbook evidence; page evidence alone does not authorize publication.)
 - **Тасвири саҳифа:** `assets/data/literature/page_images/b95406e4-47f1-4287-8bd4-b4a88a7a6709.png`; `assets/data/literature/page_images/bedil_daleli_maorif_2022_p146.png`
 
-### 18. Киштинишастагонем (`3772bd06-3459-4ee1-add5-c3244b889c1b`)
+### 20. Киштинишастагонем (`3772bd06-3459-4ee1-add5-c3244b889c1b`)
 - **Муаллиф (ID):** `d1abb54a-9804-4baf-b238-fd2203d7673e`
 - **Сарчашма:** Синфи 6, саҳифаи 98 (`adabiet sinfi 6.pdf`)
 - **Шоҳиди дуюм:** «Адабиёти тоҷик», нашри чорум, Маориф, 2022, саҳифаи 93, Ministry PDF: `https://maorif.tj/storage/libraries/01J3F1F8T37FBPNG27VF4N5P15.pdf`; ғазал exact collated шудааст.
 - **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the textbook evidence; page evidence alone does not authorize publication.)
 - **Тасвири саҳифа:** `assets/data/literature/page_images/hafez_grade6_p98.png`; `assets/data/literature/page_images/hafez_kishtinishastagonem_maorif_2022_p93.png`
 
-### 19. Яке Руму яке Юнон парастад, (`71f2cf41-17fc-409b-a953-16ec0dac8188`)
+### 21. Яке Руму яке Юнон парастад, (`71f2cf41-17fc-409b-a953-16ec0dac8188`)
 - **Муаллиф (ID):** `310a8288-d554-4b9c-9ad1-3273b1edce85`
 - **Сарчашма:** Синфи 11, саҳифаи 113 (`adabiyet sinfi 11.pdf`)
 - **Шоҳиди дуюм:** «Адабиёти тоҷик (давраи нав)», нашри шашум, Маориф, 2022, саҳифаи 113, Ministry PDF: `https://maorif.tj/storage/libraries/01J3F02T45W6EQD3B5FPGGTTXJ.pdf`; ду мисраи иқтибос exact мебошанд.
 - **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the textbook evidence; page evidence alone does not authorize publication.)
 - **Тасвири саҳифа:** `assets/data/literature/page_images/lahuti_grade11_p113.png`; `assets/data/literature/page_images/lahuti_yake_rumu_yunon_maorif_2022_p113.png`
 
-### 20. Шоири фарзонаро асру замон (`b262d381-d677-47f7-8074-12f7bf1267da`)
+### 22. Шоири фарзонаро асру замон (`b262d381-d677-47f7-8074-12f7bf1267da`)
 - **Муаллиф (ID):** `loiq_sherali`
 - **Сарчашма:** Синфи 11, саҳифаи 288 (`adabiyet sinfi 11.pdf`)
 - **Шоҳиди дуюм:** «Адабиёти тоҷик (давраи нав)», нашри ҳафтум, Маориф, 2025, саҳифаи 288, Ministry PDF: `https://maorif.tj/storage/libraries/01KH8MQHJJBRM70Q8FXHNNCGV5.pdf`; чор мисраъ exact мебошанд.
 - **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the textbook evidence; page evidence alone does not authorize publication.)
 - **Тасвири саҳифа:** `assets/data/literature/page_images/loiq_grade11_p288.png`; `assets/data/literature/page_images/loiq_shoiri_farzonaro_maorif_2025_p288.png`
 
-### 21. Мурғи беболупаре дидам, дилам ... (`d232629e-c77a-4a33-9584-9fc2d25b6dfa`)
+### 23. Мурғи беболупаре дидам, дилам ... (`d232629e-c77a-4a33-9584-9fc2d25b6dfa`)
 - **Муаллиф (ID):** `5633556b-df45-4cab-83dc-760016db1ef2`
 - **Сарчашмаи асосӣ:** Синфи 10, саҳифаи 74 (`adabiet sinfi 10.pdf`)
 - **Шоҳиди дуюм:** Синфи 7, саҳифаи 161 (`adabiyot sinfi 7.pdf`); ҳамаи 9 мисраъ ва пайдарпаии онҳо мувофиқанд. Фарқи хурди имлоӣ «Теғиноҳақхурда» / «Теғиноҳақхӯрда» сабт шудааст.

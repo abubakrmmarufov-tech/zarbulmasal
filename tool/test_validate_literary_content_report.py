@@ -17,7 +17,7 @@ class LiteraryContentReportTests(unittest.TestCase):
         )
 
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("PRIMARY CHECKED MISSING SECOND SOURCE: 8", result.stdout)
+        self.assertIn("PRIMARY CHECKED MISSING SECOND SOURCE: 6", result.stdout)
 
 
 if __name__ == "__main__":
