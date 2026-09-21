@@ -27,11 +27,17 @@ class LiteratureHubScreen extends ConsumerWidget {
     final oralCount = oralAsync.valueOrNull?.length ?? 0;
     final poetsAsync = ref.watch(literaryAuthorsProvider);
     final worksAsync = ref.watch(approvedWorksProvider);
+    final reviewWorksAsync = ref.watch(searchableLiteraryWorksProvider);
 
     final poetsCount =
         poetsAsync.valueOrNull?.where((poet) => poet.hasCanonicalName).length ??
         0;
     final worksCount = worksAsync.valueOrNull?.length ?? 0;
+    final reviewWorksCount =
+        reviewWorksAsync.valueOrNull
+            ?.where((work) => !work.isDisplayable)
+            .length ??
+        0;
     final formattedPoetsCount = AppTranslations.formatNumber(poetsCount, lang);
     final formattedWorksCount = AppTranslations.formatNumber(worksCount, lang);
     final formattedOralCount = AppTranslations.formatNumber(oralCount, lang);
@@ -193,6 +199,17 @@ class LiteratureHubScreen extends ConsumerWidget {
                                   'lit_hub_works_count',
                                   lang,
                                   [formattedWorksCount],
+                                )
+                              : reviewWorksCount > 0
+                              ? AppTranslations.translate(
+                                  'lit_hub_review_works_count',
+                                  lang,
+                                  [
+                                    AppTranslations.formatNumber(
+                                      reviewWorksCount,
+                                      lang,
+                                    ),
+                                  ],
                                 )
                               : AppTranslations.get(
                                   'lit_hub_works_under_review',
