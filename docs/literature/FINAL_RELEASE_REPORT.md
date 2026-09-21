@@ -209,9 +209,9 @@ The latest local checks on this worktree report:
   Play identity.
 - Fresh current-data AAB evidence (2026-09-22): QA certificate SHA-256
   `e6c4a6a69ad368c6cea3e485f25de825b5d2437f6c4ef33dd10cc7a567b82c9d`, AAB
-  SHA-256 `2b96592226b8824a2722f791c71c6a34e428e036d45495a835d820d21043be80`,
-  size 59,676,653 bytes, and source/embedded `works.json` SHA-256 match
-  (`05952593836eb3a8c52982281f29dd4b721f7f01bb4a63c729fd462cc37aa06b`).
+  SHA-256 `4d6c9c64c2ae3dd8bd206913777624b48ce454e78769ed3c16fad7c23dd7af13`,
+  size 63,332,434 bytes, and source/embedded `works.json` SHA-256 match
+  (`84832ddc565ab61a8ed37b4fd7d7e96a602ea27f95cd05516eb3519424d33a8d`).
   Mapping SHA-256 is `e88f938cedcbefc5e0a1a6a4d479a158d5d1764fa525d124b128c7e736e8f1f2`;
   native-symbol SHA-256 is `d52af33b2d5414431bedd175daa9d9b5a1b2f473579088daaed85053a1ef993e`;
   3 Dart-symbol and 6 native-symbol files were retained. This is a diagnostic QA
