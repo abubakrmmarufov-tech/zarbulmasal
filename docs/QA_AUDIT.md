@@ -89,10 +89,10 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > until signing.
 > No production signing keystore is available. A fresh local release-mode AAB
 > was built with a temporary QA certificate only; it is not a public release
-> artifact. The current QA AAB is 59,667,510 bytes with SHA-256
-> `ac07472a6b0a1682db9f326e0a417029587774fb0f2990e8588e90097b51055d`, and its
+> artifact. The current QA AAB is 59,676,404 bytes with SHA-256
+> `ba9faa26fc39089d515abad0fd1ea0a10d1b74d54002942e02f292174f876f51`, and its
 > temporary QA certificate SHA-256 is
-> `7516b01f844d53f5fac2374526a4c2990f45c242a9537cf8047de857c164efa0`.
+> `e6c4a6a69ad368c6cea3e485f25de825b5d2437f6c4ef33dd10cc7a567b82c9d`.
 > After normalizing the extracted certificate digest to lowercase,
 > the bundle verifier accepts the valid QA-signed AAB and the retained release
 > evidence verifier passes ZIP/JAR, package/version, 16 KB native ELF

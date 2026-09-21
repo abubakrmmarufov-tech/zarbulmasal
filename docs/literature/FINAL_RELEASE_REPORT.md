@@ -198,9 +198,9 @@ The latest local checks on this worktree report:
   AAB is not a publication artifact because its certificate is not the protected
   Play identity.
 - Fresh current-data AAB evidence (2026-09-22): QA certificate SHA-256
-  `7516b01f844d53f5fac2374526a4c2990f45c242a9537cf8047de857c164efa0`, AAB
-  SHA-256 `ac07472a6b0a1682db9f326e0a417029587774fb0f2990e8588e90097b51055d`,
-  size 59,667,510 bytes, and source/embedded `works.json` SHA-256 match
+  `e6c4a6a69ad368c6cea3e485f25de825b5d2437f6c4ef33dd10cc7a567b82c9d`, AAB
+  SHA-256 `ba9faa26fc39089d515abad0fd1ea0a10d1b74d54002942e02f292174f876f51`,
+  size 59,676,404 bytes, and source/embedded `works.json` SHA-256 match
   (`bc66eed47878a6cb06b5d4fb0f784ba50e7c7d206b3ceed442e0eace7bcaa6c3`).
   Mapping SHA-256 is `e88f938cedcbefc5e0a1a6a4d479a158d5d1764fa525d124b128c7e736e8f1f2`;
   native-symbol SHA-256 is `d52af33b2d5414431bedd175daa9d9b5a1b2f473579088daaed85053a1ef993e`;
