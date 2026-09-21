@@ -10,8 +10,8 @@ working tree is clean; the web-only Pages deployment is explicitly recorded
 below, while the source branch remains separately published for review.
 
 Fresh content-repair evidence (2026-09-22): the rebuilt web artifact uses
-cache ID `ae73b539cead9204089e`; the web-only Pages deployment is `gh-pages`
-commit `a195e4c`; and the live app root and
+cache ID `0311164dda2efc61437b`; the web-only Pages deployment is `gh-pages`
+commit `4c4b20c`; and the live app root and
 `privacy.html` return HTTP 200.
 The live browser sweep covers 8 viewports and 209 route/mode visits with zero
 errors, overflows, console errors, page errors, or request failures. Android
@@ -64,11 +64,11 @@ data; rights remain unknown, so all checked works stay withheld.
   and biography evidence.
 - Editorially approved works: 0
 - Primary-page-checked works: 31, all still rights-unknown and non-displayable
-- Secondary-witness collations: 23 (Sayyido p. 161 (minor spelling variant), Hafez, Tursunzoda, Bozor Sobir, Rabi’a Balkhi, Sadriddin Ayni (minor variant),
+- Secondary-witness collations: 25 (Sayyido p. 161 (minor spelling variant), Hafez, Tursunzoda, Bozor Sobir, Rabi’a Balkhi, Sadriddin Ayni (minor variant),
   Kamol Khujandi (two works, one current Maorif exact witness), Qanoat (three
   works, one minor variant), Rudaki (two works, one minor variant), Saadi, and
   two Ibn Sina works, plus exact Ministry-hosted witnesses for Bedil p. 146,
-  Hafez p. 93, Lоҳутӣ p. 113, and Loiq Sherali p. 288); 8 of the 31
+  Hafez p. 93, Lоҳутӣ p. 113, and Loiq Sherali p. 288); 6 of the 31
   page-checked works still lack a second witness
 - Provenance correction: the Grade 7 2025 pp. 102–103 witness is attached only
   to Kamol Khujandi’s «Дӯст медорад дилам ҷавру ҷафои дӯстро»; it was removed
@@ -95,7 +95,7 @@ data; rights remain unknown, so all checked works stay withheld.
   promoted to a secondary witness.
 - Quarantined `needsReview` works: 5,217
 - Current pending gaps: 5,217 records remain under review with line/script and
-  editorial gates incomplete; 8 of the 31 primary-page-checked records still
+  editorial gates incomplete; 6 of the 31 primary-page-checked records still
   lack a second witness, while **0 pending records lack a printed primary
   page**. All remain withheld from display.
 - Rejected false-positive or duplicate extraction records: 253 (classroom
@@ -128,8 +128,8 @@ author-reference and rights-consistency validation; it is not shipped data.
 
 The latest local checks on this worktree report:
 
-- `flutter test --no-pub --coverage --reporter compact`: **394/394 passed**
-- Coverage: **7,720/9,394 lines (82.18%)**
+- `flutter test --no-pub --coverage --reporter compact`: **395/395 passed**
+- Coverage: **7,736/9,412 lines (82.19%)**
 - `python3 tool/check_coverage.py coverage/lcov.info --minimum 80`: **pass**;
   the CI gate enforces the documented 80% minimum.
 - Accessibility regression: the Home and Explore search entries plus the
@@ -201,9 +201,9 @@ The latest local checks on this worktree report:
   Play identity.
 - Fresh current-data AAB evidence (2026-09-22): QA certificate SHA-256
   `e6c4a6a69ad368c6cea3e485f25de825b5d2437f6c4ef33dd10cc7a567b82c9d`, AAB
-  SHA-256 `ba9faa26fc39089d515abad0fd1ea0a10d1b74d54002942e02f292174f876f51`,
-  size 59,676,404 bytes, and source/embedded `works.json` SHA-256 match
-  (`bc66eed47878a6cb06b5d4fb0f784ba50e7c7d206b3ceed442e0eace7bcaa6c3`).
+  SHA-256 `ba25488a612800add6beea4b16af304e2196b0ac553afa00ab99c5a788b98823`,
+  size 59,676,619 bytes, and source/embedded `works.json` SHA-256 match
+  (`c7bc8b4227c124ee80fa910c3fb36b16dd468e849920025177fe2da0199d6ce4`).
   Mapping SHA-256 is `e88f938cedcbefc5e0a1a6a4d479a158d5d1764fa525d124b128c7e736e8f1f2`;
   native-symbol SHA-256 is `d52af33b2d5414431bedd175daa9d9b5a1b2f473579088daaed85053a1ef993e`;
   3 Dart-symbol and 6 native-symbol files were retained. This is a diagnostic QA
