@@ -8,14 +8,14 @@ Play-release signoff.**
 This is a current evidence snapshot, not a release sign-off. The repository
 working tree is clean; the web-only Pages deployment is explicitly recorded
 below, while the source branch remains separately published for review.
-The current local source checkpoint is `8b6b8dc`; the review branch
-`audit-publish-2026-09-22` includes that source at `78691f7`. Its workflow file remains at the
+The current local source checkpoint is `2313edd`; the review branch
+`audit-publish-2026-09-22` includes that source at `644051d`. Its workflow file remains at the
 previous published revision because the connected GitHub OAuth credential does
 not have the `workflow` scope.
 
 Fresh content-repair evidence (2026-09-22): the rebuilt web artifact uses
-cache ID `b4e5d7d2ba59b8f4038f`; the web-only Pages deployment is `gh-pages`
-commit `af0a7c8`; and the live app root and
+cache ID `537219cd1f6ef81793f6`; the web-only Pages deployment is `gh-pages`
+commit `d2ae804`; and the live app root and
 `privacy.html` return HTTP 200.
 The live browser sweep covers 8 viewports and 209 route/mode visits with zero
 errors, overflows, console errors, page errors, or request failures. Android
@@ -25,7 +25,7 @@ download publication remains withheld pending production signing.
 
 Current content-loop override (2026-09-22): the validator reports **31
 primary-page-checked works, 25 secondary-witness collations, 6 checked works
-without a second witness, 5,217 pending works, 253 rejected extraction/prose
+without a second witness, 5,215 pending works, 255 rejected extraction/prose
 or duplicate candidates, and 0 pending review records without a printed page**.
 The final three page gaps were verified against Grade 11 pages 290 and 298 and
 Grade 6 page 12, with the exact held-edition metadata recorded in `works.json`.
@@ -101,12 +101,12 @@ data; rights remain unknown, so all checked works stay withheld.
   Lo(iq)’s title and identifying couplet in a test question on printed p. 304;
   it is recorded as a source occurrence with inspected page evidence, not
   promoted to a secondary witness.
-- Quarantined `needsReview` works: 5,217
-- Current pending gaps: 5,217 records remain under review with line/script and
+- Quarantined `needsReview` works: 5,215
+- Current pending gaps: 5,215 records remain under review with line/script and
   editorial gates incomplete; 6 of the 31 primary-page-checked records still
   lack a second witness, while **0 pending records lack a printed primary
   page**. All remain withheld from display.
-- Rejected false-positive or duplicate extraction records: 253 (classroom
+- Rejected false-positive or duplicate extraction records: 255 (classroom
   questions, biographical/explanatory prose fragments, or duplicate candidates;
   retained in the audit ledger)
 - Duplicate canonical work records: 0; 31 duplicate extraction records were

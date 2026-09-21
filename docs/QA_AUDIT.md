@@ -7,7 +7,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > **Current-state override — 2026-09-22:** The dated audit below is a historical
 > record from 2026-09-14 and is not current Play release signoff. The current
 > worktree is branch `provenance-repair-2026-09-19` at audited source checkpoint
-> `8b6b8dc` with 397 tests
+> `2313edd` with 397 tests
 > passing and 82.23% line coverage (7,746/9,420 lines), clean analysis, strict Gradle dependency
 > verification with valid metadata and a successful offline `assembleDebug`, and passing
 > CI-equivalent web and browser audits. The CI web job now repeats the prepared-release
@@ -21,7 +21,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > The latest content loop (2026-09-22) visually checked additional uploaded-book
 > witnesses and corrected several extracted titles/attributions: the validator now
 > reports **31 primary-page-checked works, 25 secondary-witness collations, 6
-> primary-checked works without a second witness, 5,217 pending works, 253
+> primary-checked works without a second witness, 5,215 pending works, 255
 > explicit rejects, and 0 pending review records without a printed page**. The
 > final three page gaps were verified against the Grade 11 pages 290 and 298 and
 > Grade 6 page 12 witnesses. New page
@@ -84,7 +84,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > A source-controlled privacy policy is now included in `web/privacy.html`,
 > copied into the local release web artifact, and reflected in the in-app
 > disclosure. The current web-only Pages deployment (`gh-pages` commit
-> `af0a7c8`) returns HTTP 200 for both the app root and privacy-policy URL, and
+> `d2ae804`) returns HTTP 200 for both the app root and privacy-policy URL, and
 > the live browser sweep passes. Android download publication remains withheld
 > until signing.
 > No production signing keystore is available. A fresh local release-mode AAB
@@ -110,13 +110,13 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > builds and archives the signed AAB only when the real production secrets are
 > present. The current worktree contains
 > 159 catalogued author records (145 public; 6 rejected extraction/non-author artifacts; 8 pending review) and 5,501 works: 0 editorially approved, 31 primary-page-checked,
-> and 5,217 pending, with 253 high-confidence classroom/prose or duplicate
+> and 5,215 pending, with 255 high-confidence classroom/prose or duplicate
 > extraction false positives
 > now explicitly rejected; 6 of the 31 page-checked works still lack a second
 > witness. The current declared-source biography pass now covers 145 authors
 > (76 marked `SOURCE_BACKED` and 69 declared editorial summaries);
 > 14 unsupported biographies remain quarantined. The current source-backed biography pass covers 76 authors and the declared editorial-summary pass covers 69 more. The corrected Ibn Sina rubai now has an exact Grade 5 p. 62 / Grade 8
-> p. 142 collation. The pending validator metrics include 5,217 records still
+> p. 142 collation. The pending validator metrics include 5,215 records still
 > under review; 6 of the 31 primary-page-checked records lack a second witness,
 > and 0 pending records lack a printed primary page. All remain non-displayable.
 > Pending full text is withheld from the shipped runtime and none are
@@ -146,7 +146,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > records «Ошӯби ҷонӣ» at printed p. 106 with no unverified secondary witness.
 > Since that earlier override, 14 further textbook page proofs were added or
 > corrected: primary-checked works are now 31, rejected extraction/prose or
-> duplicate candidates are 253, pending works are 5,217, and pending review
+> duplicate candidates are 255, pending works are 5,215, and pending review
 > records without a printed page are 0. Four exact official second witnesses
 > were added for Bedil (p. 146), Hafez (p. 93), Lоҳутӣ (p. 113), and Loiq (p. 288). One record previously linked to Bedil was
 > corrected to Tughrol after the source page explicitly named Tughrol; two
@@ -279,7 +279,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 
 A comprehensive, evidence-grounded quality assurance audit and end-to-end verification pass was conducted for **Зарбулмасал (Zarbulmasal)**.
 
-- **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage currently contains 159 catalogued author records and 5,501 imported textbook candidates: 31 primary-page-checked, 253 explicitly rejected, and 5,217 still quarantined pending provenance review.
+- **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage currently contains 159 catalogued author records and 5,501 imported textbook candidates: 31 primary-page-checked, 255 explicitly rejected, and 5,215 still quarantined pending provenance review.
 - **Platforms Verified**:
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
   - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
