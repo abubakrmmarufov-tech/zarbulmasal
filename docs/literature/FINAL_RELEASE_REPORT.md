@@ -20,11 +20,13 @@ download publication remains withheld pending production signing.
 ## Current source and content state
 
 Current content-loop override (2026-09-22): the validator reports **31
-primary-page-checked works, 23 secondary-witness collations, 8 checked works
+primary-page-checked works, 25 secondary-witness collations, 6 checked works
 without a second witness, 5,217 pending works, 253 rejected extraction/prose
 or duplicate candidates, and 0 pending review records without a printed page**.
 The final three page gaps were verified against Grade 11 pages 290 and 298 and
 Grade 6 page 12, with the exact held-edition metadata recorded in `works.json`.
+This loop also added image-backed Grade 7 2025 second witnesses for Firdausi
+(p. 46, minor typographic variant) and Kamol (p. 272, exact).
 New page proofs and attribution/title corrections are retained in the source
 data; rights remain unknown, so all checked works stay withheld.
 
@@ -142,7 +144,7 @@ The latest local checks on this worktree report:
 - `flutter analyze`: **no issues**
 - `dart run tool/validate_literature_json.dart`: **pass**
 - `dart run tool/validate_literary_content.dart`: **pass**
-- Literary validator report: **31 primary-checked; 8 still lack a second witness**, surfaced explicitly by the `PRIMARY CHECKED MISSING SECOND SOURCE` metric
+- Literary validator report: **31 primary-checked; 6 still lack a second witness**, surfaced explicitly by the `PRIMARY CHECKED MISSING SECOND SOURCE` metric
 - `python3 tool/provenance_linter.py`: **pass; 0 errors**
 - CI-equivalent Python literature/provenance/portrait/duplicate guards and
   release-shell syntax checks: **pass**; duplicate, portrait, and false-candidate

@@ -20,7 +20,7 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > against the live deployment; Android signing/device and content gates remain open below.
 > The latest content loop (2026-09-22) visually checked additional uploaded-book
 > witnesses and corrected several extracted titles/attributions: the validator now
-> reports **31 primary-page-checked works, 23 secondary-witness collations, 8
+> reports **31 primary-page-checked works, 25 secondary-witness collations, 6
 > primary-checked works without a second witness, 5,217 pending works, 253
 > explicit rejects, and 0 pending review records without a printed page**. The
 > final three page gaps were verified against the Grade 11 pages 290 and 298 and
@@ -112,12 +112,12 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > 159 catalogued author records (145 public; 6 rejected extraction/non-author artifacts; 8 pending review) and 5,501 works: 0 editorially approved, 31 primary-page-checked,
 > and 5,217 pending, with 253 high-confidence classroom/prose or duplicate
 > extraction false positives
-> now explicitly rejected; 8 of the 31 page-checked works still lack a second
+> now explicitly rejected; 6 of the 31 page-checked works still lack a second
 > witness. The current declared-source biography pass now covers 145 authors
 > (76 marked `SOURCE_BACKED` and 69 declared editorial summaries);
 > 14 unsupported biographies remain quarantined. The current source-backed biography pass covers 76 authors and the declared editorial-summary pass covers 69 more. The corrected Ibn Sina rubai now has an exact Grade 5 p. 62 / Grade 8
 > p. 142 collation. The pending validator metrics include 5,217 records still
-> under review; 8 of the 31 primary-page-checked records lack a second witness,
+> under review; 6 of the 31 primary-page-checked records lack a second witness,
 > and 0 pending records lack a printed primary page. All remain non-displayable.
 > Pending full text is withheld from the shipped runtime and none are
 > displayable. The runtime JSON now also contains zero full-text fields and
@@ -127,8 +127,8 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > the secret-gated signed AAB, signed-release upgrade check, and remaining
 > content review pass.
 
-> **Current content override — 2026-09-22:** The latest validator reports 23
-> secondary-witness collations and 8 primary-page-checked works still lacking
+> **Current content override — 2026-09-22:** The latest validator reports 25
+> secondary-witness collations and 6 primary-page-checked works still lacking
 > a second witness. Kamoli Khujandi’s «Дӯст медорад дилам ҷавру ҷафои дӯстро»
 > now has an exact current Maorif Grade 7 2025 second witness on pp. 102–103.
 > Rudaki’s «Бӯйи Ҷӯйи Мулиён» now has a complete Ministry
