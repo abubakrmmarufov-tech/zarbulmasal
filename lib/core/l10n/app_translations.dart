@@ -616,6 +616,7 @@ class AppTranslations {
         'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда (\${0} асар)',
     'lit_hub_works_under_review':
         'Ғазалҳо, қасидаҳо ва рубоиҳои дар ҳоли тасдиқ ва муқобала',
+    'lit_hub_review_works_count': 'Сабтҳои саҳифадори асар дар санҷиш: \${0}',
     'lit_hub_school_canon_count':
         'Осори шомил ба барномаи таълимии мактабҳо (\${0} асар)',
     'lit_hub_oral_count':
@@ -1435,6 +1436,7 @@ class AppTranslations {
     'lit_hub_works_count': 'غزل‌ها، قصیده‌ها و رباعی‌های تأییدشده (\${0} اثر)',
     'lit_hub_works_under_review':
         'غزل‌ها، قصیده‌ها و رباعی‌های در حال مقابله و تأیید',
+    'lit_hub_review_works_count': 'رکوردهای صفحه‌دار آثار در بررسی: \${0}',
     'lit_hub_school_canon_count':
         'آثار شامل بر برنامهٔ تعلیمی مکتب‌ها (\${0} اثر)',
     'lit_hub_oral_count':

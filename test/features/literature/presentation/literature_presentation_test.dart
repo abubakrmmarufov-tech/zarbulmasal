@@ -82,6 +82,38 @@ const testWorkRudaki = LiteraryWork(
   ),
 );
 
+const testReviewWork = LiteraryWork(
+  id: 'rudaki-review-record',
+  authorId: 'rudaki',
+  title: 'Сабти санҷишии Рӯдакӣ',
+  type: WorkType.poem,
+  primarySource: SourceEdition(
+    bookTitle: 'Адабиёти тоҷик',
+    authorAsPrinted: 'Маориф',
+    publisher: 'Маориф',
+    city: 'Душанбе',
+    year: '2026',
+    pageStart: 12,
+    pageEnd: 12,
+    sourceType: SourceEditionType.officialTextbook,
+    sourceReference: 'docs/literature/pdfs/adabiyet sinfi 9.pdf',
+    sourceImageVerified: true,
+    sourceImagePaths: [
+      'assets/data/literature/page_images/saadi_bani_adam_grade9_2026_p39.png',
+    ],
+  ),
+  rights: RightsRecord(
+    status: RightsStatus.unknown,
+    reasoning: 'Review fixture has no publication clearance.',
+    fullTextAllowed: false,
+    excerptAllowed: false,
+  ),
+  verification: VerificationRecord(
+    evidenceLevel: VerificationLevel.primaryChecked,
+    pageVerified: true,
+  ),
+);
+
 const testCanonEntry = SchoolCanonEntry(
   id: 'canon-rudaki-g5',
   workId: 'rudaki-boyi-juyi-muliyon',
@@ -201,6 +233,8 @@ Future<void> pumpTestApp(
   addTearDown(container.dispose);
   addTearDown(router.dispose);
 
+  await container.read(searchableLiteraryWorksProvider.future);
+
   await tester.pumpWidget(
     UncontrolledProviderScope(
       container: container,
@@ -244,6 +278,21 @@ void main() {
         expect(find.text('Барномаи мактабӣ'), findsOneWidget);
         expect(find.text('Мероси шифоҳӣ'), findsOneWidget);
         expect(find.text('Ҷустуҷӯ'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'LiteratureHubScreen reports page-cited works still under review',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature',
+          works: [testReviewWork],
+        );
+        expect(
+          find.text('Сабтҳои саҳифадори асар дар санҷиш: 1'),
+          findsOneWidget,
+        );
       },
     );
 
