@@ -10,6 +10,19 @@ from tool import provenance_linter
 
 
 class ProvenanceLinterSourceTest(unittest.TestCase):
+    def test_json_loader_rejects_duplicate_object_keys(self):
+        with tempfile.TemporaryDirectory() as directory:
+            duplicate_path = Path(directory) / "duplicate.json"
+            duplicate_path.write_text(
+                '{"id": "one", "id": "two"}', encoding="utf-8"
+            )
+
+            with self.assertRaises(provenance_linter.DuplicateJsonKeyError):
+                provenance_linter.load(duplicate_path)
+
+    def test_rejected_duplicate_canonical_records_are_quarantined(self):
+        self.assertEqual(provenance_linter.main(), 0)
+
     def test_uploaded_pdf_inventory_matches_active_source_records(self):
         inventory = Path('docs/literature/SOURCE_INVENTORY.md').read_text(
             encoding='utf-8'

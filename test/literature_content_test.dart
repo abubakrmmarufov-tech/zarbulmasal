@@ -516,6 +516,10 @@ void main() {
 
       final keys = <String>{};
       for (final work in works) {
+        if ((work['verification'] as Map<String, dynamic>?)?['evidenceLevel'] ==
+            'rejected') {
+          continue;
+        }
         final title = normalize(work['title']);
         if (title.isEmpty) continue;
         final key = [
@@ -1002,6 +1006,10 @@ void main() {
               'f9f475b2-5a47-4128-8c13-16d828359c3f',
           'poem_9ab32712-ce1d-4054-a7cc-163ca4a8f11f_28a16b52c71a8979':
               'fd2474e2-427e-4c38-8a72-4fe9b3581779',
+          'poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_a9179064e19a1450':
+              'c03e8139-0ed8-4167-9ded-212ba3c7c564',
+          'poem_5fc69b51-c38a-4427-a362-5c8a14bca835_def097ba98516b2e':
+              'f3088f90-d92d-4008-83a8-a1963f50a717',
         };
         for (final work in rejected) {
           final verification = work['verification'] as Map<String, dynamic>;

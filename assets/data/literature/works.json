@@ -816,10 +816,8 @@
   {
     "id": "b95406e4-47f1-4287-8bd4-b4a88a7a6709",
     "authorId": "455f0420-3834-48f0-86b9-7da673a2a684",
-    "title": "Далели корвони ашкам, оҳи сард...",
-    "authorId": "455f0420-3834-48f0-86b9-7da673a2a684",
-    "title": "Далели корвони ашкам, оҳи сард...",
-    "titlePersian": "دلیلی کاروانی اشکم، آهی سرد...",
+    "title": "Далели корвони ашкам, оҳи сардро монам",
+    "titlePersian": "دلیلی کاروانی اشکم، آهی سردرا مانم",
     "incipit": null,
     "type": "ghazal",
     "scriptSource": "tajikOnly",
@@ -972,8 +970,8 @@
   {
     "id": "6e9c4717-f918-4d78-8941-ea29ca182e15",
     "authorId": "5fc69b51-c38a-4427-a362-5c8a14bca835",
-    "title": "Гар як нафасат зи зиндагонӣ гу...",
-    "titlePersian": "گر یاک نـفست زی زیندگانی گو...",
+    "title": "Гар як нафасат зи зиндагонӣ гузарад",
+    "titlePersian": "گر یاک نـفست زی زیندگانی گوزرد",
     "incipit": null,
     "type": "rubai",
     "scriptSource": "tajikOnly",
@@ -1037,8 +1035,8 @@
   {
     "id": "f3088f90-d92d-4008-83a8-a1963f50a717",
     "authorId": "5fc69b51-c38a-4427-a362-5c8a14bca835",
-    "title": "Майлам ба шароби ноб бошад дои...",
-    "titlePersian": "میلم به شرابی ناب باشد دای...",
+    "title": "Майлам ба шароби ноб бошад доим",
+    "titlePersian": "میلم به شرابی ناب باشد دایم",
     "incipit": null,
     "type": "rubai",
     "scriptSource": "tajikOnly",
@@ -1085,8 +1083,8 @@
   {
     "id": "d8035663-2d5c-46f7-bc9a-c20a98beb7b6",
     "authorId": "5fc69b51-c38a-4427-a362-5c8a14bca835",
-    "title": "Асрори азалро на ту донию на м...",
-    "titlePersian": "اسراری ازلرا نه تو دانییو نه م...",
+    "title": "Асрори азалро на ту донию на ман",
+    "titlePersian": "اسراری ازلرا نه تو دانییو نه من",
     "incipit": null,
     "type": "rubai",
     "scriptSource": "tajikOnly",
@@ -2104,8 +2102,8 @@
   {
     "id": "6686a9e9-f77a-4b7a-9cc8-f9508bece0a8",
     "authorId": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
-    "title": "Баланд аст аз фалак маъвои Бед...",
-    "titlePersian": "بلند است از فلک معوای بید...",
+    "title": "Баланд аст аз фалак маъвои Бедил",
+    "titlePersian": "بلند است از فلک معوای بی‌دل",
     "incipit": null,
     "type": "ghazal",
     "scriptSource": "tajikOnly",
@@ -2211,8 +2209,6 @@
   },
   {
     "id": "71f2cf41-17fc-409b-a953-16ec0dac8188",
-    "authorId": "310a8288-d554-4b9c-9ad1-3273b1edce85",
-    "title": "Яке Руму яке Юнон парастад,",
     "authorId": "310a8288-d554-4b9c-9ad1-3273b1edce85",
     "title": "Яке Руму яке Юнон парастад,",
     "titlePersian": "یاکی رومو یاکی یونان پرستد،",
@@ -2619,8 +2615,6 @@
   },
   {
     "id": "b262d381-d677-47f7-8074-12f7bf1267da",
-    "authorId": "loiq_sherali",
-    "title": "Шоири фарзонаро асру замон",
     "authorId": "loiq_sherali",
     "title": "Шоири фарзонаро асру замон",
     "titlePersian": "شایری فرزانرا اسرو زمان",
@@ -3238,8 +3232,6 @@
   },
   {
     "id": "3772bd06-3459-4ee1-add5-c3244b889c1b",
-    "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
-    "title": "Киштинишастагонем",
     "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
     "title": "Киштинишастагонем",
     "titlePersian": "کشتی‌نشستگانیم",
@@ -3870,8 +3862,8 @@
   {
     "id": "ced6cb49-8ac9-4c15-a255-bc74cf50daa8",
     "authorId": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
-    "title": "Дар шеър се тан паямбаронанд, ...",
-    "titlePersian": "در شعر سی تن پیامبرانند، ...",
+    "title": "Дар шеър се тан паямбаронанд",
+    "titlePersian": "در شعر سی تن پیامبرانند",
     "incipit": null,
     "type": "poem",
     "scriptSource": "tajikOnly",
@@ -3935,8 +3927,8 @@
   {
     "id": "c03e8139-0ed8-4167-9ded-212ba3c7c564",
     "authorId": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
-    "title": "Агар ду бародар ниҳад пушт- пу...",
-    "titlePersian": "اگر دو برادر نیهد پوشت- پو...",
+    "title": "Агар ду бародар ниҳад пушт-пушт",
+    "titlePersian": "اگر دو برادر نیهد پوشت-پوشت",
     "incipit": null,
     "type": "epic",
     "scriptSource": "tajikOnly",
@@ -4043,8 +4035,8 @@
   {
     "id": "385117c7-814a-480e-8959-5dd84b006a81",
     "authorId": "kamol_khujandi",
-    "title": "Камол, аз Каъба рафтӣ бар дари...",
-    "titlePersian": "کمال، از کعبه رفتی بر دری...",
+    "title": "Камол, аз Каъба рафтӣ бар дари ёр",
+    "titlePersian": "کمال، از کعبه رفتی بر دری یار",
     "incipit": null,
     "type": "ghazal",
     "scriptSource": "tajikOnly",
@@ -4108,8 +4100,8 @@
   {
     "id": "d232629e-c77a-4a33-9584-9fc2d25b6dfa",
     "authorId": "5633556b-df45-4cab-83dc-760016db1ef2",
-    "title": "Мурғи беболупаре дидам, дилам ...",
-    "titlePersian": "مورغی بی‌بالوپری دیدم، دیلم ...",
+    "title": "Мурғи беболупаре дидам, дилам омад ба ёд",
+    "titlePersian": "مورغی بی‌بالوپری دیدم، دیلم آمد به یاد",
     "incipit": null,
     "type": "ghazal",
     "scriptSource": "tajikOnly",
@@ -78691,7 +78683,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 7, с. 30.",
+    "editorialNotes": "Duplicate extraction of canonical Firdausi work c03e8139-0ed8-4167-9ded-212ba3c7c564; the normalized title matches the page-checked Grade 7 p. 47 record. Kept quarantined as an audit record.",
     "primarySource": {
       "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 7",
       "authorAsPrinted": null,
@@ -78718,10 +78710,11 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
+      "evidenceLevel": "rejected",
+      "rejectionReason": "duplicate_canonical_work:c03e8139-0ed8-4167-9ded-212ba3c7c564",
       "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
+      "verificationMethod": "manualCanonicalDuplicateReview",
+      "verifiedAt": "2026-09-22",
       "evidenceHash": "a9179064e19a1450"
     },
     "persianScriptRepresentation": null,
@@ -134207,7 +134200,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 8, с. 201.",
+    "editorialNotes": "Duplicate extraction of canonical Khayyam work f3088f90-d92d-4008-83a8-a1963f50a717; the normalized title matches the page-checked Grade 8 p. 203 record. Kept quarantined as an audit record.",
     "primarySource": {
       "bookTitle": "Адабиёт: Китоби дарсӣ барои синфи 8",
       "authorAsPrinted": null,
@@ -134234,10 +134227,11 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
+      "evidenceLevel": "rejected",
+      "rejectionReason": "duplicate_canonical_work:f3088f90-d92d-4008-83a8-a1963f50a717",
       "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
+      "verificationMethod": "manualCanonicalDuplicateReview",
+      "verifiedAt": "2026-09-22",
       "evidenceHash": "def097ba98516b2e"
     },
     "persianScriptRepresentation": null,
