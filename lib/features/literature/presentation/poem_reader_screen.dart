@@ -11,6 +11,8 @@ import '../data/literature_providers.dart';
 import '../data/reader_preferences_provider.dart';
 import '../domain/domain.dart';
 import 'source_panel.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// A reader screen displaying a verified [LiteraryWork] with full provenance,
 /// script-aware typography, collation badge, and bottom action bar.
@@ -23,7 +25,6 @@ class PoemReaderScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
     final worksAsync = ref.watch(approvedWorksProvider);
     final allWorksAsync = ref.watch(literaryWorksProvider);
 
@@ -99,10 +100,18 @@ class PoemReaderScreen extends ConsumerWidget {
                   RecentActivity(
                     id: work.id,
                     type: RecentActivityType.work,
-                    title: isPersian && work.titlePersian != null
-                        ? work.titlePersian!
-                        : work.title,
+                    title: LiteraryWorkDisplayText.title(work, lang),
                     subtitle: AppTranslations.get('lit_genre_poem', lang),
+                    titleTajik: work.title,
+                    titlePersian: work.titlePersian,
+                    subtitleTajik: AppTranslations.get(
+                      'lit_genre_poem',
+                      DisplayLanguage.tajik,
+                    ),
+                    subtitlePersian: AppTranslations.get(
+                      'lit_genre_poem',
+                      DisplayLanguage.persian,
+                    ),
                     timestamp: DateTime.now(),
                     route: '/literature/work/${work.id}',
                   ),
@@ -186,28 +195,28 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
     final isFavorited = ref.watch(literaryFavoritesProvider).contains(work.id);
     final readerPrefs = ref.watch(readerPreferencesProvider);
 
-    final title =
-        (isPersian &&
-            work.titlePersian != null &&
-            work.titlePersian!.isNotEmpty)
-        ? work.titlePersian!
-        : work.title;
+    final title = LiteraryWorkDisplayText.title(work, lang);
 
-    final authorName = author != null
-        ? ((isPersian && author.canonicalNamePersian != null)
-              ? author.canonicalNamePersian!
-              : author.canonicalName)
-        : work.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      work.authorId,
+    );
 
     final hasGeneratedPersian =
         work.persianScriptSource == 'generated' && work.hasPersianDisplay;
+    const generatedNotePrefix =
+        'Mechanical Tajik Cyrillic to Persian-script representation;';
+    final editorialNotes =
+        work.editorialNotes?.startsWith(generatedNotePrefix) == true
+        ? null
+        : work.editorialNotes;
     final hasBothScripts = work.hasTajikText && work.hasPersianText;
-    final defaultMode =
-        (isPersian && (work.hasPersianText || hasGeneratedPersian))
-        ? ReaderScriptMode.persian
-        : (work.hasTajikText
-              ? ReaderScriptMode.tajik
-              : ReaderScriptMode.persian);
+    final defaultMode = _defaultScriptMode(
+      work: work,
+      prefersPersian: isPersian,
+      prefersParallel: readerPrefs.defaultReaderMode == 'parallel',
+    );
     final currentScriptMode = _userScriptMode ?? defaultMode;
 
     final hasVerifiedText =
@@ -215,9 +224,13 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
         ((currentScriptMode == ReaderScriptMode.tajik && work.hasTajikText) ||
             (currentScriptMode == ReaderScriptMode.persian &&
                 (work.hasPersianText || hasGeneratedPersian)) ||
-            (currentScriptMode == ReaderScriptMode.parallel &&
-                hasBothScripts) ||
-            (work.hasTajikText || work.hasPersianText));
+            (currentScriptMode == ReaderScriptMode.parallel && hasBothScripts));
+    final persianTextUnavailable =
+        isPersian &&
+        currentScriptMode == ReaderScriptMode.persian &&
+        work.hasTajikText &&
+        !work.hasPersianText &&
+        !hasGeneratedPersian;
 
     final readerFontSize = (22.0 + readerPrefs.fontSizeDelta).clamp(14.0, 36.0);
 
@@ -261,9 +274,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             ),
                           ),
                           QalamSourceBadge(
-                            isVerified:
-                                work.verification.evidenceLevel ==
-                                VerificationLevel.editoriallyApproved,
+                            isVerified: work.isDisplayable,
                             label: AppTranslations.get('lit_verified', lang),
                           ),
                           if (work.isPageImageDisplayable)
@@ -352,9 +363,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                       ),
                       if (author != null &&
                           author.hasAuditableBiographySource &&
-                          (author.lifespan.isNotEmpty ||
-                              author.birthDateExact != null ||
-                              author.deathDateExact != null)) ...[
+                          LiteraryAuthorDisplayText.lifespan(
+                            author,
+                            lang,
+                          ).isNotEmpty) ...[
                         const SizedBox(height: 6),
                         Row(
                           children: [
@@ -366,26 +378,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             const SizedBox(width: 6),
                             Expanded(
                               child: Text(
-                                (author.birthDateExact != null ||
-                                        author.deathDateExact != null)
-                                    ? AppTranslations.get(
-                                        'lit_author_dates',
-                                        lang,
-                                        [
-                                          author.birthDateExact ??
-                                              author.birthYear ??
-                                              "—",
-                                          author.deathDateExact ??
-                                              author.deathYear ??
-                                              (isPersian
-                                                  ? "در قید حیات"
-                                                  : "дар ҳаёт"),
-                                        ],
-                                      )
-                                    : AppTranslations.formatDigits(
-                                        author.lifespan,
-                                        lang,
-                                      ),
+                                LiteraryAuthorDisplayText.lifespan(
+                                  author,
+                                  lang,
+                                ),
                                 style: QalamTypography.meta(
                                   color: colors.onSurfaceVariant,
                                   fontSize: 13,
@@ -405,7 +401,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           spacing: 8,
                           runSpacing: 8,
                           children: [
-                            if (work.hasAuditableCompositionEvidence &&
+                            if (!isPersian &&
+                                work.hasAuditableCompositionEvidence &&
                                 work.compositionDate != null &&
                                 work.compositionDate!.isNotEmpty)
                               Container(
@@ -451,7 +448,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                   ],
                                 ),
                               ),
-                            if (work.hasAuditableCompositionEvidence &&
+                            if (!isPersian &&
+                                work.hasAuditableCompositionEvidence &&
                                 work.compositionContext != null &&
                                 work.compositionContext!.isNotEmpty)
                               Container(
@@ -501,7 +499,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                       const SizedBox(height: 16),
 
                       // Script Switcher when both scripts exist
-                      if (hasBothScripts) ...[
+                      if (hasBothScripts ||
+                          (isPersian && work.hasTajikText)) ...[
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: SingleChildScrollView(
@@ -541,25 +540,27 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                   ),
                                 ),
                                 const SizedBox(width: 8),
-                                ChoiceChip(
-                                  avatar: const Icon(
-                                    Icons.compare_arrows,
-                                    size: 16,
-                                  ),
-                                  label: Text(
-                                    AppTranslations.get(
-                                      'lit_script_parallel',
-                                      lang,
+                                if (hasBothScripts) ...[
+                                  ChoiceChip(
+                                    avatar: const Icon(
+                                      Icons.compare_arrows,
+                                      size: 16,
+                                    ),
+                                    label: Text(
+                                      AppTranslations.get(
+                                        'lit_script_parallel',
+                                        lang,
+                                      ),
+                                    ),
+                                    selected:
+                                        currentScriptMode ==
+                                        ReaderScriptMode.parallel,
+                                    onSelected: (_) => setState(
+                                      () => _userScriptMode =
+                                          ReaderScriptMode.parallel,
                                     ),
                                   ),
-                                  selected:
-                                      currentScriptMode ==
-                                      ReaderScriptMode.parallel,
-                                  onSelected: (_) => setState(
-                                    () => _userScriptMode =
-                                        ReaderScriptMode.parallel,
-                                  ),
-                                ),
+                                ],
                               ],
                             ),
                           ),
@@ -663,7 +664,9 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                   Expanded(
                                     child: Text(
                                       AppTranslations.get(
-                                        'lit_editorial_review_pending',
+                                        persianTextUnavailable
+                                            ? 'lit_persian_text_unavailable_title'
+                                            : 'lit_editorial_review_pending',
                                         lang,
                                       ),
                                       style: QalamTypography.sectionTitle(
@@ -677,7 +680,9 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               const SizedBox(height: 12),
                               Text(
                                 AppTranslations.get(
-                                  'lit_editorial_policy_notice',
+                                  persianTextUnavailable
+                                      ? 'lit_persian_text_unavailable'
+                                      : 'lit_editorial_policy_notice',
                                   lang,
                                 ),
                                 style: QalamTypography.bodySecondary(
@@ -685,7 +690,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                   fontSize: 14,
                                 ),
                               ),
-                              if (work.incipit != null &&
+                              if (currentScriptMode == ReaderScriptMode.tajik &&
+                                  work.incipit != null &&
                                   work.incipit!.isNotEmpty) ...[
                                 const SizedBox(height: 16),
                                 Text(
@@ -713,8 +719,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           ),
                         ),
                       ],
-                      if (work.editorialNotes != null &&
-                          work.editorialNotes!.isNotEmpty) ...[
+                      if (editorialNotes != null &&
+                          editorialNotes.isNotEmpty) ...[
                         const SizedBox(height: 28),
                         Container(
                           padding: const EdgeInsets.all(14),
@@ -742,7 +748,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                work.editorialNotes!,
+                                editorialNotes,
                                 style: QalamTypography.bodySecondary(
                                   color: colors.onSurfaceVariant,
                                   fontSize: 13,
@@ -903,6 +909,26 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
         ),
       ],
     );
+  }
+
+  ReaderScriptMode _defaultScriptMode({
+    required LiteraryWork work,
+    required bool prefersPersian,
+    required bool prefersParallel,
+  }) {
+    if (prefersPersian) {
+      if (prefersParallel && work.hasTajikText && work.hasPersianText) {
+        return ReaderScriptMode.parallel;
+      }
+      // Keep the Persian interface honest: a Tajik-only poem starts in the
+      // explicit unavailable state until the reader opts into the original.
+      return ReaderScriptMode.persian;
+    }
+    if (prefersParallel && work.hasTajikText && work.hasPersianText) {
+      return ReaderScriptMode.parallel;
+    }
+    if (work.hasTajikText) return ReaderScriptMode.tajik;
+    return ReaderScriptMode.persian;
   }
 
   Widget _buildParallelVerses(

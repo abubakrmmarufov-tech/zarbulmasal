@@ -6,6 +6,8 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_work.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// The central landing hub for the "Мероси адабӣ" (Literary Heritage) feature.
 ///
@@ -389,17 +391,16 @@ class _DailyVerseCard extends ConsumerWidget {
 
     final authorAsync = ref.watch(authorByIdProvider(work!.authorId));
     final author = authorAsync.valueOrNull;
-    final authorName = author != null
-        ? ((isPersian && author.canonicalNamePersian != null)
-              ? author.canonicalNamePersian!
-              : author.canonicalName)
-        : work!.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      work!.authorId,
+    );
 
-    final verseText = (work!.incipit != null && work!.incipit!.isNotEmpty)
-        ? '«${work!.incipit}»'
-        : (isPersian && work!.titlePersian != null
-              ? work!.titlePersian!
-              : work!.title);
+    final verseIncipit = LiteraryWorkDisplayText.incipit(work!, lang);
+    final verseText = verseIncipit == null
+        ? LiteraryWorkDisplayText.title(work!, lang)
+        : '«$verseIncipit»';
 
     return Material(
       color: bg,
@@ -527,17 +528,15 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
               final work = featured[index];
               final authorAsync = ref.watch(authorByIdProvider(work.authorId));
               final author = authorAsync.valueOrNull;
-              final authorName = author != null
-                  ? ((isPersian && author.canonicalNamePersian != null)
-                        ? author.canonicalNamePersian!
-                        : author.canonicalName)
-                  : work.authorId;
+              final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+                author,
+                lang,
+                work.authorId,
+              );
 
-              final title = (isPersian && work.titlePersian != null)
-                  ? work.titlePersian!
-                  : work.title;
+              final title = LiteraryWorkDisplayText.title(work, lang);
 
-              final incipit = work.incipit ?? '';
+              final incipit = LiteraryWorkDisplayText.incipit(work, lang) ?? '';
 
               return SizedBox(
                 width: 260,

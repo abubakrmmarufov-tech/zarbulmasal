@@ -2,7 +2,14 @@
 
 This directory contains the data extraction and processing pipeline used to generate the Zarbulmasal Literary Heritage section.
 The pipeline reads Tajik school literature textbooks (Grades 5-11), extracts candidate poets and works, and merges them into the application's JSON assets.
-Extracted material is not publication evidence: generated records remain `needsReview` until editorial provenance, rights, and dual-witness collation are completed. Candidate records ship with no text body and no `incipit`; both remain in the review workspace until rights and editorial approval are recorded.
+Extracted material is not publication evidence: generated records remain
+`needsReview` until an editor checks an exact printed page. A single uploaded
+PDF in `docs/literature/pdfs/` or `pdf books/`, or an exact `maorif.tj` page,
+is sufficient for the source-attested publication path; a second witness is
+useful but is not required. Candidate records ship with no text body or
+`incipit` until that page check is recorded. This source-attested status
+describes provenance and permission under the project policy; it is not a
+general copyright or public-domain claim.
 
 ## Files
 - `discover_pdfs.py`: Scans `docs/literature/pdfs/`, synchronizes the source

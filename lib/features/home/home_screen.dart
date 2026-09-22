@@ -5,6 +5,7 @@ import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
+import '../../shared/widgets/recent_activity_display_text.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -16,6 +17,10 @@ class HomeScreen extends ConsumerWidget {
     final isPersian = lang == DisplayLanguage.persian;
     final daily = ref.watch(dailyProverbProvider);
     final recentActivities = ref.watch(recentActivityProvider);
+    final recentActivity = recentActivities.firstOrNull;
+    final recentActivitySubtitle = recentActivity == null
+        ? null
+        : RecentActivityDisplayText.subtitle(recentActivity, lang);
 
     String tr(String key) => AppTranslations.get(key, lang);
 
@@ -91,7 +96,7 @@ class HomeScreen extends ConsumerWidget {
             const SizedBox(height: 24),
 
             // Continue where you left off
-            if (recentActivities.isNotEmpty) ...[
+            if (recentActivity != null) ...[
               Text(
                 tr('home_continue_reading'),
                 style: QalamTypography.sectionTitle(color: colors.onSurface),
@@ -107,7 +112,7 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 ),
                 child: InkWell(
-                  onTap: () => context.push(recentActivities.first.route),
+                  onTap: () => context.push(recentActivity.route),
                   borderRadius: BorderRadius.circular(16),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -117,7 +122,7 @@ class HomeScreen extends ConsumerWidget {
                     child: Row(
                       children: [
                         Icon(
-                          _iconForActivity(recentActivities.first.type),
+                          _iconForActivity(recentActivity.type),
                           color: colors.onPrimaryContainer,
                           size: 26,
                         ),
@@ -127,7 +132,10 @@ class HomeScreen extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                recentActivities.first.title,
+                                RecentActivityDisplayText.title(
+                                  recentActivity,
+                                  lang,
+                                ),
                                 style: QalamTypography.body(
                                   color: colors.onPrimaryContainer,
                                   fontWeight: FontWeight.w600,
@@ -135,10 +143,10 @@ class HomeScreen extends ConsumerWidget {
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              if (recentActivities.first.subtitle != null) ...[
+                              if (recentActivitySubtitle != null) ...[
                                 const SizedBox(height: 4),
                                 Text(
-                                  recentActivities.first.subtitle!,
+                                  recentActivitySubtitle,
                                   style: QalamTypography.meta(
                                     color: colors.onPrimaryContainer.withValues(
                                       alpha: 0.8,

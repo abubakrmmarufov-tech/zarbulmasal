@@ -9,6 +9,8 @@ import '../data/literature_providers.dart';
 import '../data/literature_repository.dart';
 import '../domain/literary_author.dart';
 import '../domain/literary_work.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// A unified search screen querying across canonical authors and literary works.
 class LiteratureSearchScreen extends ConsumerStatefulWidget {
@@ -34,7 +36,6 @@ class _LiteratureSearchScreenState
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
 
     final authorsAsync = ref.watch(literaryAuthorsProvider);
     final worksAsync = ref.watch(searchableLiteraryWorksProvider);
@@ -96,7 +97,6 @@ class _LiteratureSearchScreenState
           : _query.isEmpty
           ? _buildEmptyPrompt(
               context,
-              isPersian,
               lang,
               authorsAsync.valueOrNull ?? const [],
             )
@@ -111,20 +111,19 @@ class _LiteratureSearchScreenState
 
   Widget _buildEmptyPrompt(
     BuildContext context,
-    bool isPersian,
     DisplayLanguage lang,
     List<LiteraryAuthor> authors,
   ) {
     final colors = Theme.of(context).colorScheme;
     final suggestions = authors
-        .where((author) => author.hasCanonicalName)
+        .where(
+          (author) =>
+              author.hasCanonicalName &&
+              (lang != DisplayLanguage.persian ||
+                  (author.canonicalNamePersian?.trim().isNotEmpty ?? false)),
+        )
         .take(6)
-        .map((author) {
-          if (isPersian && author.canonicalNamePersian != null) {
-            return author.canonicalNamePersian!;
-          }
-          return author.canonicalName;
-        })
+        .map((author) => LiteraryAuthorDisplayText.name(author, lang))
         .toList();
 
     return Padding(
@@ -225,19 +224,27 @@ class _LiteratureSearchScreenState
           ),
           for (final author in matchingAuthors)
             QalamPoetCard(
-              name: (isPersian && author.canonicalNamePersian != null)
-                  ? author.canonicalNamePersian!
-                  : author.canonicalName,
+              name: LiteraryAuthorDisplayText.name(author, lang),
               portrait: author.portrait,
               portraitUnavailableLabel: AppTranslations.get(
                 'lit_portrait_unavailable',
                 lang,
               ),
-              dates: author.hasAuditableBiographySource
-                  ? AppTranslations.formatDigits(author.lifespan, lang)
+              portraitCitationLabel: LiteraryAuthorDisplayText.portraitCitation(
+                author.portrait,
+                lang,
+              ),
+              dates:
+                  author.hasAuditableBiographySource &&
+                      LiteraryAuthorDisplayText.lifespan(
+                        author,
+                        lang,
+                      ).isNotEmpty
+                  ? LiteraryAuthorDisplayText.lifespan(author, lang)
                   : AppTranslations.get('lit_search_dates_pending', lang),
               exactDates:
-                  (author.hasAuditableBiographySource &&
+                  (!isPersian &&
+                      author.hasAuditableBiographySource &&
                       (author.birthDateExact != null ||
                           author.deathDateExact != null))
                   ? AppTranslations.translate('lit_author_dates', lang, [
@@ -253,7 +260,7 @@ class _LiteratureSearchScreenState
                       ),
                     ])
                   : null,
-              period: author.literaryPeriod,
+              period: LiteraryAuthorDisplayText.period(author, lang),
               isPublicDomain: author.isPublicDomain,
               onTap: () => context.push('/literature/poet/${author.id}'),
             ),
@@ -281,30 +288,28 @@ class _LiteratureSearchScreenState
                       color: colors.primary,
                     ),
               title: Text(
-                (isPersian && work.titlePersian != null)
-                    ? work.titlePersian!
-                    : work.title,
+                LiteraryWorkDisplayText.title(work, lang),
                 style: QalamTypography.sectionTitle(
                   color: colors.onSurface,
                   fontSize: 17,
                 ),
               ),
-              subtitle: work.isDisplayable
-                  ? (work.incipit != null
-                        ? Text(
-                            '«${work.incipit}»',
-                            style: QalamTypography.bodySecondary(
-                              color: colors.onSurfaceVariant,
-                              fontSize: 13,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          )
-                        : null)
-                  : Text(
+              subtitle: !work.isDisplayable
+                  ? Text(
                       AppTranslations.get('lit_poet_work_in_review_sub', lang),
                       style: QalamTypography.meta(color: colors.primary),
                       maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                  : LiteraryWorkDisplayText.incipit(work, lang) == null
+                  ? null
+                  : Text(
+                      '«${LiteraryWorkDisplayText.incipit(work, lang)}»',
+                      style: QalamTypography.bodySecondary(
+                        color: colors.onSurfaceVariant,
+                        fontSize: 13,
+                      ),
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
               trailing: const QalamChevron(size: 20),

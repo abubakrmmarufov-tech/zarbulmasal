@@ -10,7 +10,11 @@ import '../data/books_providers.dart';
 import '../domain/book_domain.dart';
 import '../../literature/data/literature_providers.dart';
 import '../../literature/domain/domain.dart';
+import '../../literature/presentation/literary_author_display_text.dart';
+import 'book_category_display_text.dart';
 import 'book_cover.dart';
+import 'book_display_text.dart';
+import 'book_source_metadata_disclosure.dart';
 
 class BookDetailScreen extends ConsumerWidget {
   final String bookId;
@@ -128,7 +132,7 @@ class _BookDetailBody extends ConsumerWidget {
                       book: book,
                       width: 116,
                       height: 170,
-                      placeholderTitle: book.titleFor(lang),
+                      placeholderTitle: BookDisplayText.title(book, lang),
                     ),
                     const SizedBox(width: 18),
                     Expanded(
@@ -136,7 +140,7 @@ class _BookDetailBody extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            book.titleFor(lang),
+                            BookDisplayText.title(book, lang),
                             style: QalamTypography.pageTitle(
                               color: colors.onSurface,
                               fontSize: 26,
@@ -144,7 +148,7 @@ class _BookDetailBody extends ConsumerWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            book.authorFor(lang) ??
+                            BookDisplayText.author(book, lang) ??
                                 AppTranslations.get(
                                   'books_author_unavailable',
                                   lang,
@@ -163,6 +167,18 @@ class _BookDetailBody extends ConsumerWidget {
                 ),
               ),
             ),
+            if (BookDisplayText.originalTitle(book, lang) != null ||
+                BookDisplayText.originalAuthor(book, lang) != null)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: BookSourceMetadataDisclosure(
+                    book: book,
+                    language: lang,
+                    compact: false,
+                  ),
+                ),
+              ),
             if (edition != null)
               SliverToBoxAdapter(
                 child: Padding(
@@ -177,19 +193,19 @@ class _BookDetailBody extends ConsumerWidget {
                   child: _MetadataGrid(edition: edition, lang: lang),
                 ),
               ),
-            if (book.descriptionFor(lang).trim().isNotEmpty)
+            if (BookDisplayText.description(book, lang).trim().isNotEmpty)
               SliverToBoxAdapter(
                 child: _Section(
                   title: AppTranslations.get('books_description', lang),
                   child: Text(
-                    book.descriptionFor(lang),
+                    BookDisplayText.description(book, lang),
                     style: QalamTypography.bodySecondary(
                       color: colors.onSurfaceVariant,
                     ),
                   ),
                 ),
               ),
-            if (book.authorFor(lang)?.trim().isNotEmpty == true)
+            if (BookDisplayText.author(book, lang)?.trim().isNotEmpty == true)
               SliverToBoxAdapter(
                 child: _Section(
                   title: AppTranslations.get(
@@ -201,7 +217,7 @@ class _BookDetailBody extends ConsumerWidget {
                   child: ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: Icon(Icons.person_outline, color: colors.primary),
-                    title: Text(book.authorFor(lang) ?? ''),
+                    title: Text(BookDisplayText.author(book, lang) ?? ''),
                     trailing: book.authorId == null
                         ? null
                         : const QalamChevron(size: 20),
@@ -219,14 +235,10 @@ class _BookDetailBody extends ConsumerWidget {
                   child: Column(
                     children: relatedPoets
                         .map((author) {
-                          final title =
-                              lang == DisplayLanguage.persian &&
-                                  (author.canonicalNamePersian
-                                          ?.trim()
-                                          .isNotEmpty ??
-                                      false)
-                              ? author.canonicalNamePersian!
-                              : author.canonicalName;
+                          final title = LiteraryAuthorDisplayText.name(
+                            author,
+                            lang,
+                          );
                           return ListTile(
                             contentPadding: EdgeInsets.zero,
                             leading: Icon(
@@ -252,7 +264,9 @@ class _BookDetailBody extends ConsumerWidget {
                   children: (edition?.categories ?? book.categoryIds)
                       .map(
                         (category) => Chip(
-                          label: Text(category),
+                          label: Text(
+                            BookCategoryDisplayText.label(category, lang),
+                          ),
                           visualDensity: VisualDensity.compact,
                         ),
                       )
@@ -271,12 +285,18 @@ class _BookDetailBody extends ConsumerWidget {
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      edition?.metadataNote ?? '',
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
+                    if (edition?.metadataNote.trim().isNotEmpty == true)
+                      Text(
+                        lang == DisplayLanguage.persian
+                            ? AppTranslations.get(
+                                'books_metadata_note_translation_pending',
+                                lang,
+                              )
+                            : edition!.metadataNote,
+                        style: QalamTypography.meta(
+                          color: colors.onSurfaceVariant,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -382,26 +402,45 @@ class _MetadataGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = <(String, String)>[
+    final items = <({String label, String value, TextDirection? direction})>[
       if (edition.publisher != null)
-        (AppTranslations.get('books_publisher', lang), edition.publisher!),
+        (
+          label: AppTranslations.get(
+            lang == DisplayLanguage.persian
+                ? 'books_original_publisher_tajik'
+                : 'books_publisher',
+            lang,
+          ),
+          value: edition.publisher!,
+          direction: lang == DisplayLanguage.persian ? TextDirection.ltr : null,
+        ),
       if (edition.publicationYear != null)
-        (AppTranslations.get('books_year', lang), edition.publicationYear!),
+        (
+          label: AppTranslations.get('books_year', lang),
+          value: AppTranslations.formatDigits(edition.publicationYear!, lang),
+          direction: null,
+        ),
       if (edition.pageCount != null)
         (
-          AppTranslations.get('books_pages', lang),
-          edition.pageCount.toString(),
+          label: AppTranslations.get('books_pages', lang),
+          value: AppTranslations.formatDigits(
+            edition.pageCount.toString(),
+            lang,
+          ),
+          direction: null,
         ),
       (
-        AppTranslations.get('books_language', lang),
-        _localizedBookLanguage(edition.language, lang),
+        label: AppTranslations.get('books_language', lang),
+        value: _localizedBookLanguage(edition.language, lang),
+        direction: null,
       ),
       if (edition.scripts.isNotEmpty)
         (
-          AppTranslations.get('books_script', lang),
-          edition.scripts
+          label: AppTranslations.get('books_script', lang),
+          value: edition.scripts
               .map((script) => _localizedBookScript(script, lang))
               .join(', '),
+          direction: null,
         ),
     ];
     return Wrap(
@@ -420,16 +459,17 @@ class _MetadataGrid extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    item.$1,
+                    item.label,
                     style: QalamTypography.meta(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    item.$2,
+                    item.value,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
+                    textDirection: item.direction,
                     style: QalamTypography.label(
                       color: Theme.of(context).colorScheme.onSurface,
                     ),

@@ -100,7 +100,17 @@ void main() {
           expect((poet['rights'] as Map?)?['status'], equals('unknown'));
         }
         for (final work in works) {
-          expect((work['rights'] as Map?)?['status'], equals('unknown'));
+          final rights = (work['rights'] as Map?) ?? const {};
+          expect({'unknown', 'sourceAttested'}, contains(rights['status']));
+          if (rights['status'] == 'sourceAttested') {
+            expect(rights['fullTextAllowed'], isTrue);
+            expect(work['textStatus'], 'verified');
+            expect((work['textTajik'] as String?)?.trim(), isNotEmpty);
+            expect(
+              (work['verification'] as Map?)?['evidenceLevel'],
+              'primaryChecked',
+            );
+          }
         }
       },
     );

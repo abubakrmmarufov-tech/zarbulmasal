@@ -4,20 +4,37 @@ Date: 2026-09-14
 Environment: Flutter 3.47.2, Dart 3.13.2, Android SDK 36.1.0, Chrome for Testing 153.0.8010.12  
 Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifacts)
 
-> **Current-state override — 2026-09-22:** The dated audit below is a historical
-> record from 2026-09-14 and is not current Play release signoff. The current
-> worktree is branch `provenance-repair-2026-09-19` at audited source checkpoint
-> `2313edd` with 397 tests
-> passing and 82.23% line coverage (7,746/9,420 lines), clean analysis, strict Gradle dependency
-> verification with valid metadata and a successful offline `assembleDebug`, and passing
-> CI-equivalent web and browser audits. The CI web job now repeats the prepared-release
-> Chromium audit with pinned Playwright 1.62.0 before publication, and the Pages publish
-> checkout explicitly disables persisted credentials before configuring its scoped token remote.
-> The current local production-audit score is **84/100 (launchable with caveats)**:
-> the release web sweep covers 8 viewports and 209 route/mode checks with no page errors,
-> failed requests, console errors, or layout overflows. The current GitHub Pages root and
-> privacy URL both return HTTP 200, and the same 8-viewport/209-route sweep now passes
-> against the live deployment; Android signing/device and content gates remain open below.
+> **Current-state override — 2026-09-22:** The dated audit below is historical,
+> not current Play release signoff. The local branch is
+> `provenance-repair-2026-09-19` at HEAD `ec17054` with uncommitted UI, test, and
+> audit updates. The latest full local suite is **433/433**, coverage is
+> **84.37% (8,131/9,637 lines)**, analysis and formatting pass, and fresh web
+> plus debug-APK builds were verified. A fresh local web release audit covered
+> **207 routes across 8 viewports**, including Persian and dark mode, with no
+> browser/page/request errors or overflow flags. The separate mobile tap-through
+> passed Literature/Books/search, quiz-feedback, and flashcard-reveal checks at
+> 320px and 390px; native-device and TalkBack checks remain unavailable. The
+> local app icon now uses the book-and-ornament mark without the standalone Z;
+> this change has not been published to GitHub Pages.
+> Fresh production audit: **44/100 — BLOCKED** for Literature/Books. No poem is
+> approved for display; rights remain unknown for all 67 bundled portraits;
+> 66 page-scan PNGs remain Git-tracked in the confirmed-public repository.
+> The live GitHub Pages app and `/privacy.html` return HTTP 200 but are still the
+> older deployment at `gh-pages` commit `d2ae804`. The latest Pages workflow
+> (`35667658617`) succeeded; the latest inspected Quality workflow
+> (`35664585090`) failed three Android contract tests on older commit `e1199c2`
+> and did not run against this dirty worktree. No continuation changes have
+> been pushed. Android production signing remains intentionally deferred.
+> A fresh `flutter build appbundle --release` attempt on 2026-09-22 failed with
+> `Release signing config missing` at `android/app/build.gradle.kts:61`. A
+> pre-existing ignored local AAB passes package/version and 16 KB alignment
+> checks only against its `Zarbulmasal QA` certificate; it is not verified
+> against the Google Play upload certificate and must not be distributed.
+> Reproducible Play verification still requires the existing upload keystore
+> and matching certificate digest through the protected release path.
+> The CI web job repeats the prepared-release Chromium audit with pinned
+> Playwright 1.62.0 before publication, and the Pages publish checkout disables
+> persisted credentials before configuring its scoped token remote.
 > The latest content loop (2026-09-22) visually checked additional uploaded-book
 > witnesses and corrected several extracted titles/attributions: the validator now
 > reports **31 primary-page-checked works, 25 secondary-witness collations, 6
@@ -70,6 +87,11 @@ Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifa
 > witnesses; secondary witnesses must also declare inspected local page imagery.
 > CI now also runs the raw adversarial provenance re-audit for fake pages,
 > generated source masquerading, and unreviewed verifier metadata.
+> The local provenance linter now rejects verified image references whose
+> files are missing. Citation normalization also rejects whitespace-ambiguous
+> source references and malformed bibliography field types, covers primary,
+> secondary, and occurrence citations, and preserves page evidence and
+> occurrence-specific access dates; the focused source suite passes.
 > The Kamol Khujandi «Гуфтам ба чашм» record was also corrected after visual
 > PDF review found its old Grade 7 filename pointing at a Grade 9 page image:
 > Grade 7 printed page 105 is now primary, Grade 9 printed page 197 is retained
@@ -284,7 +306,7 @@ A comprehensive, evidence-grounded quality assurance audit and end-to-end verifi
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
   - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
-- **Quality Checks**: Static analysis (0 issues), the current local regression suite (397/397 tests passing at 82.23% line coverage), and browser coverage across navigation, persistence, quiz, flashcards, Persian RTL, dark mode, and real pointer actions.
+- **Quality Checks (historical checkpoint)**: At the audit date, static analysis reported 0 issues and 397/397 tests passed at 82.23% line coverage. For the current continuation snapshot, see the 2026-09-22 current-state override at the top of this file.
 
 ---
 

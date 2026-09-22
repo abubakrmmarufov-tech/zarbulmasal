@@ -109,6 +109,10 @@ class LevelsScreen extends ConsumerWidget {
                                 subtitle: isPersian
                                     ? 'آموزش گام به گام'
                                     : 'Омӯзиши қадам ба қадам',
+                                titleTajik: 'Сатҳи $level',
+                                titlePersian: 'سطح $formattedLevel',
+                                subtitleTajik: 'Омӯзиши қадам ба қадам',
+                                subtitlePersian: 'آموزش گام به گام',
                                 timestamp: DateTime.now(),
                                 route: '/proverbs',
                               ),

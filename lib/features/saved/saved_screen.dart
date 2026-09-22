@@ -5,8 +5,11 @@ import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
+import '../../shared/widgets/recent_activity_display_text.dart';
 import '../literature/data/literature_providers.dart';
+import '../literature/presentation/literary_work_display_text.dart';
 import '../books/data/books_providers.dart';
+import '../books/presentation/book_display_text.dart';
 
 class SavedScreen extends ConsumerWidget {
   const SavedScreen({super.key});
@@ -125,7 +128,9 @@ class SavedScreen extends ConsumerWidget {
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
                     subtitle: Text(
-                      proverb.meaningTj,
+                      isPersian
+                          ? '${tr('reading_tajik_explanation')}: ${proverb.meaningTj}'
+                          : proverb.meaningTj,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.meta(
@@ -155,6 +160,7 @@ class SavedScreen extends ConsumerWidget {
                 ),
               ),
               ...bookmarkedWorks.map((work) {
+                final incipit = LiteraryWorkDisplayText.incipit(work, lang);
                 return Card(
                   margin: const EdgeInsets.only(bottom: 8),
                   elevation: 0,
@@ -172,16 +178,14 @@ class SavedScreen extends ConsumerWidget {
                       size: 24,
                     ),
                     title: Text(
-                      isPersian && work.titlePersian != null
-                          ? work.titlePersian!
-                          : work.title,
+                      LiteraryWorkDisplayText.title(work, lang),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
-                    subtitle: work.incipit != null
+                    subtitle: incipit != null
                         ? Text(
-                            work.incipit!,
+                            incipit,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: QalamTypography.meta(
@@ -227,15 +231,15 @@ class SavedScreen extends ConsumerWidget {
                       color: colors.primary,
                     ),
                     title: Text(
-                      book.titleFor(lang),
+                      BookDisplayText.title(book, lang),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
-                    subtitle: book.authorFor(lang) == null
+                    subtitle: BookDisplayText.author(book, lang) == null
                         ? null
                         : Text(
-                            book.authorFor(lang)!,
+                            BookDisplayText.author(book, lang)!,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: QalamTypography.meta(
@@ -317,6 +321,10 @@ class SavedScreen extends ConsumerWidget {
             )
           else
             ...recentActivities.map((activity) {
+              final subtitle = RecentActivityDisplayText.subtitle(
+                activity,
+                lang,
+              );
               return Card(
                 margin: const EdgeInsets.only(bottom: 8),
                 elevation: 0,
@@ -334,14 +342,14 @@ class SavedScreen extends ConsumerWidget {
                     size: 24,
                   ),
                   title: Text(
-                    activity.title,
+                    RecentActivityDisplayText.title(activity, lang),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: QalamTypography.body(color: colors.onSurface),
                   ),
-                  subtitle: activity.subtitle != null
+                  subtitle: subtitle != null
                       ? Text(
-                          activity.subtitle!,
+                          subtitle,
                           style: QalamTypography.meta(
                             color: colors.onSurfaceVariant,
                           ),

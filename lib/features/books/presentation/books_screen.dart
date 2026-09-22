@@ -8,7 +8,10 @@ import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/books_providers.dart';
 import '../domain/book_domain.dart';
+import 'book_category_display_text.dart';
 import 'book_cover.dart';
+import 'book_display_text.dart';
+import 'book_source_metadata_disclosure.dart';
 
 class BooksScreen extends ConsumerStatefulWidget {
   final String? initialCategory;
@@ -289,15 +292,7 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
   }
 
   String _categoryLabel(String id, DisplayLanguage lang) {
-    final key = switch (id) {
-      'nazm' => 'books_poetry',
-      'adabiyoti-klassiki' => 'books_classical',
-      'adabiyoti-muosir' => 'books_modern',
-      'tarikh' => 'books_history',
-      'kitobhoi-darsi' || 'sinfi-11' => 'books_textbooks',
-      _ => id,
-    };
-    return AppTranslations.get(key, lang);
+    return BookCategoryDisplayText.label(id, lang);
   }
 }
 
@@ -336,14 +331,17 @@ class _BookListTile extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BookCover(book: book, placeholderTitle: book.titleFor(lang)),
+              BookCover(
+                book: book,
+                placeholderTitle: BookDisplayText.title(book, lang),
+              ),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      book.titleFor(lang),
+                      BookDisplayText.title(book, lang),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.literaryTitle(
@@ -353,7 +351,7 @@ class _BookListTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      book.authorFor(lang) ??
+                      BookDisplayText.author(book, lang) ??
                           AppTranslations.get('books_author_unavailable', lang),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -361,6 +359,7 @@ class _BookListTile extends StatelessWidget {
                         color: colors.onSurfaceVariant,
                       ),
                     ),
+                    BookSourceMetadataDisclosure(book: book, language: lang),
                     const SizedBox(height: 8),
                     Wrap(
                       spacing: 6,

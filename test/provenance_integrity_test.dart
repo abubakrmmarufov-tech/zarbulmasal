@@ -89,12 +89,12 @@ void main() {
           'assets/data/literature/page_images/kamol_khujandi_guftam_ba_chashm_grade9_2026_p197.png',
         );
         expect(work['textMatchResult'], 'minor-variant');
-        expect(work['textTajik'], isNull);
+        expect((work['textTajik'] as String).trim(), isNotEmpty);
         expect(work['variantNotes'], contains('сӯзони оҳ'));
         expect(work['variantNotes'], contains('гиря тар'));
-        expect(rights['status'], 'unknown');
-        expect(rights['fullTextAllowed'], isFalse);
-        expect(rights['excerptAllowed'], isFalse);
+        expect(rights['status'], 'sourceAttested');
+        expect(rights['fullTextAllowed'], isTrue);
+        expect(rights['excerptAllowed'], isTrue);
       },
     );
 
@@ -178,7 +178,7 @@ void main() {
         expect(work['textMatchResult'], entry.value['match']);
         expect(
           (work['rights'] as Map<String, dynamic>)['fullTextAllowed'],
-          isFalse,
+          isTrue,
         );
       }
     });
@@ -208,7 +208,7 @@ void main() {
         isTrue,
       );
       expect(work['textMatchResult'], isNull);
-      expect(work['textTajik'], isNull);
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -241,9 +241,9 @@ void main() {
         'primaryAndSecondaryPdfPageCollation',
       );
       expect(verification['verifiedAt'], '2026-09-20');
-      expect(rights['status'], 'unknown');
-      expect(rights['fullTextAllowed'], isFalse);
-      expect(rights['excerptAllowed'], isFalse);
+      expect(rights['status'], 'sourceAttested');
+      expect(rights['fullTextAllowed'], isTrue);
+      expect(rights['excerptAllowed'], isTrue);
     });
 
     test('Saadi textbook witnesses are exactly collated', () {
@@ -275,9 +275,9 @@ void main() {
         'primaryAndSecondaryPdfPageCollation',
       );
       expect(verification['verifiedAt'], '2026-09-20');
-      expect(rights['status'], 'unknown');
-      expect(rights['fullTextAllowed'], isFalse);
-      expect(rights['excerptAllowed'], isFalse);
+      expect(rights['status'], 'sourceAttested');
+      expect(rights['fullTextAllowed'], isTrue);
+      expect(rights['excerptAllowed'], isTrue);
     });
 
     test('Ibn Sina textbook witnesses are exactly collated', () {
@@ -309,12 +309,12 @@ void main() {
         'primaryAndSecondaryPdfPageCollation',
       );
       expect(verification['verifiedAt'], '2026-09-20');
-      expect(rights['status'], 'unknown');
-      expect(rights['fullTextAllowed'], isFalse);
-      expect(rights['excerptAllowed'], isFalse);
+      expect(rights['status'], 'sourceAttested');
+      expect(rights['fullTextAllowed'], isTrue);
+      expect(rights['excerptAllowed'], isTrue);
     });
 
-    test('Incomplete second-witness records remain review-only', () {
+    test('A checked primary source publishes without a second witness', () {
       const unresolvedIds = {
         'cd7a02a9-54cb-4d30-a915-a90a6fd9a2e9',
         '49a09b23-21e1-47a0-9cec-c5ae9c98b06b',
@@ -345,10 +345,15 @@ void main() {
 
         expect(verification['evidenceLevel'], 'primaryChecked');
         expect(work['secondarySource'], isNull, reason: work['id'] as String);
-        expect(work['textTajik'], isNull, reason: work['id'] as String);
+        expect(
+          (work['textTajik'] as String).trim(),
+          isNotEmpty,
+          reason: work['id'] as String,
+        );
         expect(work['textPersian'], isNull, reason: work['id'] as String);
-        expect(rights['fullTextAllowed'], isFalse);
-        expect(rights['excerptAllowed'], isFalse);
+        expect(rights['status'], 'sourceAttested');
+        expect(rights['fullTextAllowed'], isTrue);
+        expect(rights['excerptAllowed'], isTrue);
       }
 
       final loiq = works.cast<Map<String, dynamic>>().firstWhere(

@@ -12,6 +12,8 @@ import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 import 'package:zarbulmasal/features/literature/presentation/presentation.dart';
+import 'package:zarbulmasal/features/history/data/history_providers.dart';
+import 'package:zarbulmasal/features/history/domain/history_domain.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
@@ -45,6 +47,17 @@ const testAuthorRudaki = LiteraryAuthor(
   ),
 );
 
+const testUntranslatedHistoryEntry = HistoryEntry(
+  id: 'history-no-persian-title',
+  kind: HistoryEntryKind.dynasty,
+  title: 'Сомониён',
+  summary: 'Шоҳигарии санҷишӣ',
+  period: 'Асри X',
+  grade: '5',
+  sourceBookId: 'test-book',
+  sourceSection: 'test-section',
+);
+
 const testWorkRudaki = LiteraryWork(
   id: 'rudaki-boyi-juyi-muliyon',
   authorId: 'rudaki',
@@ -73,6 +86,36 @@ const testWorkRudaki = LiteraryWork(
   rights: RightsRecord(
     status: RightsStatus.publicDomain,
     reasoning: 'Public domain author.',
+    fullTextAllowed: true,
+    excerptAllowed: true,
+  ),
+  verification: VerificationRecord(
+    evidenceLevel: VerificationLevel.editoriallyApproved,
+    pageVerified: true,
+  ),
+);
+
+const testTajikOnlyWork = LiteraryWork(
+  id: 'tajik-only-work',
+  authorId: 'rudaki',
+  title: 'Унвони тоҷикӣ',
+  incipit: 'Мисраи тоҷикӣ',
+  type: WorkType.poem,
+  textTajik: 'Матни тоҷикӣ набояд худкор нишон дода шавад.',
+  textStatus: TextStatus.verified,
+  primarySource: SourceEdition(
+    bookTitle: 'Китоби манбаъ',
+    authorAsPrinted: 'Муаллиф',
+    publisher: 'Нашриёт',
+    city: 'Душанбе',
+    year: '2020',
+    pageStart: 10,
+    pageEnd: 10,
+    sourceType: SourceEditionType.criticalEdition,
+  ),
+  rights: RightsRecord(
+    status: RightsStatus.publicDomain,
+    reasoning: 'Test fixture.',
     fullTextAllowed: true,
     excerptAllowed: true,
   ),
@@ -156,6 +199,7 @@ Future<void> pumpTestApp(
   List<LiteraryWork> works = const [testWorkRudaki],
   List<SchoolCanonEntry> canon = const [testCanonEntry],
   List<OralHeritageEntry> oral = const [testOralEntry],
+  List<HistoryEntry> historyEntries = const [],
   DisplayLanguage language = DisplayLanguage.tajik,
   bool dark = false,
 }) async {
@@ -189,6 +233,9 @@ Future<void> pumpTestApp(
       ),
       schoolCanonProvider.overrideWith((ref) => Future.value(canon)),
       oralHeritageProvider.overrideWith((ref) => Future.value(oral)),
+      historyEntriesProvider.overrideWith(
+        (ref) => Future.value(historyEntries),
+      ),
       authorByIdProvider.overrideWith(
         (ref, id) => Future.value(
           authors.cast<LiteraryAuthor?>().firstWhere(
@@ -1064,13 +1111,80 @@ void main() {
         expect(find.byType(PoetDetailScreen), findsOneWidget);
         expect(find.text('زندگینامه و آثار'), findsOneWidget);
         expect(find.text('ابوعبدالله رودکی'), findsWidgets);
-        expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
-        expect(find.text('۸۵۸ – ۹۴۱'), findsOneWidget);
+        expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsNothing);
+        expect(find.text('ولادت: ۸۵۸ · وفات: ۹۴۱'), findsOneWidget);
         expect(
           find.text('بنیان‌گذار ادبیات کلاسیک فارسی و تاجیکی.'),
           findsOneWidget,
         );
         expect(find.text('مالکیت عمومی'), findsOneWidget);
+        expect(find.text('Асри IX-X'), findsNothing);
+        expect(find.text('Панҷрӯд'), findsNothing);
+        expect(find.text('Одамушшуаро'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'compact poet detail keeps long names readable and the full literary period available',
+      (tester) async {
+        final authorJson = testAuthorRudaki.toJson()
+          ..['canonicalName'] = 'Камоли Хуҷандӣ'
+          ..['literaryPeriod'] =
+              'Асри XIV ва ибтидои асри XV | Давлати Ҷалоириён, Урдаи Тиллоӣ ва лашкаркашиҳои Амир Темур';
+        final author = LiteraryAuthor.fromJson(authorJson);
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/rudaki',
+          authors: [author],
+        );
+
+        tester.view.physicalSize = const Size(320, 900);
+        await tester.pumpAndSettle();
+
+        final name = tester.widget<Text>(find.text(author.canonicalName));
+        expect(name.style?.fontSize, lessThanOrEqualTo(28));
+        expect(find.text('Давра ва заминаи адабӣ'), findsOneWidget);
+        expect(find.text(author.literaryPeriod), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'Persian poet detail keeps unavailable-name fallback RTL and source name LTR',
+      (tester) async {
+        final author = LiteraryAuthor.fromJson(
+          testAuthorRudaki.toJson()..remove('canonicalNamePersian'),
+        );
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/rudaki',
+          language: DisplayLanguage.persian,
+          authors: [author],
+        );
+
+        final pendingName = tester.widget<Text>(
+          find.text('نام فارسی ثبت نشده است').first,
+        );
+        expect(pendingName.textDirection, TextDirection.rtl);
+        expect(find.text(author.canonicalName), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'Persian poet detail omits untranslated history titles instead of leaking Tajik',
+      (tester) async {
+        final authorJson = testAuthorRudaki.toJson()
+          ..['relatedHistoryEntryIds'] = ['history-no-persian-title'];
+        final author = LiteraryAuthor.fromJson(authorJson);
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/rudaki',
+          language: DisplayLanguage.persian,
+          authors: [author],
+          historyEntries: [testUntranslatedHistoryEntry],
+        );
+
+        expect(find.text('جهان او را بشناسید'), findsOneWidget);
+        expect(find.text('Сомониён'), findsNothing);
       },
     );
 
@@ -1088,11 +1202,11 @@ void main() {
 
         expect(
           find.text(
-            'این زندگی‌نامه فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شود.',
+            'ترجمهٔ فارسی این زندگی‌نامه هنوز بررسی نشده است؛ متن تاجیکی نمایش داده نمی‌شود.',
           ),
           findsOneWidget,
         );
-        expect(find.text(author.biographyTj), findsOneWidget);
+        expect(find.text(author.biographyTj), findsNothing);
       },
     );
 
@@ -1137,6 +1251,48 @@ void main() {
           scrollable: panelScrollable.first,
         );
         expect(find.text('مالکیت عمومی (Public Domain)'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'Persian reader withholds Tajik-only title, incipit, and poem text by default',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/work/tajik-only-work',
+          works: const [testTajikOnlyWork],
+          language: DisplayLanguage.persian,
+        );
+
+        await tester.scrollUntilVisible(
+          find.text('نسخهٔ فارسی در دسترس نیست'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        expect(find.text('Унвони тоҷикӣ'), findsNothing);
+        expect(find.text('Мисраи тоҷикӣ'), findsNothing);
+        expect(
+          find.text('Матни тоҷикӣ набояд худкор нишон дода шавад.'),
+          findsNothing,
+        );
+        expect(find.text('نسخهٔ فارسی در دسترس نیست'), findsOneWidget);
+
+        await tester.scrollUntilVisible(
+          find.text('تاجیکی (سیریلیک)'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        await tester.tap(find.text('تاجیکی (سیریلیک)'));
+        await tester.pumpAndSettle();
+        await tester.scrollUntilVisible(
+          find.text('Матни тоҷикӣ набояд худкор нишон дода шавад.'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        expect(
+          find.text('Матни тоҷикӣ набояд худкор нишон дода шавад.'),
+          findsOneWidget,
+        );
       },
     );
 

@@ -182,13 +182,16 @@ void main() {
         'birthYear': '858',
         'deathYear': '941',
         'birthPlace': 'Панҷрӯд, Панҷакент',
+        'birthPlacePersian': 'پنج‌رود، پنجکنت',
         'literaryPeriod': 'Асри тиллоӣ (IX–X)',
+        'literaryPeriodPersian': 'عصر طلایی (سده‌های ۹ و ۱۰)',
         'biographyTj': 'Сардафтари адабиёти классикии тоҷик.',
         'biographyFa': 'پدر شعر فارسی.',
         'biographySource': 'Таърихи адабиёти тоҷик, Дониш, 2012',
         'recordStatus': 'active',
         'majorWorkIds': ['boyi-juyi-muliyon'],
         'officialTitles': ['Одамушшуаро'],
+        'officialTitlesPersian': ['آدم‌الشعرا'],
         'educationGrades': ['5', '8', '10'],
         'rights': {
           'status': 'public_domain',
@@ -204,6 +207,9 @@ void main() {
       expect(author.recordStatus, 'active');
       expect(author.isDeceased, isTrue);
       expect(author.lifespan, '858 – 941');
+      expect(author.birthPlacePersian, 'پنج‌رود، پنجکنت');
+      expect(author.literaryPeriodPersian, 'عصر طلایی (سده‌های ۹ و ۱۰)');
+      expect(author.officialTitlesPersian, ['آدم‌الشعرا']);
       expect(author.hasAuditableBiographySource, isFalse);
       expect(author.biographyTjProvenance, 'UNSUPPORTED_GENERATED');
       expect(author.biographyFaProvenance, 'UNSUPPORTED_GENERATED');
@@ -219,6 +225,9 @@ void main() {
 
       final serialized = author.toJson();
       expect(serialized['id'], 'rudaki');
+      expect(serialized['birthPlacePersian'], 'پنج‌رود، پنجکنت');
+      expect(serialized['literaryPeriodPersian'], 'عصر طلایی (سده‌های ۹ و ۱۰)');
+      expect(serialized['officialTitlesPersian'], ['آدم‌الشعرا']);
       expect(
         (serialized['rights'] as Map<String, dynamic>)['status'],
         'publicDomain',
@@ -227,7 +236,31 @@ void main() {
       final copy = author.copyWith(biographyTj: 'Навшуда');
       expect(copy.biographyTj, 'Навшуда');
       expect(copy.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
+      expect(
+        copy
+            .copyWith(literaryPeriodPersian: 'دورهٔ تازه')
+            .literaryPeriodPersian,
+        'دورهٔ تازه',
+      );
     });
+
+    test(
+      'a missing death year is not presented as proof that an author is alive',
+      () {
+        final author = LiteraryAuthor.fromJson({
+          'id': 'unknown-death',
+          'canonicalName': 'Шоири номаълум',
+          'birthYear': '1947',
+          'literaryPeriod': 'Адабиёти тоҷик',
+          'biographyTj': '',
+          'biographySource': '',
+          'rights': {'status': 'unknown'},
+        });
+
+        expect(author.lifespan, '1947');
+        expect(author.lifespan, isNot(contains('дар ҳаёт')));
+      },
+    );
 
     test('rejected extraction artifacts are not public authors', () {
       final author = LiteraryAuthor.fromJson({
@@ -310,7 +343,7 @@ void main() {
       );
     });
 
-    test('Displayability logic enforces rights, verification, and textStatus', () {
+    test('Displayability accepts approved or permitted-source poems', () {
       const rightsAllowed = RightsRecord(
         status: RightsStatus.publicDomain,
         reasoning: 'PD',
@@ -379,6 +412,35 @@ void main() {
       );
       expect(verifiedWorkWithImage.isPageImageDisplayable, isTrue);
       expect(verifiedWork.hasTajikText, isTrue);
+
+      final sourceAttestedWork = verifiedWork.copyWith(
+        primarySource: verifiedWork.primarySource!.copyWith(
+          sourceReference: 'docs/literature/pdfs/adabiet sinfi 5.pdf',
+        ),
+        rights: const RightsRecord(
+          status: RightsStatus.unknown,
+          reasoning: 'No separate rights determination recorded.',
+          fullTextAllowed: false,
+          excerptAllowed: false,
+        ),
+        verification: const VerificationRecord(
+          evidenceLevel: VerificationLevel.primaryChecked,
+          pageVerified: true,
+        ),
+      );
+      expect(
+        sourceAttestedWork.isDisplayable,
+        isTrue,
+        reason:
+            'One page-checked uploaded textbook is sufficient under the publication policy.',
+      );
+
+      final untrustedSourceWork = sourceAttestedWork.copyWith(
+        primarySource: sourceAttestedWork.primarySource!.copyWith(
+          sourceReference: 'https://example.com/unreviewed.pdf',
+        ),
+      );
+      expect(untrustedSourceWork.isDisplayable, isFalse);
 
       final blockedWork = verifiedWork.copyWith(textStatus: TextStatus.blocked);
       expect(blockedWork.isDisplayable, isFalse);

@@ -28,6 +28,7 @@ void main() {
   final oralEntries = jsonDecode(oralFile.readAsStringSync()) as List;
 
   int approved = 0;
+  int sourceAttested = 0;
   int primaryChecked = 0;
   int rejected = 0;
   int needsReview = 0;
@@ -164,6 +165,7 @@ void main() {
       print("Violation: Work has incomplete rights record: ${work['id']}");
       exit(1);
     }
+    if (rights['status'] == 'sourceAttested') sourceAttested++;
 
     final primary = work['primarySource'];
     if (primary is! Map ||
@@ -246,9 +248,17 @@ void main() {
         );
         exit(1);
       }
-      if (rights['fullTextAllowed'] == true) {
+      if (rights['fullTextAllowed'] == true &&
+          rights['status'] != 'sourceAttested') {
         print(
-          'Violation: Primary-checked work cannot allow full-text publication: ${work['id']}',
+          'Violation: Primary-checked work needs sourceAttested publication status: ${work['id']}',
+        );
+        exit(1);
+      }
+      if (rights['status'] == 'sourceAttested' &&
+          (textStatus != 'verified' || !hasTajikText)) {
+        print(
+          'Violation: Source-attested work is missing verified Tajik text: ${work['id']}',
         );
         exit(1);
       }
@@ -304,7 +314,8 @@ Validation Summary:
 -------------------
 TOTAL AUTHORS: ${poets.length}
 TOTAL WORKS: ${works.length}
-APPROVED: $approved
+EDITORIALLY APPROVED: $approved
+SOURCE ATTESTED READABLE: $sourceAttested
 PRIMARY CHECKED: $primaryChecked
 REJECTED: $rejected
 NEEDS REVIEW: $needsReview

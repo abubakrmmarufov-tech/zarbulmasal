@@ -19,10 +19,14 @@ void main() {
     '/daily',
     '/literature',
     '/literature/poets',
+    '/literature/poet/kamol_khujandi',
     '/literature/works',
+    '/literature/work/rudaki-boyi-juyi-muliyon',
     '/literature/school',
     '/literature/oral',
     '/literature/search',
+    '/books',
+    '/books/badi-boron',
     '/history',
   ];
   const textScales = [1.3, 2.0];

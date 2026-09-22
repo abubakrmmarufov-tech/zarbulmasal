@@ -53,6 +53,7 @@ Future<void> _pumpDetail(
   WidgetTester tester, {
   required String entryId,
   required Future<HistoryEntry?> Function() loadEntry,
+  HistoryBook book = _book,
   DisplayLanguage language = DisplayLanguage.tajik,
 }) async {
   tester.view.physicalSize = const Size(390, 844);
@@ -70,7 +71,7 @@ Future<void> _pumpDetail(
     overrides: [
       sharedPreferencesProvider.overrideWithValue(prefs),
       historyEntryByIdProvider(entryId).overrideWith((ref) => loadEntry()),
-      historyBooksProvider.overrideWith((ref) => Future.value([_book])),
+      historyBooksProvider.overrideWith((ref) => Future.value([book])),
       authorByIdProvider('missing-author').overrideWith((ref) async => null),
       approvedWorksProvider.overrideWith((ref) async => const []),
     ],
@@ -129,6 +130,65 @@ void main() {
     expect(find.text('اسماعیل سامانی'), findsOneWidget);
     expect(find.text('تاریخ مردم تاجیک (نویسنده)'), findsOneWidget);
     expect(find.byType(Directionality), findsWidgets);
+  });
+
+  testWidgets('Persian history detail hides untranslated fields and IDs', (
+    tester,
+  ) async {
+    const entry = HistoryEntry(
+      id: 'persian-missing-fields',
+      kind: HistoryEntryKind.person,
+      title: 'TAJIK_ENTRY_TITLE_SENTINEL',
+      summary: 'TAJIK_SUMMARY_SENTINEL',
+      period: 'TAJIK_PERIOD_SENTINEL',
+      dates: 'TAJIK_DATES_SENTINEL',
+      grade: '5',
+      sourceBookId: 'history-5',
+      sourceSection: 'TAJIK_SECTION_SENTINEL',
+      capital: 'TAJIK_CAPITAL_SENTINEL',
+      territory: 'TAJIK_TERRITORY_SENTINEL',
+      keyFigures: ['TAJIK_FIGURE_SENTINEL'],
+      significance: 'TAJIK_SIGNIFICANCE_SENTINEL',
+      relatedWorkIds: ['UNTRANSLATED_WORK_ID_SENTINEL'],
+    );
+    const book = HistoryBook(
+      id: 'history-5',
+      grade: '5',
+      title: 'TAJIK_BOOK_TITLE_SENTINEL',
+      author: 'TAJIK_BOOK_AUTHOR_SENTINEL',
+      year: '2015',
+      description: 'TAJIK_BOOK_DESCRIPTION_SENTINEL',
+      sourceUrl: 'https://maorif.tj/libraries?category=27',
+    );
+
+    await _pumpDetail(
+      tester,
+      entryId: entry.id,
+      loadEntry: () async => entry,
+      book: book,
+      language: DisplayLanguage.persian,
+    );
+
+    expect(find.text('ترجمهٔ فارسی عنوان در دسترس نیست'), findsWidgets);
+    for (final sourceOnly in [
+      'TAJIK_ENTRY_TITLE_SENTINEL',
+      'TAJIK_SUMMARY_SENTINEL',
+      'TAJIK_PERIOD_SENTINEL',
+      'TAJIK_DATES_SENTINEL',
+      'TAJIK_CAPITAL_SENTINEL',
+      'TAJIK_TERRITORY_SENTINEL',
+      'TAJIK_FIGURE_SENTINEL',
+      'TAJIK_SIGNIFICANCE_SENTINEL',
+      'TAJIK_SECTION_SENTINEL',
+      'TAJIK_BOOK_TITLE_SENTINEL',
+      'TAJIK_BOOK_AUTHOR_SENTINEL',
+      'TAJIK_BOOK_DESCRIPTION_SENTINEL',
+      'UNTRANSLATED_WORK_ID_SENTINEL',
+    ]) {
+      expect(find.text(sourceOnly), findsNothing, reason: sourceOnly);
+    }
+    expect(find.text('خلاصهٔ تاریخی'), findsNothing);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('history detail distinguishes missing and failed entries', (

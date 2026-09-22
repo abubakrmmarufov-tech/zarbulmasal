@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/books/data/books_providers.dart';
 import 'package:zarbulmasal/features/books/domain/book_domain.dart';
+import 'package:zarbulmasal/features/books/presentation/book_display_text.dart';
 import 'package:zarbulmasal/features/books/presentation/presentation.dart';
 import 'package:zarbulmasal/features/history/data/history_providers.dart';
 import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
@@ -30,6 +31,7 @@ const testBook = Book(
       providerId: 'kitobkhon',
       sourceUrl: 'https://kitobkhon.net/book/books-fixture',
       readUrl: 'https://kitobkhon.net/storage/books/books-fixture.pdf',
+      publisher: 'Маориф',
       publicationYear: '2026',
       pageCount: 12,
       language: 'Тоҷикӣ',
@@ -109,6 +111,26 @@ const bookWithRelatedPoet = Book(
   ],
 );
 
+const untranslatedBook = Book(
+  id: 'untranslated-book',
+  canonicalTitle: 'Китоби тарҷуманашуда',
+  titleTj: 'Китоби тарҷуманашуда',
+  authorNameTj: 'Муаллифи тарҷуманашуда',
+  descriptionTj: 'Тавсифи тарҷуманашуда.',
+  language: 'Тоҷикӣ',
+);
+
+const longOriginalMetadataBook = Book(
+  id: 'long-original-metadata-book',
+  canonicalTitle: 'Китоби дорои унвони дароз',
+  titleTj:
+      'Унвони тоҷикӣ бо шарҳи пурраи таърихӣ ва библиографии нашри аслӣ барои намоиши комил дар саҳифаи китоб',
+  authorNameTj:
+      'Муаллифи асосӣ бо номи пурра ва номи иловагӣ, ки дар сабти аслии библиографӣ оварда шудааст',
+  descriptionTj: 'Китоби санҷишӣ.',
+  language: 'Тоҷикӣ',
+);
+
 const testRelatedPoet = LiteraryAuthor(
   id: 'rudaki',
   canonicalName: 'Абӯабдуллоҳи Рӯдакӣ',
@@ -130,6 +152,64 @@ void main() {
     booksProvider.overrideWith((ref) => Future.value([testBook])),
     bookProvidersProvider.overrideWith((ref) => Future.value([testProvider])),
   ];
+
+  test('Persian book metadata never falls back to Tajik text', () {
+    const persian = DisplayLanguage.persian;
+
+    expect(
+      BookDisplayText.title(untranslatedBook, persian),
+      isNot(contains('Китоби')),
+    );
+    expect(
+      BookDisplayText.author(untranslatedBook, persian),
+      isNot(contains('Муаллифи')),
+    );
+    expect(
+      BookDisplayText.description(untranslatedBook, persian),
+      isNot(contains('Тавсифи')),
+    );
+    expect(
+      BookDisplayText.originalTitle(untranslatedBook, persian),
+      'Китоби тарҷуманашуда',
+    );
+    expect(
+      BookDisplayText.originalAuthor(untranslatedBook, persian),
+      'Муаллифи тарҷуманашуда',
+    );
+    expect(
+      BookDisplayText.originalTitle(untranslatedBook, DisplayLanguage.tajik),
+      isNull,
+    );
+  });
+
+  testWidgets(
+    'Persian Books clearly labels original Tajik metadata on list and detail',
+    (tester) async {
+      await openApp(
+        tester,
+        route: '/books',
+        language: DisplayLanguage.persian,
+        overrides: [
+          booksProvider.overrideWith((ref) => Future.value([untranslatedBook])),
+          bookProvidersProvider.overrideWith((ref) => Future.value([])),
+        ],
+      );
+
+      expect(find.text('عنوان اصلی تاجیکی'), findsOneWidget);
+      expect(find.text('Китоби тарҷуманашуда'), findsOneWidget);
+      expect(find.text('نام نویسندهٔ اصلی تاجیکی'), findsOneWidget);
+      expect(find.text('Муаллифи тарҷуманашуда'), findsOneWidget);
+
+      await tester.tap(find.text('عنوان فارسی کتاب در دسترس نیست').first);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(BookDetailScreen), findsOneWidget);
+      expect(find.text('عنوان اصلی تاجیکی'), findsOneWidget);
+      expect(find.text('Китоби тарҷуманашуда'), findsOneWidget);
+      expect(find.text('نام نویسندهٔ اصلی تاجیکی'), findsOneWidget);
+      expect(find.text('Муаллифи тарҷуманашуда'), findsOneWidget);
+    },
+  );
 
   testWidgets('Books route renders metadata, filters, and read affordance', (
     tester,
@@ -177,6 +257,9 @@ void main() {
       findsNothing,
       reason: 'Cover placeholders must use the active Persian title.',
     );
+    expect(find.text('عنوان اصلی تاجیکی'), findsNothing);
+    expect(find.text('نام نویسندهٔ اصلی تاجیکی'), findsNothing);
+    expect(find.text('Муаллифи санҷишӣ'), findsNothing);
     expect(
       Directionality.of(tester.element(find.byType(BooksScreen))),
       TextDirection.rtl,
@@ -192,6 +275,66 @@ void main() {
     expect(find.text('زبان تاجیکی'), findsOneWidget);
     expect(find.text('خط سیریلیک'), findsOneWidget);
     expect(find.text('cyrillic'), findsNothing);
+    expect(find.text('Манбаи санҷишӣ'), findsNothing);
+    expect(find.text('ناشر اصلی تاجیکی'), findsOneWidget);
+    expect(find.text('Маориф'), findsOneWidget);
+    expect(
+      tester.widget<Text>(find.text('Маориф')).textDirection,
+      TextDirection.ltr,
+    );
+    expect(find.text('۲۰۲۶'), findsOneWidget);
+    expect(find.text('۱۲'), findsOneWidget);
+    expect(
+      find.text(
+        'یادداشت فهرست منبع فقط به تاجیکی ثبت شده و برای حفظ دقت پنهان شده است.',
+      ),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('Persian original metadata stays readable on a compact phone', (
+    tester,
+  ) async {
+    await openApp(
+      tester,
+      route: '/books',
+      width: 320,
+      height: 568,
+      language: DisplayLanguage.persian,
+      overrides: [
+        booksProvider.overrideWith((ref) => Future.value([untranslatedBook])),
+        bookProvidersProvider.overrideWith((ref) => Future.value([])),
+      ],
+    );
+    expect(tester.takeException(), isNull);
+
+    await tester.tap(find.text('عنوان فارسی کتاب در دسترس نیست').first);
+    await tester.pumpAndSettle();
+
+    expect(tester.takeException(), isNull);
+    expect(find.text('عنوان اصلی تاجیکی'), findsOneWidget);
+    expect(find.text('Китоби тарҷуманашуда'), findsOneWidget);
+  });
+
+  testWidgets('Persian book detail shows full original source metadata', (
+    tester,
+  ) async {
+    await openApp(
+      tester,
+      route: '/books/${longOriginalMetadataBook.id}',
+      language: DisplayLanguage.persian,
+      overrides: [
+        booksProvider.overrideWith(
+          (ref) => Future.value([longOriginalMetadataBook]),
+        ),
+        bookProvidersProvider.overrideWith((ref) => Future.value([])),
+      ],
+    );
+
+    final title = find.text(longOriginalMetadataBook.titleTj);
+    final author = find.text(longOriginalMetadataBook.authorNameTj!);
+    expect(tester.widget<Text>(title).maxLines, isNull);
+    expect(tester.widget<Text>(author).maxLines, isNull);
   });
 
   testWidgets('invalid book id shows a truthful unavailable state', (

@@ -118,7 +118,9 @@ void main() {
         expect(work.primarySource, isNotNull);
         expect(work.hasAuditableCompositionEvidence, isFalse);
         expect(work.textPersian, isNull);
-        expect(work.persianScriptSource, 'generated');
+        if (work.persianScriptRepresentation?.trim().isNotEmpty == true) {
+          expect(work.persianScriptSource, 'generated');
+        }
         expect(work.scriptSource, ScriptSource.tajikOnly);
         if (work.verification.evidenceLevel ==
             VerificationLevel.editoriallyApproved) {
@@ -136,7 +138,7 @@ void main() {
       expect(approvedCount, greaterThanOrEqualTo(0));
     });
 
-    test('primary-checked works remain page-cited and unpublished', () {
+    test('primary-checked works follow the one-source publication policy', () {
       final file = File('assets/data/literature/works.json');
       final works = (jsonDecode(file.readAsStringSync()) as List<dynamic>)
           .cast<Map<String, dynamic>>();
@@ -154,11 +156,14 @@ void main() {
         expect(verification['pageVerified'], isTrue);
         expect(source?['pageStart'], isNotNull);
         expect(work['rights'], isA<Map>());
-        expect(
-          (work['rights'] as Map)['fullTextAllowed'],
-          isNot(true),
-          reason: 'Primary evidence is not editorial or rights clearance.',
-        );
+        final rights = work['rights'] as Map;
+        if (rights['status'] == 'sourceAttested') {
+          expect(rights['fullTextAllowed'], isTrue);
+          expect(work['textStatus'], 'verified');
+          expect((work['textTajik'] as String).trim(), isNotEmpty);
+        } else {
+          expect(rights['fullTextAllowed'], isNot(true));
+        }
       }
     });
 
@@ -436,14 +441,17 @@ void main() {
             'No work has dual-witness, rights, and editorial evidence required for publication.',
       );
       expect(primaryCheckedWorks, isNotEmpty);
+      final published = primaryCheckedWorks.where((work) => work.isDisplayable);
+      final pending = primaryCheckedWorks.where((work) => !work.isDisplayable);
+      expect(published, isNotEmpty);
+      expect(pending, isNotEmpty);
       for (final work in primaryCheckedWorks) {
-        expect(work.isDisplayable, isFalse);
-        expect(
-          work.isPageImageDisplayable,
-          isFalse,
-          reason: 'Rights-unknown page scans must not be displayable assets.',
-        );
-        expect(work.rights.status, RightsStatus.unknown);
+        if (work.isDisplayable) {
+          expect(work.rights.status, RightsStatus.sourceAttested);
+          expect(work.hasTajikText, isTrue);
+        } else {
+          expect(work.rights.status, RightsStatus.unknown);
+        }
         expect(work.verification.pageVerified, isTrue);
         expect(work.primarySource!.pageStart, isNotNull);
         expect(work.primarySource!.sourceImageVerified, isTrue);

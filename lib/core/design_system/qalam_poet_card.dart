@@ -20,6 +20,7 @@ class QalamPoetCard extends StatelessWidget {
   final VoidCallback? onTap;
   final PortraitRecord? portrait;
   final String? portraitUnavailableLabel;
+  final String? portraitCitationLabel;
 
   const QalamPoetCard({
     super.key,
@@ -32,6 +33,7 @@ class QalamPoetCard extends StatelessWidget {
     this.onTap,
     this.portrait,
     this.portraitUnavailableLabel,
+    this.portraitCitationLabel,
   });
 
   @override
@@ -63,6 +65,7 @@ class QalamPoetCard extends StatelessWidget {
                 portrait: portrait,
                 label: name,
                 unavailableLabel: portraitUnavailableLabel,
+                citationLabel: portraitCitationLabel,
               ),
               const SizedBox(width: 14),
               Expanded(
@@ -100,16 +103,17 @@ class QalamPoetCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        Expanded(
-                          child: Text(
-                            period,
-                            style: QalamTypography.bodySecondary(
-                              color: colors.onSurfaceVariant,
-                              fontSize: 13,
+                        if (period.trim().isNotEmpty)
+                          Expanded(
+                            child: Text(
+                              period,
+                              style: QalamTypography.bodySecondary(
+                                color: colors.onSurfaceVariant,
+                                fontSize: 13,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
                         if (poemCountBadge != null &&
                             poemCountBadge!.isNotEmpty) ...[
                           const SizedBox(width: 8),

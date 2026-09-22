@@ -150,6 +150,47 @@ final displayLanguageProvider =
       return DisplayLanguageNotifier(prefs);
     });
 
+/// User-selected interface text multiplier, separate from poem typography.
+final appTextScaleProvider =
+    StateNotifierProvider<AppTextScaleNotifier, double>((ref) {
+      final prefs = ref.watch(sharedPreferencesProvider);
+      return AppTextScaleNotifier(prefs);
+    });
+
+class AppTextScaleNotifier extends StateNotifier<double> {
+  static const double minimum = 0.9;
+  static const double defaultScale = 1.0;
+  static const double maximum = 1.2;
+
+  final SharedPreferences? _prefs;
+
+  static double _resolveInitial(SharedPreferences? prefs) {
+    final stored = prefs?.getDouble(AppConstants.prefsAppTextScale);
+    if (stored == null || !stored.isFinite) return defaultScale;
+    return stored.clamp(minimum, maximum);
+  }
+
+  AppTextScaleNotifier([SharedPreferences? prefs])
+    : _prefs = prefs,
+      super(_resolveInitial(prefs)) {
+    if (prefs == null) _load();
+  }
+
+  Future<void> _load() async {
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
+    state = _resolveInitial(prefs);
+  }
+
+  Future<void> setScale(double value) async {
+    final safeValue = value.isFinite
+        ? value.clamp(minimum, maximum)
+        : defaultScale;
+    state = safeValue;
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
+    await prefs.setDouble(AppConstants.prefsAppTextScale, safeValue);
+  }
+}
+
 class DisplayLanguageNotifier extends StateNotifier<DisplayLanguage> {
   final SharedPreferences? _prefs;
 

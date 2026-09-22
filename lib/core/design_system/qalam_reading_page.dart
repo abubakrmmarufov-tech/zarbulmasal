@@ -57,6 +57,10 @@ class QalamReadingPage extends ConsumerWidget {
                           : p.tajikCyrillic)
                     : p.tajikCyrillic,
                 subtitle: persian ? 'ضرب‌المثل' : 'Зарбулмасал',
+                titleTajik: p.tajikCyrillic,
+                titlePersian: p.persianText.isNotEmpty ? p.persianText : null,
+                subtitleTajik: 'Зарбулмасал',
+                subtitlePersian: 'ضرب‌المثل',
                 timestamp: DateTime.now(),
                 route: '/proverb/${p.id}',
               ),

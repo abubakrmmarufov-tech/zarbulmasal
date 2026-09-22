@@ -316,6 +316,34 @@ void main() {
               leaks.add('$id: biographyFa -> $bioFa');
             }
           }
+
+          for (final field in ['birthPlacePersian', 'literaryPeriodPersian']) {
+            final value = poet[field] as String?;
+            if (value == null) continue;
+            expect(
+              value.trim(),
+              isNotEmpty,
+              reason: 'Empty $field in poet $id',
+            );
+            if (cyrillicRegex.hasMatch(value)) {
+              leaks.add('$id: $field -> $value');
+            }
+          }
+
+          final titlesPersian =
+              (poet['officialTitlesPersian'] as List<dynamic>?)
+                  ?.cast<String>() ??
+              const <String>[];
+          for (final title in titlesPersian) {
+            expect(
+              title.trim(),
+              isNotEmpty,
+              reason: 'Empty officialTitlesPersian item in poet $id',
+            );
+            if (cyrillicRegex.hasMatch(title)) {
+              leaks.add('$id: officialTitlesPersian -> $title');
+            }
+          }
         }
 
         expect(leaks, isEmpty, reason: 'Found Cyrillic leaks in poets: $leaks');
@@ -362,6 +390,12 @@ void main() {
           );
           if (work['textTajik'] != null) {
             expect(
+              (work['rights'] as Map?)?['status'],
+              'sourceAttested',
+              reason:
+                  'Only published source-attested poems may ship a representation',
+            );
+            expect(
               representation,
               isNotNull,
               reason:
@@ -402,9 +436,9 @@ void main() {
         expect(leaks, isEmpty, reason: 'Found Cyrillic leaks in works: $leaks');
         expect(
           generatedRepresentations,
-          equals(0),
+          greaterThan(0),
           reason:
-              'Rights-unknown runtime works must not ship generated full-text representations',
+              'Published Tajik poems should expose an honestly labeled Persian-script representation',
         );
       },
     );

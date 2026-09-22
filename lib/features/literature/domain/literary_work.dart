@@ -30,8 +30,9 @@ enum WorkType {
 
 /// Text verification and publication readiness status.
 ///
-/// Under editorial policy, newly created works MUST start with [needsReview]
-/// until dual-witness collation is approved.
+/// Newly created works start with [needsReview]. A page-checked occurrence in
+/// an uploaded textbook/PDF or on maorif.tj is sufficient for ordinary
+/// publication; a second witness is useful evidence, but is not mandatory.
 enum TextStatus {
   verified,
   partial,
@@ -217,15 +218,52 @@ class LiteraryWork {
     required this.verification,
   });
 
-  /// A work is displayable only when verified AND rights permit full text.
-  bool get isDisplayable =>
-      verification.isFullyVerified &&
-      verification.pageVerified &&
-      primarySource?.pageStart != null &&
-      rights.status.allowsFullText &&
-      rights.fullTextAllowed &&
-      textStatus == TextStatus.verified &&
-      (hasTajikText || hasPersianText);
+  /// Whether the work meets one of the supported publication paths.
+  ///
+  /// The legacy path retains explicit editorial and rights approval. The
+  /// source-attested path implements Zarbulmasal's publication policy: one
+  /// exact, page-checked occurrence in an uploaded textbook/PDF or maorif.tj
+  /// is enough. This does not rewrite or overstate the separate rights record.
+  bool get isDisplayable {
+    if (textStatus != TextStatus.verified ||
+        (!hasTajikText && !hasPersianText) ||
+        !verification.pageVerified ||
+        primarySource?.pageStart == null) {
+      return false;
+    }
+
+    final traditionallyApproved =
+        verification.isFullyVerified &&
+        rights.status.allowsFullText &&
+        rights.fullTextAllowed;
+    return traditionallyApproved || isPermittedSourceAttested;
+  }
+
+  /// Whether a checked source satisfies the project's one-source policy.
+  bool get isPermittedSourceAttested {
+    const checkedLevels = {
+      VerificationLevel.primaryChecked,
+      VerificationLevel.secondWitnessLocated,
+      VerificationLevel.collated,
+      VerificationLevel.editoriallyApproved,
+    };
+    final reference = primarySource?.sourceReference?.trim() ?? '';
+    if (!checkedLevels.contains(verification.evidenceLevel) ||
+        reference.isEmpty) {
+      return false;
+    }
+
+    final normalized = reference.replaceAll('\\', '/').toLowerCase();
+    if (normalized.startsWith('docs/literature/pdfs/') ||
+        normalized.startsWith('pdf books/')) {
+      return normalized.endsWith('.pdf');
+    }
+
+    final uri = Uri.tryParse(reference);
+    final host = uri?.host.toLowerCase();
+    return uri?.scheme == 'https' &&
+        (host == 'maorif.tj' || host?.endsWith('.maorif.tj') == true);
+  }
 
   /// Whether a source-page facsimile may be bundled and shown to users.
   ///
@@ -247,9 +285,10 @@ class LiteraryWork {
 
   /// Whether this work can be shown as an excerpt.
   bool get isExcerptDisplayable =>
-      rights.excerptAllowed &&
-      textStatus == TextStatus.verified &&
-      (hasTajikText || hasPersianText);
+      isDisplayable ||
+      (rights.excerptAllowed &&
+          textStatus == TextStatus.verified &&
+          (hasTajikText || hasPersianText));
 
   /// Whether verified Tajik Cyrillic text is present.
   bool get hasTajikText => textTajik != null && textTajik!.trim().isNotEmpty;

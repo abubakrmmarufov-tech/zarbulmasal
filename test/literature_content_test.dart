@@ -563,8 +563,8 @@ void main() {
         'assets/data/literature/page_images/ibn_sina_imruz_bikun_grade8_2026_p142.png',
       );
       expect(work['textMatchResult'], 'exact');
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -589,8 +589,8 @@ void main() {
       );
       expect(work['textMatchResult'], 'minor-variant');
       expect(work['variantNotes'], contains('Дувоздаҳ мисраъ'));
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -613,8 +613,9 @@ void main() {
         occurrence['sourceImagePath'],
         'assets/data/literature/page_images/loiq_qasidai_modar_maorif_2022_p304.png',
       );
-      expect(work['textStatus'], 'needsReview');
-      expect(work['textTajik'], isNull);
+      expect(work['textStatus'], 'verified');
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -639,8 +640,8 @@ void main() {
       );
       expect(work['textMatchResult'], 'exact');
       expect(work['verification']['evidenceLevel'], 'primaryChecked');
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -677,7 +678,8 @@ void main() {
       );
       expect(work['textMatchResult'], 'exact');
       expect(work['verification']['evidenceLevel'], 'primaryChecked');
-      expect(work['rights']['status'], 'unknown');
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
     });
 
     test('Tursunzoda poem keeps the exact Maorif 2022 second witness', () {
@@ -701,8 +703,8 @@ void main() {
       );
       expect(work['textMatchResult'], 'exact');
       expect(work['verification']['evidenceLevel'], 'primaryChecked');
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -727,8 +729,8 @@ void main() {
       );
       expect(work['textMatchResult'], 'exact');
       expect(work['verification']['evidenceLevel'], 'primaryChecked');
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -750,8 +752,8 @@ void main() {
       expect(work['secondarySource']['sourceImageVerified'], isTrue);
       expect(work['secondarySource']['sourceImagePaths'], hasLength(2));
       expect(work['textMatchResult'], 'exact');
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -777,8 +779,8 @@ void main() {
       expect(work['textMatchResult'], 'minor-variant');
       expect(work['variantNotes'], contains('бекориву'));
       expect(work['variantNotes'], contains('бекорию'));
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -810,7 +812,9 @@ void main() {
           dust['secondarySource']['sourceReference'],
           'https://maorif.tj/storage/libraries/01KH604RAK569PDJBYDN82T6WE.pdf',
         );
-        expect(dust['textStatus'], 'needsReview');
+        expect(dust['textStatus'], 'verified');
+        expect(dust['rights']['status'], 'sourceAttested');
+        expect((dust['textTajik'] as String).trim(), isNotEmpty);
       },
     );
 
@@ -1097,7 +1101,7 @@ void main() {
         '01c92ca0-db0b-4993-ad30-93ee6fc9126f': (
           12,
           'docs/literature/pdfs/adabiet sinfi 6.pdf',
-          'Адабиёти тоҷик, синфи 6',
+          'Адабиёти тоҷик',
         ),
       };
 

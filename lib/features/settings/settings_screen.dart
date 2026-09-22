@@ -19,6 +19,7 @@ class SettingsScreen extends ConsumerWidget {
     final count = ref.watch(proverbsProvider).length;
     final readerPrefs = ref.watch(readerPreferencesProvider);
     final readerNotifier = ref.read(readerPreferencesProvider.notifier);
+    final appTextScale = ref.watch(appTextScaleProvider);
 
     String tr(String key) => AppTranslations.get(key, language);
 
@@ -95,8 +96,44 @@ class SettingsScreen extends ConsumerWidget {
 
                   // --- Section 2: Reading Controls ---
                   _SectionLabel(title: tr('settings_reading')),
+                  Text(
+                    tr('settings_font_size'),
+                    style: QalamTypography.sectionTitle(
+                      color: colors.onSurface,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      ChoiceChip(
+                        label: Text(tr('settings_font_size_small')),
+                        selected: appTextScale == AppTextScaleNotifier.minimum,
+                        onSelected: (_) => ref
+                            .read(appTextScaleProvider.notifier)
+                            .setScale(AppTextScaleNotifier.minimum),
+                      ),
+                      ChoiceChip(
+                        label: Text(tr('settings_font_size_default')),
+                        selected:
+                            appTextScale == AppTextScaleNotifier.defaultScale,
+                        onSelected: (_) => ref
+                            .read(appTextScaleProvider.notifier)
+                            .setScale(AppTextScaleNotifier.defaultScale),
+                      ),
+                      ChoiceChip(
+                        label: Text(tr('settings_font_size_xlarge')),
+                        selected: appTextScale == AppTextScaleNotifier.maximum,
+                        onSelected: (_) => ref
+                            .read(appTextScaleProvider.notifier)
+                            .setScale(AppTextScaleNotifier.maximum),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
                   QalamSettingRow(
-                    title: tr('settings_font_size'),
+                    title: tr('settings_poem_font_size'),
                     subtitle: isPersian
                         ? '${AppTranslations.formatDigits('${(100 + readerPrefs.fontSizeDelta * 5).round()}', language)}٪'
                         : '${(100 + readerPrefs.fontSizeDelta * 5).round()}%',

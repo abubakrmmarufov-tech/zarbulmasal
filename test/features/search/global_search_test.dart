@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zarbulmasal/core/l10n/app_translations.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/features/history/data/history_providers.dart';
 import 'package:zarbulmasal/features/history/domain/history_domain.dart';
 import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 import 'package:zarbulmasal/features/search/global_search_screen.dart';
+import 'package:zarbulmasal/shared/providers/app_providers.dart';
 import '../../helpers/test_helper.dart';
 
 const testAuthorRudaki = LiteraryAuthor(
@@ -58,6 +60,24 @@ const testWorkRudaki = LiteraryWork(
   ),
   verification: VerificationRecord(
     evidenceLevel: VerificationLevel.editoriallyApproved,
+    pageVerified: true,
+  ),
+);
+
+const testUntranslatedWork = LiteraryWork(
+  id: 'untranslated-search-work',
+  authorId: 'rudaki',
+  title: 'Сарлавҳаи танҳо тоҷикӣ',
+  incipit: 'Мисраи тоҷикӣ бояд пинҳон шавад',
+  type: WorkType.poem,
+  rights: RightsRecord(
+    status: RightsStatus.unknown,
+    reasoning: 'Test fixture without a Persian title.',
+    fullTextAllowed: false,
+    excerptAllowed: false,
+  ),
+  verification: VerificationRecord(
+    evidenceLevel: VerificationLevel.primaryChecked,
     pageVerified: true,
   ),
 );
@@ -155,6 +175,32 @@ void main() {
       expect(find.textContaining('Зарбулмасалҳо'), findsWidgets);
     });
 
+    testWidgets('Persian search labels the original Tajik proverb meaning', (
+      tester,
+    ) async {
+      final proverb = seedProverbs.first;
+      await openApp(
+        tester,
+        route: '/search',
+        language: DisplayLanguage.persian,
+        catalog: seedProverbs,
+        overrides: overrides,
+      );
+      await tester.enterText(find.byType(TextField), proverb.persianText);
+      await tester.pumpAndSettle();
+
+      expect(
+        find.textContaining(
+          AppTranslations.get(
+            'reading_tajik_explanation',
+            DisplayLanguage.persian,
+          ),
+        ),
+        findsOneWidget,
+      );
+      expect(find.textContaining(proverb.meaningTj), findsOneWidget);
+    });
+
     testWidgets('searching for a history entry displays history result', (
       tester,
     ) async {
@@ -171,6 +217,46 @@ void main() {
 
       expect(find.textContaining('Таърих'), findsWidgets);
       expect(find.textContaining('Спитамен'), findsWidgets);
+    });
+
+    testWidgets('Persian search never falls back to a Tajik poem title', (
+      tester,
+    ) async {
+      await openApp(
+        tester,
+        route: '/search',
+        language: DisplayLanguage.persian,
+        catalog: seedProverbs,
+        overrides: [
+          literaryAuthorsProvider.overrideWith(
+            (ref) => Future.value([testAuthorRudaki]),
+          ),
+          approvedWorksProvider.overrideWith(
+            (ref) => Future.value([testUntranslatedWork]),
+          ),
+          historyEntriesProvider.overrideWith(
+            (ref) => Future.value(const [testHistoryEntry]),
+          ),
+        ],
+      );
+      await tester.enterText(find.byType(TextField), 'Сарлавҳаи танҳо тоҷикӣ');
+      await tester.pumpAndSettle();
+
+      expect(find.text('عنوان فارسی اثر در دسترس نیست'), findsOneWidget);
+      expect(
+        find.byWidgetPredicate(
+          (widget) => widget is Text && widget.data == 'Сарлавҳаи танҳо тоҷикӣ',
+        ),
+        findsNothing,
+      );
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Text &&
+              widget.data == 'Мисраи тоҷикӣ бояд пинҳон шавад',
+        ),
+        findsNothing,
+      );
     });
 
     testWidgets('clear button clears input and returns to empty state', (

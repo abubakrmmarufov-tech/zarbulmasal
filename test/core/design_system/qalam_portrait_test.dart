@@ -67,6 +67,26 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('localized portrait citation hides source filenames', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: QalamPortrait(
+            portrait: missingPortrait,
+            label: 'نام شاعر',
+            citationLabel: 'منبع: کتاب درسی، صفحهٔ ۴۹',
+          ),
+        ),
+      ),
+    );
+
+    final semantics = tester.getSemantics(find.byType(QalamPortrait));
+    expect(semantics.label, contains('منبع: کتاب درسی، صفحهٔ ۴۹'));
+    expect(semantics.label, isNot(contains('adabiet sinfi 5.pdf')));
+  });
+
   testWidgets('failed source-backed asset switches to unavailable semantics', (
     tester,
   ) async {

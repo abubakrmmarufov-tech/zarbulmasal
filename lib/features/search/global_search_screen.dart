@@ -12,8 +12,11 @@ import '../history/data/history_providers.dart';
 import '../history/domain/history_domain.dart';
 import '../literature/data/literature_providers.dart';
 import '../literature/domain/domain.dart';
+import '../literature/presentation/literary_author_display_text.dart';
+import '../literature/presentation/literary_work_display_text.dart';
 import '../books/data/books_providers.dart';
 import '../books/domain/book_domain.dart';
+import '../books/presentation/book_display_text.dart';
 
 class GlobalSearchScreen extends ConsumerStatefulWidget {
   const GlobalSearchScreen({super.key});
@@ -167,6 +170,24 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
     DisplayLanguage lang,
   ) {
     final isPersian = lang == DisplayLanguage.persian;
+    String historyTitle(HistoryEntry entry) {
+      if (!isPersian) return entry.title;
+      final translated = entry.titlePersian?.trim() ?? '';
+      return translated.isNotEmpty
+          ? translated
+          : AppTranslations.get('hist_translation_pending', lang);
+    }
+
+    String historyDate(HistoryEntry entry) {
+      final candidates = isPersian
+          ? [entry.datesPersian, entry.periodPersian]
+          : [entry.dates, entry.period];
+      for (final candidate in candidates) {
+        final value = candidate?.trim() ?? '';
+        if (value.isNotEmpty) return value;
+      }
+      return '';
+    }
 
     final matchingAuthors =
         authors.where((a) {
@@ -306,15 +327,17 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
             ListTile(
               leading: Icon(Icons.person_outline, color: colors.primary),
               title: Text(
-                (isPersian && author.canonicalNamePersian != null)
-                    ? author.canonicalNamePersian!
-                    : author.canonicalName,
+                LiteraryAuthorDisplayText.name(author, lang),
                 style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: Text(
-                author.literaryPeriod,
-                style: QalamTypography.meta(color: colors.onSurfaceVariant),
-              ),
+              subtitle: LiteraryAuthorDisplayText.period(author, lang).isEmpty
+                  ? null
+                  : Text(
+                      LiteraryAuthorDisplayText.period(author, lang),
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
               trailing: const QalamChevron(size: 20),
               onTap: () {
                 ref
@@ -323,11 +346,15 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                       RecentActivity(
                         id: author.id,
                         type: RecentActivityType.poet,
-                        title:
-                            (isPersian && author.canonicalNamePersian != null)
-                            ? author.canonicalNamePersian!
-                            : author.canonicalName,
-                        subtitle: author.literaryPeriod,
+                        title: LiteraryAuthorDisplayText.name(author, lang),
+                        subtitle: LiteraryAuthorDisplayText.period(
+                          author,
+                          lang,
+                        ),
+                        titleTajik: author.canonicalName,
+                        titlePersian: author.canonicalNamePersian,
+                        subtitleTajik: author.literaryPeriod,
+                        subtitlePersian: author.literaryPeriodPersian,
                         timestamp: DateTime.now(),
                         route: '/literature/poet/${author.id}',
                       ),
@@ -350,14 +377,12 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
             ListTile(
               leading: Icon(Icons.auto_stories_outlined, color: colors.primary),
               title: Text(
-                (isPersian && work.titlePersian != null)
-                    ? work.titlePersian!
-                    : work.title,
+                LiteraryWorkDisplayText.title(work, lang),
                 style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: work.incipit != null
+              subtitle: LiteraryWorkDisplayText.incipit(work, lang) != null
                   ? Text(
-                      work.incipit!,
+                      LiteraryWorkDisplayText.incipit(work, lang)!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.meta(
@@ -373,10 +398,18 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                       RecentActivity(
                         id: work.id,
                         type: RecentActivityType.work,
-                        title: (isPersian && work.titlePersian != null)
-                            ? work.titlePersian!
-                            : work.title,
+                        title: LiteraryWorkDisplayText.title(work, lang),
                         subtitle: AppTranslations.get('search_kind_poem', lang),
+                        titleTajik: work.title,
+                        titlePersian: work.titlePersian,
+                        subtitleTajik: AppTranslations.get(
+                          'search_kind_poem',
+                          DisplayLanguage.tajik,
+                        ),
+                        subtitlePersian: AppTranslations.get(
+                          'search_kind_poem',
+                          DisplayLanguage.persian,
+                        ),
                         timestamp: DateTime.now(),
                         route: '/literature/work/${work.id}',
                       ),
@@ -402,11 +435,11 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                 color: colors.primary,
               ),
               title: Text(
-                book.titleFor(lang),
+                BookDisplayText.title(book, lang),
                 style: QalamTypography.body(color: colors.onSurface),
               ),
               subtitle: Text(
-                book.authorFor(lang) ??
+                BookDisplayText.author(book, lang) ??
                     AppTranslations.get('books_title', lang),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -438,7 +471,9 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                 style: QalamTypography.body(color: colors.onSurface),
               ),
               subtitle: Text(
-                proverb.meaningTj,
+                isPersian
+                    ? '${AppTranslations.get('reading_tajik_explanation', lang)}: ${proverb.meaningTj}'
+                    : proverb.meaningTj,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: QalamTypography.meta(color: colors.onSurfaceVariant),
@@ -459,6 +494,18 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                         subtitle: AppTranslations.get(
                           'search_kind_proverb',
                           lang,
+                        ),
+                        titleTajik: proverb.tajikCyrillic,
+                        titlePersian: proverb.persianText.isNotEmpty
+                            ? proverb.persianText
+                            : null,
+                        subtitleTajik: AppTranslations.get(
+                          'search_kind_proverb',
+                          DisplayLanguage.tajik,
+                        ),
+                        subtitlePersian: AppTranslations.get(
+                          'search_kind_proverb',
+                          DisplayLanguage.persian,
                         ),
                         timestamp: DateTime.now(),
                         route: '/proverb/${proverb.id}',
@@ -482,20 +529,13 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
             ListTile(
               leading: Icon(Icons.timeline, color: colors.primary),
               title: Text(
-                (isPersian && entry.titlePersian != null)
-                    ? entry.titlePersian!
-                    : entry.title,
+                historyTitle(entry),
                 style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: entry.dates != null
-                  ? Text(
-                      entry.dates!,
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
-                      ),
-                    )
+              subtitle: historyDate(entry).isEmpty
+                  ? null
                   : Text(
-                      entry.period,
+                      historyDate(entry),
                       style: QalamTypography.meta(
                         color: colors.onSurfaceVariant,
                       ),
@@ -508,12 +548,20 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                       RecentActivity(
                         id: entry.id,
                         type: RecentActivityType.history,
-                        title: (isPersian && entry.titlePersian != null)
-                            ? entry.titlePersian!
-                            : entry.title,
+                        title: historyTitle(entry),
                         subtitle: AppTranslations.get(
                           'search_kind_history',
                           lang,
+                        ),
+                        titleTajik: entry.title,
+                        titlePersian: entry.titlePersian,
+                        subtitleTajik: AppTranslations.get(
+                          'search_kind_history',
+                          DisplayLanguage.tajik,
+                        ),
+                        subtitlePersian: AppTranslations.get(
+                          'search_kind_history',
+                          DisplayLanguage.persian,
                         ),
                         timestamp: DateTime.now(),
                         route: '/history/${entry.id}',

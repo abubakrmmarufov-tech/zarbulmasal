@@ -405,6 +405,30 @@ void main() {
     expect(app.container.read(recentActivityProvider).first.title, 'سطح ۲');
   });
 
+  testWidgets('Persian home hides stale Tajik recent-activity metadata', (
+    tester,
+  ) async {
+    final app = await openApp(tester, language: DisplayLanguage.persian);
+    await app.container
+        .read(recentActivityProvider.notifier)
+        .addActivity(
+          RecentActivity(
+            id: 'rudaki',
+            type: RecentActivityType.poet,
+            title: 'Абӯабдуллоҳи Рӯдакӣ',
+            subtitle: 'Асрҳои IX–X',
+            timestamp: DateTime.utc(2026, 9, 22),
+            route: '/literature/poet/rudaki',
+          ),
+        );
+    await tester.pumpAndSettle();
+
+    expect(find.text('شاعران'), findsOneWidget);
+    expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsNothing);
+    expect(find.text('Асрҳои IX–X'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('compact routes remain usable with enlarged system text', (
     tester,
   ) async {

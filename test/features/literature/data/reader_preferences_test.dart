@@ -35,4 +35,19 @@ void main() {
       expect(notifier.state.defaultReaderMode, 'standard');
     },
   );
+
+  test('reader preferences survive notifier recreation', () async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    final first = ReaderPreferencesNotifier(prefs);
+
+    await first.setFontSizeDelta(6);
+    await first.setLineHeightMultiplier(1.8);
+    await first.setDefaultReaderMode('parallel');
+
+    final restarted = ReaderPreferencesNotifier(prefs);
+    expect(restarted.state.fontSizeDelta, 6);
+    expect(restarted.state.lineHeightMultiplier, 1.8);
+    expect(restarted.state.defaultReaderMode, 'parallel');
+  });
 }

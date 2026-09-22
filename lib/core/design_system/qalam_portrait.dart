@@ -14,6 +14,7 @@ class QalamPortrait extends StatefulWidget {
   final double width;
   final double height;
   final String? unavailableLabel;
+  final String? citationLabel;
 
   const QalamPortrait({
     super.key,
@@ -22,6 +23,7 @@ class QalamPortrait extends StatefulWidget {
     this.width = 64,
     this.height = 80,
     this.unavailableLabel,
+    this.citationLabel,
   });
 
   @override
@@ -76,7 +78,7 @@ class _QalamPortraitState extends State<QalamPortrait> {
     return Semantics(
       image: true,
       label: sourceBacked && !_assetFailed
-          ? '${widget.label}, ${widget.portrait!.citation}'
+          ? '${widget.label}, ${_citationLabel(widget.portrait!)}'
           : '${widget.label}, ${widget.unavailableLabel ?? 'portrait unavailable'}',
       child: ExcludeSemantics(
         child: ClipRRect(
@@ -91,6 +93,11 @@ class _QalamPortraitState extends State<QalamPortrait> {
         ),
       ),
     );
+  }
+
+  String _citationLabel(PortraitRecord portrait) {
+    final localized = widget.citationLabel?.trim() ?? '';
+    return localized.isNotEmpty ? localized : portrait.citation;
   }
 }
 

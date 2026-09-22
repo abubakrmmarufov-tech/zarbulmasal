@@ -25,6 +25,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "assets/data"
 WORKS_PATH = DATA / "literature/works.json"
+SOURCES_PATH = DATA / "literature/sources.json"
 ORAL_PATH = DATA / "literature/oral_heritage.json"
 POETS_PATH = DATA / "literature/poets.json"
 HISTORY_PATH = DATA / "history/entries.json"
@@ -63,6 +64,18 @@ REQUIRED_BIBLIOGRAPHIC_FIELDS = (
     "city",
     "year",
     "sourceType",
+)
+SOURCE_CATALOG_FIELDS = (
+    "bookTitle",
+    "authorAsPrinted",
+    "editor",
+    "edition",
+    "publisher",
+    "city",
+    "year",
+    "isbn",
+    "sourceType",
+    "sourceInstitution",
 )
 BIO_TJ_PROVENANCE = {
     "SOURCE_BACKED",
@@ -106,6 +119,7 @@ def text(value: Any) -> str:
 def main() -> int:
     try:
         works = load(WORKS_PATH)
+        sources = load(SOURCES_PATH)
         oral = load(ORAL_PATH)
         poets = load(POETS_PATH)
         history = load(HISTORY_PATH)
@@ -122,7 +136,10 @@ def main() -> int:
 
     def unique_ids(records: list[dict[str, Any]], label: str) -> set[str]:
         ids: list[str] = []
-        for record in records:
+        for index, record in enumerate(records):
+            if not isinstance(record, dict):
+                fail("RECORD_FORMAT", f"{label}[{index}]", "record must be an object")
+                continue
             record_id = record.get("id")
             if not text(record_id):
                 fail("ID_REQUIRED", label, "missing id")
@@ -134,9 +151,52 @@ def main() -> int:
 
     poet_ids = unique_ids(poets, "poets.json")
     work_ids = unique_ids(works, "works.json")
+    unique_ids(sources, "sources.json")
     unique_ids(oral, "oral_heritage.json")
     book_ids = unique_ids(books, "books.json")
     unique_ids(history, "entries.json")
+
+    # Source-catalog entries are authoritative bibliographic records, even
+    # when no work currently cites them. Some entries intentionally omit a
+    # direct sourceReference, so validate it when present rather than
+    # requiring a URL for every print-edition record.
+    for index, source in enumerate(sources):
+        if not isinstance(source, dict):
+            continue
+        source_record = f"sources.json[{index}]"
+        for field in SOURCE_CATALOG_FIELDS:
+            value = source.get(field)
+            if field in REQUIRED_BIBLIOGRAPHIC_FIELDS and not text(value):
+                fail(
+                    "SOURCE_CATALOG_FIELD",
+                    source_record,
+                    f"{field} is required and must be a non-empty string",
+                )
+            elif value is not None and not isinstance(value, str):
+                fail(
+                    "SOURCE_CATALOG_FIELD",
+                    source_record,
+                    f"{field} must be a string or null",
+                )
+
+        source_reference = source.get("sourceReference")
+        if source_reference is not None and (
+            not isinstance(source_reference, str) or not text(source_reference)
+        ):
+            fail(
+                "SOURCE_CATALOG_FIELD",
+                source_record,
+                "sourceReference must be omitted, null, or a non-empty string",
+            )
+        source_image_verified = source.get("sourceImageVerified")
+        if source_image_verified is not None and not isinstance(
+            source_image_verified, bool
+        ):
+            fail(
+                "SOURCE_CATALOG_FIELD",
+                source_record,
+                "sourceImageVerified must be a boolean when present",
+            )
 
     # Books catalogue -------------------------------------------------
     provider_ids = {provider.get("id") for provider in providers}
@@ -351,6 +411,49 @@ def main() -> int:
                         f"source image does not exist locally: {image_path!r}",
                     )
 
+    sources_by_reference: dict[str, dict[str, Any]] = {}
+    ambiguous_source_references: set[str] = set()
+    for index, source in enumerate(sources):
+        if not isinstance(source, dict):
+            continue
+        source_reference = text(source.get("sourceReference"))
+        if not source_reference:
+            continue
+        if source_reference in sources_by_reference:
+            ambiguous_source_references.add(source_reference)
+            fail(
+                "SOURCE_CATALOG_REFERENCE",
+                "sources.json",
+                f"duplicate sourceReference {source_reference!r}",
+            )
+        else:
+            sources_by_reference[source_reference] = source
+
+    def validate_catalog_bibliography(source: Any, record: str, label: str) -> None:
+        if not isinstance(source, dict):
+            return
+        source_reference = text(source.get("sourceReference"))
+        if not source_reference or source_reference in ambiguous_source_references:
+            return
+        catalog_record = sources_by_reference.get(source_reference)
+        if catalog_record is None:
+            fail(
+                "SOURCE_CATALOG_MISSING",
+                f"{record}/{label}",
+                f"sourceReference {source_reference!r} is not cataloged in sources.json",
+            )
+            return
+        for field in SOURCE_CATALOG_FIELDS:
+            expected = catalog_record.get(field)
+            if expected in (None, ""):
+                continue
+            if source.get(field) != expected:
+                fail(
+                    "SOURCE_CATALOG_BIBLIOGRAPHY",
+                    f"{record}/{label}",
+                    f"{field} disagrees with sources.json for {source_reference!r}",
+                )
+
     for work in works:
         record = f"work:{work.get('id', '?')}"
         if work.get("authorId") not in poet_ids:
@@ -382,6 +485,7 @@ def main() -> int:
             require_bibliography=level in {"primaryChecked", "editoriallyApproved"},
             require_image=level in {"primaryChecked", "editoriallyApproved"},
         )
+        validate_catalog_bibliography(source, record, "primarySource")
         page_start = source.get("pageStart")
         page_end = source.get("pageEnd")
         secondary = work.get("secondarySource")
@@ -394,6 +498,7 @@ def main() -> int:
                 require_bibliography=True,
                 require_image=True,
             )
+            validate_catalog_bibliography(secondary, record, "secondarySource")
             match_result = work.get("textMatchResult")
             if match_result not in SECONDARY_COLLATION_RESULTS:
                 fail(
@@ -417,6 +522,9 @@ def main() -> int:
                         occurrence,
                         record,
                         f"sourceOccurrences[{index}]",
+                    )
+                    validate_catalog_bibliography(
+                        occurrence, record, f"sourceOccurrences[{index}]"
                     )
         if level in {"primaryChecked", "editoriallyApproved"}:
             if page_start is None or verification.get("pageVerified") is not True:

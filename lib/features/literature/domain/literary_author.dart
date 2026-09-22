@@ -47,8 +47,14 @@ class LiteraryAuthor {
   /// Verified place of birth (e.g. "Рӯдак, Панҷрӯд (ҳоло Панҷакент)").
   final String? birthPlace;
 
+  /// Persian translation of the verified birth place, when reviewed.
+  final String? birthPlacePersian;
+
   /// Literary epoch (e.g. "Асри тиллоӣ (IX–X)", "Шӯравӣ", "Истиқлолият").
   final String literaryPeriod;
+
+  /// Persian translation of [literaryPeriod], when reviewed.
+  final String? literaryPeriodPersian;
 
   /// Sourced biographical narrative in Tajik Cyrillic.
   final String biographyTj;
@@ -88,6 +94,9 @@ class LiteraryAuthor {
   /// Official state and academic honors (e.g. "Шоири халқии Тоҷикистон", "Қаҳрамони Тоҷикистон").
   final List<String> officialTitles;
 
+  /// Persian translations of official titles, when reviewed.
+  final List<String> officialTitlesPersian;
+
   /// School curriculum grades where this author's works are taught (e.g. ["5", "8", "10"]).
   final List<String> educationGrades;
 
@@ -110,7 +119,9 @@ class LiteraryAuthor {
     this.birthDateExact,
     this.deathDateExact,
     this.birthPlace,
+    this.birthPlacePersian,
     required this.literaryPeriod,
+    this.literaryPeriodPersian,
     required this.biographyTj,
     this.biographyFa,
     required this.biographySource,
@@ -120,6 +131,7 @@ class LiteraryAuthor {
     this.recordStatus = 'active',
     this.majorWorkIds = const [],
     this.officialTitles = const [],
+    this.officialTitlesPersian = const [],
     this.educationGrades = const [],
     this.relatedHistoryEntryIds = const [],
     required this.rights,
@@ -164,19 +176,20 @@ class LiteraryAuthor {
       auditablePersianBiographyProvenance.contains(biographyFaProvenance) &&
       (biographyFa?.trim().isNotEmpty ?? false);
 
-  /// Formatted lifespan representation (e.g. "15.04.1878 – 15.07.1954" or "858 – 941", "1947 – ҳоло").
+  /// Formatted source dates without inferring that a missing death year means
+  /// the author is alive.
   String get lifespan {
     final bExact = birthDateExact?.trim() ?? '';
     final dExact = deathDateExact?.trim() ?? '';
     if (bExact.isNotEmpty || dExact.isNotEmpty) {
-      if (dExact.isEmpty) return '$bExact – дар ҳаёт';
+      if (dExact.isEmpty) return bExact;
       if (bExact.isEmpty) return 'Вафот: $dExact';
       return '$bExact – $dExact';
     }
     final b = birthYear?.trim() ?? '';
     final d = deathYear?.trim() ?? '';
     if (b.isEmpty && d.isEmpty) return '';
-    if (d.isEmpty) return '$b – дар ҳаёт';
+    if (d.isEmpty) return b;
     if (b.isEmpty) return 'Вафот: $d';
     return '$b – $d';
   }
@@ -202,8 +215,13 @@ class LiteraryAuthor {
       deathDateExact: (json['deathDateExact'] ?? json['death_date_exact'])
           ?.toString(),
       birthPlace: (json['birthPlace'] ?? json['birth_place']) as String?,
+      birthPlacePersian:
+          (json['birthPlacePersian'] ?? json['birth_place_persian']) as String?,
       literaryPeriod:
           (json['literaryPeriod'] ?? json['literary_period'] ?? '') as String,
+      literaryPeriodPersian:
+          (json['literaryPeriodPersian'] ?? json['literary_period_persian'])
+              as String?,
       biographyTj:
           (json['biographyTj'] ?? json['biography_tj'] ?? '') as String,
       biographyFa: (json['biographyFa'] ?? json['biography_fa']) as String?,
@@ -220,6 +238,9 @@ class LiteraryAuthor {
       ),
       officialTitles: _parseStringList(
         json['officialTitles'] ?? json['official_titles'],
+      ),
+      officialTitlesPersian: _parseStringList(
+        json['officialTitlesPersian'] ?? json['official_titles_persian'],
       ),
       educationGrades: _parseStringList(
         json['educationGrades'] ?? json['education_grades'],
@@ -253,7 +274,10 @@ class LiteraryAuthor {
       if (birthDateExact != null) 'birthDateExact': birthDateExact,
       if (deathDateExact != null) 'deathDateExact': deathDateExact,
       'birthPlace': birthPlace,
+      if (birthPlacePersian != null) 'birthPlacePersian': birthPlacePersian,
       'literaryPeriod': literaryPeriod,
+      if (literaryPeriodPersian != null)
+        'literaryPeriodPersian': literaryPeriodPersian,
       'biographyTj': biographyTj,
       'biographyFa': biographyFa,
       'biographySource': biographySource,
@@ -264,6 +288,8 @@ class LiteraryAuthor {
       'recordStatus': recordStatus,
       'majorWorkIds': majorWorkIds,
       'officialTitles': officialTitles,
+      if (officialTitlesPersian.isNotEmpty)
+        'officialTitlesPersian': officialTitlesPersian,
       'educationGrades': educationGrades,
       if (relatedHistoryEntryIds.isNotEmpty)
         'relatedHistoryEntryIds': relatedHistoryEntryIds,
@@ -283,7 +309,9 @@ class LiteraryAuthor {
     String? birthDateExact,
     String? deathDateExact,
     String? birthPlace,
+    String? birthPlacePersian,
     String? literaryPeriod,
+    String? literaryPeriodPersian,
     String? biographyTj,
     String? biographyFa,
     String? biographySource,
@@ -293,6 +321,7 @@ class LiteraryAuthor {
     String? recordStatus,
     List<String>? majorWorkIds,
     List<String>? officialTitles,
+    List<String>? officialTitlesPersian,
     List<String>? educationGrades,
     List<String>? relatedHistoryEntryIds,
     RightsRecord? rights,
@@ -308,7 +337,10 @@ class LiteraryAuthor {
       birthDateExact: birthDateExact ?? this.birthDateExact,
       deathDateExact: deathDateExact ?? this.deathDateExact,
       birthPlace: birthPlace ?? this.birthPlace,
+      birthPlacePersian: birthPlacePersian ?? this.birthPlacePersian,
       literaryPeriod: literaryPeriod ?? this.literaryPeriod,
+      literaryPeriodPersian:
+          literaryPeriodPersian ?? this.literaryPeriodPersian,
       biographyTj: biographyTj ?? this.biographyTj,
       biographyFa: biographyFa ?? this.biographyFa,
       biographySource: biographySource ?? this.biographySource,
@@ -321,6 +353,8 @@ class LiteraryAuthor {
       recordStatus: recordStatus ?? this.recordStatus,
       majorWorkIds: majorWorkIds ?? this.majorWorkIds,
       officialTitles: officialTitles ?? this.officialTitles,
+      officialTitlesPersian:
+          officialTitlesPersian ?? this.officialTitlesPersian,
       educationGrades: educationGrades ?? this.educationGrades,
       relatedHistoryEntryIds:
           relatedHistoryEntryIds ?? this.relatedHistoryEntryIds,

@@ -18,3 +18,13 @@ The 2025 edition is a separate remote `maorif.tj`
 witness (`tj_literature_grade_7_2025`) and is not a local uploaded PDF.
 The 2025 edition is a separate remote `maorif.tj`
 witness (`tj_literature_grade_11_2025`) and is not a local uploaded PDF.
+The 2022 edition is a separate remote `maorif.tj`
+witness (`tj_literature_grade_5_2022`) and is not a local uploaded PDF.
+The 2022 edition is a separate remote `maorif.tj`
+witness (`tj_literature_grade_6_2022`) and is not a local uploaded PDF.
+The 2023 edition is a separate remote `maorif.tj`
+witness (`tj_literature_grade_9_2023`) and is not a local uploaded PDF.
+The 2022 edition is a separate remote `maorif.tj`
+witness (`tj_literature_grade_11_2022`) and is not a local uploaded PDF.
+The 2025 edition is a separate remote `maorif.tj`
+witness (`tj_literature_grade_5_2025`) and is not a local uploaded PDF.

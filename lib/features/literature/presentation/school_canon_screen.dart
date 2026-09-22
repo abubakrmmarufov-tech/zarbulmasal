@@ -8,6 +8,7 @@ import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_author.dart';
 import '../domain/school_canon_entry.dart';
+import 'literary_author_display_text.dart';
 
 /// A screen presenting the official Tajik school curriculum literary canon,
 /// organized by grade level (grades 4–11) with approved textbook citations.
@@ -242,11 +243,11 @@ class _CanonEntryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    final authorName = author != null
-        ? ((isPersian && author!.canonicalNamePersian != null)
-              ? author!.canonicalNamePersian!
-              : author!.canonicalName)
-        : entry.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      entry.authorId,
+    );
 
     final isMandatory = entry.isMandatory;
     final isCitationVerified = entry.isCitationVerified;

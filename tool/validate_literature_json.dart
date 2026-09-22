@@ -138,6 +138,7 @@ void main() {
   int needsReviewCount = 0;
   int textTajikCount = 0;
   int textPersianCount = 0;
+  int sourceAttestedCount = 0;
 
   for (final item in worksList) {
     final map = item as Map<String, dynamic>;
@@ -170,6 +171,9 @@ void main() {
     final hasIncipit = work.incipit?.trim().isNotEmpty == true;
     if (hasTajikText) textTajikCount++;
     if (hasPersianText) textPersianCount++;
+    if (work.rights.status == RightsStatus.sourceAttested) {
+      sourceAttestedCount++;
+    }
 
     requireCondition(
       work.textPersian == null || work.persianScriptSource != 'generated',
@@ -227,8 +231,8 @@ void main() {
         VerificationLevel.primaryChecked) {
       primaryCheckedCount++;
       requireCondition(
-        !work.isDisplayable,
-        'Primary checked work ${work.id} without editorial/rights clearance must not be displayable',
+        !work.isDisplayable || work.isPermittedSourceAttested,
+        'Primary checked work ${work.id} must use the permitted-source publication path',
       );
       requireCondition(
         work.verification.pageVerified,
@@ -246,7 +250,8 @@ void main() {
   // Counts are reported as metrics only. The validator checks consistency,
   // not a target number of records or an artificial approval quota.
   print('  ✓ Total works: ${worksList.length}');
-  print('  ✓ Approved poetic works: $approvedCount');
+  print('  ✓ Editorially approved poetic works: $approvedCount');
+  print('  ✓ Source-attested readable works: $sourceAttestedCount');
   print(
     '  ✓ Primary checked works (curriculum provenance): $primaryCheckedCount',
   );

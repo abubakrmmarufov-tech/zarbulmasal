@@ -10,6 +10,10 @@ class RecentActivity {
   final RecentActivityType type;
   final String title;
   final String? subtitle;
+  final String? titleTajik;
+  final String? titlePersian;
+  final String? subtitleTajik;
+  final String? subtitlePersian;
   final DateTime timestamp;
   final String route;
 
@@ -18,6 +22,10 @@ class RecentActivity {
     required this.type,
     required this.title,
     this.subtitle,
+    this.titleTajik,
+    this.titlePersian,
+    this.subtitleTajik,
+    this.subtitlePersian,
     required this.timestamp,
     required this.route,
   });
@@ -27,6 +35,10 @@ class RecentActivity {
     'type': type.name,
     'title': title,
     'subtitle': subtitle,
+    if (titleTajik != null) 'titleTajik': titleTajik,
+    if (titlePersian != null) 'titlePersian': titlePersian,
+    if (subtitleTajik != null) 'subtitleTajik': subtitleTajik,
+    if (subtitlePersian != null) 'subtitlePersian': subtitlePersian,
     'timestamp': timestamp.toIso8601String(),
     'route': route,
   };
@@ -52,6 +64,10 @@ class RecentActivity {
         ? null
         : DateTime.tryParse(timestampValue);
     final subtitle = json['subtitle'];
+    final titleTajik = json['titleTajik'];
+    final titlePersian = json['titlePersian'];
+    final subtitleTajik = json['subtitleTajik'];
+    final subtitlePersian = json['subtitlePersian'];
 
     if (id == null ||
         title == null ||
@@ -59,6 +75,10 @@ class RecentActivity {
         timestamp == null ||
         type == null ||
         (subtitle != null && subtitle is! String) ||
+        (titleTajik != null && titleTajik is! String) ||
+        (titlePersian != null && titlePersian is! String) ||
+        (subtitleTajik != null && subtitleTajik is! String) ||
+        (subtitlePersian != null && subtitlePersian is! String) ||
         !_isInternalRoute(route)) {
       return null;
     }
@@ -68,6 +88,10 @@ class RecentActivity {
       type: type,
       title: title,
       subtitle: subtitle as String?,
+      titleTajik: _nonEmptyString(titleTajik),
+      titlePersian: _nonEmptyString(titlePersian),
+      subtitleTajik: _nonEmptyString(subtitleTajik),
+      subtitlePersian: _nonEmptyString(subtitlePersian),
       timestamp: timestamp,
       route: route,
     );

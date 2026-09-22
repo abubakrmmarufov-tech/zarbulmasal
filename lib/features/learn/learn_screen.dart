@@ -6,6 +6,7 @@ import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/learning_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
+import '../../shared/widgets/recent_activity_display_text.dart';
 
 class LearnScreen extends ConsumerWidget {
   const LearnScreen({super.key});
@@ -91,8 +92,10 @@ class LearnScreen extends ConsumerWidget {
             _buildLearnCard(
               context,
               icon: Icons.play_arrow_rounded,
-              title: lastLevelActivity.title,
-              subtitle: lastLevelActivity.subtitle ?? tr('learn_continue_hint'),
+              title: RecentActivityDisplayText.title(lastLevelActivity, lang),
+              subtitle:
+                  RecentActivityDisplayText.subtitle(lastLevelActivity, lang) ??
+                  tr('learn_continue_hint'),
               onTap: () => context.push(lastLevelActivity.route),
               primary: true,
             ),

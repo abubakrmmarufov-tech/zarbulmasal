@@ -1,13 +1,21 @@
 # QA Issue Register
 
-Current snapshot: branch `provenance-repair-2026-09-19` at audited source checkpoint `2313edd`. The same app/data/assets/tests are published on GitHub branch `audit-publish-2026-09-22` from source checkpoint `644051d`; its workflow file intentionally remains unchanged because the connected OAuth credential lacks the `workflow` scope. The current web-only Pages deployment is `gh-pages` commit `d2ae804` with cache `537219cd1f6ef81793f6`; the former ignored v1.1.0 APK set has been moved to a recoverable temporary quarantine outside the checkout; neither is evidence for the current source release. No public-download APKs remain in the repository checkout.
+Current snapshot: local branch `provenance-repair-2026-09-19` at HEAD
+`ec17054`; the worktree has uncommitted UI, tests, and audit-record changes.
+None of these continuation changes are pushed. The confirmed-public GitHub
+repository's latest Pages workflow [35667658617](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/runs/35667658617)
+succeeded at `gh-pages` commit `d2ae804`; the live app and privacy URL return
+HTTP 200 but do not contain the local changes. The latest inspected Quality &
+Pages run [35664585090](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/runs/35664585090)
+is for older commit `e1199c2` and failed three Android contract tests (393
+passed); it does not test this dirty worktree. No public-download APKs are
+present in this checkout.
 
-GitHub manual workflow evidence: run `35664585090` reached the full 396-test
-job, but reported three contract-test failures against the intentionally older
-workflow on that published branch (missing the newer signing-preflight and
-Pages checkout-token guards, plus no signed APK portal). The local current
-workflow passes those guards; publishing that workflow still requires the
-GitHub OAuth `workflow` scope.
+Fresh local production audit: **44/100 — BLOCKED** for the Literature/Books
+release scope. The main blockers are 0 approved/displayable poems, unknown
+redistribution rights on 67 bundled portraits, and 66 Git-tracked textbook page
+images in the public repository. Android signing and physical-device QA also
+remain unverified.
 
 Status values: OPEN, PARTIAL, FIXED/VERIFIED, UNVERIFIED.
 
@@ -47,10 +55,12 @@ needs-review works, 255 rejected extraction/prose or duplicate candidates, and
 page-checked works remain withheld from publication.
 
 The detailed issue rows below may retain historical numbers; this paragraph is
-the authoritative current snapshot for the active worktree.
-The latest full suite remains **397/397**, with **82.23% line coverage
-(7,746/9,420)**, clean analysis, and a fresh current-data browser sweep at 8
-viewports and 209 routes with zero errors.
+the authoritative current snapshot for the active worktree. The latest full
+suite is **433/433**, with **84.37% line coverage (8,131/9,637)**, clean
+analysis/formatting, passing JSON/content/provenance validators, and local
+mobile browser smoke checks at 5 viewports with no document overflow or browser
+errors. Persian/Tajik Literature and Books routes were visually checked at
+320px and 390px. These checks do not replace physical-device or TalkBack QA.
 
 | ID | Severity | Status | Area | Reproduction / evidence | Root cause | Required protection |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -81,7 +91,7 @@ viewports and 209 routes with zero errors.
 | OPS-001 | P1 | FIXED/VERIFIED | Release rollback and recovery path | `docs/RELEASE_RUNBOOK.md` now defines the preflight gate, protected signing boundary, verified artifact separation, web/content rollback through reviewed `git revert`, Android staged-rollout halt and higher-version hotfix path, provenance recovery, and required incident evidence. | Release checks were documented across separate files without one recovery procedure for a high-impact regression. | Keep the runbook linked from README and update it when the release workflow or distribution surface changes. |
 | CI-001 | P1 | FIXED/VERIFIED | Pull-request Android build | Release signing is intentionally fail-closed, so a PR job without secrets would fail if it attempted `flutter build apk --release`. | CI used the release build for unsigned PR validation. | PRs now build a debug APK without production signing secrets; only main publishes signed release APKs. |
 | CI-002 | P1 | FIXED/VERIFIED | Coverage threshold enforcement | CI now parses the generated LCOV report and fails when aggregate line coverage drops below the documented 80% minimum; the current report is 82.23% (7,746/9,420 lines). The parser and pass/fail behavior are covered by `tool/test_check_coverage.py`. | The workflow generated coverage but did not enforce the project’s stated minimum. | Keep `python3 tool/check_coverage.py coverage/lcov.info --minimum 80` immediately after the Flutter coverage run. |
-| DOC-001 | P1 | FIXED/VERIFIED | Audit/documentation drift | The register identifies the current branch and separates current evidence from the older QA audit. README, the current QA override, and the release report now agree on the 397-test suite, current coverage, privacy-policy artifact, quarantined literature candidates, portrait provenance, and unsigned-release limitation. The source register now explicitly distinguishes bibliographic leads from checked witnesses, including the consulted 2025 Grade 7 and Grade 11 editions. The dated sections in `docs/QA_AUDIT.md` remain explicitly historical and are not current release signoff. |
+| DOC-001 | P1 | FIXED/VERIFIED | Audit/documentation drift | The register identifies the current branch and separates current evidence from the older QA audit. The active QA override and release report now agree on the 433-test suite, 84.37% coverage, current Pages-vs-local state, 66 tracked page scans, portrait rights uncertainty, quarantined literary candidates, and unsigned-release limitation. The source register distinguishes bibliographic leads from checked witnesses; dated QA sections remain historical, not release signoff. |
 | PIPE-001 | P1 | FIXED/VERIFIED | Literature regeneration pipeline | `build_assets.py` dry-run reads extracted records and proposes candidates without writing; compatibility commands no longer reference deleted seed files. The active catalog remains the separately audited 159-record/5,501-work snapshot, with 145 public author records, 6 rejected extraction/non-author artifacts, and 8 unresolved reference records retained for review. | Production migration removed the old seed architecture without completing the pipeline migration. | Keep dry-run as the default, preserve curated records, use stable IDs for candidates, and run the asset validators before `--write`. |
 | HIS-001 | P1 | FIXED/VERIFIED | History Grade 8 availability state | In a 320px local release build, select `Синфи 8` on History. The former generic empty search state was misleading because the Grade 8 source book exists but no chapter-level facts are verified. The screen now explains that exact limitation without a clipped reset control. | The filter treated a known source gap as an unsuccessful search. | Provider-override widget regression plus real browser flow; retain the honest unavailable copy until source details are verified. |
 | HIS-002 | P2 | FIXED/VERIFIED | Events and oral narratives were not directly filterable | The source-bound History catalogue contains four event cards and two oral-narrative cards, but the visible category chips only named empires, people, and poems. Added localized `Рӯйдодҳо` / `Ривоятҳо` and `رویدادها` / `روایت‌ها` chips, without adding or changing historical claims. | The filter bar exposed only a subset of the implemented `HistoryEntryKind` values. | Failing-then-passing widget regression covers both Tajik filters and Persian labels. Fresh local release browser verified each filter selects only its expected card type, retains `#/history`, and does not leave the app. |
@@ -118,6 +128,6 @@ viewports and 209 routes with zero errors.
 | PHONE-002 | P2 | FIXED/VERIFIED | Settings missing translation key display | Replacing script subtitle with `tr('settings_script_tajik')` caused raw key text `settings_script_tajik` to render because the translation key in `AppTranslations` is `settings_script_cyrillic`. Replaced with `tr('settings_script_cyrillic')`. Audited all 673 translation keys in `lib/` (0 missing). | Key name mismatch between UI and translation dictionaries. | Rebuilt and reinstalled release APK on phone; verified `Хатти кириллӣ` in Tajik mode and `خط سیریلیک` in Persian mode. |
 | PHONE-003 | P1 | PARTIAL | Real-Phone Runtime Hardware QA | Fresh Xiaomi `2412DPC0AG` / Android 16 native QA now passes on the current debug build: app launch, Literature hub, poet list with portraits/placeholders, works gate, Literature search with keyboard, Books, Persian RTL, Tajik switch, dark mode, and light-mode restoration; no crash, fatal exception, or ANR lines were observed. A signed-release upgrade and the full historical flow matrix remain unproven. | The production signing artifact is still unavailable; connected-device runtime evidence is debug-only. | Run the complete smoke/upgrade matrix against the secret-gated signed AAB/APKs, including data preservation, offline mode, Persian/RTL, typography, and logcat. |
 | SEC-008 | P1 | PARTIAL | Portrait redistribution rights | 67 authentic local portraits are source-backed and rendered by `QalamPortrait`, but their records explicitly carry `rightsStatus: unknown`; locating a portrait in an uploaded textbook or `maorif.tj` is not proof of redistribution permission. | The literature requirement prioritizes authentic source portraits, while rights clearance is external to the source citation. | Obtain permission/public-domain evidence for each portrait before public distribution, or switch uncleared records to the existing consistent placeholder. |
-| SEC-009 | P1 | PARTIAL | Audit page images in public repository | Twelve textbook page-image binaries remain Git-tracked as provenance evidence. They are excluded from the Flutter/web asset bundle, but a public GitHub repository still distributes them and retains repository history. | Local visual proof and public source distribution currently share the same checkout. | Move page proofs to a private evidence store or establish redistribution rights; preserve only hashes/citations in the public repository, with history rewrite requiring explicit owner approval. |
+| SEC-009 | P1 | PARTIAL | Audit page images in public repository | **66** textbook page-image binaries remain Git-tracked as provenance evidence (verified 2026-09-22 with `git ls-files`). They are excluded from the Flutter/web asset bundle, but the confirmed-public GitHub repository still distributes them and retains repository history. | Local visual proof and public source distribution currently share the same checkout. | Move page proofs to a private evidence store or establish redistribution rights; preserve only hashes/citations in the public repository, with history rewrite requiring explicit owner approval. |
 | SEC-010 | P2 | PARTIAL | External-link redirect boundary | The policy now allows only the exact `kitobkhon.net`, `maorif.tj`, and explicit `cdn.kitobkhon.net` hosts; arbitrary subdomains are rejected and the focused URL/Books suite passes. `url_launcher` still hands navigation to the external browser, so redirects/content served by an allowed host remain outside app control. | External source links are intentionally opened outside the app. | Keep the exact-host regression, warn users before external navigation, and treat host compromise/redirects as an external-service risk rather than app trust. |
 | SEC-011 | P2 | FIXED/VERIFIED | Android local-state backup contract | Android `allowBackup` remains enabled by deliberate product choice for local preferences/history/learning state. The in-app and public privacy policies disclose that the OS/account may back up or transfer this data, and `test/android_distribution_test.dart` asserts the manifest contract. | Backup behavior is a product choice; the app does not access or control OS/cloud retention. | Revisit only if the product owner chooses privacy-first opt-out; otherwise retain the disclosure and regression test. |

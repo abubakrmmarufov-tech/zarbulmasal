@@ -370,6 +370,7 @@ void main() {
       SharedPreferences.setMockInitialValues({
         AppConstants.prefsDarkMode: true,
         AppConstants.prefsLanguage: 'fa',
+        AppConstants.prefsAppTextScale: 1.2,
         AppConstants.prefsFavorites: [seedProverbs.first.id],
         AppConstants.prefsOnboardingComplete: true,
       });
@@ -383,6 +384,7 @@ void main() {
       // Initial read must be immediately synchronous without delay or flash
       expect(container.read(themeModeProvider), ThemeMode.dark);
       expect(container.read(displayLanguageProvider), DisplayLanguage.persian);
+      expect(container.read(appTextScaleProvider), 1.2);
       expect(
         container.read(favoritesProvider),
         contains(seedProverbs.first.id),
@@ -390,6 +392,17 @@ void main() {
       expect(container.read(onboardingCompleteProvider), isTrue);
     },
   );
+
+  test('interface text scale persists across provider recreation', () async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    final first = AppTextScaleNotifier(prefs);
+
+    await first.setScale(AppTextScaleNotifier.maximum);
+
+    final restarted = AppTextScaleNotifier(prefs);
+    expect(restarted.state, AppTextScaleNotifier.maximum);
+  });
 
   test(
     'filteredProverbsProvider uses diacritic folding and phonetic matching',

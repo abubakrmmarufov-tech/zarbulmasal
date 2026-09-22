@@ -232,22 +232,23 @@ class Book {
   });
 
   String titleFor(DisplayLanguage language) {
-    if (language == DisplayLanguage.persian && titleFa != null) {
-      return titleFa!;
+    if (language == DisplayLanguage.persian) {
+      return titleFa?.trim() ?? '';
     }
     return titleTj;
   }
 
   String? authorFor(DisplayLanguage language) {
-    if (language == DisplayLanguage.persian && authorNameFa != null) {
-      return authorNameFa;
+    if (language == DisplayLanguage.persian) {
+      final translated = authorNameFa?.trim() ?? '';
+      return translated.isEmpty ? null : translated;
     }
     return authorNameTj;
   }
 
   String descriptionFor(DisplayLanguage language) {
-    if (language == DisplayLanguage.persian && descriptionFa != null) {
-      return descriptionFa!;
+    if (language == DisplayLanguage.persian) {
+      return descriptionFa?.trim() ?? '';
     }
     return descriptionTj;
   }

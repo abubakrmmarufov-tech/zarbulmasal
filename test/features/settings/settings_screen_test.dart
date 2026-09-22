@@ -21,6 +21,7 @@ void main() {
       expect(find.text('Ҳолати зоҳирӣ'), findsOneWidget);
       expect(find.text('ХОНДАН'), findsOneWidget);
       expect(find.text('Андозаи матн'), findsOneWidget);
+      expect(find.text('Андозаи шеър'), findsOneWidget);
       expect(find.text('Фосилаи сатрҳо'), findsOneWidget);
       expect(find.text('Ҳолати хониш'), findsOneWidget);
       expect(find.text('ЗАБОН'), findsOneWidget);
@@ -51,6 +52,7 @@ void main() {
       expect(find.text('حالت ظاهری'), findsOneWidget);
       expect(find.text('خوانش'), findsOneWidget);
       expect(find.text('اندازهٔ قلم'), findsOneWidget);
+      expect(find.text('اندازهٔ شعر'), findsOneWidget);
       expect(find.text('فاصلهٔ سطرها'), findsOneWidget);
       expect(find.text('حالت خواندن'), findsOneWidget);
       expect(find.text('زبان'), findsOneWidget);
@@ -90,7 +92,7 @@ void main() {
     });
 
     testWidgets(
-      'reading font size, line spacing, and reader mode controls work',
+      'app and poem font size, line spacing, and reader mode controls work',
       (tester) async {
         final app = await openApp(
           tester,
@@ -99,7 +101,14 @@ void main() {
           language: DisplayLanguage.tajik,
         );
 
-        // Increase font size
+        await tester.tap(find.text('Хеле калон'));
+        await tester.pumpAndSettle();
+        expect(
+          app.container.read(appTextScaleProvider),
+          AppTextScaleNotifier.maximum,
+        );
+
+        // Increase poem font size
         final addBtn = find.byTooltip('Калон кардан');
         expect(addBtn, findsOneWidget);
         await tester.tap(addBtn);
@@ -155,6 +164,11 @@ void main() {
         language: DisplayLanguage.tajik,
       );
 
+      await tester.scrollUntilVisible(
+        find.text('Сиёсати махфият'),
+        200,
+        scrollable: find.byType(Scrollable),
+      );
       await tester.tap(find.text('Сиёсати махфият'));
       await tester.pumpAndSettle();
 

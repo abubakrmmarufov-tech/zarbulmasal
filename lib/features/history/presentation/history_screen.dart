@@ -6,9 +6,44 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../../literature/data/literature_providers.dart';
+import '../../literature/presentation/literary_author_display_text.dart';
 import '../data/history_providers.dart';
 import '../domain/history_domain.dart';
 import 'history_source_launcher.dart';
+
+String? _historyOptionalText(String? value) {
+  final trimmed = value?.trim();
+  return trimmed == null || trimmed.isEmpty ? null : trimmed;
+}
+
+String _historyRequiredTitle(
+  String sourceTitle,
+  String? persianTitle,
+  DisplayLanguage language,
+) {
+  if (language != DisplayLanguage.persian) return sourceTitle;
+  return _historyOptionalText(persianTitle) ??
+      AppTranslations.get('hist_translation_pending', language);
+}
+
+String _historyBookCitation(HistoryBook book, DisplayLanguage language) {
+  final title = _historyRequiredTitle(book.title, book.titlePersian, language);
+  final author = _historyOptionalText(
+    language == DisplayLanguage.persian ? book.authorPersian : book.author,
+  );
+  return author == null ? title : '$title ($author)';
+}
+
+String _historyBookDetails(HistoryBook book, DisplayLanguage language) {
+  final author = _historyOptionalText(
+    language == DisplayLanguage.persian ? book.authorPersian : book.author,
+  );
+  final year = book.year.trim();
+  return [
+    ?author,
+    if (year.isNotEmpty) AppTranslations.formatDigits(year, language),
+  ].join(' · ');
+}
 
 class HistoryScreen extends ConsumerStatefulWidget {
   const HistoryScreen({super.key});
@@ -93,33 +128,6 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                 ),
               ),
             ),
-            if (isPersian)
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.info_outline,
-                        size: 16,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'متن‌های منبع فعلاً به خط سیریلیک تاجیکی نمایش داده می‌شوند.',
-                          style: QalamTypography.meta(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurfaceVariant,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             booksAsync.when(
               loading: () => const SliverToBoxAdapter(
                 child: LinearProgressIndicator(minHeight: 2),
@@ -300,6 +308,7 @@ class _BookStrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final lang = isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik;
     return SizedBox(
       height: 188,
       child: ListView.separated(
@@ -309,6 +318,14 @@ class _BookStrip extends StatelessWidget {
         separatorBuilder: (_, _) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
           final book = books[index];
+          final author = _historyOptionalText(
+            isPersian ? book.authorPersian : book.author,
+          );
+          final year = book.year.trim();
+          final details = [
+            ?author,
+            if (year.isNotEmpty) AppTranslations.formatDigits(year, lang),
+          ].join(' · ');
           final radius = BorderRadius.circular(QalamSpacing.cardRadius);
           return Material(
             color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
@@ -350,9 +367,15 @@ class _BookStrip extends StatelessWidget {
                     const SizedBox(height: 8),
                     Expanded(
                       child: Directionality(
-                        textDirection: TextDirection.ltr,
+                        textDirection: isPersian
+                            ? TextDirection.rtl
+                            : TextDirection.ltr,
                         child: Text(
-                          book.title,
+                          _historyRequiredTitle(
+                            book.title,
+                            book.titlePersian,
+                            lang,
+                          ),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: QalamTypography.sectionTitle(
@@ -362,19 +385,20 @@ class _BookStrip extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Directionality(
-                      textDirection: TextDirection.ltr,
-                      child: Text(
-                        book.year.isEmpty
-                            ? book.author
-                            : '${book.author} · ${book.year}',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: QalamTypography.meta(
-                          color: colors.onSurfaceVariant,
+                    if (details.isNotEmpty)
+                      Directionality(
+                        textDirection: isPersian
+                            ? TextDirection.rtl
+                            : TextDirection.ltr,
+                        child: Text(
+                          details,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: QalamTypography.meta(
+                            color: colors.onSurfaceVariant,
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -750,19 +774,19 @@ class _HistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final title = isPersian && entry.titlePersian != null
-        ? entry.titlePersian!
-        : entry.title;
-    final summary = isPersian && entry.summaryPersian != null
-        ? entry.summaryPersian!
-        : entry.summary;
-    final dates = isPersian && entry.datesPersian != null
-        ? entry.datesPersian!
-        : (entry.dates ?? entry.period);
-    final capital = isPersian && entry.capitalPersian != null
-        ? entry.capitalPersian
-        : entry.capital;
     final lang = isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik;
+    final title = _historyRequiredTitle(entry.title, entry.titlePersian, lang);
+    final summary = isPersian
+        ? _historyOptionalText(entry.summaryPersian)
+        : _historyOptionalText(entry.summary);
+    final dates = isPersian
+        ? _historyOptionalText(entry.datesPersian) ??
+              _historyOptionalText(entry.periodPersian) ??
+              ''
+        : (entry.dates ?? entry.period);
+    final capital = isPersian
+        ? _historyOptionalText(entry.capitalPersian)
+        : _historyOptionalText(entry.capital);
 
     return Card(
       elevation: 0,
@@ -817,7 +841,7 @@ class _HistoryCard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Directionality(
-                textDirection: isPersian && entry.titlePersian != null
+                textDirection: isPersian
                     ? TextDirection.rtl
                     : TextDirection.ltr,
                 child: Text(
@@ -853,22 +877,24 @@ class _HistoryCard extends StatelessWidget {
                   ],
                 ),
               ],
-              const SizedBox(height: 8),
-              Directionality(
-                textDirection: isPersian && entry.summaryPersian != null
-                    ? TextDirection.rtl
-                    : TextDirection.ltr,
-                child: Text(
-                  summary,
-                  style: QalamTypography.bodySecondary(
-                    color: colors.onSurfaceVariant,
-                    height: 1.4,
+              if (summary != null) ...[
+                const SizedBox(height: 8),
+                Directionality(
+                  textDirection: isPersian
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+                  child: Text(
+                    summary,
+                    style: QalamTypography.bodySecondary(
+                      color: colors.onSurfaceVariant,
+                      height: 1.4,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-              if (capital != null && capital.isNotEmpty) ...[
+              ],
+              if (capital != null) ...[
                 const SizedBox(height: 6),
                 Row(
                   children: [
@@ -999,28 +1025,31 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final lang = isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik;
-    final title = isPersian && entry.titlePersian != null
-        ? entry.titlePersian!
-        : entry.title;
-    final summary = isPersian && entry.summaryPersian != null
-        ? entry.summaryPersian!
-        : entry.summary;
-    final dates = isPersian && entry.datesPersian != null
-        ? entry.datesPersian!
-        : (entry.dates ?? entry.period);
-    final capital = isPersian && entry.capitalPersian != null
-        ? entry.capitalPersian
-        : entry.capital;
-    final territory = isPersian && entry.territoryPersian != null
-        ? entry.territoryPersian
-        : entry.territory;
-    final significance = isPersian && entry.significancePersian != null
-        ? entry.significancePersian
-        : entry.significance;
-    final keyFigures = isPersian && entry.keyFiguresPersian.isNotEmpty
-        ? entry.keyFiguresPersian
-        : entry.keyFigures;
-    final section = entry.sourceSection;
+    final title = _historyRequiredTitle(entry.title, entry.titlePersian, lang);
+    final summary = isPersian
+        ? _historyOptionalText(entry.summaryPersian)
+        : _historyOptionalText(entry.summary);
+    final dates = isPersian
+        ? _historyOptionalText(entry.datesPersian) ??
+              _historyOptionalText(entry.periodPersian)
+        : _historyOptionalText(entry.dates) ??
+              _historyOptionalText(entry.period);
+    final capital = isPersian
+        ? _historyOptionalText(entry.capitalPersian)
+        : _historyOptionalText(entry.capital);
+    final territory = isPersian
+        ? _historyOptionalText(entry.territoryPersian)
+        : _historyOptionalText(entry.territory);
+    final significance = isPersian
+        ? _historyOptionalText(entry.significancePersian)
+        : _historyOptionalText(entry.significance);
+    final keyFigures = (isPersian ? entry.keyFiguresPersian : entry.keyFigures)
+        .map((figure) => figure.trim())
+        .where((figure) => figure.isNotEmpty)
+        .toList(growable: false);
+    final section = isPersian
+        ? null
+        : _historyOptionalText(entry.sourceSection);
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -1073,7 +1102,7 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                     fontSize: 22,
                   ),
                 ),
-                if (dates.isNotEmpty) ...[
+                if (dates != null) ...[
                   const SizedBox(height: 4),
                   Text(
                     dates,
@@ -1085,8 +1114,8 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                   ),
                 ],
                 const SizedBox(height: 16),
-                if (capital != null && capital.isNotEmpty ||
-                    territory != null && territory.isNotEmpty ||
+                if (capital != null ||
+                    territory != null ||
                     keyFigures.isNotEmpty) ...[
                   Container(
                     padding: const EdgeInsets.all(14),
@@ -1100,16 +1129,15 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (capital != null && capital.isNotEmpty) ...[
+                        if (capital != null) ...[
                           _DetailRow(
                             icon: Icons.location_city,
                             label: AppTranslations.get('hist_capital', lang),
                             value: capital,
                           ),
                         ],
-                        if (territory != null && territory.isNotEmpty) ...[
-                          if (capital != null && capital.isNotEmpty)
-                            const Divider(height: 16),
+                        if (territory != null) ...[
+                          if (capital != null) const Divider(height: 16),
                           _DetailRow(
                             icon: Icons.public,
                             label: AppTranslations.get('hist_territory', lang),
@@ -1117,8 +1145,7 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                           ),
                         ],
                         if (keyFigures.isNotEmpty) ...[
-                          if ((capital != null && capital.isNotEmpty) ||
-                              (territory != null && territory.isNotEmpty))
+                          if (capital != null || territory != null)
                             const Divider(height: 16),
                           _DetailRow(
                             icon: Icons.people_outline,
@@ -1134,19 +1161,21 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                 ],
-                Text(
-                  AppTranslations.get('hist_summary', lang),
-                  style: QalamTypography.eyebrow(color: colors.primary),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  summary,
-                  style: QalamTypography.body(
-                    color: colors.onSurface,
-                    height: 1.5,
+                if (summary != null) ...[
+                  Text(
+                    AppTranslations.get('hist_summary', lang),
+                    style: QalamTypography.eyebrow(color: colors.primary),
                   ),
-                ),
-                if (significance != null && significance.isNotEmpty) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    summary,
+                    style: QalamTypography.body(
+                      color: colors.onSurface,
+                      height: 1.5,
+                    ),
+                  ),
+                ],
+                if (significance != null) ...[
                   const SizedBox(height: 16),
                   Text(
                     AppTranslations.get('hist_significance', lang),
@@ -1178,16 +1207,14 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                             authorByIdProvider(authorId),
                           );
                           final author = authorAsync.valueOrNull;
-                          final authorName = author != null
-                              ? ((isPersian &&
-                                        author.canonicalNamePersian != null)
-                                    ? author.canonicalNamePersian!
-                                    : author.canonicalName)
-                              : (authorId == 'rudaki'
-                                    ? (isPersian
-                                          ? 'ابوعبدالله رودکی'
-                                          : 'Абӯабдуллоҳи Рӯдакӣ')
-                                    : authorId);
+                          final authorName =
+                              LiteraryAuthorDisplayText.nameOrFallback(
+                                author,
+                                lang,
+                                authorId == 'rudaki'
+                                    ? 'Абӯабдуллоҳи Рӯдакӣ'
+                                    : authorId,
+                              );
                           return ActionChip(
                             avatar: const Icon(
                               Icons.auto_stories_outlined,
@@ -1238,15 +1265,17 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])} · $section',
+                        section == null
+                            ? AppTranslations.get('hist_filter_grade', lang, [
+                                entry.grade,
+                              ])
+                            : '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])} · $section',
                         style: QalamTypography.meta(color: colors.onSurface),
                       ),
                       if (sourceBook != null) ...[
                         const SizedBox(height: 4),
                         Text(
-                          isPersian && sourceBook!.titlePersian != null
-                              ? '${sourceBook!.titlePersian!} (${sourceBook!.authorPersian ?? sourceBook!.author})'
-                              : '${sourceBook!.title} (${sourceBook!.author})',
+                          _historyBookCitation(sourceBook!, lang),
                           style: QalamTypography.meta(
                             color: colors.onSurfaceVariant,
                           ),
@@ -1357,6 +1386,10 @@ void _showHistoryBookDetails(
     builder: (context) {
       final colors = Theme.of(context).colorScheme;
       final lang = isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik;
+      final details = _historyBookDetails(book, lang);
+      final description = isPersian
+          ? _historyOptionalText(book.descriptionPersian)
+          : _historyOptionalText(book.description);
       return SafeArea(
         child: SingleChildScrollView(
           child: Directionality(
@@ -1381,31 +1414,25 @@ void _showHistoryBookDetails(
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    isPersian && book.titlePersian != null
-                        ? book.titlePersian!
-                        : book.title,
+                    _historyRequiredTitle(book.title, book.titlePersian, lang),
                     style: QalamTypography.sectionTitle(
                       color: colors.onSurface,
                       fontSize: 18,
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Text(
-                    isPersian && book.authorPersian != null
-                        ? (book.year.isEmpty
-                              ? book.authorPersian!
-                              : '${book.authorPersian!} · ${AppTranslations.formatDigits(book.year, lang)}')
-                        : (book.year.isEmpty
-                              ? book.author
-                              : '${book.author} · ${book.year}'),
-                    style: QalamTypography.meta(color: colors.onSurfaceVariant),
-                  ),
-                  if (book.description.isNotEmpty) ...[
+                  if (details.isNotEmpty) ...[
+                    const SizedBox(height: 6),
+                    Text(
+                      details,
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                  if (description != null) ...[
                     const SizedBox(height: 12),
                     Text(
-                      isPersian && book.descriptionPersian != null
-                          ? book.descriptionPersian!
-                          : book.description,
+                      description,
                       style: QalamTypography.bodySecondary(
                         color: colors.onSurfaceVariant,
                       ),

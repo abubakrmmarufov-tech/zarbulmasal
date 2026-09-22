@@ -8,6 +8,7 @@ import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../data/literature_repository.dart';
 import '../domain/domain.dart';
+import 'literary_author_display_text.dart';
 
 /// A screen presenting canonical Tajik literary authors and poets.
 class PoetsListScreen extends ConsumerStatefulWidget {
@@ -187,19 +188,22 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 return SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final poet = filtered[index];
-                    final name =
-                        (isPersian && poet.canonicalNamePersian != null)
-                        ? poet.canonicalNamePersian!
-                        : poet.canonicalName;
+                    final name = LiteraryAuthorDisplayText.name(poet, lang);
                     final poemCount = worksCountByAuthor[poet.id] ?? 0;
                     final poemCountBadge = poemCount > 0
                         ? '${AppTranslations.formatDigits(poemCount.toString(), lang)} ${AppTranslations.get('lit_works_unit', lang)}'
                         : null;
-                    final dates = poet.hasAuditableBiographySource
-                        ? AppTranslations.formatDigits(poet.lifespan, lang)
+                    final lifespan = LiteraryAuthorDisplayText.lifespan(
+                      poet,
+                      lang,
+                    );
+                    final dates =
+                        poet.hasAuditableBiographySource && lifespan.isNotEmpty
+                        ? lifespan
                         : AppTranslations.get('lit_search_dates_pending', lang);
                     final exactDates =
-                        (poet.hasAuditableBiographySource &&
+                        (!isPersian &&
+                            poet.hasAuditableBiographySource &&
                             (poet.birthDateExact != null ||
                                 poet.deathDateExact != null))
                         ? AppTranslations.translate('lit_author_dates', lang, [
@@ -222,9 +226,14 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                         'lit_portrait_unavailable',
                         lang,
                       ),
+                      portraitCitationLabel:
+                          LiteraryAuthorDisplayText.portraitCitation(
+                            poet.portrait,
+                            lang,
+                          ),
                       dates: dates,
                       exactDates: exactDates,
-                      period: poet.literaryPeriod,
+                      period: LiteraryAuthorDisplayText.period(poet, lang),
                       isPublicDomain: poet.isPublicDomain,
                       poemCountBadge: poemCountBadge,
                       onTap: () => context.push('/literature/poet/${poet.id}'),

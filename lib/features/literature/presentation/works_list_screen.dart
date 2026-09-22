@@ -8,6 +8,8 @@ import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_work.dart';
 import '../domain/verification_record.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// A screen listing all verified and approved literary works.
 class WorksListScreen extends ConsumerWidget {
@@ -117,22 +119,17 @@ class _WorkListItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
     final authorAsync = ref.watch(authorByIdProvider(work.authorId));
     final author = authorAsync.valueOrNull;
 
-    final title =
-        (isPersian &&
-            work.titlePersian != null &&
-            work.titlePersian!.isNotEmpty)
-        ? work.titlePersian!
-        : work.title;
+    final title = LiteraryWorkDisplayText.title(work, lang);
+    final incipit = LiteraryWorkDisplayText.incipit(work, lang);
 
-    final authorName = author != null
-        ? ((isPersian && author.canonicalNamePersian != null)
-              ? author.canonicalNamePersian!
-              : author.canonicalName)
-        : work.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      work.authorId,
+    );
 
     return InkWell(
       onTap: () => context.push('/literature/work/${work.id}'),
@@ -168,10 +165,10 @@ class _WorkListItem extends ConsumerWidget {
                       fontSize: 13,
                     ),
                   ),
-                  if (work.incipit != null && work.incipit!.isNotEmpty) ...[
+                  if (incipit != null) ...[
                     const SizedBox(height: 6),
                     Text(
-                      '«${work.incipit}»',
+                      '«$incipit»',
                       style: QalamTypography.bodySecondary(
                         color: colors.onSurfaceVariant,
                         fontSize: 13,

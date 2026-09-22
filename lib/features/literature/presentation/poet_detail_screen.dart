@@ -14,6 +14,9 @@ import '../../history/data/history_providers.dart';
 import '../../history/domain/history_domain.dart';
 import '../../books/data/books_providers.dart';
 import '../../books/presentation/book_cover.dart';
+import '../../books/presentation/book_display_text.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// A detailed monograph view for a canonical Tajik author/poet,
 /// displaying verified biography, source citations, curriculum links, and works.
@@ -26,7 +29,6 @@ class PoetDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
 
     final authorAsync = ref.watch(authorByIdProvider(poetId));
     final worksAsync = ref.watch(worksByAuthorProvider(poetId));
@@ -85,10 +87,12 @@ class PoetDetailScreen extends ConsumerWidget {
                   RecentActivity(
                     id: poet.id,
                     type: RecentActivityType.poet,
-                    title: isPersian && poet.canonicalNamePersian != null
-                        ? poet.canonicalNamePersian!
-                        : poet.canonicalName,
-                    subtitle: poet.literaryPeriod,
+                    title: LiteraryAuthorDisplayText.name(poet, lang),
+                    subtitle: LiteraryAuthorDisplayText.period(poet, lang),
+                    titleTajik: poet.canonicalName,
+                    titlePersian: poet.canonicalNamePersian,
+                    subtitleTajik: poet.literaryPeriod,
+                    subtitlePersian: poet.literaryPeriodPersian,
                     timestamp: DateTime.now(),
                     route: '/literature/poet/${poet.id}',
                   ),
@@ -128,30 +132,31 @@ class _PoetDetailContent extends ConsumerWidget {
 
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     final books = ref.watch(booksByAuthorProvider(poet.id));
+    final period = LiteraryAuthorDisplayText.period(poet, lang);
+    final periodHeading = period.split('|').first.trim();
+    final birthPlace = LiteraryAuthorDisplayText.birthPlace(poet, lang);
+    final lifespan = LiteraryAuthorDisplayText.lifespan(poet, lang);
+    final officialTitles = LiteraryAuthorDisplayText.officialTitles(poet, lang);
 
-    final name = (isPersian && poet.canonicalNamePersian != null)
-        ? poet.canonicalNamePersian!
-        : poet.canonicalName;
-
-    final altName = (isPersian && poet.canonicalNamePersian != null)
-        ? poet.canonicalName
-        : poet.canonicalNamePersian;
+    final name = LiteraryAuthorDisplayText.name(poet, lang);
+    final altName = isPersian ? null : poet.canonicalNamePersian;
 
     final showPersianBiography = isPersian && poet.hasAuditablePersianBiography;
-    final biography = showPersianBiography
-        ? poet.biographyFa!
+    final biography = isPersian
+        ? (showPersianBiography ? poet.biographyFa! : '')
         : poet.biographyTj;
-    final hasAuditableBiography = showPersianBiography
+    final hasAuditableBiography = isPersian
         ? poet.hasAuditablePersianBiography
         : poet.hasAuditableTajikBiography;
-    final biographySourceLabel = hasAuditableBiography
+    final biographySourceLabel = poet.hasAuditableBiographySource
         ? AppTranslations.get('lit_poet_bio_source_verified', lang)
         : AppTranslations.get('lit_poet_bio_source_unverified', lang);
-    final biographySourceText = hasAuditableBiography
+    final biographySourceText = poet.hasAuditableBiographySource
         ? poet.biographySource
         : AppTranslations.translate('lit_poet_source_tag', lang, [
             poet.biographySource,
           ]);
+    final compactHeader = MediaQuery.sizeOf(context).width < 380;
 
     return CustomScrollView(
       slivers: [
@@ -166,53 +171,60 @@ class _PoetDetailContent extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Period & Public Domain badge
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        poet.literaryPeriod.toUpperCase(),
-                        style: QalamTypography.eyebrow(color: colors.primary),
-                      ),
-                    ),
-                    if (poet.isPublicDomain) ...[
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 3,
-                        ),
-                        decoration: BoxDecoration(
-                          color: QalamColors.forest.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(
-                            QalamSpacing.radiusSm,
-                          ),
-                          border: Border.all(
-                            color: QalamColors.forest.withValues(alpha: 0.3),
-                            width: 0.5,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.public,
-                              size: 13,
-                              color: QalamColors.forest,
+                // Keep the profile header concise; the full source-backed
+                // period/context remains available below the biography.
+                if (period.isNotEmpty || poet.isPublicDomain)
+                  Row(
+                    children: [
+                      if (periodHeading.isNotEmpty)
+                        Expanded(
+                          child: Text(
+                            periodHeading,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: QalamTypography.eyebrow(
+                              color: colors.primary,
                             ),
-                            const SizedBox(width: 4),
-                            Text(
-                              AppTranslations.get('lit_public_domain', lang),
-                              style: QalamTypography.meta(
+                          ),
+                        ),
+                      if (poet.isPublicDomain) ...[
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: QalamColors.forest.withValues(alpha: 0.1),
+                            borderRadius: BorderRadius.circular(
+                              QalamSpacing.radiusSm,
+                            ),
+                            border: Border.all(
+                              color: QalamColors.forest.withValues(alpha: 0.3),
+                              width: 0.5,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.public,
+                                size: 13,
                                 color: QalamColors.forest,
-                                fontSize: 11,
                               ),
-                            ),
-                          ],
+                              const SizedBox(width: 4),
+                              Text(
+                                AppTranslations.get('lit_public_domain', lang),
+                                style: QalamTypography.meta(
+                                  color: QalamColors.forest,
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
+                      ],
                     ],
-                  ],
-                ),
+                  ),
                 const SizedBox(height: 16),
                 // Keep the source-backed portrait and canonical names
                 // together in both Tajik/LTR and Persian/RTL layouts.
@@ -228,6 +240,10 @@ class _PoetDetailContent extends ConsumerWidget {
                         'lit_portrait_unavailable',
                         lang,
                       ),
+                      citationLabel: LiteraryAuthorDisplayText.portraitCitation(
+                        poet.portrait,
+                        lang,
+                      ),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -236,22 +252,19 @@ class _PoetDetailContent extends ConsumerWidget {
                         children: [
                           Text(
                             name,
-                            textDirection:
-                                (isPersian && poet.canonicalNamePersian != null)
+                            textDirection: isPersian
                                 ? TextDirection.rtl
                                 : TextDirection.ltr,
                             style: QalamTypography.pageTitle(
                               color: colors.onSurface,
-                              fontSize: 34,
+                              fontSize: compactHeader ? 28 : 34,
                             ),
                           ),
                           if (altName != null && altName.isNotEmpty) ...[
                             const SizedBox(height: 6),
                             Text(
                               altName,
-                              textDirection:
-                                  (isPersian &&
-                                      poet.canonicalNamePersian != null)
+                              textDirection: isPersian
                                   ? TextDirection.ltr
                                   : TextDirection.rtl,
                               style: QalamTypography.heroProverb(
@@ -266,25 +279,32 @@ class _PoetDetailContent extends ConsumerWidget {
                   ],
                 ),
                 const SizedBox(height: 14),
-                // Dates and birthplace
-                if (hasAuditableBiography) ...[
+                // Dates use localized year-only forms; source-language
+                // birthplace text is withheld unless a Persian translation
+                // has been reviewed.
+                if (poet.hasAuditableBiographySource &&
+                    (lifespan.isNotEmpty || birthPlace != null)) ...[
                   Row(
                     children: [
-                      Icon(
-                        Icons.calendar_today_outlined,
-                        size: 15,
-                        color: colors.primary,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        AppTranslations.formatDigits(poet.lifespan, lang),
-                        style: QalamTypography.meta(
+                      if (lifespan.isNotEmpty) ...[
+                        Icon(
+                          Icons.calendar_today_outlined,
+                          size: 15,
                           color: colors.primary,
-                          fontSize: 14,
                         ),
-                      ),
-                      if (poet.birthPlace != null &&
-                          poet.birthPlace!.isNotEmpty) ...[
+                        const SizedBox(width: 6),
+                        Flexible(
+                          child: Text(
+                            lifespan,
+                            softWrap: true,
+                            style: QalamTypography.meta(
+                              color: colors.primary,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                      if (birthPlace != null) ...[
                         const SizedBox(width: 16),
                         Icon(
                           Icons.place_outlined,
@@ -294,7 +314,7 @@ class _PoetDetailContent extends ConsumerWidget {
                         const SizedBox(width: 4),
                         Expanded(
                           child: Text(
-                            poet.birthPlace!,
+                            birthPlace,
                             style: QalamTypography.bodySecondary(
                               color: colors.onSurfaceVariant,
                               fontSize: 13,
@@ -305,8 +325,9 @@ class _PoetDetailContent extends ConsumerWidget {
                       ],
                     ],
                   ),
-                ] else if (poet.lifespan.isNotEmpty ||
-                    (poet.birthPlace?.isNotEmpty ?? false))
+                ] else if (!isPersian &&
+                    (poet.lifespan.isNotEmpty ||
+                        (poet.birthPlace?.isNotEmpty ?? false)))
                   Text(
                     AppTranslations.get('lit_poet_header_dates_pending', lang),
                     style: QalamTypography.meta(
@@ -314,7 +335,8 @@ class _PoetDetailContent extends ConsumerWidget {
                       fontSize: 13,
                     ),
                   ),
-                if (hasAuditableBiography &&
+                if (!isPersian &&
+                    hasAuditableBiography &&
                     (poet.birthDateExact != null ||
                         poet.deathDateExact != null)) ...[
                   const SizedBox(height: 8),
@@ -395,21 +417,24 @@ class _PoetDetailContent extends ConsumerWidget {
                                 color: colors.primary,
                               ),
                               const SizedBox(width: 6),
-                              Text(
-                                AppTranslations.translate(
-                                  'lit_poet_approved_works_count',
-                                  lang,
-                                  [
-                                    AppTranslations.formatDigits(
-                                      approvedCount.toString(),
-                                      lang,
-                                    ),
-                                  ],
-                                ),
-                                style: TextStyle(
-                                  color: colors.primary,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 13,
+                              Flexible(
+                                child: Text(
+                                  AppTranslations.translate(
+                                    'lit_poet_approved_works_count',
+                                    lang,
+                                    [
+                                      AppTranslations.formatDigits(
+                                        approvedCount.toString(),
+                                        lang,
+                                      ),
+                                    ],
+                                  ),
+                                  softWrap: true,
+                                  style: TextStyle(
+                                    color: colors.primary,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                  ),
                                 ),
                               ),
                             ],
@@ -441,20 +466,23 @@ class _PoetDetailContent extends ConsumerWidget {
                                   color: colors.onSurfaceVariant,
                                 ),
                                 const SizedBox(width: 6),
-                                Text(
-                                  AppTranslations.translate(
-                                    'lit_poet_review_works_count',
-                                    lang,
-                                    [
-                                      AppTranslations.formatDigits(
-                                        reviewCount.toString(),
-                                        lang,
-                                      ),
-                                    ],
-                                  ),
-                                  style: QalamTypography.meta(
-                                    color: colors.onSurfaceVariant,
-                                    fontSize: 13,
+                                Flexible(
+                                  child: Text(
+                                    AppTranslations.translate(
+                                      'lit_poet_review_works_count',
+                                      lang,
+                                      [
+                                        AppTranslations.formatDigits(
+                                          reviewCount.toString(),
+                                          lang,
+                                        ),
+                                      ],
+                                    ),
+                                    softWrap: true,
+                                    style: QalamTypography.meta(
+                                      color: colors.onSurfaceVariant,
+                                      fontSize: 13,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -466,13 +494,12 @@ class _PoetDetailContent extends ConsumerWidget {
                   orElse: () => const SizedBox.shrink(),
                 ),
                 // Official Titles
-                if (hasAuditableBiography &&
-                    poet.officialTitles.isNotEmpty) ...[
+                if (hasAuditableBiography && officialTitles.isNotEmpty) ...[
                   const SizedBox(height: 14),
                   Wrap(
                     spacing: 8,
                     runSpacing: 6,
-                    children: poet.officialTitles.map((title) {
+                    children: officialTitles.map((title) {
                       return Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 10,
@@ -512,43 +539,26 @@ class _PoetDetailContent extends ConsumerWidget {
                 ),
                 const SizedBox(height: 14),
                 if (hasAuditableBiography && biography.trim().isNotEmpty)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (isPersian && !showPersianBiography) ...[
-                        Text(
-                          AppTranslations.get(
-                            'lit_poet_bio_cyrillic_fallback',
-                            lang,
-                          ),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.right,
-                          style: QalamTypography.meta(
-                            color: colors.onSurfaceVariant,
-                            fontSize: 12,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                      ],
-                      SelectableText(
-                        biography,
-                        textDirection: (isPersian && poet.biographyFa != null)
-                            ? TextDirection.rtl
-                            : TextDirection.ltr,
-                        textAlign: (isPersian && poet.biographyFa != null)
-                            ? TextAlign.right
-                            : TextAlign.left,
-                        style: QalamTypography.body(
-                          color: colors.onSurface,
-                          fontSize: 16,
-                          height: 1.75,
-                        ),
-                      ),
-                    ],
+                  SelectableText(
+                    biography,
+                    textDirection: isPersian
+                        ? TextDirection.rtl
+                        : TextDirection.ltr,
+                    textAlign: isPersian ? TextAlign.right : TextAlign.left,
+                    style: QalamTypography.body(
+                      color: colors.onSurface,
+                      fontSize: 16,
+                      height: 1.75,
+                    ),
                   )
                 else
                   Text(
-                    AppTranslations.get('lit_poet_bio_pending', lang),
+                    AppTranslations.get(
+                      isPersian && poet.hasAuditableTajikBiography
+                          ? 'lit_poet_bio_translation_pending'
+                          : 'lit_poet_bio_pending',
+                      lang,
+                    ),
                     style: QalamTypography.bodySecondary(
                       color: colors.onSurfaceVariant,
                       fontSize: 15,
@@ -588,6 +598,30 @@ class _PoetDetailContent extends ConsumerWidget {
                   ),
                 ),
 
+                if (period.isNotEmpty) ...[
+                  const SizedBox(height: 24),
+                  Text(
+                    AppTranslations.get('lit_poet_period_context', lang),
+                    style: QalamTypography.sectionTitle(
+                      color: colors.onSurface,
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SelectableText(
+                    period,
+                    textDirection: isPersian
+                        ? TextDirection.rtl
+                        : TextDirection.ltr,
+                    textAlign: isPersian ? TextAlign.right : TextAlign.left,
+                    style: QalamTypography.bodySecondary(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 14,
+                      height: 1.6,
+                    ),
+                  ),
+                ],
+
                 if (poet.relatedHistoryEntryIds.isNotEmpty) ...[
                   const SizedBox(height: 24),
                   Text(
@@ -618,10 +652,15 @@ class _PoetDetailContent extends ConsumerWidget {
                       if (related.isEmpty) {
                         return const SizedBox.shrink();
                       }
+                      final visibleEntries = related.where(
+                        (entry) =>
+                            !isPersian ||
+                            (entry.titlePersian?.trim().isNotEmpty ?? false),
+                      );
                       return Wrap(
                         spacing: 8,
                         runSpacing: 8,
-                        children: related.map((entry) {
+                        children: visibleEntries.map((entry) {
                           final title =
                               (isPersian && entry.titlePersian != null)
                               ? entry.titlePersian!
@@ -804,9 +843,7 @@ class _PoetDetailContent extends ConsumerWidget {
             return SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
                 final work = works[index];
-                final workTitle = (isPersian && work.titlePersian != null)
-                    ? work.titlePersian!
-                    : work.title;
+                final workTitle = LiteraryWorkDisplayText.title(work, lang);
 
                 return InkWell(
                   onTap: () => context.push('/literature/work/${work.id}'),
@@ -836,10 +873,11 @@ class _PoetDetailContent extends ConsumerWidget {
                                   fontSize: 17,
                                 ),
                               ),
-                              if (work.incipit != null) ...[
+                              if (LiteraryWorkDisplayText.incipit(work, lang)
+                                  case final incipit?) ...[
                                 const SizedBox(height: 4),
                                 Text(
-                                  '«${work.incipit}»',
+                                  '«$incipit»',
                                   style: QalamTypography.bodySecondary(
                                     color: colors.onSurfaceVariant,
                                     fontSize: 13,
@@ -848,7 +886,8 @@ class _PoetDetailContent extends ConsumerWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
-                              if (work.hasAuditableCompositionEvidence &&
+                              if (!isPersian &&
+                                  work.hasAuditableCompositionEvidence &&
                                   work.compositionDate != null &&
                                   work.compositionDate!.isNotEmpty) ...[
                                 const SizedBox(height: 6),
@@ -936,9 +975,7 @@ class _PoetDetailContent extends ConsumerWidget {
             return SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
                 final work = sourcedReviewWorks[index];
-                final workTitle = (isPersian && work.titlePersian != null)
-                    ? work.titlePersian!
-                    : work.title;
+                final workTitle = LiteraryWorkDisplayText.title(work, lang);
                 final citation = work.primarySource?.citation;
                 final hasPageCitation = work.primarySource?.pageStart != null;
 
@@ -1059,10 +1096,10 @@ class _PoetDetailContent extends ConsumerWidget {
                   book: book,
                   width: 48,
                   height: 68,
-                  placeholderTitle: book.titleFor(lang),
+                  placeholderTitle: BookDisplayText.title(book, lang),
                 ),
                 title: Text(
-                  book.titleFor(lang),
+                  BookDisplayText.title(book, lang),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: QalamTypography.body(color: colors.onSurface),

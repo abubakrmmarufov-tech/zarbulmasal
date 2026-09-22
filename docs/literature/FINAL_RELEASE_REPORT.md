@@ -1,19 +1,100 @@
 # Zarbulmasal — Current Production Readiness Report
 
-**Status: NOT READY FOR GOOGLE PLAY RELEASE**
+## Fresh continuation audit — 2026-09-22
 
-**Current local production-audit score: 84/100 — launchable with caveats, not
-Play-release signoff.**
+This block supersedes older build, test, deployment, and working-tree
+statements below where they differ.
 
-This is a current evidence snapshot, not a release sign-off. The repository
-working tree is clean; the web-only Pages deployment is explicitly recorded
-below, while the source branch remains separately published for review.
-The current local source checkpoint is `2313edd`; the review branch
-`audit-publish-2026-09-22` includes that source at `644051d`. Its workflow file remains at the
-previous published revision because the connected GitHub OAuth credential does
-not have the `workflow` scope.
+### Source-attested content continuation
 
-Fresh content-repair evidence (2026-09-22): the rebuilt web artifact uses
+The user-approved publication rule now accepts one exact page from an uploaded
+project PDF or `maorif.tj`; a second witness is optional. Under that rule, 28
+works have restored, verified Tajik text and an explicitly labeled generated
+Persian-script representation. Three other page-checked records remain without
+text because no exact recoverable transcription was available; they are not
+guessed or displayed. The catalog totals remain 5,501 works: 31 primary-page
+checked, 5,215 awaiting review, and 255 rejected extraction/prose candidates.
+
+The current local gates are **437/437 Flutter tests passing**, **84.41% line
+coverage (8,195/9,708)**, **60/60 Python tool tests passing**, clean static
+analysis, passing provenance/content validators, and a successful web build.
+This continuation has not been pushed or deployed. The historical blocked
+release assessment below still applies to portrait and repository page-scan
+redistribution, but its statement that zero poems are locally displayable is
+superseded by the 28 source-attested works above.
+
+**Fresh production-audit score: 44/100 — BLOCKED.** This qualitative score is
+for the Literature/Books release scope: 0 approved/displayable poems, unknown
+redistribution rights for every bundled portrait, and 66 textbook page scans
+still tracked in the public GitHub repository outweigh the passing local UI and
+test gates. The older 84/100 checkpoint score is superseded.
+
+- Local branch: `provenance-repair-2026-09-19`; this worktree has uncommitted,
+  scoped Persian-display fixes. Nothing from this continuation has been pushed
+  or deployed.
+- `flutter test --coverage --no-pub`: **433/433 passed**; coverage is
+  **84.37% (8,131/9,637 lines)**. Formatting check: **154 files, no changes**;
+  `flutter analyze --no-pub`: **no issues**.
+- `python3 -m unittest discover -s tool -p 'test_*.py' -q`: **36/36 passed**;
+  the provenance linter and adversarial re-audit also pass.
+- Fresh `flutter build web --no-pub --base-href /` and
+  `flutter build apk --debug --no-pub` both pass. The current local web preview
+  is `http://127.0.0.1:8772/`; the debug APK is
+  `build/app/outputs/flutter-apk/app-debug.apk`.
+- Five viewport smoke checks pass at 320×568, 375×667, 390×844, 430×932, and
+  568×320 with no document-level horizontal overflow, browser errors, or failed
+  requests. Real search, quiz-feedback, and flashcard-reveal interactions pass
+  at 320px and 390px. Literature hub, poet list/detail, works, Books list/detail,
+  and global search were screenshot-checked at both 320px and 390px, with no
+  horizontal document overflow. The compact poet dossier layout now keeps long
+  names intact and moves the full literary-period context below the biography.
+- Accessibility widget regressions measure contrast and key semantics, but this
+  is not a complete WCAG 2.2 sign-off: the referenced audit checklists/render
+  gates were unavailable, and native screen-reader/device QA was not performed.
+- Fresh browser review verified Persian RTL Books list/detail, the localized
+  source-note fallback, category filtering, and explicit Tajik-original
+  title/author disclosures where reviewed Persian fields are unavailable. All
+  18 catalog books still lack reviewed Persian title and author-name fields;
+  the original fields are labeled as Tajik, not presented as translations.
+- The 7 literature PDFs (grades 5–11) are registered in the source inventory;
+  the copies under `pdf books/` and `docs/literature/pdfs/` have matching
+  SHA-256 digests. The separate Grade 5 history PDF is not counted as a
+  literature textbook. The inventory regeneration produced no content change.
+- Fresh data validators: **159 authors**, **5,501 works**, **0 approved**,
+  **31 primary-page-checked**, **5,215 pending review**, and **255 rejected**;
+  no Tajik or Persian poem text is shipped. Provenance lint passes. The 67
+  source-backed portraits remain, with placeholders for authors lacking a
+-  reliable image. All **67 portraits have `rightsStatus: unknown`**; source
+  attribution establishes identity/provenance, not redistribution permission.
+- The repository is confirmed **public**. **66 page-scan PNGs are Git-tracked**
+  as audit evidence (not Flutter assets), so excluding them from the app bundle
+  does not prevent public GitHub distribution. The issue is recorded in
+  `docs/QA_ISSUE_REGISTER.md`; do not publish another release until rights are
+  established or the evidence is moved out of the public repository.
+- GitHub run [35664585090](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/runs/35664585090)
+  (#86) is for older commit `e1199c2` on `audit-publish-2026-09-22`, not this
+  dirty worktree. It reports 393 passed and 3 failed in the Android job; the
+  current local suite passes. The latest Pages workflow [35667658617](https://github.com/abubakrmmarufov-tech/zarbulmasal/actions/runs/35667658617)
+  succeeds at `gh-pages` commit `d2ae804`, but this is still the older build.
+  The live app and `/privacy.html` both return HTTP 200; neither includes these
+  unpushed changes.
+- Android devices are unavailable in this session, and no production signing
+  material was supplied; release signing and physical-device QA remain open.
+
+**Status: NOT READY FOR PUBLIC LITERATURE/BOOKS RELEASE OR GOOGLE PLAY**
+
+**Historical checkpoint score at `2313edd`: 84/100 — superseded by the fresh
+44/100 blocked audit above; do not use for the current release decision.**
+
+The details below record the earlier evidence snapshot, not a release sign-off.
+At that checkpoint the repository working tree was clean; the current dirty
+worktree is described in the fresh continuation audit above. The earlier local
+source checkpoint was `2313edd`; the review branch `audit-publish-2026-09-22`
+included that source at `644051d`. Its workflow file remained at the previous
+published revision because the connected GitHub OAuth credential did not have
+the `workflow` scope.
+
+Prior published content-repair evidence (2026-09-22): the rebuilt web artifact uses
 cache ID `537219cd1f6ef81793f6`; the web-only Pages deployment is `gh-pages`
 commit `d2ae804`; and the live app root and
 `privacy.html` return HTTP 200.
@@ -51,9 +132,9 @@ data; rights remain unknown, so all checked works stay withheld.
 - Poem page imagery is optional: works without a verified book-page image stay
   image-free, with no image affordance or substitute artwork. No portrait,
   cover, or page image is invented to fill a missing source.
-- Inspected book-page scans remain audit evidence outside the public asset
-  bundle; a regression guard requires deliberate rights and asset review before
-  any page-image directory can be added to `pubspec.yaml`.
+- Inspected book-page scans remain outside the public app asset bundle, but 66
+  are still Git-tracked in the public repository. A regression guard prevents
+  bundling them; it does not prevent GitHub from distributing the source files.
 - Tajik biographies with non-unsupported provenance: 145 of 159 authors
   (76 marked `SOURCE_BACKED`, 69 declared editorial summaries); 14
   biographies remain quarantined
@@ -136,8 +217,8 @@ author-reference and rights-consistency validation; it is not shipped data.
 
 The latest local checks on this worktree report:
 
-- `flutter test --no-pub --coverage --reporter compact`: **397/397 passed**
-- Coverage: **7,746/9,420 lines (82.23%)**
+- `flutter test --coverage --no-pub`: **428/428 passed**
+- Coverage: **8,119/9,626 lines (84.34%)**
 - `python3 tool/check_coverage.py coverage/lcov.info --minimum 80`: **pass**;
   the CI gate enforces the documented 80% minimum.
 - Accessibility regression: the Home and Explore search entries plus the
@@ -181,7 +262,7 @@ The latest local checks on this worktree report:
   the same rule.
 - `python3 -m unittest tool.test_legacy_literature_guards -v`: **pass**; legacy
   catalog writers fail closed before they can modify active assets
-- `python3 -m unittest discover -s tool -p 'test_*.py' -q`: **33/33 passed**;
+- `python3 -m unittest discover -s tool -p 'test_*.py' -q`: **36/36 passed**;
   provenance, source-register, and Android bundle-alignment guards are covered
   in CI; the Android alignment test also passes through its direct executable
   path (`python3 tool/test_android_bundle_alignment.py -q`)
