@@ -12,7 +12,6 @@ class ExploreScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
 
     return Scaffold(
       appBar: AppBar(
@@ -28,30 +27,34 @@ class ExploreScreen extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         children: [
           // Search Hero
-          GestureDetector(
+          Semantics(
+            button: true,
+            excludeSemantics: true,
+            label: AppTranslations.get('explore_search_placeholder', lang),
             onTap: () => context.push('/search'),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: colors.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: colors.outlineVariant),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.search, color: colors.primary),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      isPersian
-                          ? 'جستجوی شاعر، شعر، تاریخ...'
-                          : 'Ҷустуҷӯи шоир, шеър, таърих...',
-                      style: QalamTypography.body(
-                        color: colors.onSurfaceVariant,
+            child: GestureDetector(
+              onTap: () => context.push('/search'),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: colors.surfaceContainerLow,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: colors.outlineVariant),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.search, color: colors.primary),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        AppTranslations.get('explore_search_placeholder', lang),
+                        style: QalamTypography.body(
+                          color: colors.onSurfaceVariant,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -59,98 +62,87 @@ class ExploreScreen extends ConsumerWidget {
 
           // Literature Section
           Text(
-            isPersian ? 'ادبیات' : 'Адабиёт',
+            AppTranslations.get('explore_literature_title', lang),
             style: QalamTypography.sectionTitle(color: colors.onSurface),
           ),
           const SizedBox(height: 12),
           _buildExploreCard(
             context,
             icon: Icons.people_outline,
-            title: isPersian ? 'شاعران و نویسندگان' : 'Шоирон ва нависандагон',
-            subtitle: isPersian
-                ? 'زندگی‌نامه و گلچین آثار'
-                : 'Зиндагинома ва осор',
+            title: AppTranslations.get('explore_poets_title', lang),
+            subtitle: AppTranslations.get('explore_poets_sub', lang),
             onTap: () => context.push('/literature/poets'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.auto_stories_outlined,
-            title: isPersian ? 'شعرها و کتاب‌ها' : 'Шеърҳо ва китобҳо',
-            subtitle: isPersian
-                ? 'مجموعه اشعار معتبر'
-                : 'Маҷмӯаи шеърҳои тасдиқшуда',
+            title: AppTranslations.get('explore_works_title', lang),
+            subtitle: AppTranslations.get('explore_works_sub', lang),
             onTap: () => context.push('/literature/works'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.school_outlined,
-            title: isPersian ? 'ادبیات مکتب' : 'Адабиёти мактабӣ',
-            subtitle: isPersian
-                ? 'برنامه درسی صنف‌های ۵–۱۱'
-                : 'Барномаи таълимии синфҳои 5–11',
+            title: AppTranslations.get('explore_school_title', lang),
+            subtitle: AppTranslations.get('explore_school_sub', lang),
             onTap: () => context.push('/literature/school'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.record_voice_over_outlined,
-            title: isPersian
-                ? 'ادبیات شفاهی (عامیانه)'
-                : 'Адабиёти шифоҳӣ (халқӣ)',
-            subtitle: isPersian
-                ? 'افسانه‌ها، چیستان‌ها و ترانه‌ها'
-                : 'Афсонаҳо, чистонҳо ва сурудҳо',
+            title: AppTranslations.get('explore_oral_title', lang),
+            subtitle: AppTranslations.get('explore_oral_sub', lang),
             onTap: () => context.push('/literature/oral'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.hub_outlined,
-            title: isPersian ? 'مرکز میراث ادبی' : 'Маркази мероси адабӣ',
-            subtitle: isPersian
-                ? 'مرور کامل میراث ادبی و بیت روز'
-                : 'Шарҳи комили мероси адабӣ ва байти рӯз',
+            title: AppTranslations.get('explore_hub_title', lang),
+            subtitle: AppTranslations.get('explore_hub_sub', lang),
             onTap: () => context.push('/literature'),
+          ),
+          _buildExploreCard(
+            context,
+            icon: Icons.local_library_outlined,
+            title: AppTranslations.get('explore_books_title', lang),
+            subtitle: AppTranslations.get('explore_books_sub', lang),
+            onTap: () => context.push('/books'),
           ),
           const SizedBox(height: 32),
 
           // History Section
           Text(
-            isPersian ? 'تاریخ' : 'Таърих',
+            AppTranslations.get('explore_history_title', lang),
             style: QalamTypography.sectionTitle(color: colors.onSurface),
           ),
           const SizedBox(height: 12),
           _buildExploreCard(
             context,
             icon: Icons.timeline,
-            title: isPersian ? 'تاریخ مردم تاجیک' : 'Таърихи халқи тоҷик',
-            subtitle: isPersian
-                ? 'رویدادها، سلسله‌ها و افراد'
-                : 'Рӯйдодҳо, сулолаҳо ва шахсиятҳо',
+            title: AppTranslations.get('explore_history_card_title', lang),
+            subtitle: AppTranslations.get('explore_history_card_sub', lang),
             onTap: () => context.push('/history'),
           ),
           const SizedBox(height: 32),
 
           // Proverbs Section
           Text(
-            isPersian ? 'ضرب‌المثل‌ها' : 'Зарбулмасалҳо',
+            AppTranslations.get('explore_proverbs_title', lang),
             style: QalamTypography.sectionTitle(color: colors.onSurface),
           ),
           const SizedBox(height: 12),
           _buildExploreCard(
             context,
             icon: Icons.format_list_bulleted,
-            title: isPersian ? 'موضوعات' : 'Мавзӯъҳо',
-            subtitle: isPersian
-                ? 'دسته‌بندی موضوعی ضرب‌المثل‌ها'
-                : 'Гурӯҳбандии мавзӯии мақолҳо',
+            title: AppTranslations.get('explore_topics_title', lang),
+            subtitle: AppTranslations.get('explore_topics_sub', lang),
             onTap: () => context.push('/categories'),
           ),
           _buildExploreCard(
             context,
             icon: Icons.menu_book_outlined,
-            title: isPersian ? 'مرور همه' : 'Мурури ҳама',
-            subtitle: isPersian
-                ? 'فهرست کامل ضرب‌المثل‌ها'
-                : 'Феҳристи комили зарбулмасалҳо',
+            title: AppTranslations.get('explore_all_title', lang),
+            subtitle: AppTranslations.get('explore_all_sub', lang),
             onTap: () => context.push('/proverbs'),
           ),
         ],
@@ -203,7 +195,7 @@ class ExploreScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: colors.onSurfaceVariant),
+              const QalamChevron(size: 20),
             ],
           ),
         ),

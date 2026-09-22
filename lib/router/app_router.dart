@@ -18,6 +18,7 @@ import '../features/settings/settings_screen.dart';
 import '../features/literature/presentation/presentation.dart';
 import '../features/history/presentation/history_screen.dart';
 import '../features/history/presentation/history_detail_screen.dart';
+import '../features/books/presentation/presentation.dart';
 import '../shared/widgets/app_scaffold.dart';
 import '../core/design_system/design_system.dart';
 import '../core/l10n/app_translations.dart';
@@ -180,6 +181,30 @@ GoRouter _buildAppRouter() {
           final id = state.pathParameters['id']!;
           return HistoryDetailScreen(entryId: id);
         },
+      ),
+      GoRoute(
+        path: '/books',
+        builder: (context, state) => BooksScreen(
+          initialCategory: state.uri.queryParameters['category'],
+          initialAuthorId: state.uri.queryParameters['author'],
+        ),
+      ),
+      GoRoute(
+        path: '/books/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return BookDetailScreen(bookId: id);
+        },
+      ),
+      GoRoute(
+        path: '/books/category/:id',
+        builder: (context, state) =>
+            BooksScreen(initialCategory: state.pathParameters['id']),
+      ),
+      GoRoute(
+        path: '/books/author/:id',
+        builder: (context, state) =>
+            BooksScreen(initialAuthorId: state.pathParameters['id']),
       ),
     ],
   );

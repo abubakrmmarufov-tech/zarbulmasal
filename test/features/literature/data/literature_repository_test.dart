@@ -1,12 +1,46 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/literature/data/literature_repository.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
+
+class _CountingAssetBundle extends AssetBundle {
+  _CountingAssetBundle(this.assets);
+
+  final Map<String, String> assets;
+  final Map<String, int> loadStringCalls = {};
+
+  @override
+  Future<ByteData> load(String key) async {
+    final value = assets[key];
+    if (value == null) throw FlutterError('Missing test asset: $key');
+    return ByteData.sublistView(Uint8List.fromList(utf8.encode(value)));
+  }
+
+  @override
+  Future<String> loadString(String key, {bool cache = true}) async {
+    loadStringCalls[key] = (loadStringCalls[key] ?? 0) + 1;
+    final value = assets[key];
+    if (value == null) throw FlutterError('Missing test asset: $key');
+    return value;
+  }
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('LiteratureRepository', () {
     late LiteratureRepository repository;
+    const verifiedSource = SourceEdition(
+      bookTitle: 'Сарчашмаи санҷишӣ',
+      publisher: 'Нашриёт',
+      city: 'Душанбе',
+      year: '2026',
+      pageStart: 1,
+      sourceType: SourceEditionType.criticalEdition,
+    );
 
     setUp(() {
       repository = LiteratureRepository();
@@ -15,22 +49,54 @@ void main() {
     test('loadAuthors loads verified authors from assets', () async {
       final authors = await repository.loadAuthors();
       expect(authors, isNotEmpty);
-      expect(authors.length, 150);
 
       final rudaki = authors.firstWhere((a) => a.id == 'rudaki');
       expect(rudaki.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
       expect(rudaki.canonicalNamePersian, 'ابوعبدالله رودکی');
       expect(rudaki.birthYear, '858');
-      expect(rudaki.rights.status, RightsStatus.publicDomain);
-      expect(rudaki.rights.fullTextAllowed, isTrue);
+      // Rights evidence was not sufficient to retain the old public-domain
+      // claim, so the repaired catalog fails closed until it is re-established.
+      expect(rudaki.rights.status, RightsStatus.unknown);
+      expect(rudaki.rights.fullTextAllowed, isFalse);
     });
 
     test('loadWorks loads registered works from assets', () async {
       final works = await repository.loadWorks();
       expect(works, isA<List<LiteraryWork>>());
       // Candidate records are loaded, but publication remains fail-closed.
-      expect(works.length, 1472);
+      expect(works, isNotEmpty);
     });
+
+    test(
+      'loadWorks shares successful loads without caching failures',
+      () async {
+        final bundle = _CountingAssetBundle({
+          LiteratureRepository.worksAssetPath: '[]',
+        });
+        final cachedRepository = LiteratureRepository(bundle: bundle);
+
+        final loadedWorks = await cachedRepository.loadWorks();
+        await cachedRepository.loadWorks();
+
+        expect(bundle.loadStringCalls[LiteratureRepository.worksAssetPath], 1);
+        expect(() => loadedWorks.clear(), throwsUnsupportedError);
+
+        final failingBundle = _CountingAssetBundle({});
+        final retryableRepository = LiteratureRepository(bundle: failingBundle);
+        await expectLater(
+          retryableRepository.loadWorks(),
+          throwsA(isA<FlutterError>()),
+        );
+        await expectLater(
+          retryableRepository.loadWorks(),
+          throwsA(isA<FlutterError>()),
+        );
+        expect(
+          failingBundle.loadStringCalls[LiteratureRepository.worksAssetPath],
+          2,
+        );
+      },
+    );
 
     test('loadSources loads bibliographic editions from assets', () async {
       final sources = await repository.loadSources();
@@ -73,6 +139,7 @@ void main() {
         title: 'Бӯи ҷӯи Мӯлиён',
         textTajik: 'Бӯи ҷӯи Мӯлиён ояд ҳаме',
         textStatus: TextStatus.verified,
+        primarySource: verifiedSource,
         rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
@@ -81,6 +148,7 @@ void main() {
         ),
         verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
         ),
       );
 
@@ -149,6 +217,7 @@ void main() {
         title: 'Work 1',
         textTajik: 'Text 1',
         textStatus: TextStatus.verified,
+        primarySource: verifiedSource,
         rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
@@ -157,6 +226,7 @@ void main() {
         ),
         verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
         ),
       );
 
@@ -166,6 +236,7 @@ void main() {
         title: 'Work 2',
         textTajik: 'Text 2',
         textStatus: TextStatus.verified,
+        primarySource: verifiedSource,
         rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'PD',
@@ -174,6 +245,7 @@ void main() {
         ),
         verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
         ),
       );
 

@@ -5,6 +5,11 @@
 enum RightsStatus {
   publicDomain,
   permissionGranted,
+
+  /// Publication is allowed by Zarbulmasal's source-attested editorial policy:
+  /// the exact text is attributed on a checked page in an uploaded PDF or on
+  /// maorif.tj. This is deliberately distinct from a copyright claim.
+  sourceAttested,
   excerptOnly,
   folklore,
   blocked,
@@ -36,6 +41,7 @@ enum RightsStatus {
   bool get allowsFullText =>
       this == RightsStatus.publicDomain ||
       this == RightsStatus.permissionGranted ||
+      this == RightsStatus.sourceAttested ||
       this == RightsStatus.folklore;
 
   /// Whether this status allows excerpt display.

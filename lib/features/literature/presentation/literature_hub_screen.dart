@@ -6,6 +6,8 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_work.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// The central landing hub for the "Мероси адабӣ" (Literary Heritage) feature.
 ///
@@ -27,11 +29,17 @@ class LiteratureHubScreen extends ConsumerWidget {
     final oralCount = oralAsync.valueOrNull?.length ?? 0;
     final poetsAsync = ref.watch(literaryAuthorsProvider);
     final worksAsync = ref.watch(approvedWorksProvider);
+    final reviewWorksAsync = ref.watch(searchableLiteraryWorksProvider);
 
     final poetsCount =
         poetsAsync.valueOrNull?.where((poet) => poet.hasCanonicalName).length ??
         0;
     final worksCount = worksAsync.valueOrNull?.length ?? 0;
+    final reviewWorksCount =
+        reviewWorksAsync.valueOrNull
+            ?.where((work) => !work.isDisplayable)
+            .length ??
+        0;
     final formattedPoetsCount = AppTranslations.formatNumber(poetsCount, lang);
     final formattedWorksCount = AppTranslations.formatNumber(worksCount, lang);
     final formattedOralCount = AppTranslations.formatNumber(oralCount, lang);
@@ -56,7 +64,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+                          tooltip: AppTranslations.get('btn_back', lang),
                           icon: const BackButtonIcon(),
                           onPressed: () {
                             if (context.canPop()) {
@@ -67,7 +75,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                           },
                         ),
                         IconButton(
-                          tooltip: isPersian ? 'جستجو' : 'Ҷустуҷӯ',
+                          tooltip: AppTranslations.get('lit_search', lang),
                           icon: const Icon(Icons.search, size: 22),
                           onPressed: () => context.push('/literature/search'),
                         ),
@@ -78,13 +86,9 @@ class LiteratureHubScreen extends ConsumerWidget {
                 // Page Header
                 SliverToBoxAdapter(
                   child: QalamPageHeader(
-                    eyebrow: isPersian
-                        ? 'گنجینهٔ ادب تاجیک'
-                        : 'ГАНҶИНАИ АДАБИ ТОҶИК',
+                    eyebrow: AppTranslations.get('lit_hub_eyebrow', lang),
                     title: AppTranslations.get('lit_title', lang),
-                    subtitle: isPersian
-                        ? 'گنجینهٔ شعر و حکمت تاجیک با استناد به نسخه‌های چاپی و معتبر'
-                        : 'Ганҷинаи шеър ва ҳикмати тоҷик бо истинод ба сарчашмаҳои чопии муътамад',
+                    subtitle: AppTranslations.get('lit_hub_subtitle', lang),
                   ),
                 ),
                 // Daily Verse Section (at top)
@@ -96,24 +100,30 @@ class LiteratureHubScreen extends ConsumerWidget {
                     ),
                     child: dailyVerseAsync.when(
                       loading: () => _DailyVerseStatus(
+                        lang: lang,
                         isPersian: isPersian,
                         title: AppTranslations.get('lit_daily_verse', lang),
-                        subtitle: isPersian
-                            ? 'در حال بررسی آثار معتبر...'
-                            : 'Осори санҷидашуда боргирӣ мешаванд...',
+                        subtitle: AppTranslations.get(
+                          'lit_hub_loading_works',
+                          lang,
+                        ),
                       ),
                       error: (_, _) => _DailyVerseStatus(
+                        lang: lang,
                         isPersian: isPersian,
-                        title: isPersian
-                            ? 'بیت روز موقتاً در دسترس نیست'
-                            : 'Байти рӯз муваққатан дастрас нест',
-                        subtitle: isPersian
-                            ? 'داده‌های ادبی را دوباره بارگیری کنید.'
-                            : 'Маълумоти адабиро дубора боргирӣ кунед.',
+                        title: AppTranslations.get(
+                          'lit_hub_daily_verse_unavailable',
+                          lang,
+                        ),
+                        subtitle: AppTranslations.get(
+                          'lit_hub_daily_verse_retry',
+                          lang,
+                        ),
                         onRetry: () => ref.invalidate(dailyVerseProvider),
                       ),
                       data: (work) => work == null
                           ? _DailyVerseStatus(
+                              lang: lang,
                               isPersian: isPersian,
                               title: AppTranslations.get(
                                 'lit_daily_pending_title',
@@ -124,7 +134,11 @@ class LiteratureHubScreen extends ConsumerWidget {
                                 lang,
                               ),
                             )
-                          : _DailyVerseCard(work: work, isPersian: isPersian),
+                          : _DailyVerseCard(
+                              work: work,
+                              lang: lang,
+                              isPersian: isPersian,
+                            ),
                     ),
                   ),
                 ),
@@ -135,6 +149,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                   SliverToBoxAdapter(
                     child: _FeaturedWorksShowcase(
                       works: worksAsync.valueOrNull!,
+                      lang: lang,
                       isPersian: isPersian,
                       dailyVerseId: dailyVerseAsync.valueOrNull?.id,
                     ),
@@ -150,27 +165,31 @@ class LiteratureHubScreen extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          isPersian ? 'بخش‌های گنجینه' : 'БАХШҲОИ ГАНҶИНА',
+                          AppTranslations.get('lit_hub_sections_header', lang),
                           style: QalamTypography.eyebrow(color: colors.primary),
                         ),
                         const SizedBox(height: 12),
                         QalamSectionLink(
                           number: '00',
-                          title: isPersian
-                              ? 'تاریخ مردم تاجیک'
-                              : 'Таърихи халқи тоҷик',
-                          subtitle: isPersian
-                              ? 'نام‌ها، دولت‌ها و شعرهای کتاب‌های صنف‌های ۵ تا ۱۱'
-                              : 'Номҳо, давлатҳо ва шеърҳои китобҳои синфҳои 5–11',
+                          title: AppTranslations.get(
+                            'lit_hub_history_card',
+                            lang,
+                          ),
+                          subtitle: AppTranslations.get(
+                            'lit_hub_history_card_sub',
+                            lang,
+                          ),
                           onTap: () => context.push('/history'),
                         ),
                         // 01: Poets
                         QalamSectionLink(
                           number: '01',
                           title: AppTranslations.get('lit_poets', lang),
-                          subtitle: isPersian
-                              ? 'زندگینامه و آثار $formattedPoetsCount شاعر و ادیب بزرگ'
-                              : 'Зиндагинома ва осори $formattedPoetsCount шоир ва адиби бузург',
+                          subtitle: AppTranslations.translate(
+                            'lit_hub_poets_count',
+                            lang,
+                            [formattedPoetsCount],
+                          ),
                           onTap: () => context.push('/literature/poets'),
                         ),
                         // 02: Works / Poems
@@ -178,12 +197,26 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '02',
                           title: AppTranslations.get('lit_poems', lang),
                           subtitle: worksCount > 0
-                              ? (isPersian
-                                    ? 'غزل‌ها، قصیده‌ها و رباعی‌های تصحیح‌شده ($formattedWorksCount اثر)'
-                                    : 'Ғазалҳо, қасидаҳо ва рубоиҳои санҷидашуда ($formattedWorksCount асар)')
-                              : (isPersian
-                                    ? 'غزل‌ها، قصیده‌ها و رباعی‌های در حال مقابله و تصحیح'
-                                    : 'Ғазалҳо, қасидаҳо ва рубоиҳои дар ҳоли тасдиқ ва муқобала'),
+                              ? AppTranslations.translate(
+                                  'lit_hub_works_count',
+                                  lang,
+                                  [formattedWorksCount],
+                                )
+                              : reviewWorksCount > 0
+                              ? AppTranslations.translate(
+                                  'lit_hub_review_works_count',
+                                  lang,
+                                  [
+                                    AppTranslations.formatNumber(
+                                      reviewWorksCount,
+                                      lang,
+                                    ),
+                                  ],
+                                )
+                              : AppTranslations.get(
+                                  'lit_hub_works_under_review',
+                                  lang,
+                                ),
                           onTap: () => context.push('/literature/works'),
                         ),
                         // 03: School Canon
@@ -191,7 +224,11 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '03',
                           title: AppTranslations.get('lit_school', lang),
                           subtitle: schoolCanonCount > 0
-                              ? '${AppTranslations.get('lit_school_desc', lang)} ($formattedSchoolCanonCount ${isPersian ? 'اثر' : 'асар'})'
+                              ? AppTranslations.translate(
+                                  'lit_hub_school_canon_count',
+                                  lang,
+                                  [formattedSchoolCanonCount],
+                                )
                               : AppTranslations.get('lit_school_desc', lang),
                           onTap: () => context.push('/literature/school'),
                         ),
@@ -200,9 +237,11 @@ class LiteratureHubScreen extends ConsumerWidget {
                           number: '04',
                           title: AppTranslations.get('lit_oral', lang),
                           subtitle: oralCount > 0
-                              ? (isPersian
-                                    ? 'ضرب‌المثل‌ها، چیستان‌ها و دوبیتی‌های عامیانه ($formattedOralCount مدخل)'
-                                    : 'Зарбулмасалҳо, чистонҳо ва дубайтиҳои халқӣ ($formattedOralCount намуна)')
+                              ? AppTranslations.translate(
+                                  'lit_hub_oral_count',
+                                  lang,
+                                  [formattedOralCount],
+                                )
                               : AppTranslations.get(
                                   'lit_oral_coming_soon',
                                   lang,
@@ -211,9 +250,22 @@ class LiteratureHubScreen extends ConsumerWidget {
                               ? () => context.push('/literature/oral')
                               : null,
                         ),
-                        // 05: Search
+                        // 05: Books
                         QalamSectionLink(
                           number: '05',
+                          title: AppTranslations.get(
+                            'explore_books_title',
+                            lang,
+                          ),
+                          subtitle: AppTranslations.get(
+                            'explore_books_sub',
+                            lang,
+                          ),
+                          onTap: () => context.push('/books'),
+                        ),
+                        // 06: Search
+                        QalamSectionLink(
+                          number: '06',
                           title: AppTranslations.get('lit_search', lang),
                           subtitle: AppTranslations.get(
                             'lit_search_desc',
@@ -236,12 +288,14 @@ class LiteratureHubScreen extends ConsumerWidget {
 }
 
 class _DailyVerseStatus extends StatelessWidget {
+  final DisplayLanguage lang;
   final bool isPersian;
   final String title;
   final String subtitle;
   final VoidCallback? onRetry;
 
   const _DailyVerseStatus({
+    required this.lang,
     required this.isPersian,
     required this.title,
     required this.subtitle,
@@ -290,9 +344,7 @@ class _DailyVerseStatus extends StatelessWidget {
                   const SizedBox(height: 12),
                   OutlinedButton(
                     onPressed: onRetry,
-                    child: Text(
-                      isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                    ),
+                    child: Text(AppTranslations.get('btn_retry', lang)),
                   ),
                 ],
               ],
@@ -307,9 +359,14 @@ class _DailyVerseStatus extends StatelessWidget {
 /// A featured card at the top of the Literature Hub displaying the Daily Verse.
 class _DailyVerseCard extends ConsumerWidget {
   final LiteraryWork? work;
+  final DisplayLanguage lang;
   final bool isPersian;
 
-  const _DailyVerseCard({required this.work, required this.isPersian});
+  const _DailyVerseCard({
+    required this.work,
+    required this.lang,
+    required this.isPersian,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -321,27 +378,29 @@ class _DailyVerseCard extends ConsumerWidget {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
+    // The daily card uses an ink surface in both themes. Keep normal-sized
+    // eyebrow, author, and supporting copy on the accessible paper-text ramp;
+    // burgundySoft and inkMute fall below WCAG 4.5:1 on the light card.
     final accentColor = isDark
         ? QalamColors.antiqueGoldSoft
-        : QalamColors.burgundySoft;
-    final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
+        : QalamColors.antiqueGold;
+    final mutedColor = QalamColors.paperTextSoft;
     final borderColor = isDark
         ? QalamColors.hairlineDark
         : QalamColors.hairline;
 
     final authorAsync = ref.watch(authorByIdProvider(work!.authorId));
     final author = authorAsync.valueOrNull;
-    final authorName = author != null
-        ? ((isPersian && author.canonicalNamePersian != null)
-              ? author.canonicalNamePersian!
-              : author.canonicalName)
-        : work!.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      work!.authorId,
+    );
 
-    final verseText = (work!.incipit != null && work!.incipit!.isNotEmpty)
-        ? '«${work!.incipit}»'
-        : (isPersian && work!.titlePersian != null
-              ? work!.titlePersian!
-              : work!.title);
+    final verseIncipit = LiteraryWorkDisplayText.incipit(work!, lang);
+    final verseText = verseIncipit == null
+        ? LiteraryWorkDisplayText.title(work!, lang)
+        : '«$verseIncipit»';
 
     return Material(
       color: bg,
@@ -361,7 +420,7 @@ class _DailyVerseCard extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    isPersian ? 'بیت روز' : 'БАЙТИ РӮЗ',
+                    AppTranslations.get('lit_daily_verse_eyebrow', lang),
                     style: QalamTypography.eyebrow(color: accentColor),
                   ),
                   Icon(
@@ -392,7 +451,7 @@ class _DailyVerseCard extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    isPersian ? 'خوانش کامل' : 'Мутолиаи асар',
+                    AppTranslations.get('lit_hub_read_work', lang),
                     style: QalamTypography.meta(
                       color: mutedColor,
                       fontSize: 12,
@@ -411,11 +470,13 @@ class _DailyVerseCard extends ConsumerWidget {
 /// A horizontally scrollable showcase of canonical poems and works.
 class _FeaturedWorksShowcase extends ConsumerWidget {
   final List<LiteraryWork> works;
+  final DisplayLanguage lang;
   final bool isPersian;
   final String? dailyVerseId;
 
   const _FeaturedWorksShowcase({
     required this.works,
+    required this.lang,
     required this.isPersian,
     this.dailyVerseId,
   });
@@ -442,15 +503,13 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                isPersian
-                    ? 'شاهکارهای ادب فارسی و تاجیکی'
-                    : 'ШЕЪРҲОИ БАРГУЗИДА',
+                AppTranslations.get('lit_hub_featured_verses', lang),
                 style: QalamTypography.eyebrow(color: colors.primary),
               ),
               TextButton(
                 onPressed: () => context.push('/literature/works'),
                 child: Text(
-                  isPersian ? 'همهٔ آثار' : 'Ҳамаи асарҳо',
+                  AppTranslations.get('lit_hub_all_works', lang),
                   style: QalamTypography.meta(color: colors.primary),
                 ),
               ),
@@ -469,17 +528,15 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
               final work = featured[index];
               final authorAsync = ref.watch(authorByIdProvider(work.authorId));
               final author = authorAsync.valueOrNull;
-              final authorName = author != null
-                  ? ((isPersian && author.canonicalNamePersian != null)
-                        ? author.canonicalNamePersian!
-                        : author.canonicalName)
-                  : work.authorId;
+              final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+                author,
+                lang,
+                work.authorId,
+              );
 
-              final title = (isPersian && work.titlePersian != null)
-                  ? work.titlePersian!
-                  : work.title;
+              final title = LiteraryWorkDisplayText.title(work, lang);
 
-              final incipit = work.incipit ?? '';
+              final incipit = LiteraryWorkDisplayText.incipit(work, lang) ?? '';
 
               return SizedBox(
                 width: 260,
@@ -521,7 +578,7 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
                                   ),
                                 ),
                                 child: Text(
-                                  _genreLabel(work.type, isPersian),
+                                  _genreLabel(work.type, lang),
                                   style: QalamTypography.meta(
                                     color: colors.onPrimaryContainer,
                                     fontSize: 11,
@@ -579,22 +636,24 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
     );
   }
 
-  static String _genreLabel(WorkType type, bool isPersian) {
+  static String _genreLabel(WorkType type, DisplayLanguage lang) {
     switch (type) {
       case WorkType.ghazal:
-        return isPersian ? 'غزل' : 'Ғазал';
+        return AppTranslations.get('lit_genre_ghazal', lang);
       case WorkType.rubai:
-        return isPersian ? 'رباعی' : 'Рубоӣ';
+        return AppTranslations.get('lit_genre_rubai', lang);
       case WorkType.qasida:
-        return isPersian ? 'قصیده' : 'Қасида';
+        return AppTranslations.get('lit_genre_qasida', lang);
       case WorkType.poem:
-        return isPersian ? 'شعر' : 'Шеър';
+        return AppTranslations.get('lit_genre_poem', lang);
       case WorkType.epic:
-        return isPersian ? 'حماسه' : 'Ҳамоса';
+        return AppTranslations.get('lit_genre_masnavi', lang);
       case WorkType.folk:
-        return isPersian ? 'فولکلور' : 'Халқӣ';
-      default:
-        return isPersian ? 'اثر منظوم' : 'Шеър';
+        return AppTranslations.get('lit_genre_folk', lang);
+      case WorkType.fragment:
+      case WorkType.anthem:
+      case WorkType.other:
+        return AppTranslations.get('lit_genre_other', lang);
     }
   }
 }

@@ -8,6 +8,7 @@ import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_author.dart';
 import '../domain/school_canon_entry.dart';
+import 'literary_author_display_text.dart';
 
 /// A screen presenting the official Tajik school curriculum literary canon,
 /// organized by grade level (grades 4–11) with approved textbook citations.
@@ -45,7 +46,7 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: IconButton(
-                    tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+                    tooltip: AppTranslations.get('back', lang),
                     icon: const BackButtonIcon(),
                     onPressed: () => qalamBack(context),
                   ),
@@ -55,13 +56,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
             // Header
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian
-                    ? '۰۳ / برنامهٔ مکتبی'
-                    : '03 / БАРНОМАИ МАКТАБӢ',
+                eyebrow: AppTranslations.get('lit_canon_eyebrow', lang),
                 title: AppTranslations.get('lit_school', lang),
-                subtitle: isPersian
-                    ? 'فهرست منبع‌محورِ کتاب‌های درسی؛ هر ارجاع پس از سنجش صفحه تأیید می‌شود'
-                    : 'Феҳристи сарчашмабунёди китобҳои дарсӣ; ҳар истинод баъд аз санҷиши саҳифа тасдиқ мешавад',
+                subtitle: AppTranslations.get('lit_canon_subtitle', lang),
               ),
             ),
             // Content
@@ -73,17 +70,11 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
-                    title: isPersian
-                        ? 'خطا در بارگیری برنامهٔ درسی'
-                        : 'Хато ҳангоми боргирии барнома',
-                    subtitle: isPersian
-                        ? 'برنامهٔ درسی بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                        : 'Барномаи таълимӣ бор нашуд. Лутфан дубора кӯшиш кунед.',
+                    title: AppTranslations.get('lit_canon_error_title', lang),
+                    subtitle: AppTranslations.get('lit_canon_error_sub', lang),
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(schoolCanonProvider),
-                      child: Text(
-                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                      ),
+                      child: Text(AppTranslations.get('btn_retry', lang)),
                     ),
                   ),
                 ),
@@ -95,9 +86,10 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                     child: Center(
                       child: EmptyState(
                         icon: Icons.school_outlined,
-                        title: isPersian
-                            ? 'برنامهٔ درسی خالی است'
-                            : 'Барномаи таълимӣ ёфт нашуд',
+                        title: AppTranslations.get(
+                          'lit_canon_empty_title',
+                          lang,
+                        ),
                       ),
                     ),
                   );
@@ -139,7 +131,10 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                           children: [
                             ChoiceChip(
                               label: Text(
-                                isPersian ? 'همهٔ صنف‌ها' : 'Ҳамаи синфҳо',
+                                AppTranslations.get(
+                                  'lit_filter_all_grades',
+                                  lang,
+                                ),
                               ),
                               selected: _selectedGrade == null,
                               onSelected: (selected) {
@@ -152,9 +147,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                             for (final grade in grades) ...[
                               ChoiceChip(
                                 label: Text(
-                                  isPersian
-                                      ? 'صنف ${AppTranslations.formatDigits(grade, lang)}'
-                                      : 'Синфи $grade',
+                                  AppTranslations.get('lit_grade', lang, [
+                                    grade,
+                                  ]),
                                 ),
                                 selected: _selectedGrade == grade,
                                 onSelected: (selected) {
@@ -187,9 +182,9 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                           child: Row(
                             children: [
                               Text(
-                                isPersian
-                                    ? 'صنف ${AppTranslations.formatDigits(grade, lang)}'
-                                    : 'СИНФИ $grade',
+                                AppTranslations.get('lit_grade', lang, [
+                                  grade,
+                                ]).toUpperCase(),
                                 style: QalamTypography.eyebrow(
                                   color: colors.primary,
                                   fontSize: 14,
@@ -197,7 +192,7 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                               ),
                               const Spacer(),
                               Text(
-                                '${AppTranslations.formatNumber(grouped[grade]!.length, lang)} ${isPersian ? "اثر" : "асар"}',
+                                '${AppTranslations.formatNumber(grouped[grade]!.length, lang)} ${AppTranslations.get('lit_works_unit', lang)}',
                                 style: QalamTypography.meta(
                                   color: colors.onSurfaceVariant,
                                 ),
@@ -213,6 +208,7 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                           return _CanonEntryCard(
                             entry: entry,
                             author: author,
+                            lang: lang,
                             isPersian: isPersian,
                           );
                         }, childCount: grouped[grade]!.length),
@@ -233,11 +229,13 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
 class _CanonEntryCard extends StatelessWidget {
   final SchoolCanonEntry entry;
   final LiteraryAuthor? author;
+  final DisplayLanguage lang;
   final bool isPersian;
 
   const _CanonEntryCard({
     required this.entry,
     required this.author,
+    required this.lang,
     required this.isPersian,
   });
 
@@ -245,11 +243,11 @@ class _CanonEntryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    final authorName = author != null
-        ? ((isPersian && author!.canonicalNamePersian != null)
-              ? author!.canonicalNamePersian!
-              : author!.canonicalName)
-        : entry.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      entry.authorId,
+    );
 
     final isMandatory = entry.isMandatory;
     final isCitationVerified = entry.isCitationVerified;
@@ -276,11 +274,9 @@ class _CanonEntryCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  isPersian
-                      ? (entry.subject == 'Адабиёти тоҷик'
-                            ? 'ادبیات تاجیک'
-                            : 'خوانش ادبی')
-                      : entry.subject,
+                  entry.subject == 'Адабиёти тоҷик'
+                      ? AppTranslations.get('lit_subject_tajik', lang)
+                      : AppTranslations.get('lit_subject_reading', lang),
                   style: QalamTypography.meta(
                     color: colors.primary,
                     fontSize: 12,
@@ -301,11 +297,9 @@ class _CanonEntryCard extends StatelessWidget {
                   child: Text(
                     isCitationVerified
                         ? (isMandatory
-                              ? (isPersian ? 'حتماً' : 'Ҳатмӣ')
-                              : (isPersian ? 'توصیه‌شده' : 'Тавсияшаванда'))
-                        : (isPersian
-                              ? 'ارجاع در دست بررسی'
-                              : 'Истинод дар санҷиш'),
+                              ? AppTranslations.get('lit_mandatory', lang)
+                              : AppTranslations.get('lit_recommended', lang))
+                        : AppTranslations.get('lit_source_pending', lang),
                     style: QalamTypography.meta(
                       color: isCitationVerified && isMandatory
                           ? QalamColors.forest
@@ -315,7 +309,7 @@ class _CanonEntryCard extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                const Icon(Icons.chevron_right, size: 18),
+                const QalamChevron(size: 18),
               ],
             ),
             const SizedBox(height: 6),
@@ -335,7 +329,7 @@ class _CanonEntryCard extends StatelessWidget {
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
-                    '${entry.textbookTitle} (${entry.textbookYear}) — ${entry.textbookPublisher}',
+                    '${entry.textbookTitle} (${AppTranslations.formatDigits(entry.textbookYear, lang)}) — ${entry.textbookPublisher}',
                     style: QalamTypography.bodySecondary(
                       color: colors.onSurfaceVariant,
                       fontSize: 13,
@@ -351,7 +345,7 @@ class _CanonEntryCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsetsDirectional.only(start: 20),
                 child: Text(
-                  '${isPersian ? "مؤلفان کتاب:" : "Муаллифони китоб:"} ${entry.textbookAuthors}',
+                  '${AppTranslations.get('lit_textbook_authors_label', lang)} ${entry.textbookAuthors}',
                   style: QalamTypography.meta(
                     color: colors.onSurfaceVariant,
                     fontSize: 11,

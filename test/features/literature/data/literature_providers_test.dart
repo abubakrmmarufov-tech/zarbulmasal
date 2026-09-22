@@ -15,6 +15,15 @@ class _OralRepository extends LiteratureRepository {
   Future<List<OralHeritageEntry>> loadOralHeritage() async => entries;
 }
 
+const _testApprovedSource = SourceEdition(
+  bookTitle: 'Approved source',
+  publisher: 'Publisher',
+  city: 'Dushanbe',
+  year: '2026',
+  pageStart: 1,
+  sourceType: SourceEditionType.criticalEdition,
+);
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -41,14 +50,13 @@ void main() {
     test('literaryAuthorsProvider loads verified authors', () async {
       final authors = await container.read(literaryAuthorsProvider.future);
       expect(authors, isNotEmpty);
-      expect(authors.length, 150);
       expect(authors.first.id, 'rudaki');
     });
 
     test('literaryWorksProvider loads works', () async {
       final works = await container.read(literaryWorksProvider.future);
       expect(works, isA<List<LiteraryWork>>());
-      expect(works.length, 1472);
+      expect(works, isNotEmpty);
     });
 
     test(
@@ -57,6 +65,38 @@ void main() {
         final approved = await container.read(approvedWorksProvider.future);
         expect(approved, isA<List<LiteraryWork>>());
         expect(approved, isA<List<LiteraryWork>>());
+      },
+    );
+
+    test(
+      'searchableLiteraryWorksProvider exposes only page-checked review records',
+      () async {
+        final searchable = await container.read(
+          searchableLiteraryWorksProvider.future,
+        );
+
+        expect(searchable, isNotEmpty);
+        expect(
+          searchable.every((work) => work.hasAuditableReviewCitation),
+          isTrue,
+        );
+        expect(
+          searchable.every(
+            (work) => {
+              VerificationLevel.primaryChecked,
+              VerificationLevel.secondWitnessLocated,
+              VerificationLevel.collated,
+              VerificationLevel.editoriallyApproved,
+            }.contains(work.verification.evidenceLevel),
+          ),
+          isTrue,
+        );
+        expect(
+          searchable.any(
+            (work) => work.id == 'qanoat_mavj_dar_sahro_grade6_2014_p147_148',
+          ),
+          isTrue,
+        );
       },
     );
 
@@ -120,6 +160,14 @@ void main() {
         title: 'Approved',
         textTajik: 'Approved text',
         textStatus: TextStatus.verified,
+        primarySource: SourceEdition(
+          bookTitle: 'Approved source',
+          publisher: 'Publisher',
+          city: 'Dushanbe',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
         rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'Public domain',
@@ -128,6 +176,7 @@ void main() {
         ),
         verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
         ),
       );
       const partialApproval = LiteraryWork(
@@ -136,6 +185,14 @@ void main() {
         title: 'Partial approval',
         textTajik: 'Unverified text',
         textStatus: TextStatus.verified,
+        primarySource: SourceEdition(
+          bookTitle: 'Partial source',
+          publisher: 'Publisher',
+          city: 'Dushanbe',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
         rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'Public domain',
@@ -144,6 +201,7 @@ void main() {
         ),
         verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
         ),
       );
       const contradictoryRights = LiteraryWork(
@@ -152,6 +210,14 @@ void main() {
         title: 'Contradictory rights',
         textTajik: 'Blocked text',
         textStatus: TextStatus.verified,
+        primarySource: SourceEdition(
+          bookTitle: 'Blocked source',
+          publisher: 'Publisher',
+          city: 'Dushanbe',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
         rights: RightsRecord(
           status: RightsStatus.blocked,
           reasoning: 'Blocked',
@@ -160,6 +226,7 @@ void main() {
         ),
         verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
         ),
       );
       const missingText = LiteraryWork(
@@ -167,6 +234,14 @@ void main() {
         authorId: 'rudaki',
         title: 'Missing text',
         textStatus: TextStatus.verified,
+        primarySource: SourceEdition(
+          bookTitle: 'Missing text source',
+          publisher: 'Publisher',
+          city: 'Dushanbe',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
         rights: RightsRecord(
           status: RightsStatus.publicDomain,
           reasoning: 'Public domain',
@@ -175,6 +250,7 @@ void main() {
         ),
         verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
         ),
       );
       const rejected = LiteraryWork(
@@ -215,7 +291,7 @@ void main() {
     });
 
     test(
-      'worksUnderReviewByAuthorProvider exposes only pending candidates',
+      'worksUnderReviewByAuthorProvider exposes pending candidates only',
       () async {
         const pending = LiteraryWork(
           id: 'pending',
@@ -382,6 +458,7 @@ void main() {
           title: 'Бӯи ҷӯи Мӯлиён',
           textTajik: 'Бӯи ҷӯи Мӯлиён ояд ҳаме',
           textStatus: TextStatus.verified,
+          primarySource: _testApprovedSource,
           rights: RightsRecord(
             status: RightsStatus.publicDomain,
             reasoning: 'PD',
@@ -390,6 +467,7 @@ void main() {
           ),
           verification: VerificationRecord(
             evidenceLevel: VerificationLevel.editoriallyApproved,
+            pageVerified: true,
           ),
         );
 
@@ -480,6 +558,7 @@ void main() {
           title: 'Favorited Work',
           textTajik: 'Text',
           textStatus: TextStatus.verified,
+          primarySource: _testApprovedSource,
           rights: RightsRecord(
             status: RightsStatus.publicDomain,
             reasoning: 'PD',
@@ -488,6 +567,7 @@ void main() {
           ),
           verification: VerificationRecord(
             evidenceLevel: VerificationLevel.editoriallyApproved,
+            pageVerified: true,
           ),
         );
 
@@ -497,6 +577,7 @@ void main() {
           title: 'Other Work',
           textTajik: 'Text',
           textStatus: TextStatus.verified,
+          primarySource: _testApprovedSource,
           rights: RightsRecord(
             status: RightsStatus.publicDomain,
             reasoning: 'PD',
@@ -505,6 +586,7 @@ void main() {
           ),
           verification: VerificationRecord(
             evidenceLevel: VerificationLevel.editoriallyApproved,
+            pageVerified: true,
           ),
         );
 

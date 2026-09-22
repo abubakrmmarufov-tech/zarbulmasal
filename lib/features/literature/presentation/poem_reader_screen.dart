@@ -11,6 +11,8 @@ import '../data/literature_providers.dart';
 import '../data/reader_preferences_provider.dart';
 import '../domain/domain.dart';
 import 'source_panel.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// A reader screen displaying a verified [LiteraryWork] with full provenance,
 /// script-aware typography, collation badge, and bottom action bar.
@@ -23,19 +25,18 @@ class PoemReaderScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
     final worksAsync = ref.watch(approvedWorksProvider);
     final allWorksAsync = ref.watch(literaryWorksProvider);
 
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          tooltip: AppTranslations.get('back', lang),
           icon: const BackButtonIcon(),
           onPressed: () => qalamBack(context),
         ),
         title: Text(
-          isPersian ? 'خوانش شعر' : 'Хониши шеър',
+          AppTranslations.get('lit_reader_title', lang),
           style: QalamTypography.sectionTitle(
             color: colors.onSurface,
             fontSize: 18,
@@ -47,15 +48,14 @@ class PoemReaderScreen extends ConsumerWidget {
         error: (_, _) => Center(
           child: EmptyState(
             icon: Icons.error_outline,
-            title: isPersian
-                ? 'خطا در بارگیری اثر'
-                : 'Хато ҳангоми боргирии асар',
-            subtitle: isPersian
-                ? 'متن اثر بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                : 'Матни асар бор нашуд. Лутфан дубора кӯшиш кунед.',
+            title: AppTranslations.get('lit_work_error_title', lang),
+            subtitle: AppTranslations.get('lit_work_error_sub', lang),
             action: OutlinedButton(
-              onPressed: () => qalamBack(context),
-              child: Text(isPersian ? 'بازگشت' : 'Бозгашт'),
+              onPressed: () {
+                ref.invalidate(literaryWorksProvider);
+                ref.invalidate(approvedWorksProvider);
+              },
+              child: Text(AppTranslations.get('btn_retry', lang)),
             ),
           ),
         ),
@@ -83,13 +83,11 @@ class PoemReaderScreen extends ConsumerWidget {
             return Center(
               child: EmptyState(
                 icon: Icons.menu_book_outlined,
-                title: isPersian ? 'اثر یافت نشد' : 'Асар ёфт нашуд',
-                subtitle: isPersian
-                    ? 'اثر با شناسهٔ مورد نظر در دسترس نیست.'
-                    : 'Асаре бо ин нишонӣ ёфт нашуд.',
+                title: AppTranslations.get('lit_work_not_found_title', lang),
+                subtitle: AppTranslations.get('lit_work_not_found_sub', lang),
                 action: OutlinedButton(
                   onPressed: () => qalamBack(context),
-                  child: Text(isPersian ? 'بازگشت' : 'Бозгашт'),
+                  child: Text(AppTranslations.get('back', lang)),
                 ),
               ),
             );
@@ -102,10 +100,18 @@ class PoemReaderScreen extends ConsumerWidget {
                   RecentActivity(
                     id: work.id,
                     type: RecentActivityType.work,
-                    title: isPersian && work.titlePersian != null
-                        ? work.titlePersian!
-                        : work.title,
-                    subtitle: isPersian ? 'شعر' : 'Шеър',
+                    title: LiteraryWorkDisplayText.title(work, lang),
+                    subtitle: AppTranslations.get('lit_genre_poem', lang),
+                    titleTajik: work.title,
+                    titlePersian: work.titlePersian,
+                    subtitleTajik: AppTranslations.get(
+                      'lit_genre_poem',
+                      DisplayLanguage.tajik,
+                    ),
+                    subtitlePersian: AppTranslations.get(
+                      'lit_genre_poem',
+                      DisplayLanguage.persian,
+                    ),
                     timestamp: DateTime.now(),
                     route: '/literature/work/${work.id}',
                   ),
@@ -127,25 +133,35 @@ class _PendingWorkState extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isPersian =
-        ref.watch(displayLanguageProvider) == DisplayLanguage.persian;
+    final lang = ref.watch(displayLanguageProvider);
     final citation = work.primarySource?.citation;
     final sourceNote = citation == null
         ? ''
-        : (isPersian
-              ? '\n\nمنبع ثبت‌شده: $citation'
-              : '\n\nСарчашмаи сабтшуда: $citation');
+        : '\n\n${AppTranslations.get('lit_work_source_registered', lang, [citation])}';
+    final rightsNote = work.rights.status.name == 'unknown'
+        ? '\n\n${AppTranslations.get('lit_work_rights_pending', lang)}'
+        : '';
 
     return Center(
       child: EmptyState(
         icon: Icons.hourglass_empty,
-        title: isPersian ? 'اثر در دست بررسی است' : 'Асар дар санҷиш аст',
-        subtitle: isPersian
-            ? 'این رکورد از کتاب درسی ثبت شده، اما متن آن تا تکمیل مقابله و تأیید سردبیر منتشر نمی‌شود.$sourceNote'
-            : 'Ин сабт аз китоби дарсӣ гирифта шудааст, аммо матн то анҷоми муқобала ва тасдиқи муҳаррир нашр намешавад.$sourceNote',
-        action: OutlinedButton(
-          onPressed: () => qalamBack(context),
-          child: Text(isPersian ? 'بازگشت' : 'Бозгашт'),
+        title: AppTranslations.get('lit_work_pending_title', lang),
+        subtitle:
+            '${AppTranslations.get('lit_work_pending_sub', lang)}$rightsNote$sourceNote',
+        action: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (work.primarySource != null)
+              OutlinedButton.icon(
+                onPressed: () => SourcePanel.show(context, work),
+                icon: const Icon(Icons.menu_book_outlined, size: 18),
+                label: Text(AppTranslations.get('lit_source_and_docs', lang)),
+              ),
+            OutlinedButton(
+              onPressed: () => qalamBack(context),
+              child: Text(AppTranslations.get('back', lang)),
+            ),
+          ],
         ),
       ),
     );
@@ -179,35 +195,42 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
     final isFavorited = ref.watch(literaryFavoritesProvider).contains(work.id);
     final readerPrefs = ref.watch(readerPreferencesProvider);
 
-    final title =
-        (isPersian &&
-            work.titlePersian != null &&
-            work.titlePersian!.isNotEmpty)
-        ? work.titlePersian!
-        : work.title;
+    final title = LiteraryWorkDisplayText.title(work, lang);
 
-    final authorName = author != null
-        ? ((isPersian && author.canonicalNamePersian != null)
-              ? author.canonicalNamePersian!
-              : author.canonicalName)
-        : work.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      work.authorId,
+    );
 
+    final hasGeneratedPersian =
+        work.persianScriptSource == 'generated' && work.hasPersianDisplay;
+    const generatedNotePrefix =
+        'Mechanical Tajik Cyrillic to Persian-script representation;';
+    final editorialNotes =
+        work.editorialNotes?.startsWith(generatedNotePrefix) == true
+        ? null
+        : work.editorialNotes;
     final hasBothScripts = work.hasTajikText && work.hasPersianText;
-    final defaultMode = (isPersian && work.hasPersianText)
-        ? ReaderScriptMode.persian
-        : (work.hasTajikText
-              ? ReaderScriptMode.tajik
-              : ReaderScriptMode.persian);
+    final defaultMode = _defaultScriptMode(
+      work: work,
+      prefersPersian: isPersian,
+      prefersParallel: readerPrefs.defaultReaderMode == 'parallel',
+    );
     final currentScriptMode = _userScriptMode ?? defaultMode;
 
     final hasVerifiedText =
         work.isDisplayable &&
         ((currentScriptMode == ReaderScriptMode.tajik && work.hasTajikText) ||
             (currentScriptMode == ReaderScriptMode.persian &&
-                work.hasPersianText) ||
-            (currentScriptMode == ReaderScriptMode.parallel &&
-                hasBothScripts) ||
-            (work.hasTajikText || work.hasPersianText));
+                (work.hasPersianText || hasGeneratedPersian)) ||
+            (currentScriptMode == ReaderScriptMode.parallel && hasBothScripts));
+    final persianTextUnavailable =
+        isPersian &&
+        currentScriptMode == ReaderScriptMode.persian &&
+        work.hasTajikText &&
+        !work.hasPersianText &&
+        !hasGeneratedPersian;
 
     final readerFontSize = (22.0 + readerPrefs.fontSizeDelta).clamp(14.0, 36.0);
 
@@ -231,11 +254,11 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                         children: [
                           Container(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 4,
+                              horizontal: 8,
+                              vertical: 3,
                             ),
                             decoration: BoxDecoration(
-                              color: colors.primary.withValues(alpha: 0.08),
+                              color: colors.primary.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(4),
                               border: Border.all(
                                 color: colors.primary.withValues(alpha: 0.3),
@@ -243,7 +266,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               ),
                             ),
                             child: Text(
-                              _genreName(work.type, isPersian),
+                              _genreName(work.type, lang),
                               style: QalamTypography.meta(
                                 color: colors.primary,
                                 fontSize: 12,
@@ -251,14 +274,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             ),
                           ),
                           QalamSourceBadge(
-                            isVerified:
-                                work.verification.evidenceLevel ==
-                                VerificationLevel.editoriallyApproved,
-                            label: isPersian
-                                ? 'متن تأیید شده است'
-                                : 'Матн санҷида шудааст',
+                            isVerified: work.isDisplayable,
+                            label: AppTranslations.get('lit_verified', lang),
                           ),
-                          if (work.primarySource?.sourceImageVerified == true)
+                          if (work.isPageImageDisplayable)
                             InkWell(
                               onTap: () => SourcePanel.show(context, work),
                               borderRadius: BorderRadius.circular(4),
@@ -289,9 +308,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                     ),
                                     const SizedBox(width: 4),
                                     Text(
-                                      isPersian
-                                          ? 'سند تصویری'
-                                          : 'Тасвири саҳифа',
+                                      AppTranslations.get(
+                                        'lit_page_image',
+                                        lang,
+                                      ),
                                       style: QalamTypography.meta(
                                         color: QalamColors.forest,
                                         fontSize: 12,
@@ -343,9 +363,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                       ),
                       if (author != null &&
                           author.hasAuditableBiographySource &&
-                          (author.lifespan.isNotEmpty ||
-                              author.birthDateExact != null ||
-                              author.deathDateExact != null)) ...[
+                          LiteraryAuthorDisplayText.lifespan(
+                            author,
+                            lang,
+                          ).isNotEmpty) ...[
                         const SizedBox(height: 6),
                         Row(
                           children: [
@@ -357,15 +378,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             const SizedBox(width: 6),
                             Expanded(
                               child: Text(
-                                (author.birthDateExact != null ||
-                                        author.deathDateExact != null)
-                                    ? (isPersian
-                                          ? 'ولادت: ${author.birthDateExact ?? author.birthYear ?? "—"} · وفات: ${author.deathDateExact ?? author.deathYear ?? "در قید حیات"}'
-                                          : 'Таваллуд: ${author.birthDateExact ?? author.birthYear ?? "—"} · Вафот: ${author.deathDateExact ?? author.deathYear ?? "дар ҳаёт"}')
-                                    : AppTranslations.formatDigits(
-                                        author.lifespan,
-                                        lang,
-                                      ),
+                                LiteraryAuthorDisplayText.lifespan(
+                                  author,
+                                  lang,
+                                ),
                                 style: QalamTypography.meta(
                                   color: colors.onSurfaceVariant,
                                   fontSize: 13,
@@ -385,7 +401,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           spacing: 8,
                           runSpacing: 8,
                           children: [
-                            if (work.hasAuditableCompositionEvidence &&
+                            if (!isPersian &&
+                                work.hasAuditableCompositionEvidence &&
                                 work.compositionDate != null &&
                                 work.compositionDate!.isNotEmpty)
                               Container(
@@ -413,9 +430,16 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                     ),
                                     const SizedBox(width: 6),
                                     Text(
-                                      isPersian
-                                          ? 'تاریخ سرایش: ${AppTranslations.formatDigits(work.compositionDate!, lang)}'
-                                          : 'Санаи таълиф: ${AppTranslations.formatDigits(work.compositionDate!, lang)}',
+                                      AppTranslations.get(
+                                        'lit_comp_date',
+                                        lang,
+                                        [
+                                          AppTranslations.formatDigits(
+                                            work.compositionDate!,
+                                            lang,
+                                          ),
+                                        ],
+                                      ),
                                       style: QalamTypography.meta(
                                         color: colors.primary,
                                         fontSize: 12,
@@ -424,7 +448,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                   ],
                                 ),
                               ),
-                            if (work.hasAuditableCompositionEvidence &&
+                            if (!isPersian &&
+                                work.hasAuditableCompositionEvidence &&
                                 work.compositionContext != null &&
                                 work.compositionContext!.isNotEmpty)
                               Container(
@@ -453,9 +478,11 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                     ),
                                     const SizedBox(width: 6),
                                     Text(
-                                      isPersian
-                                          ? 'بستر: ${work.compositionContext!}'
-                                          : 'Муҳит: ${work.compositionContext!}',
+                                      AppTranslations.get(
+                                        'lit_comp_context',
+                                        lang,
+                                        [work.compositionContext!],
+                                      ),
                                       style: QalamTypography.meta(
                                         color: colors.onSurfaceVariant,
                                         fontSize: 12,
@@ -472,7 +499,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                       const SizedBox(height: 16),
 
                       // Script Switcher when both scripts exist
-                      if (hasBothScripts) ...[
+                      if (hasBothScripts ||
+                          (isPersian && work.hasTajikText)) ...[
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: SingleChildScrollView(
@@ -482,9 +510,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               children: [
                                 ChoiceChip(
                                   label: Text(
-                                    isPersian
-                                        ? 'سیریلیک تاجیکی'
-                                        : 'Тоҷикӣ (Кириллӣ)',
+                                    AppTranslations.get(
+                                      'lit_script_cyrillic',
+                                      lang,
+                                    ),
                                   ),
                                   selected:
                                       currentScriptMode ==
@@ -497,9 +526,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                 const SizedBox(width: 8),
                                 ChoiceChip(
                                   label: Text(
-                                    isPersian
-                                        ? 'فارسی (عربی)'
-                                        : 'Форсӣ (Арабӣ)',
+                                    AppTranslations.get(
+                                      'lit_script_persian',
+                                      lang,
+                                    ),
                                   ),
                                   selected:
                                       currentScriptMode ==
@@ -510,29 +540,32 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                   ),
                                 ),
                                 const SizedBox(width: 8),
-                                ChoiceChip(
-                                  avatar: const Icon(
-                                    Icons.compare_arrows,
-                                    size: 16,
-                                  ),
-                                  label: Text(
-                                    isPersian ? 'متن موازی' : 'Матни мувозӣ',
-                                  ),
-                                  selected:
-                                      currentScriptMode ==
-                                      ReaderScriptMode.parallel,
-                                  onSelected: (_) => setState(
-                                    () => _userScriptMode =
+                                if (hasBothScripts) ...[
+                                  ChoiceChip(
+                                    avatar: const Icon(
+                                      Icons.compare_arrows,
+                                      size: 16,
+                                    ),
+                                    label: Text(
+                                      AppTranslations.get(
+                                        'lit_script_parallel',
+                                        lang,
+                                      ),
+                                    ),
+                                    selected:
+                                        currentScriptMode ==
                                         ReaderScriptMode.parallel,
+                                    onSelected: (_) => setState(
+                                      () => _userScriptMode =
+                                          ReaderScriptMode.parallel,
+                                    ),
                                   ),
-                                ),
+                                ],
                               ],
                             ),
                           ),
                         ),
-                      ] else if (isPersian &&
-                          !work.hasPersianText &&
-                          work.hasTajikText) ...[
+                      ] else if (isPersian && hasGeneratedPersian) ...[
                         Padding(
                           padding: const EdgeInsets.only(bottom: 16),
                           child: Row(
@@ -545,7 +578,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               const SizedBox(width: 6),
                               Expanded(
                                 child: Text(
-                                  'متن این اثر طبق نسخه‌های معتبر به خط سیریلیک تاجیکی ثبت شده است.',
+                                  AppTranslations.get(
+                                    'lit_generated_script_notice',
+                                    lang,
+                                  ),
                                   style: QalamTypography.meta(
                                     color: colors.onSurfaceVariant,
                                     fontSize: 12,
@@ -571,11 +607,12 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           )
                         else if (currentScriptMode ==
                                 ReaderScriptMode.persian &&
-                            work.hasPersianText)
+                            (work.hasPersianText || hasGeneratedPersian))
                           Directionality(
                             textDirection: TextDirection.rtl,
                             child: SelectableText(
-                              work.textPersian!,
+                              work.textPersian ??
+                                  work.persianScriptRepresentation!,
                               textAlign: TextAlign.right,
                               style: QalamTypography.heroProverb(
                                 color: colors.onSurface,
@@ -588,7 +625,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           Directionality(
                             textDirection: TextDirection.ltr,
                             child: SelectableText(
-                              work.textTajik ?? work.textPersian ?? '',
+                              work.textTajik ??
+                                  work.textPersian ??
+                                  work.persianScriptRepresentation ??
+                                  '',
                               textAlign: TextAlign.left,
                               style: QalamTypography.heroProverb(
                                 color: colors.onSurface,
@@ -623,9 +663,12 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                   const SizedBox(width: 10),
                                   Expanded(
                                     child: Text(
-                                      isPersian
-                                          ? 'متن در حال مقابله با نسخ چاپی است'
-                                          : 'Матн дар ҳоли муқобала бо нусхаҳои чопӣ аст',
+                                      AppTranslations.get(
+                                        persianTextUnavailable
+                                            ? 'lit_persian_text_unavailable_title'
+                                            : 'lit_editorial_review_pending',
+                                        lang,
+                                      ),
                                       style: QalamTypography.sectionTitle(
                                         color: colors.onSurface,
                                         fontSize: 16,
@@ -636,19 +679,26 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               ),
                               const SizedBox(height: 12),
                               Text(
-                                isPersian
-                                    ? 'طبق خط‌مشی ویرایشی زرین‌مثل، متن اشعار تنها پس از تأیید حداقل دو نسخهٔ معتبر چاپی منتشر می‌شود تا از صحت و امانت‌داری ادبی اطمینان حاصل گردد.'
-                                    : 'Мутобиқи сиёсати нашрии «Зарбулмасал», матни шеърҳо танҳо пас аз муқобала бо на камтар аз ду сарчашмаи чопии муътамад ва имзои муҳаррир нашр карда мешавад.',
+                                AppTranslations.get(
+                                  persianTextUnavailable
+                                      ? 'lit_persian_text_unavailable'
+                                      : 'lit_editorial_policy_notice',
+                                  lang,
+                                ),
                                 style: QalamTypography.bodySecondary(
                                   color: colors.onSurfaceVariant,
                                   fontSize: 14,
                                 ),
                               ),
-                              if (work.incipit != null &&
+                              if (currentScriptMode == ReaderScriptMode.tajik &&
+                                  work.incipit != null &&
                                   work.incipit!.isNotEmpty) ...[
                                 const SizedBox(height: 16),
                                 Text(
-                                  isPersian ? 'مطلع اثر:' : 'Матлаи асар:',
+                                  AppTranslations.get(
+                                    'lit_incipit_label',
+                                    lang,
+                                  ),
                                   style: QalamTypography.meta(
                                     color: colors.primary,
                                   ),
@@ -669,8 +719,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                           ),
                         ),
                       ],
-                      if (work.editorialNotes != null &&
-                          work.editorialNotes!.isNotEmpty) ...[
+                      if (editorialNotes != null &&
+                          editorialNotes.isNotEmpty) ...[
                         const SizedBox(height: 28),
                         Container(
                           padding: const EdgeInsets.all(14),
@@ -688,16 +738,17 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                isPersian
-                                    ? 'یادداشت‌های تصحیح و رسم‌الخط:'
-                                    : 'Шарҳҳои матншиносӣ ва имло:',
+                                AppTranslations.get(
+                                  'lit_editorial_notes_label',
+                                  lang,
+                                ),
                                 style: QalamTypography.meta(
                                   color: colors.primary,
                                 ),
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                work.editorialNotes!,
+                                editorialNotes,
                                 style: QalamTypography.bodySecondary(
                                   color: colors.onSurfaceVariant,
                                   fontSize: 13,
@@ -734,10 +785,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                   // Bookmark button
                   IconButton(
                     tooltip: isFavorited
-                        ? (isPersian
-                              ? 'حذف از نشان‌شده‌ها'
-                              : 'Аз маҳфуз баровардан')
-                        : (isPersian ? 'نشان کردن' : 'Маҳфуз кардан'),
+                        ? AppTranslations.get('bookmark_remove', lang)
+                        : AppTranslations.get('bookmark_add', lang),
                     icon: Icon(
                       isFavorited ? Icons.bookmark : Icons.bookmark_border,
                       color: isFavorited
@@ -753,7 +802,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                   // Copy button (only if rights permit full text)
                   if (work.rights.fullTextAllowed) ...[
                     IconButton(
-                      tooltip: isPersian ? 'کپی متن' : 'Нусхаи матн',
+                      tooltip: AppTranslations.get('lit_copy_poem', lang),
                       icon: const Icon(Icons.copy_outlined),
                       onPressed: () async {
                         final String activeText;
@@ -763,10 +812,16 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                               '${work.textTajik}\n\n${work.textPersian}';
                         } else if (currentScriptMode ==
                                 ReaderScriptMode.persian &&
-                            work.hasPersianText) {
-                          activeText = work.textPersian!;
+                            (work.hasPersianText || hasGeneratedPersian)) {
+                          activeText =
+                              work.textPersian ??
+                              work.persianScriptRepresentation!;
                         } else {
-                          activeText = work.textTajik ?? work.textPersian ?? '';
+                          activeText =
+                              work.textTajik ??
+                              work.textPersian ??
+                              work.persianScriptRepresentation ??
+                              '';
                         }
                         final textToShare = hasVerifiedText
                             ? '$title\n$authorName\n\n$activeText'
@@ -779,9 +834,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  isPersian
-                                      ? 'متن در حافظه کپی شد'
-                                      : 'Матн нусхабардорӣ шуд',
+                                  AppTranslations.get('lit_copied_toast', lang),
                                 ),
                               ),
                             );
@@ -791,9 +844,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  isPersian
-                                      ? 'کپی در دسترس نیست'
-                                      : 'Нусхабардорӣ дастрас нест',
+                                  AppTranslations.get(
+                                    'lit_copy_unavailable',
+                                    lang,
+                                  ),
                                 ),
                               ),
                             );
@@ -804,9 +858,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                   ],
                   // Font Size Controls (A- / A+)
                   IconButton(
-                    tooltip: isPersian
-                        ? 'کوچک‌تر کردن متن'
-                        : 'Кам кардани матн',
+                    tooltip: AppTranslations.get(
+                      'lit_work_decrease_font',
+                      lang,
+                    ),
                     icon: const Icon(Icons.text_decrease, size: 20),
                     onPressed: () => ref
                         .read(readerPreferencesProvider.notifier)
@@ -825,9 +880,10 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                     ),
                   ),
                   IconButton(
-                    tooltip: isPersian
-                        ? 'بزرگ‌تر کردن متن'
-                        : 'Калон кардани матн',
+                    tooltip: AppTranslations.get(
+                      'lit_work_increase_font',
+                      lang,
+                    ),
                     icon: const Icon(Icons.text_increase, size: 20),
                     onPressed: () => ref
                         .read(readerPreferencesProvider.notifier)
@@ -839,7 +895,7 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                     onPressed: () => SourcePanel.show(context, work),
                     icon: const Icon(Icons.menu_book_outlined, size: 18),
                     label: Text(
-                      isPersian ? 'منبع و اسناد' : 'Манбаъ',
+                      AppTranslations.get('lit_source_and_docs', lang),
                       style: QalamTypography.meta(
                         color: colors.onSurface,
                         fontSize: 13,
@@ -853,6 +909,26 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
         ),
       ],
     );
+  }
+
+  ReaderScriptMode _defaultScriptMode({
+    required LiteraryWork work,
+    required bool prefersPersian,
+    required bool prefersParallel,
+  }) {
+    if (prefersPersian) {
+      if (prefersParallel && work.hasTajikText && work.hasPersianText) {
+        return ReaderScriptMode.parallel;
+      }
+      // Keep the Persian interface honest: a Tajik-only poem starts in the
+      // explicit unavailable state until the reader opts into the original.
+      return ReaderScriptMode.persian;
+    }
+    if (prefersParallel && work.hasTajikText && work.hasPersianText) {
+      return ReaderScriptMode.parallel;
+    }
+    if (work.hasTajikText) return ReaderScriptMode.tajik;
+    return ReaderScriptMode.persian;
   }
 
   Widget _buildParallelVerses(
@@ -935,26 +1011,26 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
     );
   }
 
-  String _genreName(WorkType type, bool isPersian) {
+  String _genreName(WorkType type, DisplayLanguage lang) {
     switch (type) {
       case WorkType.ghazal:
-        return isPersian ? 'غزل' : 'Ғазал';
+        return AppTranslations.get('lit_genre_ghazal', lang);
       case WorkType.rubai:
-        return isPersian ? 'رباعی' : 'Рубоӣ';
+        return AppTranslations.get('lit_genre_rubai', lang);
       case WorkType.qasida:
-        return isPersian ? 'قصیده' : 'Қасида';
+        return AppTranslations.get('lit_genre_qasida', lang);
       case WorkType.poem:
-        return isPersian ? 'شعر' : 'Шеър';
+        return AppTranslations.get('lit_genre_poem', lang);
       case WorkType.fragment:
-        return isPersian ? 'قطعه' : 'Қитъа';
+        return AppTranslations.get('lit_genre_qita', lang);
       case WorkType.folk:
-        return isPersian ? 'خلقی' : 'Халқӣ';
+        return AppTranslations.get('lit_genre_folk', lang);
       case WorkType.anthem:
-        return isPersian ? 'سرود' : 'Суруд';
+        return AppTranslations.get('lit_genre_song', lang);
       case WorkType.epic:
-        return isPersian ? 'منظومه' : 'Достон';
+        return AppTranslations.get('lit_genre_masnavi', lang);
       case WorkType.other:
-        return isPersian ? 'اثر ادبی' : 'Асари адабӣ';
+        return AppTranslations.get('lit_genre_other', lang);
     }
   }
 }

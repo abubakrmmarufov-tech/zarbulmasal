@@ -23,10 +23,41 @@ final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>((
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   final SharedPreferences? _prefs;
 
+  /// Tri-state storage key. The legacy binary `dark_mode` flag is only read
+  /// for migration and is never written again.
+  static const String prefsThemeMode = 'theme_mode';
+
   static ThemeMode _resolveInitial(SharedPreferences? prefs) {
-    if (prefs == null) return ThemeMode.light;
-    final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
+    if (prefs == null) return ThemeMode.system;
+    final stored = prefs.getString(prefsThemeMode);
+    if (stored != null) return _fromStorage(stored);
+    // Migration path: preserve any previously stored binary choice so
+    // existing users never lose their appearance preference.
+    final isDark = prefs.getBool(AppConstants.prefsDarkMode);
+    if (isDark == null) return ThemeMode.system;
     return isDark ? ThemeMode.dark : ThemeMode.light;
+  }
+
+  static ThemeMode _fromStorage(String value) {
+    switch (value) {
+      case 'dark':
+        return ThemeMode.dark;
+      case 'light':
+        return ThemeMode.light;
+      default:
+        return ThemeMode.system;
+    }
+  }
+
+  static String _toStorage(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.dark:
+        return 'dark';
+      case ThemeMode.light:
+        return 'light';
+      case ThemeMode.system:
+        return 'system';
+    }
   }
 
   ThemeModeNotifier([SharedPreferences? prefs])
@@ -39,15 +70,20 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 
   Future<void> _loadTheme() async {
     final prefs = _prefs ?? await SharedPreferences.getInstance();
-    final isDark = prefs.getBool(AppConstants.prefsDarkMode) ?? false;
-    state = isDark ? ThemeMode.dark : ThemeMode.light;
+    state = _resolveInitial(prefs);
   }
 
-  Future<void> toggleTheme() async {
+  Future<void> setThemeMode(ThemeMode mode) async {
     final prefs = _prefs ?? await SharedPreferences.getInstance();
-    final isDark = state == ThemeMode.light;
-    await prefs.setBool(AppConstants.prefsDarkMode, isDark);
-    state = isDark ? ThemeMode.dark : ThemeMode.light;
+    await prefs.setString(prefsThemeMode, _toStorage(mode));
+    state = mode;
+  }
+
+  /// Convenience shim for the light/dark flip used by tests and legacy UI.
+  Future<void> toggleTheme() async {
+    await setThemeMode(
+      state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark,
+    );
   }
 }
 
@@ -113,6 +149,47 @@ final displayLanguageProvider =
       final prefs = ref.watch(sharedPreferencesProvider);
       return DisplayLanguageNotifier(prefs);
     });
+
+/// User-selected interface text multiplier, separate from poem typography.
+final appTextScaleProvider =
+    StateNotifierProvider<AppTextScaleNotifier, double>((ref) {
+      final prefs = ref.watch(sharedPreferencesProvider);
+      return AppTextScaleNotifier(prefs);
+    });
+
+class AppTextScaleNotifier extends StateNotifier<double> {
+  static const double minimum = 0.9;
+  static const double defaultScale = 1.0;
+  static const double maximum = 1.2;
+
+  final SharedPreferences? _prefs;
+
+  static double _resolveInitial(SharedPreferences? prefs) {
+    final stored = prefs?.getDouble(AppConstants.prefsAppTextScale);
+    if (stored == null || !stored.isFinite) return defaultScale;
+    return stored.clamp(minimum, maximum);
+  }
+
+  AppTextScaleNotifier([SharedPreferences? prefs])
+    : _prefs = prefs,
+      super(_resolveInitial(prefs)) {
+    if (prefs == null) _load();
+  }
+
+  Future<void> _load() async {
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
+    state = _resolveInitial(prefs);
+  }
+
+  Future<void> setScale(double value) async {
+    final safeValue = value.isFinite
+        ? value.clamp(minimum, maximum)
+        : defaultScale;
+    state = safeValue;
+    final prefs = _prefs ?? await SharedPreferences.getInstance();
+    await prefs.setDouble(AppConstants.prefsAppTextScale, safeValue);
+  }
+}
 
 class DisplayLanguageNotifier extends StateNotifier<DisplayLanguage> {
   final SharedPreferences? _prefs;

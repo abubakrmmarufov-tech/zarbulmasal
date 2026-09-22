@@ -16,6 +16,8 @@ import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
+import 'package:zarbulmasal/shared/providers/recent_activity_provider.dart';
+import 'package:zarbulmasal/shared/widgets/onboarding_overlay.dart';
 
 class TestApp {
   final ProviderContainer container;
@@ -189,6 +191,45 @@ void main() {
     );
   }
 
+  testWidgets('reading localizes section indices in Persian mode', (
+    tester,
+  ) async {
+    final target = seedProverbs.first;
+    await openApp(
+      tester,
+      route: '/proverb/${target.id}',
+      language: DisplayLanguage.persian,
+    );
+
+    await tester.scrollUntilVisible(
+      find.textContaining('۰۱ /'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    expect(find.textContaining('۰۱ /'), findsOneWidget);
+    expect(find.textContaining('01 /'), findsNothing);
+  });
+
+  testWidgets('shared reading and daily actions meet the 48px target', (
+    tester,
+  ) async {
+    await openApp(tester, route: '/proverb/${seedProverbs.first.id}');
+
+    final scriptSwitch = find.widgetWithText(OutlinedButton, 'فارسی (عربی)');
+    await tester.ensureVisible(scriptSwitch);
+    expect(tester.getSize(scriptSwitch).width, greaterThanOrEqualTo(48));
+    expect(tester.getSize(scriptSwitch).height, greaterThanOrEqualTo(48));
+
+    await openApp(tester);
+    final dailyRead = find.widgetWithText(
+      TextButton,
+      AppTranslations.get('home_read', DisplayLanguage.tajik),
+    );
+    await tester.ensureVisible(dailyRead);
+    expect(tester.getSize(dailyRead).width, greaterThanOrEqualTo(48));
+    expect(tester.getSize(dailyRead).height, greaterThanOrEqualTo(48));
+  });
+
   for (final language in DisplayLanguage.values) {
     testWidgets(
       'physical flashcard swipes advance and return in ${language.name}',
@@ -354,6 +395,38 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('۲ سطح موجود'), findsOneWidget);
     expect(find.textContaining('2 سطح'), findsNothing);
+
+    final levelTwo = find.byWidgetPredicate(
+      (widget) => widget is QalamLevelCard && widget.level == 2,
+    );
+    await tester.ensureVisible(levelTwo);
+    await tester.tap(levelTwo);
+    await tester.pumpAndSettle();
+    expect(app.container.read(recentActivityProvider).first.title, 'سطح ۲');
+  });
+
+  testWidgets('Persian home hides stale Tajik recent-activity metadata', (
+    tester,
+  ) async {
+    final app = await openApp(tester, language: DisplayLanguage.persian);
+    await app.container
+        .read(recentActivityProvider.notifier)
+        .addActivity(
+          RecentActivity(
+            id: 'rudaki',
+            type: RecentActivityType.poet,
+            title: 'Абӯабдуллоҳи Рӯдакӣ',
+            subtitle: 'Асрҳои IX–X',
+            timestamp: DateTime.utc(2026, 9, 22),
+            route: '/literature/poet/rudaki',
+          ),
+        );
+    await tester.pumpAndSettle();
+
+    expect(find.text('شاعران'), findsOneWidget);
+    expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsNothing);
+    expect(find.text('Асрҳои IX–X'), findsNothing);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('compact routes remain usable with enlarged system text', (
@@ -402,4 +475,25 @@ void main() {
     expect(tester.getRect(settingsLabel).height, lessThan(24));
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets(
+    'onboarding overlay renders on first launch and can be dismissed',
+    (tester) async {
+      final app = await openApp(tester, onboardingComplete: false);
+
+      // Onboarding overlay should be present on first launch
+      expect(find.byType(OnboardingOverlay), findsOneWidget);
+      expect(find.byKey(const ValueKey('onboarding-tooltip')), findsOneWidget);
+
+      // Skip button dismisses overlay
+      final skipButton = find.text('Гузаштан');
+      expect(skipButton, findsOneWidget);
+      await tester.tap(skipButton);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OnboardingOverlay), findsNothing);
+      expect(app.container.read(onboardingCompleteProvider), isTrue);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }

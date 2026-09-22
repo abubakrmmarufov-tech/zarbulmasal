@@ -2,11 +2,15 @@ class AppConstants {
   AppConstants._();
 
   static const String appName = 'Зарбулмасал';
+  static const String privacyPolicyUrl =
+      'https://abubakrmmarufov-tech.github.io/zarbulmasal/privacy.html';
   static const String prefsDarkMode = 'dark_mode';
   static const String prefsFavorites = 'favorites';
   static const String prefsLanguage = 'display_language';
+  static const String prefsAppTextScale = 'app_text_scale';
   static const String prefsOnboardingComplete = 'onboarding_complete';
   static const String prefsLiteraryFavorites = 'literary_favorites';
+  static const String prefsBookFavorites = 'book_favorites';
   static const String prefsMastery = 'proverb_mastery';
 
   static const List<String> levelNames = [

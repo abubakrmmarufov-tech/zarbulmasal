@@ -8,6 +8,7 @@ import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../data/literature_repository.dart';
 import '../domain/domain.dart';
+import 'literary_author_display_text.dart';
 
 /// A screen presenting canonical Tajik literary authors and poets.
 class PoetsListScreen extends ConsumerStatefulWidget {
@@ -52,7 +53,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: IconButton(
-                    tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+                    tooltip: AppTranslations.get('btn_back', lang),
                     icon: const BackButtonIcon(),
                     onPressed: () => qalamBack(context),
                   ),
@@ -62,11 +63,9 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
             // Header
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۱ / شاعران' : '01 / ШОИРОН',
+                eyebrow: AppTranslations.get('lit_poets_eyebrow', lang),
                 title: AppTranslations.get('lit_poets', lang),
-                subtitle: isPersian
-                    ? 'بزرگان ادب کلاسیک و معاصر تاجیک با زندگینامه و اسناد معتبر'
-                    : 'Бузургони адабиёти классик ва муосири тоҷик бо зиндагиномаи мустанад',
+                subtitle: AppTranslations.get('lit_poets_subtitle', lang),
               ),
             ),
             // Filter Search Bar
@@ -75,6 +74,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
                 child: TextField(
                   controller: _filterController,
+                  maxLength: 256,
                   onChanged: (val) {
                     setState(() {
                       _filterQuery = LiteratureRepository.normalizeSearchText(
@@ -83,15 +83,17 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                     });
                   },
                   decoration: InputDecoration(
-                    hintText: isPersian
-                        ? 'جستجوی شاعر بر اساس نام یا دوره...'
-                        : 'Ҷустуҷӯи шоир аз рӯи ном ё давр...',
+                    hintText: AppTranslations.get(
+                      'lit_poets_search_hint',
+                      lang,
+                    ),
                     prefixIcon: const Icon(Icons.search, size: 20),
                     suffixIcon: _filterQuery.isNotEmpty
                         ? IconButton(
-                            tooltip: isPersian
-                                ? 'پاک کردن جستجو'
-                                : 'Пок кардани ҷустуҷӯ',
+                            tooltip: AppTranslations.get(
+                              'lit_search_clear_tooltip',
+                              lang,
+                            ),
                             icon: const Icon(Icons.clear, size: 18),
                             onPressed: () {
                               _filterController.clear();
@@ -132,17 +134,11 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
-                    title: isPersian
-                        ? 'خطا در بارگیری شاعران'
-                        : 'Хато ҳангоми боргирии шоирон',
-                    subtitle: isPersian
-                        ? 'داده‌های شاعران بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                        : 'Маълумоти шоирон бор нашуд. Лутфан дубора кӯшиш кунед.',
+                    title: AppTranslations.get('lit_poets_error_title', lang),
+                    subtitle: AppTranslations.get('lit_poets_error_sub', lang),
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(literaryAuthorsProvider),
-                      child: Text(
-                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                      ),
+                      child: Text(AppTranslations.get('btn_retry', lang)),
                     ),
                   ),
                 ),
@@ -176,10 +172,14 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                     child: Center(
                       child: EmptyState(
                         icon: Icons.search_off,
-                        title: isPersian ? 'شاعری یافت نشد' : 'Шоире ёфт нашуд',
-                        subtitle: isPersian
-                            ? 'با عبارت جستجوی مورد نظر نتیجه‌ای پیدا نشد.'
-                            : 'Бо ин вожа шоире дар феҳрист ёфт нашуд.',
+                        title: AppTranslations.get(
+                          'lit_poets_empty_title',
+                          lang,
+                        ),
+                        subtitle: AppTranslations.get(
+                          'lit_poets_empty_sub',
+                          lang,
+                        ),
                       ),
                     ),
                   );
@@ -188,34 +188,52 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 return SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final poet = filtered[index];
-                    final name =
-                        (isPersian && poet.canonicalNamePersian != null)
-                        ? poet.canonicalNamePersian!
-                        : poet.canonicalName;
+                    final name = LiteraryAuthorDisplayText.name(poet, lang);
                     final poemCount = worksCountByAuthor[poet.id] ?? 0;
                     final poemCountBadge = poemCount > 0
-                        ? (isPersian
-                              ? '${AppTranslations.formatDigits(poemCount.toString(), lang)} اثر'
-                              : '${AppTranslations.formatDigits(poemCount.toString(), lang)} асар')
+                        ? '${AppTranslations.formatDigits(poemCount.toString(), lang)} ${AppTranslations.get('lit_works_unit', lang)}'
                         : null;
-                    final dates = poet.hasAuditableBiographySource
-                        ? AppTranslations.formatDigits(poet.lifespan, lang)
-                        : (isPersian
-                              ? 'تاریخ‌ها در بررسی'
-                              : 'Санаҳо дар санҷиш');
+                    final lifespan = LiteraryAuthorDisplayText.lifespan(
+                      poet,
+                      lang,
+                    );
+                    final dates =
+                        poet.hasAuditableBiographySource && lifespan.isNotEmpty
+                        ? lifespan
+                        : AppTranslations.get('lit_search_dates_pending', lang);
                     final exactDates =
-                        (poet.hasAuditableBiographySource &&
+                        (!isPersian &&
+                            poet.hasAuditableBiographySource &&
                             (poet.birthDateExact != null ||
                                 poet.deathDateExact != null))
-                        ? (isPersian
-                              ? 'ولادت: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · وفات: ${poet.deathDateExact ?? poet.deathYear ?? "در قید حیات"}'
-                              : 'Таваллуд: ${poet.birthDateExact ?? poet.birthYear ?? "—"} · Вафот: ${poet.deathDateExact ?? poet.deathYear ?? "дар ҳаёт"}')
+                        ? AppTranslations.translate('lit_author_dates', lang, [
+                            AppTranslations.formatDigits(
+                              poet.birthDateExact ?? poet.birthYear ?? '—',
+                              lang,
+                            ),
+                            AppTranslations.formatDigits(
+                              poet.deathDateExact ??
+                                  poet.deathYear ??
+                                  AppTranslations.get('lit_author_alive', lang),
+                              lang,
+                            ),
+                          ])
                         : null;
                     return QalamPoetCard(
                       name: name,
+                      portrait: poet.portrait,
+                      portraitUnavailableLabel: AppTranslations.get(
+                        'lit_portrait_unavailable',
+                        lang,
+                      ),
+                      portraitCitationLabel:
+                          LiteraryAuthorDisplayText.portraitCitation(
+                            poet.portrait,
+                            lang,
+                          ),
                       dates: dates,
                       exactDates: exactDates,
-                      period: poet.literaryPeriod,
+                      period: LiteraryAuthorDisplayText.period(poet, lang),
                       isPublicDomain: poet.isPublicDomain,
                       poemCountBadge: poemCountBadge,
                       onTap: () => context.push('/literature/poet/${poet.id}'),

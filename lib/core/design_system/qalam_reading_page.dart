@@ -57,6 +57,10 @@ class QalamReadingPage extends ConsumerWidget {
                           : p.tajikCyrillic)
                     : p.tajikCyrillic,
                 subtitle: persian ? 'ضرب‌المثل' : 'Зарбулмасал',
+                titleTajik: p.tajikCyrillic,
+                titlePersian: p.persianText.isNotEmpty ? p.persianText : null,
+                subtitleTajik: 'Зарбулмасал',
+                subtitlePersian: 'ضرب‌المثل',
                 timestamp: DateTime.now(),
                 route: '/proverb/${p.id}',
               ),
@@ -246,7 +250,7 @@ class QalamReadingPage extends ConsumerWidget {
                   if (p.meaningTj.isNotEmpty)
                     SliverToBoxAdapter(
                       child: _ReadingSection(
-                        number: '01',
+                        number: AppTranslations.formatDigits('01', lang),
                         title: tr('detail_meaning'),
                         text: p.meaningTj,
                         emphasis: true,
@@ -259,7 +263,7 @@ class QalamReadingPage extends ConsumerWidget {
                   if (p.simpleExplanationTj.isNotEmpty)
                     SliverToBoxAdapter(
                       child: _ReadingSection(
-                        number: '02',
+                        number: AppTranslations.formatDigits('02', lang),
                         title: tr('detail_simple_explanation'),
                         text: p.simpleExplanationTj,
                         scriptBadge: persian
@@ -271,7 +275,7 @@ class QalamReadingPage extends ConsumerWidget {
                   if (p.exampleSentenceTj.isNotEmpty)
                     SliverToBoxAdapter(
                       child: _ReadingSection(
-                        number: '03',
+                        number: AppTranslations.formatDigits('03', lang),
                         title: tr('detail_example'),
                         text: p.exampleSentenceTj,
                         scriptBadge: persian
@@ -283,7 +287,7 @@ class QalamReadingPage extends ConsumerWidget {
                   if (variantTexts.isNotEmpty)
                     SliverToBoxAdapter(
                       child: _ReadingSection(
-                        number: '04',
+                        number: AppTranslations.formatDigits('04', lang),
                         title: persian ? 'گونه‌های دیگر' : 'Шаклҳои дигар',
                         text: variantTexts.join('\n\n'),
                         textDirection: persian

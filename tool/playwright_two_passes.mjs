@@ -51,8 +51,8 @@ async function runTwoPasses() {
     // Enable Persian & dark theme
     await page.goto('http://localhost:8080/zarbulmasal/');
     await page.evaluate(() => {
-      localStorage.setItem('flutter.zarbulmasal_lang', 'fa');
-      localStorage.setItem('flutter.zarbulmasal_theme', 'dark');
+      localStorage.setItem('flutter.display_language', JSON.stringify('fa'));
+      localStorage.setItem('flutter.dark_mode', JSON.stringify(true));
     });
     await page.reload({ waitUntil: 'networkidle' });
 

@@ -8,10 +8,15 @@ import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
 import '../../shared/widgets/empty_state.dart';
-import '../literature/data/literature_providers.dart';
-import '../literature/domain/domain.dart';
 import '../history/data/history_providers.dart';
 import '../history/domain/history_domain.dart';
+import '../literature/data/literature_providers.dart';
+import '../literature/domain/domain.dart';
+import '../literature/presentation/literary_author_display_text.dart';
+import '../literature/presentation/literary_work_display_text.dart';
+import '../books/data/books_providers.dart';
+import '../books/domain/book_domain.dart';
+import '../books/presentation/book_display_text.dart';
 
 class GlobalSearchScreen extends ConsumerStatefulWidget {
   const GlobalSearchScreen({super.key});
@@ -23,6 +28,7 @@ class GlobalSearchScreen extends ConsumerStatefulWidget {
 class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
   final TextEditingController _controller = TextEditingController();
   String _query = '';
+  String _rawQuery = '';
 
   @override
   void dispose() {
@@ -34,22 +40,23 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
 
     final proverbs = ref.watch(proverbsProvider);
     final authorsAsync = ref.watch(literaryAuthorsProvider);
     final worksAsync = ref.watch(approvedWorksProvider);
     final historyAsync = ref.watch(historyEntriesProvider);
+    final booksAsync = ref.watch(booksProvider);
 
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          tooltip: AppTranslations.get('btn_back', lang),
           icon: const BackButtonIcon(),
           onPressed: () => qalamBack(context),
         ),
         title: TextField(
           controller: _controller,
+          maxLength: 256,
           autofocus: true,
           decoration: InputDecoration(
             hintText: AppTranslations.get('search_hint_global', lang),
@@ -61,6 +68,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
           style: QalamTypography.body(color: colors.onSurface),
           onChanged: (val) {
             setState(() {
+              _rawQuery = val;
               _query = SearchNormalizer.normalize(val);
             });
           },
@@ -68,11 +76,14 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         actions: [
           if (_controller.text.isNotEmpty)
             IconButton(
-              tooltip: isPersian ? 'پاک کردن جستجو' : 'Пок кардани ҷустуҷӯ',
+              tooltip: AppTranslations.get('lit_search_clear_tooltip', lang),
               icon: const Icon(Icons.clear),
               onPressed: () {
                 _controller.clear();
-                setState(() => _query = '');
+                setState(() {
+                  _rawQuery = '';
+                  _query = '';
+                });
               },
             ),
         ],
@@ -88,36 +99,33 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
           ? Center(
               child: EmptyState(
                 icon: Icons.error_outline,
-                title: isPersian ? 'خطا در جستجو' : 'Хатои ҷустуҷӯ',
-                subtitle: isPersian
-                    ? 'لطفاً دوباره تلاش کنید.'
-                    : 'Лутфан дубора кӯшиш кунед.',
+                title: AppTranslations.get('search_error_title', lang),
+                subtitle: AppTranslations.get('search_error_sub', lang),
                 action: OutlinedButton(
                   onPressed: () {
                     ref.invalidate(literaryAuthorsProvider);
                     ref.invalidate(approvedWorksProvider);
                     ref.invalidate(historyEntriesProvider);
                   },
-                  child: Text(
-                    isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                  ),
+                  child: Text(AppTranslations.get('btn_retry', lang)),
                 ),
               ),
             )
           : _query.isEmpty
-          ? _buildEmptyState(context, isPersian)
+          ? _buildEmptyState(context, lang)
           : _buildSearchResults(
               context,
               proverbs,
               authorsAsync.valueOrNull ?? const [],
               worksAsync.valueOrNull ?? const [],
               historyAsync.valueOrNull ?? const [],
+              booksAsync.valueOrNull ?? const [],
               lang,
             ),
     );
   }
 
-  Widget _buildEmptyState(BuildContext context, bool isPersian) {
+  Widget _buildEmptyState(BuildContext context, DisplayLanguage lang) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
@@ -133,18 +141,14 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              isPersian
-                  ? 'جستجو در کل زرب‌المثل'
-                  : 'Ҷустуҷӯ дар кулли Зарбулмасал',
+              AppTranslations.get('search_empty_prompt_title', lang),
               style: QalamTypography.sectionTitle(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              isPersian
-                  ? 'می‌توانید نام شاعران، عنوان شعرها، ضرب‌المثل‌ها و رویدادهای تاریخی را جستجو کنید.'
-                  : 'Шумо метавонед номи шоирон, унвони шеърҳо, зарбулмасалҳо ва рӯйдодҳои таърихиро ҷустуҷӯ намоед.',
+              AppTranslations.get('search_empty_prompt_sub', lang),
               textAlign: TextAlign.center,
               style: QalamTypography.bodySecondary(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -162,61 +166,144 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
     List<LiteraryAuthor> authors,
     List<LiteraryWork> works,
     List<HistoryEntry> history,
+    List<Book> books,
     DisplayLanguage lang,
   ) {
     final isPersian = lang == DisplayLanguage.persian;
+    String historyTitle(HistoryEntry entry) {
+      if (!isPersian) return entry.title;
+      final translated = entry.titlePersian?.trim() ?? '';
+      return translated.isNotEmpty
+          ? translated
+          : AppTranslations.get('hist_translation_pending', lang);
+    }
 
-    final matchingAuthors = authors.where((a) {
-      if (!a.hasCanonicalName) return false;
-      return SearchNormalizer.matchesAny([
-        a.canonicalName,
-        a.canonicalNamePersian ?? '',
-        a.literaryPeriod,
-        a.birthPlace ?? '',
-        ...a.aliases,
-      ], _query);
-    }).toList();
+    String historyDate(HistoryEntry entry) {
+      final candidates = isPersian
+          ? [entry.datesPersian, entry.periodPersian]
+          : [entry.dates, entry.period];
+      for (final candidate in candidates) {
+        final value = candidate?.trim() ?? '';
+        if (value.isNotEmpty) return value;
+      }
+      return '';
+    }
 
-    final matchingWorks = works.where((w) {
-      return SearchNormalizer.matchesAny([
-        w.title,
-        w.titlePersian ?? '',
-        w.incipit ?? '',
-      ], _query);
-    }).toList();
+    final matchingAuthors =
+        authors.where((a) {
+          if (!a.hasCanonicalName) return false;
+          return SearchNormalizer.matchesAny([
+            a.canonicalName,
+            a.canonicalNamePersian ?? '',
+            a.literaryPeriod,
+            a.birthPlace ?? '',
+            ...a.aliases,
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.canonicalName,
+            a.canonicalNamePersian ?? '',
+            ...a.aliases,
+            a.literaryPeriod,
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.canonicalName,
+            b.canonicalNamePersian ?? '',
+            ...b.aliases,
+            b.literaryPeriod,
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
 
-    final matchingProverbs = proverbs.where((p) {
-      return SearchNormalizer.matchesAny([
-        p.tajikCyrillic,
-        p.persianText,
-        p.meaningTj,
-        p.simpleExplanationTj,
-      ], _query);
-    }).toList();
+    final matchingWorks =
+        works.where((w) {
+          return SearchNormalizer.matchesAny([
+            w.title,
+            w.titlePersian ?? '',
+            w.incipit ?? '',
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.title,
+            a.titlePersian ?? '',
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.title,
+            b.titlePersian ?? '',
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
 
-    final matchingHistory = history.where((h) {
-      return SearchNormalizer.matchesAny([
-        h.title,
-        h.titlePersian ?? '',
-        h.summary,
-        h.summaryPersian ?? '',
-        ...h.keywords,
-        ...h.keyFigures,
-        ...h.keyFiguresPersian,
-      ], _query);
-    }).toList();
+    final matchingProverbs =
+        proverbs.where((p) {
+          return SearchNormalizer.matchesAny([
+            p.tajikCyrillic,
+            p.persianText,
+            p.meaningTj,
+            p.simpleExplanationTj,
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.tajikCyrillic,
+            a.persianText,
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.tajikCyrillic,
+            b.persianText,
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
+
+    final matchingHistory =
+        history.where((h) {
+          return SearchNormalizer.matchesAny([
+            h.title,
+            h.titlePersian ?? '',
+            h.summary,
+            h.summaryPersian ?? '',
+            ...h.keywords,
+            ...h.keyFigures,
+            ...h.keyFiguresPersian,
+          ], _query);
+        }).toList()..sort((a, b) {
+          final scoreA = SearchNormalizer.scoreMatchAny([
+            a.title,
+            a.titlePersian ?? '',
+          ], _query);
+          final scoreB = SearchNormalizer.scoreMatchAny([
+            b.title,
+            b.titlePersian ?? '',
+          ], _query);
+          return scoreB.compareTo(scoreA);
+        });
+
+    final matchingBooks = books.where((book) => book.matches(_query)).toList()
+      ..sort((a, b) {
+        final scoreA = SearchNormalizer.scoreMatchAny([
+          a.titleTj,
+          a.titleFa ?? '',
+          a.canonicalTitle,
+        ], _query);
+        final scoreB = SearchNormalizer.scoreMatchAny([
+          b.titleTj,
+          b.titleFa ?? '',
+          b.canonicalTitle,
+        ], _query);
+        return scoreB.compareTo(scoreA);
+      });
 
     if (matchingAuthors.isEmpty &&
         matchingWorks.isEmpty &&
         matchingProverbs.isEmpty &&
-        matchingHistory.isEmpty) {
+        matchingHistory.isEmpty &&
+        matchingBooks.isEmpty) {
       return Center(
         child: EmptyState(
           icon: Icons.search_off,
-          title: isPersian ? 'نتیجه‌ای یافت نشد' : 'Мундариҷа ёфт нашуд',
-          subtitle: isPersian
-              ? 'با عبارت «$_query» چیزی پیدا نشد.'
-              : 'Бо вожаи «$_query» чизе ёфт нашуд.',
+          title: AppTranslations.get('lit_no_results', lang),
+          subtitle: AppTranslations.translate('search_no_results_for', lang, [
+            _rawQuery.trim().isNotEmpty ? _rawQuery.trim() : _query,
+          ]),
         ),
       );
     }
@@ -228,25 +315,30 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
       children: [
         if (matchingAuthors.isNotEmpty) ...[
           _buildSectionHeader(
-            isPersian
-                ? 'شاعران (${matchingAuthors.length})'
-                : 'Шоирон (${matchingAuthors.length})',
+            AppTranslations.translate('search_poets_count', lang, [
+              AppTranslations.formatDigits(
+                matchingAuthors.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final author in matchingAuthors)
             ListTile(
               leading: Icon(Icons.person_outline, color: colors.primary),
               title: Text(
-                (isPersian && author.canonicalNamePersian != null)
-                    ? author.canonicalNamePersian!
-                    : author.canonicalName,
+                LiteraryAuthorDisplayText.name(author, lang),
                 style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: Text(
-                author.literaryPeriod,
-                style: QalamTypography.meta(color: colors.onSurfaceVariant),
-              ),
-              trailing: const Icon(Icons.chevron_right, size: 20),
+              subtitle: LiteraryAuthorDisplayText.period(author, lang).isEmpty
+                  ? null
+                  : Text(
+                      LiteraryAuthorDisplayText.period(author, lang),
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+              trailing: const QalamChevron(size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)
@@ -254,11 +346,15 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                       RecentActivity(
                         id: author.id,
                         type: RecentActivityType.poet,
-                        title:
-                            (isPersian && author.canonicalNamePersian != null)
-                            ? author.canonicalNamePersian!
-                            : author.canonicalName,
-                        subtitle: author.literaryPeriod,
+                        title: LiteraryAuthorDisplayText.name(author, lang),
+                        subtitle: LiteraryAuthorDisplayText.period(
+                          author,
+                          lang,
+                        ),
+                        titleTajik: author.canonicalName,
+                        titlePersian: author.canonicalNamePersian,
+                        subtitleTajik: author.literaryPeriod,
+                        subtitlePersian: author.literaryPeriodPersian,
                         timestamp: DateTime.now(),
                         route: '/literature/poet/${author.id}',
                       ),
@@ -269,23 +365,24 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ],
         if (matchingWorks.isNotEmpty) ...[
           _buildSectionHeader(
-            isPersian
-                ? 'شعرها و آثار (${matchingWorks.length})'
-                : 'Шеърҳо ва осор (${matchingWorks.length})',
+            AppTranslations.translate('search_works_count', lang, [
+              AppTranslations.formatDigits(
+                matchingWorks.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final work in matchingWorks)
             ListTile(
               leading: Icon(Icons.auto_stories_outlined, color: colors.primary),
               title: Text(
-                (isPersian && work.titlePersian != null)
-                    ? work.titlePersian!
-                    : work.title,
+                LiteraryWorkDisplayText.title(work, lang),
                 style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: work.incipit != null
+              subtitle: LiteraryWorkDisplayText.incipit(work, lang) != null
                   ? Text(
-                      work.incipit!,
+                      LiteraryWorkDisplayText.incipit(work, lang)!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.meta(
@@ -293,7 +390,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                       ),
                     )
                   : null,
-              trailing: const Icon(Icons.chevron_right, size: 20),
+              trailing: const QalamChevron(size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)
@@ -301,10 +398,18 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                       RecentActivity(
                         id: work.id,
                         type: RecentActivityType.work,
-                        title: (isPersian && work.titlePersian != null)
-                            ? work.titlePersian!
-                            : work.title,
-                        subtitle: isPersian ? 'شعر' : 'Шеър',
+                        title: LiteraryWorkDisplayText.title(work, lang),
+                        subtitle: AppTranslations.get('search_kind_poem', lang),
+                        titleTajik: work.title,
+                        titlePersian: work.titlePersian,
+                        subtitleTajik: AppTranslations.get(
+                          'search_kind_poem',
+                          DisplayLanguage.tajik,
+                        ),
+                        subtitlePersian: AppTranslations.get(
+                          'search_kind_poem',
+                          DisplayLanguage.persian,
+                        ),
                         timestamp: DateTime.now(),
                         route: '/literature/work/${work.id}',
                       ),
@@ -313,11 +418,45 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
               },
             ),
         ],
+        if (matchingBooks.isNotEmpty) ...[
+          _buildSectionHeader(
+            AppTranslations.translate('books_search_result', lang, [
+              AppTranslations.formatDigits(
+                matchingBooks.length.toString(),
+                lang,
+              ),
+            ]),
+            colors,
+          ),
+          for (final book in matchingBooks)
+            ListTile(
+              leading: Icon(
+                Icons.local_library_outlined,
+                color: colors.primary,
+              ),
+              title: Text(
+                BookDisplayText.title(book, lang),
+                style: QalamTypography.body(color: colors.onSurface),
+              ),
+              subtitle: Text(
+                BookDisplayText.author(book, lang) ??
+                    AppTranslations.get('books_title', lang),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+              ),
+              trailing: const QalamChevron(size: 20),
+              onTap: () => context.push('/books/${book.id}'),
+            ),
+        ],
         if (matchingProverbs.isNotEmpty) ...[
           _buildSectionHeader(
-            isPersian
-                ? 'ضرب‌المثل‌ها (${matchingProverbs.length})'
-                : 'Зарбулмасалҳо (${matchingProverbs.length})',
+            AppTranslations.translate('search_proverbs_count', lang, [
+              AppTranslations.formatDigits(
+                matchingProverbs.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final proverb in matchingProverbs)
@@ -332,12 +471,14 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                 style: QalamTypography.body(color: colors.onSurface),
               ),
               subtitle: Text(
-                proverb.meaningTj,
+                isPersian
+                    ? '${AppTranslations.get('reading_tajik_explanation', lang)}: ${proverb.meaningTj}'
+                    : proverb.meaningTj,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: QalamTypography.meta(color: colors.onSurfaceVariant),
               ),
-              trailing: const Icon(Icons.chevron_right, size: 20),
+              trailing: const QalamChevron(size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)
@@ -350,7 +491,22 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                                   ? proverb.persianText
                                   : proverb.tajikCyrillic)
                             : proverb.tajikCyrillic,
-                        subtitle: isPersian ? 'ضرب‌المثل' : 'Зарбулмасал',
+                        subtitle: AppTranslations.get(
+                          'search_kind_proverb',
+                          lang,
+                        ),
+                        titleTajik: proverb.tajikCyrillic,
+                        titlePersian: proverb.persianText.isNotEmpty
+                            ? proverb.persianText
+                            : null,
+                        subtitleTajik: AppTranslations.get(
+                          'search_kind_proverb',
+                          DisplayLanguage.tajik,
+                        ),
+                        subtitlePersian: AppTranslations.get(
+                          'search_kind_proverb',
+                          DisplayLanguage.persian,
+                        ),
                         timestamp: DateTime.now(),
                         route: '/proverb/${proverb.id}',
                       ),
@@ -361,34 +517,30 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ],
         if (matchingHistory.isNotEmpty) ...[
           _buildSectionHeader(
-            isPersian
-                ? 'تاریخ (${matchingHistory.length})'
-                : 'Таърих (${matchingHistory.length})',
+            AppTranslations.translate('search_history_count', lang, [
+              AppTranslations.formatDigits(
+                matchingHistory.length.toString(),
+                lang,
+              ),
+            ]),
             colors,
           ),
           for (final entry in matchingHistory)
             ListTile(
               leading: Icon(Icons.timeline, color: colors.primary),
               title: Text(
-                (isPersian && entry.titlePersian != null)
-                    ? entry.titlePersian!
-                    : entry.title,
+                historyTitle(entry),
                 style: QalamTypography.body(color: colors.onSurface),
               ),
-              subtitle: entry.dates != null
-                  ? Text(
-                      entry.dates!,
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
-                      ),
-                    )
+              subtitle: historyDate(entry).isEmpty
+                  ? null
                   : Text(
-                      entry.period,
+                      historyDate(entry),
                       style: QalamTypography.meta(
                         color: colors.onSurfaceVariant,
                       ),
                     ),
-              trailing: const Icon(Icons.chevron_right, size: 20),
+              trailing: const QalamChevron(size: 20),
               onTap: () {
                 ref
                     .read(recentActivityProvider.notifier)
@@ -396,10 +548,21 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                       RecentActivity(
                         id: entry.id,
                         type: RecentActivityType.history,
-                        title: (isPersian && entry.titlePersian != null)
-                            ? entry.titlePersian!
-                            : entry.title,
-                        subtitle: isPersian ? 'تاریخ' : 'Таърих',
+                        title: historyTitle(entry),
+                        subtitle: AppTranslations.get(
+                          'search_kind_history',
+                          lang,
+                        ),
+                        titleTajik: entry.title,
+                        titlePersian: entry.titlePersian,
+                        subtitleTajik: AppTranslations.get(
+                          'search_kind_history',
+                          DisplayLanguage.tajik,
+                        ),
+                        subtitlePersian: AppTranslations.get(
+                          'search_kind_history',
+                          DisplayLanguage.persian,
+                        ),
                         timestamp: DateTime.now(),
                         route: '/history/${entry.id}',
                       ),

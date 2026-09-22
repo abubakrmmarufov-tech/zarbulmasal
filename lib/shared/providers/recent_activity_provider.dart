@@ -10,6 +10,10 @@ class RecentActivity {
   final RecentActivityType type;
   final String title;
   final String? subtitle;
+  final String? titleTajik;
+  final String? titlePersian;
+  final String? subtitleTajik;
+  final String? subtitlePersian;
   final DateTime timestamp;
   final String route;
 
@@ -18,6 +22,10 @@ class RecentActivity {
     required this.type,
     required this.title,
     this.subtitle,
+    this.titleTajik,
+    this.titlePersian,
+    this.subtitleTajik,
+    this.subtitlePersian,
     required this.timestamp,
     required this.route,
   });
@@ -27,18 +35,86 @@ class RecentActivity {
     'type': type.name,
     'title': title,
     'subtitle': subtitle,
+    if (titleTajik != null) 'titleTajik': titleTajik,
+    if (titlePersian != null) 'titlePersian': titlePersian,
+    if (subtitleTajik != null) 'subtitleTajik': subtitleTajik,
+    if (subtitlePersian != null) 'subtitlePersian': subtitlePersian,
     'timestamp': timestamp.toIso8601String(),
     'route': route,
   };
 
-  factory RecentActivity.fromJson(Map<String, dynamic> json) => RecentActivity(
-    id: json['id'] as String,
-    type: RecentActivityType.values.byName(json['type'] as String),
-    title: json['title'] as String,
-    subtitle: json['subtitle'] as String?,
-    timestamp: DateTime.parse(json['timestamp'] as String),
-    route: json['route'] as String,
-  );
+  factory RecentActivity.fromJson(Map<String, dynamic> json) {
+    final activity = tryFromJson(json);
+    if (activity == null) {
+      throw const FormatException('Invalid recent activity record');
+    }
+    return activity;
+  }
+
+  /// Parses untrusted persisted data without allowing one bad record to
+  /// invalidate the rest of the recent-activity history.
+  static RecentActivity? tryFromJson(Map<String, dynamic> json) {
+    final id = _nonEmptyString(json['id']);
+    final title = _nonEmptyString(json['title']);
+    final route = _nonEmptyString(json['route']);
+    final timestampValue = _nonEmptyString(json['timestamp']);
+    final typeValue = _nonEmptyString(json['type']);
+    final type = typeValue == null ? null : _typeFromName(typeValue);
+    final timestamp = timestampValue == null
+        ? null
+        : DateTime.tryParse(timestampValue);
+    final subtitle = json['subtitle'];
+    final titleTajik = json['titleTajik'];
+    final titlePersian = json['titlePersian'];
+    final subtitleTajik = json['subtitleTajik'];
+    final subtitlePersian = json['subtitlePersian'];
+
+    if (id == null ||
+        title == null ||
+        route == null ||
+        timestamp == null ||
+        type == null ||
+        (subtitle != null && subtitle is! String) ||
+        (titleTajik != null && titleTajik is! String) ||
+        (titlePersian != null && titlePersian is! String) ||
+        (subtitleTajik != null && subtitleTajik is! String) ||
+        (subtitlePersian != null && subtitlePersian is! String) ||
+        !_isInternalRoute(route)) {
+      return null;
+    }
+
+    return RecentActivity(
+      id: id,
+      type: type,
+      title: title,
+      subtitle: subtitle as String?,
+      titleTajik: _nonEmptyString(titleTajik),
+      titlePersian: _nonEmptyString(titlePersian),
+      subtitleTajik: _nonEmptyString(subtitleTajik),
+      subtitlePersian: _nonEmptyString(subtitlePersian),
+      timestamp: timestamp,
+      route: route,
+    );
+  }
+
+  static RecentActivityType? _typeFromName(String value) {
+    for (final type in RecentActivityType.values) {
+      if (type.name == value) return type;
+    }
+    return null;
+  }
+
+  static String? _nonEmptyString(dynamic value) {
+    if (value is! String) return null;
+    final normalized = value.trim();
+    return normalized.isEmpty ? null : normalized;
+  }
+
+  static bool _isInternalRoute(String route) {
+    if (!route.startsWith('/') || route.startsWith('//')) return false;
+    final uri = Uri.tryParse(route);
+    return uri != null && uri.scheme.isEmpty && uri.host.isEmpty;
+  }
 }
 
 final recentActivityProvider =
@@ -60,11 +136,20 @@ class RecentActivityNotifier extends StateNotifier<List<RecentActivity>> {
     if (list == null) return [];
     try {
       return list
-          .map(
-            (e) =>
-                RecentActivity.fromJson(jsonDecode(e) as Map<String, dynamic>),
-          )
-          .toList();
+          .map((encoded) {
+            try {
+              final decoded = jsonDecode(encoded);
+              if (decoded is! Map) return null;
+              return RecentActivity.tryFromJson(
+                Map<String, dynamic>.from(decoded),
+              );
+            } catch (_) {
+              return null;
+            }
+          })
+          .whereType<RecentActivity>()
+          .take(_maxItems)
+          .toList(growable: false);
     } catch (_) {
       return [];
     }

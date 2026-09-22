@@ -12,7 +12,7 @@ void main() {
       summary: 'Давлати Сомониён дар китобҳои синфи 7.',
       period: 'асрҳои IX–X',
       grade: '7',
-      sourceBookId: 'marifat-486',
+      sourceBookId: 'history-7',
       sourceSection: 'Сомониён',
       keywords: ['давлат', 'Бухоро'],
     ),
@@ -23,7 +23,7 @@ void main() {
       summary: 'Нақли манбаи адабӣ дар таърихи забон.',
       period: 'асри X',
       grade: '6',
-      sourceBookId: 'marifat-337',
+      sourceBookId: 'history-6',
       sourceSection: 'Забони форсии тоҷикӣ',
       keywords: ['шоир', 'Калила'],
     ),
@@ -34,7 +34,7 @@ void main() {
       summary: 'Фармондеҳи муқовимат бар зидди Искандар.',
       period: 'асри IV то милод',
       grade: '5',
-      sourceBookId: 'marifat-462',
+      sourceBookId: 'history-5',
       sourceSection: 'Юнону Бохтар',
     ),
     HistoryEntry(
@@ -44,7 +44,7 @@ void main() {
       summary: 'نمونهٔ فارسی برای سنجش جست‌وجو.',
       period: '—',
       grade: '6',
-      sourceBookId: 'marifat-337',
+      sourceBookId: 'history-6',
       sourceSection: 'ادبیات',
     ),
   ];
@@ -64,7 +64,7 @@ void main() {
       'title': 'Unknown',
       'author': 'Unknown',
       'description': '',
-      'sourceUrl': 'https://marifat.tj/books/unknown',
+      'sourceUrl': 'https://maorif.tj/books/unknown',
     });
 
     expect(book.year, isEmpty);

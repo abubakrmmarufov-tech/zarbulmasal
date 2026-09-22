@@ -1,15 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/providers/recent_activity_provider.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../../literature/data/literature_providers.dart';
+import '../../literature/presentation/literary_author_display_text.dart';
 import '../data/history_providers.dart';
 import '../domain/history_domain.dart';
+import 'history_source_launcher.dart';
+
+String? _historyOptionalText(String? value) {
+  final trimmed = value?.trim();
+  return trimmed == null || trimmed.isEmpty ? null : trimmed;
+}
+
+String _historyRequiredTitle(
+  String sourceTitle,
+  String? persianTitle,
+  DisplayLanguage language,
+) {
+  if (language != DisplayLanguage.persian) return sourceTitle;
+  return _historyOptionalText(persianTitle) ??
+      AppTranslations.get('hist_translation_pending', language);
+}
+
+String _historyBookCitation(HistoryBook book, DisplayLanguage language) {
+  final title = _historyRequiredTitle(book.title, book.titlePersian, language);
+  final author = _historyOptionalText(
+    language == DisplayLanguage.persian ? book.authorPersian : book.author,
+  );
+  return author == null ? title : '$title ($author)';
+}
 
 /// Full-screen detail view for a specific historical entry (dynasty, person, event, or site).
 class HistoryDetailScreen extends ConsumerWidget {
@@ -29,7 +53,7 @@ class HistoryDetailScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          isPersian ? 'شناسنامهٔ تاریخی' : 'Шиносномаи таърихӣ',
+          AppTranslations.get('hist_detail_title', lang),
           style: QalamTypography.sectionTitle(
             color: colors.onSurface,
             fontSize: 18,
@@ -37,7 +61,7 @@ class HistoryDetailScreen extends ConsumerWidget {
         ),
         leading: IconButton(
           icon: const BackButtonIcon(),
-          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          tooltip: AppTranslations.get('back', lang),
           onPressed: () {
             if (context.canPop()) {
               context.pop();
@@ -52,14 +76,12 @@ class HistoryDetailScreen extends ConsumerWidget {
         error: (err, stack) => Center(
           child: EmptyState(
             icon: Icons.error_outline,
-            title: isPersian
-                ? 'خطا در بارگیری مدخل'
-                : 'Хато дар боргирии маълумот',
-            subtitle: err.toString(),
+            title: AppTranslations.get('hist_detail_error_title', lang),
+            subtitle: AppTranslations.get('hist_detail_error_sub', lang),
             action: OutlinedButton(
               onPressed: () =>
                   ref.invalidate(historyEntryByIdProvider(entryId)),
-              child: Text(isPersian ? 'تلاش مجدد' : 'Кӯшиши дубора'),
+              child: Text(AppTranslations.get('btn_retry', lang)),
             ),
           ),
         ),
@@ -68,16 +90,15 @@ class HistoryDetailScreen extends ConsumerWidget {
             return Center(
               child: EmptyState(
                 icon: Icons.search_off,
-                title: isPersian
-                    ? 'مدخل تاریخی یافت نشد'
-                    : 'Маълумот ёфт нашуд',
-                subtitle: isPersian
-                    ? 'این مدخل در مجموعهٔ تاریخی برنامه موجود نیست.'
-                    : 'Ин маълумот дар сабтҳои таърихӣ вуҷуд надорад.',
+                title: AppTranslations.get('hist_detail_not_found_title', lang),
+                subtitle: AppTranslations.get(
+                  'hist_detail_not_found_sub',
+                  lang,
+                ),
                 action: OutlinedButton(
                   onPressed: () => context.go('/history'),
                   child: Text(
-                    isPersian ? 'بازگشت به تاریخ' : 'Бозгашт ба таърих',
+                    AppTranslations.get('hist_back_to_history', lang),
                   ),
                 ),
               ),
@@ -89,28 +110,38 @@ class HistoryDetailScreen extends ConsumerWidget {
               .where((b) => b.id == entry.sourceBookId)
               .firstOrNull;
 
-          final title = isPersian && entry.titlePersian != null
-              ? entry.titlePersian!
-              : entry.title;
-          final summary = isPersian && entry.summaryPersian != null
-              ? entry.summaryPersian!
-              : entry.summary;
-          final dates = isPersian && entry.datesPersian != null
-              ? entry.datesPersian!
-              : (entry.dates ?? entry.period);
-          final capital = isPersian && entry.capitalPersian != null
-              ? entry.capitalPersian
-              : entry.capital;
-          final territory = isPersian && entry.territoryPersian != null
-              ? entry.territoryPersian
-              : entry.territory;
-          final significance = isPersian && entry.significancePersian != null
-              ? entry.significancePersian
-              : entry.significance;
-          final keyFigures = isPersian && entry.keyFiguresPersian.isNotEmpty
-              ? entry.keyFiguresPersian
-              : entry.keyFigures;
-          final section = entry.sourceSection;
+          final title = _historyRequiredTitle(
+            entry.title,
+            entry.titlePersian,
+            lang,
+          );
+          final summary = isPersian
+              ? _historyOptionalText(entry.summaryPersian)
+              : _historyOptionalText(entry.summary);
+          final dates = isPersian
+              ? _historyOptionalText(entry.datesPersian) ??
+                    _historyOptionalText(entry.periodPersian) ??
+                    ''
+              : _historyOptionalText(entry.dates) ??
+                    _historyOptionalText(entry.period) ??
+                    '';
+          final capital = isPersian
+              ? _historyOptionalText(entry.capitalPersian)
+              : _historyOptionalText(entry.capital);
+          final territory = isPersian
+              ? _historyOptionalText(entry.territoryPersian)
+              : _historyOptionalText(entry.territory);
+          final significance = isPersian
+              ? _historyOptionalText(entry.significancePersian)
+              : _historyOptionalText(entry.significance);
+          final keyFigures =
+              (isPersian ? entry.keyFiguresPersian : entry.keyFigures)
+                  .map((figure) => figure.trim())
+                  .where((figure) => figure.isNotEmpty)
+                  .toList(growable: false);
+          final section = isPersian
+              ? null
+              : _historyOptionalText(entry.sourceSection);
 
           WidgetsBinding.instance.addPostFrameCallback((_) {
             ref
@@ -119,10 +150,12 @@ class HistoryDetailScreen extends ConsumerWidget {
                   RecentActivity(
                     id: entry.id,
                     type: RecentActivityType.history,
-                    title: isPersian && entry.titlePersian != null
-                        ? entry.titlePersian!
-                        : entry.title,
+                    title: title,
                     subtitle: isPersian ? 'تاریخ' : 'Таърих',
+                    titleTajik: entry.title,
+                    titlePersian: entry.titlePersian,
+                    subtitleTajik: 'Таърих',
+                    subtitlePersian: 'تاریخ',
                     timestamp: DateTime.now(),
                     route: '/history/${entry.id}',
                   ),
@@ -175,9 +208,9 @@ class HistoryDetailScreen extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        isPersian
-                            ? 'صنف ${AppTranslations.formatDigits(entry.grade, lang)}'
-                            : 'Синфи ${entry.grade}',
+                        AppTranslations.get('hist_filter_grade', lang, [
+                          entry.grade,
+                        ]),
                         style: QalamTypography.meta(
                           color: colors.onSurfaceVariant,
                         ),
@@ -215,8 +248,8 @@ class HistoryDetailScreen extends ConsumerWidget {
                 ],
                 const SizedBox(height: 20),
                 // Capital, Territory, Key Figures
-                if ((capital != null && capital.isNotEmpty) ||
-                    (territory != null && territory.isNotEmpty) ||
+                if (capital != null ||
+                    territory != null ||
                     keyFigures.isNotEmpty) ...[
                   Container(
                     padding: const EdgeInsets.all(16),
@@ -235,31 +268,30 @@ class HistoryDetailScreen extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (capital != null && capital.isNotEmpty) ...[
+                        if (capital != null) ...[
                           _DetailLine(
                             icon: Icons.location_city,
-                            label: isPersian ? 'پایتخت' : 'Пойтахт',
+                            label: AppTranslations.get('hist_capital', lang),
                             value: capital,
                           ),
                         ],
-                        if (territory != null && territory.isNotEmpty) ...[
-                          if (capital != null && capital.isNotEmpty)
-                            const Divider(height: 20),
+                        if (territory != null) ...[
+                          if (capital != null) const Divider(height: 20),
                           _DetailLine(
                             icon: Icons.public,
-                            label: isPersian ? 'قلمرو' : 'Ҳудуд',
+                            label: AppTranslations.get('hist_territory', lang),
                             value: territory,
                           ),
                         ],
                         if (keyFigures.isNotEmpty) ...[
-                          if ((capital != null && capital.isNotEmpty) ||
-                              (territory != null && territory.isNotEmpty))
+                          if (capital != null || territory != null)
                             const Divider(height: 20),
                           _DetailLine(
                             icon: Icons.people_outline,
-                            label: isPersian
-                                ? 'چهره‌ها و حکمرانان'
-                                : 'Чеҳраҳо ва ҳукмронон',
+                            label: AppTranslations.get(
+                              'hist_key_figures_and_rulers',
+                              lang,
+                            ),
                             value: keyFigures.join(', '),
                           ),
                         ],
@@ -269,24 +301,26 @@ class HistoryDetailScreen extends ConsumerWidget {
                   const SizedBox(height: 20),
                 ],
                 // Historical Summary
-                Text(
-                  isPersian ? 'خلاصهٔ تاریخی' : 'Хулосаи таърихӣ',
-                  style: QalamTypography.eyebrow(color: colors.primary),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  summary,
-                  style: QalamTypography.body(
-                    color: colors.onSurface,
-                    height: 1.6,
-                    fontSize: 16,
+                if (summary != null) ...[
+                  Text(
+                    AppTranslations.get('hist_summary', lang),
+                    style: QalamTypography.eyebrow(color: colors.primary),
                   ),
-                ),
+                  const SizedBox(height: 8),
+                  Text(
+                    summary,
+                    style: QalamTypography.body(
+                      color: colors.onSurface,
+                      height: 1.6,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
                 // Historical Significance
-                if (significance != null && significance.isNotEmpty) ...[
+                if (significance != null) ...[
                   const SizedBox(height: 24),
                   Text(
-                    isPersian ? 'اهمیت تاریخی' : 'Аҳамияти таърихӣ',
+                    AppTranslations.get('hist_significance', lang),
                     style: QalamTypography.eyebrow(color: colors.primary),
                   ),
                   const SizedBox(height: 8),
@@ -303,9 +337,7 @@ class HistoryDetailScreen extends ConsumerWidget {
                 if (entry.relatedAuthorIds.isNotEmpty) ...[
                   const SizedBox(height: 24),
                   Text(
-                    isPersian
-                        ? 'شاعران و ادیبان هم‌دوره'
-                        : 'Шоирон ва адибони ҳамдавр',
+                    AppTranslations.get('hist_related_authors', lang),
                     style: QalamTypography.eyebrow(color: colors.primary),
                   ),
                   const SizedBox(height: 10),
@@ -319,16 +351,14 @@ class HistoryDetailScreen extends ConsumerWidget {
                             authorByIdProvider(authorId),
                           );
                           final author = authorAsync.valueOrNull;
-                          final authorName = author != null
-                              ? ((isPersian &&
-                                        author.canonicalNamePersian != null)
-                                    ? author.canonicalNamePersian!
-                                    : author.canonicalName)
-                              : (authorId == 'rudaki'
-                                    ? (isPersian
-                                          ? 'ابوعبدالله رودکی'
-                                          : 'Абӯабдуллоҳи Рӯдакӣ')
-                                    : authorId);
+                          final authorName =
+                              LiteraryAuthorDisplayText.nameOrFallback(
+                                author,
+                                lang,
+                                authorId == 'rudaki'
+                                    ? 'Абӯабдуллоҳи Рӯдакӣ'
+                                    : authorId,
+                              );
                           return ActionChip(
                             avatar: const Icon(Icons.auto_stories, size: 16),
                             label: Text(authorName),
@@ -345,7 +375,7 @@ class HistoryDetailScreen extends ConsumerWidget {
                 if (entry.relatedWorkIds.isNotEmpty) ...[
                   const SizedBox(height: 24),
                   Text(
-                    isPersian ? 'آثار ادبی مرتبط' : 'Осори адабии пайвандӣ',
+                    AppTranslations.get('hist_related_works', lang),
                     style: QalamTypography.eyebrow(color: colors.primary),
                   ),
                   const SizedBox(height: 10),
@@ -360,13 +390,16 @@ class HistoryDetailScreen extends ConsumerWidget {
                           final matched = approvedWorks
                               .where((w) => w.id == workId)
                               .firstOrNull;
-                          final workTitle = matched != null
-                              ? (isPersian && matched.titlePersian != null
-                                    ? matched.titlePersian!
-                                    : matched.title)
-                              : (workId == 'poem-shahnameh'
-                                    ? (isPersian ? 'شاهنامه' : 'Шоҳнома')
-                                    : workId);
+                          final workTitle = isPersian
+                              ? _historyOptionalText(matched?.titlePersian) ??
+                                    AppTranslations.get(
+                                      'hist_translation_pending',
+                                      lang,
+                                    )
+                              : (matched?.title ??
+                                    (workId == 'poem-shahnameh'
+                                        ? 'Шоҳнома'
+                                        : workId));
                           return ActionChip(
                             avatar: const Icon(Icons.menu_book, size: 16),
                             label: Text(workTitle),
@@ -410,9 +443,10 @@ class HistoryDetailScreen extends ConsumerWidget {
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              isPersian
-                                  ? 'منبع مستند: کتاب درسی تاریخ халқи тоҷик'
-                                  : 'Сарчашмаи таълимӣ: Китоби дарсии «Таърихи халқи тоҷик»',
+                              AppTranslations.get(
+                                'hist_official_textbook',
+                                lang,
+                              ),
                               style: QalamTypography.eyebrow(
                                 color: colors.primary,
                               ),
@@ -422,9 +456,11 @@ class HistoryDetailScreen extends ConsumerWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        isPersian
-                            ? 'صنف ${AppTranslations.formatDigits(entry.grade, lang)} · $section'
-                            : 'Синфи ${entry.grade} · $section',
+                        section == null
+                            ? AppTranslations.get('hist_filter_grade', lang, [
+                                entry.grade,
+                              ])
+                            : '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])} · $section',
                         style: QalamTypography.sectionTitle(
                           color: colors.onSurface,
                           fontSize: 16,
@@ -433,32 +469,34 @@ class HistoryDetailScreen extends ConsumerWidget {
                       if (sourceBook != null) ...[
                         const SizedBox(height: 4),
                         Text(
-                          '${sourceBook.title} (${sourceBook.author})',
+                          _historyBookCitation(sourceBook, lang),
                           style: QalamTypography.meta(
                             color: colors.onSurfaceVariant,
                             fontSize: 14,
                           ),
                         ),
-                        if (sourceBook.sourceUrl.isNotEmpty) ...[
+                        if (sourceBook.externalSourceUri != null) ...[
                           const SizedBox(height: 14),
                           FilledButton.tonalIcon(
                             style: FilledButton.styleFrom(
-                              minimumSize: const Size.fromHeight(46),
+                              minimumSize: const Size(48, 48),
                             ),
                             icon: const Icon(Icons.open_in_browser, size: 20),
                             label: Text(
-                              isPersian
-                                  ? 'ورود به وبگاه رسمی کتاب (marifat.tj)'
-                                  : 'Мутолиа дар сомонаи расмӣ (marifat.tj)',
+                              (sourceBook.isUploadedBook ||
+                                      sourceBook.localPath != null)
+                                  ? AppTranslations.get(
+                                      'hist_source_study_local',
+                                      lang,
+                                    )
+                                  : AppTranslations.get(
+                                      'hist_source_study',
+                                      lang,
+                                    ),
                             ),
                             onPressed: () async {
-                              final uri = Uri.parse(sourceBook.sourceUrl);
-                              if (await canLaunchUrl(uri)) {
-                                await launchUrl(
-                                  uri,
-                                  mode: LaunchMode.externalApplication,
-                                );
-                              }
+                              final uri = sourceBook.externalSourceUri!;
+                              await openHistorySource(context, uri, lang);
                             },
                           ),
                         ],
@@ -476,24 +514,32 @@ class HistoryDetailScreen extends ConsumerWidget {
 
   static IconData _iconForKind(HistoryEntryKind kind) => switch (kind) {
     HistoryEntryKind.empire => Icons.account_balance,
+    HistoryEntryKind.dynasty => Icons.account_balance,
+    HistoryEntryKind.ruler => Icons.shield,
     HistoryEntryKind.person => Icons.person,
     HistoryEntryKind.event => Icons.event,
+    HistoryEntryKind.battle => Icons.sports_kabaddi,
     HistoryEntryKind.place => Icons.location_on,
+    HistoryEntryKind.cultural => Icons.palette,
     HistoryEntryKind.poem => Icons.auto_stories,
     HistoryEntryKind.oral => Icons.record_voice_over,
   };
 
-  static String _kindLabel(
-    HistoryEntryKind kind,
-    bool isPersian,
-  ) => switch (kind) {
-    HistoryEntryKind.empire => isPersian ? 'دولت و سلسله' : 'Давлат ва силсила',
-    HistoryEntryKind.person => isPersian ? 'شخصیت تاریخی' : 'Шахсияти таърихӣ',
-    HistoryEntryKind.event => isPersian ? 'رویداد تاریخی' : 'Рӯйдоди таърихӣ',
-    HistoryEntryKind.place => isPersian ? 'مکان تاریخی' : 'Макони таърихӣ',
-    HistoryEntryKind.poem => isPersian ? 'میراث ادبی' : 'Мероси адабӣ',
-    HistoryEntryKind.oral => isPersian ? 'روایت شفاهی' : 'Ривояти шифоҳӣ',
-  };
+  static String _kindLabel(HistoryEntryKind kind, bool isPersian) {
+    final key = switch (kind) {
+      HistoryEntryKind.empire => 'hist_kind_empire',
+      HistoryEntryKind.dynasty => 'hist_kind_dynasty',
+      HistoryEntryKind.ruler => 'hist_kind_ruler',
+      HistoryEntryKind.person => 'hist_kind_person',
+      HistoryEntryKind.event => 'hist_kind_event',
+      HistoryEntryKind.battle => 'hist_kind_battle',
+      HistoryEntryKind.place => 'hist_kind_place',
+      HistoryEntryKind.cultural => 'hist_kind_cultural',
+      HistoryEntryKind.poem => 'hist_kind_poem',
+      HistoryEntryKind.oral => 'hist_kind_oral',
+    };
+    return AppTranslations.getForLang(isPersian ? 'fa' : 'tj', key);
+  }
 }
 
 class _DetailLine extends StatelessWidget {

@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/providers/recent_activity_provider.dart';
+import '../literature/data/reader_preferences_provider.dart';
 
 /// Personal reading preferences and the collection's publication information.
 class SettingsScreen extends ConsumerWidget {
@@ -15,7 +17,12 @@ class SettingsScreen extends ConsumerWidget {
     final language = ref.watch(displayLanguageProvider);
     final isPersian = language == DisplayLanguage.persian;
     final count = ref.watch(proverbsProvider).length;
+    final readerPrefs = ref.watch(readerPreferencesProvider);
+    final readerNotifier = ref.read(readerPreferencesProvider.notifier);
+    final appTextScale = ref.watch(appTextScaleProvider);
+
     String tr(String key) => AppTranslations.get(key, language);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -51,25 +58,188 @@ class SettingsScreen extends ConsumerWidget {
               ),
               sliver: SliverList.list(
                 children: [
+                  // --- Section 1: Appearance ---
                   _SectionLabel(title: tr('settings_display')),
-                  QalamSettingRow(
-                    title: tr('settings_dark_mode'),
-                    subtitle: tr(
-                      themeMode == ThemeMode.dark
-                          ? 'settings_active'
-                          : 'settings_inactive',
-                    ),
-                    trailing: Switch(
-                      value: themeMode == ThemeMode.dark,
-                      onChanged: (_) =>
-                          ref.read(themeModeProvider.notifier).toggleTheme(),
+                  Text(
+                    tr('settings_theme_mode'),
+                    style: QalamTypography.sectionTitle(
+                      color: colors.onSurface,
+                      fontSize: 16,
                     ),
                   ),
-                  const SizedBox(height: 34),
+                  const SizedBox(height: 8),
+                  _ThemeModeRow(
+                    title: tr('settings_theme_system'),
+                    selected: themeMode == ThemeMode.system,
+                    icon: Icons.brightness_auto_outlined,
+                    onTap: () => ref
+                        .read(themeModeProvider.notifier)
+                        .setThemeMode(ThemeMode.system),
+                  ),
+                  _ThemeModeRow(
+                    title: tr('settings_theme_light'),
+                    selected: themeMode == ThemeMode.light,
+                    icon: Icons.light_mode_outlined,
+                    onTap: () => ref
+                        .read(themeModeProvider.notifier)
+                        .setThemeMode(ThemeMode.light),
+                  ),
+                  _ThemeModeRow(
+                    title: tr('settings_theme_dark'),
+                    selected: themeMode == ThemeMode.dark,
+                    icon: Icons.dark_mode_outlined,
+                    onTap: () => ref
+                        .read(themeModeProvider.notifier)
+                        .setThemeMode(ThemeMode.dark),
+                  ),
+                  const SizedBox(height: 32),
+
+                  // --- Section 2: Reading Controls ---
+                  _SectionLabel(title: tr('settings_reading')),
+                  Text(
+                    tr('settings_font_size'),
+                    style: QalamTypography.sectionTitle(
+                      color: colors.onSurface,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      ChoiceChip(
+                        label: Text(tr('settings_font_size_small')),
+                        selected: appTextScale == AppTextScaleNotifier.minimum,
+                        onSelected: (_) => ref
+                            .read(appTextScaleProvider.notifier)
+                            .setScale(AppTextScaleNotifier.minimum),
+                      ),
+                      ChoiceChip(
+                        label: Text(tr('settings_font_size_default')),
+                        selected:
+                            appTextScale == AppTextScaleNotifier.defaultScale,
+                        onSelected: (_) => ref
+                            .read(appTextScaleProvider.notifier)
+                            .setScale(AppTextScaleNotifier.defaultScale),
+                      ),
+                      ChoiceChip(
+                        label: Text(tr('settings_font_size_xlarge')),
+                        selected: appTextScale == AppTextScaleNotifier.maximum,
+                        onSelected: (_) => ref
+                            .read(appTextScaleProvider.notifier)
+                            .setScale(AppTextScaleNotifier.maximum),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  QalamSettingRow(
+                    title: tr('settings_poem_font_size'),
+                    subtitle: isPersian
+                        ? '${AppTranslations.formatDigits('${(100 + readerPrefs.fontSizeDelta * 5).round()}', language)}٪'
+                        : '${(100 + readerPrefs.fontSizeDelta * 5).round()}%',
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          tooltip: isPersian ? 'کاهش اندازه' : 'Хурд кардан',
+                          icon: const Icon(
+                            Icons.remove_circle_outline,
+                            size: 22,
+                          ),
+                          onPressed:
+                              readerPrefs.fontSizeDelta >
+                                  ReaderPreferencesNotifier.minDelta
+                              ? () => readerNotifier.decreaseFontSize()
+                              : null,
+                        ),
+                        IconButton(
+                          tooltip: isPersian
+                              ? 'اندازه پیش‌فرض'
+                              : 'Андозаи аввала',
+                          icon: const Icon(Icons.restart_alt, size: 20),
+                          onPressed: readerPrefs.fontSizeDelta != 0.0
+                              ? () => readerNotifier.resetFontSize()
+                              : null,
+                        ),
+                        IconButton(
+                          tooltip: isPersian ? 'افزایش اندازه' : 'Калон кардан',
+                          icon: const Icon(Icons.add_circle_outline, size: 22),
+                          onPressed:
+                              readerPrefs.fontSizeDelta <
+                                  ReaderPreferencesNotifier.maxDelta
+                              ? () => readerNotifier.increaseFontSize()
+                              : null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    tr('settings_line_spacing'),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      ChoiceChip(
+                        label: Text(tr('settings_line_spacing_compact')),
+                        selected: readerPrefs.lineHeightMultiplier <= 1.45,
+                        onSelected: (_) =>
+                            readerNotifier.setLineHeightMultiplier(1.4),
+                      ),
+                      ChoiceChip(
+                        label: Text(tr('settings_line_spacing_normal')),
+                        selected:
+                            readerPrefs.lineHeightMultiplier > 1.45 &&
+                            readerPrefs.lineHeightMultiplier < 1.75,
+                        onSelected: (_) =>
+                            readerNotifier.setLineHeightMultiplier(1.6),
+                      ),
+                      ChoiceChip(
+                        label: Text(tr('settings_line_spacing_relaxed')),
+                        selected: readerPrefs.lineHeightMultiplier >= 1.75,
+                        onSelected: (_) =>
+                            readerNotifier.setLineHeightMultiplier(1.8),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  Text(
+                    tr('settings_reader_mode'),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      ChoiceChip(
+                        label: Text(tr('settings_reader_mode_standard')),
+                        selected: readerPrefs.defaultReaderMode == 'standard',
+                        onSelected: (_) =>
+                            readerNotifier.setDefaultReaderMode('standard'),
+                      ),
+                      ChoiceChip(
+                        label: Text(tr('settings_reader_mode_parallel')),
+                        selected: readerPrefs.defaultReaderMode == 'parallel',
+                        onSelected: (_) =>
+                            readerNotifier.setDefaultReaderMode('parallel'),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+
+                  // --- Section 3: Language ---
                   _SectionLabel(title: tr('settings_language')),
                   _LanguageRow(
                     title: 'Тоҷикӣ',
-                    subtitle: isPersian ? 'خط سیریلیک' : 'Хатти кириллӣ',
+                    subtitle: tr('settings_script_cyrillic'),
                     selected: language == DisplayLanguage.tajik,
                     direction: TextDirection.ltr,
                     onTap: () => ref
@@ -78,14 +248,43 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   _LanguageRow(
                     title: 'فارسی',
-                    subtitle: isPersian ? 'خط فارسی' : 'Хатти форсӣ',
+                    subtitle: tr('settings_script_persian'),
                     selected: isPersian,
                     direction: TextDirection.rtl,
                     onTap: () => ref
                         .read(displayLanguageProvider.notifier)
                         .setLanguage(DisplayLanguage.persian),
                   ),
-                  const SizedBox(height: 36),
+                  const SizedBox(height: 32),
+
+                  // --- Section 4: Data & History ---
+                  _SectionLabel(title: tr('settings_data')),
+                  QalamSettingRow(
+                    title: tr('settings_clear_recent'),
+                    subtitle: tr('settings_clear_recent_desc'),
+                    trailing: const Icon(Icons.delete_outline, size: 20),
+                    onTap: () => _confirmClearActivity(context, ref, language),
+                  ),
+                  QalamSettingRow(
+                    title: tr('settings_show_guide'),
+                    subtitle: tr('settings_show_guide_hint'),
+                    trailing: const Icon(Icons.play_arrow_outlined, size: 20),
+                    onTap: () {
+                      ref.read(onboardingCompleteProvider.notifier).reset();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            isPersian
+                                ? 'راهنمای برنامه در بازگشت به صفحهٔ اصلی نمایش داده می‌شود.'
+                                : 'Дастурамал ҳангоми бозгашт ба саҳифаи аввал намоиш дода мешавад.',
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 32),
+
+                  // --- Section 5: Information & Legal ---
                   _SectionLabel(title: tr('settings_info')),
                   QalamSettingRow(
                     title: tr('settings_about'),
@@ -125,6 +324,26 @@ class SettingsScreen extends ConsumerWidget {
                     ),
                   ),
                   QalamSettingRow(
+                    title: tr('settings_privacy'),
+                    trailing: const Icon(Icons.arrow_forward, size: 20),
+                    onTap: () => _showInformation(
+                      context,
+                      language,
+                      title: tr('settings_privacy_title'),
+                      paragraphs: [tr('settings_privacy_text')],
+                    ),
+                  ),
+                  QalamSettingRow(
+                    title: tr('settings_licenses'),
+                    trailing: const Icon(Icons.arrow_forward, size: 20),
+                    onTap: () => showLicensePage(
+                      context: context,
+                      applicationName: tr('app_name'),
+                      applicationVersion: '2.0.0',
+                      applicationLegalese: tr('settings_year'),
+                    ),
+                  ),
+                  QalamSettingRow(
                     title: tr('settings_contact'),
                     subtitle: 'Telegram · @imarufov',
                     trailing: const Icon(Icons.arrow_forward, size: 20),
@@ -135,13 +354,6 @@ class SettingsScreen extends ConsumerWidget {
                       paragraphs: [tr('settings_contact_text')],
                       contact: true,
                     ),
-                  ),
-                  QalamSettingRow(
-                    title: tr('settings_show_guide'),
-                    subtitle: tr('settings_show_guide_hint'),
-                    trailing: const Icon(Icons.play_arrow_outlined, size: 20),
-                    onTap: () =>
-                        ref.read(onboardingCompleteProvider.notifier).reset(),
                   ),
                   const SizedBox(height: 48),
                   Text(
@@ -168,6 +380,57 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _confirmClearActivity(
+    BuildContext context,
+    WidgetRef ref,
+    DisplayLanguage language,
+  ) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(
+          AppTranslations.get('recent_clear', language),
+          style: QalamTypography.sectionTitle(
+            color: Theme.of(context).colorScheme.onSurface,
+            fontSize: 20,
+          ),
+        ),
+        content: Text(
+          AppTranslations.get('recent_clear_confirm', language),
+          style: QalamTypography.body(
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+            fontSize: 15,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text(AppTranslations.get('dialog_cancel', language)),
+          ),
+          FilledButton(
+            onPressed: () async {
+              await ref.read(recentActivityProvider.notifier).clearAll();
+              if (ctx.mounted) Navigator.of(ctx).pop();
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      AppTranslations.get(
+                        'settings_clear_recent_success',
+                        language,
+                      ),
+                    ),
+                  ),
+                );
+              }
+            },
+            child: Text(AppTranslations.get('dialog_yes', language)),
+          ),
+        ],
       ),
     );
   }
@@ -225,6 +488,65 @@ class SettingsScreen extends ConsumerWidget {
             child: Text(AppTranslations.get('settings_close', language)),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ThemeModeRow extends StatelessWidget {
+  final String title;
+  final bool selected;
+  final IconData icon;
+  final VoidCallback onTap;
+  const _ThemeModeRow({
+    required this.title,
+    required this.selected,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Semantics(
+      selected: selected,
+      inMutuallyExclusiveGroup: true,
+      button: true,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 48),
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: Row(
+              children: [
+                Icon(
+                  icon,
+                  size: 22,
+                  color: selected ? colors.primary : colors.onSurfaceVariant,
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: QalamTypography.body(
+                      color: selected ? colors.primary : colors.onSurface,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                Icon(
+                  selected
+                      ? Icons.radio_button_checked
+                      : Icons.radio_button_unchecked,
+                  size: 22,
+                  color: selected ? colors.primary : colors.onSurfaceVariant,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

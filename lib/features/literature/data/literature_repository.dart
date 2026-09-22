@@ -1,6 +1,12 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
+
+List<dynamic> _decodeJsonList(String source) {
+  final decoded = jsonDecode(source);
+  return decoded is List<dynamic> ? decoded : const <dynamic>[];
+}
 
 /// Repository responsible for loading and querying literary heritage data.
 ///
@@ -20,6 +26,12 @@ class LiteratureRepository {
   static const String oralHeritageAssetPath =
       'assets/data/literature/oral_heritage.json';
   static final _searchMarks = RegExp(r'[\u064B-\u065F\u0670\u06D6-\u06ED]');
+
+  // `works.json` is the largest shipped literature asset. Keep one successful
+  // parse per repository instance so author/detail/search lookups do not
+  // repeatedly allocate and decode the same catalog. Failed loads are evicted
+  // so UI retry actions still have a chance to recover from transient errors.
+  Future<List<LiteraryWork>>? _worksFuture;
 
   LiteratureRepository({AssetBundle? bundle}) : _bundle = bundle ?? rootBundle;
 
@@ -50,13 +62,33 @@ class LiteratureRepository {
 
   /// Loads literary works from [worksAssetPath].
   Future<List<LiteraryWork>> loadWorks() async {
+    final cached = _worksFuture;
+    if (cached != null) return cached;
+
+    final future = _loadWorks();
+    _worksFuture = future;
+    try {
+      return await future;
+    } catch (_) {
+      if (identical(_worksFuture, future)) {
+        _worksFuture = null;
+      }
+      rethrow;
+    }
+  }
+
+  Future<List<LiteraryWork>> _loadWorks() async {
     final jsonString = await _bundle.loadString(worksAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
-    if (decoded is! List) return const [];
-    return decoded
-        .whereType<Map>()
-        .map((json) => LiteraryWork.fromJson(Map<String, dynamic>.from(json)))
-        .toList();
+    final decoded = await compute(
+      _decodeJsonList,
+      jsonString,
+      debugLabel: 'decode-literary-works',
+    );
+    return List.unmodifiable(
+      decoded.whereType<Map>().map(
+        (json) => LiteraryWork.fromJson(Map<String, dynamic>.from(json)),
+      ),
+    );
   }
 
   /// Loads source editions and bibliographic witnesses from [sourcesAssetPath].

@@ -31,7 +31,7 @@ def run_enrichment(dry_run=True):
         "6e223a11-a2df-4298-bb14-2911af2da37d": "1a55efdd-6a1f-43b8-834f-94af060b4329", # Ibn Sina
         "732f0989-b849-4856-a0dd-ba2f64f1c9a0": "92753b88-1d31-4f79-aae4-5d36c83ab4a1", # Kaykovus
         "5ff997ff-991d-4d18-ba6e-8acaa7a15058": "8231eb1a-ac35-46d2-9e39-19d5603bfcec", # Asadii Tusi
-        "ab679c6b-ce9a-4e85-bf3b-81a8bed84623": "3853d79b-0951-44c3-a5db-229649fa30b6", # Bobotohir
+        "ab679c6b-ce9a-4e85-bf3b-81a8bed84623": "be19709e-c3af-460d-80b9-4c67046e8be3", # Bobotohir
         "a0edb1e9-51b5-4ad1-ad0a-5d8af6a6a6da": "9debff75-8664-43ab-a7a9-ed1a4725f69b", # Jami
         "358dda13-365c-4434-87f0-d404b305adcb": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
         "17559ef6-4071-495f-b966-e5be3b33d3a3": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5", # Anvari

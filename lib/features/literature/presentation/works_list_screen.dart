@@ -8,6 +8,8 @@ import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_work.dart';
 import '../domain/verification_record.dart';
+import 'literary_author_display_text.dart';
+import 'literary_work_display_text.dart';
 
 /// A screen listing all verified and approved literary works.
 class WorksListScreen extends ConsumerWidget {
@@ -16,7 +18,6 @@ class WorksListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
     final approvedWorksAsync = ref.watch(approvedWorksProvider);
 
     return Scaffold(
@@ -31,7 +32,7 @@ class WorksListScreen extends ConsumerWidget {
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: IconButton(
-                    tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+                    tooltip: AppTranslations.get('btn_back', lang),
                     icon: const BackButtonIcon(),
                     onPressed: () => qalamBack(context),
                   ),
@@ -41,11 +42,9 @@ class WorksListScreen extends ConsumerWidget {
             // Page Header
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۲ / شعرها' : '02 / ШЕЪРҲО',
+                eyebrow: AppTranslations.get('lit_works_eyebrow', lang),
                 title: AppTranslations.get('lit_poems', lang),
-                subtitle: isPersian
-                    ? 'غزل‌ها، رباعی‌ها و آثار منظوم بررسی‌شده و معتبر'
-                    : 'Ғазалҳо, рубоиҳо ва осори манзуми тасдиқшуда аз нусхаҳои чопӣ',
+                subtitle: AppTranslations.get('lit_works_subtitle', lang),
               ),
             ),
             // Works content
@@ -57,17 +56,11 @@ class WorksListScreen extends ConsumerWidget {
                 child: Center(
                   child: EmptyState(
                     icon: Icons.error_outline,
-                    title: isPersian
-                        ? 'خطا در بارگیری آثار'
-                        : 'Хато ҳангоми боргирии асарҳо',
-                    subtitle: isPersian
-                        ? 'داده‌های آثار بارگیری نشد. لطفاً دوباره تلاش کنید.'
-                        : 'Маълумоти осор бор нашуд. Лутфан дубора кӯшиш кунед.',
+                    title: AppTranslations.get('lit_works_error_title', lang),
+                    subtitle: AppTranslations.get('lit_works_error_sub', lang),
                     action: OutlinedButton(
                       onPressed: () => ref.invalidate(approvedWorksProvider),
-                      child: Text(
-                        isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                      ),
+                      child: Text(AppTranslations.get('btn_retry', lang)),
                     ),
                   ),
                 ),
@@ -81,18 +74,18 @@ class WorksListScreen extends ConsumerWidget {
                         padding: const EdgeInsets.all(32),
                         child: EmptyState(
                           icon: Icons.menu_book_outlined,
-                          title: isPersian
-                              ? 'آثار در حال بررسی است'
-                              : 'Осор дар марҳилаи санҷиш қарор дорад',
-                          subtitle: isPersian
-                              ? 'طبق استانداردهای علمی برنامه، متن اشعار تنها پس از مقابلهٔ فیزیکی با نسخه‌های چاپی معتبر و ثبت شناسنامه در دسترس قرار می‌گیرد.'
-                              : 'Мутобиқи меъёрҳои илмии барнома, матни асарҳо танҳо пас аз муқобала бо нусхаҳои чопии муътамад ва сабти манбаъ нашр мегардад.',
+                          title: AppTranslations.get(
+                            'lit_works_empty_review_title',
+                            lang,
+                          ),
+                          subtitle: AppTranslations.get(
+                            'lit_works_empty_review_sub',
+                            lang,
+                          ),
                           action: OutlinedButton(
                             onPressed: () => context.push('/literature/poets'),
                             child: Text(
-                              isPersian
-                                  ? 'مشاهدهٔ شاعران'
-                                  : 'Дидани рӯйхати шоирон',
+                              AppTranslations.get('lit_works_view_poets', lang),
                             ),
                           ),
                         ),
@@ -126,22 +119,17 @@ class _WorkListItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
     final authorAsync = ref.watch(authorByIdProvider(work.authorId));
     final author = authorAsync.valueOrNull;
 
-    final title =
-        (isPersian &&
-            work.titlePersian != null &&
-            work.titlePersian!.isNotEmpty)
-        ? work.titlePersian!
-        : work.title;
+    final title = LiteraryWorkDisplayText.title(work, lang);
+    final incipit = LiteraryWorkDisplayText.incipit(work, lang);
 
-    final authorName = author != null
-        ? ((isPersian && author.canonicalNamePersian != null)
-              ? author.canonicalNamePersian!
-              : author.canonicalName)
-        : work.authorId;
+    final authorName = LiteraryAuthorDisplayText.nameOrFallback(
+      author,
+      lang,
+      work.authorId,
+    );
 
     return InkWell(
       onTap: () => context.push('/literature/work/${work.id}'),
@@ -177,10 +165,10 @@ class _WorkListItem extends ConsumerWidget {
                       fontSize: 13,
                     ),
                   ),
-                  if (work.incipit != null && work.incipit!.isNotEmpty) ...[
+                  if (incipit != null) ...[
                     const SizedBox(height: 6),
                     Text(
-                      '«${work.incipit}»',
+                      '«$incipit»',
                       style: QalamTypography.bodySecondary(
                         color: colors.onSurfaceVariant,
                         fontSize: 13,
@@ -201,7 +189,7 @@ class _WorkListItem extends ConsumerWidget {
                 color: QalamColors.forest,
               ),
             const SizedBox(width: 8),
-            Icon(Icons.chevron_right, size: 20, color: colors.onSurfaceVariant),
+            const QalamChevron(size: 20),
           ],
         ),
       ),

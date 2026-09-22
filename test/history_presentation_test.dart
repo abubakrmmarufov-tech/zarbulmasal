@@ -32,13 +32,13 @@ Future<void> pumpHistoryScreen(
       books ??
       [
         const HistoryBook(
-          id: 'marifat-462',
+          id: 'history-5',
           grade: '5',
           title: 'Таърихи халқи тоҷик: Замони ориёиҳо',
           author: 'Юсуфшоҳ Яъқубов',
           year: '2015',
           description: 'Китоби дарсии синфи 5 оид ба замони қадим ва ориёиҳо.',
-          sourceUrl: 'https://marifat.tj/book/details?id=462',
+          sourceUrl: 'https://maorif.tj/libraries?category=27',
         ),
       ];
 
@@ -53,7 +53,7 @@ Future<void> pumpHistoryScreen(
               'Сарлашкар ва қаҳрамони муборизаи халқҳои Суғду Бохтар бар зидди лашкари Искандари Мақдунӣ.',
           period: 'Солҳои 329–327 пеш аз милод',
           grade: '5',
-          sourceBookId: 'marifat-462',
+          sourceBookId: 'history-5',
           sourceSection: 'Муборизаи Спитамен',
           significance:
               'Рамзи фидокории миллӣ ва озодихоҳӣ дар таърихи тоҷикон.',
@@ -139,7 +139,7 @@ void main() {
             summary: 'Хулосаи рӯйдоди санҷишӣ.',
             period: 'Соли 1000',
             grade: '5',
-            sourceBookId: 'marifat-462',
+            sourceBookId: 'history-5',
             sourceSection: 'Рӯйдодҳо',
           ),
           HistoryEntry(
@@ -149,7 +149,7 @@ void main() {
             summary: 'Хулосаи ривояти санҷишӣ.',
             period: 'Замони қадим',
             grade: '5',
-            sourceBookId: 'marifat-462',
+            sourceBookId: 'history-5',
             sourceSection: 'Ривоятҳо',
           ),
         ],
@@ -180,8 +180,119 @@ void main() {
 
       expect(find.widgetWithText(ChoiceChip, 'رویدادها'), findsOneWidget);
       expect(find.widgetWithText(ChoiceChip, 'روایت‌ها'), findsOneWidget);
+      final chips = find.byType(ChoiceChip);
+      for (var index = 0; index < chips.evaluate().length; index++) {
+        expect(
+          tester.getSize(chips.at(index)).height,
+          greaterThanOrEqualTo(48),
+          reason: 'History filters must retain a 48dp touch target.',
+        );
+      }
     },
   );
+
+  testWidgets('Persian history book card hides untranslated metadata', (
+    tester,
+  ) async {
+    await pumpHistoryScreen(
+      tester,
+      language: DisplayLanguage.persian,
+      books: const [
+        HistoryBook(
+          id: 'history-5',
+          grade: '5',
+          title: 'TAJIK_BOOK_TITLE_SENTINEL',
+          author: 'TAJIK_BOOK_AUTHOR_SENTINEL',
+          year: '2015',
+          description: 'TAJIK_BOOK_DESCRIPTION_SENTINEL',
+          sourceUrl: 'https://maorif.tj/libraries?category=27',
+        ),
+      ],
+      entries: const [],
+    );
+
+    const pending = 'ترجمهٔ فارسی عنوان در دسترس نیست';
+    expect(find.text(pending), findsOneWidget);
+    expect(find.text('TAJIK_BOOK_TITLE_SENTINEL'), findsNothing);
+    expect(find.text('TAJIK_BOOK_AUTHOR_SENTINEL'), findsNothing);
+
+    await tester.tap(find.text(pending));
+    await tester.pumpAndSettle();
+
+    expect(
+      find.descendant(
+        of: find.byType(BottomSheet),
+        matching: find.text(pending),
+      ),
+      findsOneWidget,
+    );
+    expect(find.text('TAJIK_BOOK_AUTHOR_SENTINEL'), findsNothing);
+    expect(find.text('TAJIK_BOOK_DESCRIPTION_SENTINEL'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('Persian history entry sheet hides untranslated source fields', (
+    tester,
+  ) async {
+    const entry = HistoryEntry(
+      id: 'persian-missing-fields',
+      kind: HistoryEntryKind.person,
+      title: 'TAJIK_ENTRY_TITLE_SENTINEL',
+      summary: 'TAJIK_SUMMARY_SENTINEL',
+      period: 'TAJIK_PERIOD_SENTINEL',
+      dates: 'TAJIK_DATES_SENTINEL',
+      grade: '5',
+      sourceBookId: 'history-5',
+      sourceSection: 'TAJIK_SECTION_SENTINEL',
+      capital: 'TAJIK_CAPITAL_SENTINEL',
+      territory: 'TAJIK_TERRITORY_SENTINEL',
+      keyFigures: ['TAJIK_FIGURE_SENTINEL'],
+      significance: 'TAJIK_SIGNIFICANCE_SENTINEL',
+    );
+    await pumpHistoryScreen(
+      tester,
+      language: DisplayLanguage.persian,
+      entries: const [entry],
+      books: const [
+        HistoryBook(
+          id: 'history-5',
+          grade: '5',
+          title: 'کتاب تاریخ ترجمه‌شده',
+          titlePersian: 'کتاب تاریخ ترجمه‌شده',
+          author: 'Нависанда',
+          authorPersian: 'نویسنده',
+          year: '2015',
+          description: 'Тавсиф',
+          descriptionPersian: 'توضیح',
+          sourceUrl: 'https://maorif.tj/libraries?category=27',
+        ),
+      ],
+    );
+
+    const pending = 'ترجمهٔ فارسی عنوان در دسترس نیست';
+    expect(find.text(pending), findsOneWidget);
+    for (final sourceOnly in [
+      'TAJIK_ENTRY_TITLE_SENTINEL',
+      'TAJIK_SUMMARY_SENTINEL',
+      'TAJIK_PERIOD_SENTINEL',
+      'TAJIK_DATES_SENTINEL',
+      'TAJIK_CAPITAL_SENTINEL',
+      'TAJIK_TERRITORY_SENTINEL',
+      'TAJIK_FIGURE_SENTINEL',
+      'TAJIK_SIGNIFICANCE_SENTINEL',
+    ]) {
+      expect(find.text(sourceOnly), findsNothing, reason: sourceOnly);
+    }
+
+    await tester.ensureVisible(find.text('جزئیات ←'));
+    await tester.tap(find.text('جزئیات ←'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('TAJIK_SECTION_SENTINEL'), findsNothing);
+    expect(find.text('TAJIK_ENTRY_TITLE_SENTINEL'), findsNothing);
+    expect(find.text('TAJIK_SUMMARY_SENTINEL'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
 
   testWidgets(
     'grade 8 explains unavailable detail instead of a failed search',
@@ -190,13 +301,13 @@ void main() {
         tester,
         books: [
           const HistoryBook(
-            id: 'marifat-503',
+            id: 'history-8',
             grade: '8',
             title: 'Таърихи халқи тоҷик',
             author: 'А. Мухторов',
             year: '2016',
             description: 'Source record only',
-            sourceUrl: 'https://marifat.tj/book/details?id=503',
+            sourceUrl: 'https://maorif.tj/libraries?category=27',
           ),
         ],
         entries: const [],

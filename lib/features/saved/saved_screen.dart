@@ -5,7 +5,11 @@ import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
+import '../../shared/widgets/recent_activity_display_text.dart';
 import '../literature/data/literature_providers.dart';
+import '../literature/presentation/literary_work_display_text.dart';
+import '../books/data/books_providers.dart';
+import '../books/presentation/book_display_text.dart';
 
 class SavedScreen extends ConsumerWidget {
   const SavedScreen({super.key});
@@ -19,6 +23,8 @@ class SavedScreen extends ConsumerWidget {
     final favoriteProverbs = ref.watch(favoritesListProvider);
     final bookmarkedWorks =
         ref.watch(literaryFavoriteWorksProvider).valueOrNull ?? const [];
+    final bookmarkedBooks =
+        ref.watch(favoriteBooksProvider).valueOrNull ?? const [];
 
     final recentActivities = ref.watch(recentActivityProvider);
     String tr(String key) => AppTranslations.get(key, lang);
@@ -43,7 +49,9 @@ class SavedScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 12),
 
-          if (favoriteProverbs.isEmpty && bookmarkedWorks.isEmpty)
+          if (favoriteProverbs.isEmpty &&
+              bookmarkedWorks.isEmpty &&
+              bookmarkedBooks.isEmpty)
             Card(
               elevation: 0,
               color: colors.surfaceContainerLowest,
@@ -120,7 +128,9 @@ class SavedScreen extends ConsumerWidget {
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
                     subtitle: Text(
-                      proverb.meaningTj,
+                      isPersian
+                          ? '${tr('reading_tajik_explanation')}: ${proverb.meaningTj}'
+                          : proverb.meaningTj,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.meta(
@@ -150,6 +160,7 @@ class SavedScreen extends ConsumerWidget {
                 ),
               ),
               ...bookmarkedWorks.map((work) {
+                final incipit = LiteraryWorkDisplayText.incipit(work, lang);
                 return Card(
                   margin: const EdgeInsets.only(bottom: 8),
                   elevation: 0,
@@ -167,16 +178,14 @@ class SavedScreen extends ConsumerWidget {
                       size: 24,
                     ),
                     title: Text(
-                      isPersian && work.titlePersian != null
-                          ? work.titlePersian!
-                          : work.title,
+                      LiteraryWorkDisplayText.title(work, lang),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
-                    subtitle: work.incipit != null
+                    subtitle: incipit != null
                         ? Text(
-                            work.incipit!,
+                            incipit,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: QalamTypography.meta(
@@ -193,6 +202,59 @@ class SavedScreen extends ConsumerWidget {
                           .toggle(work.id),
                     ),
                     onTap: () => context.push('/literature/work/${work.id}'),
+                  ),
+                );
+              }),
+            ],
+            if (bookmarkedBooks.isNotEmpty) ...[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8, top: 16),
+                child: Text(
+                  '${tr('books_saved')} (${bookmarkedBooks.length})',
+                  style: QalamTypography.eyebrow(color: colors.primary),
+                ),
+              ),
+              ...bookmarkedBooks.map((book) {
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  elevation: 0,
+                  color: colors.surfaceContainerLowest,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    side: BorderSide(
+                      color: colors.outlineVariant.withValues(alpha: 0.5),
+                    ),
+                  ),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.local_library_outlined,
+                      color: colors.primary,
+                    ),
+                    title: Text(
+                      BookDisplayText.title(book, lang),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: QalamTypography.body(color: colors.onSurface),
+                    ),
+                    subtitle: BookDisplayText.author(book, lang) == null
+                        ? null
+                        : Text(
+                            BookDisplayText.author(book, lang)!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: QalamTypography.meta(
+                              color: colors.onSurfaceVariant,
+                            ),
+                          ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.bookmark, size: 22),
+                      color: colors.primary,
+                      tooltip: tr('bookmark_remove'),
+                      onPressed: () => ref
+                          .read(bookFavoritesProvider.notifier)
+                          .toggle(book.id),
+                    ),
+                    onTap: () => context.push('/books/${book.id}'),
                   ),
                 );
               }),
@@ -259,6 +321,10 @@ class SavedScreen extends ConsumerWidget {
             )
           else
             ...recentActivities.map((activity) {
+              final subtitle = RecentActivityDisplayText.subtitle(
+                activity,
+                lang,
+              );
               return Card(
                 margin: const EdgeInsets.only(bottom: 8),
                 elevation: 0,
@@ -276,20 +342,20 @@ class SavedScreen extends ConsumerWidget {
                     size: 24,
                   ),
                   title: Text(
-                    activity.title,
+                    RecentActivityDisplayText.title(activity, lang),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: QalamTypography.body(color: colors.onSurface),
                   ),
-                  subtitle: activity.subtitle != null
+                  subtitle: subtitle != null
                       ? Text(
-                          activity.subtitle!,
+                          subtitle,
                           style: QalamTypography.meta(
                             color: colors.onSurfaceVariant,
                           ),
                         )
                       : null,
-                  trailing: const Icon(Icons.chevron_right, size: 20),
+                  trailing: const QalamChevron(size: 20),
                   onTap: () => context.push(activity.route),
                 ),
               );

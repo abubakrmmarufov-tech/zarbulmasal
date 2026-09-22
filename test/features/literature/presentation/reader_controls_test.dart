@@ -35,6 +35,34 @@ void main() {
     ),
     verification: VerificationRecord(
       evidenceLevel: VerificationLevel.editoriallyApproved,
+      pageVerified: true,
+    ),
+  );
+
+  const tajikOnlyWork = LiteraryWork(
+    id: 'tajik-only',
+    authorId: 'rudaki',
+    title: 'Танҳо тоҷикӣ',
+    type: WorkType.poem,
+    textTajik: 'Матни тасдиқшудаи тоҷикӣ',
+    textStatus: TextStatus.verified,
+    primarySource: SourceEdition(
+      bookTitle: 'Осори Рӯдакӣ',
+      publisher: 'Нашриёти давлатии Тоҷикистон',
+      city: 'Сталинобод',
+      year: '1958',
+      pageStart: 46,
+      sourceType: SourceEditionType.criticalEdition,
+    ),
+    rights: RightsRecord(
+      status: RightsStatus.publicDomain,
+      reasoning: 'PD',
+      fullTextAllowed: true,
+      excerptAllowed: true,
+    ),
+    verification: VerificationRecord(
+      evidenceLevel: VerificationLevel.editoriallyApproved,
+      pageVerified: true,
     ),
   );
 
@@ -144,4 +172,82 @@ void main() {
       expect(find.textContaining('بوی جوی مولیان آید همی'), findsWidgets);
     },
   );
+
+  testWidgets(
+    'parallel preference opens a genuinely bilingual work in parallel mode',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefsLanguage: 'tj',
+        'reader_default_mode': 'parallel',
+      });
+
+      final container = ProviderContainer(
+        overrides: [
+          approvedWorksProvider.overrideWith(
+            (ref) => Future.value(const [testRudakiWork]),
+          ),
+          literaryWorksProvider.overrideWith(
+            (ref) => Future.value(const [testRudakiWork]),
+          ),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      await tester.pumpWidget(
+        UncontrolledProviderScope(
+          container: container,
+          child: MaterialApp(
+            theme: AppTheme.lightTheme,
+            home: const PoemReaderScreen(workId: 'rudaki-boyi-juyi-muliyon'),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final parallelChip = tester.widget<ChoiceChip>(
+        find.widgetWithText(ChoiceChip, 'Матни мувозӣ'),
+      );
+      expect(parallelChip.selected, isTrue);
+      expect(find.textContaining('Бӯи ҷӯи Мӯлиён ояд ҳаме'), findsWidgets);
+      expect(find.textContaining('بوی جوی مولیان آید همی'), findsWidgets);
+    },
+  );
+
+  testWidgets('parallel preference preserves Persian unavailable state', (
+    tester,
+  ) async {
+    SharedPreferences.setMockInitialValues({
+      AppConstants.prefsLanguage: 'fa',
+      'reader_default_mode': 'parallel',
+    });
+
+    final container = ProviderContainer(
+      overrides: [
+        approvedWorksProvider.overrideWith(
+          (ref) => Future.value(const [tajikOnlyWork]),
+        ),
+        literaryWorksProvider.overrideWith(
+          (ref) => Future.value(const [tajikOnlyWork]),
+        ),
+      ],
+    );
+    addTearDown(container.dispose);
+
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: container,
+        child: MaterialApp(
+          theme: AppTheme.lightTheme,
+          home: const PoemReaderScreen(workId: 'tajik-only'),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('نسخهٔ فارسی در دسترس نیست'), findsOneWidget);
+    final persianChip = tester.widget<ChoiceChip>(
+      find.widgetWithText(ChoiceChip, 'فارسی (عربی)'),
+    );
+    expect(persianChip.selected, isTrue);
+  });
 }

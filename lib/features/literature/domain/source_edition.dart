@@ -69,6 +69,13 @@ class SourceEdition {
   /// Whether a high-resolution facsimile/image scan was directly inspected.
   final bool sourceImageVerified;
 
+  /// Local page-image evidence inspected for this source, in page order.
+  ///
+  /// Older records may contain only the legacy `sourceImagePath` field; the
+  /// parser normalizes that shape into this list so callers can treat a
+  /// single-page and a multi-page witness consistently.
+  final List<String> _sourceImagePaths;
+
   const SourceEdition({
     required this.bookTitle,
     this.authorAsPrinted,
@@ -86,7 +93,16 @@ class SourceEdition {
     this.sourceReference,
     this.accessDate,
     this.sourceImageVerified = false,
-  });
+    List<String> sourceImagePaths = const [],
+    // ignore: prefer_initializing_formals
+  }) : _sourceImagePaths = sourceImagePaths;
+
+  /// The inspected page-image evidence, exposed as an immutable view.
+  List<String> get sourceImagePaths => List.unmodifiable(_sourceImagePaths);
+
+  /// The first inspected page image, retained for legacy single-image callers.
+  String? get sourceImagePath =>
+      sourceImagePaths.isEmpty ? null : sourceImagePaths.first;
 
   /// Formatted page range, e.g., "с. 45–48" or "с. 45".
   String? get formattedPages {
@@ -140,6 +156,7 @@ class SourceEdition {
       sourceImageVerified: _parseBool(
         json['sourceImageVerified'] ?? json['source_image_verified'],
       ),
+      sourceImagePaths: _parseImagePaths(json),
     );
   }
 
@@ -162,6 +179,9 @@ class SourceEdition {
       'sourceReference': sourceReference,
       'accessDate': accessDate,
       'sourceImageVerified': sourceImageVerified,
+      'sourceImagePath': sourceImagePath,
+      if (sourceImagePaths.isNotEmpty)
+        'sourceImagePaths': List<String>.from(sourceImagePaths),
     };
   }
 
@@ -183,6 +203,7 @@ class SourceEdition {
     String? sourceReference,
     String? accessDate,
     bool? sourceImageVerified,
+    List<String>? sourceImagePaths,
   }) {
     return SourceEdition(
       bookTitle: bookTitle ?? this.bookTitle,
@@ -201,6 +222,7 @@ class SourceEdition {
       sourceReference: sourceReference ?? this.sourceReference,
       accessDate: accessDate ?? this.accessDate,
       sourceImageVerified: sourceImageVerified ?? this.sourceImageVerified,
+      sourceImagePaths: sourceImagePaths ?? this.sourceImagePaths,
     );
   }
 
@@ -214,6 +236,24 @@ class SourceEdition {
     if (value is bool) return value;
     if (value is String) return value.toLowerCase() == 'true';
     return false;
+  }
+
+  static List<String> _parseImagePaths(Map<String, dynamic> json) {
+    final rawPaths = json['sourceImagePaths'];
+    if (rawPaths is List) {
+      final paths = rawPaths
+          .whereType<String>()
+          .map((path) => path.trim())
+          .where((path) => path.isNotEmpty)
+          .toList(growable: false);
+      if (paths.isNotEmpty) return paths;
+    }
+
+    final legacyPath = json['sourceImagePath'];
+    if (legacyPath is String && legacyPath.trim().isNotEmpty) {
+      return [legacyPath.trim()];
+    }
+    return const [];
   }
 
   @override
@@ -236,7 +276,8 @@ class SourceEdition {
           sourceType == other.sourceType &&
           sourceReference == other.sourceReference &&
           accessDate == other.accessDate &&
-          sourceImageVerified == other.sourceImageVerified;
+          sourceImageVerified == other.sourceImageVerified &&
+          _sameImagePaths(sourceImagePaths, other.sourceImagePaths);
 
   @override
   int get hashCode => Object.hash(
@@ -256,7 +297,16 @@ class SourceEdition {
     sourceReference,
     accessDate,
     sourceImageVerified,
+    Object.hashAll(sourceImagePaths),
   );
+
+  static bool _sameImagePaths(List<String> left, List<String> right) {
+    if (left.length != right.length) return false;
+    for (var index = 0; index < left.length; index++) {
+      if (left[index] != right[index]) return false;
+    }
+    return true;
+  }
 
   @override
   String toString() {

@@ -17,4 +17,5 @@ export 'qalam_controls.dart';
 export 'qalam_reading_page.dart';
 export 'qalam_literature_card.dart';
 export 'qalam_poet_card.dart';
+export 'qalam_portrait.dart';
 export 'qalam_source_badge.dart';

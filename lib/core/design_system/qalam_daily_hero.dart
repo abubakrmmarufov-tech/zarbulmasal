@@ -113,7 +113,7 @@ class QalamDailyHero extends ConsumerWidget {
                         horizontal: 10,
                         vertical: 8,
                       ),
-                      minimumSize: const Size(44, 36),
+                      minimumSize: const Size(48, 48),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,

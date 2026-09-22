@@ -28,10 +28,13 @@ class QalamLiteratureCard extends StatelessWidget {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     final bg = isDark ? QalamColors.inkCard : QalamColors.ink;
     final textColor = isDark ? QalamColors.paperText : QalamColors.paper;
-    final mutedColor = isDark ? QalamColors.paperTextSoft : QalamColors.inkMute;
+    // The card uses an ink surface in both themes. Keep the light-theme
+    // eyebrow and supporting copy on the paper-text ramp; the softer
+    // burgundy/ink-muted pair falls below WCAG 4.5:1 for normal text.
+    final mutedColor = QalamColors.paperTextSoft;
     final accentColor = isDark
         ? QalamColors.antiqueGoldSoft
-        : QalamColors.burgundySoft;
+        : QalamColors.antiqueGold;
     final borderColor = isDark
         ? QalamColors.hairlineDark
         : QalamColors.hairline;

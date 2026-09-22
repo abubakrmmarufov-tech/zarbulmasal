@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'qalam_colors.dart';
 import 'qalam_typography.dart';
 import 'qalam_spacing.dart';
+import 'qalam_controls.dart';
+import 'qalam_portrait.dart';
+import '../../features/literature/domain/portrait_record.dart';
 
 /// A list item for displaying a poet in the Шоирон (Poets) list.
 ///
@@ -15,6 +18,9 @@ class QalamPoetCard extends StatelessWidget {
   final String? exactDates;
   final String? poemCountBadge;
   final VoidCallback? onTap;
+  final PortraitRecord? portrait;
+  final String? portraitUnavailableLabel;
+  final String? portraitCitationLabel;
 
   const QalamPoetCard({
     super.key,
@@ -25,6 +31,9 @@ class QalamPoetCard extends StatelessWidget {
     this.exactDates,
     this.poemCountBadge,
     this.onTap,
+    this.portrait,
+    this.portraitUnavailableLabel,
+    this.portraitCitationLabel,
   });
 
   @override
@@ -52,6 +61,13 @@ class QalamPoetCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              QalamPortrait(
+                portrait: portrait,
+                label: name,
+                unavailableLabel: portraitUnavailableLabel,
+                citationLabel: portraitCitationLabel,
+              ),
+              const SizedBox(width: 14),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,16 +103,17 @@ class QalamPoetCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        Expanded(
-                          child: Text(
-                            period,
-                            style: QalamTypography.bodySecondary(
-                              color: colors.onSurfaceVariant,
-                              fontSize: 13,
+                        if (period.trim().isNotEmpty)
+                          Expanded(
+                            child: Text(
+                              period,
+                              style: QalamTypography.bodySecondary(
+                                color: colors.onSurfaceVariant,
+                                fontSize: 13,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
                         if (poemCountBadge != null &&
                             poemCountBadge!.isNotEmpty) ...[
                           const SizedBox(width: 8),
@@ -146,11 +163,7 @@ class QalamPoetCard extends StatelessWidget {
                   ),
                 ),
               const SizedBox(width: 6),
-              Icon(
-                Icons.chevron_right,
-                size: 20,
-                color: colors.onSurfaceVariant,
-              ),
+              const QalamChevron(size: 20),
             ],
           ),
         ),

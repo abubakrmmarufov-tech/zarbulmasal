@@ -6,6 +6,7 @@ import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/learning_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
+import '../../shared/widgets/recent_activity_display_text.dart';
 
 class LearnScreen extends ConsumerWidget {
   const LearnScreen({super.key});
@@ -14,7 +15,6 @@ class LearnScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
     final stats = ref.watch(masteryStatsProvider);
     String tr(String key) => AppTranslations.get(key, lang);
 
@@ -27,7 +27,7 @@ class LearnScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          isPersian ? 'آموزش' : 'Омӯзиш',
+          tr('learn_title'),
           style: QalamTypography.sectionTitle(
             color: colors.onSurface,
             fontSize: 22,
@@ -57,7 +57,7 @@ class LearnScreen extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          isPersian ? 'پیشرفت شما' : 'Пешрафти шумо',
+                          tr('learn_your_progress'),
                           style: QalamTypography.body(color: colors.primary),
                         ),
                         const SizedBox(height: 4),
@@ -85,19 +85,17 @@ class LearnScreen extends ConsumerWidget {
 
           if (lastLevelActivity != null) ...[
             Text(
-              isPersian ? 'ادامه آموزش' : 'Идомаи омӯзиш',
+              tr('learn_continue'),
               style: QalamTypography.sectionTitle(color: colors.onSurface),
             ),
             const SizedBox(height: 12),
             _buildLearnCard(
               context,
               icon: Icons.play_arrow_rounded,
-              title: lastLevelActivity.title,
+              title: RecentActivityDisplayText.title(lastLevelActivity, lang),
               subtitle:
-                  lastLevelActivity.subtitle ??
-                  (isPersian
-                      ? 'از جایی که مانده‌اید ادامه دهید'
-                      : 'Идома додан аз ҷое ки мондед'),
+                  RecentActivityDisplayText.subtitle(lastLevelActivity, lang) ??
+                  tr('learn_continue_hint'),
               onTap: () => context.push(lastLevelActivity.route),
               primary: true,
             ),
@@ -106,7 +104,7 @@ class LearnScreen extends ConsumerWidget {
 
           // Learning Paths
           Text(
-            isPersian ? 'مسیرهای آموزشی' : 'Роҳҳои омӯзишӣ',
+            tr('learn_tracks'),
             style: QalamTypography.sectionTitle(color: colors.onSurface),
           ),
           const SizedBox(height: 12),
@@ -114,20 +112,14 @@ class LearnScreen extends ConsumerWidget {
             context,
             icon: Icons.stairs_outlined,
             title: tr('levels_title'),
-            subtitle: isPersian
-                ? 'آموزش گام به گام در ۶ سطح'
-                : 'Омӯзиши қадам ба қадам дар 6 сатҳ',
+            subtitle: tr('learn_levels_step_by_step'),
             onTap: () => context.push('/levels'),
           ),
           _buildLearnCard(
             context,
             icon: Icons.school_outlined,
-            title: isPersian
-                ? 'ادبیات مکتبی (صنف‌های ۵–۱۱)'
-                : 'Адабиёти мактабӣ (синфҳои 5–11)',
-            subtitle: isPersian
-                ? 'آثار و شاعران بر اساس برنامه درسی'
-                : 'Осор ва шоирон тибқи барномаи таълимӣ',
+            title: tr('learn_school_title'),
+            subtitle: tr('learn_school_desc'),
             onTap: () => context.push('/literature/school'),
           ),
 
@@ -135,7 +127,7 @@ class LearnScreen extends ConsumerWidget {
 
           // Practice
           Text(
-            isPersian ? 'تمرین و سنجش' : 'Машқ ва санҷиш',
+            tr('learn_practice'),
             style: QalamTypography.sectionTitle(color: colors.onSurface),
           ),
           const SizedBox(height: 12),
@@ -146,9 +138,7 @@ class LearnScreen extends ConsumerWidget {
                   context,
                   icon: Icons.quiz_outlined,
                   title: tr('quiz_title'),
-                  subtitle: isPersian
-                      ? 'آزمون ۴ گزینه‌ای'
-                      : 'Санҷиши 4-гузинагӣ',
+                  subtitle: tr('learn_quiz_desc'),
                   onTap: () => context.push('/quiz'),
                 ),
               ),
@@ -158,7 +148,7 @@ class LearnScreen extends ConsumerWidget {
                   context,
                   icon: Icons.style_outlined,
                   title: tr('flashcards_title'),
-                  subtitle: isPersian ? 'تکرار با کارت‌ها' : 'Такрор бо кортҳо',
+                  subtitle: tr('learn_flashcards_desc'),
                   onTap: () => context.push('/flashcards'),
                 ),
               ),

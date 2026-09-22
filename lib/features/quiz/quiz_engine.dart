@@ -90,11 +90,18 @@ class QuizEngine {
 
     final shuffled = List<Proverb>.from(eligibleQuestions)..shuffle(rng);
     final count = min(questionCount, shuffled.length);
-    final selectedProverbs = shuffled.take(count).toList();
+    final questions = <QuizQuestion>[];
 
-    return selectedProverbs
-        .map((p) => generateQuestion(p, catalog, random: rng))
-        .toList();
+    for (final p in shuffled) {
+      if (questions.length >= count) break;
+      try {
+        questions.add(generateQuestion(p, catalog, random: rng));
+      } catch (_) {
+        // Continue to next eligible proverb if safe distractors could not be formed
+      }
+    }
+
+    return questions;
   }
 
   /// Generates options for a single question proverb.

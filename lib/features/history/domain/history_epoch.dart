@@ -78,6 +78,12 @@ enum HistoryEpoch {
     }
   }
 
+  String label(dynamic lang) =>
+      lang.toString().contains('persian') ? labelPersian : labelTajik;
+
+  String period(dynamic lang) =>
+      lang.toString().contains('persian') ? periodPersian : periodTajik;
+
   /// Classifies a [HistoryEntry] into its canonical chronological epoch.
   static HistoryEpoch fromEntry(HistoryEntry entry) {
     final haystack =

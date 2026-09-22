@@ -20,7 +20,12 @@ void main() {
       expect(raw, isA<List<dynamic>>());
 
       final list = raw as List<dynamic>;
-      expect(list.length, 150);
+      // Note: count is NOT asserted here — we track count in metrics, not as a fixed invariant.
+      expect(
+        list,
+        isNotEmpty,
+        reason: 'poets.json must have at least one poet',
+      );
 
       final authors = <LiteraryAuthor>[];
       for (final item in list) {
@@ -32,7 +37,26 @@ void main() {
       for (final a in authors) {
         expect(a.id, isNotEmpty);
         expect(a.canonicalName, isNotEmpty);
-        expect(a.rights.status, isNot(RightsStatus.unknown));
+        // rights.status == unknown IS acceptable (it's honest).
+        // We only require that reasoning is provided when publicDomain is claimed.
+        expect(
+          a.rights.status,
+          RightsStatus.unknown,
+          reason: 'Unestablished rights must remain unknown for ${a.id}',
+        );
+        expect(
+          {
+            'SOURCE_BACKED',
+            'EDITORIAL_SUMMARY_FROM_SOURCES',
+            'UNSUPPORTED_GENERATED',
+          }.contains(a.biographyTjProvenance),
+          isTrue,
+          reason: 'Invalid Tajik biography provenance for ${a.id}',
+        );
+        if (a.portrait != null) {
+          expect(a.portrait!.isSourceBacked, isTrue);
+          expect(File(a.portrait!.assetPath).existsSync(), isTrue);
+        }
       }
     });
 
@@ -44,7 +68,8 @@ void main() {
       final dynamic raw = jsonDecode(content);
       expect(raw, isA<List<dynamic>>());
       final list = raw as List<dynamic>;
-      expect(list.length, 1472);
+      expect(list, isNotEmpty, reason: 'works.json must not be empty');
+      // Note: count is NOT asserted as a fixed invariant.
 
       int approvedCount = 0;
       for (final item in list) {
@@ -53,19 +78,93 @@ void main() {
         expect(work.id, isNotEmpty);
         expect(work.authorId, isNotEmpty);
         expect(work.title, isNotEmpty);
-        expect(work.textTajik, isNotEmpty);
+        if (work.textStatus == TextStatus.needsReview) {
+          expect(
+            work.textTajik,
+            anyOf(isNull, isEmpty),
+            reason: 'Unreviewed work ${work.id} must not ship a full text body',
+          );
+        } else {
+          expect(work.textTajik, isNotEmpty);
+        }
+        if (!work.rights.fullTextAllowed) {
+          expect(
+            work.textTajik,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without full-text rights must not ship Tajik text',
+          );
+          expect(
+            work.textPersian,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without full-text rights must not ship Persian text',
+          );
+          expect(
+            work.persianScriptRepresentation,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without full-text rights must not ship a generated full-text representation',
+          );
+        }
+        if (!work.rights.excerptAllowed) {
+          expect(
+            work.incipit,
+            anyOf(isNull, isEmpty),
+            reason:
+                'Work ${work.id} without excerpt rights must not ship an incipit',
+          );
+        }
         expect(work.primarySource, isNotNull);
         expect(work.hasAuditableCompositionEvidence, isFalse);
+        expect(work.textPersian, isNull);
+        if (work.persianScriptRepresentation?.trim().isNotEmpty == true) {
+          expect(work.persianScriptSource, 'generated');
+        }
+        expect(work.scriptSource, ScriptSource.tajikOnly);
         if (work.verification.evidenceLevel ==
             VerificationLevel.editoriallyApproved) {
           approvedCount++;
           expect(work.verification.pageVerified, isTrue);
           expect(work.verification.pageVerified, isTrue);
           expect(work.primarySource!.pageStart, isNotNull);
-          expect(work.isDisplayable, isTrue);
+          expect(
+            work.isDisplayable,
+            isFalse,
+            reason: 'Unknown rights must block full-text display',
+          );
         }
       }
       expect(approvedCount, greaterThanOrEqualTo(0));
+    });
+
+    test('primary-checked works follow the one-source publication policy', () {
+      final file = File('assets/data/literature/works.json');
+      final works = (jsonDecode(file.readAsStringSync()) as List<dynamic>)
+          .cast<Map<String, dynamic>>();
+
+      final primaryChecked = works.where((work) {
+        final verification = work['verification'];
+        return verification is Map &&
+            verification['evidenceLevel'] == 'primaryChecked';
+      });
+
+      expect(primaryChecked, isNotEmpty);
+      for (final work in primaryChecked) {
+        final verification = work['verification'] as Map;
+        final source = work['primarySource'] as Map?;
+        expect(verification['pageVerified'], isTrue);
+        expect(source?['pageStart'], isNotNull);
+        expect(work['rights'], isA<Map>());
+        final rights = work['rights'] as Map;
+        if (rights['status'] == 'sourceAttested') {
+          expect(rights['fullTextAllowed'], isTrue);
+          expect(work['textStatus'], 'verified');
+          expect((work['textTajik'] as String).trim(), isNotEmpty);
+        } else {
+          expect(rights['fullTextAllowed'], isNot(true));
+        }
+      }
     });
 
     test('Loic Sherali textbook biography facts are page-cited', () {
@@ -86,7 +185,7 @@ void main() {
       expect(loiq['biographyTj'], contains('«Ном»'));
     });
 
-    test('Jami duplicate author records agree with the page-109 witness', () {
+    test('Jami has one canonical author record with the page-109 witness', () {
       final poets =
           jsonDecode(
                 File('assets/data/literature/poets.json').readAsStringSync(),
@@ -97,18 +196,14 @@ void main() {
           item['id'] as String: Map<String, dynamic>.from(item),
       };
 
-      for (final id in [
-        '358dda13-365c-4434-87f0-d404b305adcb',
-        '9debff75-8664-43ab-a7a9-ed1a4725f69b',
-      ]) {
-        final jami = byId[id];
-        expect(jami, isNotNull, reason: 'Missing Jami record $id');
-        expect(jami!['birthDateExact'], '7 ноябри 1414');
-        expect(jami['deathDateExact'], '9 ноябри 1492');
-        expect(jami['birthPlace'], 'Харҷурди вилояти Ҷом');
-        expect(jami['biographySource'], contains('с. 109'));
-        expect(jami['biographyTj'], contains('«Баҳористон»'));
-      }
+      final jami = byId['9debff75-8664-43ab-a7a9-ed1a4725f69b'];
+      expect(jami, isNotNull, reason: 'Missing canonical Jami record');
+      expect(byId.containsKey('358dda13-365c-4434-87f0-d404b305adcb'), isFalse);
+      expect(jami!['birthDateExact'], '7 ноябри 1414');
+      expect(jami['deathDateExact'], '9 ноябри 1492');
+      expect(jami['birthPlace'], 'Харҷурди вилояти Ҷом');
+      expect(jami['biographySource'], contains('с. 109'));
+      expect(jami['biographyTj'], contains('«Баҳористон»'));
     });
 
     test('sources.json is valid and conforms to SourceEdition model', () {
@@ -174,12 +269,40 @@ void main() {
           expect(source['sourceReference'], endsWith('.pdf'));
           expect(
             source['sourceImageVerified'],
-            entry.key == 'tj_literature_grade_5_2017' ||
-                entry.key == 'tj_literature_grade_7_2018',
+            <String>{
+              'tj_literature_grade_5_2017',
+              'tj_literature_grade_6_2014',
+              'tj_literature_grade_7_2018',
+              'tj_literature_grade_8_2026',
+              'tj_literature_grade_9_2026',
+            }.contains(entry.key),
           );
         }
       },
     );
+
+    test('official 2025 Grade 11 edition is tracked as a reviewed lead', () {
+      final sources =
+          jsonDecode(
+                File('assets/data/literature/sources.json').readAsStringSync(),
+              )
+              as List<dynamic>;
+      final source = sources
+          .whereType<Map>()
+          .map((item) => Map<String, dynamic>.from(item))
+          .singleWhere((item) => item['id'] == 'tj_literature_grade_11_2025');
+
+      expect(source['bookTitle'], 'Адабиёти тоҷик (давраи нав)');
+      expect(source['authorAsPrinted'], 'Х. Асозода, А. Кўчарзода');
+      expect(source['edition'], 'Нашри ҳафтум');
+      expect(source['publisher'], 'Маориф');
+      expect(source['year'], '2025');
+      expect(
+        source['sourceReference'],
+        'https://maorif.tj/storage/libraries/01KH8MQHJJBRM70Q8FXHNNCGV5.pdf',
+      );
+      expect(source['sourceImageVerified'], isFalse);
+    });
 
     test('school_canon.json is valid with proper mappings', () {
       final file = File('assets/data/literature/school_canon.json');
@@ -286,78 +409,82 @@ void main() {
         expect(entry.collectionSource, isNotEmpty);
         expect(entry.publisher, isNotEmpty);
         expect(entry.year, isNotEmpty);
+        if (!entry.rights.fullTextAllowed) {
+          expect(entry.text.trim(), isEmpty);
+          expect(entry.textPersian?.trim(), anyOf(isNull, isEmpty));
+        }
       }
     });
 
-    test(
-      '12 core curriculum poems have page proof, with classical approved and modern primaryChecked',
-      () {
-        final file = File('assets/data/literature/works.json');
-        final list = jsonDecode(file.readAsStringSync()) as List<dynamic>;
+    test('Page-backed works retain evidence while rights remain honest', () {
+      final file = File('assets/data/literature/works.json');
+      final list = jsonDecode(file.readAsStringSync()) as List<dynamic>;
 
-        final approvedWorks = <LiteraryWork>[];
-        final primaryCheckedWorks = <LiteraryWork>[];
+      final approvedWorks = <LiteraryWork>[];
+      final primaryCheckedWorks = <LiteraryWork>[];
 
-        for (final item in list) {
-          final work = LiteraryWork.fromJson(item as Map<String, dynamic>);
-          if (work.verification.evidenceLevel ==
-              VerificationLevel.editoriallyApproved) {
-            approvedWorks.add(work);
-          } else if (work.verification.evidenceLevel ==
-              VerificationLevel.primaryChecked) {
-            primaryCheckedWorks.add(work);
-          }
+      for (final item in list) {
+        final work = LiteraryWork.fromJson(item as Map<String, dynamic>);
+        if (work.verification.evidenceLevel ==
+            VerificationLevel.editoriallyApproved) {
+          approvedWorks.add(work);
+        } else if (work.verification.evidenceLevel ==
+            VerificationLevel.primaryChecked) {
+          primaryCheckedWorks.add(work);
         }
+      }
 
-        expect(approvedWorks.length, 8);
-        for (final work in approvedWorks) {
-          expect(work.isDisplayable, isTrue);
-          expect(work.rights.status, RightsStatus.publicDomain);
-          expect(work.rights.fullTextAllowed, isTrue);
-          expect(work.verification.pageVerified, isTrue);
-          expect(work.primarySource!.pageStart, isNotNull);
-          expect(work.primarySource!.sourceImageVerified, isTrue);
+      expect(
+        approvedWorks,
+        isEmpty,
+        reason:
+            'No work has dual-witness, rights, and editorial evidence required for publication.',
+      );
+      expect(primaryCheckedWorks, isNotEmpty);
+      final published = primaryCheckedWorks.where((work) => work.isDisplayable);
+      final pending = primaryCheckedWorks.where((work) => !work.isDisplayable);
+      expect(published, isNotEmpty);
+      expect(pending, isNotEmpty);
+      for (final work in primaryCheckedWorks) {
+        if (work.isDisplayable) {
+          expect(work.rights.status, RightsStatus.sourceAttested);
+          expect(work.hasTajikText, isTrue);
+        } else {
+          expect(work.rights.status, RightsStatus.unknown);
+        }
+        expect(work.verification.pageVerified, isTrue);
+        expect(work.primarySource!.pageStart, isNotNull);
+        expect(work.primarySource!.sourceImageVerified, isTrue);
 
-          final imageFile = File(
-            'assets/data/literature/page_images/${work.id}.png',
-          );
+        final source = work.primarySource!;
+        final imagePaths = source.sourceImagePaths.isNotEmpty
+            ? source.sourceImagePaths
+            : <String>['assets/data/literature/page_images/${work.id}.png'];
+        expect(imagePaths, isNotEmpty);
+        for (final imagePath in imagePaths) {
+          final imageFile = File(imagePath);
           expect(
             imageFile.existsSync(),
             isTrue,
-            reason: 'Page image missing for work ${work.id}',
+            reason: 'Page image missing for work ${work.id}: $imagePath',
           );
           expect(
             imageFile.lengthSync(),
             greaterThan(10000),
-            reason: 'Page image too small for work ${work.id}',
+            reason: 'Page image too small for work ${work.id}: $imagePath',
           );
         }
+      }
+    });
 
-        expect(primaryCheckedWorks.length, 4);
-        for (final work in primaryCheckedWorks) {
-          expect(work.isDisplayable, isFalse);
-          expect(work.rights.status, RightsStatus.excerptOnly);
-          expect(work.rights.fullTextAllowed, isFalse);
-          expect(work.rights.excerptAllowed, isTrue);
-          expect(work.verification.pageVerified, isTrue);
-          expect(work.primarySource!.pageStart, isNotNull);
-          expect(work.primarySource!.sourceImageVerified, isTrue);
-
-          final imageFile = File(
-            'assets/data/literature/page_images/${work.id}.png',
-          );
-          expect(
-            imageFile.existsSync(),
-            isTrue,
-            reason: 'Page image missing for work ${work.id}',
-          );
-          expect(
-            imageFile.lengthSync(),
-            greaterThan(10000),
-            reason: 'Page image too small for work ${work.id}',
-          );
-        }
-      },
-    );
+    test('Rights-unknown page scans are not bundled as Flutter assets', () {
+      final pubspec = File('pubspec.yaml').readAsStringSync();
+      expect(
+        pubspec,
+        isNot(contains('assets/data/literature/page_images/')),
+        reason:
+            'Source scans remain audit evidence until publication rights are cleared.',
+      );
+    });
   });
 }

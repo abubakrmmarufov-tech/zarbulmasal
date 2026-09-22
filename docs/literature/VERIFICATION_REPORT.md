@@ -2,9 +2,9 @@
 
 **Feature**: Мероси адабӣ (Literary Heritage)  
 **Project**: Zarbulmasal (Зарбулмасал)  
-**Status**: INITIAL — No works have completed verification yet  
+**Status**: 28 SOURCE-ATTESTED WORKS READABLE; REMAINING RECORDS REVIEW ONLY
 **Version**: 1.0.0  
-**Effective Date**: 2026-09-10  
+**Effective Date**: 2026-09-22
 
 ---
 
@@ -12,10 +12,10 @@
 
 This document tracks the philological collation and verification status of every literary work (poem, ghazal, qasida, rubai, masnavi excerpt) intended for publication in the Zarbulmasal application.
 
-In accordance with `SOURCE_POLICY.md` and `RIGHTS_POLICY.md`:
-1. **Zero Unverified Publication**: No literary work may be displayed with `text_status: "verified"` until it passes full dual-witness manual collation and receives dual-editor sign-off.
-2. **Current Baseline State**: As of the current baseline, **STATUS IS INITIAL**. All poem text fields in the catalog remain `null` or empty strings `""` with status `"text_status": "needs_review"`.
-3. **Dual-Witness Standard**: Every published verse must be collated against two independent Tier A or Tier B printed book witnesses.
+In accordance with the current project publication rule:
+1. **Zero Unverified Publication**: A literary work is displayed only after its exact text and printed page have been checked against one permitted source: an uploaded project PDF or `maorif.tj`.
+2. **Current Baseline State**: The catalog contains 5,501 work records: 31 have primary-page evidence, 28 of those have recoverable verified Tajik text, 5,215 remain pending review, and 255 extraction/prose/duplicate candidates are rejected. The remaining three checked records contain no guessed text.
+3. **Optional Second Witness**: A second witness and further editorial collation improve the record but are not publication requirements for the source-attested path. Source-attested is a provenance/policy status, not a general copyright or public-domain claim.
 4. **Orthographic Rigor**:
    - Every Tajik Cyrillic diacritic (`ғ`, `ӣ`, `қ`, `ӯ`, `ҳ`, `ҷ`) is audited against the printed scan.
    - Persian Arabic script is proofread for correct consonantal dots (`پ`, `چ`, `ژ`, `گ`), medial forms, and standard Persian orthography.
@@ -25,12 +25,15 @@ In accordance with `SOURCE_POLICY.md` and `RIGHTS_POLICY.md`:
 
 ## 2. Global Verification Dashboard
 
-| Total Planned Works | Needs Review (`needs_review`) | Verified (`verified`) | In Progress | Blocked (`blocked`) |
-|:---:|:---:|:---:|:---:|:---:|
-| 1 | 1 | 0 | 0 | 0 |
+| Catalog works | Pending review | Primary-page checked | Source-attested readable | Rejected | Editorially approved |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 5,501 | 5,215 | 31 | 28 | 255 | 0 |
 
 > [!NOTE]
-> Detailed per-work records will be appended below as individual works are introduced to the editorial pipeline.
+> Of the 31 page-checked works, 28 have exact recoverable text and use the
+> source-attested publication path. Three remain withheld because exact text
+> was not recoverable. Current page evidence and occurrence records are in
+> `POEM_PAGE_PROOF.md` and `assets/data/literature/works.json`.
 
 ---
 
@@ -105,46 +108,48 @@ To guarantee long-term quality assurance and prevent drift between printed sourc
 
 ## 5. Summary & Next Steps
 
-1. Foundation documentation establishes zero-defect standards prior to textual ingestion.
-2. Data schemas in `assets/data/literature/` must reflect `text_status: "needs_review"` for all initial entries.
-3. Human-verified texts with physical page scans will be sequentially logged in this document upon completion of the verification checklist.
+1. Keep every unapproved work and all poem text withheld from public display.
+2. Resolve second-witness gaps for the six primary-checked records and establish rights/editorial approval before any release.
+3. Complete line/script audits and editorial review for the 5,215 pending records; retain exact printed-page and source evidence for every decision.
 
-### Work Dossier: rudaki_buyi_juyi_muliyon — Бӯйи ҷӯйи Мӯлиён ояд ҳаме / بوی جوی مولیان آید همی
+### Work Dossier: rudaki_buyi_juyi_muliyon_grade5_2017_p54 — Бӯйи Ҷӯйи Мулиён / بوی جوی مولیان
+
+The Persian title is a generated script representation, not a Persian-source title or semantic translation.
 
 - **Author**: Абӯабдуллоҳи Рӯдакӣ
 - **Poetic Form**: Qasida
-- **Rights Status**: PUBLIC_DOMAIN
-- **Curriculum Grade Level**: Grade 8, Grade 10
+- **Rights Status**: `unknown` — textbook evidence does not establish redistribution rights.
+- **Curriculum Grade Level**: Grade 5
 - **Current Text Status**: `needs_review`
 
 #### Witness Documentation
 - **Witness 1 (Base Witness - Tier A)**:
-  - Title: Ашъори Рӯдакӣ (Ахтарони адаб, Ҷ. 1)
-  - Editor / Compiler: А. Абдуллоев, С. Саъдиев
-  - Publisher & City: Адиб, Душанбе, 2008
-  - Volume & Page Number(s): [PENDING]
-  - Facsimile / Scan Reference: [PENDING]
+  - Title: Адабиёт: Китоби дарсӣ барои синфи 5
+  - Editor / Compiler: А. Абдураҳмонов, С. Солеҳов, Ш. Исломов
+  - Publisher & City: Маориф, Душанбе, 2017
+  - Volume & Page Number(s): Printed p. 54
+  - Facsimile / Scan Reference: `assets/data/literature/page_images/rudaki_buyi_juyi_muliyon_grade5_2017_p54.png`
 - **Witness 2 (Corroborating Witness - Tier A / B)**:
-  - Title: [PENDING]
-  - Editor / Compiler: [PENDING]
-  - Publisher & City: [PENDING]
-  - Volume & Page Number(s): [PENDING]
-  - Facsimile / Scan Reference: [PENDING]
+  - Title: Адабиёти тоҷик. Китоби дарсӣ барои синфи 5-уми муассисаҳои таҳсилоти умумӣ
+  - Editor / Compiler: Т. Мирзод, Р. Ҳамидов, М. Пирзод, Ф. Мирзода
+  - Publisher & City: Маориф, Душанбе, 2025; ISBN 978-99985-61-21-2
+  - Volume & Page Number(s): Printed p. 56
+  - Facsimile / Scan Reference: `assets/data/literature/page_images/rudaki_buyi_muliyon_maorif_2025_p56.png`; [official Ministry PDF](https://maorif.tj/storage/libraries/01K6HGRAG6CPT6S1XBVK6KBPJT.pdf)
 
 #### Verification Gate Checklist
-- [x] 1. Rights clearance verified under Tajik Law No. 726 (Public Domain or Fair Use Excerpt).
-- [ ] 2. Line and bayt counts match identically across both witnesses.
-- [ ] 3. Line-by-line manual collation completed against physical scan (no unverified OCR).
+- [ ] 1. Rights clearance verified under Tajik Law No. 726 (not established).
+- [x] 2. Both witnesses contain the same 12-line poem; a minor orthographic variant is recorded below.
+- [x] 3. Line-by-line collation completed against inspected page images (not OCR alone).
 - [ ] 4. Tajik Cyrillic diacritics audited (`ғ`, `ӣ`, `қ`, `ӯ`, `ҳ`, `ҷ` confirmed correct).
 - [ ] 5. Persian Arabic text matched, joined properly, and orthographically compliant.
 - [ ] 6. Classical poetic metre (*вазн/арӯз*) and rhyming scheme (*қофия ва радиф*) verified.
 - [ ] 7. Hemistich division verified (Misra 1 / Misra 2 clearly delimited in JSON).
-- [ ] 8. Variant readings (if any) documented in the Variant Log below.
+- [x] 8. Variant readings documented in the Variant Log below.
 
 #### Variant Log (Collation Discrepancies)
 | Line # | Base Witness Reading | Witness 2 Reading | Adopted Reading | Rationale & Authority |
 |:---:|:---|:---|:---|:---|
-| — | None | None | None | No variants observed |
+| 3 | Minor orthographic variant; see inspected page | Minor orthographic variant; see inspected page | Not adjudicated for publication | `works.json` records a minor line-3 variant; the display form remains unresolved pending editorial approval. |
 
 #### Editorial Sign-Off
 - **Collation Editor**: [PENDING] — Date: [PENDING]

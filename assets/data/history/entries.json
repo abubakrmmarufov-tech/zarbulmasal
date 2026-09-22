@@ -6,8 +6,8 @@
     "summary": "Дар китоби синфи 5 ҳамчун сулолаи шоҳони ривоятӣ дар оғози таърихи Ориёно муаррифӣ мешаванд.",
     "period": "Замони пеш аз таърих",
     "grade": "5",
-    "sourceBookId": "marifat-462",
-    "sourceSection": "Боби I — §9",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби I — §8–10",
     "keywords": [
       "сулола",
       "ривоят",
@@ -38,7 +38,17 @@
       "فریدون"
     ],
     "significance": "Ибтидои тамаддуни ориёӣ, кашфи оташ, кишоварзӣ, рушди шаҳрсозӣ ва ҷашни Наврӯз дар таърихномаҳои миллӣ.",
-    "significancePersian": "آغاز تمدن آریایی، کشف آتش، کشاورزی، گسترش شهرنشینی و جشن نوروز در تاریخ‌نامه‌های ملی."
+    "significancePersian": "آغاز تمدن آریایی، کشف آتش، کشاورزی، گسترش شهرنشینی و جشن نوروز در تاریخ‌نامه‌های ملی.",
+    "claimProvenance": [
+      {
+        "claim": "Пешдодиён — шоҳони ривоятӣ, Каюмарс, Ҳушанг, Ҷамшед ва тақсимоти ҷаҳон аз ҷониби Фаридун",
+        "claimPersian": "پیشدادیان — شاهان اساطیری، کیومرث، هوشنگ، جمشید و تقسیم جهان توسط فریدون",
+        "sourceBookId": "history-5",
+        "printedPage": 34,
+        "pdfPage": 34,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   },
   {
     "id": "empire-kayanian",
@@ -47,8 +57,8 @@
     "summary": "Китоб онҳоро сулолаи таърихии баъд аз Пешдодиён медонад ва давлати Каёниёнро бо Ковиҳо ва Гуштосп шарҳ медиҳад.",
     "period": "Замони биринҷӣ",
     "grade": "5",
-    "sourceBookId": "marifat-462",
-    "sourceSection": "Боби II–III — §21–30",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби III — §24–26",
     "keywords": [
       "сулола",
       "Гуштосп",
@@ -78,7 +88,17 @@
       "زرتشت"
     ],
     "significance": "Пайдоиши оини зардуштӣ, мубориза бо бегонагон ва ташаккули ҳамосаи миллии ориёиҳо.",
-    "significancePersian": "پیدایش آیین زرتشتی، پایداری در برابر بیگانگان و تکوین حماسه ملی آریاییان."
+    "significancePersian": "پیدایش آیین زرتشتی، پایداری در برابر بیگانگان و تکوین حماسه ملی آریاییان.",
+    "claimProvenance": [
+      {
+        "claim": "Давлати Каёниён (ковиҳо), Кайқубод ва давлати марказонидаи ориёиҳо дар аҳди Гуштосп",
+        "claimPersian": "دولت کیانیان، کی‌قباد و دولت متمرکز آریایی در عهد گشتاسپ",
+        "sourceBookId": "history-5",
+        "printedPage": 71,
+        "pdfPage": 71,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   },
   {
     "id": "empire-med",
@@ -87,8 +107,8 @@
     "summary": "Дар силсилаи давлатҳои Ориёно баъд аз Каёниён ва пеш аз Ҳахоманишиён ҷой мегирад.",
     "period": "Асри оҳан",
     "grade": "5",
-    "sourceBookId": "marifat-462",
-    "sourceSection": "Боби IV — §38",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби IV — §40",
     "keywords": [
       "Мод",
       "давлат"
@@ -114,7 +134,17 @@
       "ایشتویگو"
     ],
     "significance": "Барҳам задани ҳукмронии ошӯриён ва муттаҳид намудани қабилаҳои ориёӣ дар як давлати муқтадир.",
-    "significancePersian": "پایان دادن به سلطه آشور و اتحاد قبایل آریایی در چارچوب دولتی مقتدر."
+    "significancePersian": "پایان دادن به سلطه آشور و اتحاد قبایل آریایی در چارچوب دولتی مقتدر.",
+    "claimProvenance": [
+      {
+        "claim": "Давлати Мод, муттаҳидшавии қабилаҳои ориёӣ ва шоҳони он Дайаукку ва Киаксар",
+        "claimPersian": "دولت ماد، اتحاد قبیله‌های آریایی و پادشاهان آن دیااکو و هووخشتره",
+        "sourceBookId": "history-5",
+        "printedPage": 122,
+        "pdfPage": 122,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   },
   {
     "id": "empire-achaemenid",
@@ -123,7 +153,7 @@
     "summary": "Китоби синфи 5 давлати Ҳахоманишиёнро ҳамчун яке аз давлатҳои бузурги Ориёно ва замони Дориюши Кабир меомӯзонад.",
     "period": "558–330 то милод",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби IV — §39–47",
     "keywords": [
       "Доро",
@@ -151,7 +181,18 @@
       "خشایارشا"
     ],
     "significance": "Таъсиси роҳи шоҳӣ, нахустин Эъломияи ҳуқуқи башар (устувонаи Куруш), низоми сотрапиҳо ва хатти мехӣ.",
-    "significancePersian": "احداث راه شاهی، منشور حقوق بشر کوروش، نظام ساتراپی‌ها و شکوفایی تمدن هخامنشی."
+    "significancePersian": "احداث راه شاهی، منشور حقوق بشر کوروش، نظام ساتراپی‌ها و شکوفایی تمدن هخامنشی.",
+    "claimProvenance": [
+      {
+        "claim": "Китоби синфи 5 давлати Ҳахоманишиёнро ҳамчун яке аз давлатҳои бузурги Ориёно ва замони Дориюши Кабир меомӯзонад.",
+        "claimPersian": "بزرگ‌ترین شاهنشاهی دنیای باستان که بخش عظیمی از آسیا، مصر و اروپا را در بر می‌گرفت.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-greco-bactrian",
@@ -160,7 +201,7 @@
     "summary": "Пас аз ҳуҷуми Искандари Мақдунӣ дар Ориёно давлати эллинӣ бо номи Юнону Бохтар пайдо мешавад.",
     "period": "Асрҳои IV–II то милод",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби V — §48–53",
     "keywords": [
       "эллинҳо",
@@ -188,7 +229,18 @@
       "دیمتریوس"
     ],
     "significance": "Омезиши фарҳанги эллинӣ ва ориёӣ, рушди сикказанӣ ва бунёди шаҳрҳо (аз ҷумла Ойхонум ва Тахти Сангин).",
-    "significancePersian": "پیوند فرهنگ هلنی و شرقی، پیشرفت چشمگیر شهرسازی و ضرب سکه در آسیای مرکزی."
+    "significancePersian": "پیوند فرهنگ هلنی و شرقی، پیشرفت چشمگیر شهرسازی و ضرب سکه در آسیای مرکزی.",
+    "claimProvenance": [
+      {
+        "claim": "Пас аз ҳуҷуми Искандари Мақдунӣ дар Ориёно давлати эллинӣ бо номи Юнону Бохтар пайдо мешавад.",
+        "claimPersian": "دولت هلنیستی در خاور باستان که پس از فتوحات اسکندر مقدونی در باختر و سغد شکل گرفت.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-arsacid",
@@ -197,7 +249,7 @@
     "summary": "Китоб таъсиси давлати Ашкониён, сохти иқтисодию сиёсӣ ва фарҳанги онро ҳамчун давлати баъд аз Юнону Бохтар шарҳ медиҳад.",
     "period": "Асрҳои III то милод – III милодӣ",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби VI — §54–59",
     "keywords": [
       "Портҳо",
@@ -227,7 +279,18 @@
       "سورنا"
     ],
     "significance": "Эҳёи истиқлолияти давлатдории ориёӣ, кушода шудани Шоҳроҳи Абрешим ва муқовимат ба империяи Рум.",
-    "significancePersian": "احیای استقلال آریاییان، گشایش جاده ابریشم و ایستادگی تاریخی در برابر امپراتوری روم."
+    "significancePersian": "احیای استقلال آریاییان، گشایش جاده ابریشم و ایستادگی تاریخی در برابر امپراتوری روم.",
+    "claimProvenance": [
+      {
+        "claim": "Китоб таъсиси давлати Ашкониён, сохти иқтисодию сиёсӣ ва фарҳанги онро ҳамчун давлати баъд аз Юнону Бохтар шарҳ медиҳад.",
+        "claimPersian": "سلسله قدرتمند ایرانی در پارت که به استیلای سلوکیان پایان بخشید و قرن‌ها هماورد روم بود.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-kushan",
@@ -236,7 +299,7 @@
     "summary": "Дар китоби синфи 5 ҳамчун империя бо шаҳрҳо, деҳот, иқтисод, тиҷорат, фарҳанг ва варзиш омӯхта мешаванд.",
     "period": "Асрҳои I–III милодӣ",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби VII — §60–68",
     "keywords": [
       "Кӯшоншаҳр",
@@ -264,7 +327,18 @@
       "هویشکا"
     ],
     "significance": "Густариши тиҷорати байналмилалӣ дар Шоҳроҳи Абрешим, хатти бохтарӣ ва меъмории Тахти Сангину Сурхкӯтал.",
-    "significancePersian": "اوج رونق جاده ابریشم، رواج خط باختری و هماهنگی فرهنگی ادیان گوناگون در قلمرو کوشانشاهی."
+    "significancePersian": "اوج رونق جاده ابریشم، رواج خط باختری و هماهنگی فرهنگی ادیان گوناگون در قلمرو کوشانشاهی.",
+    "claimProvenance": [
+      {
+        "claim": "Дар китоби синфи 5 ҳамчун империя бо шаҳрҳо, деҳот, иқтисод, тиҷорат, фарҳанг ва варзиш омӯхта мешаванд.",
+        "claimPersian": "یکی از چهار امپراتوری بزرگ عهد باستان با محوریت باختر و پیونددهنده تمدن‌های آسیا.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-sasanid",
@@ -273,7 +347,7 @@
     "summary": "Китоби синфи 6 таъсис, ҷангҳои берунӣ, дин, фарҳанг, шаҳрҳо ва аҳаммияти давлати Сосониёнро меомӯзонад.",
     "period": "Асрҳои III–VII милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби I–II — §1–12",
     "keywords": [
       "Ардашер",
@@ -304,7 +378,18 @@
       "باربد"
     ],
     "significance": "Ташаккули фарҳанги адабии паҳлавӣ, мусиқии Борбад, ислоҳоти молиявию идории Анӯшервон ва Донишгоҳи Гундишопур.",
-    "significancePersian": "شکوفایی دانش و ادب پهلوی، دستگاه دیوانی منظم، مکتب موسیقی باربد و دانشگاه جندی‌شاپور."
+    "significancePersian": "شکوفایی دانش و ادب پهلوی، دستگاه دیوانی منظم، مکتب موسیقی باربد و دانشگاه جندی‌شاپور.",
+    "claimProvenance": [
+      {
+        "claim": "Сосониён — Китоби синфи 6 таъсис, ҷангҳои берунӣ, дин, фарҳанг, шаҳрҳо ва аҳаммияти давлати",
+        "claimPersian": "شاهنشاهی ساسانیان — دوران زرین فرهنگ، دیوان‌سالاری و استقلال ایران باستان پیش از ورود اسلام.",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-hephthalite",
@@ -313,7 +398,7 @@
     "summary": "Синфи 6 пайдоиш, ватан, шаҳрҳои марказӣ ва муносибатҳои Хиёниён–Ҳайтолиёнро дар Тоҷикзамини шарқӣ шарҳ медиҳад.",
     "period": "Асрҳои IV–VIII милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби III — §14–22",
     "keywords": [
       "Ҳайтолиён",
@@ -339,7 +424,18 @@
       "میهیراکولا"
     ],
     "significance": "Шикасти лашкари Фирӯзи Сосонӣ, мустақил нигоҳ доштани Тоҷикзамини шарқӣ ва шукуфоии фарҳанги Панҷакенту Суғд.",
-    "significancePersian": "استقلال سغد و باختر، شکست فیروز ساسانی و درخشش هنر و نقاشی دیواری پنجکنت باستان."
+    "significancePersian": "استقلال سغد و باختر، شکست فیروز ساسانی و درخشش هنر و نقاشی دیواری پنجکنت باستان.",
+    "claimProvenance": [
+      {
+        "claim": "Хиёниён–Ҳайтолиён — Синфи 6 пайдоиш, ватан, шаҳрҳои марказӣ ва муносибатҳои Хиёниён–Ҳайтолиёнро дар ",
+        "claimPersian": "دولت هفتالیان (خیونیان و هیاطله) — دولت مقتدر بومی آسیای مرکزی در سده‌های ۵ تا ۶ میلادی که بر باختر، سغد و هند مسلط",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-arab-caliphate",
@@ -348,7 +444,7 @@
     "summary": "Китобҳои синфҳои 6–7 густариши ислом, ҳокимияти арабҳо ва муборизаи тоҷикон барои истиқлолиятро баррасӣ мекунанд.",
     "period": "Асрҳои VII–IX милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби V–X — §32–65",
     "keywords": [
       "Умавиён",
@@ -376,7 +472,18 @@
       "هارون‌الرشید"
     ],
     "significance": "Қабули ислом дар Осиёи Марказӣ, муборизаҳои истиқлолхоҳии Деваштичу Муқаннаъ ва оғози ҷунбиши шуубия.",
-    "significancePersian": "ورود اسلام به آسیای میانه، قیام‌های استقلال‌طلبانه دیواشتیچ و مقنع و آغاز جنبش شعوبیه."
+    "significancePersian": "ورود اسلام به آسیای میانه، قیام‌های استقلال‌طلبانه دیواشتیچ و مقنع و آغاز جنبش شعوبیه.",
+    "claimProvenance": [
+      {
+        "claim": "Хилофати араб — Китобҳои синфҳои 6–7 густариши ислом, ҳокимияти арабҳо ва муборизаи тоҷикон баро",
+        "claimPersian": "خلافت عرب (امویان و عباسیان) — دوران گسترش اسلام به ماوراءالنهر و شکل‌گیری نهضت‌های آزادی‌خواهانه مردم تاجیک.",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-tahirid",
@@ -385,7 +492,7 @@
     "summary": "Дар синфи 7 ҳамчун яке аз давлатҳои тоҷикон пас аз сустшавии хилофати Аббосиён омадааст.",
     "period": "Асри IX милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби II — §6",
     "keywords": [
       "давлатҳои тоҷикон",
@@ -410,7 +517,18 @@
       "عبدالله بن طاهر"
     ],
     "significance": "Бунёди аввалин пояҳои давлатдории тоҷикон, беҳдошти кишоварзӣ бо 'Китоби Қуният' ва рушди маориф.",
-    "significancePersian": "پی‌ریزی نخستین حکومت خودمختار بومی، ترویج آموزش و نگارش کتاب القنی برای تقسیم عادلانه آب."
+    "significancePersian": "پی‌ریزی نخستین حکومت خودمختار بومی، ترویج آموزش و نگارش کتاب القنی برای تقسیم عادلانه آب.",
+    "claimProvenance": [
+      {
+        "claim": "Тоҳириён — Дар синфи 7 ҳамчун яке аз давлатҳои тоҷикон пас аз сустшавии хилофати Аббосиён о",
+        "claimPersian": "دولت طاهریان — نخستین حکومت مستقل نیمه‌خودمختار ایرانی-تاجیکی در خراسان پس از چیرگی اعراب.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-saffarid",
@@ -419,7 +537,7 @@
     "summary": "Китоби синфи 7 оғози давлат ва кори Яъқуб ибни Лайсро дар силсилаи давлатдории тоҷикон меомӯзонад.",
     "period": "Асрҳои IX–X милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби II — §7",
     "keywords": [
       "Яъқуб ибни Лайс",
@@ -442,7 +560,18 @@
       "عمرو لیث صفار"
     ],
     "significance": "Барқарор намудани забони тоҷикӣ-форсӣ ҳамчун забони расмии дарбор ва шикасти намояндагони хилофат дар минтақа.",
-    "significancePersian": "رسمی ساختن زبان فارسی دری در دربار و دیوان به فرمان یعقوب لیث و استقلال سیاسی کامل."
+    "significancePersian": "رسمی ساختن زبان فارسی دری در دربار و دیوان به فرمان یعقوب لیث و استقلال سیاسی کامل.",
+    "claimProvenance": [
+      {
+        "claim": "Саффориён — Китоби синфи 7 оғози давлат ва кори Яъқуб ибни Лайсро дар силсилаи давлатдории т",
+        "claimPersian": "دولت صفاریان — قیام عیاران سیستان به رهبری یعقوب لیث صفار و رسمیت یافتن دوباره زبان فارسی دری.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-samanid",
@@ -451,7 +580,7 @@
     "summary": "Синфи 7 таъсиси давлати Сомониён, дастгоҳи идорӣ, иқтисод, шаҳрҳо, адабиёт, илм ва меъмории онро ба таври пайдарпай шарҳ медиҳад.",
     "period": "Асрҳои IX–X милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби II — §8–19",
     "keywords": [
       "Исмоили Сомонӣ",
@@ -492,6 +621,17 @@
     ],
     "relatedWorkIds": [
       "rudaki_buyi_juyi_muliyon_grade5_2017_p54"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Сомониён — Синфи 7 таъсиси давлати Сомониён, дастгоҳи идорӣ, иқтисод, шаҳрҳо, адабиёт, илм ",
+        "claimPersian": "دولت سامانیان — دوران طلایی احیای فرهنگ، هویت ملی، زبان تاجیکی-فارسی و دانش در تاریخ مردم تاجیک.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
     ]
   },
   {
@@ -501,7 +641,7 @@
     "summary": "Дар синфи 7 ҳамчун яке аз давлатҳои асрҳои XI–XII ва замони тағйири вазъи сиёсии Мовароуннаҳр омадааст.",
     "period": "Асрҳои XI–XII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби III — §20",
     "keywords": [
       "Қарахониён"
@@ -525,7 +665,18 @@
       "ابراهیم بوری‌تکین"
     ],
     "significance": "Тағйири вазъи сиёсии минтақа, идомаи рушди фарҳанги шаҳрсозӣ ва мадрасаҳои Самарқанд.",
-    "significancePersian": "دگرگونی آرایش سیاسی منطقه و تداوم نهادهای دیوانی و علمی پیشین در سمرقند و بخارا."
+    "significancePersian": "دگرگونی آرایش سیاسی منطقه و تداوم نهادهای دیوانی و علمی پیشین در سمرقند و بخارا.",
+    "claimProvenance": [
+      {
+        "claim": "Қарахониён — Дар синфи 7 ҳамчун яке аз давлатҳои асрҳои XI–XII ва замони тағйири вазъи сиёсии",
+        "claimPersian": "دولت قراخانیان — حکومتی از تبار ترکان در ماوراءالنهر و کاشغر که پایان دوره سامانیان را رقم زد.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-ghaznavid",
@@ -534,7 +685,7 @@
     "summary": "Китоби синфи 7 давлати Ғазнавиёнро дар бахши давлатҳои асрҳои XI–XII ҷой медиҳад.",
     "period": "Асрҳои X–XII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби III — §21",
     "keywords": [
       "Ғазнавиён",
@@ -564,7 +715,18 @@
       "ابوریحان بیرونی"
     ],
     "significance": "Таълифи 'Таърихи Масъудӣ' (Байҳақӣ), шоҳасарҳои илмии Абӯрайҳони Берунӣ ва сарояндагони бузурги дарбор.",
-    "significancePersian": "نگارش تاریخ بیهقی، اقامت ابوریحان بیرونی در غزنه و بازتاب شعر و ادب فارسی در دربار."
+    "significancePersian": "نگارش تاریخ بیهقی، اقامت ابوریحان بیرونی در غزنه و بازتاب شعر و ادب فارسی در دربار.",
+    "claimProvenance": [
+      {
+        "claim": "Ғазнавиён — Китоби синфи 7 давлати Ғазнавиёнро дар бахши давлатҳои асрҳои XI–XII ҷой медиҳад",
+        "claimPersian": "دولت غزنویان — سلسله پرنفوذ در شرق خلافت که با فتح هند و پشتیبانی از ادبای فارسی شناخته می‌شود.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-seljuk",
@@ -573,7 +735,7 @@
     "summary": "Дар таърихи синфи 7 ҳамчун давлати асрҳои XI–XII ва яке аз қудратҳои минтақа шарҳ дода мешавад.",
     "period": "Асрҳои XI–XII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби III — §22",
     "keywords": [
       "Салҷуқиён"
@@ -603,7 +765,18 @@
       "عمر خیام"
     ],
     "significance": "Таъсиси низоми мадориси 'Низомия', тадвини 'Сиёсатнома', тақвими Ҷалолӣ бо иштироки Умари Хайём ва авҷи маданияти Марву Исфаҳон.",
-    "significancePersian": "بنیان‌گذاری مدارس نظامیه، نگارش سیاست‌نامه خواجه نظام‌الملک و تنظیم گاه‌شماری جلالی به دست خیام."
+    "significancePersian": "بنیان‌گذاری مدارس نظامیه، نگارش سیاست‌نامه خواجه نظام‌الملک و تنظیم گاه‌شماری جلالی به دست خیام.",
+    "claimProvenance": [
+      {
+        "claim": "Салҷуқиён — Дар таърихи синфи 7 ҳамчун давлати асрҳои XI–XII ва яке аз қудратҳои минтақа шар",
+        "claimPersian": "امپراتوری سلجوقیان — امپراتوری پهناور اسلامی در سده‌های یازدهم و دوازدهم میلادی با هدایت وزیران دانشم",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-khwarazmshah",
@@ -612,7 +785,7 @@
     "summary": "Китоб вазъи давлати Хоразмшоҳиён ва заминаи ҳамлаи муғулҳоро дар пайванди таърихи асрҳои XI–XIII меорад.",
     "period": "Асрҳои XI–XIII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби III–IV — §24–29",
     "keywords": [
       "Хоразмшоҳ",
@@ -640,7 +813,18 @@
       "جلال‌الدین خوارزمشاه"
     ],
     "significance": "Қудрати бузурги низомӣ пеш аз ҳуҷуми муғулҳо ва корнамоиҳои ҷангии Ҷалолуддин дар муқовимат бо лашкари Чингизхон.",
-    "significancePersian": "اوج پهناوری قلمرو پیش از تهاجم مغول و مقاومت جانانه جلال‌الدین خوارزمشاه در برابر سپاه چنگیز."
+    "significancePersian": "اوج پهناوری قلمرو پیش از تهاجم مغول و مقاومت جانانه جلال‌الدین خوارزمشاه در برابر سپاه چنگیز.",
+    "claimProvenance": [
+      {
+        "claim": "Хоразмшоҳиён — Китоб вазъи давлати Хоразмшоҳиён ва заминаи ҳамлаи муғулҳоро дар пайванди таърих",
+        "claimPersian": "دولت خوارزمشاهیان — دولت گسترده ماوراءالنهر و ایران در آستانه یورش فاجعه‌بار چنگیزخان مغول.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-mongol",
@@ -649,7 +833,7 @@
     "summary": "Синфи 7 ҳуҷум, муборизаи халқҳои Осиёи Марказӣ, паёмадҳои забт ва вазъи баъди Чингизхонро меомӯзонад.",
     "period": "Асрҳои XIII–XIV милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби IV — §28–38",
     "keywords": [
       "Чингизхон",
@@ -678,7 +862,18 @@
       "خواجه نصیرالدین طوسی"
     ],
     "significance": "Мудофиаи қаҳрамононаи Хуҷанд бо сарварии Темурмалик, суқути Бухорову Самарқанд ва эҳёи баъдии илму расадхона бо Насируддини Тӯсӣ.",
-    "significancePersian": "دفاع حماسی تیمورملک در خجند، سقوط شهرهای علمی و بازسازی بعدی دستگاه دانش به کوشش دانشمندان بومی."
+    "significancePersian": "دفاع حماسی تیمورملک در خجند، سقوط شهرهای علمی و بازسازی بعدی دستگاه دانش به کوشش دانشمندان بومی.",
+    "claimProvenance": [
+      {
+        "claim": "Империяи Муғул — Синфи 7 ҳуҷум, муборизаи халқҳои Осиёи Марказӣ, паёмадҳои забт ва вазъи баъди Чи",
+        "claimPersian": "امپراتوری مغول و ایلخانان — دوران تهاجم ویرانگر مغول به ماوراءالنهر و پیامدهای سنگین انسانی، شهری و تمدنی آن",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-ghurid",
@@ -687,7 +882,7 @@
     "summary": "Дар бахши давлатҳои тоҷикон дар асрҳои XI–XIV ҳамчун давлати ҷудогонаи таърихӣ муаррифӣ мешаванд.",
     "period": "Асрҳои XII–XIII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби V — §39",
     "keywords": [
       "Ғуриён"
@@ -711,7 +906,18 @@
       "معزالدین محمد غوری"
     ],
     "significance": "Густариши забон ва фарҳанги тоҷикӣ-форсӣ дар Ҳиндустон ва бунёди шоҳкориҳои меъморӣ монанди Манораи Ҷом.",
-    "significancePersian": "گسترش زبان و ادب فارسی در هندوستان و بنای شاهکارهای معماری ماندگار مانند منار جام."
+    "significancePersian": "گسترش زبان و ادب فارسی در هندوستان و بنای شاهکارهای معماری ماندگار مانند منار جام.",
+    "claimProvenance": [
+      {
+        "claim": "Ғуриён — Дар бахши давлатҳои тоҷикон дар асрҳои XI–XIV ҳамчун давлати ҷудогонаи таърихӣ м",
+        "claimPersian": "دولت غوریان — حکومت مقتدر تاجیکان در کوهستان غور که تا دشت‌های هند و دهلی گسترش یافت.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-kurt",
@@ -720,7 +926,7 @@
     "summary": "Синфи 7 Куртҳои Ҳиротро дар идомаи давлатҳои тоҷикони асрҳои XI–XIV ҷой медиҳад.",
     "period": "Асрҳои XIII–XIV милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби V — §40",
     "keywords": [
       "Куртҳо",
@@ -747,7 +953,18 @@
       "غیاث‌الدین کرت"
     ],
     "significance": "Бозсозии шаҳри Ҳирот пас аз харобиҳои муғул, ободонии Масҷиди Ҷомеъ ва ҳимоят аз адибон ва олимони тоҷик.",
-    "significancePersian": "بازسازی هرات پس از یورش مغول، گسترش مسجد جامع و حمایت از شاعران و دانشمندان فارسی‌زبان."
+    "significancePersian": "بازسازی هرات پس از یورش مغول، گسترش مسجد جامع و حمایت از شاعران و دانشمندان فارسی‌زبان.",
+    "claimProvenance": [
+      {
+        "claim": "Куртҳои Ҳирот — Синфи 7 Куртҳои Ҳиротро дар идомаи давлатҳои тоҷикони асрҳои XI–XIV ҷой медиҳад.",
+        "claimPersian": "آل کرت هرات — دودمان تاجیک‌تبار حاکم بر هرات و خراسان در عصر استیلای ایلخانان مغول.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-sarbadar",
@@ -756,7 +973,7 @@
     "summary": "Дар китоби синфи 7 ҳамчун як давлати тоҷикон дар давраи пас аз ҳуҷуми муғулҳо омадааст.",
     "period": "Асри XIV милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби V — §41",
     "keywords": [
       "Сарбадорон"
@@ -782,7 +999,18 @@
       "وجیه‌الدین مسعود"
     ],
     "significance": "Шӯриши мардумӣ бо шиори 'Сар ба дор медиҳем, аммо тан ба зулм намедиҳем' ва таъсиси ҳукумати одил ва мардумӣ.",
-    "significancePersian": "شعار جاودان «سر به دار می‌دهیم و تن به ذلت نمی‌دهیم» و استقرار حکومتی بر پایه دادگری مردمی."
+    "significancePersian": "شعار جاودان «سر به دار می‌دهیم و تن به ذلت نمی‌دهیم» و استقرار حکومتی بر پایه دادگری مردمی.",
+    "claimProvenance": [
+      {
+        "claim": "Сарбадорон — Дар китоби синфи 7 ҳамчун як давлати тоҷикон дар давраи пас аз ҳуҷуми муғулҳо ом",
+        "claimPersian": "نهضت و حکومت سربداران — قیام مردمی و ضد اشغالگری در بیهق و خراسان علیه حاکمان مغول ایلخانی در سده هشتم.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "dynasty-muzaffarid",
@@ -791,7 +1019,7 @@
     "summary": "Китоби синфи 7 бахши давлатҳои тоҷиконро бо давлати Музаффариён ҷамъбаст мекунад.",
     "period": "Асрҳои XIV–XV милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби V — §42",
     "keywords": [
       "Музаффариён"
@@ -815,7 +1043,18 @@
       "حافظ شیرازی"
     ],
     "significance": "Ҳамзамонӣ бо зиндагӣ ва эҷодиёти безаволи Хоҷа Ҳофизи Шерозӣ ва саҳм дар шукуфоии ғазали классикии тоҷикӣ-форсӣ.",
-    "significancePersian": "دوران زرین سرایش غزلیات بی‌مانند حافظ شیرازی و حمایت شاه شجاع از ادب پارسی."
+    "significancePersian": "دوران زرین سرایش غزلیات بی‌مانند حافظ شیرازی و حمایت شاه شجاع از ادب پارسی.",
+    "claimProvenance": [
+      {
+        "claim": "Музаффариён — Китоби синфи 7 бахши давлатҳои тоҷиконро бо давлати Музаффариён ҷамъбаст мекунад",
+        "claimPersian": "دولت مظفریان — دودمان ایرانی حاکم بر فارس، یزد و اصفهان در عصر درخشش دیوان حافظ شیرازی.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-bukhara",
@@ -824,7 +1063,7 @@
     "summary": "Синфи 9 вазъи аморат, ҷангҳои Русия бо давлатҳои Осиёи Марказӣ ва барпо шудани ҳокимияти шӯравиро шарҳ медиҳад.",
     "period": "Нимаи дуюми асри XIX – 1920-ум",
     "grade": "9",
-    "sourceBookId": "marifat-402",
+    "sourceBookId": "history-9",
     "sourceSection": "Бобҳои 1–16",
     "keywords": [
       "Бухоро",
@@ -855,7 +1094,18 @@
       "صدرالدین عینی"
     ],
     "significance": "Охирин давраи давлатдории суннатӣ, оғози ҷунбиши маорифпарварӣ (ҷадидия) ва барҳам хӯрдани аморат соли 1920.",
-    "significancePersian": "آغاز بیداری ملی، جنبش معارف‌پروری با تلاش‌های احمد دانش و صدرالدین عینی و سرانجام سقوط امارت."
+    "significancePersian": "آغاز بیداری ملی، جنبش معارف‌پروری با تلاش‌های احمد دانش و صدرالدین عینی و سرانجام سقوط امارت.",
+    "claimProvenance": [
+      {
+        "claim": "Аморати Бухоро — Синфи 9 вазъи аморат, ҷангҳои Русия бо давлатҳои Осиёи Марказӣ ва барпо шудани ҳ",
+        "claimPersian": "امارت بخارا (دودمان منغیت) — دولت واپسین ماوراءالنهر پیش از انقلاب و فروپاشی نظام امیرنشین در سال ۱۹۲۰.",
+        "sourceBookId": "history-9",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-kokand",
@@ -864,7 +1114,7 @@
     "summary": "Дар синфи 9 ҷангҳои Русия бо хонии Қӯқанд, шӯришҳои солҳои 1873–1876 ва барҳам хӯрдани он омадааст.",
     "period": "Асри XIX милодӣ",
     "grade": "9",
-    "sourceBookId": "marifat-402",
+    "sourceBookId": "history-9",
     "sourceSection": "Бобҳои 2–4 — §2–15",
     "keywords": [
       "Қӯқанд",
@@ -893,7 +1143,18 @@
       "خدیارخان"
     ],
     "significance": "Муқовимати шадиди шаҳрвандони Хуҷанду Истаравшан дар баробари лашкари подшоҳии Русия ва ҷангҳои солҳои 1865–1876.",
-    "significancePersian": "دفاع سرسختانه مردم خجند و استروشن در برابر پیشروی ارتش تزاری و پیوند ادبی فرغانه."
+    "significancePersian": "دفاع سرسختانه مردم خجند و استروشن در برابر پیشروی ارتش تزاری و پیوند ادبی فرغانه.",
+    "claimProvenance": [
+      {
+        "claim": "Хонии Қӯқанд — Дар синфи 9 ҷангҳои Русия бо хонии Қӯқанд, шӯришҳои солҳои 1873–1876 ва барҳам х",
+        "claimPersian": "خانات خوقند — حکومت مقتدر در دره فرغانه و بخش‌های شمالی تاجیکستان تا زمان انضمام به روسیه تزار",
+        "sourceBookId": "history-9",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "empire-russian",
@@ -902,7 +1163,7 @@
     "summary": "Китоб таъсиси генерал-губернатории Туркистон, сиёсати мустамликавӣ ва таъсири он ба мулкҳои Осиёи Марказиро меомӯзонад.",
     "period": "Асри XIX – 1917",
     "grade": "9",
-    "sourceBookId": "marifat-402",
+    "sourceBookId": "history-9",
     "sourceSection": "Бобҳои 2–8 — §2–28",
     "keywords": [
       "Туркистон",
@@ -928,7 +1189,18 @@
       "واسیع"
     ],
     "significance": "Шӯриши Восеъ (1885) дар Ховалинг, сохтмони роҳи оҳан, вуруди муносибатҳои капиталистӣ ва пайдоиши фикрҳои навхоҳӣ.",
-    "significancePersian": "قیام دهقانی واسیع در سال ۱۸۸۵، احداث راه‌آهن و ورود نخستین جرقه‌های اندیشه نو به منطقه."
+    "significancePersian": "قیام دهقانی واسیع در سال ۱۸۸۵، احداث راه‌آهن و ورود نخستین جرقه‌های اندیشه نو به منطقه.",
+    "claimProvenance": [
+      {
+        "claim": "Империяи Русия дар Осиёи Марказӣ — Китоб таъсиси генерал-губернатории Туркистон, сиёсати мустамликавӣ ва таъсири он",
+        "claimPersian": "امپراتوری روسیه در آسیای میانه — دوران استعمار تزاری، ایجاد فرمانداری کل ترکستان و دگرگونی ساختارهای اقتصادی منطق",
+        "sourceBookId": "history-9",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "event-tajik-ussr",
@@ -937,7 +1209,7 @@
     "summary": "Китоби синфи 10 сохтори давлати шӯравӣ, тақсимоти миллӣ-маъмурӣ ва гузаштан аз мухторият ба ҷумҳуриро баррасӣ мекунад.",
     "period": "1917–1929",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯъҳои 1–2 — §1–29",
     "keywords": [
       "ҶМШС",
@@ -966,7 +1238,18 @@
       "چنار اماموف"
     ],
     "significance": "Эҳёи давлатдории миллии тоҷикон дар харитаи сиёсии ҷаҳон пас аз беш аз даҳ аср ва бунёди пойтахти нав — Душанбе.",
-    "significancePersian": "احیای موجودیت دولت ملی تاجیکان پس از قرن‌ها، گشایش دانشگاه‌ها و پایه‌گذاری دوشنبه."
+    "significancePersian": "احیای موجودیت دولت ملی تاجیکان پس از قرن‌ها، گشایش دانشگاه‌ها و پایه‌گذاری دوشنبه.",
+    "claimProvenance": [
+      {
+        "claim": "Таъсисёбии ҶМШС ва ҶШС Тоҷикистон — Китоби синфи 10 сохтори давлати шӯравӣ, тақсимоти миллӣ-маъмурӣ ва гузаштан аз м",
+        "claimPersian": "تأسیس جمهوری‌های شوروی تاجیکستان (جمشس و جشس) — احیای شخصیت حقوقی و مرزهای ملی تاجیکستان پس از تقسیم‌بندی‌های ارضی آسیای میانه.",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "event-civil-war",
@@ -975,7 +1258,7 @@
     "summary": "Синфи 10 сабабҳо, оғози ҳаракати зиддишӯравӣ, муқовимат дар Суғд, Бадахшон ва Бухорои Шарқиро пайгирӣ мекунад.",
     "period": "1918–1923",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯи 1 — §8–17",
     "keywords": [
       "ҷанги шаҳрвандӣ",
@@ -1002,7 +1285,18 @@
       "دولت‌مندبیگ"
     ],
     "significance": "Таҳаввулоти пуртазоди сиёсӣ, барҳам хӯрдани сохти кӯҳна ва заминасозӣ барои ташкили аввалин ҷумҳурии мухтори тоҷикон.",
-    "significancePersian": "دگرگونی بنیادین ساختار اجتماعی و پایه‌ریزی نخستین ارکان جمهوری خودمختار تاجیکستان."
+    "significancePersian": "دگرگونی بنیادین ساختار اجتماعی و پایه‌ریزی نخستین ارکان جمهوری خودمختار تاجیکستان.",
+    "claimProvenance": [
+      {
+        "claim": "Ҷанги шаҳрвандӣ дар Тоҷикистон — Синфи 10 сабабҳо, оғози ҳаракати зиддишӯравӣ, муқовимат дар Суғд, Бадахшон ва Бу",
+        "claimPersian": "درگیری‌ها و تحولات پس از انقلاب (۱۹۱۸–۱۹۲۳) — دوران پرآشوب استقرار حکومت جدید شوروی و رویارویی‌های پیچیده سیاسی در بخارای شرقی",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "event-world-war-two",
@@ -1011,7 +1305,7 @@
     "summary": "Китоб иштироки тоҷиконистонӣ дар муҳорибаҳо, ҳаракатҳои партизанӣ, муқовимати зиддифашистӣ ва меҳнати ақибгоҳро меомӯзонад.",
     "period": "1938–1945",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯи 4 — §49–61",
     "keywords": [
       "Ҷанги Дуюми Ҷаҳонӣ",
@@ -1040,7 +1334,18 @@
       "داملا عزیزوف"
     ],
     "significance": "Қаҳрамонии 54 нафар Қаҳрамони Иттифоқи Советӣ аз Тоҷикистон, интиқоли корхонаҳо ба Душанбе ва фидокории ақибгоҳ.",
-    "significancePersian": "اعطای نشان قهرمانی به ۵۴ رزمنده تاجیکستانی، انتقال صنایع به دوشنبه و ایثار مردم پشت جبهه."
+    "significancePersian": "اعطای نشان قهرمانی به ۵۴ رزمنده تاجیکستانی، انتقال صنایع به دوشنبه و ایثار مردم پشت جبهه.",
+    "claimProvenance": [
+      {
+        "claim": "Тоҷикистон дар Ҷанги Дуюми Ҷаҳонӣ — Китоб иштироки тоҷиконистонӣ дар муҳорибаҳо, ҳаракатҳои партизанӣ, муқовимати зи",
+        "claimPersian": "تاجیکستان در جنگ دوم جهانی (۱۹۴۱–۱۹۴۵) — فداکاری بیش از ۳۰۰ هزار دلاور تاجیکستانی در جبهه‌های نبرد ضد فاشیسم و پشتیبانی م",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "event-independence",
@@ -1049,7 +1354,7 @@
     "summary": "Китоби синфи 11 пош хӯрдани ИҶШС, таъсиси Ҷумҳурии соҳибистиқлол, ҷанги шаҳрвандӣ, сулҳ ва ваҳдатро ҳамчун фасли дуюм меорад.",
     "period": "1991 то давраи муосир",
     "grade": "11",
-    "sourceBookId": "marifat-535",
+    "sourceBookId": "history-11",
     "sourceSection": "Фасли дуюм — бобҳои 6–10",
     "keywords": [
       "истиқлол",
@@ -1071,7 +1376,18 @@
       "امامعلی رحمان"
     ],
     "significance": "Истиқлолияти комили давлатӣ, имзои Созишномаи умумии истиқрори сулҳ ва ризоияти миллӣ (1997) ва сохтмони иншооти азими стратегӣ.",
-    "significancePersian": "دستیابی به استقلال کامل، امضای پیمان صلح ملی در سال ۱۹۹۷ و حفظ تمامیت ارضی."
+    "significancePersian": "دستیابی به استقلال کامل، امضای پیمان صلح ملی در سال ۱۹۹۷ و حفظ تمامیت ارضی.",
+    "claimProvenance": [
+      {
+        "claim": "Ташкилёбии Ҷумҳурии соҳибистиқлоли Тоҷикистон — Китоби синфи 11 пош хӯрдани ИҶШС, таъсиси Ҷумҳурии соҳибистиқлол, ҷанги шаҳрванд",
+        "claimPersian": "استقلال دولتی جمهوری تاجیکستان — آغاز دوران نوین حاکمیت ملی، صلح سراسری، وحدت ملی و توسعه مستقل اقتصادی و فرهنگی.",
+        "sourceBookId": "history-11",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-kaiumars",
@@ -1080,14 +1396,25 @@
     "summary": "Дар ривоятҳои китоби синфи 5 ҳамчун нахустин шоҳ ва оғози силсилаи Пешдодиён зикр мешавад.",
     "period": "Пешдодиён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби I — §9",
     "keywords": [
       "Пешдодиён",
       "ривоят"
     ],
-    "titlePersian": "Каюмарс",
-    "summaryPersian": "Дар ривоятҳои китоби синфи 5 ҳамчун нахустин шоҳ ва оғози силсилаи Пешдодиён зикр мешавад."
+    "titlePersian": "کیومرث",
+    "summaryPersian": "در روایات کتاب صنف پنجم به عنوان نخستین پادشاه و آغاز دودمان اساطیری پیشدادیان ذکر می‌شود.",
+    "claimProvenance": [
+      {
+        "claim": "Дар ривоятҳои китоби синфи 5 ҳамчун нахустин шоҳ ва оғози силсилаи Пешдодиён зикр мешавад.",
+        "claimPersian": "در روایات کتاب صنف پنجم به عنوان نخستین پادشاه و آغاز دودمان اساطیری پیشدادیان ذکر می‌شود.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-jamshid",
@@ -1096,14 +1423,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Пешдодиён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Пешдодиён",
       "шоҳ"
     ],
-    "titlePersian": "Ҷамшед",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "جمشید",
+    "summaryPersian": "در کتاب تاریخ صنف پنجم به عنوان یکی از مهم‌ترین پادشاهان تمدن‌ساز تاریخ باستان معرفی می‌شود.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "در کتاب تاریخ صنف پنجم به عنوان یکی از مهم‌ترین پادشاهان تمدن‌ساز تاریخ باستان معرفی می‌شود.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-fereydun",
@@ -1112,14 +1450,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Пешдодиён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Пешдодиён",
       "шоҳ"
     ],
-    "titlePersian": "Фаридун",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "فریدون",
+    "summaryPersian": "در کتاب صنف پنجم در زمره پادشاهان دادگر و پیروز بر ضحاک و بخش‌کننده جهان میان فرزندان یاد می‌شود.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "در کتاب صنف پنجم در زمره پادشاهان دادگر و پیروز بر ضحاک و بخش‌کننده جهان میان فرزندان یاد می‌شود.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-kayqubad",
@@ -1128,14 +1477,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Каёниён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Каёниён",
       "шоҳ"
     ],
-    "titlePersian": "Кайқубод",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "کی‌قباد",
+    "summaryPersian": "بنیان‌گذار سلسله کیانیان (کویان) در روایات اوستایی و تاریخ ملی.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "بنیان‌گذار سلسله کیانیان (کویان) در روایات اوستایی و تاریخ ملی.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-kaykavus",
@@ -1144,14 +1504,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Каёниён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Каёниён",
       "шоҳ"
     ],
-    "titlePersian": "Кайковус",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "کی‌کاووس",
+    "summaryPersian": "از نامدارترین پادشاهان سلسله کیانیان در روایات تاریخ باستان آریانا.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "از نامدارترین پادشاهان سلسله کیانیان در روایات تاریخ باستان آریانا.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-kaykhusraw",
@@ -1160,14 +1531,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Каёниён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Каёниён",
       "шоҳ"
     ],
-    "titlePersian": "Кайхусрав",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "کی‌خسرو",
+    "summaryPersian": "پادشاه دادگر و پیروز کیانی در نبرد با تورانیان در تاریخ ملی.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "پادشاه دادگر و پیروز کیانی در نبرد با تورانیان در تاریخ ملی.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-kaygushtasp",
@@ -1176,14 +1558,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Каёниён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Каёниён",
       "шоҳ"
     ],
-    "titlePersian": "Кайгуштосп",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "کی‌گشتاسپ",
+    "summaryPersian": "پادشاه حامی زرتشت و پذیرنده آیین مزدیسنا در بلخ بر پایه روایات تاریخی.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "پادشاه حامی زرتشت و پذیرنده آیین مزدیسنا در بلخ بر پایه روایات تاریخی.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-cyrus",
@@ -1192,8 +1585,8 @@
     "summary": "Китоби синфи 5 ӯро дар муқаддима дар қатори бунёдкунандагони империяи бузурги ҷаҳонӣ ёд мекунад.",
     "period": "Ҳахоманишиён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
-    "sourceSection": "Муқаддима; Боби IV",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби IV — §41–42",
     "keywords": [
       "Ҳахоманишиён",
       "империя"
@@ -1210,7 +1603,17 @@
       "شاهنشاه بزرگ هخامنشی"
     ],
     "significance": "Муттаҳид сохтани халқҳои ориёӣ, сиёсати таҳаммулпазирии динӣ ва фарҳангӣ ва таъсиси шаҳри Курушкада (Истаравшани имрӯза).",
-    "significancePersian": "بنیان‌گذاری شاهنشاهی هخامنشی، همزیستی مسالمت‌آمیز ملل و پی‌ریزی شهر کوروش‌کده در استروشن."
+    "significancePersian": "بنیان‌گذاری شاهنشاهی هخامنشی، همزیستی مسالمت‌آمیز ملل و پی‌ریزی شهر کوروش‌کده در استروشن.",
+    "claimProvenance": [
+      {
+        "claim": "Куруши Кабир — бунёдгузори давлати Ҳахоманишиён ва нахустин эъломияи ҳуқуқи башар",
+        "claimPersian": "کوروش بزرگ — بنیان‌گذار شاهنشاهی هخامنشی و نخستین منشور حقوق بشر",
+        "sourceBookId": "history-5",
+        "printedPage": 126,
+        "pdfPage": 126,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   },
   {
     "id": "person-arshak",
@@ -1219,14 +1622,24 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Ашкониён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
-    "sourceSection": "Муқаддима; Боби VI",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби VI — §55",
     "keywords": [
       "Ашкониён",
       "Портҳо"
     ],
-    "titlePersian": "Аршак",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "ارشک",
+    "summaryPersian": "بنیان‌گذار شاهنشاهی نیرومند اشکانیان در سرزمین پارت و آسیای میانه.",
+    "claimProvenance": [
+      {
+        "claim": "Аршаки I — асосгузори сулолаи Ашкониён дар Парфия",
+        "claimPersian": "ارشک یکم — بنیان‌گذار سلسله اشکانیان در پارت",
+        "sourceBookId": "history-5",
+        "printedPage": 171,
+        "pdfPage": 171,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   },
   {
     "id": "person-shapur-i",
@@ -1235,14 +1648,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Сосониён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Сосониён",
       "шоҳ"
     ],
-    "titlePersian": "Шопури I",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "شاپور یکم",
+    "summaryPersian": "از بزرگ‌ترین پادشاهان شاهنشاهی ساسانی که در کتاب‌های درسی تاریخ یاد شده است.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "از بزرگ‌ترین پادشاهان شاهنشاهی ساسانی که در کتاب‌های درسی تاریخ یاد شده است.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-kanishka",
@@ -1251,8 +1675,8 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Кӯшониён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
-    "sourceSection": "Муқаддима; Боби VII",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби VII — §61–63",
     "keywords": [
       "Кӯшониён",
       "шоҳ"
@@ -1268,7 +1692,17 @@
       "شاهنشاه بزرگ کوشان"
     ],
     "significance": "Бунёди маъбади машҳури Сурхкӯтал бо катибаи бохтарӣ ва мусоидат ба амнияту тиҷорати Шоҳроҳи Абрешим.",
-    "significancePersian": "بنای معبد سرخ‌کوتل، رواج خط باختری و پشتیبانی از تجارت جهانی میان روم، ایران و چین."
+    "significancePersian": "بنای معبد سرخ‌کوتل، رواج خط باختری و پشتیبانی از تجارت جهانی میان روم، ایران و چین.",
+    "claimProvenance": [
+      {
+        "claim": "Канишкаи Кабир — қудратмандтарин шоҳаншоҳи Кушониён, тақвими кушонӣ ва ҷаласаи буддоиён",
+        "claimPersian": "کانیشکای بزرگ — مقتدرترین شاهنشاه کوشانی، تقویم کوشانی و مجمع بودایی",
+        "sourceBookId": "history-5",
+        "printedPage": 191,
+        "pdfPage": 191,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   },
   {
     "id": "person-kadphises",
@@ -1277,14 +1711,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Кӯшониён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима; Боби VII",
     "keywords": [
       "Кӯшониён",
       "шоҳ"
     ],
-    "titlePersian": "Кадфиз",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "کادفیزس",
+    "summaryPersian": "از پادشاهان بزرگ و بنیان‌گذاران امپراتوری کوشانیان در تاریخ باستان.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "از پادشاهان بزرگ و بنیان‌گذاران امپراتوری کوشانیان در تاریخ باستان.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-akhshunvar",
@@ -1293,14 +1738,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Ҳайтолиён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Ҳайтолиён",
       "шоҳ"
     ],
-    "titlePersian": "Ахушнавоз",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "اخشنوار",
+    "summaryPersian": "از شاهان و سرداران نیرومند هفتالیان (خیونیان) در آسیای میانه.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "از شاهان و سرداران نیرومند هفتالیان (خیونیان) در آسیای میانه.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-khosrow-parviz",
@@ -1309,14 +1765,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Сосониён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Сосониён",
       "шоҳ"
     ],
-    "titlePersian": "Хусрави Парвиз",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "خسرو پرویز",
+    "summaryPersian": "از پادشاهان نامدار اواخر عصر ساسانیان پیش از گسترش اسلام.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "از پادشاهان نامدار اواخر عصر ساسانیان پیش از گسترش اسلام.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-abdallah-tahir",
@@ -1325,14 +1792,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Тоҳириён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Тоҳириён",
       "Хуросон"
     ],
-    "titlePersian": "Абдуллоҳи Тоҳир",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "عبدالله بن طاهر",
+    "summaryPersian": "از نامدارترین حاکمان سلسله طاهریان و گسترش‌دهنده دانش و فرهنگ در خراسان.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "از نامدارترین حاکمان سلسله طاهریان و گسترش‌دهنده دانش و فرهنگ در خراسان.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-yaqub-layth",
@@ -1341,14 +1819,25 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Саффориён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Саффориён",
       "Саффориҳо"
     ],
-    "titlePersian": "Яъқуби Лайс",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад."
+    "titlePersian": "یعقوب لیث صفاری",
+    "summaryPersian": "بنیان‌گذار سلسله صفاریان و نخستین احیاگر زبان و ادب پارسی پس از تسلط اعراب.",
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шахсиятҳои муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "بنیان‌گذار سلسله صفاریان و نخستین احیاگر زبان و ادب پارسی پس از تسلط اعراب.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-nasr-ii",
@@ -1357,16 +1846,27 @@
     "summary": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
     "period": "Сомониён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Муқаддима",
     "keywords": [
       "Сомониён",
       "шоҳ"
     ],
-    "titlePersian": "Насри II",
-    "summaryPersian": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+    "titlePersian": "نصر دوم سامانی",
+    "summaryPersian": "امیر نامدار سامانی که روزگارش عصر زرین دانش، فرهنگ و ادب با حضور رودکی و بلعمی بود.",
     "relatedAuthorIds": [
       "rudaki"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Дар муқаддимаи китоби синфи 5 дар қатори шоҳони муҳими таърихи халқи тоҷик номбар мешавад.",
+        "claimPersian": "امیر نامدار سامانی که روزگارش عصر زرین دانش، فرهنگ و ادب با حضور رودکی و بلعمی بود.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
     ]
   },
   {
@@ -1376,7 +1876,7 @@
     "summary": "Китоби синфи 5 пайдоиши дини зардуштӣ, Авесто ва русуми ориёиро дар замони Каёниён шарҳ медиҳад.",
     "period": "Замони Каёниён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби III — §25–30",
     "keywords": [
       "Авесто",
@@ -1393,7 +1893,18 @@
       "پیامبر و فیلسوف آریایی"
     ],
     "significance": "Оини яздонпарастӣ, нахустин фалсафаи ахлоқии 'Гуфтори нек, кирдори нек, пиндори нек' ва китоби муқаддаси Авесто.",
-    "significancePersian": "پایه‌گذاری فلسفه اخلاقی «پندار نیک، گفتار نیک، کردار نیک» و سرایش گاهان."
+    "significancePersian": "پایه‌گذاری فلسفه اخلاقی «پندار نیک، گفتار نیک، کردار نیک» و سرایش گاهان.",
+    "claimProvenance": [
+      {
+        "claim": "Китоби синфи 5 пайдоиши дини зардуштӣ, Авесто ва русуми ориёиро дар замони Каёниён шарҳ медиҳад.",
+        "claimPersian": "پیامبر باستان آریایی و سراینده گاهان در اوستا با شعار پندار نیک، گفتار نیک و کردار نیک.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-darius",
@@ -1402,7 +1913,7 @@
     "summary": "Дар бахши Ҳахоманишиён ҳамчун шоҳи бузург ва шахсияти марказии давлатдорӣ ва ҷангҳо бо Юнониён омадааст.",
     "period": "Ҳахоманишиён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби IV — §41–44",
     "keywords": [
       "Ҳахоманишиён",
@@ -1420,7 +1931,18 @@
       "شاهنشاه هخامنشی و پایه‌گذار دیوان نوین"
     ],
     "significance": "Катибаи безаволи Бесутун, сохтмони шаҳри Тахти Ҷамшед, тақсимоти империя ба 20 сотрапӣ ва бунёди почтаи давлатӣ (чопор).",
-    "significancePersian": "پدید آوردن سنگ‌نبشته بیستون، بنای کاخ‌های پرسپولیس و ایجاد شبکه سراسری چاپار و نامه‌رسانی."
+    "significancePersian": "پدید آوردن سنگ‌نبشته بیستون، بنای کاخ‌های پرسپولیس و ایجاد شبکه سراسری چاپار و نامه‌رسانی.",
+    "claimProvenance": [
+      {
+        "claim": "Дар бахши Ҳахоманишиён ҳамчун шоҳи бузург ва шахсияти марказии давлатдорӣ ва ҷангҳо бо Юнониён омадааст.",
+        "claimPersian": "بزرگ‌ترین سازمان‌دهنده شاهنشاهی هخامنشی، پدیدآورنده کتیبه جهانی بیستون و ضرب‌کننده سکه دریک.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-spitamen",
@@ -1429,8 +1951,8 @@
     "summary": "Синфи 5 муборизаи Спитаменро бар зидди Искандари Мақдунӣ дар Ориёнои шарқӣ ҳамчун муқовимати муҳим меорад.",
     "period": "Асри IV то милод",
     "grade": "5",
-    "sourceBookId": "marifat-462",
-    "sourceSection": "Боби V — §49–50",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби V — §50",
     "keywords": [
       "Искандар",
       "Суғд",
@@ -1448,7 +1970,17 @@
       "فرمانده سغدی و پیشوای پایداری ملی"
     ],
     "significance": "Муқовимати қаҳрамонона бар зидди лашкари шикастнопазири Искандари Мақдунӣ дар Самарқанду Суғд ва дифоъ аз озодии Ватан.",
-    "significancePersian": "رهبری قیام آزادی‌بخش سغدیان و باختریان در برابر اسکندر و دفاع از میهن."
+    "significancePersian": "رهبری قیام آزادی‌بخش سغدیان و باختریان در برابر اسکندر و دفاع از میهن.",
+    "claimProvenance": [
+      {
+        "claim": "Спитамен — пешвои миллии мардуми Суғду Бохтар дар мубориза бар зидди истилогарони юнону мақдунӣ",
+        "claimPersian": "اسپیتامنس — پیشوای ملی سغدیان و باختریان در مبارزه علیه سپاه اسکندر",
+        "sourceBookId": "history-5",
+        "printedPage": 155,
+        "pdfPage": 155,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   },
   {
     "id": "person-evsen",
@@ -1457,7 +1989,7 @@
     "summary": "Дар матни синфи 6 номи «Евсенҳо» дар баробари Хиёниён омада, ба Кушониён нисбат дода мешавад. Ин ҳамон номи наздик ба «Yusen» аст, ки бояд дар барномаи шумо ҷудо ва бо ҳамин шарҳи манбаъӣ нишон дода шавад.",
     "period": "Асрҳои IV–V милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби III — §14",
     "keywords": [
       "Евсенҳо",
@@ -1465,8 +1997,19 @@
       "Кушониён",
       "Хиёниён"
     ],
-    "titlePersian": "Евсенҳо (Кушониён)",
-    "summaryPersian": "Дар матни синфи 6 номи «Евсенҳо» дар баробари Хиёниён омада, ба Кушониён нисбат дода мешавад. Ин ҳамон номи наздик ба «Yusen» аст, ки бояд дар барномаи шумо ҷудо ва бо ҳамин шарҳи манбаъӣ нишон дода шавад."
+    "titlePersian": "یوسن‌ها (کوشانیان)",
+    "summaryPersian": "در کتاب تاریخ صنف ششم نام یوسن‌ها در پیوند با شاخه‌های کوشانیان ذکر شده است.",
+    "claimProvenance": [
+      {
+        "claim": "Евсенҳо (Кушониён) — Дар матни синфи 6 номи «Евсенҳо» дар баробари Хиёниён омада, ба Кушониён нисбат ",
+        "claimPersian": "یوسن‌ها (کوشانیان) — در کتاب تاریخ صنف ششم نام یوسن‌ها در پیوند با شاخه‌های کوشانیان ذکر شده است.",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-ardashir",
@@ -1475,14 +2018,25 @@
     "summary": "Китоби синфи 6 ӯро бо таъсиси давлати Сосониён ва идомаи суннати давлатдории пешини тоҷикон–эрониён мепайвандад.",
     "period": "Асри III милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби I — §1",
     "keywords": [
       "Сосониён",
       "Порс"
     ],
-    "titlePersian": "Ардашери Бобакон",
-    "summaryPersian": "Китоби синфи 6 ӯро бо таъсиси давлати Сосониён ва идомаи суннати давлатдории пешини тоҷикон–эрониён мепайвандад."
+    "titlePersian": "اردشیر بابکان",
+    "summaryPersian": "بنیان‌گذار سلسله شاهنشاهی ساسانیان و احیاگر وحدت و سنن کهن ملی.",
+    "claimProvenance": [
+      {
+        "claim": "Ардашери Бобакон — Китоби синфи 6 ӯро бо таъсиси давлати Сосониён ва идомаи суннати давлатдории пеш",
+        "claimPersian": "اردشیر بابکان — بنیان‌گذار سلسله شاهنشاهی ساسانیان و احیاگر وحدت و سنن کهن ملی.",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-anushirvan",
@@ -1491,7 +2045,7 @@
     "summary": "Дар фасли Сосониён ҳамчун шоҳ, ислоҳотгар ва пуштибони фарҳанг, илм ва идоракунии давлат шарҳ дода мешавад.",
     "period": "531–579 милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби II — §5–12",
     "keywords": [
       "Сосониён",
@@ -1510,7 +2064,18 @@
       "بزرگمهر بختگان"
     ],
     "significance": "Ислоҳоти одилонаи андоз, таъсиси донишгоҳи Гундишопур, овардани 'Калила ва Димна' аз Ҳиндустон ва бозии шатранҷ ба дарбор.",
-    "significancePersian": "اصلاحات مالیاتی دادگرانه، شکوفایی دانشگاه جندی‌شاپور و ترجمه کلیله و دمنه به پارسی میانه."
+    "significancePersian": "اصلاحات مالیاتی دادگرانه، شکوفایی دانشگاه جندی‌شاپور و ترجمه کلیله و دمنه به پارسی میانه.",
+    "claimProvenance": [
+      {
+        "claim": "Хусрави Анӯшервон — Дар фасли Сосониён ҳамчун шоҳ, ислоҳотгар ва пуштибони фарҳанг, илм ва идоракуни",
+        "claimPersian": "خسرو یکم انوشیروان — شاهنشاه دادگر ساسانی، بنیان‌گذار دانشگاه گندی‌شاپور و آورنده کلیله و دمنه به زبا",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-devashtich",
@@ -1519,7 +2084,7 @@
     "summary": "Китоби синфи 6 шӯриш, бойгонии Деваштич ва аҳаммияти таърихии онро дар муборизаи тоҷикон бар зидди истилогарони араб меомӯзонад.",
     "period": "Солҳои 720–722 милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби IX — §53–55",
     "keywords": [
       "Суғд",
@@ -1538,7 +2103,18 @@
       "فرمانروای پنجکنت و اخشید سغد"
     ],
     "significance": "Раҳбарии мубориза бар зидди истилогарони араб ва маҳфуз доштани бойгонии ҳуҷҷатҳои суғдии Қалъаи Муғ.",
-    "significancePersian": "ایستادگی در برابر سپاه بنی‌امیه و به یادگار گذاشتن اسناد خطی سغدی در کوه مغ."
+    "significancePersian": "ایستادگی در برابر سپاه بنی‌امیه و به یادگار گذاشتن اسناد خطی سغدی در کوه مغ.",
+    "claimProvenance": [
+      {
+        "claim": "Деваштич — Китоби синфи 6 шӯриш, бойгонии Деваштич ва аҳаммияти таърихии онро дар муборизаи",
+        "claimPersian": "دیواشتیچ — فرمانروای پنجکنت و اخشید سغد، رهبر جنبش مقاومت مردمی در برابر اشغالگران اموی.",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-abu-muslim",
@@ -1547,7 +2123,7 @@
     "summary": "Дар оғози китоби синфи 7 ҳамчун раҳбари қиёме бар зидди Умавиён ва шахсияти таъсиргузор дар озодшавии Хуросон омадааст.",
     "period": "Асри VIII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби I — §1–5",
     "keywords": [
       "Хуросон",
@@ -1566,7 +2142,18 @@
       "فرمانده سیاهجامگان و سرنگون‌کننده امویان"
     ],
     "significance": "Шикасти ҳокимияти ситамкори Умавиён ва боло бурдани мақоми сиёсию идории тоҷикону мардуми Хуросон дар хилофат.",
-    "significancePersian": "رهبری جنبش سیاهجامگان، پایان حکومت امویان و تثبیت نقش ایرانیان در دستگاه خلافت."
+    "significancePersian": "رهبری جنبش سیاهجامگان، پایان حکومت امویان و تثبیت نقش ایرانیان در دستگاه خلافت.",
+    "claimProvenance": [
+      {
+        "claim": "Абӯмуслими Хуросонӣ — Дар оғози китоби синфи 7 ҳамчун раҳбари қиёме бар зидди Умавиён ва шахсияти таъс",
+        "claimPersian": "ابومسلم خراسانی — پیشوای قیام آزادی‌خواهانه سیاهجامگان در خراسان و براندازنده خلافت اموی.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-ismail-samani",
@@ -1575,7 +2162,7 @@
     "summary": "Синфи 7 ӯро дар маркази таъсиси давлати Сомониён ва ташаккули давлатдории тоҷикон ҷой медиҳад.",
     "period": "Асри IX–X милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби II — §8–14",
     "keywords": [
       "Сомониён",
@@ -1593,7 +2180,18 @@
       "امیر عادل و دانشمند سامانی"
     ],
     "significance": "Муттаҳид намудани Мовароуннаҳру Хуросон, сохтани 'девори Бухоро' бо ҷисми худ ('То зиндаам, бораи вилояти Бухоро манам'), пуштибонӣ аз илму забони тоҷикӣ.",
-    "significancePersian": "تشکیل دولت متمرکز، پشتیبانی بی‌دریغ از زبان فارسی، آرامش و شکوفایی بخارا و فرارود."
+    "significancePersian": "تشکیل دولت متمرکز، پشتیبانی بی‌دریغ از زبان فارسی، آرامش و شکوفایی بخارا و فرارود.",
+    "claimProvenance": [
+      {
+        "claim": "Исмоили Сомонӣ — Синфи 7 ӯро дар маркази таъсиси давлати Сомониён ва ташаккули давлатдории тоҷико",
+        "claimPersian": "امیر اسماعیل سامانی — بنیان‌گذار دولت متمرکز سامانیان، نماد دادگری، تدبیر کشورداری و هویت ملی تاجیکان.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-temurmalik",
@@ -1602,7 +2200,7 @@
     "summary": "Китоби синфи 7 ӯро сарвари мудофиаи Хуҷанд ва қаҳрамони мубориза бар зидди истилогарони муғул меномад.",
     "period": "Асри XIII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби IV — §30–31",
     "keywords": [
       "Хуҷанд",
@@ -1621,7 +2219,18 @@
       "قهرمان ملی و نماد پایداری میهن"
     ],
     "significance": "Дифои бемисли қалъаи ҷазираи Хуҷанд дар рӯди Сирдарё ва корнамоии беназир дар набарди нобаробар бо Чингизхон.",
-    "significancePersian": "دفاع حماسی از خجند و نبرد در بستر سیردریا در برابر هجوم چنگیزخان مغول."
+    "significancePersian": "دفاع حماسی از خجند و نبرد در بستر سیردریا در برابر هجوم چنگیزخان مغول.",
+    "claimProvenance": [
+      {
+        "claim": "Темурмалик — Китоби синфи 7 ӯро сарвари мудофиаи Хуҷанд ва қаҳрамони мубориза бар зидди истил",
+        "claimPersian": "تیمورملک — والی خجند و نماد جاودان دلیری، ازخودگذشتگی و ایستادگی در برابر سپاه مغول.",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-jaloliddin",
@@ -1630,14 +2239,25 @@
     "summary": "Дар синфи 7 ҳамчун шахсияти муқовимати қаҳрамононаи халқҳои Осиёи Марказӣ ба муғулҳо оварда шудааст.",
     "period": "Асри XIII милодӣ",
     "grade": "7",
-    "sourceBookId": "marifat-486",
+    "sourceBookId": "history-7",
     "sourceSection": "Боби IV — §32",
     "keywords": [
       "Хоразмшоҳ",
       "муғулҳо"
     ],
-    "titlePersian": "Ҷалолуддини Хоразмшоҳ",
-    "summaryPersian": "Дар синфи 7 ҳамчун шахсияти муқовимати қаҳрамононаи халқҳои Осиёи Марказӣ ба муғулҳо оварда шудааст."
+    "titlePersian": "جلال‌الدین خوارزمشاه",
+    "summaryPersian": "سردار و پادشاه دلاور که در برابر هجوم چنگیزخان و سپاهیان مغول تا پای جان مقاومت کرد.",
+    "claimProvenance": [
+      {
+        "claim": "Ҷалолуддини Хоразмшоҳ — Дар синфи 7 ҳамчун шахсияти муқовимати қаҳрамононаи халқҳои Осиёи Марказӣ ба муғ",
+        "claimPersian": "جلال‌الدین خوارزمشاه — سردار و پادشاه دلاور که در برابر هجوم چنگیزخان و سپاهیان مغول تا پای جان مقاومت ",
+        "sourceBookId": "history-7",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-ayni",
@@ -1646,7 +2266,7 @@
     "summary": "Китоби синфҳои 9–11 ӯро ҳамчун адиб ва муаллифи асарҳое дар бораи амирони Манғития, Бухоро ва давраи ҷангӣ ёд мекунад.",
     "period": "Охири асри XIX – асри XX",
     "grade": "9",
-    "sourceBookId": "marifat-402",
+    "sourceBookId": "history-9",
     "sourceSection": "Боби 9 — §29–33",
     "keywords": [
       "Айнӣ",
@@ -1666,7 +2286,18 @@
       "نویسنده بزرگ، دانشمند و قهرمان تاجیکستان"
     ],
     "significance": "Таълифи 'Намунаи адабиёти тоҷик' (1926) барои исботи ҳастии халқи тоҷик ва навиштани романҳои бунёдии 'Одина', 'Дохунда' ва 'Ғуломон'.",
-    "significancePersian": "تألیف کتاب ماندگار «نمونه ادبیات تاجیک» برای اثبات تاریخی ملت تاجیک و پایه‌گذاری نثر نوین."
+    "significancePersian": "تألیف کتاب ماندگار «نمونه ادبیات تاجیک» برای اثبات تاریخی ملت تاجیک و پایه‌گذاری نثر نوین.",
+    "claimProvenance": [
+      {
+        "claim": "Садриддин Айнӣ — Китоби синфҳои 9–11 ӯро ҳамчун адиб ва муаллифи асарҳое дар бораи амирони Манғит",
+        "claimPersian": "صدرالدین عینی — پدر ادبیات نوین تاجیک، قهرمان تاجیکستان و احیاگر تاریخ و هویت ملی معاصر.",
+        "sourceBookId": "history-9",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-ibrohim-bek",
@@ -1675,14 +2306,25 @@
     "summary": "Дар синфи 10 ҳамчун яке аз сарварони дастаҳои зиддишӯравӣ дар Бухорои Шарқӣ ва мавзӯи муборизаҳои солҳои 1920 зикр мешавад.",
     "period": "Солҳои 1920-ум",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯи 1–2 — §13–27",
     "keywords": [
       "Бухорои Шарқӣ",
       "босмачигарӣ"
     ],
-    "titlePersian": "Иброҳимбек",
-    "summaryPersian": "Дар синфи 10 ҳамчун яке аз сарварони дастаҳои зиддишӯравӣ дар Бухорои Шарқӣ ва мавзӯи муборизаҳои солҳои 1920 зикр мешавад."
+    "titlePersian": "ابراهیم‌بیک",
+    "summaryPersian": "از فرماندهان دسته‌های مقاومت در برابر نیروهای شوروی در بخارای شرقی در دهه ۱۹۲۰.",
+    "claimProvenance": [
+      {
+        "claim": "Иброҳимбек — Дар синфи 10 ҳамчун яке аз сарварони дастаҳои зиддишӯравӣ дар Бухорои Шарқӣ ва м",
+        "claimPersian": "ابراهیم‌بیک — از فرماندهان دسته‌های مقاومت در برابر نیروهای شوروی در بخارای شرقی در دهه ۱۹۲۰.",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "person-emomali-rahmon",
@@ -1691,15 +2333,26 @@
     "summary": "Дар китоби синфи 11 дар бахши ташаккули давлати соҳибистиқлол ва рӯйдодҳои сулҳу ваҳдат зикр мешавад.",
     "period": "Тоҷикистони соҳибистиқлол",
     "grade": "11",
-    "sourceBookId": "marifat-535",
+    "sourceBookId": "history-11",
     "sourceSection": "Фасли дуюм — бобҳои 6–10",
     "keywords": [
       "истиқлол",
       "сулҳ",
       "ваҳдат"
     ],
-    "titlePersian": "Эмомалӣ Раҳмон",
-    "summaryPersian": "Дар китоби синфи 11 дар бахши ташаккули давлати соҳибистиқлол ва рӯйдодҳои сулҳу ваҳдат зикр мешавад."
+    "titlePersian": "امام‌علی رحمان",
+    "summaryPersian": "پیشوای ملت و رئیس‌جمهور جمهوری تاجیکستان، معمار صلح و وحدت ملی در دوران استقلال.",
+    "claimProvenance": [
+      {
+        "claim": "Эмомалӣ Раҳмон — Дар китоби синфи 11 дар бахши ташаккули давлати соҳибистиқлол ва рӯйдодҳои сулҳу",
+        "claimPersian": "امام‌علی رحمان — پیشوای ملت و رئیس‌جمهور جمهوری تاجیکستان، معمار صلح و وحدت ملی در دوران استقلال.",
+        "sourceBookId": "history-11",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "poem-shahnameh",
@@ -1708,15 +2361,26 @@
     "summary": "Китоби синфи 5 байтҳои Шоҳномаро ҳангоми шарҳи Каюмарс, Ҳушанг ва Заҳҳок ҳамчун ҳамосаи ривоятҳои таърихӣ меорад.",
     "period": "Ҳамосаи миллӣ",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби I — §3–9",
     "keywords": [
       "Фирдавсӣ",
       "Шоҳнома",
       "Ҳушанг"
     ],
-    "titlePersian": "Шоҳнома — Фирдавсӣ",
-    "summaryPersian": "Китоби синфи 5 байтҳои Шоҳномаро ҳангоми шарҳи Каюмарс, Ҳушанг ва Заҳҳок ҳамчун ҳамосаи ривоятҳои таърихӣ меорад."
+    "titlePersian": "شاهنامه — فردوسی",
+    "summaryPersian": "کتاب صنف پنجم ابیات شاهنامه فردوسی را هنگام شرح کیومرث، هوشنگ و جمشید به عنوان حماسه روایات تاریخی می‌آورد.",
+    "claimProvenance": [
+      {
+        "claim": "Китоби синфи 5 байтҳои Шоҳномаро ҳангоми шарҳи Каюмарс, Ҳушанг ва Заҳҳок ҳамчун ҳамосаи ривоятҳои таърихӣ меорад.",
+        "claimPersian": "کتاب صنف پنجم ابیات شاهنامه فردوسی را هنگام شرح کیومرث، هوشنگ و جمشید به عنوان حماسه روایات تاریخی می‌آورد.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "poem-avesta",
@@ -1725,15 +2389,26 @@
     "summary": "Дар синфи 5 Авесто ҳамчун маҷмӯаи матнҳои динӣ, фолклорӣ, адабӣ ва таърихии ориёӣ шарҳ дода мешавад.",
     "period": "Ҳазораҳои пеш аз милод",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби III — §25–30",
     "keywords": [
       "Авесто",
       "готҳо",
       "ориёӣ"
     ],
-    "titlePersian": "Авесто — сурудҳо ва готҳо",
-    "summaryPersian": "Дар синфи 5 Авесто ҳамчун маҷмӯаи матнҳои динӣ, фолклорӣ, адабӣ ва таърихии ориёӣ шарҳ дода мешавад."
+    "titlePersian": "اوستا — سرودها و گاهان",
+    "summaryPersian": "در تاریخ صنف پنجم اوستا به عنوان کهن‌ترین یادگار مذهبی، ادبی و تاریخی نیاکان آریایی معرفی می‌شود.",
+    "claimProvenance": [
+      {
+        "claim": "Дар синфи 5 Авесто ҳамчун маҷмӯаи матнҳои динӣ, фолклорӣ, адабӣ ва таърихии ориёӣ шарҳ дода мешавад.",
+        "claimPersian": "در تاریخ صنف پنجم اوستا به عنوان کهن‌ترین یادگار مذهبی، ادبی و تاریخی نیاکان آریایی معرفی می‌شود.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "poem-khalq-song",
@@ -1742,15 +2417,26 @@
     "summary": "Китоби синфи 6 ин мисраи кӯтоҳро ҳамчун шаҳодати забони бохтариёни пеш аз истилои араб меорад.",
     "period": "Пеш аз истилои арабҳо",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби IV — §29",
     "keywords": [
       "Хутталон",
       "шеър",
       "забон"
     ],
-    "titlePersian": "«Аз Хутталон омадия…»",
-    "summaryPersian": "Китоби синфи 6 ин мисраи кӯтоҳро ҳамчун шаҳодати забони бохтариёни пеш аз истилои араб меорад."
+    "titlePersian": "«از ختلان آمدیه…»",
+    "summaryPersian": "کتاب صنف ششم این مصراع کهن را به عنوان نمونه‌ای از شعر و زبان باختریان پیش از اسلام ذکر می‌کند.",
+    "claimProvenance": [
+      {
+        "claim": "«Аз Хутталон омадия…» — Китоби синфи 6 ин мисраи кӯтоҳро ҳамчун шаҳодати забони бохтариёни пеш аз истило",
+        "claimPersian": "«از ختلان آمدیه…» — کتاب صنف ششم این مصراع کهن را به عنوان نمونه‌ای از شعر و زبان باختریان پیش از اس",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "rudaki_buyi_juyi_muliyon_grade5_2017_p54",
@@ -1759,17 +2445,28 @@
     "summary": "Синфи 6 мегӯяд, ки асари суғдии «Панчатантра» баъд ба воситаи устод Рӯдакӣ бо номи «Калила ва Димна» ба шеър гардонида шуд.",
     "period": "Асри IX–X милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби IV — §29",
     "keywords": [
       "Рӯдакӣ",
       "Калила ва Димна",
       "Панчатантра"
     ],
-    "titlePersian": "Калила ва Димна — Рӯдакӣ",
-    "summaryPersian": "Синфи 6 мегӯяд, ки асари суғдии «Панчатантра» баъд ба воситаи устод Рӯдакӣ бо номи «Калила ва Димна» ба шеър гардонида шуд.",
+    "titlePersian": "کلیله و دمنه — رودکی",
+    "summaryPersian": "کتاب تاریخ اشاره می‌کند که منظومه تمثیلی کلیله و دمنه توسط استاد رودکی در دربار سامانیان به نظم کشیده شد.",
     "relatedAuthorIds": [
       "rudaki"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Калила ва Димна — Рӯдакӣ — Синфи 6 мегӯяд, ки асари суғдии «Панчатантра» баъд ба воситаи устод Рӯдакӣ бо но",
+        "claimPersian": "کلیله و دمنه — رودکی — کتاب تاریخ اشاره می‌کند که منظومه تمثیلی کلیله و دمنه توسط استاد رودکی در دربار ",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
     ]
   },
   {
@@ -1779,15 +2476,26 @@
     "summary": "Китоби синфи 6 Хуррамии Самарқандиро аз намояндагони шуубия ва шоири танқидгари зулму бефарҳангӣ ёд мекунад.",
     "period": "Асрҳои VIII–IX милодӣ",
     "grade": "6",
-    "sourceBookId": "marifat-337",
+    "sourceBookId": "history-6",
     "sourceSection": "Боби X — §62",
     "keywords": [
       "шуубия",
       "Самарқанд",
       "шоир"
     ],
-    "titlePersian": "Шеъри Хуррамии Самарқандӣ",
-    "summaryPersian": "Китоби синфи 6 Хуррамии Самарқандиро аз намояндагони шуубия ва шоири танқидгари зулму бефарҳангӣ ёд мекунад."
+    "titlePersian": "شعر خرمی سمرقندی",
+    "summaryPersian": "کتاب تاریخ صنف ششم خرمی سمرقندی را از شاعران نهضت شعوبیه و منتقد ستم امویان یاد می‌کند.",
+    "claimProvenance": [
+      {
+        "claim": "Шеъри Хуррамии Самарқандӣ — Китоби синфи 6 Хуррамии Самарқандиро аз намояндагони шуубия ва шоири танқидгари ",
+        "claimPersian": "شعر خرمی سمرقندی — کتاب تاریخ صنف ششم خرمی سمرقندی را از شاعران نهضت شعوبیه و منتقد ستم امویان یاد ",
+        "sourceBookId": "history-6",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "poem-ayn-temurmalik",
@@ -1796,15 +2504,26 @@
     "summary": "Дар китоби синфи 10 ин асар дар қатори осори маъруфи адабиёти давраи ҷангӣ зикр шудааст.",
     "period": "Адабиёти солҳои ҷанг",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯи 4 — §61",
     "keywords": [
       "Айнӣ",
       "Темурмалик",
       "достон"
     ],
-    "titlePersian": "«Қаҳрамони халқи тоҷик Темурмалик» — С. Айнӣ",
-    "summaryPersian": "Дар китоби синфи 10 ин асар дар қатори осори маъруфи адабиёти давраи ҷангӣ зикр шудааст."
+    "titlePersian": "«قهرمان خلق تاجیک تیمورملک» — ص. عینی",
+    "summaryPersian": "در کتاب تاریخ صنف دهم این اثر ماندگار صدرالدین عینی در ردیف آثار میهن‌دوستانه ثبت شده است.",
+    "claimProvenance": [
+      {
+        "claim": "«Қаҳрамони халқи тоҷик Темурмалик» — С. Айнӣ — Дар китоби синфи 10 ин асар дар қатори осори маъруфи адабиёти давраи ҷангӣ зикр ",
+        "claimPersian": "«قهرمان خلق تاجیک تیمورملک» — ص. عینی — در کتاب تاریخ صنف دهم این اثر ماندگار صدرالدین عینی در ردیف آثار میهن‌دوستانه ثب",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "poem-ayn-muqanna",
@@ -1813,15 +2532,26 @@
     "summary": "Синфи 10 онро дар қатори асарҳои таърихию ватандӯстонаи адибони тоҷик дар солҳои Ҷанги Дуюми Ҷаҳонӣ меорад.",
     "period": "Адабиёти солҳои ҷанг",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯи 4 — §61",
     "keywords": [
       "Айнӣ",
       "Муқаннаъ",
       "достон"
     ],
-    "titlePersian": "«Исёни Муқаннаъ» — С. Айнӣ",
-    "summaryPersian": "Синфи 10 онро дар қатори асарҳои таърихию ватандӯстонаи адибони тоҷик дар солҳои Ҷанги Дуюми Ҷаҳонӣ меорад."
+    "titlePersian": "«عصیان مقنع» — ص. عینی",
+    "summaryPersian": "اثر تاریخی و ارزشمند صدرالدین عینی درباره مقاومت استقلال‌طلبانه مردم ماوراءالنهر.",
+    "claimProvenance": [
+      {
+        "claim": "«Исёни Муқаннаъ» — С. Айнӣ — Синфи 10 онро дар қатори асарҳои таърихию ватандӯстонаи адибони тоҷик дар солҳои",
+        "claimPersian": "«عصیان مقنع» — ص. عینی — اثر تاریخی و ارزشمند صدرالدین عینی درباره مقاومت استقلال‌طلبانه مردم ماوراءالنهر",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "poem-lahuti-puli-vakhsh",
@@ -1830,15 +2560,26 @@
     "summary": "Китоби синфи 10 ин асарро дар рӯйхати осори адабии солҳои 1930 зикр мекунад.",
     "period": "Солҳои 1930",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯи 3 — §45–46",
     "keywords": [
       "Лоҳутӣ",
       "Пули Вахш",
       "шеър"
     ],
-    "titlePersian": "«Пули Вахш» — Абулқосим Лоҳутӣ",
-    "summaryPersian": "Китоби синфи 10 ин асарро дар рӯйхати осори адабии солҳои 1930 зикр мекунад."
+    "titlePersian": "«پل وخش» — ابوالقاسم لاهوتی",
+    "summaryPersian": "کتاب درسی این شعر معروف ابوالقاسم لاهوتی را نمونه‌ای از ادبیات دوران نوسازی و سازندگی می‌داند.",
+    "claimProvenance": [
+      {
+        "claim": "«Пули Вахш» — Абулқосим Лоҳутӣ — Китоби синфи 10 ин асарро дар рӯйхати осори адабии солҳои 1930 зикр мекунад.",
+        "claimPersian": "«پل وخش» — ابوالقاسم لاهوتی — کتاب درسی این شعر معروف ابوالقاسم لاهوتی را نمونه‌ای از ادبیات دوران نوسازی و سا",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "poem-tursunzoda-pisari-vatan",
@@ -1847,14 +2588,25 @@
     "summary": "Дар синфи 10 ҳамчун яке аз асарҳои машҳури адабиёти тоҷик дар давраи ҷангӣ номбар мешавад.",
     "period": "Солҳои Ҷанги Дуюми Ҷаҳонӣ",
     "grade": "10",
-    "sourceBookId": "marifat-409",
+    "sourceBookId": "history-10",
     "sourceSection": "Мавзӯи 4 — §61",
     "keywords": [
       "Турсунзода",
       "Писари Ватан"
     ],
-    "titlePersian": "«Писари Ватан» — Мирзо Турсунзода",
-    "summaryPersian": "Дар синфи 10 ҳамчун яке аз асарҳои машҳури адабиёти тоҷик дар давраи ҷангӣ номбар мешавад."
+    "titlePersian": "«پسر وطن» — میرزا تورسون‌زاده",
+    "summaryPersian": "از ماندگارترین اشعار میهن‌پرستانه میرزا تورسون‌زاده در دوران جنگ جهانی دوم.",
+    "claimProvenance": [
+      {
+        "claim": "«Писари Ватан» — Мирзо Турсунзода — Дар синфи 10 ҳамчун яке аз асарҳои машҳури адабиёти тоҷик дар давраи ҷангӣ номба",
+        "claimPersian": "«پسر وطن» — میرزا تورسون‌زاده — از ماندگارترین اشعار میهن‌پرستانه میرزا تورسون‌زاده در دوران جنگ جهانی دوم.",
+        "sourceBookId": "history-10",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "oral-peshdodiyan",
@@ -1863,14 +2615,25 @@
     "summary": "Барои ҷудо кардани ривоят аз таърихи санадӣ: китоби синфи 5 Пешдодиёнро «шоҳони ривоятӣ» меномад ва онро дар бахши алоҳида шарҳ медиҳад.",
     "period": "Қабл аз таърихи хаттӣ",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби I — §9–13",
     "keywords": [
       "ривоят",
       "Пешдодиён"
     ],
-    "titlePersian": "Ривояти Пешдодиён",
-    "summaryPersian": "Барои ҷудо кардани ривоят аз таърихи санадӣ: китоби синфи 5 Пешдодиёнро «шоҳони ривоятӣ» меномад ва онро дар бахши алоҳида шарҳ медиҳад."
+    "titlePersian": "روایات پیشدادیان",
+    "summaryPersian": "کتاب صنف پنجم دوران پیشدادیان را دوران نخستین شاهان آریایی و فرهنگ‌ساز می‌داند.",
+    "claimProvenance": [
+      {
+        "claim": "Барои ҷудо кардани ривоят аз таърихи санадӣ: китоби синфи 5 Пешдодиёнро «шоҳони ривоятӣ» меномад ва онро дар бахши алоҳида шарҳ медиҳад.",
+        "claimPersian": "کتاب صنف پنجم دوران پیشدادیان را دوران نخستین شاهان آریایی و فرهنگ‌ساز می‌داند.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
   },
   {
     "id": "oral-kayanian",
@@ -1879,14 +2642,600 @@
     "summary": "Китоб ҳамзамон бо маълумоти Авесто ва осори паҳлавӣ ривоятҳои Кайковус ва Кайхусравро нишон медиҳад; инҳо ҳамчун қабати ривоятӣ бояд бо нишони равшан хонда шаванд.",
     "period": "Замони Каёниён",
     "grade": "5",
-    "sourceBookId": "marifat-462",
+    "sourceBookId": "history-5",
     "sourceSection": "Боби III — §21–30",
     "keywords": [
       "ривоят",
       "Авесто",
       "Кайковус"
     ],
-    "titlePersian": "Ривоятҳои Каёниён",
-    "summaryPersian": "Китоб ҳамзамон бо маълумоти Авесто ва осори паҳлавӣ ривоятҳои Кайковус ва Кайхусравро нишон медиҳад; инҳо ҳамчун қабати ривоятӣ бояд бо нишони равшан хонда шаванд."
+    "titlePersian": "روایات کیانیان",
+    "summaryPersian": "روایات حماسی و کهن شاهان کیانی بر پایه اسناد اوستا و کتاب‌های درسی تاریخ.",
+    "claimProvenance": [
+      {
+        "claim": "Китоб ҳамзамон бо маълумоти Авесто ва осори паҳлавӣ ривоятҳои Кайковус ва Кайхусравро нишон медиҳад; инҳо ҳамчун қабати ривоятӣ бояд бо нишони равшан хонда шаванд.",
+        "claimPersian": "روایات حماسی و کهن شاهان کیانی بر پایه اسناد اوستا و کتاب‌های درسی تاریخ.",
+        "sourceBookId": "history-5",
+        "printedPage": null,
+        "pdfPage": null,
+        "status": "SOURCE_LOCATED",
+        "statusNote": "Relevant source record located; exact claim/page not rechecked in the permitted source."
+      }
+    ]
+  },
+  {
+    "id": "dynasty-kayaniyan-koviyan",
+    "kind": "dynasty",
+    "title": "Сулолаи Каёниён (Ковиҳо)",
+    "titlePersian": "سلسله کیانیان (کوی‌ها)",
+    "summary": "Сулолаи таърихии шоҳони ориёӣ дар асрҳои X–VI пеш аз милод дар Бохтар ва Шарқи Наздик, ки дар Авесто ва сарчашмаҳои таърихӣ бо номи Ковиҳо сабт шудаанд.",
+    "summaryPersian": "سلسله تاریخی پادشاهان آریایی در سده‌های ۱۰ تا ۶ پیش از میلاد در باختر و خاور نزدیک که در اوستا و منابع تاریخی به نام کوی‌ها یاد شده‌اند.",
+    "period": "Асрҳои X–VI пеш аз милод",
+    "periodPersian": "سده‌های ۱۰ تا ۶ پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби III — §24–26",
+    "keywords": [
+      "Каёниён",
+      "Ковиҳо",
+      "Кайқубод",
+      "Гуштосп",
+      "Балх",
+      "Ориёно"
+    ],
+    "capital": "Балх (Бахди)",
+    "capitalPersian": "بلخ (بخدی)",
+    "territory": "Бохтар, Суғд, Марғиён ва Хуросон",
+    "territoryPersian": "باختر، سغد، مرو و خراسان",
+    "keyFigures": [
+      "Кайқубод",
+      "Кайковус",
+      "Кайхусрав",
+      "Гуштосп",
+      "Исфандиёр"
+    ],
+    "keyFiguresPersian": [
+      "کی‌قباد",
+      "کی‌کاووس",
+      "کی‌خسرو",
+      "گشتاسپ",
+      "اسفندیار"
+    ],
+    "founder": "Кайқубод",
+    "founderPersian": "کی‌قباد",
+    "rulers": [
+      "Кайқубод",
+      "Кайковус",
+      "Кайхусрав",
+      "Луҳросп",
+      "Гуштосп"
+    ],
+    "rulersPersian": [
+      "کی‌قباد",
+      "کی‌کاووس",
+      "کی‌خسرو",
+      "لهراسپ",
+      "گشتاسپ"
+    ],
+    "religion": "Зардуштӣ (дар замони Гуштосп)",
+    "religionPersian": "زرتشتی (در دوران گشتاسپ)",
+    "origins": "Сарзамини Бохтар, ташаккули давлати марказонидашудаи ориёиҳои шарқӣ.",
+    "originsPersian": "سرزمین باختر، تشکیل دولت متمرکز آریایی‌های شرقی.",
+    "culture": "Инкишофи шаҳрсозӣ, паҳншавии сурудҳои Гоҳон ва Авесто.",
+    "culturePersian": "گسترش شهرنشینی، انتشار سرودهای گاهان و اوستا.",
+    "significance": "Аввалин давлати муттаҳидаи ориёиҳои шарқӣ ва маркази ташаккули тамаддуни Авестоӣ.",
+    "significancePersian": "نخستین دولت متحد آریایی‌های شرقی و خاستگاه تمدن اوستایی.",
+    "dates": "Ҳазораи I то милод",
+    "datesPersian": "هزاره اول پیش از میلاد",
+    "relatedEntryIds": [
+      "empire-kayanian",
+      "ruler-gushtosp",
+      "cultural-avesto"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Давлати Каёниён — ковиҳо ва ташаккули давлати марказонидаи ориёиҳо",
+        "claimPersian": "دولت کیانیان — کوی‌ها و تشکیل حکومت متمرکز آریایی‌ها",
+        "sourceBookId": "history-5",
+        "printedPage": 71,
+        "pdfPage": 71,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "ruler-gushtosp",
+    "kind": "ruler",
+    "title": "Гуштоспшоҳ",
+    "titlePersian": "گشتاسپ‌شاه",
+    "summary": "Подшоҳи маъруфи Каёнӣ дар Бохтар, ки дини Зардуштро пазируфт ва барои густариши он ва дифои кишвар аз ҳуҷуми аҷнабиён кӯшиш кард.",
+    "summaryPersian": "پادشاه نامدار کیانی در باختر که آیین زرتشت را پذیرفت و برای گسترش آن و دفاع از کشور در برابر بیگانگان کوشید.",
+    "period": "Асри VII–VI пеш аз милод",
+    "periodPersian": "سده‌های ۷–۶ پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби III — §25–26",
+    "keywords": [
+      "Гуштосп",
+      "Зардушт",
+      "Каёниён",
+      "Балх",
+      "Оташкада"
+    ],
+    "capital": "Балх",
+    "capitalPersian": "بلخ",
+    "significance": "Дастгири асосии паёмбар Зардушт ва бунёди оташкадаҳои бузурги ориёӣ.",
+    "significancePersian": "پشتیبان اصلی پیامبر زرتشت و برپایی آتشکده‌های بزرگ آریایی.",
+    "dates": "Асри VI то милод",
+    "datesPersian": "سده ششم پیش از میلاد",
+    "relatedEntryIds": [
+      "dynasty-kayaniyan-koviyan",
+      "person-zardusht",
+      "cultural-avesto"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Давлати марказонидаи ориёиҳо дар замони Гуштосп ва пазириши оини Зардушт",
+        "claimPersian": "دولت متمرکز آریایی‌ها در زمان گشتاسپ و پذیرش آیین زرتشت",
+        "sourceBookId": "history-5",
+        "printedPage": 74,
+        "pdfPage": 74,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "battle-arjospt-attack",
+    "kind": "battle",
+    "title": "Ҳуҷуми Арҷосп ба Ориёно",
+    "titlePersian": "نبرد ارجاسپ و هجوم به آریانا",
+    "summary": "Ҳамлаи шоҳи хиёниён Арҷосп ба сарзамини Бохтар барои маҳв кардани ойини яктопарастии Зардуштӣ ва ҷанги шадиди мудофиавии ориёиҳо бо қаҳрамонии Зарир ва Исфандиёр.",
+    "summaryPersian": "حمله ارجاسپ شاه خیون‌ها به سرزمین باختر برای نابودی آیین یکتاپرستی زرتشتی و جنگ دفاعی سرسختانه آریایی‌ها با دلاوری‌های زریر و اسفندیار.",
+    "period": "Асри VI пеш аз милод",
+    "periodPersian": "سده ششم پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби III — §27",
+    "keywords": [
+      "Арҷосп",
+      "Исфандиёр",
+      "Зарир",
+      "Бохтар",
+      "Ҷанг"
+    ],
+    "significance": "Дифоъ аз марзҳои миллӣ ва ойини тамаддунофари зардуштӣ дар баробари қабилаҳои бодиянишин.",
+    "significancePersian": "دفاع از مرزهای ملی و آیین تمدن‌ساز زرتشتی در برابر قبایل کوچ‌نشین.",
+    "dates": "Асри VI то милод",
+    "datesPersian": "سده ششم پیش از میلاد",
+    "relatedEntryIds": [
+      "dynasty-kayaniyan-koviyan",
+      "ruler-gushtosp"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Ҳуҷуми Арҷосп ба Ориёно ва дифои марзҳои Бохтар",
+        "claimPersian": "هجوم ارجاسپ به آریانا و دفاع از مرزهای باختر",
+        "sourceBookId": "history-5",
+        "printedPage": 77,
+        "pdfPage": 77,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "cultural-avesto",
+    "kind": "cultural",
+    "title": "«Авесто» ва Яштҳо",
+    "titlePersian": "اوستا و یشت‌ها",
+    "summary": "Қадимтарин ёдгории хаттӣ, фарҳангӣ ва фалсафии халқи тоҷик ва дигар халқҳои ориёӣ, иборат аз панҷ бахш: Гоҳон, Ясно, Яштҳо, Видевдод ва Ванддод.",
+    "summaryPersian": "کهن‌ترین اثر مکتوب، فرهنگی و فلسفی مردم تاجیک و اقوام آریایی، مشتمل بر پنج بخش اصلی: گاهان، یسنا، یشت‌ها، ویسپرد و وندیداد.",
+    "period": "Ҳазораи II–I пеш аз милод",
+    "periodPersian": "هزاره‌های دوم و اول پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби III — §28–30",
+    "keywords": [
+      "Авесто",
+      "Яштҳо",
+      "Гоҳон",
+      "Зардушт",
+      "Китоби муқаддас"
+    ],
+    "significance": "Сарчашмаи асосии дониш оид ба забон, асотир, ҷуғрофия ва фалсафаи бостонии тоҷикон.",
+    "significancePersian": "منبع اصلی آگاهی پیرامون زبان، اساطیر، جغرافیا و فلسفه باستانی تاجیکان.",
+    "dates": "Ҳазораи II–I то милод",
+    "datesPersian": "هزاره دوم و اول پیش از میلاد",
+    "relatedEntryIds": [
+      "person-zardusht",
+      "cultural-zoroastrianism"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Бахшҳои «Авесто» ва «Яштҳо» ҳамчун сарчашмаи таъриху адаб",
+        "claimPersian": "بخش‌های اوستا و یشت‌ها به عنوان منبع تاریخ و ادب",
+        "sourceBookId": "history-5",
+        "printedPage": 80,
+        "pdfPage": 80,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "cultural-zoroastrianism",
+    "kind": "cultural",
+    "title": "Дини зардуштӣ ва ахлоқи ориёӣ",
+    "titlePersian": "دین زرتشتی و اخلاق آریایی",
+    "summary": "Аввалин дини монотеистӣ (яктопарастӣ)-и ориёиҳо бо шиори сегонаи муқаддас: Гуфтори нек (ҳумат), Кирдори нек (ҳуваршт) ва Пиндори нек (ҳухт).",
+    "summaryPersian": "نخستین دین یکتاپرستی آریایی‌ها با آموزه بنیادین سه گانه: پندار نیک (هومته)، گفتار نیک (هوخته) و کردار نیک (هورشته).",
+    "period": "Ҳазораи I пеш аз милод",
+    "periodPersian": "هزاره اول پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби III — §31–32",
+    "keywords": [
+      "Зардушт",
+      "Аҳурамаздо",
+      "Гуфтори нек",
+      "Кирдори нек",
+      "Пиндори нек",
+      "Оташ"
+    ],
+    "significance": "Пойдевори ахлоқӣ ва маънавии тамаддуни шарқии ориёӣ, ситоиши меҳнат ва ҳифзи табиат.",
+    "significancePersian": "شالوده اخلاقی و معنوی تمدن شرق آریایی، ستایش کار و آبادانی و پاسداری از طبیعت.",
+    "dates": "Асри VII то милод",
+    "datesPersian": "سده هفتم پیش از میلاد",
+    "relatedEntryIds": [
+      "cultural-avesto",
+      "person-zardusht"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Дини зардуштӣ ва русуму ойинҳои ориёӣ",
+        "claimPersian": "دین زرتشتی و آداب و آیین‌های آریایی",
+        "sourceBookId": "history-5",
+        "printedPage": 90,
+        "pdfPage": 90,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "dynasty-elam",
+    "kind": "dynasty",
+    "title": "Давлати Элом",
+    "titlePersian": "دولت ایلام",
+    "summary": "Яке аз қадимтарин давлатҳои минтақаи ҷанубу ғарбии Ориёно бо тамаддуни пешрафтаи хаттӣ ва шаҳрсозӣ.",
+    "summaryPersian": "یکی از کهن‌ترین تمدن‌ها و دولت‌های جنوب غربی فلات ایران با خط و فرهنگ شهرنشینی پیشرفته.",
+    "period": "Ҳазораи III–I пеш аз милод",
+    "periodPersian": "هزاره سوم تا اول پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби IV — §38",
+    "keywords": [
+      "Элом",
+      "Суз",
+      "Шаҳрсозӣ",
+      "Хат"
+    ],
+    "capital": "Суз",
+    "capitalPersian": "شوش",
+    "significance": "Таъсири бузург дар сохтори маъмурӣ ва хаттии давлатҳои баъдинаи ориёӣ.",
+    "significancePersian": "تأثیر ژرف در ساختار اداری و خط تمدن‌های بعدی فلات ایران.",
+    "dates": "Ҳазораи III–I то милод",
+    "datesPersian": "هزاره سوم تا اول پیش از میلاد",
+    "claimProvenance": [
+      {
+        "claim": "Давлати Элом дар таърихи кишварҳои ориёӣ",
+        "claimPersian": "دولت ایلام در تاریخ سرزمین‌های آریایی",
+        "sourceBookId": "history-5",
+        "printedPage": 117,
+        "pdfPage": 117,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "dynasty-mitanni",
+    "kind": "dynasty",
+    "title": "Давлати Митан",
+    "titlePersian": "دولت میتانی",
+    "summary": "Давлати бостонии ориёӣ дар Байнаннаҳрайн ва Шарқи Наздик, ки дар паймонномаҳои он номи худоёни ориёӣ Митра, Варуна ва Индра зикр шудааст.",
+    "summaryPersian": "دولت باستانی آریایی در بین‌النهرین شمالی که در معاهده‌های تاریخی آن نام ایزدان آریایی میترا، وارونا و ایندرا یاد شده است.",
+    "period": "Асри XVI–XIII пеш аз милод",
+    "periodPersian": "سده‌های ۱۶ تا ۱۳ پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби IV — §39",
+    "keywords": [
+      "Митан",
+      "Ориёиҳо",
+      "Митра",
+      "Асппарварӣ"
+    ],
+    "significance": "Ҳуҷҷати қадимтарини таърихии ҳузури қабилаҳои ориёӣ дар сарчашмаҳои хаттии ҷаҳонӣ.",
+    "significancePersian": "کهن‌ترین سند مکتوب از حضور قبایل آریایی در اسناد خطی جهان باستان.",
+    "dates": "Асри XVI–XIII то милод",
+    "datesPersian": "سده‌های ۱۶ تا ۱۳ پیش از میلاد",
+    "claimProvenance": [
+      {
+        "claim": "Давлати Митан ва худоёни ориёии он дар паймонномаи соли 1380 то милод",
+        "claimPersian": "دولت میتانی و خدایان آریایی در پیمان‌نامه سال ۱۳۸۰ پیش از میلاد",
+        "sourceBookId": "history-5",
+        "printedPage": 119,
+        "pdfPage": 119,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "battle-greco-persian",
+    "kind": "battle",
+    "title": "Ҷангҳои юнону эронӣ",
+    "titlePersian": "نبردهای یونان و ایران",
+    "summary": "Силсилаи набардҳои шадид миёни артиши Ҳахоманишиён ва иттифоқи шаҳр-давлатҳои юнонӣ, аз ҷумла муҳорибаҳои Марафон, Термопил ва Саламин.",
+    "summaryPersian": "سلسله نبردهای بزرگ میان شاهنشاهی هخامنشی و پولیس‌های یونانی، از جمله نبردهای ماراتون، ترموپیل و سالامیس.",
+    "period": "500–449 пеш аз милод",
+    "periodPersian": "۵۰۰–۴۴۹ پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби IV — §46",
+    "keywords": [
+      "Ҳахоманишиён",
+      "Юнон",
+      "Марафон",
+      "Саламин",
+      "Ксеркс",
+      "Дориюш"
+    ],
+    "significance": "Бархӯрди ду тамаддуни бузурги замони бостон ва инъикоси он дар таърихномаҳои Ҳеродот.",
+    "significancePersian": "برخورد دو تمدن بزرگ دوران باستان و ثبت رویدادهای آن در تاریخ هرودوت.",
+    "dates": "500–449 то милод",
+    "datesPersian": "۵۰۰–۴۴۹ پیش از میلاد",
+    "relatedEntryIds": [
+      "empire-hakhamanishiyan",
+      "person-darius-i"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Ҷангҳо бо юнониён дар замони Дориюш ва Ксеркс",
+        "claimPersian": "جنگ‌ها با یونانیان در زمان داریوش و خشایارشا",
+        "sourceBookId": "history-5",
+        "printedPage": 139,
+        "pdfPage": 139,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "cultural-hakhamanishiyan-art",
+    "kind": "cultural",
+    "title": "Фарҳанг ва санъати Ҳахоманишиён",
+    "titlePersian": "فرهنگ و هنر هخامنشیان",
+    "summary": "Шоҳкории меъморӣ ва ҳунарии давлати Ҳахоманишиён, навиштаҷоти сезабонаи мехӣ, сохтмони кохҳои Тахти Ҷамшед (Персеполис) ва Пасаргад.",
+    "summaryPersian": "شاهکارهای معماری و هنری شاهنشاهی هخامنشی، سنگ‌نبشته‌های میخی سه‌زبانه، ساخت کاخ‌های تخت جمشید (پارسه) و پاسارگاد.",
+    "period": "550–330 пеш аз милод",
+    "periodPersian": "۵۵۰–۳۳۰ پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби IV — §48",
+    "keywords": [
+      "Тахти Ҷамшед",
+      "Пасаргад",
+      "Хатти мехӣ",
+      "Нақши Рустам"
+    ],
+    "capital": "Персеполис",
+    "capitalPersian": "تخت جمشید",
+    "significance": "Қуллаи баландтарини санъати ҳайкалтарошӣ, шаҳрсозӣ ва хаттотии ориёиҳо дар аҳди қадим.",
+    "significancePersian": "اوج هنر مجسمه‌سازی، شهرسازی و کتیبه‌نگاری آریایی‌ها در دوران باستان.",
+    "dates": "550–330 то милод",
+    "datesPersian": "۵۵۰–۳۳۰ پیش از میلاد",
+    "relatedEntryIds": [
+      "empire-hakhamanishiyan",
+      "person-cyrus",
+      "person-darius-i"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Фарҳанги ориёиҳо дар замони Ҳахоманишиён ва меъмории Тахти Ҷамшед",
+        "claimPersian": "فرهنگ آریایی‌ها در دوران هخامنشیان و معماری تخت جمشید",
+        "sourceBookId": "history-5",
+        "printedPage": 146,
+        "pdfPage": 146,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "battle-sogdian-rock",
+    "kind": "battle",
+    "title": "Муҳориба дар кӯҳистони Суғду Бохтар",
+    "titlePersian": "نبرد در کوهستان سغد و باختر",
+    "summary": "Муқовимати қаҳрамононаи мардуми кӯҳистони Суғду Бохтар дар қалъаи Оксиарт ва пайванди издивоҷи Искандар бо шоҳдухт Рохшона (Роксана).",
+    "summaryPersian": "مقاومت دلیرانه مردم کوهستان سغد و باختر در دژ اکس‌یارتس و پیوند زناشویی اسکندر با شاهزاده رخشانه (روشنک/رکسانا).",
+    "period": "327 пеш аз милод",
+    "periodPersian": "۳۲۷ پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби V — §51",
+    "keywords": [
+      "Оксиарт",
+      "Рохшона",
+      "Искандар",
+      "Қалъаи Суғд",
+      "Кӯҳистон"
+    ],
+    "significance": "Нишон додани истиқлолхоҳӣ ва нотарсии бошандагони кӯҳсори тоҷик дар муқобили истилогарон.",
+    "significancePersian": "نشانگر روحیه سازش‌ناپذیر و دلیری ساکنان کوهستان‌های تاجیک در برابر متجاوزان.",
+    "dates": "327 то милод",
+    "datesPersian": "۳۲۷ پیش از میلاد",
+    "relatedEntryIds": [
+      "event-alexander-invasion",
+      "person-spitamen"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Муҳориба ба муқобили лашкари Искандар дар кӯҳистони Суғду Бохтар ва издивоҷ бо Рохшона",
+        "claimPersian": "نبرد در برابر سپاه اسکندر در کوهستان سغد و باختر و پیوند با رخشانه",
+        "sourceBookId": "history-5",
+        "printedPage": 158,
+        "pdfPage": 158,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "place-ai-khanum-takhti-sangin",
+    "kind": "place",
+    "title": "Ойхонум ва Тахти Сангин",
+    "titlePersian": "آی‌خانم و تخت سنگین",
+    "summary": "Ёдгориҳои беназири давлатдории Юнону Бохтар ва Ашкониён; ибодатгоҳи Окс дар Тахти Сангини Тоҷикистон ва «Ганҷинаи Амударё».",
+    "summaryPersian": "آثار بی‌نظیر دولت‌های یونان و باختر و اشکانی؛ معبد اکسوس در تخت سنگین تاجیکستان و گنجینه آمودریا.",
+    "period": "Асри III то милод – асри I милодӣ",
+    "periodPersian": "سده سوم پیش از میلاد تا سده اول میلادی",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби V — §54",
+    "keywords": [
+      "Тахти Сангин",
+      "Ойхонум",
+      "Окс",
+      "Ганҷинаи Амударё",
+      "Хатлон"
+    ],
+    "significance": "Шаҳодати синтези тамаддуни ориёии шарқӣ бо фарҳанги эллинӣ дар қаламрави Тоҷикистони имрӯза.",
+    "significancePersian": "سند گویای آمیزش تمدن شرق آریایی با فرهنگ هلنیستی در قلمرو تاجیکستان امروزی.",
+    "dates": "Асри III то милод – асри I милодӣ",
+    "datesPersian": "سده ۳ پیش از میلاد تا سده ۱ میلادی",
+    "relatedEntryIds": [
+      "empire-yunonu-bokhtar",
+      "empire-ashkaniyan"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Санъати эллинӣ дар Ориёно, кофтуковҳои Ойхонум ва Тахти Сангин",
+        "claimPersian": "هنر هلنیستی در آریانا، کاوش‌های آی‌خانم و تخت سنگین",
+        "sourceBookId": "history-5",
+        "printedPage": 168,
+        "pdfPage": 168,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "cultural-ashkaniyan-art",
+    "kind": "cultural",
+    "title": "Фарҳанг ва санъати Ашкониён",
+    "titlePersian": "فرهنگ و هنر اشکانیان",
+    "summary": "Кохҳои Нисо, ритонҳои шохмонанд аз устухони фил, истифодаи хатти паҳлавӣ ва ривоҷи тиҷорати байналмилалии Роҳи абрешим.",
+    "summaryPersian": "کاخ‌های باستانی نسا، ریتون‌های شاخی از عاج فیل، خط پهلوی اشکانی و شکوفایی دادوستد بین‌المللی در مسیر راه ابریشم.",
+    "period": "247 то милод – 224 милодӣ",
+    "periodPersian": "۲۴۷ پیش از میلاد تا ۲۲۴ میلادی",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби VI — §58–60",
+    "keywords": [
+      "Ашкониён",
+      "Нисо",
+      "Ритонҳо",
+      "Роҳи абрешим",
+      "Хатти паҳлавӣ"
+    ],
+    "capital": "Нисо",
+    "capitalPersian": "نسا",
+    "significance": "Эҳёи анъанаҳои ориёӣ пас аз истилои юнониён ва таҳкими пайвандҳои иқтисодию фарҳангии Шарқу Ғарб.",
+    "significancePersian": "احیای سنت‌های آریایی پس از تسلط یونانیان و تحکیم پیوندهای تجاری و فرهنگی میان شرق و غرب.",
+    "dates": "247 то милод – 224 милодӣ",
+    "datesPersian": "۲۴۷ پیش از میلاد تا ۲۲۴ میلادی",
+    "relatedEntryIds": [
+      "empire-ashkaniyan",
+      "person-arshak"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Фарҳанги даврони Ашкониён, санъати тасвирӣ ва тиҷорати Роҳи абрешим",
+        "claimPersian": "فرهنگ دوران اشکانیان، هنرهای تجسمی و تجارت جاده ابریشم",
+        "sourceBookId": "history-5",
+        "printedPage": 179,
+        "pdfPage": 179,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "cultural-kushan-civilization",
+    "kind": "cultural",
+    "title": "Тамаддун ва фарҳанги Кушониён",
+    "titlePersian": "تمدن و فرهنگ کوشانیان",
+    "summary": "Шаҳрсозӣ, хатти бохтарӣ бо алифбои юнонӣ, маъбади шоҳони Работак ва Сурхкӯтал, ҳамзистии динҳои зардуштӣ, буддоӣ ва ҳиндуӣ.",
+    "summaryPersian": "شهرنشینی، خط باختری با الفبای یونانی، معبد شاهی رباطک و سرخ‌کوتل، و همزیستی مسالمت‌آمیز آیین‌های زرتشتی، بودایی و هندو.",
+    "period": "Асрҳои I–IV милодӣ",
+    "periodPersian": "سده‌های ۱ تا ۴ میلادی",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби VII — §63–65",
+    "keywords": [
+      "Кушониён",
+      "Сурхкӯтал",
+      "Работак",
+      "Хатти бохтарӣ",
+      "Буддоия"
+    ],
+    "significance": "Яке аз чаҳор империяи бузурги ҷаҳони бостон (дар канори Рум, Порт ва Чин) бо фарҳанги беназири таҳаммулпазирӣ.",
+    "significancePersian": "یکی از چهار امپراتوری بزرگ دنیای باستان با تمدنی درخشان و الگوی همزیستی مسالمت‌آمیز فرهنگی.",
+    "dates": "Асрҳои I–IV милодӣ",
+    "datesPersian": "سده‌های اول تا چهارم میلادی",
+    "relatedEntryIds": [
+      "empire-kushoniyon",
+      "person-kanishka"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Фарҳанги замони Кушониён, хатти бохтарӣ ва ёдгории Сурхкӯтал",
+        "claimPersian": "فرهنگ عهد کوشانیان، خط باختری و کتیبه سرخ‌کوتل",
+        "sourceBookId": "history-5",
+        "printedPage": 198,
+        "pdfPage": 198,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
+  },
+  {
+    "id": "event-darius-reforms",
+    "kind": "event",
+    "title": "Ислоҳоти бузурги давлатдории Дориюши Кабир",
+    "titlePersian": "اصلاحات بزرگ کشورداری داریوش بزرگ",
+    "summary": "Тақсими қаламрави империя ба 20 сатрапия, муқаррар кардани низоми ягонаи андоз ва пули тиллоии «дарик», сохтани «Роҳи шоҳӣ» бо системаи пайки чопарӣ.",
+    "summaryPersian": "تقسیم شاهنشاهی به ۲۰ ساتراپی، پایه‌گذاری نظام مالیاتی یکپارچه و سکه طلای داریک، ساخت راه شاهی و چاپارخانه سراسری.",
+    "period": "522–486 пеш аз милод",
+    "periodPersian": "۵۲۲–۴۸۶ پیش از میلاد",
+    "grade": "5",
+    "sourceBookId": "history-5",
+    "sourceSection": "Боби IV — §43–45",
+    "keywords": [
+      "Дориюш",
+      "Сатрапия",
+      "Дарик",
+      "Роҳи шоҳӣ",
+      "Ислоҳот"
+    ],
+    "significance": "Пешрафтатарин низоми идораи давлатӣ дар ҷаҳони қадим, ки садсолаҳо чун намуна хидмат кард.",
+    "significancePersian": "پیشرفته‌ترین الگوی مدیریت و دیوان‌سالاری کشوری در دنیای باستان.",
+    "dates": "522–486 то милод",
+    "datesPersian": "۵۲۲–۴۸۶ پیش از میلاد",
+    "relatedEntryIds": [
+      "empire-hakhamanishiyan",
+      "person-darius-i"
+    ],
+    "claimProvenance": [
+      {
+        "claim": "Ислоҳоти маъмурӣ ва пулии Дориюши Кабир дар қаламрави сатрапиҳо",
+        "claimPersian": "اصلاحات اداری و مالی داریوش بزرگ در قلمرو ساتراپی‌ها",
+        "sourceBookId": "history-5",
+        "printedPage": 131,
+        "pdfPage": 131,
+        "status": "VERIFIED_UPLOADED_BOOK_PAGE"
+      }
+    ]
   }
 ]

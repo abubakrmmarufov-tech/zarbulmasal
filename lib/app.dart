@@ -15,6 +15,7 @@ class ZarbulmasalApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
     final displayLang = ref.watch(displayLanguageProvider);
+    final appTextScale = ref.watch(appTextScaleProvider);
 
     final locale = displayLang == DisplayLanguage.persian
         ? const Locale('fa')
@@ -37,14 +38,21 @@ class ZarbulmasalApp extends ConsumerWidget {
       supportedLocales: const [Locale('tg'), Locale('fa')],
       routerConfig: appRouter,
       builder: (context, child) {
-        return Directionality(
-          textDirection: displayLang == DisplayLanguage.persian
-              ? TextDirection.rtl
-              : TextDirection.ltr,
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 760),
-              child: SplashScreen(child: child ?? const SizedBox.shrink()),
+        final media = MediaQuery.of(context);
+        final platformScale = media.textScaler.scale(16) / 16;
+        return MediaQuery(
+          data: media.copyWith(
+            textScaler: TextScaler.linear(platformScale * appTextScale),
+          ),
+          child: Directionality(
+            textDirection: displayLang == DisplayLanguage.persian
+                ? TextDirection.rtl
+                : TextDirection.ltr,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 760),
+                child: SplashScreen(child: child ?? const SizedBox.shrink()),
+              ),
             ),
           ),
         );

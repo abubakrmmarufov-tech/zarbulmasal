@@ -1,10 +1,25 @@
 import 'rights_record.dart';
+import 'portrait_record.dart';
 
 /// A verified literary author in the Tajik literary canon.
 ///
 /// Contains canonical biographical metadata, curriculum grade associations,
 /// and rights clearance records.
 class LiteraryAuthor {
+  /// Only these provenance values may make a biography auditable in the app.
+  /// Unknown values stay review-only even when a source string looks like it
+  /// contains a page number.
+  static const Set<String> auditableTajikBiographyProvenance = {
+    'SOURCE_BACKED',
+    'EDITORIAL_SUMMARY_FROM_SOURCES',
+  };
+
+  static const Set<String> auditablePersianBiographyProvenance = {
+    'SOURCE_PERSIAN',
+    'SOURCE_TRANSLATION',
+    'EDITORIAL_TRANSLATION',
+  };
+
   /// Unique identifier (e.g. "rudaki", "kamol-khujandi", "tursunzoda").
   final String id;
 
@@ -32,8 +47,14 @@ class LiteraryAuthor {
   /// Verified place of birth (e.g. "Рӯдак, Панҷрӯд (ҳоло Панҷакент)").
   final String? birthPlace;
 
+  /// Persian translation of the verified birth place, when reviewed.
+  final String? birthPlacePersian;
+
   /// Literary epoch (e.g. "Асри тиллоӣ (IX–X)", "Шӯравӣ", "Истиқлолият").
   final String literaryPeriod;
+
+  /// Persian translation of [literaryPeriod], when reviewed.
+  final String? literaryPeriodPersian;
 
   /// Sourced biographical narrative in Tajik Cyrillic.
   final String biographyTj;
@@ -44,11 +65,37 @@ class LiteraryAuthor {
   /// Authoritative citation for biographical facts (Tier A / Tier B source).
   final String biographySource;
 
+  /// Epistemic category for the Tajik biography paragraph.
+  ///
+  /// Supported values are SOURCE_BACKED, EDITORIAL_SUMMARY_FROM_SOURCES, and
+  /// UNSUPPORTED_GENERATED.  Unsupported biographies are kept empty in the
+  /// active record and may carry a quarantine note for audit purposes.
+  final String biographyTjProvenance;
+
+  /// Epistemic category for the Persian biography paragraph.
+  ///
+  /// Supported values are SOURCE_PERSIAN, SOURCE_TRANSLATION,
+  /// EDITORIAL_TRANSLATION, and UNSUPPORTED_GENERATED.
+  final String biographyFaProvenance;
+
+  /// Optional note explaining why an unsupported paragraph was quarantined.
+  final String? biographyQuarantineNote;
+
+  /// Whether this record is eligible for public literature navigation.
+  ///
+  /// Extraction artifacts and confirmed non-author references remain in the
+  /// source catalog for auditability, but are marked `rejected` so they do not
+  /// appear as poets in the app.
+  final String recordStatus;
+
   /// List of IDs of major canonical works by this author.
   final List<String> majorWorkIds;
 
   /// Official state and academic honors (e.g. "Шоири халқии Тоҷикистон", "Қаҳрамони Тоҷикистон").
   final List<String> officialTitles;
+
+  /// Persian translations of official titles, when reviewed.
+  final List<String> officialTitlesPersian;
 
   /// School curriculum grades where this author's works are taught (e.g. ["5", "8", "10"]).
   final List<String> educationGrades;
@@ -58,6 +105,9 @@ class LiteraryAuthor {
 
   /// Intellectual property and copyright clearance record.
   final RightsRecord rights;
+
+  /// Authentic local portrait with an auditable source, when one is available.
+  final PortraitRecord? portrait;
 
   const LiteraryAuthor({
     required this.id,
@@ -69,15 +119,23 @@ class LiteraryAuthor {
     this.birthDateExact,
     this.deathDateExact,
     this.birthPlace,
+    this.birthPlacePersian,
     required this.literaryPeriod,
+    this.literaryPeriodPersian,
     required this.biographyTj,
     this.biographyFa,
     required this.biographySource,
+    this.biographyTjProvenance = 'UNSUPPORTED_GENERATED',
+    this.biographyFaProvenance = 'UNSUPPORTED_GENERATED',
+    this.biographyQuarantineNote,
+    this.recordStatus = 'active',
     this.majorWorkIds = const [],
     this.officialTitles = const [],
+    this.officialTitlesPersian = const [],
     this.educationGrades = const [],
     this.relatedHistoryEntryIds = const [],
     required this.rights,
+    this.portrait,
   });
 
   /// Whether the author is deceased.
@@ -92,7 +150,7 @@ class LiteraryAuthor {
   /// must not appear as if "Unknown" were a verified poet.
   bool get hasCanonicalName {
     final name = canonicalName.trim().toLowerCase();
-    return name.isNotEmpty && name != 'unknown';
+    return name.isNotEmpty && name != 'unknown' && recordStatus == 'active';
   }
 
   /// Whether the biography citation names a printed page that can be audited.
@@ -102,24 +160,36 @@ class LiteraryAuthor {
   bool get hasAuditableBiographySource {
     final source = biographySource.trim();
     return RegExp(
-      r'(?:с\.|ص\.|page)\s*\d+',
-      caseSensitive: false,
-    ).hasMatch(source);
+          r'(?:с\.|ص\.|page)\s*\d+',
+          caseSensitive: false,
+        ).hasMatch(source) &&
+        auditableTajikBiographyProvenance.contains(biographyTjProvenance);
   }
 
-  /// Formatted lifespan representation (e.g. "15.04.1878 – 15.07.1954" or "858 – 941", "1947 – ҳоло").
+  /// Whether the Tajik biography is safe to render as source-backed content.
+  bool get hasAuditableTajikBiography =>
+      hasAuditableBiographySource && biographyTj.trim().isNotEmpty;
+
+  /// Whether the Persian biography is safe to render as source-backed content.
+  bool get hasAuditablePersianBiography =>
+      hasAuditableBiographySource &&
+      auditablePersianBiographyProvenance.contains(biographyFaProvenance) &&
+      (biographyFa?.trim().isNotEmpty ?? false);
+
+  /// Formatted source dates without inferring that a missing death year means
+  /// the author is alive.
   String get lifespan {
     final bExact = birthDateExact?.trim() ?? '';
     final dExact = deathDateExact?.trim() ?? '';
     if (bExact.isNotEmpty || dExact.isNotEmpty) {
-      if (dExact.isEmpty) return '$bExact – дар ҳаёт';
+      if (dExact.isEmpty) return bExact;
       if (bExact.isEmpty) return 'Вафот: $dExact';
       return '$bExact – $dExact';
     }
     final b = birthYear?.trim() ?? '';
     final d = deathYear?.trim() ?? '';
     if (b.isEmpty && d.isEmpty) return '';
-    if (d.isEmpty) return '$b – дар ҳаёт';
+    if (d.isEmpty) return b;
     if (b.isEmpty) return 'Вафот: $d';
     return '$b – $d';
   }
@@ -145,18 +215,32 @@ class LiteraryAuthor {
       deathDateExact: (json['deathDateExact'] ?? json['death_date_exact'])
           ?.toString(),
       birthPlace: (json['birthPlace'] ?? json['birth_place']) as String?,
+      birthPlacePersian:
+          (json['birthPlacePersian'] ?? json['birth_place_persian']) as String?,
       literaryPeriod:
           (json['literaryPeriod'] ?? json['literary_period'] ?? '') as String,
+      literaryPeriodPersian:
+          (json['literaryPeriodPersian'] ?? json['literary_period_persian'])
+              as String?,
       biographyTj:
           (json['biographyTj'] ?? json['biography_tj'] ?? '') as String,
       biographyFa: (json['biographyFa'] ?? json['biography_fa']) as String?,
       biographySource:
           (json['biographySource'] ?? json['biography_source'] ?? '') as String,
+      biographyTjProvenance:
+          (json['biographyTjProvenance'] ?? 'UNSUPPORTED_GENERATED') as String,
+      biographyFaProvenance:
+          (json['biographyFaProvenance'] ?? 'UNSUPPORTED_GENERATED') as String,
+      biographyQuarantineNote: json['biographyQuarantineNote'] as String?,
+      recordStatus: (json['recordStatus'] ?? 'active') as String,
       majorWorkIds: _parseStringList(
         json['majorWorkIds'] ?? json['major_work_ids'],
       ),
       officialTitles: _parseStringList(
         json['officialTitles'] ?? json['official_titles'],
+      ),
+      officialTitlesPersian: _parseStringList(
+        json['officialTitlesPersian'] ?? json['official_titles_persian'],
       ),
       educationGrades: _parseStringList(
         json['educationGrades'] ?? json['education_grades'],
@@ -164,6 +248,9 @@ class LiteraryAuthor {
       relatedHistoryEntryIds: _parseStringList(
         json['relatedHistoryEntryIds'] ?? json['related_history_entry_ids'],
       ),
+      portrait: json['portrait'] is Map<String, dynamic>
+          ? PortraitRecord.fromJson(json['portrait'] as Map<String, dynamic>)
+          : null,
       rights: rightsJson is Map<String, dynamic>
           ? RightsRecord.fromJson(rightsJson)
           : const RightsRecord(
@@ -187,15 +274,26 @@ class LiteraryAuthor {
       if (birthDateExact != null) 'birthDateExact': birthDateExact,
       if (deathDateExact != null) 'deathDateExact': deathDateExact,
       'birthPlace': birthPlace,
+      if (birthPlacePersian != null) 'birthPlacePersian': birthPlacePersian,
       'literaryPeriod': literaryPeriod,
+      if (literaryPeriodPersian != null)
+        'literaryPeriodPersian': literaryPeriodPersian,
       'biographyTj': biographyTj,
       'biographyFa': biographyFa,
       'biographySource': biographySource,
+      'biographyTjProvenance': biographyTjProvenance,
+      'biographyFaProvenance': biographyFaProvenance,
+      if (biographyQuarantineNote != null)
+        'biographyQuarantineNote': biographyQuarantineNote,
+      'recordStatus': recordStatus,
       'majorWorkIds': majorWorkIds,
       'officialTitles': officialTitles,
+      if (officialTitlesPersian.isNotEmpty)
+        'officialTitlesPersian': officialTitlesPersian,
       'educationGrades': educationGrades,
       if (relatedHistoryEntryIds.isNotEmpty)
         'relatedHistoryEntryIds': relatedHistoryEntryIds,
+      if (portrait != null) 'portrait': portrait!.toJson(),
       'rights': rights.toJson(),
     };
   }
@@ -211,15 +309,23 @@ class LiteraryAuthor {
     String? birthDateExact,
     String? deathDateExact,
     String? birthPlace,
+    String? birthPlacePersian,
     String? literaryPeriod,
+    String? literaryPeriodPersian,
     String? biographyTj,
     String? biographyFa,
     String? biographySource,
+    String? biographyTjProvenance,
+    String? biographyFaProvenance,
+    String? biographyQuarantineNote,
+    String? recordStatus,
     List<String>? majorWorkIds,
     List<String>? officialTitles,
+    List<String>? officialTitlesPersian,
     List<String>? educationGrades,
     List<String>? relatedHistoryEntryIds,
     RightsRecord? rights,
+    PortraitRecord? portrait,
   }) {
     return LiteraryAuthor(
       id: id ?? this.id,
@@ -231,16 +337,29 @@ class LiteraryAuthor {
       birthDateExact: birthDateExact ?? this.birthDateExact,
       deathDateExact: deathDateExact ?? this.deathDateExact,
       birthPlace: birthPlace ?? this.birthPlace,
+      birthPlacePersian: birthPlacePersian ?? this.birthPlacePersian,
       literaryPeriod: literaryPeriod ?? this.literaryPeriod,
+      literaryPeriodPersian:
+          literaryPeriodPersian ?? this.literaryPeriodPersian,
       biographyTj: biographyTj ?? this.biographyTj,
       biographyFa: biographyFa ?? this.biographyFa,
       biographySource: biographySource ?? this.biographySource,
+      biographyTjProvenance:
+          biographyTjProvenance ?? this.biographyTjProvenance,
+      biographyFaProvenance:
+          biographyFaProvenance ?? this.biographyFaProvenance,
+      biographyQuarantineNote:
+          biographyQuarantineNote ?? this.biographyQuarantineNote,
+      recordStatus: recordStatus ?? this.recordStatus,
       majorWorkIds: majorWorkIds ?? this.majorWorkIds,
       officialTitles: officialTitles ?? this.officialTitles,
+      officialTitlesPersian:
+          officialTitlesPersian ?? this.officialTitlesPersian,
       educationGrades: educationGrades ?? this.educationGrades,
       relatedHistoryEntryIds:
           relatedHistoryEntryIds ?? this.relatedHistoryEntryIds,
       rights: rights ?? this.rights,
+      portrait: portrait ?? this.portrait,
     );
   }
 

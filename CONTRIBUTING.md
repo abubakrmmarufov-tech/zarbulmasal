@@ -16,7 +16,7 @@ code, accessibility, translations, documentation, and the proverb catalog.
 ```sh
 git clone https://github.com/abubakrmmarufov-tech/zarbulmasal.git
 cd zarbulmasal
-flutter pub get
+flutter pub get --enforce-lockfile
 flutter run
 ```
 
@@ -44,9 +44,15 @@ set should pass:
 dart format --output=none --set-exit-if-changed lib test
 flutter analyze
 flutter test --coverage
-flutter build apk --release
+python3 tool/check_coverage.py coverage/lcov.info --minimum 80
+flutter build apk --debug --target-platform android-arm64
 flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run
 ```
+
+The release APK and Play App Bundle builds intentionally fail closed unless
+`KEYSTORE_PATH`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, and `KEY_PASSWORD` point to
+the production signing material. Do not substitute a debug or throwaway key
+for a public release; use the secret-gated CI workflow for signed artifacts.
 
 Add a meaningful regression test when behavior changes. For interface work,
 inspect representative phone widths around 360, 390, and 430 logical pixels and

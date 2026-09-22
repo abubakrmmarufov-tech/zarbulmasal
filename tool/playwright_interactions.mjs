@@ -40,14 +40,14 @@ async function testInteractions() {
   // 3. Persian RTL & LocalStorage Persistence
   try {
     await page.evaluate(() => {
-      localStorage.setItem('flutter.zarbulmasal_lang', 'fa');
-      localStorage.setItem('flutter.zarbulmasal_theme', 'dark');
+      localStorage.setItem('flutter.display_language', JSON.stringify('fa'));
+      localStorage.setItem('flutter.dark_mode', JSON.stringify(true));
     });
     await page.reload({ waitUntil: 'networkidle' });
     await page.waitForTimeout(1000);
-    const lang = await page.evaluate(() => localStorage.getItem('flutter.zarbulmasal_lang'));
-    const theme = await page.evaluate(() => localStorage.getItem('flutter.zarbulmasal_theme'));
-    if (lang === 'fa' && theme === 'dark') {
+    const lang = await page.evaluate(() => JSON.parse(localStorage.getItem('flutter.display_language')));
+    const theme = await page.evaluate(() => JSON.parse(localStorage.getItem('flutter.dark_mode')));
+    if (lang === 'fa' && theme === true) {
       record('Persistence (Language & Theme)', 'PASS', `Retained lang=${lang}, theme=${theme}`);
     } else {
       record('Persistence (Language & Theme)', 'FAIL', `Values lost: lang=${lang}, theme=${theme}`);
@@ -58,8 +58,8 @@ async function testInteractions() {
 
   // 4. Reset to Tajik light mode
   await page.evaluate(() => {
-    localStorage.setItem('flutter.zarbulmasal_lang', 'tj');
-    localStorage.setItem('flutter.zarbulmasal_theme', 'light');
+    localStorage.setItem('flutter.display_language', JSON.stringify('tj'));
+    localStorage.setItem('flutter.dark_mode', JSON.stringify(false));
   });
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForTimeout(1000);

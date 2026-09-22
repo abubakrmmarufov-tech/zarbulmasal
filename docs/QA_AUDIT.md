@@ -4,18 +4,309 @@ Date: 2026-09-14
 Environment: Flutter 3.47.2, Dart 3.13.2, Android SDK 36.1.0, Chrome for Testing 153.0.8010.12  
 Branch: `main` (`6efd3b4`, with preserved user-staged historical download artifacts)
 
+> **Current-state override — 2026-09-22:** The dated audit below is historical,
+> not current Play release signoff. The local branch is
+> `provenance-repair-2026-09-19` at HEAD `ec17054` with uncommitted UI, test, and
+> audit updates. The latest full local suite is **433/433**, coverage is
+> **84.37% (8,131/9,637 lines)**, analysis and formatting pass, and fresh web
+> plus debug-APK builds were verified. A fresh local web release audit covered
+> **207 routes across 8 viewports**, including Persian and dark mode, with no
+> browser/page/request errors or overflow flags. The separate mobile tap-through
+> passed Literature/Books/search, quiz-feedback, and flashcard-reveal checks at
+> 320px and 390px; native-device and TalkBack checks remain unavailable. The
+> local app icon now uses the book-and-ornament mark without the standalone Z;
+> this change has not been published to GitHub Pages.
+> Fresh production audit: **44/100 — BLOCKED** for Literature/Books. No poem is
+> approved for display; rights remain unknown for all 67 bundled portraits;
+> 66 page-scan PNGs remain Git-tracked in the confirmed-public repository.
+> The live GitHub Pages app and `/privacy.html` return HTTP 200 but are still the
+> older deployment at `gh-pages` commit `d2ae804`. The latest Pages workflow
+> (`35667658617`) succeeded; the latest inspected Quality workflow
+> (`35664585090`) failed three Android contract tests on older commit `e1199c2`
+> and did not run against this dirty worktree. No continuation changes have
+> been pushed. Android production signing remains intentionally deferred.
+> A fresh `flutter build appbundle --release` attempt on 2026-09-22 failed with
+> `Release signing config missing` at `android/app/build.gradle.kts:61`. A
+> pre-existing ignored local AAB passes package/version and 16 KB alignment
+> checks only against its `Zarbulmasal QA` certificate; it is not verified
+> against the Google Play upload certificate and must not be distributed.
+> Reproducible Play verification still requires the existing upload keystore
+> and matching certificate digest through the protected release path.
+> The CI web job repeats the prepared-release Chromium audit with pinned
+> Playwright 1.62.0 before publication, and the Pages publish checkout disables
+> persisted credentials before configuring its scoped token remote.
+> The latest content loop (2026-09-22) visually checked additional uploaded-book
+> witnesses and corrected several extracted titles/attributions: the validator now
+> reports **31 primary-page-checked works, 25 secondary-witness collations, 6
+> primary-checked works without a second witness, 5,215 pending works, 255
+> explicit rejects, and 0 pending review records without a printed page**. The
+> final three page gaps were verified against the Grade 11 pages 290 and 298 and
+> Grade 6 page 12 witnesses. New page
+> proofs include Khayyam, Bedil/Tughrol attribution correction, Saadi, Lоҳутӣ,
+> Firdausi, Kamol, Hiloli, Ahmadi Jami, Loiq, Hafez, Sayyido, and three exact
+> Ministry-hosted second witnesses for Bedil, Hafez, Lоҳутӣ, and Loiq, plus additional
+> duplicate/prose quarantine decisions. Rights remain unknown and these records
+> remain non-displayable.
+> The pre-remediation security scan
+> recorded 9 findings (7 low, 2 medium); the
+> current tree includes the corresponding fail-closed URL, reader-preference,
+> biography, candidate-content, PDF-path, and Android release-toolchain
+> hardening. A sealed parent-led scan of the current snapshot reported 0
+> reportable findings across the inspected runtime, release, provenance,
+> privacy, and source-inventory surfaces with partial coverage. The latest
+> sealed scan (`d53aabe8-cda0-4b0c-80be-6d983557a2ad`, 2026-09-21) retains the
+> same result; the sealed working-tree diff scan
+> (`e449b572-260e-4399-9a7d-820d12f4f212`) also reported 0 reportable findings
+> across its 111-item review inventory with no scan warnings. Coverage remains
+> explicitly partial because the
+> broader 740-file target was not closed file-by-file. Remaining operational follow-up is live
+> hosting/device verification, production signing, and final repository-wide
+> review.
+> The latest sealed Codex Security Standard scan (`1cbcd37a-d3ad-4874-b6a1-261499b52de9`) found 0 reportable findings across the inspected runtime/state, URL, Android release, web/cache, GitHub publication, provenance, and dependency surfaces. Its 761-file worktree inventory remains explicitly partial because protected GitHub controls, production signing, live Pages publication, physical-device upgrade, and a fresh advisory database were not observable; it is not a repository-wide security sign-off.
+> The unused `zarbulmasal://` Android intent filter was removed after the
+> current security review found no runtime handler for it; the manifest
+> regression and strict offline debug build now pass. The latest focused
+> working-tree diff scan (`948f26e9-364d-4306-8095-898e1da72d70`, 2026-09-21)
+> found 0 reportable findings across the pinned bundletool download/checksum,
+> App Bundle verifier, CI artifact paths, and Android 16 KB evidence surfaces;
+> coverage remains partial across the 740-file dirty target.
+> The AGP 9 compatibility switches in `android/gradle.properties` are deliberate:
+> removing them was tested against the current Flutter Gradle plugin and failed at
+> plugin application with an `ApplicationExtension`/`AbstractAppExtension` cast;
+> the strict build passes with the switches retained.
+> The previously deferred developer-only enrichment path has since been
+> hardened to parse literal mappings without executing source, with a safety
+> regression test, and that regression now runs in CI. Other post-scan changes
+> include moving historical local APKs to a recoverable quarantine and updating
+> this audit register. An independent review then found and the current tree
+> fixed a low-severity stale-dotfile issue in the manual Pages deploy helper.
+> The strict provenance linter now additionally requires verified primary-page
+> imagery for page-checked records, rejects image paths outside the local
+> page-image evidence directory, and requires complete bibliographic identity
+> plus an uploaded-PDF or `maorif.tj` source reference for checked/secondary
+> witnesses; secondary witnesses must also declare inspected local page imagery.
+> CI now also runs the raw adversarial provenance re-audit for fake pages,
+> generated source masquerading, and unreviewed verifier metadata.
+> The local provenance linter now rejects verified image references whose
+> files are missing. Citation normalization also rejects whitespace-ambiguous
+> source references and malformed bibliography field types, covers primary,
+> secondary, and occurrence citations, and preserves page evidence and
+> occurrence-specific access dates; the focused source suite passes.
+> The Kamol Khujandi «Гуфтам ба чашм» record was also corrected after visual
+> PDF review found its old Grade 7 filename pointing at a Grade 9 page image:
+> Grade 7 printed page 105 is now primary, Grade 9 printed page 197 is retained
+> as a secondary witness, the two textual variants are recorded, and rights
+> remain `unknown`; the record is still withheld from publication.
+> Rudaki’s four-line record now also has a visually inspected exact witness
+> collation between Grade 5 printed page 50 and Grade 6 printed page 12; Saadi’s
+> six-line record is similarly collated between Grade 5 printed page 111 and
+> Grade 9 printed page 39, and Ibn Sina’s sixteen-line record between Grade 5
+> printed page 71 and Grade 8 printed page 135. Their rights remain `unknown`, so all remain
+> withheld from publication.
+> A source-controlled privacy policy is now included in `web/privacy.html`,
+> copied into the local release web artifact, and reflected in the in-app
+> disclosure. The current web-only Pages deployment (`gh-pages` commit
+> `d2ae804`) returns HTTP 200 for both the app root and privacy-policy URL, and
+> the live browser sweep passes. Android download publication remains withheld
+> until signing.
+> No production signing keystore is available. A fresh local release-mode AAB
+> was built with a temporary QA certificate only; it is not a public release
+> artifact. The current QA AAB is 63,332,434 bytes with SHA-256
+> `4d6c9c64c2ae3dd8bd206913777624b48ce454e78769ed3c16fad7c23dd7af13`, and its
+> temporary QA certificate SHA-256 is
+> `e6c4a6a69ad368c6cea3e485f25de825b5d2437f6c4ef33dd10cc7a567b82c9d`.
+> After normalizing the extracted certificate digest to lowercase,
+> the bundle verifier accepts the valid current-data QA-signed AAB and the retained release
+> evidence verifier passes ZIP/JAR, package/version, 16 KB native ELF
+ > alignment, bundletool `PAGE_ALIGNMENT_16K`, R8 mapping, native symbols, and
+ > Dart symbols. The QA certificate is temporary, so production signing and
+ > Play identity remain unverified.
+> Earlier source debug smoke evidence built, installed, and launched version
+> `2.0.0` / code `2004` on a physical Android 16/API 36 device; this audit
+> environment has no connected device or emulator, so no fresh native evidence
+> was added. Signed-release install/upgrade remains unverified. A fresh
+> temporary-QA-signed split/universal APK build also passed
+> `prepare_android_downloads.sh`, including package/version/ABI/certificate,
+> zipalign, and SHA-256 staging checks; those APKs are diagnostic and were not
+> published. The portal/downloads remain intentionally withheld, and the active CI workflow
+> builds and archives the signed AAB only when the real production secrets are
+> present. The current worktree contains
+> 159 catalogued author records (145 public; 6 rejected extraction/non-author artifacts; 8 pending review) and 5,501 works: 0 editorially approved, 31 primary-page-checked,
+> and 5,215 pending, with 255 high-confidence classroom/prose or duplicate
+> extraction false positives
+> now explicitly rejected; 6 of the 31 page-checked works still lack a second
+> witness. The current declared-source biography pass now covers 145 authors
+> (76 marked `SOURCE_BACKED` and 69 declared editorial summaries);
+> 14 unsupported biographies remain quarantined. The current source-backed biography pass covers 76 authors and the declared editorial-summary pass covers 69 more. The corrected Ibn Sina rubai now has an exact Grade 5 p. 62 / Grade 8
+> p. 142 collation. The pending validator metrics include 5,215 records still
+> under review; 6 of the 31 primary-page-checked records lack a second witness,
+> and 0 pending records lack a printed primary page. All remain non-displayable.
+> Pending full text is withheld from the shipped runtime and none are
+> displayable. The runtime JSON now also contains zero full-text fields and
+> zero incipits for rights-unknown literary works, and zero oral heritage text
+> fields; candidate generation and the oral validator enforce those distribution
+> boundaries. Treat the current Play status as **not ready** until
+> the secret-gated signed AAB, signed-release upgrade check, and remaining
+> content review pass.
+
+> **Current content override — 2026-09-22:** The latest validator reports 25
+> secondary-witness collations and 6 primary-page-checked works still lacking
+> a second witness. Kamoli Khujandi’s «Дӯст медорад дилам ҷавру ҷафои дӯстро»
+> now has an exact current Maorif Grade 7 2025 second witness on pp. 102–103.
+> Rudaki’s «Бӯйи Ҷӯйи Мулиён» now has a complete Ministry
+> Grade 5 2025 second witness on p. 56 with a minor orthographic variant;
+> Qanoat’s «Мавҷи одам» (pp. 149–150) and «Мавҷи бародарӣ» (pp. 150–151)
+> have exact Ministry Grade 6 second witnesses. Rights and publication
+> approval remain unresolved. Hiloli’s uploaded Grade 9 p. 316 six-line
+> occurrence is recorded separately and is not promoted to a complete witness.
+> Sayyido’s nine-line «ОМАД БА ЁД» is now collated between Grade 10 p. 74 and
+> independent Grade 7 p. 161 witnesses with a recorded minor spelling variant;
+> the local page proof is retained and the work remains review-only.
+> A source-link correction also detached the Grade 7 2025 pp. 102–103 witness
+> from Kamoli Khujandi’s distinct «Ошӯби ҷонӣ» record; it remains attached only
+> to «Дӯст медорад дилам ҷавру ҷафои дӯстро». The held Grade 7 2018 PDF now
+> records «Ошӯби ҷонӣ» at printed p. 106 with no unverified secondary witness.
+> Since that earlier override, 14 further textbook page proofs were added or
+> corrected: primary-checked works are now 31, rejected extraction/prose or
+> duplicate candidates are 255, pending works are 5,215, and pending review
+> records without a printed page are 0. Four exact official second witnesses
+> were added for Bedil (p. 146), Hafez (p. 93), Lоҳутӣ (p. 113), and Loiq (p. 288). One record previously linked to Bedil was
+> corrected to Tughrol after the source page explicitly named Tughrol; two
+> extracted title fragments were replaced by the printed headings «Сад ҷон
+> фидои дӯст» and «Ҳеч нест». Rights remain unknown, so these records stay
+> withheld.
+
+> **Current browser smoke evidence — 2026-09-22:** A fresh local release web
+> artifact was served under `/zarbulmasal/` and visually exercised through
+> onboarding, the Literature hub, a real `needsReview` work, its source panel,
+> and an invalid work ID. The pending record showed its citation and review
+> state without poem text; the source panel withheld the page scan; and the
+> invalid ID rendered the localized safe error state. After enabling Flutter's
+> web accessibility bridge, semantic labels for the pending record, source
+> button, dialog, and withheld notice were exposed. The run is still web
+> evidence and does not close native TalkBack, font-scale, focus-order, or
+> signed-device QA.
+
+> **Latest local browser sweep — 2026-09-22:** The freshly prepared release
+> artifact again passed 8 viewport configurations and 209 route/mode visits,
+> including all 159 poet routes, all 18 book routes, Persian/RTL, and dark mode,
+> with 0 audit errors, overflows, console errors, page errors, or request failures.
+> Manual screenshot inspection of the Persian home screen, dark Literature hub,
+> and poet list also found readable RTL direction, intact card spacing, and
+> source-backed portraits/placeholders without clipping.
+
+> **Fresh content-repair artifact — 2026-09-22:** The web release was rebuilt
+> after the uploaded-book audit repair and prepared with cache ID
+> `e890bebc7d47173fc625`. The web-only Pages deployment (`gh-pages` commit
+> `ee17ec5`) returns 200 for both the app and `privacy.html`; the live browser
+> sweep covers 8 viewports and 209 route/mode visits with zero errors,
+> overflows, console errors, page errors, or request failures. Android
+> downloads remain withheld because production signing is unavailable.
+
+> **Post-deploy UX/release hardening — 2026-09-22:** Persian Books cover
+> placeholders now use the localized Persian title instead of leaking the
+> Tajik title. Web release preparation now fails closed unless the compiled
+> shell declares `<base href="/zarbulmasal/">`; this caught and prevented a
+> root-relative bootstrap regression during the live deployment loop. The
+> corrected artifact was published as `gh-pages` commit `ee17ec5` and passed
+> the fresh live 8-viewport/209-route sweep with zero diagnostics.
+
+> The portrait fallback accessibility label is now localized through the
+> Tajik/Persian translation maps; failed source-backed assets now switch to
+> unavailable semantics instead of retaining a false citation, the focused
+> portrait and Persian zero-leak checks pass, and the full suite is 397/397.
+
+> **Post-scrub browser spot check — 2026-09-20:** The rebuilt Works route
+> rendered the review-only empty state rather than snippets, and the known
+> pending record retained its printed citation without poem text.
+
+> **Strict browser sweep — 2026-09-20:** The rebuilt release artifact passed 8
+> viewport configurations and 29 Tajik, Persian/RTL, and dark-mode route visits.
+> The hardened harness recorded 0 page errors, 0 route errors, 0 failed
+> requests, 0 console errors, and 0 horizontal overflows. Four Chromium GPU
+> stall warnings appeared only during small-viewport screenshots and are not
+> application diagnostics.
+
+> **Corrected-data browser sweep — 2026-09-21:** After correcting the Ibn Sina
+> attribution and rebuilding the web artifact, the same 8 viewport
+> configurations and major Tajik/Persian/RTL/dark-mode routes again recorded
+> 0 page errors, 0 route errors, 0 failed requests, 0 console errors, and 0
+> horizontal overflows.
+
+> **Books-cover/browser sweep — 2026-09-21:** Eight exact provider JPEG covers
+> are now bundled under `assets/data/books/covers/` with their source URLs
+> retained in the catalog. The current release build included the Books list,
+> `Баъди борон` detail, Persian Books detail (including the localized
+> `Kitobkhon · kitobkhon.net` provider marker), and dark-mode Books in the
+> audit: 8 viewport configurations and 34 route/mode visits recorded 0 page errors,
+> 0 route errors, 0 failed requests, 0 console errors, and 0 horizontal
+> overflows.
+
+> **Image-guard browser sweep — 2026-09-21:** After tightening the page-image
+> display guard so a verified flag without a concrete local asset path remains
+> image-free, the rebuilt artifact again passed 8 viewport configurations and
+> 34 route/mode visits with 0 page errors, 0 route errors, 0 failed requests,
+> 0 console errors, and 0 horizontal overflows. Prepared web cache:
+> `ecd70a48071cedadf530`.
+
+> **Source-registry browser sweep — 2026-09-21:** After recording the official
+> Maorif Grade 11 2025 edition as a reviewed source lead (without promoting its
+> incomplete Lo(iq) discussion), the rebuilt artifact again passed 8 viewport
+> configurations and 34 route/mode visits with 0 page errors, 0 route errors,
+> 0 failed requests, 0 console errors, and 0 horizontal overflows. Prepared web
+> cache: `377081a64096ed3b15da`.
+
+> **Persian-title integrity sweep — 2026-09-21:** A catalog-wide script audit
+> found two corrupted generated Persian title representations containing Latin
+> extraction artifacts. Both were withheld without guessing replacements; the
+> Flutter zero-leak test and strict provenance linter now reject Latin or
+> Cyrillic characters in Persian work titles. The rebuilt path-aware web audit
+> passed 8 viewport configurations and 34 route/mode visits with 0 page errors,
+> 0 route errors, 0 failed requests, 0 console errors, and 0 horizontal
+> overflows. Prepared web cache: `c58c570f6a1807b8b6c8`.
+
+> **Privacy-metadata browser sweep — 2026-09-21:** After synchronizing the
+> source-controlled privacy page to `21 September 2026` in English, Tajik, and
+> Persian, the rebuilt artifact passed 8 viewport configurations and 34 Tajik,
+> Persian/RTL, and dark-mode route visits with 0 page errors, 0 route errors,
+> 0 failed requests, 0 console errors, and 0 horizontal overflows. Prepared
+> web cache: `fd20d4d7a6260e599704`.
+
+> **Content-quarantine browser sweep — 2026-09-21:** After the latest uploaded-PDF
+> content pass, which added one verified page citation and quarantined four
+> prose/quoted-verse extraction false positives, the rebuilt artifact passed
+> 8 viewport configurations and 209 route/mode visits with 0 page errors, 0
+> route errors, 0 failed requests, 0 console errors, and 0 horizontal
+> overflows. Prepared web cache: `953279a53f804958ccf5`.
+
+> **Persian audit correction — 2026-09-20:** The earlier Persian pass was not
+> sufficient evidence: its harness wrote Flutter Web preferences as raw strings
+> and did not verify localized rendered content. The harness now JSON-encodes
+> SharedPreferences values, activates Flutter's semantics bridge before reading
+> route text, requires Persian markers on seven Persian route visits, and rejects
+> the Tajik home marker. The corrected local release sweep passed all 8 viewport
+> configurations and 29 visits with 0 browser diagnostics; the saved Persian
+> Home and Literature screenshots visibly show Persian labels and RTL layout.
+
+> **Post-dependency native verification — 2026-09-20:** The compatible
+> transitive dependency refresh was followed by `flutter build apk --debug
+> --target-platform android-arm64`, which exited successfully and produced
+> `build/app/outputs/flutter-apk/app-debug.apk`. This verifies the current
+> lockfile against the Android compile path only; it does not provide a
+> production-signed AAB, signed upgrade evidence, or physical-device QA.
+
 ---
 
 ## 1. Executive Summary
 
 A comprehensive, evidence-grounded quality assurance audit and end-to-end verification pass was conducted for **Зарбулмасал (Zarbulmasal)**.
 
-- **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage contains 171 authors and 1,472 imported work candidates, all quarantined pending provenance review.
+- **Feature Catalog**: The core proverb catalog remains 150 entries across 20 categories and data-derived difficulty levels. Literary Heritage currently contains 159 catalogued author records and 5,501 imported textbook candidates: 31 primary-page-checked, 255 explicitly rejected, and 5,215 still quarantined pending provenance review.
 - **Platforms Verified**:
   - Android packaging/signing gates and historical signed artifacts; current v2.0.0 signing requires repository secrets and a device upgrade test remains unavailable.
   - Web/PWA release build with atomic offline service worker caching; the live root is deployed and the Android portal remains intentionally absent until signed current artifacts exist.
 - **Design System**: Newest intended **Qalam** design system (`lib/core/design_system/`) preserved with 100% fidelity, featuring warm paper backgrounds (`#F3F0E7`), deep ink text (`#202720`), vermilion accents (`#A43D2F`), book-like margins, and multilingual typography (Noto Sans, Noto Serif, Noto Naskh Arabic).
-- **Quality Checks**: Static analysis (0 issues), published CI suite (152 tests passing), local suite (180 tests passing with the unpublished History worktree), and browser smoke coverage across navigation, persistence, quiz, flashcards, Persian RTL, dark mode, and real pointer actions.
+- **Quality Checks (historical checkpoint)**: At the audit date, static analysis reported 0 issues and 397/397 tests passed at 82.23% line coverage. For the current continuation snapshot, see the 2026-09-22 current-state override at the top of this file.
 
 ---
 
@@ -112,7 +403,7 @@ Marked **UNVERIFIED**. Due to the absence of the user friend phone model, Androi
 
 1. `dart format --output=none --set-exit-if-changed lib test tool/validate_literature_json.dart tool/validate_literary_content.dart`: **PASS** (0 files changed).
 2. `flutter analyze`: **PASS** (No issues found).
-3. `flutter test --coverage`: **PASS** (180 tests passing in the current worktree; the published commit's CI suite passes 152 tests).
+3. `flutter test --coverage`: **PASS** (396 tests passing in the current worktree; historical published-commit counts below are retained only as dated evidence).
 4. Current source `flutter build apk --release --target-platform android-arm64`: **EXPECTED FAIL-CLOSED** without signing secrets (`Release signing config missing`). No unsigned release artifact is produced.
 5. Current source `flutter build web --release --base-href /zarbulmasal/ --no-web-resources-cdn --no-wasm-dry-run`: **PASS**.
 6. Current source `bash tool/prepare_web_release.sh`: **PASS** (deterministic build cache generated and injected).
@@ -173,6 +464,13 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 - Fresh public phone QA passed at 375×667, 390×844, and 430×932: no horizontal overflow, console/page errors, failed requests, or HTTP failures. Real pointer actions changed proverb search results, quiz feedback, and flashcard reveal; category and level selections navigated to `/proverbs`; favorites persisted through the public flow; settings theme and language values persisted across reload.
 - The current worktree contains an unpublished, source-bound History feature with 180 passing local tests. Its home link is ordered after the literature section, and it is intentionally excluded from the public build until its content and release scope are approved.
 
+## Update 2026-09-21 — Connected-device re-audit
+- A fresh debug APK was built from the current worktree and installed in-place on Xiaomi `2412DPC0AG` / Android 16 (`versionCode 2004`) without clearing app data.
+- Native smoke checks passed for app launch, Literature hub, poet list and portraits/placeholders, works review gate, Literature search and keyboard, Books, Persian RTL, Tajik language switching, dark mode, and light-mode restoration. No fatal exception, crash, or ANR lines appeared in the captured logcat.
+- A connected-device UIAutomator pass found and fixed a Books filter rail constrained to roughly 38dp; the rail now preserves 48dp visible touch targets. The updated web release artifact also passed the full browser audit: 8 viewports, 34 routes/modes, 0 overflows, console errors, page errors, request failures, or audit errors.
+- The offline follow-up fixed the same constrained-rail pattern in History and Oral Heritage; focused widget regressions now measure every filter chip at 48dp or larger. The rebuilt web artifact (`014019527e2639373dfe`) passed the same 8-viewport, 34-route/mode browser audit with zero errors, overflows, console errors, page errors, or request failures.
+- The installed APK certificate is `CN=Android Debug`; this is explicitly debug-only evidence. The historical v1.0.1 digest previously treated as a public identity is now rejected as a production certificate. Release scripts and CI require protected `EXPECTED_RELEASE_CERT_SHA256` configuration and reject debug certificates.
+
 ---
 
 ## 10. Release v2.0.0 Audit & Verification Register (2026-09-13)
@@ -180,7 +478,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 ### Executive Summary
 - **Target Release**: Zarbulmasal v2.0.0 (`version: 2.0.0+2004`)
 - **Android Upgrade Continuity**:
-  - `v1.0.1` ARM64 release package: `versionCode 2002`, signing certificate SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`.
+  - `v1.0.1` ARM64 release package: `versionCode 2002`, historical certificate SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`; later inspection identifies its DN as `CN=Android Debug`, so it is not a trusted production identity.
   - `v2.0.0` base `versionCode` is set to `2004` (ARMv7: 3004, ARM64: 4004, Universal: 2004), so a correctly signed current build is eligible for an in-place upgrade without `INSTALL_FAILED_VERSION_DOWNGRADE`.
   - CI workflow (`.github/workflows/ci.yml`) updated to verify package ID `com.zarbulmasal.zarbulmasal` and signing certificate digest before publishing.
 - **GitHub Pages Android Portal**:
@@ -211,13 +509,13 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 2. **Affected Screen/Component/Data**: Android Packaging & Upgrade Pipeline (`pubspec.yaml`, `android/app/build.gradle.kts`, `.github/workflows/ci.yml`)
 3. **Device, Language, Theme, State**: Android OS 7.0+ (ARM64, ARMv7, x86_64), All languages, All themes, Existing installed app upgrade state
 4. **Exact Reproduction Steps**:
-   - Install published release `v1.0.1` ARM64 package (`versionCode 2002`, signing SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`).
+   - Install published release `v1.0.1` ARM64 package (`versionCode 2002`, historical SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`; debug DN, not production-trusted).
    - Build or download a `v2.0.0` APK built with default base `versionCode 1` or lower than 2002.
    - Run `adb install -r app-arm64-v8a-release.apk` over the existing installation.
 5. **Expected vs Actual Behavior**:
    - *Expected*: In-place upgrade succeeds preserving user preferences and favorites without error.
    - *Actual*: Android Package Manager rejects install with `INSTALL_FAILED_VERSION_DOWNGRADE` (or `INSTALL_FAILED_UPDATE_INCOMPATIBLE` if signed by an ephemeral key).
-6. **Evidence**: Public release v1.0.1 ARM64 package inspection via `aapt dump badging` revealed `versionCode='2002'` and cert SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`.
+6. **Evidence**: Public release v1.0.1 ARM64 package inspection via `aapt dump badging` revealed `versionCode='2002'` and historical cert SHA-256 `93287a41a80796ceab4f049fced1685abb02851a9f4cebd9bd28b1f27857f91e`; current `apksigner` inspection identifies the same identity as `CN=Android Debug`.
 7. **Root Cause**: `pubspec.yaml` was set to `1.0.1+2` while release distribution scripts generated split versionCode offsets without raising the base version code above 2002 for major release v2.0.0.
 8. **Fix & Regression Protection**:
    - Set `version: 2.0.0+2004` in `pubspec.yaml`. Split versionCode logic calculates: Universal=2004, ARMv7=3004, ARM64=4004, strictly exceeding 2002.
@@ -265,7 +563,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 3. **Device, Language, Theme, State**: Mobile viewports (360-430px), Both Tajik Cyrillic and Persian Arabic scripts, Light/Dark theme
 4. **Exact Reproduction Steps**:
    - Open Literature Hub (`/literature`).
-   - Look for Search action button in top bar to search the 171 authors and 1,466 works.
+   - Look for Search action button in top bar to search the 159 catalogued authors and current review-safe work index.
    - Check section subtitles for dynamic content count.
 5. **Expected vs Actual Behavior**:
    - *Expected*: Search icon button present in top action bar leading to `/literature/search`; section 01 subtitle shows `Зиндагинома ва осори 171 шоир ва адиби бузург` / `زندگینامه و آثار ۱۷۱ شاعر و ادیب بزرگ`; section 02 shows authentic collation status.
@@ -367,12 +665,12 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 5. **Fix**: Downgraded the batch to `needsReview`, disabled full-text publication, and added a validator/test requirement that an approved work has a documented primary-source page and `pageChecked` confirmation.
 6. **Protection/Evidence**: The validator now reports 0 approved and 1,466 pending records. Targeted content/provider/repository tests pass; a clean-origin release browser shows the explicit reviewed-works empty state and no console errors.
 
-#### Current Local QA Snapshot (Unpublished)
+#### Historical Local QA Snapshot (2026-09-14; superseded by the current-state override above)
 
 - Baseline: `main` at `34e0e71` plus local QA fixes; no commit, push, credential change, or deployment was performed.
 - Clean checks: `flutter analyze` (0 issues), full `flutter test --no-pub --coverage` (209 passing), literature JSON/content validators (`tool/validate_literature_json.dart`, `tool/validate_literary_content.dart`), literature-pipeline unit check, and web release build.
 - Coverage artifact: 4,561 / 5,362 lines (85.06%), exceeding the 80% threshold across all modules.
-- Content constraint: 171 authors and 1,472 work records validate structurally; all 1,472 works strictly remain quarantined under `needsReview` (none published prematurely without editorial approval and the required source checks).
+- Content constraint: 159 author records and 5,502 work records validate structurally; 5,334 remain quarantined under `needsReview`, 151 are explicitly rejected extraction false positives, and none are published without editorial approval and the required source checks.
 - File System / Build System Limitation: macOS intermittently returns `errno = 60: Operation timed out` while reading workspace paths, including the Android Gradle wrapper. Web and test compilation currently work, but this environmental fault is not permanently resolved; a fresh Android rebuild and diff whitespace check remain unverified.
 - RTL & Persian Numeral Parity Audit:
   - Eastern Arabic numeral formatting (`AppTranslations.formatDigits` and `formatNumber`) comprehensively applied across History (grade chips, book strip, source citations, dynamic empty states), Literature Search (author lifespans), Settings (proverbs count), Daily Hero (Persian calendar numbers), and School Canon.
@@ -441,6 +739,10 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 
 ## 14. Formal Production Readiness Audit
 
+> The score and evidence in this historical section describe the 2026-09-14
+> snapshot. The current-state override at the top of this document supersedes
+> its release conclusion.
+
 **Production audit: 82/100, launchable with caveats, with historical v1.1.0 APK artifacts in local downloads and physical on-device upgrade verification as the two risks to resolve before public launch.**
 
 ### Blockers
@@ -448,7 +750,7 @@ To resolve the download obstacles identified in pre-release distribution (GitHub
 2. **Physical on-device Android install/upgrade verification**: Package signing continuity and manifest checks pass static and scripted validation, but a real physical handset upgrade from the previously distributed v1.0.1/v1.1.0 build to v2.0.0 must be verified on hardware to ensure `INSTALL_FAILED_UPDATE_INCOMPATIBLE` does not occur.
 
 ### High-Value Fixes
-1. **Literature Content Collation**: 1,472 imported works remain fail-closed under `needsReview`. Editorial collation against physical print editions will enable their public promotion.
+1. **Literature Content Collation**: 5,334 imported works remain fail-closed under `needsReview`. Editorial collation against physical print editions will enable their public promotion.
 2. **Offline Service Worker Cache Invalidation**: Monitor service worker registration on initial load across varied browsers to ensure version bumps flush stale cached assets immediately.
 
 ### Evidence Checked

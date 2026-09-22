@@ -2,7 +2,7 @@
 
 **Feature**: Мероси адабӣ (Literary Heritage)  
 **Project**: Zarbulmasal (Зарбулмасал)  
-**Status**: Active Log — Initial Setup  
+**Status**: Active Log — Candidate cleanup tracked
 **Version**: 1.0.0  
 **Effective Date**: 2026-09-10  
 
@@ -34,10 +34,15 @@ The following log permanently records rejected domains, files, and material to p
 | URL / Domain / Source Identifier | Type / Category | Specific Rejection Reason | Log Date | Evaluated By |
 |:---|:---|:---|:---:|:---:|
 | *(Template entry — do not use in production)* | `example_category` | *Detailed explanation of defect* | *YYYY-MM-DD* | *Editor* |
+| 118 extracted work records | `extraction_false_positive` | Conservative local audit identified textbook exercise prompts or biographical/explanatory prose fragments by explicit instructional markers or strong prose leads. Records remain in the provenance ledger as `rejected`; no page-checked record was changed. | 2026-09-21 | Codex audit |
+| 33 additional extracted work records | `extraction_false_positive` | Expanded conservative audit identified additional unmistakable exercise questions, instructional prompts, and explanatory prose fragments. Records remain in the provenance ledger as `rejected`; no page-checked record was changed. | 2026-09-21 | Codex audit |
 
 > [!NOTE]
-> **Current Status**: **No items rejected yet (initial setup).**  
-> All sources utilized in the initial foundation setup have been drawn strictly from approved Tier A and Tier B editions catalogued in `SOURCE_REGISTER.md`. As prospective digital texts and external scans are assessed in future phases, rejected items will be documented in this table.
+> **Current Status**: 151 extracted candidate records are quarantined as
+> rejected false positives by the local corpus-cleanup pass. This is a data
+> quality decision, not a claim about the underlying textbook source: the
+> records remain in the audit ledger with their source citation and an
+> explicit rejection reason. No poem is promoted by this pass.
 
 ---
 

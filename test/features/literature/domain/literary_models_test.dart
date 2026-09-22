@@ -6,8 +6,42 @@ import 'package:zarbulmasal/features/literature/domain/rights_record.dart';
 import 'package:zarbulmasal/features/literature/domain/school_canon_entry.dart';
 import 'package:zarbulmasal/features/literature/domain/source_edition.dart';
 import 'package:zarbulmasal/features/literature/domain/verification_record.dart';
+import 'package:zarbulmasal/features/literature/domain/portrait_record.dart';
 
 void main() {
+  group('PortraitRecord', () {
+    test('round trips source provenance and rejects non-local sources', () {
+      const portrait = PortraitRecord(
+        assetPath: 'assets/data/literature/portraits/rudaki.png',
+        sourceType: PortraitSourceType.uploadedBook,
+        sourceReference: 'docs/literature/pdfs/adabiet sinfi 5.pdf',
+        sourcePage: 49,
+        rightsStatus: 'unknown',
+      );
+
+      final restored = PortraitRecord.fromJson(portrait.toJson());
+      expect(restored, portrait);
+      expect(restored.isSourceBacked, isTrue);
+      expect(restored.citation, 'adabiet sinfi 5.pdf, PDF p. 49');
+
+      expect(
+        portrait
+            .copyWith(assetPath: 'https://example.test/face.jpg')
+            .isSourceBacked,
+        isFalse,
+      );
+      expect(
+        PortraitRecord.fromJson({
+          'assetPath': 'assets/data/literature/portraits/rudaki.png',
+          'sourceType': 'uploaded_book',
+          'sourceReference': 'docs/literature/pdfs/adabiet sinfi 5.pdf',
+          'sourcePage': '49',
+        }).sourcePage,
+        49,
+      );
+    });
+  });
+
   group('RightsRecord and RightsStatus', () {
     test('RightsStatus fromString handles case and format variations', () {
       expect(
@@ -100,6 +134,10 @@ void main() {
         'sourceReference': 'INV-4412',
         'accessDate': '2026-09-10',
         'sourceImageVerified': true,
+        'sourceImagePaths': [
+          'assets/data/literature/page_images/page-45.png',
+          'assets/data/literature/page_images/page-46.png',
+        ],
       };
 
       final edition = SourceEdition.fromJson(json);
@@ -109,6 +147,15 @@ void main() {
       expect(edition.pageEnd, 46);
       expect(edition.formattedPages, 'с. 45–46');
       expect(edition.sourceImageVerified, isTrue);
+      expect(edition.sourceImagePaths, [
+        'assets/data/literature/page_images/page-45.png',
+        'assets/data/literature/page_images/page-46.png',
+      ]);
+      expect(
+        () =>
+            edition.sourceImagePaths.add('assets/data/literature/page-47.png'),
+        throwsUnsupportedError,
+      );
       expect(
         edition.citation,
         'А. Рӯдакӣ. Ахтарони адаб: Рӯдакӣ, ҷ. 1 / Зери таҳрири А. Абдуллоев — Душанбе: Адиб, 1999. — с. 45–46.',
@@ -120,6 +167,8 @@ void main() {
       final serialized = edition.toJson();
       expect(serialized['publisher'], 'Адиб');
       expect(serialized['sourceType'], 'printed-book-scan');
+      expect(serialized['sourceImagePath'], endsWith('page-45.png'));
+      expect(serialized['sourceImagePaths'], hasLength(2));
     });
   });
 
@@ -133,12 +182,16 @@ void main() {
         'birthYear': '858',
         'deathYear': '941',
         'birthPlace': 'Панҷрӯд, Панҷакент',
+        'birthPlacePersian': 'پنج‌رود، پنجکنت',
         'literaryPeriod': 'Асри тиллоӣ (IX–X)',
+        'literaryPeriodPersian': 'عصر طلایی (سده‌های ۹ و ۱۰)',
         'biographyTj': 'Сардафтари адабиёти классикии тоҷик.',
         'biographyFa': 'پدر شعر فارسی.',
         'biographySource': 'Таърихи адабиёти тоҷик, Дониш, 2012',
+        'recordStatus': 'active',
         'majorWorkIds': ['boyi-juyi-muliyon'],
         'officialTitles': ['Одамушшуаро'],
+        'officialTitlesPersian': ['آدم‌الشعرا'],
         'educationGrades': ['5', '8', '10'],
         'rights': {
           'status': 'public_domain',
@@ -151,12 +204,19 @@ void main() {
       final author = LiteraryAuthor.fromJson(json);
       expect(author.id, 'rudaki');
       expect(author.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
+      expect(author.recordStatus, 'active');
       expect(author.isDeceased, isTrue);
       expect(author.lifespan, '858 – 941');
+      expect(author.birthPlacePersian, 'پنج‌رود، پنجکنت');
+      expect(author.literaryPeriodPersian, 'عصر طلایی (سده‌های ۹ و ۱۰)');
+      expect(author.officialTitlesPersian, ['آدم‌الشعرا']);
       expect(author.hasAuditableBiographySource, isFalse);
+      expect(author.biographyTjProvenance, 'UNSUPPORTED_GENERATED');
+      expect(author.biographyFaProvenance, 'UNSUPPORTED_GENERATED');
 
       final pageCitedAuthor = author.copyWith(
         biographySource: 'Адабиёти тоҷик, синфи 5, с. 49',
+        biographyTjProvenance: 'SOURCE_BACKED',
       );
       expect(pageCitedAuthor.hasAuditableBiographySource, isTrue);
       expect(author.isPublicDomain, isTrue);
@@ -165,6 +225,9 @@ void main() {
 
       final serialized = author.toJson();
       expect(serialized['id'], 'rudaki');
+      expect(serialized['birthPlacePersian'], 'پنج‌رود، پنجکنت');
+      expect(serialized['literaryPeriodPersian'], 'عصر طلایی (سده‌های ۹ و ۱۰)');
+      expect(serialized['officialTitlesPersian'], ['آدم‌الشعرا']);
       expect(
         (serialized['rights'] as Map<String, dynamic>)['status'],
         'publicDomain',
@@ -173,10 +236,98 @@ void main() {
       final copy = author.copyWith(biographyTj: 'Навшуда');
       expect(copy.biographyTj, 'Навшуда');
       expect(copy.canonicalName, 'Абӯабдуллоҳи Рӯдакӣ');
+      expect(
+        copy
+            .copyWith(literaryPeriodPersian: 'دورهٔ تازه')
+            .literaryPeriodPersian,
+        'دورهٔ تازه',
+      );
     });
+
+    test(
+      'a missing death year is not presented as proof that an author is alive',
+      () {
+        final author = LiteraryAuthor.fromJson({
+          'id': 'unknown-death',
+          'canonicalName': 'Шоири номаълум',
+          'birthYear': '1947',
+          'literaryPeriod': 'Адабиёти тоҷик',
+          'biographyTj': '',
+          'biographySource': '',
+          'rights': {'status': 'unknown'},
+        });
+
+        expect(author.lifespan, '1947');
+        expect(author.lifespan, isNot(contains('дар ҳаёт')));
+      },
+    );
+
+    test('rejected extraction artifacts are not public authors', () {
+      final author = LiteraryAuthor.fromJson({
+        'id': 'artifact',
+        'canonicalName': 'Мисраъҳои',
+        'recordStatus': 'rejected',
+        'literaryPeriod': 'Адабиёти тоҷик',
+        'biographyTj': '',
+        'biographySource': '',
+        'rights': {'status': 'unknown'},
+      });
+
+      expect(author.hasCanonicalName, isFalse);
+      expect(author.toJson()['recordStatus'], 'rejected');
+      expect(author.copyWith(recordStatus: 'active').hasCanonicalName, isTrue);
+
+      expect(author.copyWith(recordStatus: 'review').hasCanonicalName, isFalse);
+    });
+
+    test(
+      'missing biography provenance cannot become source-backed at runtime',
+      () {
+        final author = LiteraryAuthor.fromJson({
+          'id': 'unreviewed',
+          'canonicalName': 'Ношинос',
+          'literaryPeriod': 'номаълум',
+          'biographyTj': 'Матни санҷиданашуда.',
+          'biographySource': 'Китоб, с. 12',
+          'rights': {'status': 'unknown'},
+        });
+
+        expect(author.hasAuditableBiographySource, isFalse);
+        expect(author.hasAuditableTajikBiography, isFalse);
+        expect(author.hasAuditablePersianBiography, isFalse);
+      },
+    );
   });
 
   group('LiteraryWork', () {
+    test('preserves all source occurrences for one canonical work', () {
+      final source = {
+        'bookTitle': 'Адабиёти тоҷик, синфи 7',
+        'publisher': 'Маориф',
+        'city': 'Душанбе',
+        'year': '2018',
+        'pageStart': 104,
+        'sourceType': 'textbook',
+        'sourceReference': 'docs/literature/pdfs/adabiyot sinfi 7.pdf',
+      };
+      final work = LiteraryWork.fromJson({
+        'id': 'kamol-canonical',
+        'authorId': 'kamol_khujandi',
+        'title': 'Гар биҷӯянд, ба сад қарн наёбанд, Камол',
+        'type': 'poem',
+        'sourceOccurrences': [source],
+        'rights': {'status': 'unknown'},
+        'verification': {'evidenceLevel': 'needsReview'},
+      });
+
+      expect(work.sourceOccurrences, hasLength(1));
+      expect(work.sourceOccurrences.single.pageStart, 104);
+      expect(
+        LiteraryWork.fromJson(work.toJson()).sourceOccurrences,
+        hasLength(1),
+      );
+    });
+
     test('Enums parse properly', () {
       expect(WorkType.fromString('ghazal'), WorkType.ghazal);
       expect(WorkType.fromString('rubai'), WorkType.rubai);
@@ -192,47 +343,132 @@ void main() {
       );
     });
 
-    test(
-      'Displayability logic enforces rights, verification, and textStatus',
-      () {
-        const rightsAllowed = RightsRecord(
-          status: RightsStatus.publicDomain,
-          reasoning: 'PD',
-          fullTextAllowed: true,
-          excerptAllowed: true,
-        );
-        const verifiedRecord = VerificationRecord(
+    test('Displayability accepts approved or permitted-source poems', () {
+      const rightsAllowed = RightsRecord(
+        status: RightsStatus.publicDomain,
+        reasoning: 'PD',
+        fullTextAllowed: true,
+        excerptAllowed: true,
+      );
+      const verifiedRecord = VerificationRecord(
+        evidenceLevel: VerificationLevel.editoriallyApproved,
+        pageVerified: true,
+      );
+
+      const unverifiedWork = LiteraryWork(
+        id: 'w1',
+        authorId: 'rudaki',
+        title: 'Бӯи ҷӯи Мӯлиён',
+        primarySource: SourceEdition(
+          bookTitle: 'Осори санҷишӣ',
+          publisher: 'Нашриёт',
+          city: 'Душанбе',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+          sourceImageVerified: true,
+        ),
+        rights: rightsAllowed,
+        verification: VerificationRecord(
           evidenceLevel: VerificationLevel.editoriallyApproved,
-        );
+          pageVerified: true,
+        ),
+        textStatus: TextStatus.needsReview,
+      );
+      expect(unverifiedWork.isDisplayable, isFalse);
+      expect(unverifiedWork.hasAuditableReviewCitation, isFalse);
+      expect(unverifiedWork.isPageImageDisplayable, isFalse);
+      expect(
+        unverifiedWork.isExcerptDisplayable,
+        isFalse,
+        reason: 'Review-only text must never be rendered as an excerpt.',
+      );
 
-        const unverifiedWork = LiteraryWork(
-          id: 'w1',
-          authorId: 'rudaki',
-          title: 'Бӯи ҷӯи Мӯлиён',
-          rights: rightsAllowed,
-          verification: VerificationRecord(
-            evidenceLevel: VerificationLevel.editoriallyApproved,
-          ),
-          textStatus: TextStatus.needsReview,
-        );
-        expect(unverifiedWork.isDisplayable, isFalse);
-        expect(unverifiedWork.isExcerptDisplayable, isTrue);
+      final pageLinkedReviewWork = unverifiedWork.copyWith(
+        primarySource: unverifiedWork.primarySource!.copyWith(
+          sourceReference: 'docs/literature/pdfs/review.pdf',
+        ),
+      );
+      expect(pageLinkedReviewWork.hasAuditableReviewCitation, isTrue);
 
-        final verifiedWork = unverifiedWork.copyWith(
-          verification: verifiedRecord,
-          textStatus: TextStatus.verified,
-          textTajik: 'Бӯи ҷӯи Мӯлиён ояд ҳаме...',
-        );
-        expect(verifiedWork.isDisplayable, isTrue);
-        expect(verifiedWork.hasTajikText, isTrue);
+      final verifiedWork = unverifiedWork.copyWith(
+        verification: verifiedRecord,
+        textStatus: TextStatus.verified,
+        textTajik: 'Бӯи ҷӯи Мӯлиён ояд ҳаме...',
+      );
+      expect(verifiedWork.isDisplayable, isTrue);
+      expect(
+        verifiedWork.isPageImageDisplayable,
+        isFalse,
+        reason:
+            'A verified flag without a local image path must stay image-free.',
+      );
+      final verifiedWorkWithImage = verifiedWork.copyWith(
+        primarySource: verifiedWork.primarySource!.copyWith(
+          sourceImagePaths: const [
+            'assets/data/literature/page_images/rudaki_gar_bar_sari_nafsi_grade6_2014_p12.png',
+          ],
+        ),
+      );
+      expect(verifiedWorkWithImage.isPageImageDisplayable, isTrue);
+      expect(verifiedWork.hasTajikText, isTrue);
 
-        final blockedWork = verifiedWork.copyWith(
-          textStatus: TextStatus.blocked,
-        );
-        expect(blockedWork.isDisplayable, isFalse);
-        expect(blockedWork.isExcerptDisplayable, isFalse);
-      },
-    );
+      final sourceAttestedWork = verifiedWork.copyWith(
+        primarySource: verifiedWork.primarySource!.copyWith(
+          sourceReference: 'docs/literature/pdfs/adabiet sinfi 5.pdf',
+        ),
+        rights: const RightsRecord(
+          status: RightsStatus.unknown,
+          reasoning: 'No separate rights determination recorded.',
+          fullTextAllowed: false,
+          excerptAllowed: false,
+        ),
+        verification: const VerificationRecord(
+          evidenceLevel: VerificationLevel.primaryChecked,
+          pageVerified: true,
+        ),
+      );
+      expect(
+        sourceAttestedWork.isDisplayable,
+        isTrue,
+        reason:
+            'One page-checked uploaded textbook is sufficient under the publication policy.',
+      );
+
+      final untrustedSourceWork = sourceAttestedWork.copyWith(
+        primarySource: sourceAttestedWork.primarySource!.copyWith(
+          sourceReference: 'https://example.com/unreviewed.pdf',
+        ),
+      );
+      expect(untrustedSourceWork.isDisplayable, isFalse);
+
+      final blockedWork = verifiedWork.copyWith(textStatus: TextStatus.blocked);
+      expect(blockedWork.isDisplayable, isFalse);
+      expect(blockedWork.isExcerptDisplayable, isFalse);
+    });
+
+    test('biography audit requires an allowlisted provenance value', () {
+      final invalid = LiteraryAuthor.fromJson({
+        'id': 'invalid-provenance',
+        'canonicalName': 'Санҷиш',
+        'literaryPeriod': 'Санҷиш',
+        'biographyTj': 'Матни санҷишнашуда',
+        'biographyFa': 'متن آزمایشی',
+        'biographySource': 'Китоби санҷишӣ, с. 12',
+        'biographyTjProvenance': 'UNTRUSTED_IMPORT',
+        'biographyFaProvenance': 'UNTRUSTED_IMPORT',
+        'rights': {
+          'status': 'unknown',
+          'reasoning': 'test',
+          'fullTextAllowed': false,
+          'excerptAllowed': false,
+        },
+      });
+
+      expect(invalid.hasAuditableBiographySource, isFalse);
+      expect(invalid.hasAuditableTajikBiography, isFalse);
+      expect(invalid.hasAuditablePersianBiography, isFalse);
+    });
 
     test('LiteraryWork fromJson / toJson roundtrip', () {
       final json = {

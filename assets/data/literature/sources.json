@@ -338,7 +338,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": false
+    "sourceImageVerified": true
   },
   {
     "id": "tj_literature_grade_7_2018",
@@ -367,7 +367,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": false
+    "sourceImageVerified": true
   },
   {
     "id": "tj_literature_grade_9_2026",
@@ -382,7 +382,7 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
     "accessDate": "2026-09-14",
-    "sourceImageVerified": false
+    "sourceImageVerified": true
   },
   {
     "id": "tj_literature_grade_10_2026",
@@ -412,6 +412,109 @@
     "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
     "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
     "accessDate": "2026-09-14",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_7_2025",
+    "bookTitle": "Адабиёти тоҷик",
+    "authorAsPrinted": "У. Тоиров, М. Солеҳов, Н. Ширинзода",
+    "edition": "Нашри шашум",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2025",
+    "isbn": null,
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01KH604RAK569PDJBYDN82T6WE.pdf",
+    "accessDate": "2026-09-21",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_11_2025",
+    "bookTitle": "Адабиёти тоҷик (давраи нав)",
+    "authorAsPrinted": "Х. Асозода, А. Кўчарзода",
+    "edition": "Нашри ҳафтум",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2025",
+    "isbn": "978-99985-61-45-8",
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01KH8MQHJJBRM70Q8FXHNNCGV5.pdf",
+    "accessDate": "2026-09-21",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_5_2022",
+    "bookTitle": "Адабиёти тоҷик",
+    "authorAsPrinted": "Т. Мирзод, Р. Ҳамидов, М. Пирзод, Ф. Мирзода",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2022",
+    "isbn": "978-99985-05-12-4",
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01J3F0Y279HFXYHRM4396KWW0C.pdf",
+    "accessDate": "2026-09-22",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_6_2022",
+    "bookTitle": "Адабиёти тоҷик",
+    "authorAsPrinted": "Хоҷа Қурбон Тоҳирӣ",
+    "edition": "Нашри чорум",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2022",
+    "isbn": "978-99947-1-553-4",
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01J3F1F8T37FBPNG27VF4N5P15.pdf",
+    "accessDate": "2026-09-22",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_9_2023",
+    "bookTitle": "Адабиёти тоҷик",
+    "authorAsPrinted": "Т. Мирзод, С. Давлатзода, Ф. Мирзода",
+    "edition": "Нашри чорум",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2023",
+    "isbn": "978-99985-0-502-5",
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01J3F20TCS153WXVYZ6XFCVGXM.pdf",
+    "accessDate": "2026-09-22",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_11_2022",
+    "bookTitle": "Адабиёти тоҷик (давраи нав)",
+    "authorAsPrinted": "Х. Асозода, А. Кӯчарзода",
+    "edition": "Нашри шашум",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2022",
+    "isbn": "978-99985-64-76-3",
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01J3F02T45W6EQD3B5FPGGTTXJ.pdf",
+    "accessDate": "2026-09-22",
+    "sourceImageVerified": false
+  },
+  {
+    "id": "tj_literature_grade_5_2025",
+    "bookTitle": "Адабиёти тоҷик",
+    "authorAsPrinted": "Т. Мирзод, Р. Ҳамидов, М. Пирзод, Ф. Мирзода",
+    "publisher": "Маориф",
+    "city": "Душанбе",
+    "year": "2025",
+    "isbn": "978-99985-61-21-2",
+    "sourceType": "official-textbook",
+    "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+    "sourceReference": "https://maorif.tj/storage/libraries/01K6HGRAG6CPT6S1XBVK6KBPJT.pdf",
+    "accessDate": "2026-09-22",
     "sourceImageVerified": false
   }
 ]

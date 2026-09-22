@@ -209,26 +209,49 @@ void main() {
     );
   });
 
-  test('light/dark theme survives restart and toggles back', () async {
+  test('theme mode (system/light/dark) survives restart and toggles', () async {
     final notifier = ThemeModeNotifier();
     addTearDown(notifier.dispose);
     await preferencesLoaded();
-    expect(notifier.state, ThemeMode.light);
-    await notifier.toggleTheme();
+    // Fresh install defaults to following the system appearance.
+    expect(notifier.state, ThemeMode.system);
+    await notifier.setThemeMode(ThemeMode.dark);
     expect(notifier.state, ThemeMode.dark);
     final recreated = ThemeModeNotifier();
     addTearDown(recreated.dispose);
     await preferencesLoaded();
     expect(recreated.state, ThemeMode.dark);
-    await recreated.toggleTheme();
+    await recreated.setThemeMode(ThemeMode.light);
     expect(recreated.state, ThemeMode.light);
+    await recreated.setThemeMode(ThemeMode.system);
+    expect(recreated.state, ThemeMode.system);
     expect(
-      (await SharedPreferences.getInstance()).getBool(
-        AppConstants.prefsDarkMode,
+      (await SharedPreferences.getInstance()).getString(
+        ThemeModeNotifier.prefsThemeMode,
       ),
-      isFalse,
+      'system',
     );
   });
+
+  test(
+    'legacy dark_mode flag migrates without losing user preference',
+    () async {
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefsDarkMode: true,
+      });
+      final notifier = ThemeModeNotifier();
+      addTearDown(notifier.dispose);
+      await preferencesLoaded();
+      expect(notifier.state, ThemeMode.dark);
+      SharedPreferences.setMockInitialValues({
+        AppConstants.prefsDarkMode: false,
+      });
+      final light = ThemeModeNotifier();
+      addTearDown(light.dispose);
+      await preferencesLoaded();
+      expect(light.state, ThemeMode.light);
+    },
+  );
 
   test('onboarding completion survives provider recreation', () async {
     final first = ProviderContainer();
@@ -347,6 +370,7 @@ void main() {
       SharedPreferences.setMockInitialValues({
         AppConstants.prefsDarkMode: true,
         AppConstants.prefsLanguage: 'fa',
+        AppConstants.prefsAppTextScale: 1.2,
         AppConstants.prefsFavorites: [seedProverbs.first.id],
         AppConstants.prefsOnboardingComplete: true,
       });
@@ -360,6 +384,7 @@ void main() {
       // Initial read must be immediately synchronous without delay or flash
       expect(container.read(themeModeProvider), ThemeMode.dark);
       expect(container.read(displayLanguageProvider), DisplayLanguage.persian);
+      expect(container.read(appTextScaleProvider), 1.2);
       expect(
         container.read(favoritesProvider),
         contains(seedProverbs.first.id),
@@ -367,6 +392,17 @@ void main() {
       expect(container.read(onboardingCompleteProvider), isTrue);
     },
   );
+
+  test('interface text scale persists across provider recreation', () async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    final first = AppTextScaleNotifier(prefs);
+
+    await first.setScale(AppTextScaleNotifier.maximum);
+
+    final restarted = AppTextScaleNotifier(prefs);
+    expect(restarted.state, AppTextScaleNotifier.maximum);
+  });
 
   test(
     'filteredProverbsProvider uses diacritic folding and phonetic matching',

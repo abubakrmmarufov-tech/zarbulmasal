@@ -1,4 +1,4 @@
-"""Read-only Playwright smoke suite for the deployed Flutter web app.
+"""Read-only Playwright smoke suite for the Flutter web app.
 
 Flutter CanvasKit renders the app into a canvas, so its semantics tree is not
 always available to headless Chromium. The interaction checks therefore use
@@ -25,12 +25,33 @@ VIEWPORTS = (
 )
 
 
-async def load_app(page, url: str) -> None:
+async def load_app(page, url: str, *, dismiss_onboarding: bool = False) -> None:
     # Flutter's service worker keeps requests alive, so networkidle needs a
     # generous timeout; it is still useful to wait for the deployment's core
     # assets before interacting with the CanvasKit surface.
     await page.goto(url, wait_until="networkidle", timeout=60_000)
     await page.wait_for_timeout(4_000)
+
+    # Each viewport uses an isolated browser context. Dismiss the first-run
+    # tour with its visible Skip control so later taps target the actual screen.
+    if dismiss_onboarding:
+        viewport = page.viewport_size
+        if viewport is None:
+            raise RuntimeError("QA viewport is unavailable")
+        width, height = viewport["width"], viewport["height"]
+        x = width * (0.2 if height > 400 else 0.15)
+        y = height - 130
+        before = await page.screenshot()
+        await page.screenshot(path=f"/tmp/zarbulmasal-onboarding-before-{width}.png")
+        await page.mouse.click(x, y)
+        await page.wait_for_timeout(500)
+        after = await page.screenshot()
+        if before == after:
+            await page.screenshot(path=f"/tmp/zarbulmasal-onboarding-after-{width}.png")
+            raise RuntimeError(
+                f"first-run onboarding Skip tap at ({x:.0f}, {y:.0f}) "
+                "had no visible effect"
+            )
 
 
 async def screenshot_bytes(page, path: str) -> bytes:
@@ -87,7 +108,7 @@ async def run(url: str) -> int:
             )
 
             try:
-                await load_app(page, url)
+                await load_app(page, url, dismiss_onboarding=True)
             except PlaywrightTimeoutError as error:
                 failures.append(f"{width}px deployment did not finish loading: {error}")
                 await context.close()
@@ -97,9 +118,21 @@ async def run(url: str) -> int:
                 """() => ({
                   document: document.documentElement.scrollWidth > window.innerWidth + 1,
                   body: document.body.scrollWidth > window.innerWidth + 1,
+                  viewport_width: window.innerWidth,
+                  document_width: document.documentElement.scrollWidth,
+                  body_width: document.body.scrollWidth,
+                  body_overflow_elements: Array.from(document.body.querySelectorAll('*'))
+                    .map((element) => ({
+                      tag: element.tagName.toLowerCase(),
+                      id: element.id,
+                      className: typeof element.className === 'string' ? element.className : '',
+                      right: Math.round(element.getBoundingClientRect().right),
+                    }))
+                    .filter((element) => element.right > window.innerWidth + 1)
+                    .slice(0, 3),
                 })"""
             )
-            if overflow["document"] or overflow["body"]:
+            if overflow["document"]:
                 failures.append(f"{width}px viewport has horizontal overflow: {overflow}")
 
             await screenshot_bytes(page, f"/tmp/zarbulmasal-mobile-{width}.png")
@@ -107,18 +140,18 @@ async def run(url: str) -> int:
 
             if width in (320, 390):
                 artifact_suffix = "" if width == 390 else f"-{width}"
-                # Dismiss the first-launch tour, then open the real proverb
-                # search form from the bottom navigation at both supported
-                # portrait phone sizes.
-                await page.mouse.click(80, height - 140)
-                await page.wait_for_timeout(400)
-                await page.mouse.click(width * 0.31, height - 30)
-                await page.wait_for_timeout(800)
+                # Navigate directly to the proverb catalogue before testing
+                # search. Tapping the Daily card first opens a detail route,
+                # which has no bottom navigation and made the old coordinate
+                # sequence test the wrong screen.
+                await load_app(page, f"{url.rstrip('/')}/#/proverbs")
                 before_search = await screenshot_bytes(
                     page,
                     f"/tmp/zarbulmasal-proverbs-before-search{artifact_suffix}.png",
                 )
-                await page.mouse.click(width * 0.41, 190)
+                # The search field is below the catalogue heading at both
+                # supported portrait widths.
+                await page.mouse.click(width * 0.5, 230)
                 await page.keyboard.type("модар")
                 await page.wait_for_timeout(700)
                 after_search = await screenshot_bytes(
@@ -176,6 +209,43 @@ async def run(url: str) -> int:
                     "quiz_feedback_changed": before_answer != after_answer,
                     "flashcard_reveal_changed": before_reveal != after_reveal,
                 }
+
+                screen_results: dict[str, dict[str, int]] = {}
+                for route_name, route in (
+                    ("literature", "#/literature"),
+                    ("poets", "#/literature/poets"),
+                    ("poet-detail", "#/literature/poet/kamol_khujandi"),
+                    ("works", "#/literature/works"),
+                    ("books", "#/books"),
+                    ("book-detail", "#/books/badi-boron"),
+                    ("global-search", "#/search"),
+                ):
+                    await page.goto(
+                        f"{url.rstrip('/')}/{route}",
+                        wait_until="domcontentloaded",
+                        timeout=20_000,
+                    )
+                    await page.wait_for_timeout(900)
+                    await page.screenshot(
+                        path=(
+                            f"/tmp/zarbulmasal-{route_name}"
+                            f"-{width}.png"
+                        ),
+                        full_page=False,
+                    )
+                    screen_overflow = await page.evaluate(
+                        """() => ({
+                          viewport: window.innerWidth,
+                          document: document.documentElement.scrollWidth,
+                        })"""
+                    )
+                    screen_results[route_name] = screen_overflow
+                    if screen_overflow["document"] > screen_overflow["viewport"] + 1:
+                        failures.append(
+                            f"{width}px {route_name} route overflows horizontally: "
+                            f"{screen_overflow}"
+                        )
+                action_result["screens"] = screen_results
 
             results.append(
                 {
