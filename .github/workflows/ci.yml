@@ -213,8 +213,10 @@ jobs:
       - name: Publish prepared site to gh-pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_DIR: ${{ runner.temp }}/zarbulmasal-gh-pages
         run: |
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git fetch origin gh-pages
           git worktree add --detach "$PUBLISH_DIR" origin/gh-pages
           find "$PUBLISH_DIR" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
