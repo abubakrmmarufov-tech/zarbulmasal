@@ -33,7 +33,7 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: flutter pub get --enforce-lockfile
 
       - name: Check formatting
         run: >-
@@ -98,12 +98,27 @@ jobs:
           printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.keystore"
           chmod 600 "$RUNNER_TEMP/release.keystore"
           export KEYSTORE_PATH="$RUNNER_TEMP/release.keystore"
+          bash tool/verify_android_signing_material.sh
           flutter build apk --release --split-per-abi \
             --obfuscate \
             --split-debug-info=build/symbols/android
           flutter build apk --release \
             --obfuscate \
             --split-debug-info=build/symbols/android
+
+      - name: Build signed public Android App Bundle
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.android_release_status.outputs.ready == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          export KEYSTORE_PATH="$RUNNER_TEMP/release.keystore"
+          flutter build appbundle --release \
+            --obfuscate \
+            --split-debug-info=build/symbols/android
+          bash tool/verify_android_bundle.sh build/app/outputs/bundle/release/app-release.aab
 
       - name: Verify public Android packages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.android_release_status.outputs.ready == 'true'
@@ -139,7 +154,7 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: flutter pub get --enforce-lockfile
 
       - name: Build web app
         run: >-
@@ -187,6 +202,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Download prepared site
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
@@ -197,8 +213,10 @@ jobs:
       - name: Publish prepared site to gh-pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_DIR: ${{ runner.temp }}/zarbulmasal-gh-pages
         run: |
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git fetch origin gh-pages
           git worktree add --detach "$PUBLISH_DIR" origin/gh-pages
           find "$PUBLISH_DIR" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
