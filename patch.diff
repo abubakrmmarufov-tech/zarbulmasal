@@ -1,0 +1,31 @@
+--- .github/workflows/ci.yml
++++ .github/workflows/ci.yml
+@@ -98,6 +98,7 @@
+           printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.keystore"
+           chmod 600 "$RUNNER_TEMP/release.keystore"
+           export KEYSTORE_PATH="$RUNNER_TEMP/release.keystore"
++          bash tool/verify_android_signing_material.sh
+           flutter build apk --release --split-per-abi \
+             --obfuscate \
+             --split-debug-info=build/symbols/android
+@@ -106,6 +107,20 @@
+             --obfuscate \
+             --split-debug-info=build/symbols/android
+
++      - name: Build signed public Android App Bundle
++        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.android_release_status.outputs.ready == 'true'
++        env:
++          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
++          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
++          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
++          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
++        run: |
++          export KEYSTORE_PATH="$RUNNER_TEMP/release.keystore"
++          flutter build appbundle --release \
++            --obfuscate \
++            --split-debug-info=build/symbols/android
++          bash tool/verify_android_bundle.sh build/app/outputs/bundle/release/app-release.aab
++
+       - name: Verify public Android packages
+         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && steps.android_release_status.outputs.ready == 'true'
+         run: bash tool/prepare_android_downloads.sh build/app/outputs/flutter-apk "$RUNNER_TEMP/android-verification"
