@@ -218,3 +218,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "deploy: ${GITHUB_SHA}"
           git push --force-with-lease="refs/heads/gh-pages:${pages_base_sha}" origin HEAD:gh-pages
+
+      - name: Verify published privacy policy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          curl -sS --fail "https://abubakrmmarufov-tech.github.io/zarbulmasal/privacy.html" | grep -q "Zarbulmasal Privacy Policy"
