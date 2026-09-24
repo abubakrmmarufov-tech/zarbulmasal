@@ -385,56 +385,6 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
                       fontSize: 13,
                     ),
                   ),
-                if (!isPersian &&
-                    hasAuditableBiography &&
-                    (poet.birthDateExact != null ||
-                        poet.deathDateExact != null)) ...[
-                  const SizedBox(height: 8),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: colors.surfaceContainerHighest.withValues(
-                        alpha: 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: colors.outlineVariant.withValues(alpha: 0.6),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.history_edu,
-                          size: 16,
-                          color: colors.primary,
-                        ),
-                        const SizedBox(width: 6),
-                        Text(
-                          AppTranslations.translate('lit_author_dates', lang, [
-                            AppTranslations.formatDigits(
-                              poet.birthDateExact ?? poet.birthYear ?? '—',
-                              lang,
-                            ),
-                            AppTranslations.formatDigits(
-                              poet.deathDateExact ??
-                                  poet.deathYear ??
-                                  AppTranslations.get('lit_author_alive', lang),
-                              lang,
-                            ),
-                          ]),
-                          style: QalamTypography.meta(
-                            color: colors.onSurface,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
                 const SizedBox(height: 10),
                 // Poem count badge (readable works)
                 worksAsync.maybeWhen(

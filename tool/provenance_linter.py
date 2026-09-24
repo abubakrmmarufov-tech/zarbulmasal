@@ -112,6 +112,24 @@ def load(path: Path) -> Any:
         return json.load(handle, object_pairs_hook=reject_duplicate_keys)
 
 
+# Owner decision (25 Sep 2026, Phase 6): a poem copied verbatim from the
+# text layer of the cited page of an uploaded textbook PDF counts as page
+# evidence without a page image at primaryChecked. Editorial approval
+# (editoriallyApproved) still requires a verified page image.
+TEXT_LAYER_METHOD = "textbookPdfTextExtraction"
+
+
+def is_text_layer_checked(work: dict[str, Any], source: dict[str, Any], level: Any) -> bool:
+    reference = text(source.get("sourceReference"))
+    method = (work.get("verification") or {}).get("verificationMethod")
+    return (
+        level == "primaryChecked"
+        and method == TEXT_LAYER_METHOD
+        and reference.startswith("docs/literature/pdfs/")
+        and reference.endswith(".pdf")
+    )
+
+
 def text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
 
@@ -478,12 +496,14 @@ def main() -> int:
             fail("VERIFICATION_ENUM", record, f"invalid evidenceLevel {level!r}")
 
         source = work.get("primarySource") or {}
+        text_layer_checked = is_text_layer_checked(work, source, level)
         validate_source(
             source,
             record,
             "primarySource",
             require_bibliography=level in {"primaryChecked", "editoriallyApproved"},
-            require_image=level in {"primaryChecked", "editoriallyApproved"},
+            require_image=level in {"primaryChecked", "editoriallyApproved"}
+            and not text_layer_checked,
         )
         validate_catalog_bibliography(source, record, "primarySource")
         page_start = source.get("pageStart")
@@ -529,7 +549,7 @@ def main() -> int:
         if level in {"primaryChecked", "editoriallyApproved"}:
             if page_start is None or verification.get("pageVerified") is not True:
                 fail("PAGE_EVIDENCE", record, f"{level} requires pageVerified and pageStart")
-            if source.get("sourceImageVerified") is not True:
+            if source.get("sourceImageVerified") is not True and not text_layer_checked:
                 fail(
                     "PAGE_IMAGE_EVIDENCE",
                     record,

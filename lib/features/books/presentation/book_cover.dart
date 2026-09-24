@@ -37,6 +37,7 @@ class BookCover extends StatelessWidget {
           coverAssetPath,
           width: width,
           height: height,
+          cacheWidth: (width * MediaQuery.devicePixelRatioOf(context)).round(),
           fit: BoxFit.cover,
           errorBuilder: (_, _, _) => placeholder,
         ),
@@ -57,6 +58,8 @@ class BookCover extends StatelessWidget {
         coverUri.toString(),
         width: width,
         height: height,
+        // Decode at the size shown, not the provider's full-size scan.
+        cacheWidth: (width * MediaQuery.devicePixelRatioOf(context)).round(),
         fit: BoxFit.cover,
         webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
         errorBuilder: (_, _, _) => placeholder,
@@ -115,14 +118,18 @@ class _PlaceholderCover extends StatelessWidget {
         children: [
           Icon(Icons.menu_book_outlined, color: colors.primary, size: 24),
           const SizedBox(height: 6),
-          Text(
-            title,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            style: QalamTypography.meta(
-              color: colors.onSurfaceVariant,
-              fontSize: 10,
+          // The title takes whatever height is left, so a short cover or a
+          // large system text size never overflows the box.
+          Flexible(
+            child: Text(
+              title,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style: QalamTypography.meta(
+                color: colors.onSurfaceVariant,
+                fontSize: 10,
+              ),
             ),
           ),
         ],

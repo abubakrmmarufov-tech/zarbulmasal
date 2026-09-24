@@ -441,12 +441,64 @@ class ProvenanceLinterSourceTest(unittest.TestCase):
         self.assertNotIn('CONSULTED (Witness', register)
         self.assertNotIn('ACTIVE CORE REPOSITORY', register)
 
+    def _lint(self, works):
+        with tempfile.TemporaryDirectory() as directory:
+            works_path = Path(directory) / "works.json"
+            works_path.write_text(
+                json.dumps(works, ensure_ascii=False), encoding="utf-8"
+            )
+            stderr = io.StringIO()
+            with patch.object(provenance_linter, "WORKS_PATH", works_path):
+                with contextlib.redirect_stderr(stderr):
+                    result = provenance_linter.main()
+        return result, stderr.getvalue()
+
+    def _text_layer_work(self, works):
+        return next(
+            work
+            for work in works
+            if work["verification"].get("verificationMethod")
+            == provenance_linter.TEXT_LAYER_METHOD
+        )
+
+    def test_text_layer_extraction_is_page_evidence_at_primary_checked(self):
+        works = json.loads(provenance_linter.WORKS_PATH.read_text(encoding="utf-8"))
+        target = self._text_layer_work(works)
+        self.assertIsNot(target["primarySource"].get("sourceImageVerified"), True)
+
+        result, stderr = self._lint(works)
+
+        self.assertEqual(result, 0, stderr)
+
+    def test_editorial_approval_still_requires_a_page_image(self):
+        works = json.loads(provenance_linter.WORKS_PATH.read_text(encoding="utf-8"))
+        target = self._text_layer_work(works)
+        target["verification"]["evidenceLevel"] = "editoriallyApproved"
+
+        result, stderr = self._lint(works)
+
+        self.assertEqual(result, 1)
+        self.assertIn(f"work:{target['id']}", stderr)
+        self.assertIn("PAGE_IMAGE_EVIDENCE", stderr)
+
+    def test_text_layer_exception_needs_an_uploaded_textbook_pdf(self):
+        works = json.loads(provenance_linter.WORKS_PATH.read_text(encoding="utf-8"))
+        target = self._text_layer_work(works)
+        target["primarySource"]["sourceReference"] = "https://maorif.tj/book.pdf"
+
+        result, stderr = self._lint(works)
+
+        self.assertEqual(result, 1)
+        self.assertIn(f"work:{target['id']}", stderr)
+
     def test_page_checked_witness_requires_verified_local_page_image(self):
         works = json.loads(provenance_linter.WORKS_PATH.read_text(encoding="utf-8"))
         target = next(
             work
             for work in works
             if work["verification"]["evidenceLevel"] == "primaryChecked"
+            and work["verification"].get("verificationMethod")
+            != provenance_linter.TEXT_LAYER_METHOD
         )
         target["primarySource"]["sourceImageVerified"] = False
 
