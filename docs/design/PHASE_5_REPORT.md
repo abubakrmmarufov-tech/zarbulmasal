@@ -11,6 +11,12 @@ Date: 24–25 Sep 2026. Screenshots are from the owner's phone (Android, dark th
 | `python3 -m unittest test_textbook_verse` (`tool/literature/`) | **13 passed** |
 | Phone tour (APK installed with `adb install -r -d`) | Home, Literature, Poets, poet page, reader, Learn, Lexicon, Library, book page, Settings; Persian UI and back |
 
+**Not merged into `main`: one CI gate is red.** `tool/provenance_linter.py` (and the two unit tests that run it on the real data) requires a verified **page image** for every `primaryChecked` work. The 255 textbook poems were checked against the PDF's **text layer**, not page images, so the linter reports 510 `PAGE_IMAGE_EVIDENCE` errors. The Dart tests accept the text-layer method, but the linter doesn't yet. I did not mark the poems as image-verified, because that would be false. Changing the linter's rule is your decision. The two ways forward:
+1. **Accept the text layer as page evidence** for `primaryChecked`. Limit it to `verificationMethod: textbookPdfTextExtraction` citing a local textbook PDF, and keep images required for `editoriallyApproved`.
+2. **Keep the image rule.** Render each cited page (`docs/literature/pdfs`), check every poem against its page image, and record `sourceImagePaths` plus `sourceImageVerified: true` per poem.
+
+Everything else is committed on `provenance-repair-2026-09-19` (commit `786a85b`).
+
 ## What changed, by request
 
 ### "Remove Сабт, the source is enough, and the tick"
