@@ -31,7 +31,8 @@ class ReaderPreferencesNotifier extends StateNotifier<ReaderPreferencesState> {
   static const String _keyLineHeight = 'reader_line_height_multiplier';
   static const String _keyReaderMode = 'reader_default_mode';
 
-  static const double minDelta = -4.0;
+  // Reader font may shrink to 70% of the default (100 + delta * 5).
+  static const double minDelta = -6.0;
   static const double maxDelta = 10.0;
   static const double minLineHeight = 1.0;
   static const double maxLineHeight = 2.5;

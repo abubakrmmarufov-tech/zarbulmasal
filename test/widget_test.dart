@@ -171,13 +171,15 @@ void main() {
           catalog: [canonical, variant],
           language: language,
         );
+        // The variant also appears as the next proverb of its theme at the
+        // end of the page; the variant section is the SelectableText.
+        final variantText = find.widgetWithText(SelectableText, expected);
         await tester.scrollUntilVisible(
-          find.text(expected),
+          variantText,
           300,
           scrollable: find.byType(Scrollable).first,
         );
 
-        final variantText = find.widgetWithText(SelectableText, expected);
         final text = tester.widget<SelectableText>(variantText);
         expect(
           text.textDirection,
@@ -210,16 +212,25 @@ void main() {
     expect(find.textContaining('01 /'), findsNothing);
   });
 
-  testWidgets('shared reading and daily actions meet the 48px target', (
-    tester,
-  ) async {
+  testWidgets('proverb reading actions meet the 48px target', (tester) async {
     await openApp(tester, route: '/proverb/${seedProverbs.first.id}');
 
-    final scriptSwitch = find.widgetWithText(OutlinedButton, 'فارسی (عربی)');
-    await tester.ensureVisible(scriptSwitch);
-    expect(tester.getSize(scriptSwitch).width, greaterThanOrEqualTo(48));
-    expect(tester.getSize(scriptSwitch).height, greaterThanOrEqualTo(48));
+    // The proverb page no longer carries script buttons (script lives in
+    // Settings → Reading); its remaining actions keep the 48px target.
+    for (final action in [
+      find.byTooltip(
+        AppTranslations.get('copy_proverb', DisplayLanguage.tajik),
+      ),
+      find.byTooltip(
+        AppTranslations.get('bookmark_add', DisplayLanguage.tajik),
+      ),
+    ]) {
+      expect(tester.getSize(action).width, greaterThanOrEqualTo(48));
+      expect(tester.getSize(action).height, greaterThanOrEqualTo(48));
+    }
+  });
 
+  testWidgets('daily read action meets the 48px target', (tester) async {
     await openApp(tester);
     final dailyRead = find.widgetWithText(
       TextButton,
@@ -405,7 +416,7 @@ void main() {
     expect(app.container.read(recentActivityProvider).first.title, 'سطح ۲');
   });
 
-  testWidgets('Persian home hides stale Tajik recent-activity metadata', (
+  testWidgets('a poet visit never becomes the Continue reading target', (
     tester,
   ) async {
     final app = await openApp(tester, language: DisplayLanguage.persian);
@@ -423,7 +434,12 @@ void main() {
         );
     await tester.pumpAndSettle();
 
-    expect(find.text('شاعران'), findsOneWidget);
+    expect(
+      find.text(
+        AppTranslations.get('home_continue_reading', DisplayLanguage.persian),
+      ),
+      findsNothing,
+    );
     expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsNothing);
     expect(find.text('Асрҳои IX–X'), findsNothing);
     expect(tester.takeException(), isNull);
@@ -470,7 +486,7 @@ void main() {
   ) async {
     await openApp(tester, width: 320, height: 568);
 
-    final settingsLabel = find.text('Маҳфуз');
+    final settingsLabel = find.text('Баёз');
     expect(settingsLabel, findsOneWidget);
     expect(tester.getRect(settingsLabel).height, lessThan(24));
     expect(tester.takeException(), isNull);

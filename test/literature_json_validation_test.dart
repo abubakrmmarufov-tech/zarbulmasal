@@ -9,6 +9,19 @@ import 'package:zarbulmasal/features/literature/domain/literary_work.dart';
 import 'package:zarbulmasal/features/literature/domain/oral_heritage_entry.dart';
 import 'package:zarbulmasal/features/literature/domain/verification_record.dart';
 
+/// Parses the page range that closes a canon `sourceEvidence` citation.
+///
+/// Canon evidence strings end uniformly as "…с. 49–59." (en dash). Returns
+/// the inclusive [start, end] bounds, or null when there is no single
+/// parseable range.
+(int, int)? parseSourcePageRange(String sourceEvidence) {
+  final match = RegExp(
+    r'с\.\s*(\d+)\s*[–—-]\s*(\d+)\s*\.?\s*$',
+  ).firstMatch(sourceEvidence.trim());
+  if (match == null) return null;
+  return (int.parse(match.group(1)!), int.parse(match.group(2)!));
+}
+
 void main() {
   group('Literature JSON Data Files Validation', () {
     test('poets.json is valid and conforms to LiteraryAuthor model', () {
@@ -315,12 +328,91 @@ void main() {
       final list = raw as List<dynamic>;
       expect(list.length, greaterThanOrEqualTo(20));
 
+      // Canon entries may now be linked to a registered, coherent work. An
+      // unlinked entry (workId empty) must stay pending review; a linked entry
+      // must resolve to an existing work by the same author, held on the same
+      // source PDF, on a page inside the cited range, and — once citation
+      // verified — to a work the domain model considers displayable.
+      final works =
+          jsonDecode(
+                File('assets/data/literature/works.json').readAsStringSync(),
+              )
+              as List<dynamic>;
+      final worksById = {
+        for (final w in works.whereType<Map>())
+          w['id'] as String: Map<String, dynamic>.from(w),
+      };
+      final sources =
+          jsonDecode(
+                File('assets/data/literature/sources.json').readAsStringSync(),
+              )
+              as List<dynamic>;
+      final sourcesById = {
+        for (final s in sources.whereType<Map>())
+          s['id'] as String: Map<String, dynamic>.from(s),
+      };
+
       for (final item in list) {
         expect(item, isA<Map<String, dynamic>>());
         final map = item as Map<String, dynamic>;
         expect(map['id'], isNotEmpty);
         expect(map['authorId'], isNotEmpty);
-        expect(map['workId'], equals(''));
+        final workId = map['workId'] as String;
+        if (workId.isEmpty) {
+          expect(map['citationStatus'], equals('needsReview'));
+        } else {
+          final linked = worksById[workId];
+          expect(
+            linked,
+            isNotNull,
+            reason: 'Canon ${map['id']} links unknown work $workId',
+          );
+          final canonEntry = SchoolCanonEntry.fromJson(map);
+          final linkedWork = LiteraryWork.fromJson(linked!);
+          expect(
+            linkedWork.authorId,
+            canonEntry.authorId,
+            reason: 'Canon ${map['id']} links work by a different author',
+          );
+          final heldReference =
+              ((sourcesById[canonEntry.sourceId]?['sourceReference']
+                          as String?) ??
+                      '')
+                  .replaceAll('\\', '/')
+                  .toLowerCase();
+          expect(
+            linkedWork.primarySource?.sourceReference
+                ?.replaceAll('\\', '/')
+                .toLowerCase(),
+            heldReference,
+            reason:
+                'Canon ${map['id']} links work not held on source ${canonEntry.sourceId}',
+          );
+          final range = parseSourcePageRange(canonEntry.sourceEvidence);
+          expect(
+            range,
+            isNotNull,
+            reason:
+                'Canon ${map['id']} has no parseable page range in sourceEvidence',
+          );
+          final bounds = range!;
+          final pageStart = linkedWork.primarySource?.pageStart;
+          expect(
+            pageStart != null &&
+                pageStart >= bounds.$1 &&
+                pageStart <= bounds.$2,
+            isTrue,
+            reason:
+                'Canon ${map['id']} linked work page $pageStart outside cited range ${bounds.$1}–${bounds.$2}',
+          );
+          if (map['citationStatus'] == 'verified') {
+            expect(
+              linkedWork.isDisplayable,
+              isTrue,
+              reason: 'Canon ${map['id']} links non-displayable work $workId',
+            );
+          }
+        }
         expect(map['grade'], isNotEmpty);
         expect(
           ['Адабиёти тоҷик', 'Хониши адабӣ'].contains(map['subject']),
@@ -346,52 +438,61 @@ void main() {
       }
     });
 
-    test(
-      'local Grades 5–11 canon mappings name their held textbook edition',
-      () {
-        final sources =
-            jsonDecode(
-                  File(
-                    'assets/data/literature/sources.json',
-                  ).readAsStringSync(),
-                )
-                as List<dynamic>;
-        final sourcesById = {
-          for (final source in sources.whereType<Map>())
-            source['id'] as String: Map<String, dynamic>.from(source),
-        };
-        final canon =
-            jsonDecode(
-                  File(
-                    'assets/data/literature/school_canon.json',
-                  ).readAsStringSync(),
-                )
-                as List<dynamic>;
+    test('local Grades 5–11 canon mappings name their held textbook edition', () {
+      final sources =
+          jsonDecode(
+                File('assets/data/literature/sources.json').readAsStringSync(),
+              )
+              as List<dynamic>;
+      final sourcesById = {
+        for (final source in sources.whereType<Map>())
+          source['id'] as String: Map<String, dynamic>.from(source),
+      };
+      final canon =
+          jsonDecode(
+                File(
+                  'assets/data/literature/school_canon.json',
+                ).readAsStringSync(),
+              )
+              as List<dynamic>;
 
-        for (final entry in canon.whereType<Map>()) {
-          final grade = int.tryParse(entry['grade'].toString()) ?? 0;
-          expect(
-            grade >= 5 && grade <= 11,
-            isTrue,
-            reason: 'Grade $grade outside 5-11 scope',
-          );
+      for (final entry in canon.whereType<Map>()) {
+        final grade = int.tryParse(entry['grade'].toString()) ?? 0;
+        expect(
+          grade >= 5 && grade <= 11,
+          isTrue,
+          reason: 'Grade $grade outside 5-11 scope',
+        );
 
-          final sourceId = entry['sourceId'];
+        final sourceId = entry['sourceId'];
+        expect(sourceId, isA<String>(), reason: 'Grade $grade lacks sourceId');
+        final source = sourcesById[sourceId];
+        expect(source, isNotNull, reason: 'Unknown textbook $sourceId');
+        expect(source!['sourceType'], SourceEditionType.officialTextbook);
+        expect(entry['textbookPublisher'], source['publisher']);
+        expect(entry['textbookYear'], source['year']);
+        expect(entry['textbookAuthors'], source['authorAsPrinted']);
+        // Canon citation status is coupled to work linking: an unlinked
+        // entry (workId empty) must stay pending review, while a linked
+        // entry must be citation-verified against the held textbook edition.
+        final workId = (entry['workId'] as String? ?? '').trim();
+        if (workId.isEmpty) {
           expect(
-            sourceId,
-            isA<String>(),
-            reason: 'Grade $grade lacks sourceId',
+            entry['citationStatus'],
+            equals('needsReview'),
+            reason:
+                'Unlinked canon entry ${entry['id']} must remain pending review',
           );
-          final source = sourcesById[sourceId];
-          expect(source, isNotNull, reason: 'Unknown textbook $sourceId');
-          expect(source!['sourceType'], SourceEditionType.officialTextbook);
-          expect(entry['textbookPublisher'], source['publisher']);
-          expect(entry['textbookYear'], source['year']);
-          expect(entry['textbookAuthors'], source['authorAsPrinted']);
-          expect(entry['citationStatus'], 'needsReview');
+        } else {
+          expect(
+            entry['citationStatus'],
+            equals('verified'),
+            reason:
+                'Linked canon entry ${entry['id']} must be citation-verified',
+          );
         }
-      },
-    );
+      }
+    });
 
     test('oral_heritage.json contains valid folklore entries', () {
       final file = File('assets/data/literature/oral_heritage.json');
@@ -422,6 +523,7 @@ void main() {
 
       final approvedWorks = <LiteraryWork>[];
       final primaryCheckedWorks = <LiteraryWork>[];
+      final needsReviewWorks = <LiteraryWork>[];
 
       for (final item in list) {
         final work = LiteraryWork.fromJson(item as Map<String, dynamic>);
@@ -431,6 +533,9 @@ void main() {
         } else if (work.verification.evidenceLevel ==
             VerificationLevel.primaryChecked) {
           primaryCheckedWorks.add(work);
+        } else if (work.verification.evidenceLevel ==
+            VerificationLevel.needsReview) {
+          needsReviewWorks.add(work);
         }
       }
 
@@ -438,13 +543,20 @@ void main() {
         approvedWorks,
         isEmpty,
         reason:
-            'No work has dual-witness, rights, and editorial evidence required for publication.',
+            'No work carries editoriallyApproved evidence; publication is '
+            'source-attested at primaryChecked, not dual-witness.',
       );
       expect(primaryCheckedWorks, isNotEmpty);
+      expect(
+        needsReviewWorks,
+        isNotEmpty,
+        reason:
+            'Unverified works are quarantined as needsReview until evidence is gathered.',
+      );
       final published = primaryCheckedWorks.where((work) => work.isDisplayable);
       final pending = primaryCheckedWorks.where((work) => !work.isDisplayable);
       expect(published, isNotEmpty);
-      expect(pending, isNotEmpty);
+      expect(pending, isEmpty);
       for (final work in primaryCheckedWorks) {
         if (work.isDisplayable) {
           expect(work.rights.status, RightsStatus.sourceAttested);
@@ -454,6 +566,21 @@ void main() {
         }
         expect(work.verification.pageVerified, isTrue);
         expect(work.primarySource!.pageStart, isNotNull);
+        // Poems taken from the text layer of the cited textbook page carry
+        // the page citation as their evidence, without a page scan.
+        if (work.verification.verificationMethod ==
+            'textbookPdfTextExtraction') {
+          expect(
+            work.primarySource!.sourceReference,
+            startsWith('docs/literature/pdfs/'),
+          );
+          expect(
+            File(work.primarySource!.sourceReference!).existsSync(),
+            isTrue,
+            reason: 'Cited textbook PDF missing for ${work.id}',
+          );
+          continue;
+        }
         expect(work.primarySource!.sourceImageVerified, isTrue);
 
         final source = work.primarySource!;

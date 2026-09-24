@@ -12,6 +12,7 @@ import 'book_category_display_text.dart';
 import 'book_cover.dart';
 import 'book_display_text.dart';
 import 'book_source_metadata_disclosure.dart';
+import '../../../core/utils/search_field_limits.dart';
 
 class BooksScreen extends ConsumerStatefulWidget {
   final String? initialCategory;
@@ -101,7 +102,7 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
                 child: _buildProviderSummary(
                   context,
                   lang,
-                  providersAsync.valueOrNull?.firstOrNull,
+                  providersAsync.valueOrNull ?? const [],
                 ),
               ),
               SliverToBoxAdapter(
@@ -175,7 +176,7 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: TextField(
         controller: _searchController,
-        maxLength: 256,
+        inputFormatters: searchQueryFormatters,
         onChanged: (value) => setState(() => _query = value),
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.search),
@@ -208,49 +209,69 @@ class _BooksScreenState extends ConsumerState<BooksScreen> {
   Widget _buildProviderSummary(
     BuildContext context,
     DisplayLanguage lang,
-    BookProvider? provider,
+    List<BookProvider> providers,
   ) {
-    if (provider == null) return const SizedBox(height: 8);
+    if (providers.isEmpty) return const SizedBox(height: 8);
     final colors = Theme.of(context).colorScheme;
+    // Plain lines, no box. Catalogue figures appear only when all three
+    // are recorded (no "— китоб · — муаллиф").
+    String? stats(BookProvider provider) {
+      final size = provider.catalogueSize;
+      final authors = provider.authorCount;
+      final categories = provider.categoryCount;
+      if (size == null || authors == null || categories == null) return null;
+      return AppTranslations.translate('books_provider_stats', lang, [
+        size,
+        authors,
+        categories,
+      ]);
+    }
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 4),
-      child: Container(
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: colors.surfaceContainerLowest,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: colors.outlineVariant),
-        ),
-        child: Row(
-          children: [
-            Icon(Icons.public, color: colors.primary),
-            const SizedBox(width: 12),
-            Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final provider in providers)
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: colors.outlineVariant),
+                ),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    provider.name,
-                    style: QalamTypography.label(color: colors.onSurface),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: provider.name,
+                          style: QalamTypography.label(color: colors.onSurface),
+                        ),
+                        TextSpan(
+                          text: '  ${provider.domain}',
+                          style: QalamTypography.meta(
+                            color: colors.onSurfaceVariant,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 3),
-                  Text(
-                    AppTranslations.translate('books_provider_stats', lang, [
-                      provider.catalogueSize ?? '—',
-                      provider.authorCount ?? '—',
-                      provider.categoryCount ?? '—',
-                    ]),
-                    style: QalamTypography.meta(color: colors.onSurfaceVariant),
-                  ),
+                  if (stats(provider) != null) ...[
+                    const SizedBox(height: 3),
+                    Text(
+                      stats(provider)!,
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
-            Text(
-              provider.domain,
-              style: QalamTypography.meta(color: colors.onSurfaceVariant),
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -314,120 +335,91 @@ class _BookListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final edition = book.primaryEdition;
-    return Card(
-      margin: const EdgeInsets.only(bottom: 10),
-      elevation: 0,
-      color: colors.surfaceContainerLowest,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-        side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.7)),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(14),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BookCover(
-                book: book,
-                placeholderTitle: BookDisplayText.title(book, lang),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      BookDisplayText.title(book, lang),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: QalamTypography.literaryTitle(
-                        color: colors.onSurface,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      BookDisplayText.author(book, lang) ??
-                          AppTranslations.get('books_author_unavailable', lang),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: QalamTypography.bodySecondary(
-                        color: colors.onSurfaceVariant,
-                      ),
-                    ),
-                    BookSourceMetadataDisclosure(book: book, language: lang),
-                    const SizedBox(height: 8),
-                    Wrap(
-                      spacing: 6,
-                      runSpacing: 4,
-                      children: [
-                        _MetaPill(
-                          label: AppTranslations.get('books_pdf', lang),
-                          colors: colors,
-                        ),
-                        if (edition?.publicationYear != null)
-                          _MetaPill(
-                            label: edition!.publicationYear!,
-                            colors: colors,
-                          ),
-                        if (edition?.pageCount != null)
-                          _MetaPill(
-                            label: AppTranslations.translate(
-                              'books_pages',
-                              lang,
-                              [edition!.pageCount!],
-                            ),
-                            colors: colors,
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              IconButton(
-                tooltip: AppTranslations.get(
-                  isFavorite ? 'bookmark_remove' : 'bookmark_add',
-                  lang,
-                ),
-                onPressed: onToggleFavorite,
-                icon: Icon(
-                  isFavorite ? Icons.bookmark : Icons.bookmark_outline,
-                ),
-                color: isFavorite ? colors.primary : colors.onSurfaceVariant,
-              ),
-            ],
+    return QalamSlip(
+      onTap: onTap,
+      showChevron: false,
+      padding: const EdgeInsetsDirectional.fromSTEB(12, 12, 4, 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          BookCover(
+            book: book,
+            placeholderTitle: BookDisplayText.title(book, lang),
           ),
-        ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  BookDisplayText.title(book, lang),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: QalamTypography.literaryTitle(
+                    color: colors.onSurface,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  BookDisplayText.author(book, lang) ??
+                      AppTranslations.get('books_author_unavailable', lang),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: QalamTypography.bodySecondary(
+                    color: colors.onSurfaceVariant,
+                  ),
+                ),
+                BookSourceMetadataDisclosure(book: book, language: lang),
+                if (_editionLine(book, lang) case final line?) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    line,
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          IconButton(
+            tooltip: AppTranslations.get(
+              isFavorite ? 'bookmark_remove' : 'bookmark_add',
+              lang,
+            ),
+            onPressed: onToggleFavorite,
+            icon: Icon(isFavorite ? Icons.bookmark : Icons.bookmark_outline),
+            color: isFavorite ? colors.primary : colors.onSurfaceVariant,
+          ),
+        ],
       ),
     );
   }
 }
 
-class _MetaPill extends StatelessWidget {
-  final String label;
-  final ColorScheme colors;
+/// Format, year and pages as one meta line ("PDF · 2015 · 240 саҳ.").
+String? _editionLine(Book book, DisplayLanguage lang) {
+  final edition = book.primaryEdition;
+  if (edition == null) return null;
+  return [
+    _formatLabel(edition.format, lang),
+    ?edition.publicationYear,
+    if (edition.pageCount != null)
+      AppTranslations.translate('books_page_count', lang, [edition.pageCount!]),
+  ].join(' · ');
+}
 
-  const _MetaPill({required this.label, required this.colors});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-      decoration: BoxDecoration(
-        color: colors.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        label,
-        style: QalamTypography.meta(
-          color: colors.onSurfaceVariant,
-          fontSize: 11,
-        ),
-      ),
-    );
-  }
+/// Format badge label derived from the edition's real format so an online
+/// HTML reader is never presented as a PDF.
+String _formatLabel(BookFormat format, DisplayLanguage lang) {
+  final key = switch (format) {
+    BookFormat.pdf => 'books_format_pdf',
+    BookFormat.epub => 'books_format_epub',
+    BookFormat.html => 'books_format_html',
+    BookFormat.externalReader => 'books_format_external_reader',
+    BookFormat.catalogue => 'books_format_catalogue',
+  };
+  return AppTranslations.get(key, lang);
 }

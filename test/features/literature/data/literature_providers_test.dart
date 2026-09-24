@@ -119,6 +119,18 @@ void main() {
       expect(oral, isA<List<OralHeritageEntry>>());
     });
 
+    test(
+      'oralHeritageProvider surfaces exactly 12 source-attested entries and hides 2 quarantined',
+      () async {
+        final oral = await container.read(oralHeritageProvider.future);
+        final ids = oral.map((entry) => entry.id).toList();
+        expect(ids, hasLength(12));
+        expect(ids, isNot(contains('oral-afsona-001')));
+        expect(ids, isNot(contains('oral-afsona-002')));
+        expect(ids.where((id) => id.startsWith('oral-afsona-')), isEmpty);
+      },
+    );
+
     test('sourceEditionsProvider loads source editions', () async {
       final sources = await container.read(sourceEditionsProvider.future);
       expect(sources, isNotEmpty);

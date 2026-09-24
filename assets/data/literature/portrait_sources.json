@@ -102,7 +102,8 @@
   {
     "authorId": "tursunzoda",
     "pdf": "adabiet sinfi 5.pdf",
-    "pdfPage": 216
+    "pdfPage": 216,
+    "polarity": "invert"
   },
   {
     "authorId": "10a9ad7d-fd0d-462f-8cb4-594a869f8229",

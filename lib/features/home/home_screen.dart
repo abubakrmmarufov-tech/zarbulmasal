@@ -4,9 +4,15 @@ import 'package:go_router/go_router.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
-import '../../shared/providers/recent_activity_provider.dart';
-import '../../shared/widgets/recent_activity_display_text.dart';
+import '../../shared/providers/reading_position_provider.dart';
+import '../../shared/providers/reading_script_provider.dart';
+import 'widgets/bayt_of_the_day.dart';
+import 'widgets/collection_index.dart';
+import 'widgets/grade_lens.dart';
+import 'widgets/home_exhibit.dart';
 
+/// Home «Экспозиция»: the daily ritual first (proverb exhibit, bayt of the
+/// day), then Continue reading, the collection index, and the grade lens.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -14,37 +20,31 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
     final daily = ref.watch(dailyProverbProvider);
-    final recentActivities = ref.watch(recentActivityProvider);
-    final recentActivity = recentActivities.firstOrNull;
-    final recentActivitySubtitle = recentActivity == null
-        ? null
-        : RecentActivityDisplayText.subtitle(recentActivity, lang);
+    final date = ref.watch(dailyDateProvider);
+    final readingPersian =
+        ref.watch(readingScriptProvider) == ReadingScript.persian;
+    final categories = ref.watch(categoriesProvider);
+    // Continue reading only ever points at a text (poem, proverb, history
+    // entry), never at a hub, dossier, list, or search.
+    final position = ref.watch(readingPositionProvider);
 
     String tr(String key) => AppTranslations.get(key, lang);
+    final resumeTitle = position == null
+        ? null
+        : readingPersian
+        ? (position.titlePersian ?? tr('lit_work_title_persian_pending'))
+        : position.titleTajik;
+    final categoryMatches = categories.where((c) => c.id == daily?.categoryId);
+    final categoryName = categoryMatches.isEmpty
+        ? ''
+        : QalamCategoryTile.nameFor(categoryMatches.first, lang);
 
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                color: colors.primary.withValues(alpha: 0.08),
-                borderRadius: BorderRadius.circular(QalamSpacing.radiusXs),
-                border: Border.all(
-                  color: colors.primary.withValues(alpha: 0.25),
-                  width: 0.5,
-                ),
-              ),
-              child: Text(
-                tr('app_name').toUpperCase(),
-                style: QalamTypography.eyebrow(color: colors.primary),
-              ),
-            ),
-          ],
+        title: Text(
+          tr('app_name').toUpperCase(),
+          style: QalamTypography.eyebrow(color: colors.primary, fontSize: 12),
         ),
         actions: [
           IconButton(
@@ -57,267 +57,78 @@ class HomeScreen extends ConsumerWidget {
       body: SafeArea(
         bottom: false,
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.fromLTRB(20, 4, 20, 48),
           children: [
-            // Search Bar
-            Semantics(
-              button: true,
-              excludeSemantics: true,
-              label: tr('search_hint_global'),
-              onTap: () => context.push('/search'),
-              child: GestureDetector(
-                onTap: () => context.push('/search'),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: colors.surfaceContainerLow,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: colors.outlineVariant),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.search, color: colors.primary),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          tr('search_hint_global'),
-                          style: QalamTypography.body(
-                            color: colors.onSurfaceVariant,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 24),
-
-            // Continue where you left off
-            if (recentActivity != null) ...[
-              Text(
-                tr('home_continue_reading'),
-                style: QalamTypography.sectionTitle(color: colors.onSurface),
-              ),
-              const SizedBox(height: 12),
-              Card(
-                elevation: 0,
-                color: colors.primaryContainer,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  side: BorderSide(
-                    color: colors.primary.withValues(alpha: 0.5),
-                  ),
-                ),
-                child: InkWell(
-                  onTap: () => context.push(recentActivity.route),
-                  borderRadius: BorderRadius.circular(16),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 18,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          _iconForActivity(recentActivity.type),
-                          color: colors.onPrimaryContainer,
-                          size: 26,
-                        ),
-                        const SizedBox(width: 14),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                RecentActivityDisplayText.title(
-                                  recentActivity,
-                                  lang,
-                                ),
-                                style: QalamTypography.body(
-                                  color: colors.onPrimaryContainer,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              if (recentActivitySubtitle != null) ...[
-                                const SizedBox(height: 4),
-                                Text(
-                                  recentActivitySubtitle,
-                                  style: QalamTypography.meta(
-                                    color: colors.onPrimaryContainer.withValues(
-                                      alpha: 0.8,
-                                    ),
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Icon(
-                          Icons.arrow_forward_rounded,
-                          color: colors.onPrimaryContainer,
-                          size: 24,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 32),
-            ],
-
-            // Explore Tajik Culture
-            Text(
-              tr('home_explore_culture'),
-              style: QalamTypography.sectionTitle(color: colors.onSurface),
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildShortcutCard(
-                    context,
-                    icon: Icons.auto_stories_outlined,
-                    title: isPersian ? 'ادبیات' : 'Адабиёт',
-                    subtitle: isPersian
-                        ? 'شاعران، شعرها و کتاب‌ها'
-                        : 'Шоирон, шеърҳо ва китобҳо',
-                    onTap: () => context.push('/literature'),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: _buildShortcutCard(
-                    context,
-                    icon: Icons.timeline,
-                    title: isPersian ? 'تاریخ' : 'Таърих',
-                    subtitle: isPersian
-                        ? 'شخصیت‌ها و دوره‌ها'
-                        : 'Шахсиятҳо ва давраҳо',
-                    onTap: () => context.push('/history'),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Expanded(
-                  child: _buildShortcutCard(
-                    context,
-                    icon: Icons.menu_book_outlined,
-                    title: isPersian ? 'ضرب‌المثل‌ها' : 'Зарбулмасалҳо',
-                    subtitle: isPersian
-                        ? 'حکمت مردم تاجیک'
-                        : 'Ҳикмати халқи тоҷик',
-                    onTap: () => context.push('/proverbs'),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: _buildShortcutCard(
-                    context,
-                    icon: Icons.school_outlined,
-                    title: isPersian ? 'آموزش' : 'Омӯзиш',
-                    subtitle: isPersian
-                        ? 'گام به گام بیاموزید'
-                        : 'Қадам ба қадам омӯзед',
-                    onTap: () => context.go('/learn'),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 32),
-
-            // Today
-            if (daily != null) ...[
-              Text(
-                tr('home_today'),
-                style: QalamTypography.sectionTitle(color: colors.onSurface),
-              ),
-              const SizedBox(height: 12),
-              QalamDailyHero(
+            QalamSearchEntry(label: tr('search_hint_global')),
+            const SizedBox(height: 20),
+            // The collections first: every part of the app one tap away.
+            const CollectionIndex(),
+            const SizedBox(height: 40),
+            if (daily != null)
+              HomeExhibit(
                 proverb: daily,
+                categoryName: categoryName,
+                date: date,
+                heroPersian: readingPersian,
+                lang: lang,
                 onOpen: () => context.push('/daily'),
               ),
+            const SizedBox(height: 36),
+            const BaytOfTheDay(),
+            if (position != null && resumeTitle != null) ...[
+              const SizedBox(height: 32),
+              Text(
+                tr('home_continue_reading').toUpperCase(),
+                style: QalamTypography.eyebrow(color: colors.primary),
+              ),
+              QalamIndexRow(
+                leading: _iconForKind(position.kind),
+                title: resumeTitle,
+                subtitle: [
+                  _resumeSubtitle(position, lang),
+                  // A generated Persian title says so wherever it is shown.
+                  if (readingPersian &&
+                      position.titlePersian != null &&
+                      position.titlePersianGenerated)
+                    tr('lit_generated_script_label'),
+                ].join('\n'),
+                onTap: () => context.push(position.resumeRoute),
+              ),
             ],
-            const SizedBox(height: 48), // Bottom padding
+            const SizedBox(height: 36),
+            const GradeLens(),
           ],
         ),
       ),
     );
   }
 
-  static IconData _iconForActivity(RecentActivityType type) {
-    switch (type) {
-      case RecentActivityType.proverb:
-        return Icons.menu_book_outlined;
-      case RecentActivityType.poet:
-        return Icons.person_outline;
-      case RecentActivityType.work:
-        return Icons.auto_stories_outlined;
-      case RecentActivityType.history:
-        return Icons.timeline;
-      case RecentActivityType.level:
-        return Icons.stairs_outlined;
-    }
-  }
+  static IconData _iconForKind(ReadingKind kind) => switch (kind) {
+    ReadingKind.proverb => Icons.menu_book_outlined,
+    ReadingKind.work => Icons.auto_stories_outlined,
+    ReadingKind.history => Icons.timeline,
+  };
 
-  Widget _buildShortcutCard(
-    BuildContext context, {
-    required IconData icon,
-    required String title,
-    String? subtitle,
-    required VoidCallback onTap,
-  }) {
-    final colors = Theme.of(context).colorScheme;
-    return Card(
-      margin: EdgeInsets.zero,
-      elevation: 0,
-      color: colors.surfaceContainerLowest,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: colors.outlineVariant.withValues(alpha: 0.5)),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(icon, color: colors.primary, size: 26),
-              const SizedBox(height: 10),
-              Text(
-                title,
-                style: QalamTypography.body(
-                  color: colors.onSurface,
-                  fontWeight: FontWeight.w600,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              if (subtitle != null) ...[
-                const SizedBox(height: 4),
-                Text(
-                  subtitle,
-                  style: QalamTypography.meta(color: colors.onSurfaceVariant),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ],
-          ),
-        ),
-      ),
+  /// "Poem · Bayt 4 of 6" — the kind of text plus where the reader stopped.
+  static String _resumeSubtitle(
+    ReadingPosition position,
+    DisplayLanguage lang,
+  ) {
+    final kind = switch (position.kind) {
+      ReadingKind.work => AppTranslations.get('lit_genre_poem', lang),
+      ReadingKind.proverb =>
+        lang == DisplayLanguage.persian ? 'ضرب‌المثل' : 'Зарбулмасал',
+      ReadingKind.history =>
+        lang == DisplayLanguage.persian ? 'تاریخ' : 'Таърих',
+    };
+    final anchor = position.anchor;
+    final total = position.anchorTotal;
+    if (anchor == null || total == null || anchor < 2) return kind;
+    final where = AppTranslations.get(
+      position.anchorIsBayt ? 'resume_bayt' : 'resume_line',
+      lang,
+      [anchor, total],
     );
+    return '$kind · $where';
   }
 }

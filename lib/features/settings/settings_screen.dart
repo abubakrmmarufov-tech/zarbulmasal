@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/providers/reading_position_provider.dart';
+import '../../shared/providers/reading_script_provider.dart';
 import '../../shared/providers/recent_activity_provider.dart';
 import '../literature/data/reader_preferences_provider.dart';
 
@@ -20,6 +22,7 @@ class SettingsScreen extends ConsumerWidget {
     final readerPrefs = ref.watch(readerPreferencesProvider);
     final readerNotifier = ref.read(readerPreferencesProvider.notifier);
     final appTextScale = ref.watch(appTextScaleProvider);
+    final readingScript = ref.watch(readingScriptProvider);
 
     String tr(String key) => AppTranslations.get(key, language);
 
@@ -97,41 +100,81 @@ class SettingsScreen extends ConsumerWidget {
                   // --- Section 2: Reading Controls ---
                   _SectionLabel(title: tr('settings_reading')),
                   Text(
-                    tr('settings_font_size'),
+                    isPersian ? 'اندازهٔ قلم برنامه' : 'Андозаи матни барнома',
                     style: QalamTypography.sectionTitle(
                       color: colors.onSurface,
                       fontSize: 16,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
+                  Text(
+                    isPersian
+                        ? 'بر تمام متن‌های برنامه اثر می‌گذارد.'
+                        : 'Ба ҳамаи матнҳои барнома таъсир мерасонад.',
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  _TextScalePreview(isPersian: isPersian),
+                  const SizedBox(height: 12),
                   Wrap(
                     spacing: 8,
                     children: [
                       ChoiceChip(
                         label: Text(tr('settings_font_size_small')),
-                        selected: appTextScale == AppTextScaleNotifier.minimum,
+                        selected: _closeTo(
+                          appTextScale,
+                          AppTextScaleNotifier.minimum,
+                        ),
                         onSelected: (_) => ref
                             .read(appTextScaleProvider.notifier)
                             .setScale(AppTextScaleNotifier.minimum),
                       ),
                       ChoiceChip(
                         label: Text(tr('settings_font_size_default')),
-                        selected:
-                            appTextScale == AppTextScaleNotifier.defaultScale,
+                        selected: _closeTo(
+                          appTextScale,
+                          AppTextScaleNotifier.defaultScale,
+                        ),
                         onSelected: (_) => ref
                             .read(appTextScaleProvider.notifier)
                             .setScale(AppTextScaleNotifier.defaultScale),
                       ),
                       ChoiceChip(
+                        label: Text(tr('settings_font_size_large')),
+                        selected: _closeTo(
+                          appTextScale,
+                          AppTextScaleNotifier.largeScale,
+                        ),
+                        onSelected: (_) => ref
+                            .read(appTextScaleProvider.notifier)
+                            .setScale(AppTextScaleNotifier.largeScale),
+                      ),
+                      ChoiceChip(
                         label: Text(tr('settings_font_size_xlarge')),
-                        selected: appTextScale == AppTextScaleNotifier.maximum,
+                        selected: _closeTo(
+                          appTextScale,
+                          AppTextScaleNotifier.maximum,
+                        ),
                         onSelected: (_) => ref
                             .read(appTextScaleProvider.notifier)
                             .setScale(AppTextScaleNotifier.maximum),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 28),
+                  Text(
+                    isPersian
+                        ? 'فقط بر اندازهٔ متن شعر در صفحهٔ خوانش شعر اثر می‌گذارد.'
+                        : 'Танҳо ба андозаи матни шеър дар саҳифаи хониши шеър таъсир мерасонад.',
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
                   QalamSettingRow(
                     title: tr('settings_poem_font_size'),
                     subtitle: isPersian
@@ -233,6 +276,50 @@ class SettingsScreen extends ConsumerWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 6),
+                  Text(
+                    tr('settings_reader_mode_parallel_hint'),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  Text(
+                    tr('settings_reading_script'),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      for (final script in ReadingScript.values)
+                        ChoiceChip(
+                          label: Text(
+                            tr(
+                              script == ReadingScript.persian
+                                  ? 'lit_script_persian'
+                                  : 'lit_script_cyrillic',
+                            ),
+                          ),
+                          selected: readingScript == script,
+                          onSelected: (_) => ref
+                              .read(readingScriptPreferenceProvider.notifier)
+                              .setScript(script),
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    tr('settings_reading_script_hint'),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
+                    ),
+                  ),
                   const SizedBox(height: 32),
 
                   // --- Section 3: Language ---
@@ -317,35 +404,15 @@ class SettingsScreen extends ConsumerWidget {
                       title: tr('settings_source_title'),
                       paragraphs: [
                         isPersian
-                            ? 'این مجموعه شامل ضرب‌المثل‌های سنتی و متن‌های آموزشی معاصر است. یادداشت منبع و وضعیت بررسی در صفحهٔ هر متن نمایش داده می‌شود.'
-                            : 'Маҷмӯа мақолҳои анъанавӣ ва матнҳои таълимии муосирро дар бар мегирад. Сарчашма ва ҳолати санҷиш дар саҳифаи ҳар матн нишон дода мешаванд.',
+                            ? 'این مجموعه شامل ضرب‌المثل‌های سنتی و متن‌های آموزشی معاصر است. یادداشت منبع در صفحهٔ هر متن نمایش داده می‌شود.'
+                            : 'Маҷмӯа мақолҳои анъанавӣ ва матнҳои таълимии муосирро дар бар мегирад. Сарчашма дар саҳифаи ҳар матн нишон дода мешавад.',
                         tr('settings_source_text2'),
                       ],
                     ),
                   ),
                   QalamSettingRow(
-                    title: tr('settings_privacy'),
-                    trailing: const Icon(Icons.arrow_forward, size: 20),
-                    onTap: () => _showInformation(
-                      context,
-                      language,
-                      title: tr('settings_privacy_title'),
-                      paragraphs: [tr('settings_privacy_text')],
-                    ),
-                  ),
-                  QalamSettingRow(
-                    title: tr('settings_licenses'),
-                    trailing: const Icon(Icons.arrow_forward, size: 20),
-                    onTap: () => showLicensePage(
-                      context: context,
-                      applicationName: tr('app_name'),
-                      applicationVersion: '2.0.0',
-                      applicationLegalese: tr('settings_year'),
-                    ),
-                  ),
-                  QalamSettingRow(
                     title: tr('settings_contact'),
-                    subtitle: 'Telegram · @imarufov',
+                    subtitle: 'Telegram · @zarbulmasalcom',
                     trailing: const Icon(Icons.arrow_forward, size: 20),
                     onTap: () => _showInformation(
                       context,
@@ -414,6 +481,7 @@ class SettingsScreen extends ConsumerWidget {
           FilledButton(
             onPressed: () async {
               await ref.read(recentActivityProvider.notifier).clearAll();
+              await ref.read(readingPositionProvider.notifier).clear();
               if (ctx.mounted) Navigator.of(ctx).pop();
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -472,7 +540,7 @@ class SettingsScreen extends ConsumerWidget {
               ),
             if (contact)
               SelectableText(
-                'Telegram: @imarufov',
+                'Telegram: @zarbulmasalcom',
                 textDirection: TextDirection.ltr,
                 style: QalamTypography.body(
                   color: colors.primary,
@@ -568,6 +636,41 @@ class _SectionLabel extends StatelessWidget {
     ),
   );
 }
+
+/// A live sample of the interface text. Its rendered size follows the root
+/// text scaler (OS accessibility scale × the user's app text scale choice),
+/// so it visibly changes as the scale chips are tapped.
+class _TextScalePreview extends StatelessWidget {
+  final bool isPersian;
+  const _TextScalePreview({required this.isPersian});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    final sample = isPersian
+        ? 'ضرب‌المثل، گفتار کوتاه پندآموز است.'
+        : 'Зарбулмасал — гуфтори кӯтоҳи пандомӯз аст.';
+    return Semantics(
+      label: isPersian ? 'نمونهٔ اندازهٔ قلم' : 'Намунаи андозаи матн',
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: colors.surfaceContainerHighest.withValues(alpha: 0.5),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: colors.outlineVariant, width: 0.5),
+        ),
+        child: Text(
+          sample,
+          textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
+          style: QalamTypography.body(color: colors.onSurface, fontSize: 15),
+        ),
+      ),
+    );
+  }
+}
+
+bool _closeTo(double a, double b) => (a - b).abs() < 0.001;
 
 class _LanguageRow extends StatelessWidget {
   final String title;

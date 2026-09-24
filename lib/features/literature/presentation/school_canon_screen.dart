@@ -13,14 +13,17 @@ import 'literary_author_display_text.dart';
 /// A screen presenting the official Tajik school curriculum literary canon,
 /// organized by grade level (grades 4–11) with approved textbook citations.
 class SchoolCanonScreen extends ConsumerStatefulWidget {
-  const SchoolCanonScreen({super.key});
+  /// Grade to open on (the Home grade lens links here with `?grade=`).
+  final String? initialGrade;
+
+  const SchoolCanonScreen({super.key, this.initialGrade});
 
   @override
   ConsumerState<SchoolCanonScreen> createState() => _SchoolCanonScreenState();
 }
 
 class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
-  String? _selectedGrade;
+  late String? _selectedGrade = widget.initialGrade;
 
   @override
   Widget build(BuildContext context) {
@@ -102,9 +105,13 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                         (int.tryParse(a) ?? 0).compareTo(int.tryParse(b) ?? 0),
                   );
 
-                final filteredEntries = _selectedGrade == null
+                // An unknown grade from a link falls back to all grades.
+                final activeGrade = grades.contains(_selectedGrade)
+                    ? _selectedGrade
+                    : null;
+                final filteredEntries = activeGrade == null
                     ? entries
-                    : entries.where((e) => e.grade == _selectedGrade).toList();
+                    : entries.where((e) => e.grade == activeGrade).toList();
 
                 // Group entries by grade
                 final grouped = <String, List<SchoolCanonEntry>>{};
@@ -136,7 +143,7 @@ class _SchoolCanonScreenState extends ConsumerState<SchoolCanonScreen> {
                                   lang,
                                 ),
                               ),
-                              selected: _selectedGrade == null,
+                              selected: activeGrade == null,
                               onSelected: (selected) {
                                 if (selected) {
                                   setState(() => _selectedGrade = null);

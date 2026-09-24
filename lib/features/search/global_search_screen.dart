@@ -8,6 +8,7 @@ import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/recent_activity_provider.dart';
 import '../../shared/widgets/empty_state.dart';
+import '../../shared/widgets/recent_activity_display_text.dart';
 import '../history/data/history_providers.dart';
 import '../history/domain/history_domain.dart';
 import '../literature/data/literature_providers.dart';
@@ -17,6 +18,7 @@ import '../literature/presentation/literary_work_display_text.dart';
 import '../books/data/books_providers.dart';
 import '../books/domain/book_domain.dart';
 import '../books/presentation/book_display_text.dart';
+import '../../core/utils/search_field_limits.dart';
 
 class GlobalSearchScreen extends ConsumerStatefulWidget {
   const GlobalSearchScreen({super.key});
@@ -29,6 +31,15 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
   final TextEditingController _controller = TextEditingController();
   String _query = '';
   String _rawQuery = '';
+
+  /// Result groups the reader has opened in full.
+  final Set<String> _expanded = {};
+
+  /// Rows shown per group before "show all".
+  static const int _groupPreview = 5;
+
+  /// Recently opened texts offered while the query is empty.
+  static const int _maxRecent = 6;
 
   @override
   void dispose() {
@@ -56,7 +67,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         ),
         title: TextField(
           controller: _controller,
-          maxLength: 256,
+          inputFormatters: searchQueryFormatters,
           autofocus: true,
           decoration: InputDecoration(
             hintText: AppTranslations.get('search_hint_global', lang),
@@ -70,6 +81,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
             setState(() {
               _rawQuery = val;
               _query = SearchNormalizer.normalize(val);
+              _expanded.clear();
             });
           },
         ),
@@ -126,37 +138,37 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
   }
 
   Widget _buildEmptyState(BuildContext context, DisplayLanguage lang) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.search,
-              size: 48,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              AppTranslations.get('search_empty_prompt_title', lang),
-              style: QalamTypography.sectionTitle(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              AppTranslations.get('search_empty_prompt_sub', lang),
-              textAlign: TextAlign.center,
-              style: QalamTypography.bodySecondary(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
-            ),
-          ],
+    final colors = Theme.of(context).colorScheme;
+    final recent = ref
+        .watch(recentActivityProvider)
+        .take(_maxRecent)
+        .toList(growable: false);
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(24, 32, 24, 32),
+      children: [
+        Text(
+          AppTranslations.get('search_empty_prompt_title', lang),
+          style: QalamTypography.sectionTitle(color: colors.onSurface),
         ),
-      ),
+        const SizedBox(height: 8),
+        Text(
+          AppTranslations.get('search_empty_prompt_sub', lang),
+          style: QalamTypography.bodySecondary(color: colors.onSurfaceVariant),
+        ),
+        if (recent.isNotEmpty) ...[
+          const SizedBox(height: 32),
+          Text(
+            AppTranslations.get('recent_activity', lang).toUpperCase(),
+            style: QalamTypography.eyebrow(color: colors.primary),
+          ),
+          for (final activity in recent)
+            QalamIndexRow(
+              title: RecentActivityDisplayText.title(activity, lang),
+              subtitle: RecentActivityDisplayText.subtitle(activity, lang),
+              onTap: () => context.push(activity.route),
+            ),
+        ],
+      ],
     );
   }
 
@@ -298,287 +310,338 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
         matchingHistory.isEmpty &&
         matchingBooks.isEmpty) {
       return Center(
-        child: EmptyState(
-          icon: Icons.search_off,
-          title: AppTranslations.get('lit_no_results', lang),
-          subtitle: AppTranslations.translate('search_no_results_for', lang, [
-            _rawQuery.trim().isNotEmpty ? _rawQuery.trim() : _query,
-          ]),
+        child: SingleChildScrollView(
+          child: EmptyState(
+            icon: Icons.search_off,
+            title: AppTranslations.get('lit_no_results', lang),
+            subtitle:
+                '${AppTranslations.translate('search_no_results_for', lang, [_rawQuery.trim().isNotEmpty ? _rawQuery.trim() : _query])}\n\n'
+                '${AppTranslations.get('search_no_results_tip', lang)}',
+            action: OutlinedButton(
+              onPressed: () => context.go('/explore'),
+              child: Text(AppTranslations.get('search_browse_index', lang)),
+            ),
+          ),
         ),
       );
     }
 
     final colors = Theme.of(context).colorScheme;
+    String count(String key, int value) => AppTranslations.translate(
+      key,
+      lang,
+      [AppTranslations.formatDigits(value.toString(), lang)],
+    );
+    String? lifeLine(LiteraryAuthor author) {
+      final lifespan = author.hasAuditableBiographySource
+          ? LiteraryAuthorDisplayText.lifespan(author, lang)
+          : '';
+      final period = LiteraryAuthorDisplayText.period(author, lang);
+      final line = lifespan.isNotEmpty ? lifespan : period;
+      return line.isEmpty ? null : line;
+    }
 
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 16),
       children: [
-        if (matchingAuthors.isNotEmpty) ...[
-          _buildSectionHeader(
-            AppTranslations.translate('search_poets_count', lang, [
-              AppTranslations.formatDigits(
-                matchingAuthors.length.toString(),
-                lang,
-              ),
-            ]),
-            colors,
-          ),
-          for (final author in matchingAuthors)
-            ListTile(
-              leading: Icon(Icons.person_outline, color: colors.primary),
-              title: Text(
-                LiteraryAuthorDisplayText.name(author, lang),
-                style: QalamTypography.body(color: colors.onSurface),
-              ),
-              subtitle: LiteraryAuthorDisplayText.period(author, lang).isEmpty
-                  ? null
-                  : Text(
-                      LiteraryAuthorDisplayText.period(author, lang),
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
-                      ),
-                    ),
-              trailing: const QalamChevron(size: 20),
-              onTap: () {
-                ref
-                    .read(recentActivityProvider.notifier)
-                    .addActivity(
-                      RecentActivity(
-                        id: author.id,
-                        type: RecentActivityType.poet,
-                        title: LiteraryAuthorDisplayText.name(author, lang),
-                        subtitle: LiteraryAuthorDisplayText.period(
-                          author,
-                          lang,
+        ..._group(
+          id: 'poets',
+          header: count('search_poets_count', matchingAuthors.length),
+          lang: lang,
+          colors: colors,
+          rows: [
+            for (final author in matchingAuthors)
+              _SearchRow(
+                title: LiteraryAuthorDisplayText.name(author, lang),
+                subtitle: lifeLine(author),
+                query: _rawQuery,
+                onTap: () {
+                  ref
+                      .read(recentActivityProvider.notifier)
+                      .addActivity(
+                        RecentActivity(
+                          id: author.id,
+                          type: RecentActivityType.poet,
+                          title: LiteraryAuthorDisplayText.name(author, lang),
+                          subtitle: LiteraryAuthorDisplayText.period(
+                            author,
+                            lang,
+                          ),
+                          titleTajik: author.canonicalName,
+                          titlePersian: author.canonicalNamePersian,
+                          subtitleTajik: author.literaryPeriod,
+                          subtitlePersian: author.literaryPeriodPersian,
+                          timestamp: DateTime.now(),
+                          route: '/literature/poet/${author.id}',
                         ),
-                        titleTajik: author.canonicalName,
-                        titlePersian: author.canonicalNamePersian,
-                        subtitleTajik: author.literaryPeriod,
-                        subtitlePersian: author.literaryPeriodPersian,
-                        timestamp: DateTime.now(),
-                        route: '/literature/poet/${author.id}',
-                      ),
-                    );
-                context.push('/literature/poet/${author.id}');
-              },
-            ),
-        ],
-        if (matchingWorks.isNotEmpty) ...[
-          _buildSectionHeader(
-            AppTranslations.translate('search_works_count', lang, [
-              AppTranslations.formatDigits(
-                matchingWorks.length.toString(),
-                lang,
+                      );
+                  context.push('/literature/poet/${author.id}');
+                },
               ),
-            ]),
-            colors,
-          ),
-          for (final work in matchingWorks)
-            ListTile(
-              leading: Icon(Icons.auto_stories_outlined, color: colors.primary),
-              title: Text(
-                LiteraryWorkDisplayText.title(work, lang),
-                style: QalamTypography.body(color: colors.onSurface),
-              ),
-              subtitle: LiteraryWorkDisplayText.incipit(work, lang) != null
-                  ? Text(
-                      LiteraryWorkDisplayText.incipit(work, lang)!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
-                      ),
-                    )
-                  : null,
-              trailing: const QalamChevron(size: 20),
-              onTap: () {
-                ref
-                    .read(recentActivityProvider.notifier)
-                    .addActivity(
-                      RecentActivity(
-                        id: work.id,
-                        type: RecentActivityType.work,
-                        title: LiteraryWorkDisplayText.title(work, lang),
-                        subtitle: AppTranslations.get('search_kind_poem', lang),
-                        titleTajik: work.title,
-                        titlePersian: work.titlePersian,
-                        subtitleTajik: AppTranslations.get(
-                          'search_kind_poem',
-                          DisplayLanguage.tajik,
+          ],
+        ),
+        ..._group(
+          id: 'works',
+          header: count('search_works_count', matchingWorks.length),
+          lang: lang,
+          colors: colors,
+          rows: [
+            for (final work in matchingWorks)
+              _SearchRow(
+                title: LiteraryWorkDisplayText.title(work, lang),
+                subtitle: isPersian && work.titlePersianSource == 'generated'
+                    ? AppTranslations.get('lit_generated_script_label', lang)
+                    : LiteraryWorkDisplayText.distinctIncipit(work, lang),
+                query: _rawQuery,
+                onTap: () {
+                  ref
+                      .read(recentActivityProvider.notifier)
+                      .addActivity(
+                        RecentActivity(
+                          id: work.id,
+                          type: RecentActivityType.work,
+                          title: LiteraryWorkDisplayText.title(work, lang),
+                          subtitle: AppTranslations.get(
+                            'search_kind_poem',
+                            lang,
+                          ),
+                          titleTajik: work.title,
+                          titlePersian: work.titlePersian,
+                          subtitleTajik: AppTranslations.get(
+                            'search_kind_poem',
+                            DisplayLanguage.tajik,
+                          ),
+                          subtitlePersian: AppTranslations.get(
+                            'search_kind_poem',
+                            DisplayLanguage.persian,
+                          ),
+                          timestamp: DateTime.now(),
+                          route: '/literature/work/${work.id}',
                         ),
-                        subtitlePersian: AppTranslations.get(
-                          'search_kind_poem',
-                          DisplayLanguage.persian,
-                        ),
-                        timestamp: DateTime.now(),
-                        route: '/literature/work/${work.id}',
-                      ),
-                    );
-                context.push('/literature/work/${work.id}');
-              },
-            ),
-        ],
-        if (matchingBooks.isNotEmpty) ...[
-          _buildSectionHeader(
-            AppTranslations.translate('books_search_result', lang, [
-              AppTranslations.formatDigits(
-                matchingBooks.length.toString(),
-                lang,
+                      );
+                  context.push('/literature/work/${work.id}');
+                },
               ),
-            ]),
-            colors,
-          ),
-          for (final book in matchingBooks)
-            ListTile(
-              leading: Icon(
-                Icons.local_library_outlined,
-                color: colors.primary,
-              ),
-              title: Text(
-                BookDisplayText.title(book, lang),
-                style: QalamTypography.body(color: colors.onSurface),
-              ),
-              subtitle: Text(
-                BookDisplayText.author(book, lang) ??
+          ],
+        ),
+        ..._group(
+          id: 'books',
+          header: count('books_search_result', matchingBooks.length),
+          lang: lang,
+          colors: colors,
+          rows: [
+            for (final book in matchingBooks)
+              _SearchRow(
+                title: BookDisplayText.title(book, lang),
+                subtitle:
+                    BookDisplayText.author(book, lang) ??
                     AppTranslations.get('books_title', lang),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                query: _rawQuery,
+                onTap: () => context.push('/books/${book.id}'),
               ),
-              trailing: const QalamChevron(size: 20),
-              onTap: () => context.push('/books/${book.id}'),
-            ),
-        ],
-        if (matchingProverbs.isNotEmpty) ...[
-          _buildSectionHeader(
-            AppTranslations.translate('search_proverbs_count', lang, [
-              AppTranslations.formatDigits(
-                matchingProverbs.length.toString(),
-                lang,
-              ),
-            ]),
-            colors,
-          ),
-          for (final proverb in matchingProverbs)
-            ListTile(
-              leading: Icon(Icons.menu_book_outlined, color: colors.primary),
-              title: Text(
-                isPersian
+          ],
+        ),
+        ..._group(
+          id: 'proverbs',
+          header: count('search_proverbs_count', matchingProverbs.length),
+          lang: lang,
+          colors: colors,
+          rows: [
+            for (final proverb in matchingProverbs)
+              _SearchRow(
+                title: isPersian
                     ? (proverb.persianText.isNotEmpty
                           ? proverb.persianText
                           : proverb.tajikCyrillic)
                     : proverb.tajikCyrillic,
-                style: QalamTypography.body(color: colors.onSurface),
-              ),
-              subtitle: Text(
-                isPersian
+                subtitle: isPersian
                     ? '${AppTranslations.get('reading_tajik_explanation', lang)}: ${proverb.meaningTj}'
                     : proverb.meaningTj,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+                query: _rawQuery,
+                onTap: () {
+                  ref
+                      .read(recentActivityProvider.notifier)
+                      .addActivity(
+                        RecentActivity(
+                          id: proverb.id,
+                          type: RecentActivityType.proverb,
+                          title: isPersian
+                              ? (proverb.persianText.isNotEmpty
+                                    ? proverb.persianText
+                                    : proverb.tajikCyrillic)
+                              : proverb.tajikCyrillic,
+                          subtitle: AppTranslations.get(
+                            'search_kind_proverb',
+                            lang,
+                          ),
+                          titleTajik: proverb.tajikCyrillic,
+                          titlePersian: proverb.persianText.isNotEmpty
+                              ? proverb.persianText
+                              : null,
+                          subtitleTajik: AppTranslations.get(
+                            'search_kind_proverb',
+                            DisplayLanguage.tajik,
+                          ),
+                          subtitlePersian: AppTranslations.get(
+                            'search_kind_proverb',
+                            DisplayLanguage.persian,
+                          ),
+                          timestamp: DateTime.now(),
+                          route: '/proverb/${proverb.id}',
+                        ),
+                      );
+                  context.push('/proverb/${proverb.id}');
+                },
               ),
-              trailing: const QalamChevron(size: 20),
-              onTap: () {
-                ref
-                    .read(recentActivityProvider.notifier)
-                    .addActivity(
-                      RecentActivity(
-                        id: proverb.id,
-                        type: RecentActivityType.proverb,
-                        title: isPersian
-                            ? (proverb.persianText.isNotEmpty
-                                  ? proverb.persianText
-                                  : proverb.tajikCyrillic)
-                            : proverb.tajikCyrillic,
-                        subtitle: AppTranslations.get(
-                          'search_kind_proverb',
-                          lang,
+          ],
+        ),
+        ..._group(
+          id: 'history',
+          header: count('search_history_count', matchingHistory.length),
+          lang: lang,
+          colors: colors,
+          rows: [
+            for (final entry in matchingHistory)
+              _SearchRow(
+                title: historyTitle(entry),
+                subtitle: historyDate(entry).isEmpty
+                    ? null
+                    : historyDate(entry),
+                query: _rawQuery,
+                onTap: () {
+                  ref
+                      .read(recentActivityProvider.notifier)
+                      .addActivity(
+                        RecentActivity(
+                          id: entry.id,
+                          type: RecentActivityType.history,
+                          title: historyTitle(entry),
+                          subtitle: AppTranslations.get(
+                            'search_kind_history',
+                            lang,
+                          ),
+                          titleTajik: entry.title,
+                          titlePersian: entry.titlePersian,
+                          subtitleTajik: AppTranslations.get(
+                            'search_kind_history',
+                            DisplayLanguage.tajik,
+                          ),
+                          subtitlePersian: AppTranslations.get(
+                            'search_kind_history',
+                            DisplayLanguage.persian,
+                          ),
+                          timestamp: DateTime.now(),
+                          route: '/history/${entry.id}',
                         ),
-                        titleTajik: proverb.tajikCyrillic,
-                        titlePersian: proverb.persianText.isNotEmpty
-                            ? proverb.persianText
-                            : null,
-                        subtitleTajik: AppTranslations.get(
-                          'search_kind_proverb',
-                          DisplayLanguage.tajik,
-                        ),
-                        subtitlePersian: AppTranslations.get(
-                          'search_kind_proverb',
-                          DisplayLanguage.persian,
-                        ),
-                        timestamp: DateTime.now(),
-                        route: '/proverb/${proverb.id}',
-                      ),
-                    );
-                context.push('/proverb/${proverb.id}');
-              },
-            ),
-        ],
-        if (matchingHistory.isNotEmpty) ...[
-          _buildSectionHeader(
-            AppTranslations.translate('search_history_count', lang, [
-              AppTranslations.formatDigits(
-                matchingHistory.length.toString(),
-                lang,
+                      );
+                  context.push('/history/${entry.id}');
+                },
               ),
-            ]),
-            colors,
-          ),
-          for (final entry in matchingHistory)
-            ListTile(
-              leading: Icon(Icons.timeline, color: colors.primary),
-              title: Text(
-                historyTitle(entry),
-                style: QalamTypography.body(color: colors.onSurface),
-              ),
-              subtitle: historyDate(entry).isEmpty
-                  ? null
-                  : Text(
-                      historyDate(entry),
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
-                      ),
-                    ),
-              trailing: const QalamChevron(size: 20),
-              onTap: () {
-                ref
-                    .read(recentActivityProvider.notifier)
-                    .addActivity(
-                      RecentActivity(
-                        id: entry.id,
-                        type: RecentActivityType.history,
-                        title: historyTitle(entry),
-                        subtitle: AppTranslations.get(
-                          'search_kind_history',
-                          lang,
-                        ),
-                        titleTajik: entry.title,
-                        titlePersian: entry.titlePersian,
-                        subtitleTajik: AppTranslations.get(
-                          'search_kind_history',
-                          DisplayLanguage.tajik,
-                        ),
-                        subtitlePersian: AppTranslations.get(
-                          'search_kind_history',
-                          DisplayLanguage.persian,
-                        ),
-                        timestamp: DateTime.now(),
-                        route: '/history/${entry.id}',
-                      ),
-                    );
-                context.push('/history/${entry.id}');
-              },
-            ),
-        ],
+          ],
+        ),
       ],
     );
+  }
+
+  /// One result group: a header with its count, the first [_groupPreview]
+  /// rows, and "show all" when there are more.
+  List<Widget> _group({
+    required String id,
+    required String header,
+    required List<Widget> rows,
+    required DisplayLanguage lang,
+    required ColorScheme colors,
+  }) {
+    if (rows.isEmpty) return const [];
+    final expanded = _expanded.contains(id) || rows.length <= _groupPreview;
+    return [
+      _buildSectionHeader(header, colors),
+      ...(expanded ? rows : rows.take(_groupPreview)),
+      if (!expanded)
+        Padding(
+          padding: const EdgeInsetsDirectional.only(start: 12, bottom: 8),
+          child: Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: TextButton(
+              onPressed: () => setState(() => _expanded.add(id)),
+              child: Text(
+                AppTranslations.get('search_show_all', lang, [
+                  AppTranslations.formatDigits(rows.length.toString(), lang),
+                ]),
+              ),
+            ),
+          ),
+        ),
+    ];
   }
 
   Widget _buildSectionHeader(String title, ColorScheme colors) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
       child: Text(title, style: QalamTypography.eyebrow(color: colors.primary)),
+    );
+  }
+}
+
+/// A search result as a typographic row: the title with the matched part
+/// set bold, and one line of context.
+class _SearchRow extends StatelessWidget {
+  const _SearchRow({
+    required this.title,
+    required this.query,
+    required this.onTap,
+    this.subtitle,
+  });
+
+  final String title;
+  final String? subtitle;
+  final String query;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    final style = QalamTypography.literaryTitle(
+      color: colors.onSurface,
+      fontSize: 18,
+    );
+    final range = SearchNormalizer.matchRange(title, query);
+    final titleText = range == null
+        ? Text(title, style: style)
+        : Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(text: title.substring(0, range.start)),
+                TextSpan(
+                  text: title.substring(range.start, range.end),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: colors.primary,
+                  ),
+                ),
+                TextSpan(text: title.substring(range.end)),
+              ],
+            ),
+            style: style,
+          );
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: QalamSlip(
+        onTap: onTap,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            titleText,
+            if (subtitle != null && subtitle!.isNotEmpty)
+              Text(
+                subtitle!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: QalamTypography.meta(color: colors.onSurfaceVariant),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

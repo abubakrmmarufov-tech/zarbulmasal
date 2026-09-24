@@ -340,6 +340,78 @@ def _first_valid_record(relative_path, marker_key=None):
     raise ValueError(f'No valid route fixture found in {relative_path}')
 
 
+def _work_is_displayable(record):
+    """Mirror LiteraryWork.isDisplayable in lib/features/literature/domain.
+
+    The source-attested publication path accepts one exact, page-checked
+    occurrence in an uploaded PDF or on maorif.tj, matching the Dart gate the
+    reader actually applies. The audit must not guess pending/readable status
+    by evidence level alone.
+    """
+    if record.get('textStatus') != 'verified':
+        return False
+    if not any(record.get(field) for field in ('textTajik', 'textPersian')):
+        return False
+    verification = record.get('verification') or {}
+    primary = record.get('primarySource') or {}
+    rights = record.get('rights') or {}
+    if verification.get('pageVerified') is not True or primary.get('pageStart') is None:
+        return False
+
+    evidence_level = verification.get('evidenceLevel')
+    rights_status = rights.get('status')
+    traditionally_approved = (
+        evidence_level == 'editoriallyApproved'
+        and rights_status in (
+            'publicDomain', 'permissionGranted', 'sourceAttested', 'folklore'
+        )
+        and rights.get('fullTextAllowed') is True
+    )
+    if traditionally_approved:
+        return True
+
+    # isPermittedSourceAttested
+    checked_levels = (
+        'primaryChecked', 'secondWitnessLocated', 'collated', 'editoriallyApproved'
+    )
+    source_reference = str(primary.get('sourceReference') or '').strip()
+    if evidence_level not in checked_levels or not source_reference:
+        return False
+    normalized = source_reference.replace('\\', '/').lower()
+    if normalized.startswith(('docs/literature/pdfs/', 'pdf books/')):
+        return normalized.endswith('.pdf')
+
+    from urllib.parse import urlparse
+    uri = urlparse(source_reference)
+    host = (uri.hostname or '').lower()
+    return uri.scheme == 'https' and (
+        host == 'maorif.tj' or host.endswith('.maorif.tj')
+    )
+
+
+def _first_seed_proverb_fixture():
+    """Return (id, tajikCyrillic) for the first production proverb fixture."""
+    seed_path = os.path.join(PROJECT_ROOT, 'lib/data/seed/seed_proverbs.dart')
+    with open(seed_path, encoding='utf-8') as seed_file:
+        source = seed_file.read()
+    match = re.search(
+        r"Proverb\s*\(\s*id\s*:\s*(['\"])(.*?)\1,(.*?)(?=\n\s*\),)",
+        source,
+        flags=re.DOTALL,
+    )
+    marker_match = (
+        re.search(
+            r"tajikCyrillic\s*:\s*(['\"])((?:\\.|(?!\1).)*)\1",
+            match.group(3),
+        )
+        if match
+        else None
+    )
+    if not match or not marker_match:
+        raise ValueError(f'No proverb route fixture found in {seed_path}')
+    return match.group(2), marker_match.group(2)
+
+
 def _dynamic_route_records(route_pattern):
     """Return (id, visible marker) fixtures for a supported dynamic route."""
     if route_pattern == '/literature/poet/:id':
@@ -367,6 +439,22 @@ def _dynamic_route_records(route_pattern):
         return [(record['id'], record['canonicalName'])] if record else []
     if route_pattern in ('/literature/work/:id', '/literature/works/:id'):
         works = _read_json_records('assets/data/literature/works.json')
+
+        # The Dart reader shows a displayable work's title before it ever
+        # consults the pending marker, so readable works must win the fixture.
+        displayable_work = next((
+            record for record in works
+            if isinstance(record.get('id'), str)
+            and record['id'].strip()
+            and isinstance(record.get('title'), str)
+            and record['title'].strip()
+            and _work_is_displayable(record)
+        ), None)
+        if displayable_work:
+            return [(displayable_work['id'], displayable_work['title'])]
+
+        # A work still under review is only "pending" when the Dart readable
+        # gate has NOT opened it.
         pending_work = next((
             record for record in works
             if isinstance(record.get('id'), str)
@@ -375,28 +463,10 @@ def _dynamic_route_records(route_pattern):
             and record['title'].strip()
             and (record.get('verification') or {}).get('evidenceLevel')
             in ('needsReview', 'primaryChecked')
+            and not _work_is_displayable(record)
         ), None)
         if pending_work:
             return [(pending_work['id'], 'Асар дар санҷиш аст')]
-
-        displayable_work = next((
-            record for record in works
-            if isinstance(record.get('id'), str)
-            and record['id'].strip()
-            and isinstance(record.get('title'), str)
-            and record['title'].strip()
-            and record.get('textStatus') == 'verified'
-            and (record.get('verification') or {}).get('evidenceLevel')
-            == 'editoriallyApproved'
-            and (record.get('verification') or {}).get('pageVerified') is True
-            and (record.get('primarySource') or {}).get('pageStart') is not None
-            and (record.get('rights') or {}).get('status')
-            in ('publicDomain', 'permissionGranted', 'folklore')
-            and (record.get('rights') or {}).get('fullTextAllowed') is True
-            and any(record.get(field) for field in ('textTajik', 'textPersian'))
-        ), None)
-        if displayable_work:
-            return [(displayable_work['id'], displayable_work['title'])]
         raise ValueError('No approved or reviewable literary work route fixture exists')
     if route_pattern == '/history/:id':
         first_history_entry = _first_valid_record('assets/data/history/entries.json', 'title')
@@ -439,25 +509,15 @@ def _dynamic_route_records(route_pattern):
         matching_count = sum(book.get('authorId') == first_author for book in all_books)
         return [(first_author, f'{matching_count} китоб')]
     if route_pattern == '/proverb/:id':
-        seed_path = os.path.join(PROJECT_ROOT, 'lib/data/seed/seed_proverbs.dart')
-        with open(seed_path, encoding='utf-8') as seed_file:
-            source = seed_file.read()
-        match = re.search(
-            r"Proverb\s*\(\s*id\s*:\s*(['\"])(.*?)\1,(.*?)(?=\n\s*\),)",
-            source,
-            flags=re.DOTALL,
-        )
-        marker_match = (
-            re.search(
-                r"tajikCyrillic\s*:\s*(['\"])((?:\\.|(?!\1).)*)\1",
-                match.group(3),
-            )
-            if match
-            else None
-        )
-        if not match or not marker_match:
-            raise ValueError(f'No proverb route fixture found in {seed_path}')
-        return [(match.group(2), marker_match.group(2))]
+        return [_first_seed_proverb_fixture()]
+    if route_pattern == '/vocabulary/:id':
+        # Vocabulary entries are aggregated at runtime from proverbs, history,
+        # and literary authors. The proverb-backed fixture mirrors the route
+        # smoke test (test/mobile_route_smoke_test.dart), which exercises
+        # /vocabulary/vocab-proverb-21, and its marker is the entry's term —
+        # the real proverb text rendered as the detail title.
+        proverb_id, proverb_term = _first_seed_proverb_fixture()
+        return [(f'vocab-proverb-{proverb_id}', proverb_term)]
     raise ValueError(f'No browser fixture is defined for dynamic route {route_pattern}')
 
 

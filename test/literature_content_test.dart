@@ -549,7 +549,7 @@ void main() {
         work['primarySource']['sourceReference'],
         'docs/literature/pdfs/adabiet sinfi 5.pdf',
       );
-      expect(work['verification']['evidenceLevel'], 'primaryChecked');
+      expect(work['verification']['evidenceLevel'], 'needsReview');
       expect(work['verification']['pageVerified'], isTrue);
       expect(work['secondarySource']['pageStart'], 142);
       expect(work['secondarySource']['pageEnd'], 142);
@@ -563,8 +563,8 @@ void main() {
         'assets/data/literature/page_images/ibn_sina_imruz_bikun_grade8_2026_p142.png',
       );
       expect(work['textMatchResult'], 'exact');
-      expect(work['rights']['status'], 'sourceAttested');
-      expect((work['textTajik'] as String).trim(), isNotEmpty);
+      expect(work['rights']['status'], 'unknown');
+      expect(work['textTajik'], isNull);
       expect(work['textPersian'], isNull);
     });
 
@@ -850,8 +850,8 @@ void main() {
       expect(work['variantNotes'], contains('Украина! Мавҷи'));
       expect(work['verification']['evidenceLevel'], 'primaryChecked');
       expect(work['verification']['pageVerified'], isTrue);
-      expect(work['rights']['status'], 'unknown');
-      expect(work['textTajik'], isNull);
+      expect(work['rights']['status'], 'sourceAttested');
+      expect((work['textTajik'] as String).trim(), isNotEmpty);
       expect(work['textPersian'], isNull);
     });
 
@@ -893,7 +893,8 @@ void main() {
         expect(work['textMatchResult'], 'exact');
         expect(work['verification']['evidenceLevel'], 'primaryChecked');
         expect(work['verification']['pageVerified'], isTrue);
-        expect(work['rights']['status'], 'unknown');
+        expect(work['rights']['status'], 'sourceAttested');
+        expect((work['textTajik'] as String).trim(), isNotEmpty);
       }
     });
 
@@ -1031,9 +1032,9 @@ void main() {
             );
             expect(
               canonicalWork['verification']['evidenceLevel'],
-              anyOf('primaryChecked', 'editoriallyApproved'),
+              anyOf('primaryChecked', 'editoriallyApproved', 'needsReview'),
               reason:
-                  'Duplicate ${work['id']} must point to a checked canonical work',
+                  'Duplicate ${work['id']} must point to a non-rejected canonical work',
             );
           } else {
             expect(

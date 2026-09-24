@@ -256,8 +256,9 @@ void main() {
       expect(find.text('Синфи 5'), findsWidgets);
       expect(find.text('Синфи 7'), findsWidgets);
 
-      // Filter by Grade 5
-      await tester.tap(find.text('Синфи 5').first);
+      // Filter by Grade 5 (the chip; the textbook shelf above it also
+      // names grades).
+      await tester.tap(find.widgetWithText(ChoiceChip, 'Синфи 5'));
       await tester.pumpAndSettle();
 
       expect(find.text('Спитамен'), findsOneWidget);

@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/history/domain/history_book.dart';
 import 'package:zarbulmasal/features/history/domain/history_entry.dart';
 import 'package:zarbulmasal/features/history/domain/history_epoch.dart';
+import 'package:zarbulmasal/features/history/domain/history_section.dart';
 
 void main() {
   test('history claim provenance preserves optional evidence fields', () {
@@ -97,12 +98,28 @@ void main() {
           'status': 'VERIFIED_UPLOADED_BOOK_PAGE',
         },
       ],
+      'sections': [
+        {
+          'heading': 'Замин ва пайдоиш',
+          'headingPersian': 'سرزمین و پیدایش',
+          'body': 'Матни порчаи аввал.\n\nМатни порчаи дуюм.',
+          'bodyPersian': 'متن پاراگراف اول.',
+          'sourceBookId': 'history-6',
+          'printedPage': 89,
+          'pdfPage': 95,
+          'printedPageEnd': 92,
+          'pdfPageEnd': 98,
+          'persianIsEditorial': true,
+        },
+      ],
     };
 
     final entry = HistoryEntry.fromJson(json);
 
     expect(entry.kind, HistoryEntryKind.dynasty);
     expect(entry.epoch, HistoryEpoch.samanid);
+    expect(entry.sections, hasLength(1));
+    expect(entry.sections.single, isA<HistoryDetailSection>());
     expect(entry.toJson(), equals(json));
   });
 
@@ -116,12 +133,18 @@ void main() {
         {'claim': 'kept'},
         'ignored',
       ],
+      'sections': [
+        'ignored-string',
+        {'heading': 'Ok', 'body': 'Танҳо бахши дуруст.'},
+      ],
     });
 
     expect(entry.kind, HistoryEntryKind.event);
     expect(entry.grade, '8');
     expect(entry.keywords, ['event']);
     expect(entry.claimProvenance.single.claim, 'kept');
+    expect(entry.sections.single.heading, 'Ok');
+    expect(entry.sections.single.body, 'Танҳо бахши дуруст.');
     expect(entry.toJson(), {
       'id': 'unknown',
       'kind': 'event',
@@ -134,6 +157,9 @@ void main() {
       'keywords': ['event'],
       'claimProvenance': [
         {'claim': 'kept', 'sourceBookId': '', 'status': 'NEEDS_REVIEW'},
+      ],
+      'sections': [
+        {'heading': 'Ok', 'body': 'Танҳо бахши дуруст.'},
       ],
     });
   });

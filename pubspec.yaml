@@ -32,8 +32,17 @@ flutter:
     - assets/fonts/NotoSans-OFL.txt
     - assets/fonts/NotoSerif-OFL.txt
     - assets/fonts/NotoNaskhArabic-OFL.txt
+    - assets/fonts/EBGaramond-OFL.txt
+    - assets/fonts/PTSerif-OFL.txt
+    - assets/fonts/GolosText-OFL.txt
+    - assets/fonts/NotoNastaliqUrdu-OFL.txt
+    - assets/fonts/Vazirmatn-OFL.txt
+    # «Муҳр» seal artwork — a PLACEHOLDER until the commissioned seal arrives.
     - assets/data/literature/poets.json
-    - assets/data/literature/works.json
+    # The canonical assets/data/literature/works.json stays in the repo as the
+    # editorial source of truth; the app ships the derived runtime catalog
+    # built by tool/build_runtime_literature.dart.
+    - assets/data/literature/runtime_works.json
     - assets/data/literature/sources.json
     - assets/data/literature/school_canon.json
     - assets/data/literature/oral_heritage.json
@@ -43,6 +52,8 @@ flutter:
     - assets/data/books/providers.json
     - assets/data/books/books.json
     - assets/data/books/covers/
+    # The Luғатнома lexicon: reviewed lexical headword–definition pairs.
+    - assets/data/vocabulary/words.json
   fonts:
     - family: NotoSans
       fonts:
@@ -53,3 +64,40 @@ flutter:
     - family: NotoNaskhArabic
       fonts:
         - asset: assets/fonts/NotoNaskhArabic.ttf
+    # «Муҳр» typefaces (SIL OFL 1.1), built by tool/design/build_fonts.py as
+    # subset static instances. The Noto families above remain as fallbacks.
+    - family: EBGaramond
+      fonts:
+        - asset: assets/fonts/EBGaramond-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/EBGaramond-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/EBGaramond-Italic.ttf
+          weight: 400
+          style: italic
+    - family: PTSerif
+      fonts:
+        - asset: assets/fonts/PTSerif-Regular.ttf
+        - asset: assets/fonts/PTSerif-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/PTSerif-Italic.ttf
+          style: italic
+    - family: GolosText
+      fonts:
+        - asset: assets/fonts/GolosText-Regular.ttf
+        - asset: assets/fonts/GolosText-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/GolosText-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/GolosText-Bold.ttf
+          weight: 700
+    - family: NotoNastaliqUrdu
+      fonts:
+        - asset: assets/fonts/NotoNastaliqUrdu-Regular.ttf
+    - family: Vazirmatn
+      fonts:
+        - asset: assets/fonts/Vazirmatn-Regular.ttf
+        - asset: assets/fonts/Vazirmatn-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Vazirmatn-Bold.ttf
+          weight: 700

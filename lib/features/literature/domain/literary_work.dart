@@ -1,6 +1,7 @@
 import 'rights_record.dart';
 import 'source_edition.dart';
 import 'verification_record.dart';
+import 'verse_structure.dart';
 
 /// Poetic or literary genre/form of the work.
 enum WorkType {
@@ -308,6 +309,34 @@ class LiteraryWork {
       (textPersian != null && textPersian!.trim().isNotEmpty) ||
       (persianScriptRepresentation != null &&
           persianScriptRepresentation!.trim().isNotEmpty);
+
+  /// Whether the shipped text is a coherent verse work rather than a fragment,
+  /// one-word/single-line snippet, or a stitching of unrelated pages.
+  ///
+  /// Phase-2 audit rule: a source-attested "readable" item must be a genuine
+  /// poem/work. A single bayt (<=2 hemistiches), a single-word text, and text
+  /// carrying page/stitching markers (## N, "(Page N)", "***") all fail this
+  /// check and must never ship as a readable work.
+  ///
+  /// Appended editorial noise is ignored before counting: a pure-parenthesis
+  /// author attribution («(Лоиқ Шералӣ)») or an obvious truncated prose-gloss
+  /// line (one ending in a bare preposition such as «... (тақдир, сарнавишт)
+  /// дар») does not add a hemistich. Parenthetical text inside a genuine
+  /// hemistich is preserved.
+  bool get hasCoherentVerseStructure {
+    final text = (textTajik ?? textPersian)?.trim() ?? '';
+    if (text.isEmpty) return false;
+    if (RegExp(r'##\s*\d+|\(Page \d+\)|\*\*\*').hasMatch(text)) return false;
+    final lines = coherentVerseLines(text);
+    if (lines.isEmpty) return false;
+    final words = lines
+        .join('\n')
+        .split(RegExp(r'\s+'))
+        .where((w) => w.isNotEmpty)
+        .length;
+    if (words <= 2) return false;
+    return lines.length >= 3;
+  }
 
   /// Whether composition metadata has a page-checked primary source.
   ///

@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zarbulmasal/core/constants/app_constants.dart';
 import 'package:zarbulmasal/core/design_system/design_system.dart';
+import 'package:zarbulmasal/core/l10n/app_translations.dart';
 import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
@@ -365,16 +366,22 @@ void main() {
       }
     });
 
-    testWidgets('Hub labels empty oral heritage as unavailable', (
+    testWidgets('Hub hides empty oral heritage and shows no running numbers', (
       tester,
     ) async {
       await pumpTestApp(tester, route: '/literature', oral: const []);
 
+      expect(find.text('Мероси шифоҳӣ'), findsNothing);
       final disabledLinks = find.byWidgetPredicate(
         (widget) => widget is QalamSectionLink && widget.onTap == null,
       );
-      expect(disabledLinks, findsOneWidget);
-      expect(find.byIcon(Icons.hourglass_empty), findsOneWidget);
+      expect(disabledLinks, findsNothing);
+      // The literature index carries no running numbers (they meant nothing).
+      final links = tester.widgetList<QalamSectionLink>(
+        find.byType(QalamSectionLink),
+      );
+      expect(links, isNotEmpty);
+      expect(links.every((link) => link.number == null), isTrue);
     });
 
     testWidgets('Tapping Poets link in Hub navigates to PoetsListScreen', (
@@ -552,7 +559,7 @@ void main() {
     });
 
     testWidgets(
-      'PoetDetailScreen exposes pending work titles and citations without text',
+      'PoetDetailScreen collapses pending work list and reveals titles with citations on expand',
       (tester) async {
         final pendingWork = testWorkRudaki.copyWith(
           id: 'rudaki-pending-textbook-work',
@@ -592,7 +599,7 @@ void main() {
           works: [pendingWork, pendingNoPageWork],
         );
 
-        expect(find.text('Осори тасдиқшуда дар барнома (0)'), findsOneWidget);
+        expect(find.text('Осор барои хондан (0)'), findsOneWidget);
         expect(find.text('Сабтҳои асар дар санҷиш: 2'), findsOneWidget);
         expect(
           find.text(
@@ -600,6 +607,20 @@ void main() {
           ),
           findsOneWidget,
         );
+
+        // The under-review list is collapsed by default; pending titles are
+        // withheld until the count-labeled header is expanded.
+        expect(find.text('Модар'), findsNothing);
+        expect(find.text('Асари бе саҳифа'), findsNothing);
+
+        await tester.scrollUntilVisible(
+          find.text('Сабтҳои асар дар санҷиш: 2'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        await tester.tap(find.text('Сабтҳои асар дар санҷиш: 2'));
+        await tester.pumpAndSettle();
+
         await tester.scrollUntilVisible(
           find.text('Модар'),
           300,
@@ -644,7 +665,7 @@ void main() {
     );
 
     testWidgets(
-      'PoemReaderScreen renders poem title, author, text and QalamSourceBadge',
+      'PoemReaderScreen renders poem title, author, text and provenance status',
       (tester) async {
         await pumpTestApp(
           tester,
@@ -654,199 +675,59 @@ void main() {
         expect(find.byType(PoemReaderScreen), findsOneWidget);
         expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
         expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsOneWidget);
-        expect(find.text('Матн санҷида шудааст'), findsOneWidget);
-        expect(find.byType(QalamSourceBadge), findsOneWidget);
+        // No status sentence or seal: the source is one line under the poem.
+        expect(
+          find.text('Матн аз ҷониби муҳаррир тасдиқ шудааст.'),
+          findsNothing,
+        );
+        expect(find.textContaining('Манбаъ: Осори Рӯдакӣ'), findsOneWidget);
         expect(find.textContaining('Бӯи ҷӯи Мӯлиён ояд ҳаме'), findsWidgets);
       },
     );
 
     testWidgets(
-      'PoemReaderScreen Source button opens SourcePanel bottom sheet',
+      'PoemReaderScreen names its source in one line: book and pages',
       (tester) async {
         await pumpTestApp(
           tester,
           route: '/literature/work/rudaki-boyi-juyi-muliyon',
         );
 
-        final sourceButton = find.widgetWithText(OutlinedButton, 'Манбаъ');
-        expect(sourceButton, findsOneWidget);
-
-        await tester.tap(sourceButton);
-        await tester.pumpAndSettle();
-
-        expect(find.byType(SourcePanel), findsOneWidget);
-        expect(find.text('Сарчашма ва санҷиш'), findsOneWidget);
-        expect(find.text('Осори Рӯдакӣ'), findsOneWidget);
-        expect(find.text('Тасдиқшуда'), findsOneWidget);
-        expect(find.byTooltip('Бастан'), findsOneWidget);
-
-        final panelScrollable = find.descendant(
-          of: find.byType(SourcePanel),
-          matching: find.byType(Scrollable),
-        );
-        await tester.scrollUntilVisible(
-          find.text('Моликияти умумӣ (Public Domain)'),
-          300,
-          scrollable: panelScrollable.first,
-        );
-        expect(find.text('Моликияти умумӣ (Public Domain)'), findsOneWidget);
+        expect(find.textContaining('Манбаъ: Осори Рӯдакӣ'), findsOneWidget);
+        expect(find.textContaining('с. 45–46'), findsOneWidget);
+        // No record button, record tab, or secondary witness detail.
+        expect(find.widgetWithText(OutlinedButton, 'Манбаъ'), findsNothing);
+        expect(find.text('Сабт'), findsNothing);
+        expect(find.text('Сарчашмаи дуввум'), findsNothing);
+        // No raw labels, legacy badges, or page-image teaser.
+        expect(find.text('Тасдиқшуда'), findsNothing);
+        expect(find.text('Моликияти умумӣ (Public Domain)'), findsNothing);
+        expect(find.text('Тасвири аслии саҳифаи китоб'), findsNothing);
       },
     );
 
-    testWidgets(
-      'SourcePanel exposes citations for secondary and additional occurrences',
-      (tester) async {
-        final secondary = testWorkRudaki.primarySource!.copyWith(
-          bookTitle: 'Гулшани адаб',
-          publisher: 'Маориф',
-          city: 'Душанбе',
-          year: '2019',
-          pageStart: 88,
-          pageEnd: 89,
-        );
-        final occurrence = secondary.copyWith(
-          bookTitle: 'Адабиёти тоҷик (Синфи 5)',
-          publisher: 'Маориф',
-          year: '2018',
-          pageStart: 153,
-          pageEnd: 153,
-        );
-        final work = testWorkRudaki.copyWith(
-          secondarySource: secondary,
-          sourceOccurrences: [occurrence],
-        );
-
-        await pumpTestApp(
-          tester,
-          route: '/literature/work/${work.id}',
-          works: [work],
-        );
-
-        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
-        await tester.pumpAndSettle();
-
-        expect(find.text('Гулшани адаб'), findsOneWidget);
-        final panelScrollable = find.descendant(
-          of: find.byType(SourcePanel),
-          matching: find.byType(Scrollable),
-        );
-        final secondaryCitation = find.byKey(
-          ValueKey<String>('source-citation-${secondary.citation}'),
-        );
-        await tester.scrollUntilVisible(
-          secondaryCitation,
-          300,
-          scrollable: panelScrollable.first,
-        );
-        expect(secondaryCitation, findsOneWidget);
-        expect(find.text('Адабиёти тоҷик (Синфи 5)'), findsOneWidget);
-        final occurrenceCitation = find.byKey(
-          ValueKey<String>('source-citation-${occurrence.citation}'),
-        );
-        await tester.scrollUntilVisible(
-          occurrenceCitation,
-          300,
-          scrollable: panelScrollable.first,
-        );
-        expect(occurrenceCitation, findsOneWidget);
-      },
-    );
-
-    testWidgets('SourcePanel review status meets normal-text contrast', (
+    testWidgets('A second witness stays in the data, not on the page', (
       tester,
     ) async {
-      final pendingWork = testWorkRudaki.copyWith(
-        textStatus: TextStatus.needsReview,
-        verification: const VerificationRecord(
-          evidenceLevel: VerificationLevel.needsReview,
-        ),
+      final secondary = testWorkRudaki.primarySource!.copyWith(
+        bookTitle: 'Гулшани адаб',
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        year: '2019',
+        pageStart: 88,
+        pageEnd: 89,
       );
-      for (final dark in [false, true]) {
-        await pumpTestApp(
-          tester,
-          route: '/literature/work/${pendingWork.id}',
-          works: [pendingWork],
-          dark: dark,
-        );
+      final work = testWorkRudaki.copyWith(secondarySource: secondary);
 
-        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
-        await tester.pumpAndSettle();
+      await pumpTestApp(
+        tester,
+        route: '/literature/work/${work.id}',
+        works: [work],
+      );
 
-        final statusText = tester.widget<Text>(find.text('Дар баррасӣ'));
-        final statusColor = statusText.style!.color!;
-        final theme = dark ? AppTheme.darkTheme : AppTheme.lightTheme;
-        final badgeBackground = Color.alphaBlend(
-          statusColor.withValues(alpha: .12),
-          theme.colorScheme.surface,
-        );
-        expect(
-          _contrastRatio(statusColor, badgeBackground),
-          greaterThanOrEqualTo(4.5),
-          reason: '${dark ? 'dark' : 'light'} SourcePanel review badge',
-        );
-      }
+      expect(find.textContaining('Манбаъ: Осори Рӯдакӣ'), findsOneWidget);
+      expect(find.textContaining('Гулшани адаб'), findsNothing);
     });
-
-    testWidgets(
-      'SourcePanel names the page facsimile action for screen readers',
-      (tester) async {
-        final semantics = tester.ensureSemantics();
-        try {
-          await pumpTestApp(
-            tester,
-            route: '/literature/work/rudaki-boyi-juyi-muliyon',
-          );
-          await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
-          await tester.pumpAndSettle();
-
-          final pageAction = find.ancestor(
-            of: find.text('Тасвири аслии саҳифаи китоб'),
-            matching: find.byType(InkWell),
-          );
-          expect(pageAction, findsOneWidget);
-
-          final description = tester.getSemantics(pageAction).toStringDeep();
-          expect(description, contains('Тасвири аслии саҳифаи китоб'));
-          expect(description, contains('isButton'));
-          expect(description, contains('tap'));
-        } finally {
-          semantics.dispose();
-        }
-      },
-    );
-
-    testWidgets(
-      'Source image viewer exposes every verified page in a multi-page witness',
-      (tester) async {
-        final imagePath = testWorkRudaki.primarySource!.sourceImagePath!;
-        final multiPageWork = testWorkRudaki.copyWith(
-          primarySource: testWorkRudaki.primarySource!.copyWith(
-            sourceImagePaths: [imagePath, imagePath],
-          ),
-        );
-        await pumpTestApp(
-          tester,
-          route: '/literature/work/${multiPageWork.id}',
-          works: [multiPageWork],
-        );
-
-        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
-        await tester.pumpAndSettle();
-        final pageAction = find.ancestor(
-          of: find.text('Тасвири аслии саҳифаи китоб'),
-          matching: find.byType(InkWell),
-        );
-        await tester.tap(pageAction);
-        await tester.pumpAndSettle();
-
-        expect(find.byType(PageView), findsOneWidget);
-        expect(find.text('Саҳифаи 1 аз 2'), findsOneWidget);
-
-        await tester.drag(find.byType(PageView), const Offset(-400, 0));
-        await tester.pumpAndSettle();
-        expect(find.text('Саҳифаи 2 аз 2'), findsOneWidget);
-      },
-    );
 
     testWidgets(
       'PoemReaderScreen rejects a direct link to an unapproved work',
@@ -889,7 +770,7 @@ void main() {
     );
 
     testWidgets(
-      'Pending SourcePanel withholds page scans until publication clearance',
+      'A pending work names its source in one line, with no image or review UI',
       (tester) async {
         final pendingWork = testWorkRudaki.copyWith(
           textStatus: TextStatus.needsReview,
@@ -903,12 +784,11 @@ void main() {
           works: [pendingWork],
         );
 
-        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
-        await tester.pumpAndSettle();
-
-        expect(find.byType(SourcePanel), findsOneWidget);
-        expect(find.text('Тасвири саҳифа маҳфуз аст'), findsOneWidget);
+        expect(find.textContaining('Манбаъ: Осори Рӯдакӣ'), findsOneWidget);
         expect(find.text('Тасвири аслии саҳифаи китоб'), findsNothing);
+        expect(find.text('Тасвири саҳифа маҳфуз аст'), findsNothing);
+        expect(find.text('Дар баррасӣ'), findsNothing);
+        expect(find.text('Моликияти умумӣ (Public Domain)'), findsNothing);
       },
     );
 
@@ -927,10 +807,8 @@ void main() {
         );
 
         expect(find.text('Тасвири саҳифа'), findsNothing);
-        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
-        await tester.pumpAndSettle();
-
-        expect(find.byType(SourcePanel), findsOneWidget);
+        // Citation remains; no page-image affordance is offered.
+        expect(find.textContaining('Осори Рӯдакӣ'), findsOneWidget);
         expect(find.text('Тасвири аслии саҳифаи китоб'), findsNothing);
         expect(find.text('Тасвири саҳифа маҳфуз аст'), findsNothing);
       },
@@ -950,10 +828,7 @@ void main() {
           works: [noPathWork],
         );
 
-        await tester.tap(find.widgetWithText(OutlinedButton, 'Манбаъ'));
-        await tester.pumpAndSettle();
-
-        expect(find.byType(SourcePanel), findsOneWidget);
+        expect(find.textContaining('Осори Рӯдакӣ'), findsOneWidget);
         expect(find.text('Тасвири аслии саҳифаи китоб'), findsNothing);
         expect(find.text('Тасвири саҳифа маҳфуз аст'), findsNothing);
       },
@@ -975,7 +850,7 @@ void main() {
         );
 
         expect(find.text('Тасвири саҳифа'), findsNothing);
-        expect(find.widgetWithText(OutlinedButton, 'Манбаъ'), findsOneWidget);
+        expect(find.textContaining('Манбаъ: Осори Рӯдакӣ'), findsOneWidget);
       },
     );
 
@@ -1054,6 +929,86 @@ void main() {
       expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
       expect(find.byTooltip('Пок кардани ҷустуҷӯ'), findsOneWidget);
     });
+
+    testWidgets(
+      'LiteratureSearchScreen keeps readable works primary and hides pending behind review header',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/search',
+          works: [testWorkRudaki, testReviewWork],
+        );
+
+        // A readable match stays in the primary works section, unchanged.
+        await tester.enterText(find.byType(TextField), 'Мӯлиён');
+        await tester.pumpAndSettle();
+        expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
+        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
+        expect(find.text('Сабтҳои асар дар санҷиш: 1'), findsNothing);
+
+        // A review-only match must not look like a dead end: a compact
+        // readable-empty note plus the collapsed count-labeled review header.
+        await tester.enterText(find.byType(TextField), 'Сабти');
+        await tester.pumpAndSettle();
+        expect(find.text('Мундариҷа ёфт нашуд'), findsNothing);
+        expect(
+          find.textContaining('шеъри хондашаванда ёфт нашуд'),
+          findsOneWidget,
+        );
+        expect(find.text('Сабтҳои асар дар санҷиш: 1'), findsOneWidget);
+        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'LiteratureSearchScreen expanding the review header reveals pending rows and routes to pending reader',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/search',
+          works: [testWorkRudaki, testReviewWork],
+        );
+
+        await tester.enterText(find.byType(TextField), 'Сабти');
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.text('Сабтҳои асар дар санҷиш: 1'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsOneWidget);
+        expect(
+          find.textContaining(
+            'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
+          ),
+          findsOneWidget,
+        );
+        expect(find.textContaining('Адабиёти тоҷик — с. 12'), findsOneWidget);
+
+        await tester.tap(find.text('Сабти санҷишии Рӯдакӣ'));
+        await tester.pumpAndSettle();
+        expect(find.byType(PoemReaderScreen), findsOneWidget);
+        expect(find.text('Асар дар санҷиш аст'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'LiteratureSearchScreen review header localizes count in Persian',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature/search',
+          works: [testReviewWork],
+          language: DisplayLanguage.persian,
+        );
+
+        await tester.enterText(find.byType(TextField), 'Сабти');
+        await tester.pumpAndSettle();
+
+        expect(find.text('محتوا یافت نشد'), findsNothing);
+        expect(find.text('رکوردهای آثار در بررسی: ۱'), findsOneWidget);
+        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
+      },
+    );
   });
 
   group('Literature Feature Persian Language Parity', () {
@@ -1082,22 +1037,26 @@ void main() {
       },
     );
 
-    testWidgets('Literature Hub localizes its Persian section indices', (
-      tester,
-    ) async {
-      await pumpTestApp(
-        tester,
-        route: '/literature',
-        language: DisplayLanguage.persian,
-      );
+    testWidgets(
+      'Literature Hub shows Persian section titles without running numbers',
+      (tester) async {
+        await pumpTestApp(
+          tester,
+          route: '/literature',
+          language: DisplayLanguage.persian,
+        );
 
-      expect(find.text('۰۰'), findsOneWidget);
-      expect(find.text('۰۱'), findsOneWidget);
-      expect(find.text('۰۶'), findsOneWidget);
-      expect(find.text('00'), findsNothing);
-      expect(find.text('01'), findsNothing);
-      expect(find.text('06'), findsNothing);
-    });
+        // The index has no running numbers in either script (they carried no
+        // meaning); the section titles are Persian.
+        for (final number in ['۰۰', '۰۱', '۰۶', '00', '01', '06']) {
+          expect(find.text(number), findsNothing);
+        }
+        expect(
+          find.text(AppTranslations.get('lit_poets', DisplayLanguage.persian)),
+          findsOneWidget,
+        );
+      },
+    );
 
     testWidgets(
       'PoetDetailScreen in Persian mode renders Persian canonical name, biography, and formatted lifespan',
@@ -1211,6 +1170,60 @@ void main() {
     );
 
     testWidgets(
+      'PoetDetailScreen review header collapses pending list in Persian',
+      (tester) async {
+        final pendingWork = testWorkRudaki.copyWith(
+          id: 'rudaki-pending-textbook-work',
+          title: 'Модар',
+          titlePersian: 'مادر',
+          textStatus: TextStatus.needsReview,
+          textTajik: 'Ин матн то санҷиш дастрас нест.',
+          rights: const RightsRecord(
+            status: RightsStatus.excerptOnly,
+            reasoning: 'Pending rights review',
+            fullTextAllowed: false,
+            excerptAllowed: true,
+          ),
+          primarySource: testWorkRudaki.primarySource!.copyWith(
+            pageStart: 216,
+            pageEnd: 216,
+            sourceReference: 'docs/literature/pdfs/review.pdf',
+          ),
+          verification: const VerificationRecord(
+            evidenceLevel: VerificationLevel.needsReview,
+          ),
+        );
+
+        await pumpTestApp(
+          tester,
+          route: '/literature/poet/rudaki',
+          works: [pendingWork],
+          language: DisplayLanguage.persian,
+        );
+
+        expect(find.text('رکوردهای آثار در بررسی: ۱'), findsOneWidget);
+        expect(find.text('مادر'), findsNothing);
+        expect(find.text('Модар'), findsNothing);
+
+        await tester.scrollUntilVisible(
+          find.text('رکوردهای آثار در بررسی: ۱'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        await tester.tap(find.text('رکوردهای آثار در بررسی: ۱'));
+        await tester.pumpAndSettle();
+
+        await tester.scrollUntilVisible(
+          find.text('مادر'),
+          300,
+          scrollable: find.byType(Scrollable).first,
+        );
+        expect(find.text('مادر'), findsOneWidget);
+        expect(find.text('Модар'), findsNothing);
+      },
+    );
+
+    testWidgets(
       'PoemReaderScreen in Persian mode renders Persian title, text, copy action, and Persian SourcePanel',
       (tester) async {
         await pumpTestApp(
@@ -1223,34 +1236,18 @@ void main() {
         expect(find.text('خوانش شعر'), findsOneWidget);
         expect(find.text('بوی جوی مولیان'), findsOneWidget);
         expect(find.text('ابوعبدالله رودکی'), findsOneWidget);
-        expect(find.text('متن تأیید شده است'), findsOneWidget);
+        expect(find.text('متن از سوی ویراستار تأیید شده است.'), findsNothing);
         expect(find.textContaining('بوی جوی مولیان آید همی'), findsWidgets);
         expect(find.byIcon(Icons.copy_outlined), findsOneWidget);
 
-        final sourceButton = find.widgetWithText(
-          OutlinedButton,
-          'منبع و اسناد',
+        // The source is one line: «منبع: book, pages».
+        expect(find.textContaining('منبع: Осори Рӯдакӣ'), findsOneWidget);
+        expect(
+          find.widgetWithText(OutlinedButton, 'منبع و اسناد'),
+          findsNothing,
         );
-        expect(sourceButton, findsOneWidget);
-
-        await tester.tap(sourceButton);
-        await tester.pumpAndSettle();
-
-        expect(find.byType(SourcePanel), findsOneWidget);
-        expect(find.text('منبع و بررسی اصالت'), findsOneWidget);
-        expect(find.text('Осори Рӯдакӣ'), findsOneWidget);
-        expect(find.text('تأیید شده'), findsOneWidget);
-
-        final panelScrollable = find.descendant(
-          of: find.byType(SourcePanel),
-          matching: find.byType(Scrollable),
-        );
-        await tester.scrollUntilVisible(
-          find.text('مالکیت عمومی (Public Domain)'),
-          300,
-          scrollable: panelScrollable.first,
-        );
-        expect(find.text('مالکیت عمومی (Public Domain)'), findsOneWidget);
+        expect(find.text('تأیید شده'), findsNothing);
+        expect(find.text('مالکیت عمومی (Public Domain)'), findsNothing);
       },
     );
 
@@ -1271,10 +1268,9 @@ void main() {
         );
         expect(find.text('Унвони тоҷикӣ'), findsNothing);
         expect(find.text('Мисраи тоҷикӣ'), findsNothing);
-        expect(
-          find.text('Матни тоҷикӣ набояд худкор нишон дода шавад.'),
-          findsNothing,
-        );
+        // Wrapped verse lines are set with a hanging indent, so match on the
+        // opening words rather than the whole line.
+        expect(find.textContaining('Матни тоҷикӣ набояд'), findsNothing);
         expect(find.text('نسخهٔ فارسی در دسترس نیست'), findsOneWidget);
 
         await tester.scrollUntilVisible(
@@ -1285,14 +1281,11 @@ void main() {
         await tester.tap(find.text('تاجیکی (سیریلیک)'));
         await tester.pumpAndSettle();
         await tester.scrollUntilVisible(
-          find.text('Матни тоҷикӣ набояд худкор нишон дода шавад.'),
+          find.textContaining('Матни тоҷикӣ набояд'),
           300,
           scrollable: find.byType(Scrollable).first,
         );
-        expect(
-          find.text('Матни тоҷикӣ набояд худкор нишон дода шавад.'),
-          findsOneWidget,
-        );
+        expect(find.textContaining('Матни тоҷикӣ набояд'), findsOneWidget);
       },
     );
 
@@ -1385,14 +1378,8 @@ void main() {
           find.textContaining('Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма'),
           findsNothing,
         );
-        expect(
-          find.textContaining('Шеърҳои тасдиқшуда дар барнома: 1'),
-          findsOneWidget,
-        );
-        expect(
-          find.textContaining('Осори тасдиқшуда дар барнома (1)'),
-          findsOneWidget,
-        );
+        expect(find.textContaining('Шеърҳо барои хондан: 1'), findsOneWidget);
+        expect(find.textContaining('Осор барои хондан (1)'), findsOneWidget);
 
         expect(find.textContaining('Дар шаҳри Самарқанд'), findsOneWidget);
       },
@@ -1526,6 +1513,80 @@ void main() {
 
       expect(find.textContaining('15.04.1878'), findsWidgets);
       expect(find.textContaining('1 асар'), findsOneWidget);
+    });
+
+    testWidgets(
+      'PoetsListScreen shows birthplace and fits at 320px with 1.5x text',
+      (tester) async {
+        const testAuthorWithPlace = LiteraryAuthor(
+          id: 'jomi',
+          canonicalName: 'Абдурраҳмони Ҷомӣ',
+          canonicalNamePersian: 'نورالدین عبدالرحمان جامی',
+          birthYear: '1414',
+          deathYear: '1492',
+          birthPlace: 'Ҷом, Хуросон',
+          literaryPeriod: 'Асри XV',
+          biographyTj: 'Шоири бузурги форсу тоҷик.',
+          biographySource: 'Сарчашмаи санҷиши тестӣ, с. 2',
+          biographyTjProvenance: 'SOURCE_BACKED',
+          rights: RightsRecord(
+            status: RightsStatus.publicDomain,
+            reasoning: 'PD',
+            fullTextAllowed: true,
+            excerptAllowed: true,
+          ),
+        );
+
+        await pumpTestApp(
+          tester,
+          route: '/literature/poets',
+          authors: [testAuthorWithPlace],
+          works: const [],
+        );
+
+        tester.view.physicalSize = const Size(320, 1600);
+        tester.platformDispatcher.textScaleFactorTestValue = 1.5;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+        await tester.pumpAndSettle();
+
+        expect(find.text('Абдурраҳмони Ҷомӣ'), findsOneWidget);
+        expect(find.text('Ҷом, Хуросон'), findsOneWidget);
+        expect(tester.takeException(), isNull);
+      },
+    );
+
+    testWidgets('PoetsListScreen title-cases all-caps display names', (
+      tester,
+    ) async {
+      const allCapsAuthor = LiteraryAuthor(
+        id: 'anvari',
+        canonicalName: 'АНВАРӢ',
+        canonicalNamePersian: 'انوری ابیوردی',
+        birthYear: '1126',
+        deathYear: '1189',
+        literaryPeriod: 'Асри XII',
+        biographyTj: 'Шоири донишманд.',
+        biographySource: 'Сарчашмаи санҷиши тестӣ, с. 3',
+        biographyTjProvenance: 'SOURCE_BACKED',
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'PD',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+      );
+
+      await pumpTestApp(
+        tester,
+        route: '/literature/poets',
+        authors: [allCapsAuthor],
+        works: const [],
+      );
+
+      expect(find.text('Анварӣ'), findsOneWidget);
+      expect(find.text('АНВАРӢ'), findsNothing);
+      expect(tester.takeException(), isNull);
     });
   });
 }

@@ -108,6 +108,28 @@ void main() {
     }
   });
 
+  test(
+    '«Муҳр» typefaces are bundled with licences and cover Tajik letters',
+    () {
+      final pubspec = File('pubspec.yaml').readAsStringSync();
+      const families = {
+        'EBGaramond': ['EBGaramond-Medium.ttf', 'EBGaramond-SemiBold.ttf'],
+        'PTSerif': ['PTSerif-Regular.ttf', 'PTSerif-Bold.ttf'],
+        'GolosText': ['GolosText-Regular.ttf', 'GolosText-Bold.ttf'],
+        'NotoNastaliqUrdu': ['NotoNastaliqUrdu-Regular.ttf'],
+        'Vazirmatn': ['Vazirmatn-Regular.ttf', 'Vazirmatn-Bold.ttf'],
+      };
+      for (final MapEntry(key: family, value: files) in families.entries) {
+        expect(pubspec, contains('family: $family'));
+        expect(File('assets/fonts/$family-OFL.txt').existsSync(), isTrue);
+        for (final file in files) {
+          expect(pubspec, contains('assets/fonts/$file'));
+          expect(File('assets/fonts/$file').existsSync(), isTrue);
+        }
+      }
+    },
+  );
+
   test('book-page evidence remains audit-only unless explicitly approved', () {
     final pubspec = File('pubspec.yaml').readAsStringSync();
 

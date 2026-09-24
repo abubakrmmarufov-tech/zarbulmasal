@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../features/literature/domain/portrait_record.dart';
-import 'qalam_colors.dart';
+import 'qalam_monogram_plate.dart';
 import 'qalam_spacing.dart';
 
 /// A consistent, accessible portrait treatment for poet cards and dossiers.
 ///
-/// Missing portraits intentionally render a neutral placeholder. This keeps
-/// the layout stable without implying that a face has been verified.
+/// A portrait image is shown when it comes from one of the two approved
+/// sources (a textbook page or maorif.tj). Otherwise the slot shows a
+/// [QalamMonogramPlate], which keeps the layout stable without implying that
+/// a face has been verified.
 class QalamPortrait extends StatefulWidget {
   final PortraitRecord? portrait;
   final String label;
@@ -15,6 +17,11 @@ class QalamPortrait extends StatefulWidget {
   final double height;
   final String? unavailableLabel;
   final String? citationLabel;
+
+  /// The person's names for the monogram plate (Cyrillic, Persian script).
+  /// [monogramName] defaults to [label].
+  final String? monogramName;
+  final String? persianName;
 
   const QalamPortrait({
     super.key,
@@ -24,6 +31,8 @@ class QalamPortrait extends StatefulWidget {
     this.height = 80,
     this.unavailableLabel,
     this.citationLabel,
+    this.monogramName,
+    this.persianName,
   });
 
   @override
@@ -53,7 +62,7 @@ class _QalamPortraitState extends State<QalamPortrait> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final sourceBacked = widget.portrait?.isSourceBacked == true;
+    final sourceBacked = widget.portrait?.isDisplayable == true;
     final child = sourceBacked && !_assetFailed
         ? Image.asset(
             widget.portrait!.assetPath,
@@ -62,17 +71,19 @@ class _QalamPortraitState extends State<QalamPortrait> {
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               _markAssetFailed();
-              return _Placeholder(
+              return QalamMonogramPlate(
+                name: widget.monogramName ?? widget.label,
+                persianName: widget.persianName,
                 width: widget.width,
                 height: widget.height,
-                color: colors,
               );
             },
           )
-        : _Placeholder(
+        : QalamMonogramPlate(
+            name: widget.monogramName ?? widget.label,
+            persianName: widget.persianName,
             width: widget.width,
             height: widget.height,
-            color: colors,
           );
 
     return Semantics(
@@ -95,38 +106,8 @@ class _QalamPortraitState extends State<QalamPortrait> {
     );
   }
 
-  String _citationLabel(PortraitRecord portrait) {
-    final localized = widget.citationLabel?.trim() ?? '';
-    return localized.isNotEmpty ? localized : portrait.citation;
-  }
-}
-
-class _Placeholder extends StatelessWidget {
-  final double width;
-  final double height;
-  final ColorScheme color;
-
-  const _Placeholder({
-    required this.width,
-    required this.height,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      width: width,
-      height: height,
-      color: isDark
-          ? QalamColors.ink.withValues(alpha: 0.75)
-          : color.surfaceContainerHighest,
-      alignment: Alignment.center,
-      child: Icon(
-        Icons.person_outline,
-        size: height * 0.34,
-        color: color.onSurfaceVariant.withValues(alpha: 0.7),
-      ),
-    );
-  }
+  /// Localized citation only: the record's own citation is built from a
+  /// repository file name and must never reach a screen reader.
+  String _citationLabel(PortraitRecord portrait) =>
+      widget.citationLabel?.trim() ?? '';
 }

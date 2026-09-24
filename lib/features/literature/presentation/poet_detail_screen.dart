@@ -9,7 +9,6 @@ import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_author.dart';
 import '../domain/literary_work.dart';
-import '../domain/verification_record.dart';
 import '../../history/data/history_providers.dart';
 import '../../history/domain/history_domain.dart';
 import '../../books/data/books_providers.dart';
@@ -111,7 +110,7 @@ class PoetDetailScreen extends ConsumerWidget {
   }
 }
 
-class _PoetDetailContent extends ConsumerWidget {
+class _PoetDetailContent extends ConsumerStatefulWidget {
   final LiteraryAuthor poet;
   final AsyncValue<List<LiteraryWork>> worksAsync;
   final AsyncValue<List<LiteraryWork>> reviewWorksAsync;
@@ -125,7 +124,22 @@ class _PoetDetailContent extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_PoetDetailContent> createState() => _PoetDetailContentState();
+}
+
+class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
+  /// Whether page-cited under-review records are expanded.
+  ///
+  /// Approved/readable works stay visible; the per-poet review list (often
+  /// 100–265 rows) collapses behind a count-labeled header until the reader
+  /// explicitly opens it, preserving source transparency and the reader route.
+  bool _showReviewWorks = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final poet = widget.poet;
+    final worksAsync = widget.worksAsync;
+    final reviewWorksAsync = widget.reviewWorksAsync;
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
@@ -231,18 +245,45 @@ class _PoetDetailContent extends ConsumerWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    QalamPortrait(
-                      portrait: poet.portrait,
-                      label: name,
+                    SizedBox(
                       width: 112,
-                      height: 144,
-                      unavailableLabel: AppTranslations.get(
-                        'lit_portrait_unavailable',
-                        lang,
-                      ),
-                      citationLabel: LiteraryAuthorDisplayText.portraitCitation(
-                        poet.portrait,
-                        lang,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          QalamPortrait(
+                            portrait: poet.portrait,
+                            label: name,
+                            monogramName: poet.canonicalName,
+                            persianName: poet.canonicalNamePersian,
+                            width: 112,
+                            height: 144,
+                            unavailableLabel: AppTranslations.get(
+                              'lit_portrait_unavailable',
+                              lang,
+                            ),
+                            citationLabel:
+                                LiteraryAuthorDisplayText.portraitCitation(
+                                  poet.portrait,
+                                  lang,
+                                ),
+                          ),
+                          // The book and page the portrait is printed on.
+                          if (poet.portrait?.isDisplayable ?? false) ...[
+                            const SizedBox(height: 6),
+                            ExcludeSemantics(
+                              child: Text(
+                                LiteraryAuthorDisplayText.portraitCitation(
+                                  poet.portrait,
+                                  lang,
+                                ),
+                                style: QalamTypography.meta(
+                                  color: colors.onSurfaceVariant,
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -284,9 +325,9 @@ class _PoetDetailContent extends ConsumerWidget {
                 // has been reviewed.
                 if (poet.hasAuditableBiographySource &&
                     (lifespan.isNotEmpty || birthPlace != null)) ...[
-                  Row(
-                    children: [
-                      if (lifespan.isNotEmpty) ...[
+                  if (lifespan.isNotEmpty)
+                    Row(
+                      children: [
                         Icon(
                           Icons.calendar_today_outlined,
                           size: 15,
@@ -304,27 +345,36 @@ class _PoetDetailContent extends ConsumerWidget {
                           ),
                         ),
                       ],
-                      if (birthPlace != null) ...[
-                        const SizedBox(width: 16),
-                        Icon(
-                          Icons.place_outlined,
-                          size: 16,
-                          color: colors.onSurfaceVariant,
+                    ),
+                  if (birthPlace != null) ...[
+                    if (lifespan.isNotEmpty) const SizedBox(height: 6),
+                    // Full-width row so a long birthplace wraps and stays fully
+                    // readable on narrow phones without ellipsizing.
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 2),
+                          child: Icon(
+                            Icons.place_outlined,
+                            size: 16,
+                            color: colors.onSurfaceVariant,
+                          ),
                         ),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 6),
                         Expanded(
                           child: Text(
                             birthPlace,
+                            softWrap: true,
                             style: QalamTypography.bodySecondary(
                               color: colors.onSurfaceVariant,
                               fontSize: 13,
                             ),
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
-                    ],
-                  ),
+                    ),
+                  ],
                 ] else if (!isPersian &&
                     (poet.lifespan.isNotEmpty ||
                         (poet.birthPlace?.isNotEmpty ?? false)))
@@ -386,12 +436,10 @@ class _PoetDetailContent extends ConsumerWidget {
                   ),
                 ],
                 const SizedBox(height: 10),
-                // Poem count badge (Approved + Review candidates)
+                // Poem count badge (readable works)
                 worksAsync.maybeWhen(
                   data: (works) {
-                    final reviewWorks = reviewWorksAsync.valueOrNull ?? [];
                     final approvedCount = works.length;
-                    final reviewCount = reviewWorks.length;
                     return Wrap(
                       spacing: 8,
                       runSpacing: 8,
@@ -440,54 +488,6 @@ class _PoetDetailContent extends ConsumerWidget {
                             ],
                           ),
                         ),
-                        if (reviewCount > 0)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              color: colors.surfaceContainerHighest.withValues(
-                                alpha: 0.7,
-                              ),
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: colors.outlineVariant.withValues(
-                                  alpha: 0.6,
-                                ),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.hourglass_empty,
-                                  size: 15,
-                                  color: colors.onSurfaceVariant,
-                                ),
-                                const SizedBox(width: 6),
-                                Flexible(
-                                  child: Text(
-                                    AppTranslations.translate(
-                                      'lit_poet_review_works_count',
-                                      lang,
-                                      [
-                                        AppTranslations.formatDigits(
-                                          reviewCount.toString(),
-                                          lang,
-                                        ),
-                                      ],
-                                    ),
-                                    softWrap: true,
-                                    style: QalamTypography.meta(
-                                      color: colors.onSurfaceVariant,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                       ],
                     );
                   },
@@ -710,59 +710,6 @@ class _PoetDetailContent extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                reviewWorksAsync.maybeWhen(
-                  data: (reviewWorks) {
-                    final unlinkedReviewCount = reviewWorks
-                        .where((work) => !work.hasAuditableReviewCitation)
-                        .length;
-                    return reviewWorks.isEmpty
-                        ? const SizedBox.shrink()
-                        : Padding(
-                            padding: const EdgeInsets.only(bottom: 4),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  AppTranslations.translate(
-                                    'lit_poet_works_in_review_label',
-                                    lang,
-                                    [
-                                      AppTranslations.formatDigits(
-                                        reviewWorks.length.toString(),
-                                        lang,
-                                      ),
-                                    ],
-                                  ),
-                                  style: QalamTypography.meta(
-                                    color: colors.primary,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                                if (unlinkedReviewCount > 0) ...[
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    AppTranslations.translate(
-                                      'lit_poet_review_unlinked',
-                                      lang,
-                                      [
-                                        AppTranslations.formatDigits(
-                                          unlinkedReviewCount.toString(),
-                                          lang,
-                                        ),
-                                      ],
-                                    ),
-                                    style: QalamTypography.meta(
-                                      color: colors.onSurfaceVariant,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ],
-                              ],
-                            ),
-                          );
-                  },
-                  orElse: () => const SizedBox.shrink(),
-                ),
               ],
             ),
           ),
@@ -845,114 +792,60 @@ class _PoetDetailContent extends ConsumerWidget {
                 final work = works[index];
                 final workTitle = LiteraryWorkDisplayText.title(work, lang);
 
-                return InkWell(
-                  onTap: () => context.push('/literature/work/${work.id}'),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 14,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: colors.outlineVariant,
-                          width: 0.5,
-                        ),
-                      ),
-                    ),
-                    child: Row(
+                final incipit = LiteraryWorkDisplayText.distinctIncipit(
+                  work,
+                  lang,
+                );
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: QalamSlip(
+                    onTap: () => context.push('/literature/work/${work.id}'),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                workTitle,
-                                style: QalamTypography.sectionTitle(
-                                  color: colors.onSurface,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              if (LiteraryWorkDisplayText.incipit(work, lang)
-                                  case final incipit?) ...[
-                                const SizedBox(height: 4),
-                                Text(
-                                  '«$incipit»',
-                                  style: QalamTypography.bodySecondary(
-                                    color: colors.onSurfaceVariant,
-                                    fontSize: 13,
+                        Text(
+                          workTitle,
+                          style: QalamTypography.literaryTitle(
+                            color: colors.onSurface,
+                            fontSize: 18,
+                          ),
+                        ),
+                        if (incipit != null) ...[
+                          const SizedBox(height: 4),
+                          Text(
+                            '«$incipit»',
+                            style: QalamTypography.bodySecondary(
+                              color: colors.onSurfaceVariant,
+                              fontSize: 13,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                        if (!isPersian &&
+                            work.hasAuditableCompositionEvidence &&
+                            (work.compositionDate ?? '').isNotEmpty) ...[
+                          const SizedBox(height: 4),
+                          Text(
+                            [
+                              AppTranslations.get(
+                                'lit_poet_composition_year',
+                                lang,
+                                [
+                                  AppTranslations.formatDigits(
+                                    work.compositionDate!,
+                                    lang,
                                   ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                              if (!isPersian &&
-                                  work.hasAuditableCompositionEvidence &&
-                                  work.compositionDate != null &&
-                                  work.compositionDate!.isNotEmpty) ...[
-                                const SizedBox(height: 6),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.schedule,
-                                      size: 13,
-                                      color: colors.primary,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      AppTranslations.translate(
-                                        'lit_poet_composition_year',
-                                        lang,
-                                        [
-                                          AppTranslations.formatDigits(
-                                            work.compositionDate!,
-                                            lang,
-                                          ),
-                                        ],
-                                      ),
-                                      style: TextStyle(
-                                        color: colors.primary,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    if (work.hasAuditableCompositionEvidence &&
-                                        work.compositionContext != null &&
-                                        work
-                                            .compositionContext!
-                                            .isNotEmpty) ...[
-                                      const SizedBox(width: 6),
-                                      Expanded(
-                                        child: Text(
-                                          '· ${work.compositionContext}',
-                                          style: QalamTypography.meta(
-                                            color: colors.onSurfaceVariant,
-                                            fontSize: 12,
-                                          ),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  ],
-                                ),
-                              ],
-                            ],
+                                ],
+                              ),
+                              if ((work.compositionContext ?? '').isNotEmpty)
+                                work.compositionContext!,
+                            ].join(' · '),
+                            style: QalamTypography.meta(
+                              color: colors.onSurfaceVariant,
+                            ),
                           ),
-                        ),
-                        if (work.verification.evidenceLevel ==
-                            VerificationLevel.editoriallyApproved)
-                          const Icon(
-                            Icons.check_circle_outline,
-                            size: 16,
-                            color: QalamColors.forest,
-                          ),
-                        const SizedBox(width: 8),
-                        Icon(
-                          isRtl ? Icons.chevron_left : Icons.chevron_right,
-                          size: 18,
-                          color: colors.onSurfaceVariant,
-                        ),
+                        ],
                       ],
                     ),
                   ),
@@ -961,116 +854,217 @@ class _PoetDetailContent extends ConsumerWidget {
             );
           },
         ),
-        reviewWorksAsync.when(
-          loading: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
-          error: (_, _) => const SliverToBoxAdapter(child: SizedBox.shrink()),
-          data: (reviewWorks) {
-            final sourcedReviewWorks = reviewWorks
-                .where((work) => work.hasAuditableReviewCitation)
-                .toList(growable: false);
-            if (sourcedReviewWorks.isEmpty) {
-              return const SliverToBoxAdapter(child: SizedBox.shrink());
-            }
-
-            return SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                final work = sourcedReviewWorks[index];
-                final workTitle = LiteraryWorkDisplayText.title(work, lang);
-                final citation = work.primarySource?.citation;
-                final hasPageCitation = work.primarySource?.pageStart != null;
-
-                return InkWell(
-                  onTap: () => context.push('/literature/work/${work.id}'),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: QalamSpacing.pageH,
-                      vertical: 14,
-                    ),
-                    decoration: BoxDecoration(
-                      color: colors.surfaceContainerHighest.withValues(
-                        alpha: 0.18,
-                      ),
-                      border: Border(
-                        bottom: BorderSide(
-                          color: colors.outlineVariant,
-                          width: 0.5,
+        // Records still being checked come after the readable poems.
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
+            child: reviewWorksAsync.maybeWhen(
+              data: (reviewWorks) {
+                final unlinkedReviewCount = reviewWorks
+                    .where((work) => !work.hasAuditableReviewCitation)
+                    .length;
+                if (reviewWorks.isEmpty) {
+                  return const SizedBox.shrink();
+                }
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Count-labeled expand/collapse header for the
+                      // (often huge) under-review list; approved works
+                      // above remain fully visible.
+                      Tooltip(
+                        message: AppTranslations.get(
+                          _showReviewWorks
+                              ? 'lit_search_review_hide_tooltip'
+                              : 'lit_search_review_show_tooltip',
+                          lang,
                         ),
-                      ),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.hourglass_empty,
-                          size: 18,
-                          color: colors.primary,
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                workTitle,
-                                style: QalamTypography.sectionTitle(
-                                  color: colors.onSurface,
-                                  fontSize: 17,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                AppTranslations.get(
-                                  'lit_poet_work_in_review_sub',
-                                  lang,
-                                ),
-                                style: QalamTypography.meta(
+                        child: InkWell(
+                          key: const ValueKey('poet-detail-review-toggle'),
+                          onTap: () => setState(
+                            () => _showReviewWorks = !_showReviewWorks,
+                          ),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(minHeight: 48),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.hourglass_empty,
+                                  size: 16,
                                   color: colors.primary,
-                                  fontSize: 12,
                                 ),
-                              ),
-                              if (hasPageCitation &&
-                                  citation != null &&
-                                  citation.isNotEmpty) ...[
-                                const SizedBox(height: 4),
-                                Text(
-                                  citation,
-                                  style: QalamTypography.meta(
-                                    color: colors.onSurfaceVariant,
-                                    fontSize: 12,
+                                const SizedBox(width: 6),
+                                Expanded(
+                                  child: Text(
+                                    AppTranslations.translate(
+                                      'lit_poet_works_in_review_label',
+                                      lang,
+                                      [
+                                        AppTranslations.formatDigits(
+                                          reviewWorks.length.toString(),
+                                          lang,
+                                        ),
+                                      ],
+                                    ),
+                                    style: QalamTypography.meta(
+                                      color: colors.primary,
+                                      fontSize: 13,
+                                    ),
                                   ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ] else ...[
+                                const SizedBox(width: 8),
+                                Icon(
+                                  _showReviewWorks
+                                      ? Icons.expand_less
+                                      : Icons.expand_more,
+                                  size: 20,
+                                  color: colors.onSurfaceVariant,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      if (unlinkedReviewCount > 0) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          AppTranslations.translate(
+                            'lit_poet_review_unlinked',
+                            lang,
+                            [
+                              AppTranslations.formatDigits(
+                                unlinkedReviewCount.toString(),
+                                lang,
+                              ),
+                            ],
+                          ),
+                          style: QalamTypography.meta(
+                            color: colors.onSurfaceVariant,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                );
+              },
+              orElse: () => const SizedBox.shrink(),
+            ),
+          ),
+        ),
+        if (_showReviewWorks)
+          reviewWorksAsync.when(
+            loading: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
+            error: (_, _) => const SliverToBoxAdapter(child: SizedBox.shrink()),
+            data: (reviewWorks) {
+              final sourcedReviewWorks = reviewWorks
+                  .where((work) => work.hasAuditableReviewCitation)
+                  .toList(growable: false);
+              if (sourcedReviewWorks.isEmpty) {
+                return const SliverToBoxAdapter(child: SizedBox.shrink());
+              }
+
+              return SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  final work = sourcedReviewWorks[index];
+                  final workTitle = LiteraryWorkDisplayText.title(work, lang);
+                  final citation = work.primarySource?.citation;
+                  final hasPageCitation = work.primarySource?.pageStart != null;
+
+                  return InkWell(
+                    onTap: () => context.push('/literature/work/${work.id}'),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: QalamSpacing.pageH,
+                        vertical: 14,
+                      ),
+                      decoration: BoxDecoration(
+                        color: colors.surfaceContainerHighest.withValues(
+                          alpha: 0.18,
+                        ),
+                        border: Border(
+                          bottom: BorderSide(
+                            color: colors.outlineVariant,
+                            width: 0.5,
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.hourglass_empty,
+                            size: 18,
+                            color: colors.primary,
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  workTitle,
+                                  style: QalamTypography.sectionTitle(
+                                    color: colors.onSurface,
+                                    fontSize: 17,
+                                  ),
+                                ),
                                 const SizedBox(height: 4),
                                 Text(
                                   AppTranslations.get(
-                                    'lit_poet_page_not_recorded',
+                                    'lit_poet_work_in_review_sub',
                                     lang,
                                   ),
                                   style: QalamTypography.meta(
-                                    color: colors.onSurfaceVariant,
+                                    color: colors.primary,
                                     fontSize: 12,
                                   ),
                                 ),
+                                if (hasPageCitation &&
+                                    citation != null &&
+                                    citation.isNotEmpty) ...[
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    citation,
+                                    style: QalamTypography.meta(
+                                      color: colors.onSurfaceVariant,
+                                      fontSize: 12,
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ] else ...[
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    AppTranslations.get(
+                                      'lit_poet_page_not_recorded',
+                                      lang,
+                                    ),
+                                    style: QalamTypography.meta(
+                                      color: colors.onSurfaceVariant,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
                               ],
-                            ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        Icon(
-                          isRtl ? Icons.chevron_left : Icons.chevron_right,
-                          size: 18,
-                          color: colors.onSurfaceVariant,
-                        ),
-                      ],
+                          const SizedBox(width: 8),
+                          Icon(
+                            isRtl ? Icons.chevron_left : Icons.chevron_right,
+                            size: 18,
+                            color: colors.onSurfaceVariant,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }, childCount: sourcedReviewWorks.length),
-            );
-          },
-        ),
+                  );
+                }, childCount: sourcedReviewWorks.length),
+              );
+            },
+          ),
         if (books.isNotEmpty) ...[
           SliverToBoxAdapter(
             child: Padding(
@@ -1087,32 +1081,17 @@ class _PoetDetailContent extends ConsumerWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate((context, index) {
               final book = books[index];
-              return ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 6,
-                ),
-                leading: BookCover(
+              return QalamIndexRow(
+                leadingWidget: BookCover(
                   book: book,
                   width: 48,
                   height: 68,
                   placeholderTitle: BookDisplayText.title(book, lang),
                 ),
-                title: Text(
-                  BookDisplayText.title(book, lang),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: QalamTypography.body(color: colors.onSurface),
-                ),
-                subtitle: Text(
-                  book.primaryEdition?.publicationYear ??
-                      AppTranslations.get('books_provider', lang),
-                  style: QalamTypography.meta(color: colors.onSurfaceVariant),
-                ),
-                trailing: Icon(
-                  isRtl ? Icons.chevron_left : Icons.chevron_right,
-                  color: colors.onSurfaceVariant,
-                ),
+                title: BookDisplayText.title(book, lang),
+                subtitle:
+                    book.primaryEdition?.publicationYear ??
+                    AppTranslations.get('books_provider', lang),
                 onTap: () => context.push('/books/${book.id}'),
               );
             }, childCount: books.length),

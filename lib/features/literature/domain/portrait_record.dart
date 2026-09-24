@@ -67,6 +67,21 @@ class PortraitRecord {
         sourceReference.trim().isNotEmpty;
   }
 
+  /// Rights values recorded as cleared (none of the bundled records today).
+  static const Set<String> clearedRightsStatuses = {
+    'publicDomain',
+    'permissionGranted',
+    'cleared',
+  };
+
+  bool get isRightsCleared => clearedRightsStatuses.contains(rightsStatus);
+
+  /// Whether the portrait is shown. The owner decided (24 Sep 2026) that
+  /// portraits printed in the official textbooks or on maorif.tj — the two
+  /// approved sources — are shown with their book and page; [rightsStatus]
+  /// stays as recorded and is not implied to be cleared.
+  bool get isDisplayable => isSourceBacked;
+
   String get citation {
     final sourceName = sourceReference.split('/').last;
     return '$sourceName, PDF p. $sourcePage';

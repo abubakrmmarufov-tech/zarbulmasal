@@ -11,6 +11,7 @@ import '../domain/literary_author.dart';
 import '../domain/literary_work.dart';
 import 'literary_author_display_text.dart';
 import 'literary_work_display_text.dart';
+import '../../../core/utils/search_field_limits.dart';
 
 /// A unified search screen querying across canonical authors and literary works.
 class LiteratureSearchScreen extends ConsumerStatefulWidget {
@@ -25,6 +26,12 @@ class _LiteratureSearchScreenState
     extends ConsumerState<LiteratureSearchScreen> {
   final TextEditingController _controller = TextEditingController();
   String _query = '';
+
+  /// Whether page-cited under-review work records are expanded.
+  ///
+  /// Readable/approved works are always visible; review-only records stay
+  /// collapsed behind a count-labeled header until the reader opens them.
+  bool _showReviewWorks = false;
 
   @override
   void dispose() {
@@ -49,7 +56,7 @@ class _LiteratureSearchScreenState
         ),
         title: TextField(
           controller: _controller,
-          maxLength: 256,
+          inputFormatters: searchQueryFormatters,
           autofocus: true,
           decoration: InputDecoration(
             hintText: AppTranslations.get('lit_search_hint', lang),
@@ -184,18 +191,31 @@ class _LiteratureSearchScreenState
           aliases;
     }).toList();
 
-    final matchingWorks = works.where((w) {
-      final title = LiteratureRepository.normalizeSearchText(w.title);
+    bool matches(LiteraryWork work) {
+      final title = LiteratureRepository.normalizeSearchText(work.title);
       final titleFa = LiteratureRepository.normalizeSearchText(
-        w.titlePersian ?? '',
+        work.titlePersian ?? '',
       );
-      final incipit = LiteratureRepository.normalizeSearchText(w.incipit ?? '');
+      final incipit = LiteratureRepository.normalizeSearchText(
+        work.incipit ?? '',
+      );
       return title.contains(_query) ||
           titleFa.contains(_query) ||
           incipit.contains(_query);
-    }).toList();
+    }
 
-    if (matchingAuthors.isEmpty && matchingWorks.isEmpty) {
+    // Readable/approved works stay in the primary list; page-cited pending
+    // records are kept discoverable but collapsed behind a count-labeled header.
+    final readableWorks = works
+        .where((work) => work.isDisplayable && matches(work))
+        .toList(growable: false);
+    final reviewWorks = works
+        .where((work) => !work.isDisplayable && matches(work))
+        .toList(growable: false);
+
+    if (matchingAuthors.isEmpty &&
+        readableWorks.isEmpty &&
+        reviewWorks.isEmpty) {
       return Center(
         child: EmptyState(
           icon: Icons.search_off,
@@ -210,6 +230,12 @@ class _LiteratureSearchScreenState
     }
 
     final colors = Theme.of(context).colorScheme;
+    // A query matching only pending records must never look like a dead end:
+    // surface the review section intentionally instead of the generic empty state.
+    final showReadableEmptyNote =
+        matchingAuthors.isEmpty &&
+        readableWorks.isEmpty &&
+        reviewWorks.isNotEmpty;
 
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -260,13 +286,14 @@ class _LiteratureSearchScreenState
                       ),
                     ])
                   : null,
+              place: LiteraryAuthorDisplayText.birthPlace(author, lang),
               period: LiteraryAuthorDisplayText.period(author, lang),
               isPublicDomain: author.isPublicDomain,
               onTap: () => context.push('/literature/poet/${author.id}'),
             ),
           const SizedBox(height: 24),
         ],
-        if (matchingWorks.isNotEmpty) ...[
+        if (readableWorks.isNotEmpty) ...[
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 8, 24, 8),
             child: Text(
@@ -274,49 +301,159 @@ class _LiteratureSearchScreenState
               style: QalamTypography.eyebrow(color: colors.primary),
             ),
           ),
-          for (final work in matchingWorks)
-            ListTile(
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: 4,
+          for (final work in readableWorks)
+            _buildReadableWorkTile(context, work, lang),
+        ],
+        if (showReadableEmptyNote) ...[
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+            child: Text(
+              AppTranslations.translate('lit_search_readable_empty', lang, [
+                _query,
+              ]),
+              style: QalamTypography.bodySecondary(
+                color: colors.onSurfaceVariant,
+                fontSize: 13,
               ),
-              leading: work.isDisplayable
-                  ? null
-                  : Icon(
-                      Icons.hourglass_empty,
-                      size: 18,
-                      color: colors.primary,
-                    ),
-              title: Text(
-                LiteraryWorkDisplayText.title(work, lang),
-                style: QalamTypography.sectionTitle(
-                  color: colors.onSurface,
-                  fontSize: 17,
-                ),
-              ),
-              subtitle: !work.isDisplayable
-                  ? Text(
-                      AppTranslations.get('lit_poet_work_in_review_sub', lang),
-                      style: QalamTypography.meta(color: colors.primary),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    )
-                  : LiteraryWorkDisplayText.incipit(work, lang) == null
-                  ? null
-                  : Text(
-                      '«${LiteraryWorkDisplayText.incipit(work, lang)}»',
-                      style: QalamTypography.bodySecondary(
-                        color: colors.onSurfaceVariant,
-                        fontSize: 13,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-              trailing: const QalamChevron(size: 20),
-              onTap: () => context.push('/literature/work/${work.id}'),
             ),
+          ),
+        ],
+        if (reviewWorks.isNotEmpty) ...[
+          const SizedBox(height: 24),
+          _buildReviewWorksSection(context, reviewWorks, lang),
         ],
       ],
+    );
+  }
+
+  Widget _buildReadableWorkTile(
+    BuildContext context,
+    LiteraryWork work,
+    DisplayLanguage lang,
+  ) {
+    final colors = Theme.of(context).colorScheme;
+    final incipit = LiteraryWorkDisplayText.distinctIncipit(work, lang);
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+      title: Text(
+        LiteraryWorkDisplayText.title(work, lang),
+        style: QalamTypography.sectionTitle(
+          color: colors.onSurface,
+          fontSize: 17,
+        ),
+      ),
+      subtitle: incipit == null
+          ? null
+          : Text(
+              '«$incipit»',
+              style: QalamTypography.bodySecondary(
+                color: colors.onSurfaceVariant,
+                fontSize: 13,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+      trailing: const QalamChevron(size: 20),
+      onTap: () => context.push('/literature/work/${work.id}'),
+    );
+  }
+
+  /// Count-labeled, collapsed-by-default header plus, when expanded, the same
+  /// transparent pending rows poet detail uses (source label preserved).
+  Widget _buildReviewWorksSection(
+    BuildContext context,
+    List<LiteraryWork> reviewWorks,
+    DisplayLanguage lang,
+  ) {
+    final colors = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Tooltip(
+          message: AppTranslations.get(
+            _showReviewWorks
+                ? 'lit_search_review_hide_tooltip'
+                : 'lit_search_review_show_tooltip',
+            lang,
+          ),
+          child: InkWell(
+            key: const ValueKey('literature-search-review-toggle'),
+            onTap: () => setState(() => _showReviewWorks = !_showReviewWorks),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 8, 24, 8),
+              child: Row(
+                children: [
+                  Icon(Icons.hourglass_empty, size: 18, color: colors.primary),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      AppTranslations.translate(
+                        'lit_poet_works_in_review_label',
+                        lang,
+                        [reviewWorks.length],
+                      ),
+                      style: QalamTypography.eyebrow(color: colors.primary),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Icon(
+                    _showReviewWorks ? Icons.expand_less : Icons.expand_more,
+                    size: 20,
+                    color: colors.onSurfaceVariant,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        if (_showReviewWorks)
+          for (final work in reviewWorks)
+            _buildReviewWorkTile(context, work, lang),
+      ],
+    );
+  }
+
+  Widget _buildReviewWorkTile(
+    BuildContext context,
+    LiteraryWork work,
+    DisplayLanguage lang,
+  ) {
+    final colors = Theme.of(context).colorScheme;
+    final sourceLabel = LiteraryWorkDisplayText.sourceLabel(work.primarySource);
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+      leading: Icon(Icons.hourglass_empty, size: 18, color: colors.primary),
+      title: Text(
+        LiteraryWorkDisplayText.title(work, lang),
+        style: QalamTypography.sectionTitle(
+          color: colors.onSurface,
+          fontSize: 17,
+        ),
+      ),
+      subtitle: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppTranslations.get('lit_poet_work_in_review_sub', lang),
+            style: QalamTypography.meta(color: colors.primary),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          if (sourceLabel != null) ...[
+            const SizedBox(height: 2),
+            Text(
+              sourceLabel,
+              style: QalamTypography.meta(color: colors.onSurfaceVariant),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ],
+      ),
+      trailing: const QalamChevron(size: 20),
+      onTap: () => context.push('/literature/work/${work.id}'),
     );
   }
 }

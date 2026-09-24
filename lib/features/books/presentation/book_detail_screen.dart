@@ -183,7 +183,12 @@ class _BookDetailBody extends ConsumerWidget {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: _ActionPanel(book: book, edition: edition, lang: lang),
+                  child: _ActionPanel(
+                    book: book,
+                    edition: edition,
+                    lang: lang,
+                    providerId: edition.providerId,
+                  ),
                 ),
               ),
             if (edition != null)
@@ -281,7 +286,7 @@ class _BookDetailBody extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      AppTranslations.get('books_provider_name', lang),
+                      _providerNameLabel(edition?.providerId, lang),
                       style: QalamTypography.body(color: colors.onSurface),
                     ),
                     const SizedBox(height: 8),
@@ -313,11 +318,13 @@ class _ActionPanel extends StatelessWidget {
   final Book book;
   final BookEdition edition;
   final DisplayLanguage lang;
+  final String providerId;
 
   const _ActionPanel({
     required this.book,
     required this.edition,
     required this.lang,
+    required this.providerId,
   });
 
   Future<void> _open(BuildContext context, Uri uri) async {
@@ -340,7 +347,7 @@ class _ActionPanel extends StatelessWidget {
               ? () => _open(context, edition.readUri!)
               : null,
           icon: const Icon(Icons.open_in_new),
-          label: Text(AppTranslations.get('books_read_on_provider', lang)),
+          label: Text(_providerReadLabel(providerId, lang)),
         ),
         const SizedBox(height: 8),
         OutlinedButton.icon(
@@ -443,42 +450,45 @@ class _MetadataGrid extends StatelessWidget {
           direction: null,
         ),
     ];
-    return Wrap(
-      spacing: 8,
-      runSpacing: 8,
-      children: items
-          .map(
-            (item) => Container(
-              constraints: const BoxConstraints(minWidth: 130),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
+    // One definition list with hairlines instead of five boxed tiles.
+    final colors = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (final item in items)
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(color: colors.outlineVariant)),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 120,
+                  child: Text(
                     item.label,
                     style: QalamTypography.meta(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      color: colors.onSurfaceVariant,
+                      fontSize: 13,
                     ),
                   ),
-                  const SizedBox(height: 3),
-                  Text(
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
                     item.value,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                     textDirection: item.direction,
                     style: QalamTypography.label(
-                      color: Theme.of(context).colorScheme.onSurface,
+                      color: colors.onSurface,
+                      fontSize: 14,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          )
-          .toList(),
+          ),
+      ],
     );
   }
 }
@@ -504,6 +514,27 @@ String _localizedBookScript(String value, DisplayLanguage lang) {
 }
 
 bool _isPersian(DisplayLanguage lang) => lang == DisplayLanguage.persian;
+
+/// Provider name label derived from the edition's provider id.
+///
+/// Falls back to the generic Kitobkhon label only for unknown provider ids,
+/// so a khirad edition is never presented as Kitobkhon.
+String _providerNameLabel(String? providerId, DisplayLanguage lang) {
+  final key = 'books_provider_name_$providerId';
+  if (providerId != null && AppTranslations.hasKey(key)) {
+    return AppTranslations.get(key, lang);
+  }
+  return AppTranslations.get('books_provider_name', lang);
+}
+
+/// "Read on `provider`" button label derived from the edition's provider id.
+String _providerReadLabel(String providerId, DisplayLanguage lang) {
+  final key = 'books_read_on_provider_$providerId';
+  if (AppTranslations.hasKey(key)) {
+    return AppTranslations.get(key, lang);
+  }
+  return AppTranslations.get('books_read_on_provider', lang);
+}
 
 class _Section extends StatelessWidget {
   final String title;

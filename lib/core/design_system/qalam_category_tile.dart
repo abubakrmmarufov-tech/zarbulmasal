@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/category.dart';
-import '../../data/seed/seed_categories.dart';
 import '../../shared/providers/app_providers.dart';
 import '../l10n/app_translations.dart';
 import 'design_system.dart';
@@ -54,59 +53,71 @@ class QalamCategoryTile extends ConsumerWidget {
         .watch(proverbsProvider)
         .where((proverb) => proverb.categoryId == category.id)
         .length;
-    final index = seedCategories.indexWhere((item) => item.id == category.id);
+    final name = nameFor(category, language);
+    final countLabel =
+        '${AppTranslations.formatNumber(count, language)} ${AppTranslations.get('levels_proverbs', language)}';
+
+    // «Атлас» cover: the collection's own ikat print, with the title on a
+    // solid paper plate so it never sits on the pattern.
     return Semantics(
       selected: isSelected,
+      button: true,
+      label: '$name, $countLabel',
+      excludeSemantics: true,
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
+          borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
           child: Container(
-            constraints: const BoxConstraints(minHeight: 100),
-            padding: const EdgeInsets.symmetric(vertical: 22),
+            clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: colors.outlineVariant)),
+              borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
+              border: Border.all(
+                color: isSelected ? colors.primary : colors.outlineVariant,
+                width: isSelected ? 2 : 1,
+              ),
             ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(top: 6, end: 20),
-                  child: Text(
-                    '${index + 1}'.padLeft(2, '0'),
-                    style: QalamTypography.meta(
-                      color: colors.primary,
-                      fontSize: 13,
-                    ),
-                  ),
+                AspectRatio(
+                  aspectRatio: 1.25,
+                  child: AtlasCover(seed: category.id),
                 ),
-                Expanded(
+                Container(
+                  color: colors.surfaceContainerLowest,
+                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        nameFor(category, language),
-                        style: QalamTypography.sectionTitle(
-                          color: isSelected ? colors.primary : colors.onSurface,
-                          fontSize: 23,
-                        ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              name,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: QalamTypography.literaryTitle(
+                                color: colors.onSurface,
+                                fontSize: 19,
+                                height: 1.15,
+                              ),
+                            ),
+                          ),
+                          if (isSelected)
+                            Icon(Icons.check, color: colors.primary, size: 18),
+                        ],
                       ),
-                      const SizedBox(height: 7),
+                      const SizedBox(height: 2),
                       Text(
-                        '${AppTranslations.formatNumber(count, language)} ${AppTranslations.get('levels_proverbs', language)}',
+                        countLabel,
                         style: QalamTypography.meta(
                           color: colors.onSurfaceVariant,
                         ),
                       ),
                     ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(start: 12, top: 6),
-                  child: Icon(
-                    isSelected ? Icons.check : Icons.arrow_forward,
-                    color: isSelected ? colors.primary : colors.onSurface,
-                    size: 20,
                   ),
                 ),
               ],

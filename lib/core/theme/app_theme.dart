@@ -8,11 +8,12 @@ class AppTheme {
   static ThemeData get darkTheme => _build(true);
 
   static ThemeData _build(bool dark) {
-    final ink = dark ? QalamColors.paperText : QalamColors.ink;
-    final muted = dark ? QalamColors.paperTextSoft : QalamColors.inkSoft;
-    final paper = dark ? QalamColors.inkBg : QalamColors.paper;
+    // «Муҳр» by day, lapis-black «Шаб» by night; vermilion is the only accent.
+    final ink = dark ? QalamColors.ivory : QalamColors.ink;
+    final muted = dark ? QalamColors.ivorySoft : QalamColors.inkSoft;
+    final paper = dark ? QalamColors.lapis : QalamColors.paper;
     final rule = dark ? QalamColors.hairlineDark : QalamColors.hairline;
-    final accent = dark ? QalamColors.antiqueGoldSoft : QalamColors.burgundy;
+    final accent = dark ? QalamColors.vermilionNight : QalamColors.vermilion;
     final base = ThemeData(
       brightness: dark ? Brightness.dark : Brightness.light,
       useMaterial3: true,
@@ -21,28 +22,32 @@ class AppTheme {
     );
     final scheme =
         ColorScheme.fromSeed(
-          seedColor: QalamColors.burgundy,
+          seedColor: QalamColors.vermilion,
           brightness: base.brightness,
         ).copyWith(
           primary: accent,
-          onPrimary: dark ? QalamColors.inkWell : QalamColors.paperHigh,
-          secondary: dark ? const Color(0xFF7CA98B) : QalamColors.forest,
+          onPrimary: dark ? QalamColors.lapisSunk : QalamColors.paperRaised,
+          secondary: muted,
           surface: paper,
           onSurface: ink,
           onSurfaceVariant: muted,
           surfaceContainerLowest: dark
-              ? QalamColors.inkWell
-              : QalamColors.paperHigh,
+              ? QalamColors.lapisSunk
+              : QalamColors.paperRaised,
           surfaceContainerLow: dark
-              ? const Color(0xFF161C18)
+              ? const Color(0xFF0F1729)
               : QalamColors.paperWarm,
-          surfaceContainer: dark ? QalamColors.inkCard : QalamColors.cream,
+          surfaceContainer: dark ? QalamColors.lapisRaised : QalamColors.cream,
           surfaceContainerHigh: dark
-              ? const Color(0xFF222B24)
-              : QalamColors.paperLow,
+              ? const Color(0xFF172038)
+              : QalamColors.paperSunk,
           surfaceContainerHighest: dark
-              ? QalamColors.inkCardHigh
-              : const Color(0xFFE5DFC9),
+              ? QalamColors.lapisHigh
+              : const Color(0xFFE2D7C0),
+          primaryContainer: dark
+              ? const Color(0xFF3A1A17)
+              : const Color(0xFFF1D9D2),
+          onPrimaryContainer: dark ? QalamColors.ivory : QalamColors.ink,
           outline: rule,
           outlineVariant: rule,
           error: dark ? const Color(0xFFF3AA9D) : QalamColors.danger,
@@ -153,9 +158,7 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: dark ? QalamColors.inkCard : QalamColors.paperHigh,
-        selectedColor: dark
-            ? QalamColors.antiqueGoldDeep
-            : QalamColors.paperLow,
+        selectedColor: dark ? QalamColors.vermilionDeep : QalamColors.paperSunk,
         disabledColor: dark ? QalamColors.inkWell : QalamColors.paperLow,
         labelStyle: QalamTypography.meta(color: ink),
         secondaryLabelStyle: QalamTypography.meta(color: accent),

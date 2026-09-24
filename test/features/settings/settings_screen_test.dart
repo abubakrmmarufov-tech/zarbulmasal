@@ -20,22 +20,44 @@ void main() {
       expect(find.text('НАМОИШ'), findsOneWidget);
       expect(find.text('Ҳолати зоҳирӣ'), findsOneWidget);
       expect(find.text('ХОНДАН'), findsOneWidget);
-      expect(find.text('Андозаи матн'), findsOneWidget);
+      expect(find.text('Андозаи матни барнома'), findsOneWidget);
+      // The scale hints describe the real scope: the app scale covers all
+      // text; the poem scale only the poem-reading page.
+      expect(
+        find.text('Ба ҳамаи матнҳои барнома таъсир мерасонад.'),
+        findsOneWidget,
+      );
       expect(find.text('Андозаи шеър'), findsOneWidget);
+      expect(
+        find.text(
+          'Танҳо ба андозаи матни шеър дар саҳифаи хониши шеър таъсир мерасонад.',
+        ),
+        findsOneWidget,
+      );
       expect(find.text('Фосилаи сатрҳо'), findsOneWidget);
       expect(find.text('Ҳолати хониш'), findsOneWidget);
-      expect(find.text('ЗАБОН'), findsOneWidget);
+      expect(find.text('ЗАБОНИ БАРНОМА'), findsOneWidget);
+      expect(find.text('Хатти матнҳо'), findsOneWidget);
       expect(find.text('МАЪЛУМОТ ВА ТАЪРИХ'), findsOneWidget);
       expect(find.text('Пок кардани таърихи фаъолият'), findsOneWidget);
 
       await tester.scrollUntilVisible(
-        find.text('Иҷозатномаҳои кушодаасос'),
+        find.text('МАЪЛУМОТ'),
         200,
         scrollable: find.byType(Scrollable),
       );
       expect(find.text('МАЪЛУМОТ'), findsOneWidget);
-      expect(find.text('Сиёсати махфият'), findsOneWidget);
-      expect(find.text('Иҷозатномаҳои кушодаасос'), findsOneWidget);
+      // Feedback is near the bottom of the scrollable list, so scroll until
+      // the label is actually visible before asserting.
+      await tester.scrollUntilVisible(
+        find.text('Пешниҳодҳо'),
+        200,
+        scrollable: find.byType(Scrollable),
+      );
+      expect(find.text('Пешниҳодҳо'), findsOneWidget);
+      // Privacy and Licenses rows are intentionally absent from Settings.
+      expect(find.text('Сиёсати махфият'), findsNothing);
+      expect(find.text('Иҷозатномаҳои кушодаасос'), findsNothing);
     });
 
     testWidgets('renders all settings sections in Persian', (tester) async {
@@ -51,20 +73,38 @@ void main() {
       expect(find.text('نمایش'), findsOneWidget);
       expect(find.text('حالت ظاهری'), findsOneWidget);
       expect(find.text('خوانش'), findsOneWidget);
-      expect(find.text('اندازهٔ قلم'), findsOneWidget);
+      expect(find.text('اندازهٔ قلم برنامه'), findsOneWidget);
+      // The scale hints describe the real scope: the app scale covers all
+      // text; the poem scale only the poem-reading page.
+      expect(find.text('بر تمام متن‌های برنامه اثر می‌گذارد.'), findsOneWidget);
       expect(find.text('اندازهٔ شعر'), findsOneWidget);
+      expect(
+        find.text('فقط بر اندازهٔ متن شعر در صفحهٔ خوانش شعر اثر می‌گذارد.'),
+        findsOneWidget,
+      );
       expect(find.text('فاصلهٔ سطرها'), findsOneWidget);
       expect(find.text('حالت خواندن'), findsOneWidget);
-      expect(find.text('زبان'), findsOneWidget);
+      expect(find.text('زبان برنامه'), findsOneWidget);
+      expect(find.text('خط متن‌ها'), findsOneWidget);
       expect(find.text('داده‌ها و تاریخچه'), findsOneWidget);
 
       await tester.scrollUntilVisible(
-        find.text('مجوزهای منبع‌باز'),
+        find.text('اطلاعات'),
         200,
         scrollable: find.byType(Scrollable),
       );
-      expect(find.text('سیاست حفظ حریم خصوصی'), findsOneWidget);
-      expect(find.text('مجوزهای منبع‌باز'), findsOneWidget);
+      expect(find.text('اطلاعات'), findsOneWidget);
+      // Feedback is near the bottom of the scrollable list, so scroll until
+      // the label is actually visible before asserting.
+      await tester.scrollUntilVisible(
+        find.text('پیشنهادها'),
+        200,
+        scrollable: find.byType(Scrollable),
+      );
+      expect(find.text('پیشنهادها'), findsOneWidget);
+      // Privacy and Licenses rows are intentionally absent from Settings.
+      expect(find.text('سیاست حفظ حریم خصوصی'), findsNothing);
+      expect(find.text('مجوزهای منبع‌باز'), findsNothing);
     });
 
     testWidgets('theme mode switching updates provider state', (tester) async {
@@ -154,33 +194,6 @@ void main() {
       },
     );
 
-    testWidgets('privacy policy dialog opens and can be dismissed', (
-      tester,
-    ) async {
-      await openApp(
-        tester,
-        route: '/settings',
-        height: 1600,
-        language: DisplayLanguage.tajik,
-      );
-
-      await tester.scrollUntilVisible(
-        find.text('Сиёсати махфият'),
-        200,
-        scrollable: find.byType(Scrollable),
-      );
-      await tester.tap(find.text('Сиёсати махфият'));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Махфият ва амнияти додаҳо'), findsOneWidget);
-      expect(find.byType(AlertDialog), findsOneWidget);
-
-      await tester.tap(find.text('Пӯшидан'));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(AlertDialog), findsNothing);
-    });
-
     testWidgets(
       'clear recent activity shows confirmation and can cancel or confirm',
       (tester) async {
@@ -217,5 +230,38 @@ void main() {
         expect(find.text('Таърихи фаъолият пок шуд'), findsOneWidget);
       },
     );
+
+    testWidgets('contact row shows the new @zarbulmasalcom handle', (
+      tester,
+    ) async {
+      await openApp(
+        tester,
+        route: '/settings',
+        height: 1600,
+        language: DisplayLanguage.tajik,
+      );
+
+      // The contact handle is reachable only after scrolling the Information
+      // section into view.
+      await tester.scrollUntilVisible(
+        find.text('Пешниҳодҳо'),
+        200,
+        scrollable: find.byType(Scrollable),
+      );
+
+      // Row subtitle advertises the new handle, never the old one.
+      expect(find.text('Telegram · @zarbulmasalcom'), findsOneWidget);
+      expect(find.textContaining('@imarufov'), findsNothing);
+
+      // Tapping opens the contact dialog, which still exposes a selectable
+      // (copyable) handle.
+      await tester.tap(find.text('Пешниҳодҳо'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(AlertDialog), findsOneWidget);
+      expect(find.text('Telegram: @zarbulmasalcom'), findsOneWidget);
+      expect(find.textContaining('@imarufov'), findsNothing);
+      expect(find.byType(SelectableText), findsOneWidget);
+    });
   });
 }

@@ -6,6 +6,7 @@ import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tool.deep_browser_audit import (
+    _work_is_displayable,
     load_browser_route_cases,
     load_catalog_detail_routes,
     load_dark_mode_route_cases,
@@ -110,6 +111,8 @@ class DeepBrowserAuditRouteInventoryTest(unittest.TestCase):
             '/books/:id',
             '/books/category/:id',
             '/books/author/:id',
+            '/vocabulary',
+            '/vocabulary/:id',
         ]
 
         self.assertEqual(load_router_route_patterns(), expected)
@@ -249,6 +252,7 @@ GoRoute(path: """/double-triple""")
             '/literature/work/:id',
             '/literature/works/:id',
             '/history/:id',
+            '/vocabulary/:id',
         ):
             self.assertTrue(
                 all(
@@ -258,13 +262,62 @@ GoRoute(path: """/double-triple""")
                 ),
                 pattern,
             )
-        pending_reader_cases = [
+        reader_cases = [
             case
             for case in cases
             if case[0] in ('/literature/work/:id', '/literature/works/:id')
         ]
-        self.assertTrue(pending_reader_cases)
-        self.assertTrue(all(case[3] == 'Асар дар санҷиш аст' for case in pending_reader_cases))
+        self.assertTrue(reader_cases)
+        self.assertTrue(any(case[0] == '/literature/work/:id' for case in reader_cases))
+        self.assertTrue(any(case[0] == '/literature/works/:id' for case in reader_cases))
+        for case in reader_cases:
+            self.assertTrue(case[3])
+        self.assertTrue(
+            any(case[3] != 'Асар дар санҷиш аст' for case in reader_cases),
+            'readable source-attested works must be exercised by the reader fixture',
+        )
+
+    def test_vocabulary_detail_fixture_matches_the_route_smoke_test(self):
+        cases = load_browser_route_cases()
+        vocab_cases = [
+            case for case in cases if case[0] == '/vocabulary/:id'
+        ]
+        self.assertEqual(len(vocab_cases), 1)
+        _, route, _, marker = vocab_cases[0]
+        # Same entry the Dart route smoke test exercises
+        # (test/mobile_route_smoke_test.dart -> /vocabulary/vocab-proverb-21).
+        self.assertEqual(route, '/#/vocabulary/vocab-proverb-21')
+        self.assertTrue(marker)
+        # The marker is the aggregated entry's term: the proverb's own text,
+        # which the detail screen renders as its title.
+        seed = Path('lib/data/seed/seed_proverbs.dart').read_text(encoding='utf-8')
+        self.assertIn(marker, seed)
+
+    def test_reader_cases_match_dart_readable_and_pending_gate(self):
+        works = json.loads(
+            Path('assets/data/literature/works.json').read_text(encoding='utf-8')
+        )
+        by_id = {
+            record['id']: record
+            for record in works
+            if isinstance(record.get('id'), str) and record['id'].strip()
+        }
+        cases = load_browser_route_cases()
+        reader_cases = [
+            case
+            for case in cases
+            if case[0] in ('/literature/work/:id', '/literature/works/:id')
+        ]
+        self.assertTrue(reader_cases)
+        for _, route, _, marker in reader_cases:
+            work_id = route.rsplit('/', 1)[-1]
+            record = by_id[work_id]
+            evidence_level = (record.get('verification') or {}).get('evidenceLevel')
+            if _work_is_displayable(record):
+                self.assertEqual(marker, record.get('title'))
+            else:
+                self.assertEqual(marker, 'Асар дар санҷиш аст')
+                self.assertIn(evidence_level, ('needsReview', 'primaryChecked'))
 
     def test_language_and_dark_mode_smokes_use_router_derived_routes(self):
         cases = load_browser_route_cases()

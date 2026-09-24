@@ -2,6 +2,8 @@ export 'literary_author.dart';
 export 'literary_work.dart';
 export 'oral_heritage_entry.dart';
 export 'portrait_record.dart';
+export 'provenance_state.dart';
+export 'verse_layout.dart';
 export 'rights_record.dart';
 export 'school_canon_entry.dart';
 export 'source_edition.dart';

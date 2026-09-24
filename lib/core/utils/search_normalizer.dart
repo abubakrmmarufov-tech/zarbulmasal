@@ -298,4 +298,44 @@ class SearchNormalizer {
     }
     return maxScore;
   }
+
+  /// The span of [target] (in its own code units) that [query] matches, for
+  /// highlighting; `null` when the match is not in [target] itself.
+  ///
+  /// Each character is folded as [normalize] folds it, keeping a map back to
+  /// the original, so a folded match ("руда" in «Рӯдакӣ») highlights the
+  /// original letters. Latin queries are also tried in Tajik Cyrillic.
+  static ({int start, int end})? matchRange(String target, String query) {
+    if (target.isEmpty) return null;
+    final folded = StringBuffer();
+    final origin = <int>[];
+    for (var i = 0; i < target.length; i++) {
+      final unit = _foldUnit(target[i]);
+      for (var j = 0; j < unit.length; j++) {
+        folded.write(unit[j]);
+        origin.add(i);
+      }
+    }
+    final haystack = folded.toString();
+    final candidates = <String>[
+      normalize(query),
+      if (_hasLatin.hasMatch(query)) ...[
+        normalize(latinToTajikCyrillic(query)),
+        normalize(latinToTajikCyrillic(query)).replaceAll('а', 'о'),
+        normalize(latinToTajikCyrillic(query)).replaceAll('о', 'а'),
+      ],
+    ];
+    for (final needle in candidates) {
+      if (needle.isEmpty) continue;
+      final at = haystack.indexOf(needle);
+      if (at < 0) continue;
+      return (start: origin[at], end: origin[at + needle.length - 1] + 1);
+    }
+    return null;
+  }
+
+  /// [normalize] for a single code unit; whitespace stays one space (plain
+  /// [normalize] would trim it away) so positions stay aligned.
+  static String _foldUnit(String unit) =>
+      _multiSpace.hasMatch(unit) ? ' ' : normalize(unit);
 }

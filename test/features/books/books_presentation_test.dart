@@ -131,6 +131,51 @@ const longOriginalMetadataBook = Book(
   language: 'Тоҷикӣ',
 );
 
+const khiradBook = Book(
+  id: 'khirad-fixture',
+  canonicalTitle: 'Маснавии Маънавӣ (ҷилди 1)',
+  titleTj: 'Маснавии Маънавӣ (ҷилди 1)',
+  titleFa: 'مثنوی معنوی (جلد ۱)',
+  authorNameTj: 'Мавлоно Ҷалолуддини Балхӣ',
+  authorNameFa: 'مولانا جلال‌الدین بلخی',
+  descriptionTj: 'Рисолаи манзуми фалсафӣ-ирфонӣ.',
+  descriptionFa: 'رسالهٔ منظوم فلسفی-عرفانی.',
+  language: 'Тоҷикӣ',
+  categoryIds: ['nazm'],
+  genres: ['poetry'],
+  editions: [
+    BookEdition(
+      id: 'khirad-fixture-edition',
+      bookId: 'khirad-fixture',
+      providerId: 'khirad',
+      sourceUrl: 'https://khirad.tj/books/fixture',
+      readUrl: 'https://khirad.tj/books/read/fixture',
+      publisher: 'Адиб',
+      publicationYear: '2013',
+      pageCount: 480,
+      language: 'Тоҷикӣ',
+      scripts: ['cyrillic'],
+      categories: ['Адабиёт'],
+      format: BookFormat.html,
+      availability: BookAvailability.readableExternal,
+      rightsStatus: BookRightsStatus.rightsUnclear,
+      metadataNote: 'Метамаълумот аз саҳифаи провайдер.',
+    ),
+  ],
+);
+
+const khiradProvider = BookProvider(
+  id: 'khirad',
+  name: 'Хирад',
+  domain: 'khirad.tj',
+  catalogueUrl: 'https://khirad.tj/all-books',
+  descriptionTj: 'Китобхонаи электронии «Хирад».',
+  descriptionFa: 'کتابخانهٔ الکترونیکی «خرد».',
+  supportsReader: true,
+  supportsDownload: false,
+  sourcePurpose: BookSourcePurpose.bookAvailability,
+);
+
 const testRelatedPoet = LiteraryAuthor(
   id: 'rudaki',
   canonicalName: 'Абӯабдуллоҳи Рӯдакӣ',
@@ -219,6 +264,8 @@ void main() {
     expect(find.byType(BooksScreen), findsOneWidget);
     expect(find.text('Китобхона'), findsWidgets);
     expect(find.text('Китоби санҷишӣ'), findsWidgets);
+    // The meta line carries the page count, not a bare label.
+    expect(find.text('PDF · 2026 · 12 саҳифа'), findsOneWidget);
     expect(find.byType(FilterChip), findsWidgets);
     for (
       var index = 0;
@@ -239,6 +286,66 @@ void main() {
     expect(find.text('Ҳуқуқи бознашр норӯшан аст'), findsOneWidget);
     expect(find.text('Муаллиф дар феҳристи манбаъ'), findsOneWidget);
   });
+
+  testWidgets(
+    'khirad books show Khirad provider labels and an HTML badge, never Kitobkhon or PDF',
+    (tester) async {
+      await openApp(
+        tester,
+        route: '/books',
+        overrides: [
+          booksProvider.overrideWith((ref) => Future.value([khiradBook])),
+          bookProvidersProvider.overrideWith(
+            (ref) => Future.value([khiradProvider]),
+          ),
+        ],
+      );
+
+      expect(find.byType(BooksScreen), findsOneWidget);
+      // HTML reader record must not be labeled PDF on the list tile.
+      // Format, year and pages now share one meta line ("HTML · …").
+      expect(find.textContaining(RegExp(r'^HTML( ·|$)')), findsOneWidget);
+      expect(find.textContaining(RegExp(r'^PDF( ·|$)')), findsNothing);
+
+      await tester.tap(find.text('Маснавии Маънавӣ (ҷилди 1)').last);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(BookDetailScreen), findsOneWidget);
+      expect(find.text('Хондан дар Хирад'), findsOneWidget);
+      expect(find.text('Хондан дар Китобхон'), findsNothing);
+      expect(find.textContaining('khirad.tj'), findsNothing);
+      expect(find.text('Китобхон · kitobkhon.net'), findsNothing);
+    },
+  );
+
+  testWidgets(
+    'khirad provider labels localize in Persian without Kitobkhon attribution',
+    (tester) async {
+      await openApp(
+        tester,
+        route: '/books',
+        language: DisplayLanguage.persian,
+        overrides: [
+          booksProvider.overrideWith((ref) => Future.value([khiradBook])),
+          bookProvidersProvider.overrideWith(
+            (ref) => Future.value([khiradProvider]),
+          ),
+        ],
+      );
+
+      await tester.tap(find.text('مثنوی معنوی (جلد ۱)').last);
+      await tester.pumpAndSettle();
+
+      expect(find.text('خواندن در خرد'), findsOneWidget);
+      expect(find.text('خواندن در کتاب‌خوان'), findsNothing);
+      await tester.scrollUntilVisible(
+        find.text('خرد · khirad.tj'),
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(find.text('خرد · khirad.tj'), findsOneWidget);
+    },
+  );
 
   testWidgets('Books route localizes title, author, and direction in Persian', (
     tester,

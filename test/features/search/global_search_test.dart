@@ -249,6 +249,22 @@ void main() {
         ),
         findsNothing,
       );
+      // Highlighted titles are Text.rich; check their plain text too.
+      final results = find.byType(ListView);
+      expect(
+        find.descendant(
+          of: results,
+          matching: find.textContaining('Сарлавҳаи танҳо тоҷикӣ'),
+        ),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: results,
+          matching: find.textContaining('Мисраи тоҷикӣ'),
+        ),
+        findsNothing,
+      );
       expect(
         find.byWidgetPredicate(
           (widget) =>

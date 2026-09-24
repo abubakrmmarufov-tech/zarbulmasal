@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
+import '../../../shared/providers/reading_position_provider.dart';
+import '../../../shared/providers/reading_script_provider.dart';
 import '../../../shared/providers/recent_activity_provider.dart';
+import '../../../shared/widgets/reading_room.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../data/reader_preferences_provider.dart';
 import '../domain/domain.dart';
-import 'source_panel.dart';
 import 'literary_author_display_text.dart';
 import 'literary_work_display_text.dart';
+import 'widgets/reader_end_of_text.dart';
+import 'widgets/reader_header.dart';
+import 'widgets/reader_script_bar.dart';
+import 'widgets/reader_toolbar.dart';
+import 'widgets/source_line.dart';
+import 'widgets/verse_view.dart';
 
 /// A reader screen displaying a verified [LiteraryWork] with full provenance,
-/// script-aware typography, collation badge, and bottom action bar.
+/// script-aware typography, one status line, and a bottom action bar.
 class PoemReaderScreen extends ConsumerWidget {
   final String workId;
 
-  const PoemReaderScreen({super.key, required this.workId});
+  /// 1-based bayt/line to open at (from Continue reading), if any.
+  final int? initialAnchor;
+
+  const PoemReaderScreen({super.key, required this.workId, this.initialAnchor});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -93,32 +102,11 @@ class PoemReaderScreen extends ConsumerWidget {
             );
           }
 
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            ref
-                .read(recentActivityProvider.notifier)
-                .addActivity(
-                  RecentActivity(
-                    id: work.id,
-                    type: RecentActivityType.work,
-                    title: LiteraryWorkDisplayText.title(work, lang),
-                    subtitle: AppTranslations.get('lit_genre_poem', lang),
-                    titleTajik: work.title,
-                    titlePersian: work.titlePersian,
-                    subtitleTajik: AppTranslations.get(
-                      'lit_genre_poem',
-                      DisplayLanguage.tajik,
-                    ),
-                    subtitlePersian: AppTranslations.get(
-                      'lit_genre_poem',
-                      DisplayLanguage.persian,
-                    ),
-                    timestamp: DateTime.now(),
-                    route: '/literature/work/${work.id}',
-                  ),
-                );
-          });
-
-          return _PoemReaderContent(work: work);
+          return _PoemReaderContent(
+            key: ValueKey(work.id),
+            work: work,
+            initialAnchor: initialAnchor,
+          );
         },
       ),
     );
@@ -134,780 +122,311 @@ class _PendingWorkState extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lang = ref.watch(displayLanguageProvider);
-    final citation = work.primarySource?.citation;
+    final citation = LiteraryWorkDisplayText.shortCitation(work, lang);
     final sourceNote = citation == null
         ? ''
-        : '\n\n${AppTranslations.get('lit_work_source_registered', lang, [citation])}';
-    final rightsNote = work.rights.status.name == 'unknown'
-        ? '\n\n${AppTranslations.get('lit_work_rights_pending', lang)}'
-        : '';
+        : '\n\n${AppTranslations.get('lit_source_line', lang, [citation])}';
 
     return Center(
       child: EmptyState(
         icon: Icons.hourglass_empty,
         title: AppTranslations.get('lit_work_pending_title', lang),
         subtitle:
-            '${AppTranslations.get('lit_work_pending_sub', lang)}$rightsNote$sourceNote',
-        action: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (work.primarySource != null)
-              OutlinedButton.icon(
-                onPressed: () => SourcePanel.show(context, work),
-                icon: const Icon(Icons.menu_book_outlined, size: 18),
-                label: Text(AppTranslations.get('lit_source_and_docs', lang)),
-              ),
-            OutlinedButton(
-              onPressed: () => qalamBack(context),
-              child: Text(AppTranslations.get('back', lang)),
-            ),
-          ],
+            '${AppTranslations.get('lit_work_pending_sub', lang)}$sourceNote',
+        action: OutlinedButton(
+          onPressed: () => qalamBack(context),
+          child: Text(AppTranslations.get('back', lang)),
         ),
       ),
     );
   }
 }
 
-enum ReaderScriptMode { tajik, persian, parallel }
-
 class _PoemReaderContent extends ConsumerStatefulWidget {
   final LiteraryWork work;
+  final int? initialAnchor;
 
-  const _PoemReaderContent({required this.work});
+  const _PoemReaderContent({super.key, required this.work, this.initialAnchor});
 
   @override
   ConsumerState<_PoemReaderContent> createState() => _PoemReaderContentState();
 }
 
 class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
+  /// Per-screen script override from the chips; the saved reading script
+  /// (Settings → Reading) stays untouched.
   ReaderScriptMode? _userScriptMode;
+
+  final _viewportKey = GlobalKey();
+  List<GlobalKey> _unitKeys = const [];
+  ReaderScriptMode? _unitKeysMode;
+  bool _unitsAreBayts = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _recordVisit();
+      _jumpToInitialAnchor();
+    });
+  }
+
+  void _recordVisit() {
+    final work = widget.work;
+    final lang = ref.read(displayLanguageProvider);
+    final route = '/literature/work/${work.id}';
+    ref
+        .read(recentActivityProvider.notifier)
+        .addActivity(
+          RecentActivity(
+            id: work.id,
+            type: RecentActivityType.work,
+            title: LiteraryWorkDisplayText.title(work, lang),
+            subtitle: AppTranslations.get('lit_genre_poem', lang),
+            titleTajik: work.title,
+            titlePersian: work.titlePersian,
+            subtitleTajik: AppTranslations.get(
+              'lit_genre_poem',
+              DisplayLanguage.tajik,
+            ),
+            subtitlePersian: AppTranslations.get(
+              'lit_genre_poem',
+              DisplayLanguage.persian,
+            ),
+            timestamp: DateTime.now(),
+            route: route,
+          ),
+        );
+    ref
+        .read(readingPositionProvider.notifier)
+        .open(
+          ReadingPosition(
+            kind: ReadingKind.work,
+            id: work.id,
+            route: route,
+            titleTajik: work.title,
+            titlePersian: work.titlePersian,
+            titlePersianGenerated: work.titlePersianSource == 'generated',
+            timestamp: DateTime.now(),
+          ),
+        );
+  }
+
+  void _jumpToInitialAnchor() {
+    final anchor = widget.initialAnchor;
+    if (anchor == null || anchor < 2 || anchor > _unitKeys.length) return;
+    final target = _unitKeys[anchor - 1].currentContext;
+    if (target == null) return;
+    Scrollable.ensureVisible(target, alignment: 0.15);
+  }
+
+  /// Stores the first bayt/line visible at the top of the viewport.
+  bool _onScrollEnd(ScrollEndNotification notification) {
+    final viewport =
+        _viewportKey.currentContext?.findRenderObject() as RenderBox?;
+    if (viewport == null || _unitKeys.isEmpty) return false;
+    final top = viewport.localToGlobal(Offset.zero).dy;
+    for (var i = 0; i < _unitKeys.length; i++) {
+      final box = _unitKeys[i].currentContext?.findRenderObject() as RenderBox?;
+      if (box == null || !box.attached) continue;
+      final bottom = box.localToGlobal(Offset(0, box.size.height)).dy;
+      if (bottom > top + 8) {
+        ref
+            .read(readingPositionProvider.notifier)
+            .updateAnchor(
+              kind: ReadingKind.work,
+              id: widget.work.id,
+              anchor: i + 1,
+              total: _unitKeys.length,
+              isBayt: _unitsAreBayts,
+            );
+        break;
+      }
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
     final work = widget.work;
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
-    final isPersian = lang == DisplayLanguage.persian;
-
-    final authorAsync = ref.watch(authorByIdProvider(work.authorId));
-    final author = authorAsync.valueOrNull;
-
-    final isFavorited = ref.watch(literaryFavoritesProvider).contains(work.id);
+    final readingScript = ref.watch(readingScriptProvider);
+    final prefersPersianScript = readingScript == ReadingScript.persian;
     final readerPrefs = ref.watch(readerPreferencesProvider);
+    final author = ref.watch(authorByIdProvider(work.authorId)).valueOrNull;
 
-    final title = LiteraryWorkDisplayText.title(work, lang);
+    final hasGeneratedPersian =
+        work.persianScriptSource == 'generated' && work.hasPersianDisplay;
+    final hasBothScripts = work.hasTajikText && work.hasPersianText;
+    final mode =
+        _userScriptMode ??
+        _defaultScriptMode(
+          work: work,
+          prefersPersian: prefersPersianScript,
+          prefersParallel: readerPrefs.defaultReaderMode == 'parallel',
+        );
+    final showsPersianText =
+        mode == ReaderScriptMode.persian &&
+        (work.hasPersianText || hasGeneratedPersian);
+    final hasVerifiedText =
+        work.isDisplayable &&
+        ((mode == ReaderScriptMode.tajik && work.hasTajikText) ||
+            showsPersianText ||
+            (mode == ReaderScriptMode.parallel && hasBothScripts));
+    final persianTextUnavailable =
+        mode == ReaderScriptMode.persian &&
+        work.hasTajikText &&
+        !work.hasPersianText &&
+        !hasGeneratedPersian;
+    final showScriptBar =
+        hasBothScripts ||
+        (work.hasTajikText && hasGeneratedPersian) ||
+        (prefersPersianScript && work.hasTajikText);
 
+    final titleInPersian = mode == ReaderScriptMode.persian;
+    final title = titleInPersian
+        ? LiteraryWorkDisplayText.title(work, DisplayLanguage.persian)
+        : work.title;
     final authorName = LiteraryAuthorDisplayText.nameOrFallback(
       author,
       lang,
       work.authorId,
     );
+    final lifespan = author != null && author.hasAuditableBiographySource
+        ? LiteraryAuthorDisplayText.lifespan(author, lang)
+        : null;
 
-    final hasGeneratedPersian =
-        work.persianScriptSource == 'generated' && work.hasPersianDisplay;
-    const generatedNotePrefix =
-        'Mechanical Tajik Cyrillic to Persian-script representation;';
-    final editorialNotes =
-        work.editorialNotes?.startsWith(generatedNotePrefix) == true
-        ? null
-        : work.editorialNotes;
-    final hasBothScripts = work.hasTajikText && work.hasPersianText;
-    final defaultMode = _defaultScriptMode(
-      work: work,
-      prefersPersian: isPersian,
-      prefersParallel: readerPrefs.defaultReaderMode == 'parallel',
+    // Verse is set in the reading serif (PT Serif; Naskh for Persian script).
+    final readerFontSize = (20.0 + readerPrefs.fontSizeDelta).clamp(14.0, 34.0);
+    final verseStyle = QalamTypography.verseText(
+      color: colors.onSurface,
+      fontSize: readerFontSize,
+      height: readerPrefs.lineHeightMultiplier,
     );
-    final currentScriptMode = _userScriptMode ?? defaultMode;
+    final verseText = showsPersianText
+        ? (work.textPersian ?? work.persianScriptRepresentation ?? '')
+        : (work.textTajik ??
+              work.textPersian ??
+              work.persianScriptRepresentation ??
+              '');
+    final layout = VerseLayout.of(verseText, work.type);
+    // One key per bayt/line of the text currently shown; a script switch
+    // shows a different text, so it gets fresh keys.
+    if (_unitKeysMode != mode || _unitKeys.length != layout.unitCount) {
+      _unitKeys = List.generate(layout.unitCount, (_) => GlobalKey());
+      _unitKeysMode = mode;
+    }
+    _unitsAreBayts = layout.isBaytText;
 
-    final hasVerifiedText =
-        work.isDisplayable &&
-        ((currentScriptMode == ReaderScriptMode.tajik && work.hasTajikText) ||
-            (currentScriptMode == ReaderScriptMode.persian &&
-                (work.hasPersianText || hasGeneratedPersian)) ||
-            (currentScriptMode == ReaderScriptMode.parallel && hasBothScripts));
-    final persianTextUnavailable =
-        isPersian &&
-        currentScriptMode == ReaderScriptMode.persian &&
-        work.hasTajikText &&
-        !work.hasPersianText &&
-        !hasGeneratedPersian;
+    final activeText = mode == ReaderScriptMode.parallel && hasBothScripts
+        ? '${work.textTajik}\n\n${work.textPersian}'
+        : verseText;
+    final copyText = hasVerifiedText
+        ? '$title\n$authorName\n\n$activeText'
+        : '$title\n$authorName';
 
-    final readerFontSize = (22.0 + readerPrefs.fontSizeDelta).clamp(14.0, 36.0);
-
-    return Column(
-      children: [
-        // Reader scrollable content
-        Expanded(
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Genre & Verification row
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 3,
-                            ),
-                            decoration: BoxDecoration(
-                              color: colors.primary.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(
-                                color: colors.primary.withValues(alpha: 0.3),
-                                width: 0.5,
-                              ),
-                            ),
-                            child: Text(
-                              _genreName(work.type, lang),
-                              style: QalamTypography.meta(
-                                color: colors.primary,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          QalamSourceBadge(
-                            isVerified: work.isDisplayable,
-                            label: AppTranslations.get('lit_verified', lang),
-                          ),
-                          if (work.isPageImageDisplayable)
-                            InkWell(
-                              onTap: () => SourcePanel.show(context, work),
-                              borderRadius: BorderRadius.circular(4),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 4,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: QalamColors.forest.withValues(
-                                    alpha: 0.1,
-                                  ),
-                                  borderRadius: BorderRadius.circular(4),
-                                  border: Border.all(
-                                    color: QalamColors.forest.withValues(
-                                      alpha: 0.4,
-                                    ),
-                                    width: 0.5,
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Icon(
-                                      Icons.photo_library_outlined,
-                                      size: 13,
-                                      color: QalamColors.forest,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      AppTranslations.get(
-                                        'lit_page_image',
-                                        lang,
-                                      ),
-                                      style: QalamTypography.meta(
-                                        color: QalamColors.forest,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                      const SizedBox(height: 18),
-                      // Title
-                      Text(
-                        title,
-                        style: QalamTypography.pageTitle(
-                          color: colors.onSurface,
-                          fontSize: 34,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      // Author Link
-                      InkWell(
-                        onTap: () {
-                          if (work.authorId.isNotEmpty) {
-                            context.push('/literature/poet/${work.authorId}');
-                          }
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              authorName,
-                              style: QalamTypography.sectionTitle(
-                                color: colors.primary,
-                                fontSize: 18,
-                              ),
-                            ),
-                            const SizedBox(width: 4),
-                            Icon(
-                              Directionality.of(context) == TextDirection.rtl
-                                  ? Icons.arrow_back_ios
-                                  : Icons.arrow_forward_ios,
-                              size: 13,
-                              color: colors.primary,
-                            ),
-                          ],
-                        ),
-                      ),
-                      if (author != null &&
-                          author.hasAuditableBiographySource &&
-                          LiteraryAuthorDisplayText.lifespan(
-                            author,
-                            lang,
-                          ).isNotEmpty) ...[
-                        const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.calendar_today_outlined,
-                              size: 13,
-                              color: colors.onSurfaceVariant,
-                            ),
-                            const SizedBox(width: 6),
-                            Expanded(
-                              child: Text(
-                                LiteraryAuthorDisplayText.lifespan(
-                                  author,
-                                  lang,
-                                ),
-                                style: QalamTypography.meta(
-                                  color: colors.onSurfaceVariant,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                      if (work.hasAuditableCompositionEvidence &&
-                          ((work.compositionDate != null &&
-                                  work.compositionDate!.isNotEmpty) ||
-                              (work.compositionContext != null &&
-                                  work.compositionContext!.isNotEmpty))) ...[
-                        const SizedBox(height: 12),
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
-                          children: [
-                            if (!isPersian &&
-                                work.hasAuditableCompositionEvidence &&
-                                work.compositionDate != null &&
-                                work.compositionDate!.isNotEmpty)
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 5,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: colors.primary.withValues(alpha: 0.08),
-                                  borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(
-                                    color: colors.primary.withValues(
-                                      alpha: 0.25,
-                                    ),
-                                    width: 0.5,
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.history_edu,
-                                      size: 15,
-                                      color: colors.primary,
-                                    ),
-                                    const SizedBox(width: 6),
-                                    Text(
-                                      AppTranslations.get(
-                                        'lit_comp_date',
-                                        lang,
-                                        [
-                                          AppTranslations.formatDigits(
-                                            work.compositionDate!,
-                                            lang,
-                                          ),
-                                        ],
-                                      ),
-                                      style: QalamTypography.meta(
-                                        color: colors.primary,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            if (!isPersian &&
-                                work.hasAuditableCompositionEvidence &&
-                                work.compositionContext != null &&
-                                work.compositionContext!.isNotEmpty)
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 5,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: colors.surfaceContainerHighest
-                                      .withValues(alpha: 0.6),
-                                  borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(
-                                    color: colors.outlineVariant.withValues(
-                                      alpha: 0.5,
-                                    ),
-                                    width: 0.5,
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.place_outlined,
-                                      size: 15,
-                                      color: colors.onSurfaceVariant,
-                                    ),
-                                    const SizedBox(width: 6),
-                                    Text(
-                                      AppTranslations.get(
-                                        'lit_comp_context',
-                                        lang,
-                                        [work.compositionContext!],
-                                      ),
-                                      style: QalamTypography.meta(
-                                        color: colors.onSurfaceVariant,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                          ],
-                        ),
-                      ],
-                      const SizedBox(height: 24),
-                      const Divider(height: 1),
-                      const SizedBox(height: 16),
-
-                      // Script Switcher when both scripts exist
-                      if (hasBothScripts ||
-                          (isPersian && work.hasTajikText)) ...[
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            physics: const BouncingScrollPhysics(),
-                            child: Row(
-                              children: [
-                                ChoiceChip(
-                                  label: Text(
-                                    AppTranslations.get(
-                                      'lit_script_cyrillic',
-                                      lang,
-                                    ),
-                                  ),
-                                  selected:
-                                      currentScriptMode ==
-                                      ReaderScriptMode.tajik,
-                                  onSelected: (_) => setState(
-                                    () => _userScriptMode =
-                                        ReaderScriptMode.tajik,
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                ChoiceChip(
-                                  label: Text(
-                                    AppTranslations.get(
-                                      'lit_script_persian',
-                                      lang,
-                                    ),
-                                  ),
-                                  selected:
-                                      currentScriptMode ==
-                                      ReaderScriptMode.persian,
-                                  onSelected: (_) => setState(
-                                    () => _userScriptMode =
-                                        ReaderScriptMode.persian,
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                if (hasBothScripts) ...[
-                                  ChoiceChip(
-                                    avatar: const Icon(
-                                      Icons.compare_arrows,
-                                      size: 16,
-                                    ),
-                                    label: Text(
-                                      AppTranslations.get(
-                                        'lit_script_parallel',
-                                        lang,
-                                      ),
-                                    ),
-                                    selected:
-                                        currentScriptMode ==
-                                        ReaderScriptMode.parallel,
-                                    onSelected: (_) => setState(
-                                      () => _userScriptMode =
-                                          ReaderScriptMode.parallel,
-                                    ),
-                                  ),
-                                ],
-                              ],
-                            ),
-                          ),
-                        ),
-                      ] else if (isPersian && hasGeneratedPersian) ...[
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 16),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.info_outline,
-                                size: 15,
-                                color: colors.primary,
-                              ),
-                              const SizedBox(width: 6),
-                              Expanded(
-                                child: Text(
-                                  AppTranslations.get(
-                                    'lit_generated_script_notice',
-                                    lang,
-                                  ),
-                                  style: QalamTypography.meta(
-                                    color: colors.onSurfaceVariant,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-
-                      // Text body or Review Placeholder
-                      if (hasVerifiedText) ...[
-                        if (currentScriptMode == ReaderScriptMode.parallel &&
-                            hasBothScripts)
-                          _buildParallelVerses(
-                            context,
-                            work.textTajik!,
-                            work.textPersian!,
-                            readerFontSize,
-                            readerPrefs.lineHeightMultiplier,
-                            colors,
-                          )
-                        else if (currentScriptMode ==
-                                ReaderScriptMode.persian &&
-                            (work.hasPersianText || hasGeneratedPersian))
-                          Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: SelectableText(
-                              work.textPersian ??
-                                  work.persianScriptRepresentation!,
-                              textAlign: TextAlign.right,
-                              style: QalamTypography.heroProverb(
-                                color: colors.onSurface,
-                                fontSize: readerFontSize,
-                                height: readerPrefs.lineHeightMultiplier,
-                              ),
-                            ),
-                          )
-                        else
-                          Directionality(
-                            textDirection: TextDirection.ltr,
-                            child: SelectableText(
-                              work.textTajik ??
-                                  work.textPersian ??
-                                  work.persianScriptRepresentation ??
-                                  '',
-                              textAlign: TextAlign.left,
-                              style: QalamTypography.heroProverb(
-                                color: colors.onSurface,
-                                fontSize: readerFontSize,
-                                height: readerPrefs.lineHeightMultiplier,
-                              ),
-                            ),
-                          ),
-                      ] else ...[
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: colors.surfaceContainerHighest.withValues(
-                              alpha: 0.5,
-                            ),
-                            border: Border.all(
-                              color: colors.outlineVariant,
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Desktop reading room: the record and the connections sit in a
+        // context pane beside the text instead of behind a tab.
+        final hasPane =
+            constraints.maxWidth >= ReadingRoom.contextPaneBreakpoint;
+        final reader = Column(
+          children: [
+            Expanded(
+              child: NotificationListener<ScrollEndNotification>(
+                onNotification: _onScrollEnd,
+                child: SelectionArea(
+                  child: CustomScrollView(
+                    key: _viewportKey,
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.hourglass_empty,
-                                    size: 20,
-                                    color: colors.primary,
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: Text(
-                                      AppTranslations.get(
-                                        persianTextUnavailable
-                                            ? 'lit_persian_text_unavailable_title'
-                                            : 'lit_editorial_review_pending',
-                                        lang,
-                                      ),
-                                      style: QalamTypography.sectionTitle(
-                                        color: colors.onSurface,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              ReaderHeader(
+                                work: work,
+                                title: title,
+                                titleDirection: titleInPersian
+                                    ? TextDirection.rtl
+                                    : TextDirection.ltr,
+                                genre: _genreName(work.type, lang),
+                                authorName: authorName,
+                                lifespan: lifespan,
+                                lang: lang,
                               ),
-                              const SizedBox(height: 12),
-                              Text(
-                                AppTranslations.get(
-                                  persianTextUnavailable
-                                      ? 'lit_persian_text_unavailable'
-                                      : 'lit_editorial_policy_notice',
-                                  lang,
-                                ),
-                                style: QalamTypography.bodySecondary(
-                                  color: colors.onSurfaceVariant,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              if (currentScriptMode == ReaderScriptMode.tajik &&
-                                  work.incipit != null &&
-                                  work.incipit!.isNotEmpty) ...[
-                                const SizedBox(height: 16),
-                                Text(
-                                  AppTranslations.get(
-                                    'lit_incipit_label',
-                                    lang,
+                              const SizedBox(height: 28),
+                              ...[
+                                if (showScriptBar)
+                                  ReaderScriptBar(
+                                    mode: mode,
+                                    showParallel: hasBothScripts,
+                                    onSelected: (value) =>
+                                        setState(() => _userScriptMode = value),
                                   ),
-                                  style: QalamTypography.meta(
-                                    color: colors.primary,
+                                if (showsPersianText && hasGeneratedPersian)
+                                  _GeneratedScriptLabel(lang: lang),
+                                if (hasVerifiedText)
+                                  mode == ReaderScriptMode.parallel &&
+                                          hasBothScripts
+                                      ? _ParallelVerses(
+                                          tajikText: work.textTajik!,
+                                          persianText: work.textPersian!,
+                                          style: verseStyle,
+                                        )
+                                      : VerseView(
+                                          layout: layout,
+                                          style: verseStyle,
+                                          textDirection: showsPersianText
+                                              ? TextDirection.rtl
+                                              : TextDirection.ltr,
+                                          unitKeys: _unitKeys,
+                                        )
+                                else
+                                  _ReviewPlaceholder(
+                                    work: work,
+                                    persianTextUnavailable:
+                                        persianTextUnavailable,
+                                    showIncipit: mode == ReaderScriptMode.tajik,
+                                    fontSizeDelta: readerPrefs.fontSizeDelta,
+                                    lang: lang,
                                   ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  '«${work.incipit}»',
-                                  style: QalamTypography.heroProverb(
-                                    color: colors.onSurface,
-                                    fontSize:
-                                        (18.0 + readerPrefs.fontSizeDelta * 0.5)
-                                            .clamp(14.0, 28.0),
-                                    height: 1.5,
-                                  ),
+                                const SizedBox(height: 28),
+                                SourceLine(work: work, lang: lang),
+                                const SizedBox(height: 40),
+                                ReaderEndOfText(
+                                  work: work,
+                                  showConnections: !hasPane,
                                 ),
                               ],
+                              // `editorialNotes` are internal English audit notes;
+                              // they stay in the data and never reach readers.
+                              const SizedBox(height: 40),
                             ],
                           ),
                         ),
-                      ],
-                      if (editorialNotes != null &&
-                          editorialNotes.isNotEmpty) ...[
-                        const SizedBox(height: 28),
-                        Container(
-                          padding: const EdgeInsets.all(14),
-                          decoration: BoxDecoration(
-                            color: colors.surfaceContainerHighest.withValues(
-                              alpha: 0.3,
-                            ),
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(
-                              color: colors.outlineVariant,
-                              width: 0.5,
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                AppTranslations.get(
-                                  'lit_editorial_notes_label',
-                                  lang,
-                                ),
-                                style: QalamTypography.meta(
-                                  color: colors.primary,
-                                ),
-                              ),
-                              const SizedBox(height: 6),
-                              Text(
-                                editorialNotes,
-                                style: QalamTypography.bodySecondary(
-                                  color: colors.onSurfaceVariant,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                      const SizedBox(height: 40),
+                      ),
                     ],
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-        // Bottom action bar with font scaling controls
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          decoration: BoxDecoration(
-            color: colors.surface,
-            border: Border(
-              top: BorderSide(color: colors.outlineVariant, width: 0.5),
             ),
-          ),
-          child: SafeArea(
-            top: false,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              child: Row(
-                children: [
-                  // Bookmark button
-                  IconButton(
-                    tooltip: isFavorited
-                        ? AppTranslations.get('bookmark_remove', lang)
-                        : AppTranslations.get('bookmark_add', lang),
-                    icon: Icon(
-                      isFavorited ? Icons.bookmark : Icons.bookmark_border,
-                      color: isFavorited
-                          ? colors.primary
-                          : colors.onSurfaceVariant,
-                    ),
-                    onPressed: () {
-                      ref
-                          .read(literaryFavoritesProvider.notifier)
-                          .toggle(work.id);
-                    },
-                  ),
-                  // Copy button (only if rights permit full text)
-                  if (work.rights.fullTextAllowed) ...[
-                    IconButton(
-                      tooltip: AppTranslations.get('lit_copy_poem', lang),
-                      icon: const Icon(Icons.copy_outlined),
-                      onPressed: () async {
-                        final String activeText;
-                        if (currentScriptMode == ReaderScriptMode.parallel &&
-                            hasBothScripts) {
-                          activeText =
-                              '${work.textTajik}\n\n${work.textPersian}';
-                        } else if (currentScriptMode ==
-                                ReaderScriptMode.persian &&
-                            (work.hasPersianText || hasGeneratedPersian)) {
-                          activeText =
-                              work.textPersian ??
-                              work.persianScriptRepresentation!;
-                        } else {
-                          activeText =
-                              work.textTajik ??
-                              work.textPersian ??
-                              work.persianScriptRepresentation ??
-                              '';
-                        }
-                        final textToShare = hasVerifiedText
-                            ? '$title\n$authorName\n\n$activeText'
-                            : '$title\n$authorName';
-                        try {
-                          await Clipboard.setData(
-                            ClipboardData(text: textToShare),
-                          );
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  AppTranslations.get('lit_copied_toast', lang),
-                                ),
-                              ),
-                            );
-                          }
-                        } catch (_) {
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  AppTranslations.get(
-                                    'lit_copy_unavailable',
-                                    lang,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }
-                        }
-                      },
-                    ),
-                  ],
-                  // Font Size Controls (A- / A+)
-                  IconButton(
-                    tooltip: AppTranslations.get(
-                      'lit_work_decrease_font',
-                      lang,
-                    ),
-                    icon: const Icon(Icons.text_decrease, size: 20),
-                    onPressed: () => ref
-                        .read(readerPreferencesProvider.notifier)
-                        .decreaseFontSize(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: Text(
-                      isPersian
-                          ? '${AppTranslations.formatDigits('${(100 + readerPrefs.fontSizeDelta * 5).round()}', DisplayLanguage.persian)}٪'
-                          : '${(100 + readerPrefs.fontSizeDelta * 5).round()}%',
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    tooltip: AppTranslations.get(
-                      'lit_work_increase_font',
-                      lang,
-                    ),
-                    icon: const Icon(Icons.text_increase, size: 20),
-                    onPressed: () => ref
-                        .read(readerPreferencesProvider.notifier)
-                        .increaseFontSize(),
-                  ),
-                  const SizedBox(width: 8),
-                  // Source (Манбаъ) button
-                  OutlinedButton.icon(
-                    onPressed: () => SourcePanel.show(context, work),
-                    icon: const Icon(Icons.menu_book_outlined, size: 18),
-                    label: Text(
-                      AppTranslations.get('lit_source_and_docs', lang),
-                      style: QalamTypography.meta(
-                        color: colors.onSurface,
-                        fontSize: 13,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
+            ReaderToolbar(work: work, copyText: copyText),
+          ],
+        );
+        if (!hasPane) return reader;
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(child: reader),
+            _ReaderContextPane(work: work),
+          ],
+        );
+      },
     );
   }
 
@@ -916,121 +435,224 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
     required bool prefersPersian,
     required bool prefersParallel,
   }) {
-    if (prefersPersian) {
-      if (prefersParallel && work.hasTajikText && work.hasPersianText) {
-        return ReaderScriptMode.parallel;
-      }
-      // Keep the Persian interface honest: a Tajik-only poem starts in the
-      // explicit unavailable state until the reader opts into the original.
-      return ReaderScriptMode.persian;
-    }
     if (prefersParallel && work.hasTajikText && work.hasPersianText) {
       return ReaderScriptMode.parallel;
     }
+    // In Persian reading mode a Tajik-only poem starts in the explicit
+    // unavailable state until the reader opts into the original script.
+    if (prefersPersian) return ReaderScriptMode.persian;
     if (work.hasTajikText) return ReaderScriptMode.tajik;
     return ReaderScriptMode.persian;
   }
 
-  Widget _buildParallelVerses(
-    BuildContext context,
-    String tajikText,
-    String persianText,
-    double fontSize,
-    double lineHeight,
-    ColorScheme colors,
-  ) {
-    final tjLines = tajikText
-        .split('\n')
-        .where((l) => l.trim().isNotEmpty)
-        .toList();
-    final faLines = persianText
-        .split('\n')
-        .where((l) => l.trim().isNotEmpty)
-        .toList();
+  String _genreName(WorkType type, DisplayLanguage lang) {
+    final key = switch (type) {
+      WorkType.ghazal => 'lit_genre_ghazal',
+      WorkType.rubai => 'lit_genre_rubai',
+      WorkType.qasida => 'lit_genre_qasida',
+      WorkType.poem => 'lit_genre_poem',
+      WorkType.fragment => 'lit_genre_qita',
+      WorkType.folk => 'lit_genre_folk',
+      WorkType.anthem => 'lit_genre_song',
+      WorkType.epic => 'lit_genre_masnavi',
+      WorkType.other => 'lit_genre_other',
+    };
+    return AppTranslations.get(key, lang);
+  }
+}
 
-    final count = tjLines.length > faLines.length
-        ? tjLines.length
-        : faLines.length;
+/// The desktop context pane: the connections (more by the poet, the
+/// period), always visible beside the text.
+class _ReaderContextPane extends StatelessWidget {
+  const _ReaderContextPane({required this.work});
+
+  final LiteraryWork work;
+
+  static const double width = 360;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Container(
+      width: width,
+      decoration: BoxDecoration(
+        border: BorderDirectional(
+          start: BorderSide(color: colors.outlineVariant),
+        ),
+      ),
+      child: SelectionArea(
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(24, 28, 24, 40),
+          children: [ReaderEndOfText(work: work, showNeighbours: false)],
+        ),
+      ),
+    );
+  }
+}
+
+/// States that the Persian-script text is a mechanical transliteration, not
+/// a Persian source (data: `persianScriptSource: "generated"`).
+class _GeneratedScriptLabel extends StatelessWidget {
+  const _GeneratedScriptLabel({required this.lang});
+
+  final DisplayLanguage lang;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.info_outline, size: 16, color: colors.onSurfaceVariant),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              AppTranslations.get('lit_generated_script_label', lang),
+              style: QalamTypography.meta(
+                color: colors.onSurfaceVariant,
+                fontSize: 13,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ReviewPlaceholder extends StatelessWidget {
+  const _ReviewPlaceholder({
+    required this.work,
+    required this.persianTextUnavailable,
+    required this.showIncipit,
+    required this.fontSizeDelta,
+    required this.lang,
+  });
+
+  final LiteraryWork work;
+  final bool persianTextUnavailable;
+  final bool showIncipit;
+  final double fontSizeDelta;
+  final DisplayLanguage lang;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    String tr(String key) => AppTranslations.get(key, lang);
+    final incipit = work.incipit;
+    // A plain block (no box): the page already frames it.
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.hourglass_empty, size: 20, color: colors.primary),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  tr(
+                    persianTextUnavailable
+                        ? 'lit_persian_text_unavailable_title'
+                        : 'lit_editorial_review_pending',
+                  ),
+                  style: QalamTypography.sectionTitle(
+                    color: colors.onSurface,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Text(
+            tr(
+              persianTextUnavailable
+                  ? 'lit_persian_text_unavailable'
+                  : 'lit_editorial_policy_notice',
+            ),
+            style: QalamTypography.bodySecondary(
+              color: colors.onSurfaceVariant,
+              fontSize: 14,
+            ),
+          ),
+          if (showIncipit && incipit != null && incipit.isNotEmpty) ...[
+            const SizedBox(height: 16),
+            Text(
+              tr('lit_incipit_label'),
+              style: QalamTypography.meta(color: colors.primary),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              '«$incipit»',
+              style: QalamTypography.heroProverb(
+                color: colors.onSurface,
+                fontSize: (18.0 + fontSizeDelta * 0.5).clamp(14.0, 28.0),
+                height: 1.5,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Genuinely bilingual works only: each Tajik line above its Persian line.
+class _ParallelVerses extends StatelessWidget {
+  const _ParallelVerses({
+    required this.tajikText,
+    required this.persianText,
+    required this.style,
+  });
+
+  final String tajikText;
+  final String persianText;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    List<String> lines(String text) =>
+        text.split('\n').where((l) => l.trim().isNotEmpty).toList();
+    final tj = lines(tajikText);
+    final fa = lines(persianText);
+    final count = tj.length > fa.length ? tj.length : fa.length;
+    final indent = (style.fontSize ?? 20) * VerseView.hangingIndentEm;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (var i = 0; i < count; i++) ...[
-          Container(
-            margin: const EdgeInsets.only(bottom: 16),
-            padding: const EdgeInsets.all(14),
-            decoration: BoxDecoration(
-              color: colors.surfaceContainerHighest.withValues(alpha: 0.35),
-              borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
-              border: Border.all(
-                color: colors.outlineVariant.withValues(alpha: 0.5),
-                width: 0.5,
-              ),
-            ),
+        for (var i = 0; i < count; i++)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                if (i < tjLines.length)
-                  Directionality(
+                if (i < tj.length)
+                  HangingIndentLine(
+                    text: tj[i],
                     textDirection: TextDirection.ltr,
-                    child: SelectableText(
-                      tjLines[i],
-                      style: QalamTypography.heroProverb(
-                        color: colors.onSurface,
-                        fontSize: fontSize,
-                        height: lineHeight,
-                      ),
-                    ),
+                    style: style,
+                    indent: indent,
                   ),
-                if (i < tjLines.length && i < faLines.length)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6),
-                    child: Divider(
-                      height: 1,
-                      color: colors.outlineVariant.withValues(alpha: 0.3),
-                    ),
-                  ),
-                if (i < faLines.length)
-                  Directionality(
+                if (i < fa.length)
+                  HangingIndentLine(
+                    text: fa[i],
                     textDirection: TextDirection.rtl,
-                    child: SelectableText(
-                      faLines[i],
-                      textAlign: TextAlign.right,
-                      style: QalamTypography.heroProverb(
-                        color: colors.primary,
-                        fontSize: fontSize * 0.95,
-                        height: lineHeight,
-                      ),
+                    indent: indent,
+                    style: style.copyWith(
+                      color: colors.primary,
+                      fontSize: (style.fontSize ?? 20) * 0.95,
                     ),
                   ),
               ],
             ),
           ),
-        ],
       ],
     );
-  }
-
-  String _genreName(WorkType type, DisplayLanguage lang) {
-    switch (type) {
-      case WorkType.ghazal:
-        return AppTranslations.get('lit_genre_ghazal', lang);
-      case WorkType.rubai:
-        return AppTranslations.get('lit_genre_rubai', lang);
-      case WorkType.qasida:
-        return AppTranslations.get('lit_genre_qasida', lang);
-      case WorkType.poem:
-        return AppTranslations.get('lit_genre_poem', lang);
-      case WorkType.fragment:
-        return AppTranslations.get('lit_genre_qita', lang);
-      case WorkType.folk:
-        return AppTranslations.get('lit_genre_folk', lang);
-      case WorkType.anthem:
-        return AppTranslations.get('lit_genre_song', lang);
-      case WorkType.epic:
-        return AppTranslations.get('lit_genre_masnavi', lang);
-      case WorkType.other:
-        return AppTranslations.get('lit_genre_other', lang);
-    }
   }
 }

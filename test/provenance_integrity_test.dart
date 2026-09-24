@@ -176,9 +176,14 @@ void main() {
         expect(File(entry.value['image']! as String).existsSync(), isTrue);
         expect(secondary['sourceReference'], contains('maorif.tj'));
         expect(work['textMatchResult'], entry.value['match']);
+        // Both records are quarantined pending review (one a maxim collection,
+        // one an epitaph fragment), so full-text is honestly withheld while the
+        // page/image/reference witness evidence above is retained.
+        expect(work['verification']['evidenceLevel'], 'needsReview');
+        expect(work['textStatus'], 'needsReview');
         expect(
           (work['rights'] as Map<String, dynamic>)['fullTextAllowed'],
-          isTrue,
+          isFalse,
         );
       }
     });
@@ -324,18 +329,34 @@ void main() {
         'fd2474e2-427e-4c38-8a72-4fe9b3581779',
       };
 
-      final actualUnresolvedIds = works
-          .cast<Map<String, dynamic>>()
+      // Besides these hand-checked works, poems taken from the text layer of
+      // a cited textbook page (the textbookPdfTextExtraction policy) also
+      // publish on the one textbook source.
+      final singleSource = works.cast<Map<String, dynamic>>().where(
+        (item) =>
+            (item['verification'] as Map<String, dynamic>?)?['evidenceLevel'] ==
+                'primaryChecked' &&
+            item['secondarySource'] == null,
+      );
+      final actualUnresolvedIds = singleSource
           .where(
             (item) =>
                 (item['verification']
-                        as Map<String, dynamic>?)?['evidenceLevel'] ==
-                    'primaryChecked' &&
-                item['secondarySource'] == null,
+                    as Map<String, dynamic>)['verificationMethod'] !=
+                'textbookPdfTextExtraction',
           )
           .map((item) => item['id'] as String)
           .toSet();
       expect(actualUnresolvedIds, unresolvedIds);
+      for (final work in singleSource) {
+        final source = work['primarySource'] as Map<String, dynamic>;
+        expect(
+          source['sourceReference'] as String,
+          startsWith('docs/literature/pdfs/'),
+          reason: work['id'] as String,
+        );
+        expect(source['pageStart'], isNotNull, reason: work['id'] as String);
+      }
 
       for (final work in works.cast<Map<String, dynamic>>().where(
         (item) => unresolvedIds.contains(item['id']),

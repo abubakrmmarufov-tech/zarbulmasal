@@ -169,21 +169,9 @@ class LiteratureHubScreen extends ConsumerWidget {
                           style: QalamTypography.eyebrow(color: colors.primary),
                         ),
                         const SizedBox(height: 12),
+                        // Literature only: history and books have their own
+                        // entries in the collection index (Explore / Home).
                         QalamSectionLink(
-                          number: '00',
-                          title: AppTranslations.get(
-                            'lit_hub_history_card',
-                            lang,
-                          ),
-                          subtitle: AppTranslations.get(
-                            'lit_hub_history_card_sub',
-                            lang,
-                          ),
-                          onTap: () => context.push('/history'),
-                        ),
-                        // 01: Poets
-                        QalamSectionLink(
-                          number: '01',
                           title: AppTranslations.get('lit_poets', lang),
                           subtitle: AppTranslations.translate(
                             'lit_hub_poets_count',
@@ -192,9 +180,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                           ),
                           onTap: () => context.push('/literature/poets'),
                         ),
-                        // 02: Works / Poems
                         QalamSectionLink(
-                          number: '02',
                           title: AppTranslations.get('lit_poems', lang),
                           subtitle: worksCount > 0
                               ? AppTranslations.translate(
@@ -219,9 +205,7 @@ class LiteratureHubScreen extends ConsumerWidget {
                                 ),
                           onTap: () => context.push('/literature/works'),
                         ),
-                        // 03: School Canon
                         QalamSectionLink(
-                          number: '03',
                           title: AppTranslations.get('lit_school', lang),
                           subtitle: schoolCanonCount > 0
                               ? AppTranslations.translate(
@@ -232,40 +216,25 @@ class LiteratureHubScreen extends ConsumerWidget {
                               : AppTranslations.get('lit_school_desc', lang),
                           onTap: () => context.push('/literature/school'),
                         ),
-                        // 04: Oral Heritage
-                        QalamSectionLink(
-                          number: '04',
-                          title: AppTranslations.get('lit_oral', lang),
-                          subtitle: oralCount > 0
-                              ? AppTranslations.translate(
-                                  'lit_hub_oral_count',
-                                  lang,
-                                  [formattedOralCount],
-                                )
-                              : AppTranslations.get(
-                                  'lit_oral_coming_soon',
-                                  lang,
-                                ),
-                          onTap: oralCount > 0
-                              ? () => context.push('/literature/oral')
-                              : null,
-                        ),
-                        // 05: Books
-                        QalamSectionLink(
-                          number: '05',
-                          title: AppTranslations.get(
-                            'explore_books_title',
-                            lang,
+                        // Oral heritage: hidden until it has entries.
+                        if (oralCount > 0)
+                          QalamSectionLink(
+                            title: AppTranslations.get('lit_oral', lang),
+                            subtitle: oralCount > 0
+                                ? AppTranslations.translate(
+                                    'lit_hub_oral_count',
+                                    lang,
+                                    [formattedOralCount],
+                                  )
+                                : AppTranslations.get(
+                                    'lit_oral_coming_soon',
+                                    lang,
+                                  ),
+                            onTap: oralCount > 0
+                                ? () => context.push('/literature/oral')
+                                : null,
                           ),
-                          subtitle: AppTranslations.get(
-                            'explore_books_sub',
-                            lang,
-                          ),
-                          onTap: () => context.push('/books'),
-                        ),
-                        // 06: Search
                         QalamSectionLink(
-                          number: '06',
                           title: AppTranslations.get('lit_search', lang),
                           subtitle: AppTranslations.get(
                             'lit_search_desc',
@@ -381,9 +350,8 @@ class _DailyVerseCard extends ConsumerWidget {
     // The daily card uses an ink surface in both themes. Keep normal-sized
     // eyebrow, author, and supporting copy on the accessible paper-text ramp;
     // burgundySoft and inkMute fall below WCAG 4.5:1 on the light card.
-    final accentColor = isDark
-        ? QalamColors.antiqueGoldSoft
-        : QalamColors.antiqueGold;
+    // Ink/lapis surface in both themes: the night vermilion keeps 4.5:1.
+    const accentColor = QalamColors.vermilionNight;
     final mutedColor = QalamColors.paperTextSoft;
     final borderColor = isDark
         ? QalamColors.hairlineDark
@@ -441,15 +409,18 @@ class _DailyVerseCard extends ConsumerWidget {
               ),
               const SizedBox(height: 14),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    authorName,
-                    style: QalamTypography.meta(
-                      color: accentColor,
-                      fontSize: 13,
+                  Expanded(
+                    child: Text(
+                      authorName,
+                      style: QalamTypography.meta(
+                        color: accentColor,
+                        fontSize: 13,
+                      ),
                     ),
                   ),
-                  const Spacer(),
+                  const SizedBox(width: 12),
                   Text(
                     AppTranslations.get('lit_hub_read_work', lang),
                     style: QalamTypography.meta(
@@ -536,7 +507,8 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
 
               final title = LiteraryWorkDisplayText.title(work, lang);
 
-              final incipit = LiteraryWorkDisplayText.incipit(work, lang) ?? '';
+              final incipit =
+                  LiteraryWorkDisplayText.distinctIncipit(work, lang) ?? '';
 
               return SizedBox(
                 width: 260,

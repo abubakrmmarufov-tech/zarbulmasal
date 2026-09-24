@@ -100,6 +100,10 @@ void main() {
     final initialPrefs = container.read(readerPreferencesProvider);
     expect(initialPrefs.fontSizeDelta, 0.0);
 
+    // Text size lives in the «Aa» sheet.
+    await tester.tap(find.byTooltip('Андозаи матн'));
+    await tester.pumpAndSettle();
+
     // Tap font size increase button (A+)
     final increaseBtn = find.byIcon(Icons.text_increase);
     expect(increaseBtn, findsOneWidget);
@@ -118,6 +122,49 @@ void main() {
 
     final decreasedPrefs = container.read(readerPreferencesProvider);
     expect(decreasedPrefs.fontSizeDelta, -2.0);
+  });
+
+  testWidgets('poem reader font can shrink down to 70%', (tester) async {
+    SharedPreferences.setMockInitialValues({AppConstants.prefsLanguage: 'tj'});
+
+    final container = ProviderContainer(
+      overrides: [
+        approvedWorksProvider.overrideWith(
+          (ref) => Future.value(const [testRudakiWork]),
+        ),
+        literaryWorksProvider.overrideWith(
+          (ref) => Future.value(const [testRudakiWork]),
+        ),
+      ],
+    );
+    addTearDown(container.dispose);
+
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: container,
+        child: MaterialApp(
+          theme: AppTheme.lightTheme,
+          home: const PoemReaderScreen(workId: 'rudaki-boyi-juyi-muliyon'),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // Text size lives in the «Aa» sheet.
+    await tester.tap(find.byTooltip('Андозаи матн'));
+    await tester.pumpAndSettle();
+    expect(find.text('100%'), findsOneWidget);
+
+    // Three A- taps take the delta to -6, i.e. 70%.
+    final decreaseBtn = find.byIcon(Icons.text_decrease);
+    for (var i = 0; i < 3; i++) {
+      await tester.tap(decreaseBtn);
+      await tester.pumpAndSettle();
+    }
+
+    expect(container.read(readerPreferencesProvider).fontSizeDelta, -6.0);
+    expect(find.text('70%'), findsOneWidget);
+    expect(find.text('100%'), findsNothing);
   });
 
   testWidgets(

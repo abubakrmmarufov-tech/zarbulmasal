@@ -4,12 +4,13 @@ import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
+import '../../../shared/providers/reading_position_provider.dart';
 import '../../../shared/providers/recent_activity_provider.dart';
 import '../../../shared/widgets/empty_state.dart';
-import '../../literature/data/literature_providers.dart';
-import '../../literature/presentation/literary_author_display_text.dart';
 import '../data/history_providers.dart';
 import '../domain/history_domain.dart';
+import 'history_end_of_text.dart';
+import 'history_section_labels.dart';
 import 'history_source_launcher.dart';
 
 String? _historyOptionalText(String? value) {
@@ -160,6 +161,18 @@ class HistoryDetailScreen extends ConsumerWidget {
                     route: '/history/${entry.id}',
                   ),
                 );
+            ref
+                .read(readingPositionProvider.notifier)
+                .open(
+                  ReadingPosition(
+                    kind: ReadingKind.history,
+                    id: entry.id,
+                    route: '/history/${entry.id}',
+                    titleTajik: entry.title,
+                    titlePersian: entry.titlePersian,
+                    timestamp: DateTime.now(),
+                  ),
+                );
           });
 
           return Directionality(
@@ -167,138 +180,86 @@ class HistoryDetailScreen extends ConsumerWidget {
             child: ListView(
               padding: const EdgeInsets.fromLTRB(24, 16, 24, 40),
               children: [
-                // Kind badge & Grade Chip
-                Row(
+                // Catalogue line: kind and grade as type, no badges.
+                Wrap(
+                  spacing: 12,
+                  runSpacing: 4,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: colors.primary.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            _iconForKind(entry.kind),
-                            size: 16,
-                            color: colors.primary,
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            _kindLabel(entry.kind, isPersian),
-                            style: QalamTypography.eyebrow(
-                              color: colors.primary,
-                            ),
-                          ),
-                        ],
-                      ),
+                    Text(
+                      _kindLabel(entry.kind, isPersian),
+                      style: QalamTypography.eyebrow(color: colors.primary),
                     ),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: colors.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        AppTranslations.get('hist_filter_grade', lang, [
-                          entry.grade,
-                        ]),
-                        style: QalamTypography.meta(
-                          color: colors.onSurfaceVariant,
-                        ),
+                    Text(
+                      AppTranslations.get('hist_filter_grade', lang, [
+                        entry.grade,
+                      ]),
+                      style: QalamTypography.meta(
+                        color: colors.onSurfaceVariant,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
-                // Title
+                const SizedBox(height: 12),
                 Text(
                   title,
-                  style: QalamTypography.pageTitle(
+                  style: QalamTypography.monographTitle(
                     color: colors.onSurface,
-                    fontSize: 26,
+                    fontSize: 30,
                   ),
                 ),
                 if (dates.isNotEmpty) ...[
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Icon(Icons.schedule, size: 18, color: colors.primary),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          dates,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: colors.primary,
-                          ),
-                        ),
-                      ),
-                    ],
+                  const SizedBox(height: 6),
+                  Text(
+                    dates,
+                    style: QalamTypography.meta(
+                      color: colors.primary,
+                      fontSize: 15,
+                    ),
                   ),
                 ],
                 const SizedBox(height: 20),
-                // Capital, Territory, Key Figures
+                // Capital, territory, key figures: a boxed fact card
+                // (definition list), as on a museum label.
                 if (capital != null ||
                     territory != null ||
                     keyFigures.isNotEmpty) ...[
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
                     decoration: BoxDecoration(
-                      color: colors.surfaceContainerHighest.withValues(
-                        alpha: 0.45,
-                      ),
-                      borderRadius: BorderRadius.circular(
-                        QalamSpacing.cardRadius,
-                      ),
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? colors.surfaceContainer
+                          : colors.surfaceContainerLowest,
+                      borderRadius: BorderRadius.circular(6),
                       border: Border.all(
-                        color: colors.outlineVariant.withValues(alpha: 0.6),
-                        width: 0.5,
+                        color: colors.onSurface.withValues(alpha: 0.22),
                       ),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        if (capital != null) ...[
+                        if (capital != null)
                           _DetailLine(
-                            icon: Icons.location_city,
                             label: AppTranslations.get('hist_capital', lang),
                             value: capital,
                           ),
-                        ],
-                        if (territory != null) ...[
-                          if (capital != null) const Divider(height: 20),
+                        if (territory != null)
                           _DetailLine(
-                            icon: Icons.public,
                             label: AppTranslations.get('hist_territory', lang),
                             value: territory,
                           ),
-                        ],
-                        if (keyFigures.isNotEmpty) ...[
-                          if (capital != null || territory != null)
-                            const Divider(height: 20),
+                        if (keyFigures.isNotEmpty)
                           _DetailLine(
-                            icon: Icons.people_outline,
                             label: AppTranslations.get(
                               'hist_key_figures_and_rulers',
                               lang,
                             ),
                             value: keyFigures.join(', '),
                           ),
-                        ],
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 24),
                 ],
                 // Historical Summary
                 if (summary != null) ...[
@@ -333,87 +294,21 @@ class HistoryDetailScreen extends ConsumerWidget {
                     ),
                   ),
                 ],
-                // Related Poets
-                if (entry.relatedAuthorIds.isNotEmpty) ...[
+                // Long-form reading sections
+                if (entry.sections.isNotEmpty) ...[
                   const SizedBox(height: 24),
                   Text(
-                    AppTranslations.get('hist_related_authors', lang),
+                    HistorySectionLabels.readingTitle(lang),
                     style: QalamTypography.eyebrow(color: colors.primary),
                   ),
-                  const SizedBox(height: 10),
-                  Consumer(
-                    builder: (context, ref, _) {
-                      return Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: entry.relatedAuthorIds.map((authorId) {
-                          final authorAsync = ref.watch(
-                            authorByIdProvider(authorId),
-                          );
-                          final author = authorAsync.valueOrNull;
-                          final authorName =
-                              LiteraryAuthorDisplayText.nameOrFallback(
-                                author,
-                                lang,
-                                authorId == 'rudaki'
-                                    ? 'Абӯабдуллоҳи Рӯдакӣ'
-                                    : authorId,
-                              );
-                          return ActionChip(
-                            avatar: const Icon(Icons.auto_stories, size: 16),
-                            label: Text(authorName),
-                            onPressed: () {
-                              context.push('/literature/poet/$authorId');
-                            },
-                          );
-                        }).toList(),
-                      );
-                    },
-                  ),
-                ],
-                // Related Works
-                if (entry.relatedWorkIds.isNotEmpty) ...[
-                  const SizedBox(height: 24),
-                  Text(
-                    AppTranslations.get('hist_related_works', lang),
-                    style: QalamTypography.eyebrow(color: colors.primary),
-                  ),
-                  const SizedBox(height: 10),
-                  Consumer(
-                    builder: (context, ref, _) {
-                      final approvedWorks =
-                          ref.watch(approvedWorksProvider).valueOrNull ?? [];
-                      return Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: entry.relatedWorkIds.map((workId) {
-                          final matched = approvedWorks
-                              .where((w) => w.id == workId)
-                              .firstOrNull;
-                          final workTitle = isPersian
-                              ? _historyOptionalText(matched?.titlePersian) ??
-                                    AppTranslations.get(
-                                      'hist_translation_pending',
-                                      lang,
-                                    )
-                              : (matched?.title ??
-                                    (workId == 'poem-shahnameh'
-                                        ? 'Шоҳнома'
-                                        : workId));
-                          return ActionChip(
-                            avatar: const Icon(Icons.menu_book, size: 16),
-                            label: Text(workTitle),
-                            onPressed: () {
-                              if (matched != null) {
-                                context.push('/literature/work/${matched.id}');
-                              } else {
-                                context.push('/literature/works');
-                              }
-                            },
-                          );
-                        }).toList(),
-                      );
-                    },
+                  const SizedBox(height: 12),
+                  ...entry.sections.map(
+                    (section) => _ReadingSectionCard(
+                      section: section,
+                      isPersian: isPersian,
+                      books: books,
+                      entrySourceBookId: entry.sourceBookId,
+                    ),
                   ),
                 ],
                 const SizedBox(height: 28),
@@ -504,6 +399,8 @@ class HistoryDetailScreen extends ConsumerWidget {
                     ],
                   ),
                 ),
+                const SizedBox(height: 40),
+                HistoryEndOfText(entry: entry),
               ],
             ),
           );
@@ -511,19 +408,6 @@ class HistoryDetailScreen extends ConsumerWidget {
       ),
     );
   }
-
-  static IconData _iconForKind(HistoryEntryKind kind) => switch (kind) {
-    HistoryEntryKind.empire => Icons.account_balance,
-    HistoryEntryKind.dynasty => Icons.account_balance,
-    HistoryEntryKind.ruler => Icons.shield,
-    HistoryEntryKind.person => Icons.person,
-    HistoryEntryKind.event => Icons.event,
-    HistoryEntryKind.battle => Icons.sports_kabaddi,
-    HistoryEntryKind.place => Icons.location_on,
-    HistoryEntryKind.cultural => Icons.palette,
-    HistoryEntryKind.poem => Icons.auto_stories,
-    HistoryEntryKind.oral => Icons.record_voice_over,
-  };
 
   static String _kindLabel(HistoryEntryKind kind, bool isPersian) {
     final key = switch (kind) {
@@ -542,36 +426,246 @@ class HistoryDetailScreen extends ConsumerWidget {
   }
 }
 
-class _DetailLine extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
+class _ReadingSectionCard extends StatelessWidget {
+  final HistoryDetailSection section;
+  final bool isPersian;
+  final List<HistoryBook> books;
+  final String entrySourceBookId;
 
-  const _DetailLine({
-    required this.icon,
-    required this.label,
-    required this.value,
+  const _ReadingSectionCard({
+    required this.section,
+    required this.isPersian,
+    required this.books,
+    required this.entrySourceBookId,
   });
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(icon, size: 18, color: colors.primary),
-        const SizedBox(width: 8),
-        Text(
-          '$label: ',
-          style: QalamTypography.meta(color: colors.primary, fontSize: 14),
+    final lang = isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik;
+
+    final heading = isPersian
+        ? _historyOptionalText(section.headingPersian) ?? section.heading
+        : section.heading;
+    final body = isPersian
+        ? _historyOptionalText(section.bodyPersian) ?? section.body
+        : section.body;
+    // The editorial note applies whenever any Persian text on this section is
+    // an editorial rendering of the Tajik source witness, not only when a full
+    // Persian body translation exists.
+    final showedPersianEditorial = isPersian && section.persianIsEditorial;
+    // When the body has no Persian rendering it falls back to the Tajik source
+    // paragraph (Cyrillic); label it and keep it LTR so it is not misread as
+    // right-to-left Persian text.
+    final showedTajikSourceFallback =
+        isPersian && _historyOptionalText(section.bodyPersian) == null;
+    // Cyrillic headings (Tajik mode, or a Persian-mode heading with no Persian
+    // rendering) must stay LTR; only a real Persian heading is RTL.
+    final headingDirection =
+        (!isPersian || _historyOptionalText(section.headingPersian) == null)
+        ? TextDirection.ltr
+        : TextDirection.rtl;
+    final paragraphs = body
+        .split('\n\n')
+        .map((paragraph) => paragraph.trim())
+        .where((paragraph) => paragraph.isNotEmpty)
+        .toList(growable: false);
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+      decoration: BoxDecoration(
+        color: colors.surfaceContainerHighest.withValues(alpha: 0.30),
+        borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
+        border: Border.all(
+          color: colors.outlineVariant.withValues(alpha: 0.5),
+          width: 0.5,
         ),
-        Expanded(
-          child: Text(
-            value,
-            style: QalamTypography.body(color: colors.onSurface, fontSize: 14),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (heading.isNotEmpty) ...[
+            Directionality(
+              textDirection: headingDirection,
+              child: Text(
+                heading,
+                style: QalamTypography.sectionTitle(
+                  color: colors.onSurface,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+          ...paragraphs.map(
+            (paragraph) => Padding(
+              padding: EdgeInsets.only(
+                bottom: paragraph == paragraphs.last ? 0 : 12,
+              ),
+              child: _sectionParagraph(
+                context,
+                paragraph,
+                forceLtr: isPersian && showedTajikSourceFallback,
+              ),
+            ),
           ),
-        ),
-      ],
+          if (_sectionBook != null) ...[
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Icon(Icons.menu_book, size: 14, color: colors.onSurfaceVariant),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    HistorySectionLabels.sourceBookCaption(
+                      lang,
+                      _sectionBookTitle(),
+                    ),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+          if (section.printedPage != null) ...[
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Icon(Icons.numbers, size: 14, color: colors.onSurfaceVariant),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    HistorySectionLabels.pageReference(
+                      lang,
+                      section.printedPage!,
+                      section.pdfPage,
+                      printedPageEnd: section.printedPageEnd,
+                      pdfPageEnd: section.pdfPageEnd,
+                    ),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+          if (showedTajikSourceFallback) ...[
+            const SizedBox(height: 6),
+            Row(
+              children: [
+                Icon(Icons.translate, size: 14, color: colors.onSurfaceVariant),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    HistorySectionLabels.sourceLanguageNote(lang),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+          if (showedPersianEditorial) ...[
+            const SizedBox(height: 6),
+            Row(
+              children: [
+                Icon(Icons.edit_note, size: 14, color: colors.onSurfaceVariant),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    HistorySectionLabels.editorialNote(lang),
+                    style: QalamTypography.meta(
+                      color: colors.onSurfaceVariant,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  /// A section paragraph. When the body is the Tajik source witness shown in
+  /// Persian mode it is wrapped in an LTR [Directionality] so the Cyrillic
+  /// text is not reshaped or aligned as right-to-left Persian.
+  Widget _sectionParagraph(
+    BuildContext context,
+    String paragraph, {
+    required bool forceLtr,
+  }) {
+    final text = Text(
+      paragraph,
+      style: QalamTypography.body(
+        color: Theme.of(context).colorScheme.onSurface,
+        height: 1.65,
+        fontSize: 15,
+      ),
+    );
+    if (!forceLtr) return text;
+    return Directionality(textDirection: TextDirection.ltr, child: text);
+  }
+
+  /// The book a section cites when it differs from the entry's own source book
+  /// (e.g. a poem section drawn from a literature textbook).
+  HistoryBook? get _sectionBook {
+    final bookId = section.sourceBookId;
+    if (bookId == null || bookId == entrySourceBookId) return null;
+    for (final book in books) {
+      if (book.id == bookId) return book;
+    }
+    return null;
+  }
+
+  String _sectionBookTitle() {
+    final book = _sectionBook!;
+    return isPersian
+        ? _historyOptionalText(book.titlePersian) ?? book.title
+        : book.title;
+  }
+}
+
+class _DetailLine extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _DetailLine({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: colors.outlineVariant)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: QalamTypography.meta(
+              color: colors.onSurfaceVariant,
+              fontSize: 13,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            value,
+            style: QalamTypography.body(color: colors.onSurface, fontSize: 16),
+          ),
+        ],
+      ),
     );
   }
 }

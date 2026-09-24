@@ -65,8 +65,8 @@ void main() {
 
         expect(
           books.length,
-          equals(7),
-          reason: 'Expected 7 history textbooks (grades 5-11)',
+          equals(10),
+          reason: 'Expected 10 textbooks (7 history grades 5-11, 3 literature)',
         );
 
         for (final book in books) {
@@ -395,24 +395,38 @@ void main() {
               reason:
                   'Only published source-attested poems may ship a representation',
             );
-            expect(
-              representation,
-              isNotNull,
-              reason:
-                  'Missing generated Persian-script representation in work $id',
-            );
-            expect(
-              representation!.trim(),
-              isNotEmpty,
-              reason:
-                  'Empty generated Persian-script representation in work $id',
-            );
-            if (cyrillicRegex.hasMatch(representation)) {
-              leaks.add(
-                '$id: persianScriptRepresentation -> ${representation.substring(0, representation.length > 50 ? 50 : representation.length)}',
+            if (representation != null) {
+              // Any present representation must be explicitly labeled
+              // generated — never accepted as an original Persian witness.
+              expect(
+                representationSource,
+                equals('generated'),
+                reason: 'Work $id has an unlabeled script transformation',
+              );
+              expect(
+                representation.trim(),
+                isNotEmpty,
+                reason:
+                    'Empty generated Persian-script representation in work $id',
+              );
+              if (cyrillicRegex.hasMatch(representation)) {
+                leaks.add(
+                  '$id: persianScriptRepresentation -> ${representation.substring(0, representation.length > 50 ? 50 : representation.length)}',
+                );
+              }
+              generatedRepresentations++;
+            } else {
+              // Verified Tajik text may ship without any Persian-script
+              // representation; when it does the provenance flag must be
+              // absent too, so nothing claims a representation that does
+              // not exist.
+              expect(
+                representationSource,
+                isNull,
+                reason:
+                    'Verified Tajik work $id has no Persian representation but carries a stale persianScriptSource',
               );
             }
-            generatedRepresentations++;
           } else {
             expect(
               representation,
@@ -427,9 +441,10 @@ void main() {
             reason: 'Work $id has no verified Persian source witness',
           );
           expect(
-            representationSource,
-            equals('generated'),
-            reason: 'Work $id has an unlabeled script transformation',
+            representationSource == null || representationSource == 'generated',
+            isTrue,
+            reason:
+                'Work $id labels a Persian-script transformation as an original source witness',
           );
         }
 
@@ -440,6 +455,87 @@ void main() {
           reason:
               'Published Tajik poems should expose an honestly labeled Persian-script representation',
         );
+      },
+    );
+
+    test(
+      'seven page-verified Tajik works ship honestly without a Persian representation',
+      () {
+        final file = File('assets/data/literature/works.json');
+        final works = (jsonDecode(file.readAsStringSync()) as List)
+            .cast<Map<String, dynamic>>();
+
+        // Approved audit set (PROVENANCE_PAGE_AUDIT.md): these verified Tajik
+        // works intentionally carry no Persian-script representation, so no
+        // stale "generated" flag or source-witness claim may resurface on them.
+        const auditIds = <String>{
+          'f4c025e3-48a1-4bc1-8e29-cf404472e590',
+          'f9f475b2-5a47-4128-8c13-16d828359c3f',
+          '6686a9e9-f77a-4b7a-9cc8-f9508bece0a8',
+          'ced6cb49-8ac9-4c15-a255-bc74cf50daa8',
+          'qanoat_mavj_dar_sahro_grade6_2014_p147_148',
+          'qanoat_mavji_odam_grade6_2014_p149_150',
+          'qanoat_mavji_barodari_grade6_2014_p150_151',
+        };
+
+        final noRepresentation = <String>{};
+        for (final work in works) {
+          final id = work['id'] as String;
+          final hasTajikText =
+              (work['textTajik'] as String?)?.trim().isNotEmpty == true;
+          final hasRepresentation =
+              (work['persianScriptRepresentation'] as String?)
+                  ?.trim()
+                  .isNotEmpty ==
+              true;
+          if (hasTajikText && !hasRepresentation) {
+            noRepresentation.add(id);
+          }
+        }
+
+        expect(
+          noRepresentation,
+          auditIds,
+          reason:
+              'Verified Tajik works without a Persian representation must match the approved audit set',
+        );
+
+        final byId = {for (final work in works) work['id'] as String: work};
+        for (final id in auditIds) {
+          final work = byId[id]!;
+          expect(
+            (work['textTajik'] as String?)?.trim().isNotEmpty,
+            isTrue,
+            reason: 'Audit work $id must carry verified Tajik text',
+          );
+          expect(
+            work['textStatus'],
+            'verified',
+            reason: 'Audit work $id must be verified',
+          );
+          expect(
+            (work['rights'] as Map?)?['status'],
+            'sourceAttested',
+            reason: 'Audit work $id must be source-attested',
+          );
+          expect(
+            work['persianScriptSource'],
+            isNull,
+            reason:
+                'Audit work $id must not carry a stale generated-script flag without a representation',
+          );
+          expect(
+            work['textPersian'],
+            isNull,
+            reason:
+                'Audit work $id must not claim a Persian source text it does not have',
+          );
+          expect(
+            work['scriptSource'],
+            'tajikOnly',
+            reason: 'Audit work $id must not claim a Persian source witness',
+          );
+        }
       },
     );
 

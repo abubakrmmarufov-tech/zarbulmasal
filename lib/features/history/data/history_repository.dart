@@ -61,6 +61,14 @@ class HistoryRepository {
             ...entry.keywords,
             ...entry.keyFigures,
             ...entry.keyFiguresPersian,
+            ...entry.sections.expand(
+              (s) => [
+                s.heading,
+                if (s.headingPersian != null) s.headingPersian!,
+                s.body,
+                if (s.bodyPersian != null) s.bodyPersian!,
+              ],
+            ),
           ];
           return SearchNormalizer.matchesAny(searchFields, cleanQuery);
         })

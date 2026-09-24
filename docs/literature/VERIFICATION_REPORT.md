@@ -112,6 +112,33 @@ To guarantee long-term quality assurance and prevent drift between printed sourc
 2. Resolve second-witness gaps for the six primary-checked records and establish rights/editorial approval before any release.
 3. Complete line/script audits and editorial review for the 5,215 pending records; retain exact printed-page and source evidence for every decision.
 
+---
+
+## 6. Oral Heritage Record Identity Trace (superseded → current attribution)
+
+**Applies to:** the 12 short-form records in `assets/data/literature/oral_heritage.json` that were re-sourced in the 2026-09-23 source-attested oral release (branch `codex/oral-heritage`, base `259d17f`).
+
+**Context:** each of the 12 generic `oral-*` IDs previously carried a citation to an academic folk collection (Fozilov 1977, Shermuhammadov 1980/1983, Amonov 1982/1985, Murodov 1987, et al.) that is **not held** in this workspace, together with `text: ""` and an unverifiable `evidenceLevel: extracted`. Those prior records were epistemically dishonest, so they were re-pointed to **different folk items of the same genre**, each verified verbatim on one held printed page of the uploaded Grade 5/6 textbooks (`docs/literature/pdfs/adabiet sinfi 5.pdf` / `adabiet sinfi 6.pdf`).
+
+> ⚠️ **The "Former (superseded) attribution" column below records what the record ID previously cited. It is NOT the source of the current text.** The former attribution names a different item of the same genre and is retained only as a disclosure that the record identity was replaced, not as a witness for the current text. The current text is sourced **only** from the held textbook page listed in the "Current textbook attribution / page" columns. No old-citation page was checked for the new text.
+
+| id | Former (superseded) attribution | Former region | Former collector | Current textbook attribution | Current page | Current text incipit |
+|---|---|---|---|---|---|---|
+| oral-rubai-001 | Фолклори тоҷик: Рубоиёт ва дубайтиҳои халқӣ, Дониш, 1980, с. 45 | Суғд (Зарафшон) | Б. Шермуҳаммадов | Адабиёти тоҷик, синфи 6 (Маориф, 2014) | 13 | Сари сарчашма рафтам ман ба вахте, Ба оби … |
+| oral-rubai-002 | Фолклори тоҷик: Сурудҳои мардумӣ, Дониш, 1982, с. 78 | Хатлон (Кӯлоб) | Р. Амонов | Адабиёти тоҷик, синфи 6 (Маориф, 2014) | 13 | Хоки Ватан аз тахти Сулаймон хуштар, Хори … |
+| oral-dubayti-001 | Фолклори Бадахшон: Дубайтиҳо ва чорбайтиҳои халқӣ, Дониш, 1985, с. 112 | Бадахшон | Н. Шакармамадов | Адабиёти тоҷик, синфи 6 (Маориф, 2014) | 14 | Диле дорам, ки аз султон натарсад, Зи банд… |
+| oral-dubayti-002 | Фолклори водии Ҳисор, Дониш, 1987, с. 64 | Ҳисор | Ф. Муродов | Адабиёти тоҷик, синфи 6 (Маориф, 2014) | 15 | Нигори нозанин, ман аҳли дардам, Сарамро г… |
+| oral-chiston-001 | Чистонҳои халқии тоҷикӣ, Ирфон, 1975, с. 23 | Самарқанд ва Бухоро | Б. Шермуҳаммадов | Адабиёти тоҷик, синфи 6 (Маориф, 2014) | 19 | Як чодари зангорӣ, Шабҳо пуру рӯз холӣ. (О… |
+| oral-chiston-002 | Чистонҳои халқии тоҷикӣ, Ирфон, 1975, с. 35 | Хуҷанд | Р. Амонов | Адабиёти тоҷик, синфи 6 (Маориф, 2014) | 19 | Гуле дидам, ки он бе хор бошад, На дар даш… |
+| oral-chiston-003 | Чистонҳои тоҷикӣ, Ирфон, 1975, с. 48 | Рашт | Б. Шермуҳаммадов | Адабиёти тоҷик, синфи 6 (Маориф, 2014) | 20 | Аз осмон афтад, намешиканад, Аз дарахт афт… |
+| oral-zarbulmasal-001 | Зарбулмасал ва мақолҳои тоҷикӣ, Дониш, 1977, с. 14 | Умумимиллӣ | М. Фозилов | Адабиёти тоҷик, синфи 5 (Маориф, 2017) | 38 | Дасти одамизод – гул. |
+| oral-zarbulmasal-002 | Зарбулмасал ва мақолҳои тоҷикӣ, Дониш, 1977, с. 89 | Умумимиллӣ | М. Фозилов | Адабиёти тоҷик, синфи 5 (Маориф, 2017) | 38 | Ҷӯянда – ёбанда. |
+| oral-zarbulmasal-003 | Зарбулмасал ва мақолҳои тоҷикӣ, Дониш, 1977, с. 120 | Умумимиллӣ | М. Фозилов | Адабиёти тоҷик, синфи 5 (Маориф, 2017) | 38 | Кӯдак азиз аст, адабаш – аз он азизтар. |
+| oral-maqol-001 | Мақол ва зарбулмасалҳои халқи тоҷик, Маориф, 1983, с. 52 | Суғд | Б. Шермуҳаммадов | Адабиёти тоҷик, синфи 5 (Маориф, 2017) | 38 | То меҳнат накунӣ, роҳат набинӣ |
+| oral-maqol-002 | Мақол ва зарбулмасалҳои халқи тоҷик, Маориф, 1983, с. 67 | Хатлон | Б. Шермуҳаммадов | Адабиёти тоҷик, синфи 5 (Маориф, 2017) | 38 | Аввал – андеша, баъд – гуфтор |
+
+**Derivation:** the former-attribution columns were read from the base commit `259d17f` (`git show 259d17f:assets/data/literature/oral_heritage.json`); the current columns reflect the working file as of 2026-09-23. The two `afsona` records are **not** in this table: they remain quarantined (`needsReview`, rights `unknown`, empty text) and keep their original collection citations unchanged as lead metadata only.
+
 ### Work Dossier: rudaki_buyi_juyi_muliyon_grade5_2017_p54 — Бӯйи Ҷӯйи Мулиён / بوی جوی مولیان
 
 The Persian title is a generated script representation, not a Persian-source title or semantic translation.

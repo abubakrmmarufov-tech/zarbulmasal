@@ -7,6 +7,7 @@ class AppConstants {
   static const String prefsDarkMode = 'dark_mode';
   static const String prefsFavorites = 'favorites';
   static const String prefsLanguage = 'display_language';
+  static const String prefsReadingScript = 'reading_script';
   static const String prefsAppTextScale = 'app_text_scale';
   static const String prefsOnboardingComplete = 'onboarding_complete';
   static const String prefsLiteraryFavorites = 'literary_favorites';

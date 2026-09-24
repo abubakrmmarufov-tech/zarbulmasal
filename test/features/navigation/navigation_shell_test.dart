@@ -14,7 +14,7 @@ void main() {
         expect(find.byTooltip('Асосӣ'), findsOneWidget);
         expect(find.byTooltip('Кашф'), findsOneWidget);
         expect(find.byTooltip('Омӯзиш'), findsOneWidget);
-        expect(find.byTooltip('Маҳфуз'), findsOneWidget);
+        expect(find.byTooltip('Баёз'), findsOneWidget);
 
         // Verify settings icon is NOT in bottom nav bar
         final bottomBar = find.byType(DecoratedBox).first;
@@ -33,7 +33,7 @@ void main() {
         expect(find.byTooltip('خانه'), findsOneWidget);
         expect(find.byTooltip('کشف'), findsOneWidget);
         expect(find.byTooltip('آموزش'), findsOneWidget);
-        expect(find.byTooltip('ذخیره'), findsOneWidget);
+        expect(find.byTooltip('بیاض'), findsOneWidget);
       },
     );
 
@@ -48,17 +48,20 @@ void main() {
       // Tap Learn tab
       await tester.tap(find.byTooltip('Омӯзиш'));
       await tester.pumpAndSettle();
-      expect(find.text('Роҳҳои омӯзишӣ'), findsOneWidget);
+      expect(find.text('Роҳҳои омӯзишӣ'.toUpperCase()), findsOneWidget);
 
       // Tap Saved tab
-      await tester.tap(find.byTooltip('Маҳфуз'));
+      await tester.tap(find.byTooltip('Баёз'));
       await tester.pumpAndSettle();
-      expect(find.text('Маҳфузҳо'), findsOneWidget);
+      expect(find.text('Баёзи ман'), findsOneWidget);
 
       // Tap Home tab
       await tester.tap(find.byTooltip('Асосӣ'));
       await tester.pumpAndSettle();
-      expect(find.text('Кашфи фарҳанги тоҷик'), findsOneWidget);
+      expect(
+        find.text('Ҷустуҷӯи шоирон, шеърҳо, зарбулмасалҳо, таърих...'),
+        findsOneWidget,
+      );
     });
 
     testWidgets(
@@ -83,7 +86,10 @@ void main() {
         await tester.pumpAndSettle();
 
         // Back on Home
-        expect(find.text('Кашфи фарҳанги тоҷик'), findsOneWidget);
+        expect(
+          find.text('Ҷустуҷӯи шоирон, шеърҳо, зарбулмасалҳо, таърих...'),
+          findsOneWidget,
+        );
       },
     );
   });

@@ -7,6 +7,18 @@ import '../../data/models/proverb.dart';
 import '../../data/models/category.dart';
 import '../../data/seed/seed_categories.dart';
 import '../../data/seed/seed_proverbs.dart';
+import '../../features/literature/data/tajikistan_day.dart'
+    show
+        systemInstantClockProvider,
+        tajikistanCalendarDay,
+        tajikistanDayProvider;
+
+// The Tajikistan (UTC+5) daily-edition offset is owned by the literature
+// feature's tajikistan_day.dart (the single source of truth for the UTC+5
+// calendar). Re-export it here so app.dart's existing unqualified reference
+// keeps resolving from this shared provider surface.
+export '../../features/literature/data/tajikistan_day.dart'
+    show tajikistanUtcOffset;
 
 /// Injected pre-loaded SharedPreferences instance.
 /// In production, this is initialized before runApp and overridden in ProviderScope
@@ -160,9 +172,14 @@ final appTextScaleProvider =
 class AppTextScaleNotifier extends StateNotifier<double> {
   static const double minimum = 0.9;
   static const double defaultScale = 1.0;
+  static const double largeScale = 1.1;
   static const double maximum = 1.2;
 
   final SharedPreferences? _prefs;
+
+  /// Set once the user changes the scale explicitly; guards the async initial
+  /// load from clobbering a choice made before the load completes.
+  bool _hasUserChoice = false;
 
   static double _resolveInitial(SharedPreferences? prefs) {
     final stored = prefs?.getDouble(AppConstants.prefsAppTextScale);
@@ -178,13 +195,14 @@ class AppTextScaleNotifier extends StateNotifier<double> {
 
   Future<void> _load() async {
     final prefs = _prefs ?? await SharedPreferences.getInstance();
-    state = _resolveInitial(prefs);
+    if (!_hasUserChoice) state = _resolveInitial(prefs);
   }
 
   Future<void> setScale(double value) async {
     final safeValue = value.isFinite
         ? value.clamp(minimum, maximum)
         : defaultScale;
+    _hasUserChoice = true;
     state = safeValue;
     final prefs = _prefs ?? await SharedPreferences.getInstance();
     await prefs.setDouble(AppConstants.prefsAppTextScale, safeValue);
@@ -285,12 +303,39 @@ int calendarDayIndex(DateTime now, int catalogLength) {
   return ((days % catalogLength) + catalogLength) % catalogLength;
 }
 
+/// Injectable "now" clock so tests can pin the daily edition to a fixed
+/// instant. This is the same provider as the literature feature's
+/// [systemInstantClockProvider] — one shared clock drives both the daily
+/// proverb and the daily literary verse, so a future settings "daily date"
+/// override affects both.
+final nowProvider = systemInstantClockProvider;
+
+/// Converts an arbitrary instant to the calendar date (day granularity) in
+/// Tajikistan (UTC+5). Used by the daily hero, the daily reading page and the
+/// daily proverb selection so every viewer sees the same quote on the same day.
+/// Delegates to the canonical [tajikistanCalendarDay].
+DateTime tajikistanDate(DateTime instant) => tajikistanCalendarDay(instant);
+
+/// The current Tajikistan (UTC+5) calendar date, derived from the shared
+/// injectable clock. This is the same provider as the literature feature's
+/// [tajikistanDayProvider]; the midnight rollover is driven by
+/// [DailyRolloverScheduler] in app.dart, which invalidates it at each UTC+5
+/// midnight (and on app resume, when the overdue rollover timer fires), so the
+/// daily proverb and the daily literary verse roll over together. The provider
+/// itself holds no timer, so it never leaves a pending timer behind when the
+/// UI is torn down.
+final dailyDateProvider = tajikistanDayProvider;
+
+/// A plain (not auto-dispose) derivation: it recomputes whenever the catalog
+/// or [dailyDateProvider] changes, and — unlike an auto-dispose provider —
+/// schedules no disposal timer when the Home screen unmounts.
 final dailyProverbProvider = Provider<Proverb?>((ref) {
   final proverbs = ref.watch(proverbsProvider);
   if (proverbs.isEmpty) {
     return null;
   }
-  final index = calendarDayIndex(DateTime.now(), proverbs.length);
+  final date = ref.watch(dailyDateProvider);
+  final index = calendarDayIndex(date, proverbs.length);
   return proverbs[index];
 });
 

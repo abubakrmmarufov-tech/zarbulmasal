@@ -7,17 +7,54 @@ import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
 import '../domain/literary_work.dart';
-import '../domain/verification_record.dart';
+import '../../../core/utils/search_field_limits.dart';
+import '../../../core/utils/search_normalizer.dart';
 import 'literary_author_display_text.dart';
 import 'literary_work_display_text.dart';
 
 /// A screen listing all verified and approved literary works.
-class WorksListScreen extends ConsumerWidget {
+class WorksListScreen extends ConsumerStatefulWidget {
   const WorksListScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<WorksListScreen> createState() => _WorksListScreenState();
+}
+
+class _WorksListScreenState extends ConsumerState<WorksListScreen> {
+  final _search = TextEditingController();
+  String _query = '';
+
+  @override
+  void dispose() {
+    _search.dispose();
+    super.dispose();
+  }
+
+  /// Works whose title, first line or poet matches the query.
+  List<LiteraryWork> _filter(List<LiteraryWork> works, DisplayLanguage lang) {
+    if (_query.trim().isEmpty) return works;
+    final authors = {
+      for (final author
+          in ref.read(literaryAuthorsProvider).valueOrNull ?? const [])
+        author.id: author,
+    };
+    return works
+        .where(
+          (work) => SearchNormalizer.matchesAny([
+            work.title,
+            work.titlePersian ?? '',
+            work.incipit ?? '',
+            authors[work.authorId]?.canonicalName ?? '',
+            ...?authors[work.authorId]?.aliases,
+          ], _query),
+        )
+        .toList(growable: false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final lang = ref.watch(displayLanguageProvider);
+    ref.watch(literaryAuthorsProvider);
     final approvedWorksAsync = ref.watch(approvedWorksProvider);
 
     return Scaffold(
@@ -45,6 +82,36 @@ class WorksListScreen extends ConsumerWidget {
                 eyebrow: AppTranslations.get('lit_works_eyebrow', lang),
                 title: AppTranslations.get('lit_poems', lang),
                 subtitle: AppTranslations.get('lit_works_subtitle', lang),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  QalamSpacing.pageH,
+                  4,
+                  QalamSpacing.pageH,
+                  12,
+                ),
+                child: TextField(
+                  controller: _search,
+                  inputFormatters: searchQueryFormatters,
+                  textInputAction: TextInputAction.search,
+                  onChanged: (value) => setState(() => _query = value),
+                  decoration: InputDecoration(
+                    hintText: AppTranslations.get('lit_search', lang),
+                    prefixIcon: const Icon(Icons.search),
+                    suffixIcon: _query.isEmpty
+                        ? null
+                        : IconButton(
+                            tooltip: AppTranslations.get('btn_clear', lang),
+                            icon: const Icon(Icons.clear),
+                            onPressed: () {
+                              _search.clear();
+                              setState(() => _query = '');
+                            },
+                          ),
+                  ),
+                ),
               ),
             ),
             // Works content
@@ -94,11 +161,21 @@ class WorksListScreen extends ConsumerWidget {
                   );
                 }
 
+                final shown = _filter(works, lang);
+                if (shown.isEmpty) {
+                  return SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: EmptyState(
+                      icon: Icons.search_off,
+                      title: AppTranslations.get('lit_no_results', lang),
+                    ),
+                  );
+                }
                 return SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
-                    final work = works[index];
+                    final work = shown[index];
                     return _WorkListItem(work: work);
-                  }, childCount: works.length),
+                  }, childCount: shown.length),
                 );
               },
             ),
@@ -123,7 +200,7 @@ class _WorkListItem extends ConsumerWidget {
     final author = authorAsync.valueOrNull;
 
     final title = LiteraryWorkDisplayText.title(work, lang);
-    final incipit = LiteraryWorkDisplayText.incipit(work, lang);
+    final incipit = LiteraryWorkDisplayText.distinctIncipit(work, lang);
 
     final authorName = LiteraryAuthorDisplayText.nameOrFallback(
       author,
@@ -131,65 +208,37 @@ class _WorkListItem extends ConsumerWidget {
       work.authorId,
     );
 
-    return InkWell(
-      onTap: () => context.push('/literature/work/${work.id}'),
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: QalamSpacing.pageH,
-          vertical: 18,
-        ),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(color: colors.outlineVariant, width: 0.5),
-          ),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: QalamSpacing.pageH),
+      child: QalamSlip(
+        onTap: () => context.push('/literature/work/${work.id}'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: QalamTypography.sectionTitle(
-                      color: colors.onSurface,
-                      fontSize: 19,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    authorName,
-                    style: QalamTypography.meta(
-                      color: colors.primary,
-                      fontSize: 13,
-                    ),
-                  ),
-                  if (incipit != null) ...[
-                    const SizedBox(height: 6),
-                    Text(
-                      '«$incipit»',
-                      style: QalamTypography.bodySecondary(
-                        color: colors.onSurfaceVariant,
-                        fontSize: 13,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ],
+            Text(
+              title,
+              style: QalamTypography.literaryTitle(
+                color: colors.onSurface,
+                fontSize: 19,
               ),
             ),
-            const SizedBox(width: 12),
-            if (work.verification.evidenceLevel ==
-                VerificationLevel.editoriallyApproved)
-              const Icon(
-                Icons.check_circle_outline,
-                size: 16,
-                color: QalamColors.forest,
+            const SizedBox(height: 4),
+            Text(
+              authorName,
+              style: QalamTypography.meta(color: colors.primary, fontSize: 13),
+            ),
+            if (incipit != null) ...[
+              const SizedBox(height: 6),
+              Text(
+                '«$incipit»',
+                style: QalamTypography.bodySecondary(
+                  color: colors.onSurfaceVariant,
+                  fontSize: 13,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-            const SizedBox(width: 8),
-            const QalamChevron(size: 20),
+            ],
           ],
         ),
       ),

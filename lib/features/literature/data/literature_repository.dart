@@ -1,11 +1,20 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:zarbulmasal/features/literature/data/runtime_works_codec.dart';
+import 'package:zarbulmasal/features/literature/data/tajikistan_day.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 
-List<dynamic> _decodeJsonList(String source) {
+/// Decodes the works asset and expands the dictionary-compressed runtime
+/// catalog into plain work maps. A legacy top-level JSON `List` (used by the
+/// repository's failure-retry test asset `'[]'`) is passed through unchanged.
+List<dynamic> _decodeWorksAsset(String source) {
   final decoded = jsonDecode(source);
-  return decoded is List<dynamic> ? decoded : const <dynamic>[];
+  if (decoded is List<dynamic>) return decoded;
+  if (decoded is Map<String, dynamic>) {
+    return expandRuntimeWorks(decoded);
+  }
+  return const <dynamic>[];
 }
 
 /// Repository responsible for loading and querying literary heritage data.
@@ -19,7 +28,12 @@ class LiteratureRepository {
 
   /// Default asset paths for literary heritage data.
   static const String authorsAssetPath = 'assets/data/literature/poets.json';
-  static const String worksAssetPath = 'assets/data/literature/works.json';
+  // The bundled works asset is the deterministic runtime catalog derived from
+  // the canonical `assets/data/literature/works.json` (see
+  // `tool/build_runtime_literature.dart`). The canonical file remains in the
+  // repo as the editorial source of truth for content validators and tools.
+  static const String worksAssetPath =
+      'assets/data/literature/runtime_works.json';
   static const String sourcesAssetPath = 'assets/data/literature/sources.json';
   static const String schoolCanonAssetPath =
       'assets/data/literature/school_canon.json';
@@ -80,7 +94,7 @@ class LiteratureRepository {
   Future<List<LiteraryWork>> _loadWorks() async {
     final jsonString = await _bundle.loadString(worksAssetPath);
     final decoded = await compute(
-      _decodeJsonList,
+      _decodeWorksAsset,
       jsonString,
       debugLabel: 'decode-literary-works',
     );
@@ -144,17 +158,19 @@ class LiteratureRepository {
     return works.where((w) => w.isDisplayable).toList();
   }
 
-  /// Deterministically selects a work based on [date] from approved works.
+  /// Deterministically selects a work based on the Tajikistan calendar day
+  /// containing [date] from approved works.
   ///
   /// Filters [works] to those where [LiteraryWork.isDisplayable] is true,
-  /// and returns `null` if no displayable works exist.
+  /// and returns `null` if no displayable works exist. The day index is
+  /// gapless across month/year boundaries and identical for the same absolute
+  /// instant regardless of the device time zone.
   LiteraryWork? getDailyVerse(DateTime date, List<LiteraryWork> works) {
     final approved = works.where((w) => w.isDisplayable).toList();
     if (approved.isEmpty) {
       return null;
     }
-    final dayIndex = (date.year * 365 + date.month * 31 + date.day).abs();
-    return approved[dayIndex % approved.length];
+    return approved[tajikistanDayIndex(date, approved.length)];
   }
 
   /// Finds an author by their unique [id].

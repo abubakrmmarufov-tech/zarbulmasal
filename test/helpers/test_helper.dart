@@ -8,6 +8,7 @@ import 'package:zarbulmasal/data/models/proverb.dart';
 import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/router/app_router.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
+import 'package:zarbulmasal/shared/widgets/reading_room.dart';
 
 class TestApp {
   final ProviderContainer container;
@@ -29,6 +30,7 @@ Future<TestApp> openApp(
   EdgeInsets safePadding = EdgeInsets.zero,
   List<Proverb>? catalog,
   List<Override>? overrides,
+  bool readingRoom = false,
 }) async {
   tester.view.physicalSize = Size(width, height);
   tester.view.devicePixelRatio = 1;
@@ -77,7 +79,14 @@ Future<TestApp> openApp(
                 textDirection: lang == DisplayLanguage.persian
                     ? TextDirection.rtl
                     : TextDirection.ltr,
-                child: child!,
+                // The app's page frame (rail on desktop), when asked for.
+                child: readingRoom
+                    ? ReadingRoomFrame(
+                        router: router,
+                        lang: lang,
+                        child: child!,
+                      )
+                    : child!,
               ),
             ),
           );

@@ -6,7 +6,7 @@ import 'qalam_spacing.dart';
 /// A prominent editorial card for the home screen that serves as the
 /// entry point to the Мероси адабӣ (Literary Heritage) section.
 ///
-/// Uses the same dark-ink surface treatment as [QalamDailyHero] to
+/// Uses a dark-ink «folio» surface to
 /// signal cultural weight and importance within the editorial flow.
 class QalamLiteratureCard extends StatelessWidget {
   final VoidCallback onTap;
@@ -32,9 +32,8 @@ class QalamLiteratureCard extends StatelessWidget {
     // eyebrow and supporting copy on the paper-text ramp; the softer
     // burgundy/ink-muted pair falls below WCAG 4.5:1 for normal text.
     final mutedColor = QalamColors.paperTextSoft;
-    final accentColor = isDark
-        ? QalamColors.antiqueGoldSoft
-        : QalamColors.antiqueGold;
+    // Ink/lapis surface in both themes: the night vermilion keeps 4.5:1.
+    const accentColor = QalamColors.vermilionNight;
     final borderColor = isDark
         ? QalamColors.hairlineDark
         : QalamColors.hairline;
@@ -73,7 +72,7 @@ class QalamLiteratureCard extends StatelessWidget {
                             title,
                             style: QalamTypography.literaryTitle(
                               color: textColor,
-                              fontSize: 24,
+                              fontSize: 22,
                             ),
                           ),
                           const SizedBox(height: 8),

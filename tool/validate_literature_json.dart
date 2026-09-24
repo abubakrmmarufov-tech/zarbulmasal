@@ -15,6 +15,21 @@ void requireCondition(bool condition, [String? message]) {
   }
 }
 
+/// Parses the page range that closes a canon `sourceEvidence` citation.
+///
+/// Canon evidence strings end uniformly as "…с. 49–59." (en dash). Returns
+/// the inclusive [start, end] bounds, or null when the citation carries no
+/// single parseable range (e.g. a future free-text citation). Only linked
+/// entries are required to have one — they are the ones with a page-level
+/// work relation to cross-check.
+(int, int)? parseSourcePageRange(String sourceEvidence) {
+  final match = RegExp(
+    r'с\.\s*(\d+)\s*[–—-]\s*(\d+)\s*\.?\s*$',
+  ).firstMatch(sourceEvidence.trim());
+  if (match == null) return null;
+  return (int.parse(match.group(1)!), int.parse(match.group(2)!));
+}
+
 void main() {
   print('=== Running Comprehensive Cultural Heritage Validation ===');
 
@@ -266,9 +281,11 @@ void main() {
   final sourcesList =
       jsonDecode(sourcesFile.readAsStringSync()) as List<dynamic>;
   final sourceIds = <String>{};
+  final sourceById = <String, Map<String, dynamic>>{};
   for (final s in sourcesList) {
     final map = s as Map<String, dynamic>;
     sourceIds.add(map['id'] as String);
+    sourceById[map['id'] as String] = map;
   }
 
   final canonFile = File('assets/data/literature/school_canon.json');
@@ -297,6 +314,67 @@ void main() {
       entry.isMandatory,
       'Canon entry ${entry.id} must be mandatory',
     );
+    // A canon entry either links a registered work or stays explicitly
+    // unlinked (workId empty) pending source verification. A link may never
+    // dangle, and it must stay coherent across the four relations that hold
+    // a curriculum link together:
+    //   1. the linked work is by the canon author,
+    //   2. it is held on the same source (textbook PDF) this entry names,
+    //   3. its primary page falls inside the entry's cited page range,
+    //   4. a citation marked 'verified' resolves to a displayable work.
+    // The page range is parsed only for linked entries, whose evidence is
+    // uniformly "…с. N–M." — unlinked entries may use any future format.
+    if (entry.workId.isNotEmpty) {
+      requireCondition(
+        workIds.contains(entry.workId),
+        'Canon entry ${entry.id} links unknown workId: ${entry.workId}',
+      );
+      final linkedWork = LiteraryWork.fromJson(
+        worksList.firstWhere(
+              (w) => (w as Map<String, dynamic>)['id'] == entry.workId,
+            )
+            as Map<String, dynamic>,
+      );
+      requireCondition(
+        linkedWork.authorId == entry.authorId,
+        'Canon entry ${entry.id} links work by a different author (${linkedWork.authorId}, canon author ${entry.authorId})',
+      );
+      final heldReference =
+          (sourceById[entry.sourceId]?['sourceReference'] as String?)
+              ?.replaceAll('\\', '/')
+              .toLowerCase() ??
+          '';
+      final workReference =
+          linkedWork.primarySource?.sourceReference
+              ?.replaceAll('\\', '/')
+              .toLowerCase() ??
+          '';
+      requireCondition(
+        heldReference.isNotEmpty && workReference == heldReference,
+        'Canon entry ${entry.id} links work not held on source ${entry.sourceId}: ${linkedWork.primarySource?.sourceReference}',
+      );
+      final range = parseSourcePageRange(entry.sourceEvidence);
+      requireCondition(
+        range != null,
+        'Canon entry ${entry.id} has no parseable page range in sourceEvidence; linked entries need one for the page cross-check',
+      );
+      final pageStart = linkedWork.primarySource?.pageStart;
+      requireCondition(
+        pageStart != null && pageStart >= range!.$1 && pageStart <= range.$2,
+        'Canon entry ${entry.id} linked work page $pageStart is outside cited range ${range?.$1}–${range?.$2}',
+      );
+      if (entry.isCitationVerified) {
+        requireCondition(
+          linkedWork.isDisplayable,
+          'Citation-verified canon entry ${entry.id} links a non-displayable work: ${entry.workId}',
+        );
+      }
+    } else {
+      requireCondition(
+        !entry.isCitationVerified,
+        'Canon entry ${entry.id} cannot be citation-verified without a workId',
+      );
+    }
   }
   print('  ✓ School canon entries: ${canonList.length} (Grades 5–11 strictly)');
 

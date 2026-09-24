@@ -36,6 +36,29 @@ void main() {
     },
   );
 
+  test(
+    'reader font size may shrink to 70% (delta -6) with a safe clamp',
+    () async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      final notifier = ReaderPreferencesNotifier(prefs);
+
+      // Three A- steps from 0 land exactly on the new 70% floor.
+      await notifier.decreaseFontSize();
+      await notifier.decreaseFontSize();
+      await notifier.decreaseFontSize();
+      expect(notifier.state.fontSizeDelta, -6.0);
+
+      // Values below the floor clamp to the floor instead of escaping it.
+      await notifier.setFontSizeDelta(-9);
+      expect(notifier.state.fontSizeDelta, -6.0);
+
+      // The 70% floor is persisted and survives notifier recreation.
+      final restarted = ReaderPreferencesNotifier(prefs);
+      expect(restarted.state.fontSizeDelta, -6.0);
+    },
+  );
+
   test('reader preferences survive notifier recreation', () async {
     SharedPreferences.setMockInitialValues({});
     final prefs = await SharedPreferences.getInstance();

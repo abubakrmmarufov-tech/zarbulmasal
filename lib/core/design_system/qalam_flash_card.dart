@@ -122,11 +122,11 @@ class _QalamFlashCardState extends State<QalamFlashCard>
     final lang = widget.isPersian
         ? DisplayLanguage.persian
         : DisplayLanguage.tajik;
-    const ink = Color(0xFF202720);
-    const paper = Color(0xFFF3F0E7);
+    const ink = QalamColors.ink;
+    const paper = QalamColors.paper;
     final bg = front ? ink : colors.surface;
     final fg = front ? paper : colors.onSurface;
-    final secondary = front ? const Color(0xFFC5C9BE) : colors.onSurfaceVariant;
+    final secondary = front ? QalamColors.ivorySoft : colors.onSurfaceVariant;
     final proverb = widget.proverb;
     return Material(
       color: bg,
@@ -169,7 +169,7 @@ class _QalamFlashCardState extends State<QalamFlashCard>
                           : TextDirection.ltr,
                       style: QalamTypography.heroProverb(
                         color: fg,
-                        fontSize: front ? 30 : 26,
+                        fontSize: front ? 26 : 23,
                         height: 1.5,
                       ),
                     ),

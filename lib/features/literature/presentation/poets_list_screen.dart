@@ -9,6 +9,7 @@ import '../data/literature_providers.dart';
 import '../data/literature_repository.dart';
 import '../domain/domain.dart';
 import 'literary_author_display_text.dart';
+import '../../../core/utils/search_field_limits.dart';
 
 /// A screen presenting canonical Tajik literary authors and poets.
 class PoetsListScreen extends ConsumerStatefulWidget {
@@ -74,7 +75,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
                 child: TextField(
                   controller: _filterController,
-                  maxLength: 256,
+                  inputFormatters: searchQueryFormatters,
                   onChanged: (val) {
                     setState(() {
                       _filterQuery = LiteratureRepository.normalizeSearchText(
@@ -221,6 +222,8 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                         : null;
                     return QalamPoetCard(
                       name: name,
+                      monogramName: poet.canonicalName,
+                      persianName: poet.canonicalNamePersian,
                       portrait: poet.portrait,
                       portraitUnavailableLabel: AppTranslations.get(
                         'lit_portrait_unavailable',
@@ -233,6 +236,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                           ),
                       dates: dates,
                       exactDates: exactDates,
+                      place: LiteraryAuthorDisplayText.birthPlace(poet, lang),
                       period: LiteraryAuthorDisplayText.period(poet, lang),
                       isPublicDomain: poet.isPublicDomain,
                       poemCountBadge: poemCountBadge,

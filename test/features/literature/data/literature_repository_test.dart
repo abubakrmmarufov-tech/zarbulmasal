@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/literature/data/literature_repository.dart';
+import 'package:zarbulmasal/features/literature/data/tajikistan_day.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 
 class _CountingAssetBundle extends AssetBundle {
@@ -277,10 +278,12 @@ void main() {
         expect(result, isNull);
       });
 
-      test('deterministically selects work for same date', () {
+      test('deterministically selects work for same Tajikistan day', () {
         final works = [work1, work2, unapprovedWork];
-        final date = DateTime(2026, 9, 10, 14, 30);
-        final dateSameDayDifferentTime = DateTime(2026, 9, 10, 23, 59);
+        // Both instants are on 2026-09-10 in Dushanbe (before 19:00 UTC), so
+        // the selection must not depend on the device time zone.
+        final date = DateTime.utc(2026, 9, 10, 12, 0);
+        final dateSameDayDifferentTime = DateTime.utc(2026, 9, 10, 18, 59);
 
         final result1 = repository.getDailyVerse(date, works);
         final result2 = repository.getDailyVerse(
@@ -293,10 +296,10 @@ void main() {
         expect(result1.id, result2!.id);
       });
 
-      test('cycles between approved works on consecutive days', () {
+      test('cycles between approved works on consecutive Tajikistan days', () {
         final works = [work1, work2];
-        final day1 = DateTime(2026, 9, 10);
-        final day2 = DateTime(2026, 9, 11);
+        final day1 = DateTime.utc(2026, 9, 10, 12, 0);
+        final day2 = DateTime.utc(2026, 9, 11, 12, 0);
 
         final result1 = repository.getDailyVerse(day1, works);
         final result2 = repository.getDailyVerse(day2, works);
@@ -304,6 +307,42 @@ void main() {
         expect(result1, isNotNull);
         expect(result2, isNotNull);
         expect(result1!.id, isNot(equals(result2!.id)));
+      });
+
+      test('selects the next work across the Tajikistan midnight rollover', () {
+        final works = [work1, work2];
+        final beforeMidnight = repository.getDailyVerse(
+          DateTime.utc(2026, 9, 10, 18, 59, 59),
+          works,
+        );
+        final afterMidnight = repository.getDailyVerse(
+          DateTime.utc(2026, 9, 10, 19, 0, 0),
+          works,
+        );
+
+        expect(beforeMidnight, isNotNull);
+        expect(afterMidnight, isNotNull);
+        expect(beforeMidnight!.id, isNot(equals(afterMidnight!.id)));
+      });
+
+      test('selects the same work for the same instant in any offset', () {
+        final works = [work1, work2];
+        // 20:00 UTC on 2026-09-10 is 01:00 on 2026-09-11 in Dushanbe.
+        final utc = DateTime.utc(2026, 9, 10, 20, 0);
+        // Rebuild the same absolute instant in this machine's local offset.
+        final localSameInstant = DateTime.fromMicrosecondsSinceEpoch(
+          utc.microsecondsSinceEpoch,
+          isUtc: false,
+        );
+
+        final fromUtc = repository.getDailyVerse(utc, works);
+        final fromLocal = repository.getDailyVerse(localSameInstant, works);
+
+        expect(fromUtc!.id, fromLocal!.id);
+        expect(
+          tajikistanCalendarDay(utc),
+          tajikistanCalendarDay(localSameInstant),
+        );
       });
     });
 

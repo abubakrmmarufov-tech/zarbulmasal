@@ -447,6 +447,250 @@ void main() {
       expect(blockedWork.isExcerptDisplayable, isFalse);
     });
 
+    test('verse coherence rejects fragments, one-word and stitched texts', () {
+      const base = LiteraryWork(
+        id: 'coherence-base',
+        authorId: 'rudaki',
+        title: 'Санҷиш',
+        primarySource: SourceEdition(
+          bookTitle: 'Китоби санҷишӣ',
+          publisher: 'Нашриёт',
+          city: 'Душанбе',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'PD',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
+        ),
+        textStatus: TextStatus.verified,
+      );
+
+      // A genuine multi-hemistiche verse is coherent.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Бӯи ҷӯи Мӯлиён ояд ҳаме,\n'
+                  'Ёди ёри мӯлиён ояд ҳаме,\n'
+                  'Шӯхи қатронӣ ба ман, ёди дилбарӣ,\n'
+                  'Абрӯи яккаи ҷаҳон ояд ҳаме.',
+            )
+            .hasCoherentVerseStructure,
+        isTrue,
+      );
+
+      // A single bayt (2 hemistiches) is a fragment, never a readable poem.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Камол, аз Каъба рафтӣ бар дари ёр,\n'
+                  'Ҳазорат офарин, мардона рафтӣ.',
+            )
+            .hasCoherentVerseStructure,
+        isFalse,
+        reason: 'A two-hemistich single bayt is a fragment of a ghazal.',
+      );
+
+      // A one-word text is not a work.
+      expect(
+        base.copyWith(textTajik: 'Ҳеч').hasCoherentVerseStructure,
+        isFalse,
+      );
+
+      // Page/stitching markers from glued-together scans are not a work.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Агар ду бародар ниҳад пушт-пушт,\n'
+                  'Тани кӯҳро хок молад ба мушт.\n'
+                  '## 48 (Page 48)\n'
+                  'Бузургӣ саросар ба гуфтор нест,\n'
+                  'Дусад гуфта чун ними кирдор нест.',
+            )
+            .hasCoherentVerseStructure,
+        isFalse,
+        reason: 'Stitched pages are synthetic, not a coherent work.',
+      );
+    });
+
+    test('verse coherence ignores appended attribution and truncated gloss lines', () {
+      const base = LiteraryWork(
+        id: 'coherence-noise',
+        authorId: 'rudaki',
+        title: 'Санҷиш',
+        primarySource: SourceEdition(
+          bookTitle: 'Китоби санҷишӣ',
+          publisher: 'Нашриёт',
+          city: 'Душанбе',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'PD',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
+        ),
+        textStatus: TextStatus.verified,
+      );
+
+      // Real failure: a genuine four-hemistiche rubai with a truncated
+      // prose-gloss line appended. The gloss must not add a hemistich.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Майлам ба шароби ноб бошад доим,\n'
+                  'Гӯшам ба наю рубоб бошад доим.\n'
+                  'Гар хоки маро кӯзагарон кӯза кунанд,\n'
+                  'Он кӯза пур аз шароб бошад доим.\n'
+                  'Хайём гуфтааст, ки агар лавҳаи қазо (тақдир, сарнавишт) дар',
+            )
+            .hasCoherentVerseStructure,
+        isTrue,
+        reason:
+            'Four real hemistiches stay coherent; the gloss line is ignored.',
+      );
+
+      // Real failure: a genuine four-hemistiche poem with a pure
+      // parenthesized author attribution appended.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Шоири фарзонаро асру замон\n'
+                  'Бар ниёзи хештан меоварад.\n'
+                  'Модаре танҳо назояд шоире,\n'
+                  'Халқ ӯро баҳри худ меофарад.\n'
+                  '(Лоиқ Шералӣ)',
+            )
+            .hasCoherentVerseStructure,
+        isTrue,
+        reason:
+            'Four real hemistiches stay coherent; the attribution is ignored.',
+      );
+
+      // Appended noise must not inflate a genuine fragment into a readable work.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Шоири фарзонаро асру замон\n'
+                  'Бар ниёзи хештан меоварад.\n'
+                  '(Лоиқ Шералӣ)',
+            )
+            .hasCoherentVerseStructure,
+        isFalse,
+        reason:
+            'Two real hemistiches plus an attribution line are still a fragment.',
+      );
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Майлам ба шароби ноб бошад доим,\n'
+                  'Гӯшам ба наю рубоб бошад доим.\n'
+                  'Хайём гуфтааст, ки агар лавҳаи қазо (тақдир, сарнавишт) дар',
+            )
+            .hasCoherentVerseStructure,
+        isFalse,
+        reason:
+            'Two real hemistiches plus a truncated gloss are still a fragment.',
+      );
+
+      // A line that is only an attribution is not a work at all.
+      expect(
+        base.copyWith(textTajik: '(Лоиқ Шералӣ)').hasCoherentVerseStructure,
+        isFalse,
+      );
+
+      // Legitimate counterexample: parenthetical text inside a genuine
+      // hemistich is preserved and does not break coherence.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Майлам ба шароби ноб бошад доим,\n'
+                  'Гӯшам ба наю рубоб бошад доим.\n'
+                  'Гар хоки маро (эҳ, азиз) кӯзагарон кӯза кунанд,\n'
+                  'Он кӯза пур аз шароб бошад доим.',
+            )
+            .hasCoherentVerseStructure,
+        isTrue,
+      );
+
+      // Legitimate counterexample: a short three-hemistiche form stays coherent.
+      expect(
+        base
+            .copyWith(
+              textTajik:
+                  'Бӯи ҷӯи Мӯлиён ояд ҳаме,\n'
+                  'Ёди ёри мӯлиён ояд ҳаме,\n'
+                  'Абрӯи яккаи ҷаҳон ояд ҳаме.',
+            )
+            .hasCoherentVerseStructure,
+        isTrue,
+        reason: 'A genuine short form must not be rejected.',
+      );
+    });
+
+    test('generated Persian fields are never a Persian source witness', () {
+      const generated = LiteraryWork(
+        id: 'gen-persian',
+        authorId: 'rudaki',
+        title: 'Санҷиш',
+        textTajik:
+            'Бӯи ҷӯи Мӯлиён ояд ҳаме,\n'
+            'Ёди ёри мӯлиён ояд ҳаме,\n'
+            'Шӯхи қатронӣ ба ман, ёди дилбарӣ,\n'
+            'Абрӯи яккаи ҷаҳон ояд ҳаме.',
+        textPersian: 'بوی جوی مولیان آید همی',
+        persianScriptSource: 'generated',
+        primarySource: SourceEdition(
+          bookTitle: 'Китоби санҷишӣ',
+          publisher: 'Нашриёт',
+          city: 'Душанбе',
+          year: '2026',
+          pageStart: 1,
+          sourceType: SourceEditionType.criticalEdition,
+        ),
+        rights: RightsRecord(
+          status: RightsStatus.publicDomain,
+          reasoning: 'PD',
+          fullTextAllowed: true,
+          excerptAllowed: true,
+        ),
+        verification: VerificationRecord(
+          evidenceLevel: VerificationLevel.editoriallyApproved,
+          pageVerified: true,
+        ),
+        textStatus: TextStatus.verified,
+      );
+      expect(
+        generated.hasPersianText,
+        isFalse,
+        reason:
+            'A generated transliteration is not an original Persian witness.',
+      );
+      expect(generated.hasPersianDisplay, isTrue);
+      expect(generated.hasCoherentVerseStructure, isTrue);
+    });
+
     test('biography audit requires an allowlisted provenance value', () {
       final invalid = LiteraryAuthor.fromJson({
         'id': 'invalid-provenance',

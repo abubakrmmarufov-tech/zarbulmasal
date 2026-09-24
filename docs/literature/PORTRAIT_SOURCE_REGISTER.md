@@ -46,3 +46,20 @@ higher-priority uploaded textbook PDFs; the remaining profiles are outside the
 active poet catalog or do not change the existing source decision. Lo(iq
 Sherali’s p. 288 portrait is therefore not added a second time. The admitted
 total remains 67, and the 2025 edition contributes no new portrait asset.
+
+## Explicit polarity override — 2026-09-23
+
+A caption/photo cross-check against the independent Grade 11 (2018) p. 152
+portrait proved the Grade 5 (2017) p. 216 crop of **Мирзо Турсунзода**
+(`tursunzoda`) was printed/scanned as a photographic negative: cross-correlation
+with the Grade 11 positive was −0.67 as-is and +0.67 after inversion, and the
+dHash distance dropped from 56/64 to 8/64. The conservative polarity heuristic
+in `extract_portraits.normalize_portrait()` did not fire because the negative’s
+centre pixel was too dark (luma 54 < 60).
+
+The shipped `tursunzoda.jpeg` asset was corrected by inverting the existing
+Grade 5 crop (503×668 RGB, JPEG quality 92), keeping `sourcePage: 216` and the
+existing `sourceReference`. To keep future regeneration deterministic, the
+manifest entry carries an explicit `"polarity": "invert"` override, which the
+extractor honors ahead of the heuristic; no other author is affected and the
+admitted total remains 67.

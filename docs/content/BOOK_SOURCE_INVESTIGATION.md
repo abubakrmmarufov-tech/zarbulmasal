@@ -94,3 +94,36 @@ Literature profiles. No author profile, biography, portrait, poem, or work
 relationship is inferred from the provider listing alone. A future profile can
 be linked only after independent source evidence is admitted under the
 Literature provenance policy.
+
+## Khirad online reader (khirad.tj)
+
+Date: 2026-09-23
+
+The second provider, [khirad.tj](https://khirad.tj/), is a distinct Tajik
+electronic library. Unlike Kitobkhon, it exposes a site-native HTML reader at
+`/books/read/<slug>` for each book page, so its editions are modeled as
+`readableExternal` with `format: html` and the reader URL is opened directly.
+`khirad.tj` was added to `TrustedUrlPolicy.allowedHosts`; every imported read
+and source URL is `https` and fails closed otherwise.
+
+All ten records are live, publisher «Адиб» (Душанбе), format `html`, and carry
+no download URL or bundled cover. Page counts are 480 (nine volumes) and 352
+(Наврӯзнома). Source evidence per record:
+
+| Book | Author | Year | Pages | Read (HTML) URL | Source page |
+|---|---|---|---|---|---|
+| Девони Сайидои Насафӣ | Сайидои Насафӣ | 2019 | 480 | <https://khirad.tj/books/read/devoni-sayidoi-nasafi> | <https://khirad.tj/books/devoni-sayidoi-nasafi> |
+| Маснавии Маънавӣ (ҷилди 1) | Мавлоно Ҷалолуддини Балхӣ | 2013 | 480 | <https://khirad.tj/books/read/masnavii-maanavi-jildi-1> | <https://khirad.tj/books/masnavii-maanavi-jildi-1> |
+| Мунтахаботи Садриддин Айнӣ | Садриддин Айнӣ | 2019 | 480 | <https://khirad.tj/books/read/muntahaboti-sadriddin-ayni> | <https://khirad.tj/books/muntahaboti-sadriddin-ayni> |
+| Ашъори Мунтахаб | Абулқосим Лоҳутӣ | 2019 | 480 | <https://khirad.tj/books/read/ashaori--muntahab> | <https://khirad.tj/books/ashaori--muntahab> |
+| Наводиру-л-вақоеъ | Аҳмади Дониш | 2019 | 480 | <https://khirad.tj/books/read/navodiru-l-vaqoea> | <https://khirad.tj/books/navodiru-l-vaqoea> |
+| Наврӯзнома | Умари Хайём | 2012 | 352 | <https://khirad.tj/books/read/navruznoma> | <https://khirad.tj/books/navruznoma> |
+| Девони Соиби Табрезӣ | Соиби Табрезӣ | 2017 | 480 | <https://khirad.tj/books/read/devoni-soibi-tabrezi> | <https://khirad.tj/books/devoni-soibi-tabrezi> |
+| Мунтахабот | Абдулқодири Бедил | 2018 | 480 | <https://khirad.tj/books/read/muntahabot> | <https://khirad.tj/books/muntahabot> |
+| Мантиқу-т-тайр ва Асрорнома | Фаридуддини Аттор | 2013 | 480 | <https://khirad.tj/books/read/mantiqu--t-tayr-va--asrornoma> | <https://khirad.tj/books/mantiqu--t-tayr-va--asrornoma> |
+| Девони Бадриддин Ҳилолӣ | Бадриддин Ҳилолӣ | 2016 | 480 | <https://khirad.tj/books/read/devoni-badriddin-hiloli> | <https://khirad.tj/books/devoni-badriddin-hiloli> |
+
+The catalogue page <https://khirad.tj/all-books> is used as the provider
+`catalogueUrl`. As with Kitobkhon, these records carry `rightsUnclear` and
+`bookAvailability` purpose only: the app links to the provider's reader and
+source page and never copies, downloads, or redistributes the files.

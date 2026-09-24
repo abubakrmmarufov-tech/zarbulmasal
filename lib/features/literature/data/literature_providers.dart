@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zarbulmasal/core/constants/app_constants.dart';
 import 'package:zarbulmasal/features/literature/data/literature_repository.dart';
+import 'package:zarbulmasal/features/literature/data/tajikistan_day.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 
 /// Provider for the [LiteratureRepository] instance.
@@ -54,10 +55,14 @@ final searchableLiteraryWorksProvider = FutureProvider<List<LiteraryWork>>((
 });
 
 /// Deterministically selects the daily verse work from approved works.
+///
+/// Selection uses the current Tajikistan calendar day (UTC+5) via the
+/// injectable [systemInstantClockProvider], never the device-local calendar.
 final dailyVerseProvider = FutureProvider<LiteraryWork?>((ref) async {
   final repository = ref.watch(literatureRepositoryProvider);
   final approved = await ref.watch(approvedWorksProvider.future);
-  return repository.getDailyVerse(DateTime.now(), approved);
+  final day = ref.watch(tajikistanDayProvider);
+  return repository.getDailyVerse(day, approved);
 });
 
 /// Loads the official school curriculum literary canon entries.

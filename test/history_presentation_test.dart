@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zarbulmasal/core/constants/app_constants.dart';
 import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/features/history/data/history_providers.dart';
 import 'package:zarbulmasal/features/history/domain/history_book.dart';
 import 'package:zarbulmasal/features/history/domain/history_entry.dart';
+import 'package:zarbulmasal/features/history/presentation/history_detail_screen.dart';
 import 'package:zarbulmasal/features/history/presentation/history_screen.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
@@ -73,9 +75,22 @@ Future<void> pumpHistoryScreen(
   await tester.pumpWidget(
     UncontrolledProviderScope(
       container: container,
-      child: MaterialApp(
+      child: MaterialApp.router(
         theme: AppTheme.lightTheme,
-        home: const HistoryScreen(),
+        routerConfig: GoRouter(
+          initialLocation: '/history',
+          routes: [
+            GoRoute(
+              path: '/history',
+              builder: (context, state) => const HistoryScreen(),
+            ),
+            GoRoute(
+              path: '/history/:id',
+              builder: (context, state) =>
+                  HistoryDetailScreen(entryId: state.pathParameters['id']!),
+            ),
+          ],
+        ),
       ),
     ),
   );
@@ -83,12 +98,18 @@ Future<void> pumpHistoryScreen(
 }
 
 void main() {
-  testWidgets('history cards and book cards expose in-app details', (
+  testWidgets('textbook shelf and entry rows open in-app details', (
     tester,
   ) async {
     await pumpHistoryScreen(tester);
 
-    // 1. Verify textbook card tap opens in-app book detail sheet
+    // Entries come first; the textbook shelf lives under «By textbook».
+    expect(find.text('Спитамен'), findsOneWidget);
+    expect(find.text('Таърихи халқи тоҷик: Замони ориёиҳо'), findsNothing);
+    await tester.tap(find.text('Китобҳои дарсӣ'));
+    await tester.pumpAndSettle();
+
+    // 1. The textbook card opens the in-app book sheet.
     final bookCard = find.text('Таърихи халқи тоҷик: Замони ориёиҳо');
     expect(bookCard, findsOneWidget);
     await tester.tap(bookCard);
@@ -97,26 +118,37 @@ void main() {
     expect(find.text('Китоби дарсии синфи 5'), findsOneWidget);
     expect(find.text('Дидани мавзӯъҳои синфи 5'), findsOneWidget);
 
-    // Tap "Дидани мавзӯъҳои синфи 5" to close sheet and filter by Grade 5
+    // "Дидани мавзӯъҳои синфи 5" closes the sheet and filters by grade 5.
     await tester.tap(find.text('Дидани мавзӯъҳои синфи 5'));
     await tester.pumpAndSettle();
 
-    // 2. Scroll down to see filtered Grade 5 history cards
-    await tester.drag(find.byType(CustomScrollView), const Offset(0, -350));
+    // 2. An entry row opens the entry page directly (no intermediate sheet).
+    await tester.ensureVisible(find.text('Спитамен'));
+    await tester.tap(find.text('Спитамен'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Тафсилот →'), findsOneWidget);
-
-    // Tap the card to open in-app history entry detail sheet
-    await tester.tap(find.text('Тафсилот →'));
-    await tester.pumpAndSettle();
-
+    expect(find.byType(HistoryDetailScreen), findsOneWidget);
+    expect(find.byType(BottomSheet), findsNothing);
     expect(find.text('Хулосаи таърихӣ'), findsOneWidget);
     expect(find.text('Аҳамияти таърихӣ'), findsOneWidget);
     expect(
       find.text('Сарчашмаи таълимӣ: Китоби дарсии «Таърихи халқи тоҷик»'),
       findsOneWidget,
     );
+  });
+
+  testWidgets('search is folded behind an icon until opened', (tester) async {
+    await pumpHistoryScreen(tester);
+    expect(find.byType(TextField), findsNothing);
+    await tester.tap(find.byIcon(Icons.search));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'Спитамен');
+    await tester.pumpAndSettle();
+    expect(find.text('Спитамен'), findsWidgets);
+    // An active query keeps the field open.
+    await tester.tap(find.byTooltip('Ҷустуҷӯ дар номҳо ва воқеаҳо'));
+    await tester.pumpAndSettle();
+    expect(find.byType(TextField), findsOneWidget);
   });
 
   testWidgets('loaded history cards stay stable on a small large-text phone', (
@@ -211,6 +243,8 @@ void main() {
       entries: const [],
     );
 
+    await tester.tap(find.text('کتاب‌های درسی'));
+    await tester.pumpAndSettle();
     const pending = 'ترجمهٔ فارسی عنوان در دسترس نیست';
     expect(find.text(pending), findsOneWidget);
     expect(find.text('TAJIK_BOOK_TITLE_SENTINEL'), findsNothing);
@@ -231,7 +265,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('Persian history entry sheet hides untranslated source fields', (
+  testWidgets('Persian history entry page hides untranslated source fields', (
     tester,
   ) async {
     const entry = HistoryEntry(
@@ -284,9 +318,10 @@ void main() {
       expect(find.text(sourceOnly), findsNothing, reason: sourceOnly);
     }
 
-    await tester.ensureVisible(find.text('جزئیات ←'));
-    await tester.tap(find.text('جزئیات ←'));
+    await tester.ensureVisible(find.text(pending));
+    await tester.tap(find.text(pending));
     await tester.pumpAndSettle();
+    expect(find.byType(HistoryDetailScreen), findsOneWidget);
 
     expect(find.text('TAJIK_SECTION_SENTINEL'), findsNothing);
     expect(find.text('TAJIK_ENTRY_TITLE_SENTINEL'), findsNothing);

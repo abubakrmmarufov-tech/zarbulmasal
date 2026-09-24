@@ -5,11 +5,10 @@ import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
-import '../../literature/data/literature_providers.dart';
-import '../../literature/presentation/literary_author_display_text.dart';
 import '../data/history_providers.dart';
 import '../domain/history_domain.dart';
 import 'history_source_launcher.dart';
+import '../../../core/utils/search_field_limits.dart';
 
 String? _historyOptionalText(String? value) {
   final trimmed = value?.trim();
@@ -24,14 +23,6 @@ String _historyRequiredTitle(
   if (language != DisplayLanguage.persian) return sourceTitle;
   return _historyOptionalText(persianTitle) ??
       AppTranslations.get('hist_translation_pending', language);
-}
-
-String _historyBookCitation(HistoryBook book, DisplayLanguage language) {
-  final title = _historyRequiredTitle(book.title, book.titlePersian, language);
-  final author = _historyOptionalText(
-    language == DisplayLanguage.persian ? book.authorPersian : book.author,
-  );
-  return author == null ? title : '$title ($author)';
 }
 
 String _historyBookDetails(HistoryBook book, DisplayLanguage language) {
@@ -57,6 +48,7 @@ enum HistoryViewMode { timeline, canon, topics }
 class _HistoryScreenState extends ConsumerState<HistoryScreen> {
   final _searchController = TextEditingController();
   String _query = '';
+  bool _searchOpen = false;
   HistoryViewMode _viewMode = HistoryViewMode.timeline;
   String? _grade;
   HistoryEntryKind? _kind;
@@ -74,10 +66,6 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
     final isPersian = lang == DisplayLanguage.persian;
     final booksAsync = ref.watch(historyBooksProvider);
     final entriesAsync = ref.watch(historyEntriesProvider);
-    final booksById = {
-      for (final book in booksAsync.valueOrNull ?? const <HistoryBook>[])
-        book.id: book,
-    };
 
     return Scaffold(
       body: SafeArea(
@@ -87,13 +75,25 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: IconButton(
-                    tooltip: AppTranslations.get('back', lang),
-                    icon: const BackButtonIcon(),
-                    onPressed: () => qalamBack(context),
-                  ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      tooltip: AppTranslations.get('back', lang),
+                      icon: const BackButtonIcon(),
+                      onPressed: () => qalamBack(context),
+                    ),
+                    const Spacer(),
+                    // Search is folded behind an icon so the entries come
+                    // first; an active query keeps the field open.
+                    IconButton(
+                      tooltip: AppTranslations.get('hist_search_hint', lang),
+                      isSelected: _searchOpen,
+                      icon: const Icon(Icons.search),
+                      onPressed: () => setState(() {
+                        _searchOpen = !_searchOpen || _query.isNotEmpty;
+                      }),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -104,81 +104,85 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                 subtitle: AppTranslations.get('hist_header_subtitle', lang),
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
-                child: TextField(
-                  controller: _searchController,
-                  maxLength: 256,
-                  onChanged: (value) => setState(() => _query = value),
-                  decoration: InputDecoration(
-                    labelText: AppTranslations.get('hist_search_hint', lang),
-                    prefixIcon: const Icon(Icons.search),
-                    suffixIcon: _query.isEmpty
-                        ? null
-                        : IconButton(
-                            tooltip: AppTranslations.get('btn_clear', lang),
-                            icon: const Icon(Icons.clear),
-                            onPressed: () {
-                              _searchController.clear();
-                              setState(() => _query = '');
-                            },
-                          ),
-                  ),
-                ),
-              ),
-            ),
-            booksAsync.when(
-              loading: () => const SliverToBoxAdapter(
-                child: LinearProgressIndicator(minHeight: 2),
-              ),
-              error: (_, _) => SliverToBoxAdapter(
+            if (_searchOpen || _query.isNotEmpty)
+              SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 4),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        isPersian
-                            ? 'منابع کتاب‌ها فعلاً در دسترس نیستند.'
-                            : 'Манбаъҳои китобҳо ҳоло дастрас нестанд.',
-                        style: QalamTypography.meta(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                      TextButton.icon(
-                        onPressed: () => ref.invalidate(historyBooksProvider),
-                        icon: const Icon(Icons.refresh, size: 17),
-                        label: Text(
-                          isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
-                        ),
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
-                          minimumSize: const Size(48, 48),
-                        ),
-                      ),
-                    ],
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+                  child: TextField(
+                    autofocus: _query.isEmpty,
+                    controller: _searchController,
+                    inputFormatters: searchQueryFormatters,
+                    onChanged: (value) => setState(() => _query = value),
+                    decoration: InputDecoration(
+                      labelText: AppTranslations.get('hist_search_hint', lang),
+                      prefixIcon: const Icon(Icons.search),
+                      suffixIcon: _query.isEmpty
+                          ? null
+                          : IconButton(
+                              tooltip: AppTranslations.get('btn_clear', lang),
+                              icon: const Icon(Icons.clear),
+                              onPressed: () {
+                                _searchController.clear();
+                                setState(() => _query = '');
+                              },
+                            ),
+                    ),
                   ),
                 ),
               ),
-              data: (books) => SliverToBoxAdapter(
-                child: _BookStrip(
-                  books: books,
-                  isPersian: isPersian,
-                  onBookSelected: (book) => _showHistoryBookDetails(
-                    context,
-                    book,
-                    isPersian,
-                    onGradeSelected: (grade) => setState(() {
-                      _viewMode = HistoryViewMode.canon;
-                      _grade = grade;
-                      _epoch = null;
-                      _kind = null;
-                    }),
+            // The textbook shelf belongs to the «By textbook» view.
+            if (_viewMode == HistoryViewMode.canon)
+              booksAsync.when(
+                loading: () => const SliverToBoxAdapter(
+                  child: LinearProgressIndicator(minHeight: 2),
+                ),
+                error: (_, _) => SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 8, 24, 4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          isPersian
+                              ? 'منابع کتاب‌ها فعلاً در دسترس نیستند.'
+                              : 'Манбаъҳои китобҳо ҳоло дастрас нестанд.',
+                          style: QalamTypography.meta(
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: () => ref.invalidate(historyBooksProvider),
+                          icon: const Icon(Icons.refresh, size: 17),
+                          label: Text(
+                            isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                          ),
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            minimumSize: const Size(48, 48),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                data: (books) => SliverToBoxAdapter(
+                  child: _BookStrip(
+                    books: books,
+                    isPersian: isPersian,
+                    onBookSelected: (book) => _showHistoryBookDetails(
+                      context,
+                      book,
+                      isPersian,
+                      onGradeSelected: (grade) => setState(() {
+                        _viewMode = HistoryViewMode.canon;
+                        _grade = grade;
+                        _epoch = null;
+                        _kind = null;
+                      }),
+                    ),
                   ),
                 ),
               ),
-            ),
             SliverToBoxAdapter(
               child: _FilterBar(
                 viewMode: _viewMode,
@@ -270,17 +274,10 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                   itemCount: filtered.length,
                   itemBuilder: (context, index) {
                     final item = filtered[index];
-                    final sourceBook = booksById[item.sourceBookId];
-                    return _HistoryCard(
+                    return _HistoryRow(
                       entry: item,
-                      sourceBook: sourceBook,
                       isPersian: isPersian,
-                      onTap: () => _showHistoryEntryDetails(
-                        context,
-                        item,
-                        sourceBook,
-                        isPersian,
-                      ),
+                      onTap: () => context.push('/history/${item.id}'),
                     );
                   },
                 );
@@ -758,267 +755,17 @@ class _ModeChip extends StatelessWidget {
   }
 }
 
-class _HistoryCard extends StatelessWidget {
+/// A history entry as a typographic row: kind and grade, the title, its
+/// dates and a one-line summary. Opens the entry page directly.
+class _HistoryRow extends StatelessWidget {
   final HistoryEntry entry;
-  final HistoryBook? sourceBook;
   final bool isPersian;
   final VoidCallback onTap;
 
-  const _HistoryCard({
+  const _HistoryRow({
     required this.entry,
-    required this.sourceBook,
     required this.isPersian,
     required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    final lang = isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik;
-    final title = _historyRequiredTitle(entry.title, entry.titlePersian, lang);
-    final summary = isPersian
-        ? _historyOptionalText(entry.summaryPersian)
-        : _historyOptionalText(entry.summary);
-    final dates = isPersian
-        ? _historyOptionalText(entry.datesPersian) ??
-              _historyOptionalText(entry.periodPersian) ??
-              ''
-        : (entry.dates ?? entry.period);
-    final capital = isPersian
-        ? _historyOptionalText(entry.capitalPersian)
-        : _historyOptionalText(entry.capital);
-
-    return Card(
-      elevation: 0,
-      margin: const EdgeInsets.symmetric(
-        horizontal: QalamSpacing.pageH,
-        vertical: 6,
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(QalamSpacing.cardRadius),
-        side: BorderSide(
-          color: colors.outlineVariant.withValues(alpha: 0.6),
-          width: 0.5,
-        ),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(_iconFor(entry.kind), size: 18, color: colors.primary),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      _kindLabel(entry.kind, isPersian),
-                      style: QalamTypography.eyebrow(color: colors.primary),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: colors.surfaceContainerHighest,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Text(
-                      AppTranslations.get('hist_filter_grade', lang, [
-                        entry.grade,
-                      ]),
-                      style: QalamTypography.meta(
-                        color: colors.onSurfaceVariant,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Directionality(
-                textDirection: isPersian
-                    ? TextDirection.rtl
-                    : TextDirection.ltr,
-                child: Text(
-                  title,
-                  style: QalamTypography.sectionTitle(
-                    color: colors.onSurface,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              if (dates.isNotEmpty) ...[
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.schedule_outlined,
-                      size: 14,
-                      color: colors.primary,
-                    ),
-                    const SizedBox(width: 4),
-                    Expanded(
-                      child: Text(
-                        dates,
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: colors.primary,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-              if (summary != null) ...[
-                const SizedBox(height: 8),
-                Directionality(
-                  textDirection: isPersian
-                      ? TextDirection.rtl
-                      : TextDirection.ltr,
-                  child: Text(
-                    summary,
-                    style: QalamTypography.bodySecondary(
-                      color: colors.onSurfaceVariant,
-                      height: 1.4,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-              if (capital != null) ...[
-                const SizedBox(height: 6),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_city_outlined,
-                      size: 14,
-                      color: colors.onSurfaceVariant,
-                    ),
-                    const SizedBox(width: 4),
-                    Expanded(
-                      child: Text(
-                        '${AppTranslations.get('hist_capital', lang)}: $capital',
-                        style: QalamTypography.meta(
-                          color: colors.onSurfaceVariant,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-              const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.menu_book_outlined,
-                          size: 14,
-                          color: colors.primary,
-                        ),
-                        const SizedBox(width: 6),
-                        Expanded(
-                          child: Text(
-                            '${AppTranslations.get('hist_view_textbooks', lang)} · ${AppTranslations.get('hist_filter_grade', lang, [entry.grade])}',
-                            style: QalamTypography.meta(
-                              color: colors.onSurfaceVariant,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Text(
-                    AppTranslations.get('hist_details_arrow', lang),
-                    style: TextStyle(
-                      color: colors.primary,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  static IconData _iconFor(HistoryEntryKind kind) => switch (kind) {
-    HistoryEntryKind.empire => Icons.account_balance_outlined,
-    HistoryEntryKind.dynasty => Icons.account_balance_outlined,
-    HistoryEntryKind.ruler => Icons.shield_outlined,
-    HistoryEntryKind.person => Icons.person_outline,
-    HistoryEntryKind.event => Icons.timeline_outlined,
-    HistoryEntryKind.battle => Icons.sports_kabaddi_outlined,
-    HistoryEntryKind.place => Icons.place_outlined,
-    HistoryEntryKind.cultural => Icons.palette_outlined,
-    HistoryEntryKind.poem => Icons.auto_stories_outlined,
-    HistoryEntryKind.oral => Icons.record_voice_over_outlined,
-  };
-
-  static String _kindLabel(HistoryEntryKind kind, bool isPersian) {
-    final key = switch (kind) {
-      HistoryEntryKind.empire => 'hist_kind_empire',
-      HistoryEntryKind.dynasty => 'hist_kind_dynasty',
-      HistoryEntryKind.ruler => 'hist_kind_ruler',
-      HistoryEntryKind.person => 'hist_kind_person',
-      HistoryEntryKind.event => 'hist_kind_event',
-      HistoryEntryKind.battle => 'hist_kind_battle',
-      HistoryEntryKind.place => 'hist_kind_place',
-      HistoryEntryKind.cultural => 'hist_kind_cultural',
-      HistoryEntryKind.poem => 'hist_kind_poem',
-      HistoryEntryKind.oral => 'hist_kind_oral',
-    };
-    return AppTranslations.getForLang(isPersian ? 'fa' : 'tj', key);
-  }
-}
-
-void _showHistoryEntryDetails(
-  BuildContext context,
-  HistoryEntry entry,
-  HistoryBook? sourceBook,
-  bool isPersian,
-) {
-  showModalBottomSheet<void>(
-    context: context,
-    isScrollControlled: true,
-    showDragHandle: true,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-    ),
-    builder: (context) => _HistoryEntryDetailSheet(
-      entry: entry,
-      sourceBook: sourceBook,
-      isPersian: isPersian,
-    ),
-  );
-}
-
-class _HistoryEntryDetailSheet extends StatelessWidget {
-  final HistoryEntry entry;
-  final HistoryBook? sourceBook;
-  final bool isPersian;
-
-  const _HistoryEntryDetailSheet({
-    required this.entry,
-    required this.sourceBook,
-    required this.isPersian,
   });
 
   @override
@@ -1034,339 +781,74 @@ class _HistoryEntryDetailSheet extends StatelessWidget {
               _historyOptionalText(entry.periodPersian)
         : _historyOptionalText(entry.dates) ??
               _historyOptionalText(entry.period);
-    final capital = isPersian
-        ? _historyOptionalText(entry.capitalPersian)
-        : _historyOptionalText(entry.capital);
-    final territory = isPersian
-        ? _historyOptionalText(entry.territoryPersian)
-        : _historyOptionalText(entry.territory);
-    final significance = isPersian
-        ? _historyOptionalText(entry.significancePersian)
-        : _historyOptionalText(entry.significance);
-    final keyFigures = (isPersian ? entry.keyFiguresPersian : entry.keyFigures)
-        .map((figure) => figure.trim())
-        .where((figure) => figure.isNotEmpty)
-        .toList(growable: false);
-    final section = isPersian
-        ? null
-        : _historyOptionalText(entry.sourceSection);
 
-    return SafeArea(
-      child: SingleChildScrollView(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: QalamSpacing.pageH),
+      child: QalamSlip(
+        onTap: onTap,
         child: Directionality(
           textDirection: isPersian ? TextDirection.rtl : TextDirection.ltr,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 8, 24, 32),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      _HistoryCard._iconFor(entry.kind),
-                      size: 20,
-                      color: colors.primary,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      _HistoryCard._kindLabel(entry.kind, isPersian),
-                      style: QalamTypography.eyebrow(color: colors.primary),
-                    ),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: colors.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        AppTranslations.get('hist_filter_grade', lang, [
-                          entry.grade,
-                        ]),
-                        style: QalamTypography.meta(
-                          color: colors.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
-                  ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${_kindLabel(entry.kind, isPersian)} · '
+                '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])}',
+                style: QalamTypography.meta(
+                  color: colors.onSurfaceVariant,
+                  fontSize: 12,
                 ),
-                const SizedBox(height: 12),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                title,
+                style: QalamTypography.literaryTitle(
+                  color: colors.onSurface,
+                  fontSize: 20,
+                ),
+              ),
+              if (dates != null) ...[
+                const SizedBox(height: 2),
                 Text(
-                  title,
-                  style: QalamTypography.sectionTitle(
-                    color: colors.onSurface,
-                    fontSize: 22,
-                  ),
+                  dates,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: QalamTypography.meta(color: colors.primary),
                 ),
-                if (dates != null) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    dates,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: colors.primary,
-                    ),
-                  ),
-                ],
-                const SizedBox(height: 16),
-                if (capital != null ||
-                    territory != null ||
-                    keyFigures.isNotEmpty) ...[
-                  Container(
-                    padding: const EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: colors.surfaceContainerHighest.withValues(
-                        alpha: 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: colors.outlineVariant),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (capital != null) ...[
-                          _DetailRow(
-                            icon: Icons.location_city,
-                            label: AppTranslations.get('hist_capital', lang),
-                            value: capital,
-                          ),
-                        ],
-                        if (territory != null) ...[
-                          if (capital != null) const Divider(height: 16),
-                          _DetailRow(
-                            icon: Icons.public,
-                            label: AppTranslations.get('hist_territory', lang),
-                            value: territory,
-                          ),
-                        ],
-                        if (keyFigures.isNotEmpty) ...[
-                          if (capital != null || territory != null)
-                            const Divider(height: 16),
-                          _DetailRow(
-                            icon: Icons.people_outline,
-                            label: AppTranslations.get(
-                              'hist_key_figures_and_rulers',
-                              lang,
-                            ),
-                            value: keyFigures.join(', '),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (summary != null) ...[
-                  Text(
-                    AppTranslations.get('hist_summary', lang),
-                    style: QalamTypography.eyebrow(color: colors.primary),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    summary,
-                    style: QalamTypography.body(
-                      color: colors.onSurface,
-                      height: 1.5,
-                    ),
-                  ),
-                ],
-                if (significance != null) ...[
-                  const SizedBox(height: 16),
-                  Text(
-                    AppTranslations.get('hist_significance', lang),
-                    style: QalamTypography.eyebrow(color: colors.primary),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    significance,
-                    style: QalamTypography.bodySecondary(
-                      color: colors.onSurfaceVariant,
-                      height: 1.5,
-                    ),
-                  ),
-                ],
-                if (entry.relatedAuthorIds.isNotEmpty) ...[
-                  const SizedBox(height: 16),
-                  Text(
-                    AppTranslations.get('hist_related_authors', lang),
-                    style: QalamTypography.eyebrow(color: colors.primary),
-                  ),
-                  const SizedBox(height: 8),
-                  Consumer(
-                    builder: (context, ref, _) {
-                      return Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: entry.relatedAuthorIds.map((authorId) {
-                          final authorAsync = ref.watch(
-                            authorByIdProvider(authorId),
-                          );
-                          final author = authorAsync.valueOrNull;
-                          final authorName =
-                              LiteraryAuthorDisplayText.nameOrFallback(
-                                author,
-                                lang,
-                                authorId == 'rudaki'
-                                    ? 'Абӯабдуллоҳи Рӯдакӣ'
-                                    : authorId,
-                              );
-                          return ActionChip(
-                            avatar: const Icon(
-                              Icons.auto_stories_outlined,
-                              size: 16,
-                            ),
-                            label: Text(authorName),
-                            onPressed: () {
-                              Navigator.pop(context);
-                              context.push('/literature/poet/$authorId');
-                            },
-                          );
-                        }).toList(),
-                      );
-                    },
-                  ),
-                ],
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: colors.surfaceContainerLow,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: colors.outlineVariant),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.menu_book,
-                            size: 16,
-                            color: colors.primary,
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              AppTranslations.get(
-                                'hist_official_textbook',
-                                lang,
-                              ),
-                              style: QalamTypography.eyebrow(
-                                color: colors.primary,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        section == null
-                            ? AppTranslations.get('hist_filter_grade', lang, [
-                                entry.grade,
-                              ])
-                            : '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])} · $section',
-                        style: QalamTypography.meta(color: colors.onSurface),
-                      ),
-                      if (sourceBook != null) ...[
-                        const SizedBox(height: 4),
-                        Text(
-                          _historyBookCitation(sourceBook!, lang),
-                          style: QalamTypography.meta(
-                            color: colors.onSurfaceVariant,
-                          ),
-                        ),
-                        if (sourceBook!.externalSourceUri != null) ...[
-                          const SizedBox(height: 12),
-                          SizedBox(
-                            width: double.infinity,
-                            child: FilledButton.tonalIcon(
-                              onPressed: () async {
-                                final uri = sourceBook!.externalSourceUri!;
-                                await openHistorySource(context, uri, lang);
-                              },
-                              icon: const Icon(Icons.open_in_browser, size: 18),
-                              label: Text(
-                                (sourceBook!.isUploadedBook ||
-                                        sourceBook!.localPath != null)
-                                    ? AppTranslations.get(
-                                        'hist_source_study_local',
-                                        lang,
-                                      )
-                                    : AppTranslations.get(
-                                        'hist_source_study',
-                                        lang,
-                                      ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ],
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 12),
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton.icon(
-                    icon: const Icon(Icons.fullscreen, size: 18),
-                    label: Text(
-                      AppTranslations.get('hist_fullscreen_view', lang),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      context.push('/history/${entry.id}');
-                    },
+              ],
+              if (summary != null) ...[
+                const SizedBox(height: 6),
+                Text(
+                  summary,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: QalamTypography.bodySecondary(
+                    color: colors.onSurfaceVariant,
+                    fontSize: 14,
                   ),
                 ),
               ],
-            ),
+            ],
           ),
         ),
       ),
     );
   }
-}
 
-class _DetailRow extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
-
-  const _DetailRow({
-    required this.icon,
-    required this.label,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(icon, size: 16, color: colors.primary),
-        const SizedBox(width: 8),
-        Text(
-          '$label: ',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 13,
-            color: colors.onSurface,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            value,
-            style: TextStyle(fontSize: 13, color: colors.onSurfaceVariant),
-          ),
-        ),
-      ],
-    );
+  static String _kindLabel(HistoryEntryKind kind, bool isPersian) {
+    final key = switch (kind) {
+      HistoryEntryKind.empire => 'hist_kind_empire',
+      HistoryEntryKind.dynasty => 'hist_kind_dynasty',
+      HistoryEntryKind.ruler => 'hist_kind_ruler',
+      HistoryEntryKind.person => 'hist_kind_person',
+      HistoryEntryKind.event => 'hist_kind_event',
+      HistoryEntryKind.battle => 'hist_kind_battle',
+      HistoryEntryKind.place => 'hist_kind_place',
+      HistoryEntryKind.cultural => 'hist_kind_cultural',
+      HistoryEntryKind.poem => 'hist_kind_poem',
+      HistoryEntryKind.oral => 'hist_kind_oral',
+    };
+    return AppTranslations.getForLang(isPersian ? 'fa' : 'tj', key);
   }
 }
 

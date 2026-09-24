@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../features/home/home_screen.dart';
 import '../features/explore/explore_screen.dart';
 import '../features/learn/learn_screen.dart';
+import '../features/saved/bayoz_detail_screen.dart';
 import '../features/saved/saved_screen.dart';
 import '../features/search/global_search_screen.dart';
 import '../features/proverbs/proverbs_list_screen.dart';
@@ -19,6 +20,7 @@ import '../features/literature/presentation/presentation.dart';
 import '../features/history/presentation/history_screen.dart';
 import '../features/history/presentation/history_detail_screen.dart';
 import '../features/books/presentation/presentation.dart';
+import '../features/vocabulary/vocabulary.dart';
 import '../shared/widgets/app_scaffold.dart';
 import '../core/design_system/design_system.dart';
 import '../core/l10n/app_translations.dart';
@@ -78,6 +80,11 @@ GoRouter _buildAppRouter() {
         ],
       ),
       // Top-level routes for details and other pages to overlay over the shell or transition natively
+      GoRoute(
+        path: '/saved/bayoz/:id',
+        builder: (context, state) =>
+            BayozDetailScreen(bayozId: state.pathParameters['id']!),
+      ),
       GoRoute(
         path: '/search',
         builder: (context, state) => const GlobalSearchScreen(),
@@ -149,19 +156,26 @@ GoRouter _buildAppRouter() {
         path: '/literature/work/:id',
         builder: (context, state) {
           final id = state.pathParameters['id']!;
-          return PoemReaderScreen(workId: id);
+          return PoemReaderScreen(
+            workId: id,
+            initialAnchor: int.tryParse(state.uri.queryParameters['at'] ?? ''),
+          );
         },
       ),
       GoRoute(
         path: '/literature/works/:id',
         builder: (context, state) {
           final id = state.pathParameters['id']!;
-          return PoemReaderScreen(workId: id);
+          return PoemReaderScreen(
+            workId: id,
+            initialAnchor: int.tryParse(state.uri.queryParameters['at'] ?? ''),
+          );
         },
       ),
       GoRoute(
         path: '/literature/school',
-        builder: (context, state) => const SchoolCanonScreen(),
+        builder: (context, state) =>
+            SchoolCanonScreen(initialGrade: state.uri.queryParameters['grade']),
       ),
       GoRoute(
         path: '/literature/oral',
@@ -205,6 +219,15 @@ GoRouter _buildAppRouter() {
         path: '/books/author/:id',
         builder: (context, state) =>
             BooksScreen(initialAuthorId: state.pathParameters['id']),
+      ),
+      GoRoute(
+        path: '/vocabulary',
+        builder: (context, state) => const VocabularyScreen(),
+      ),
+      GoRoute(
+        path: '/vocabulary/:id',
+        builder: (context, state) =>
+            VocabularyDetailScreen(entryId: state.pathParameters['id']!),
       ),
     ],
   );

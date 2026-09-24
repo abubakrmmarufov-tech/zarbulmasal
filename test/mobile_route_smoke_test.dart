@@ -28,6 +28,8 @@ void main() {
     '/books',
     '/books/badi-boron',
     '/history',
+    '/vocabulary',
+    '/vocabulary/vocab-proverb-21',
   ];
   const textScales = [1.3, 2.0];
 

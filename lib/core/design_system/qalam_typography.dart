@@ -1,26 +1,58 @@
 import 'package:flutter/material.dart';
 
-/// Locally bundled, script-complete type families for Zarbulmasal.
+/// Locally bundled, script-complete type families for Zarbulmasal («Муҳр»).
 ///
-/// Typography is the central architecture of Zarbulmasal.
-/// Distinguishes between classical literary serif typography and clean editorial UI sans.
+/// Roles: a high-contrast display serif for exhibits and titles, a calm
+/// reading serif for verse, a precise grotesque for the interface, Naskh for
+/// Persian reading, Vazirmatn for Persian interface text, and Nastaliq for
+/// exhibited Persian verse. Every family passed the Tajik/Persian glyph proof
+/// (`tool/design/font_proof_test.dart`). Persian-script text in a Cyrillic
+/// family falls back to the Persian faces, never to a missing glyph.
 class QalamTypography {
   QalamTypography._();
 
-  static const serif = 'NotoSerif';
-  static const sans = 'NotoSans';
+  /// Display serif (exhibits, titles).
+  static const display = 'EBGaramond';
+
+  /// Reading serif (verse and long reading).
+  static const serif = 'PTSerif';
+
+  /// Interface grotesque.
+  static const sans = 'GolosText';
+
+  /// Persian reading (Naskh).
   static const persian = 'NotoNaskhArabic';
-  static const fallback = [persian, sans];
-  static const serifFallback = [persian, serif, sans];
+
+  /// Persian interface sans.
+  static const persianUi = 'Vazirmatn';
+
+  /// Exhibited Persian verse. Urdu-tuned; pending review by a Persian reader.
+  static const nastaliq = 'NotoNastaliqUrdu';
+
+  static const fallback = [persianUi, persian, 'NotoSans'];
+  static const serifFallback = [persian, 'NotoSerif', sans];
+
+  /// Exhibited Persian verse (Nastaliq needs generous line height).
+  static TextStyle nastaliqVerse({
+    required Color color,
+    double fontSize = 28,
+    double height = 2.1,
+  }) => TextStyle(
+    fontFamily: nastaliq,
+    fontFamilyFallback: const [persian],
+    color: color,
+    fontSize: fontSize,
+    height: height,
+  );
 
   /// Hero Proverb: commanding, elegant serif representation for daily & spotlight folios.
   static TextStyle heroProverb({
     required Color color,
-    double fontSize = 28,
+    double fontSize = 25,
     FontWeight fontWeight = FontWeight.w500,
     double height = 1.48,
   }) => TextStyle(
-    fontFamily: serif,
+    fontFamily: display,
     fontFamilyFallback: serifFallback,
     color: color,
     fontSize: fontSize,
@@ -32,11 +64,11 @@ class QalamTypography {
   /// Monograph Title: Author names and major literary figures.
   static TextStyle monographTitle({
     required Color color,
-    double fontSize = 34,
-    FontWeight fontWeight = FontWeight.w700,
+    double fontSize = 32,
+    FontWeight fontWeight = FontWeight.w600,
     double height = 1.25,
   }) => TextStyle(
-    fontFamily: serif,
+    fontFamily: display,
     fontFamilyFallback: serifFallback,
     color: color,
     fontSize: fontSize,
@@ -48,11 +80,11 @@ class QalamTypography {
   /// Literary Title: Ghazal titles, poem headings, book titles.
   static TextStyle literaryTitle({
     required Color color,
-    double fontSize = 22,
+    double fontSize = 20,
     FontWeight fontWeight = FontWeight.w600,
     double height = 1.35,
   }) => TextStyle(
-    fontFamily: serif,
+    fontFamily: display,
     fontFamilyFallback: serifFallback,
     color: color,
     fontSize: fontSize,
@@ -64,7 +96,7 @@ class QalamTypography {
   /// Verse Body: Flagship poem reading text lines with optimal leading.
   static TextStyle verseText({
     required Color color,
-    double fontSize = 20,
+    double fontSize = 19,
     FontWeight fontWeight = FontWeight.w400,
     double height = 1.85,
   }) => TextStyle(
@@ -80,7 +112,7 @@ class QalamTypography {
   /// Hemistich: Half-verse lines in parallel or paired verse view.
   static TextStyle hemistich({
     required Color color,
-    double fontSize = 18,
+    double fontSize = 17,
     FontWeight fontWeight = FontWeight.w400,
     double height = 1.75,
   }) => TextStyle(
@@ -95,7 +127,7 @@ class QalamTypography {
   /// Page Title: Primary screen header.
   static TextStyle pageTitle({
     required Color color,
-    double fontSize = 32,
+    double fontSize = 30,
     FontWeight fontWeight = FontWeight.w700,
   }) => TextStyle(
     fontFamily: sans,
@@ -110,7 +142,7 @@ class QalamTypography {
   /// Section Title: Section groupings, cards, and modal dialogs.
   static TextStyle sectionTitle({
     required Color color,
-    double fontSize = 22,
+    double fontSize = 21,
     FontWeight fontWeight = FontWeight.w600,
     double height = 1.30,
   }) => TextStyle(

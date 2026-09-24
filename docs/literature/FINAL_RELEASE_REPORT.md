@@ -9,8 +9,9 @@ statements below where they differ.
 
 The user-approved publication rule now accepts one exact page from an uploaded
 project PDF or `maorif.tj`; a second witness is optional. Under that rule, 28
-works have restored, verified Tajik text and an explicitly labeled generated
-Persian-script representation. Three other page-checked records remain without
+works have restored, verified Tajik text; 21 of them carry an explicitly
+labeled generated Persian-script representation. Three other page-checked
+records remain without
 text because no exact recoverable transcription was available; they are not
 guessed or displayed. The catalog totals remain 5,501 works: 31 primary-page
 checked, 5,215 awaiting review, and 255 rejected extraction/prose candidates.

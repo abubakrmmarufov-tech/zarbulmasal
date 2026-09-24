@@ -81,5 +81,61 @@ void main() {
         'Асри IX',
       );
     });
+
+    group('name display normalization', () {
+      LiteraryAuthor authorWith(
+        String canonicalName, {
+        String? canonicalNamePersian,
+      }) {
+        return LiteraryAuthor.fromJson({
+          'id': 'name-normalization',
+          'canonicalName': canonicalName,
+          'canonicalNamePersian': ?canonicalNamePersian,
+          'literaryPeriod': 'Асри IX',
+          'biographyTj': '',
+          'biographySource': '',
+          'rights': {'status': 'unknown'},
+        });
+      }
+
+      test('rewrites all-caps Tajik names into readable title case', () {
+        expect(
+          LiteraryAuthorDisplayText.name(
+            authorWith('АНВАРӢ'),
+            DisplayLanguage.tajik,
+          ),
+          'Анварӣ',
+        );
+        expect(
+          LiteraryAuthorDisplayText.name(
+            authorWith('АМИНҶОН ШУКӮҲӢ'),
+            DisplayLanguage.tajik,
+          ),
+          'Аминҷон Шукӯҳӣ',
+        );
+      });
+
+      test('keeps mixed-case names exactly as authored', () {
+        const name = 'Абӯабдуллоҳи Рӯдакӣ';
+        expect(
+          LiteraryAuthorDisplayText.name(
+            authorWith(name),
+            DisplayLanguage.tajik,
+          ),
+          name,
+        );
+      });
+
+      test('never rewrites Persian Arabic script', () {
+        final author = authorWith(
+          'АНВАРӢ',
+          canonicalNamePersian: 'انوری ابیوردی',
+        );
+        expect(
+          LiteraryAuthorDisplayText.name(author, DisplayLanguage.persian),
+          'انوری ابیوردی',
+        );
+      });
+    });
   });
 }

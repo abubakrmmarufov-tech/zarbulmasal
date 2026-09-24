@@ -1,89 +1,59 @@
 ---
 design_system:
-  name: "Qalam Design System for Zarbulmasal"
-  version: "2.0.0"
-  character: "Premium Literary Journal + Cultural Museum Archive + Quiet Educational Product"
+  name: "Qalam Design System for Zarbulmasal — «Муҳр»"
+  version: "3.0.0"
+  character: "A private gallery of the Tajik word: ivory paper, monumental type, one vermilion seal"
   heritage: "Tajik & Persian Classical Literary Heritage"
-  
+  source_of_truth: "docs/design/ZARBULMASAL_UX_RESEARCH_REPORT.md (v2)"
+
 tokens:
   colors:
-    light:
-      paper: "#F4EFE6"
-      paperHigh: "#FAF8F2"
-      paperLow: "#EAE4D7"
-      paperWarm: "#FBF9F4"
-      ink: "#1B221E"
-      inkSoft: "#4A554E"
-      inkMute: "#6C7870"
-      hairline: "rgba(27, 34, 30, 0.12)"
-      hairlineGold: "rgba(196, 154, 69, 0.28)"
-      burgundy: "#9E3424"
-      burgundyDeep: "#782417"
-      burgundySoft: "#BD5343"
-      forest: "#2E523A"
-      forestSoft: "#4E735B"
-      forestDeep: "#1E3B27"
-      antiqueGold: "#C49A45"
-      antiqueGoldSoft: "#E0BD70"
-      antiqueGoldDeep: "#8F6B21"
-      terracotta: "#B85C38"
-      success: "#2E523A"
-      danger: "#9E3424"
-      warning: "#C49A45"
-    dark:
-      inkBg: "#121614"
-      inkCard: "#1B221E"
-      inkCardHigh: "#252E28"
-      inkWell: "#0B0E0C"
-      paperText: "#F2EFE9"
-      paperTextSoft: "#C2C9C3"
-      paperTextMute: "#8F9A91"
-      hairlineDark: "rgba(242, 239, 233, 0.12)"
-      hairlineGoldDark: "rgba(224, 189, 112, 0.28)"
-      accentGoldDark: "#D8B264"
-      accentBurgundyDark: "#DE7A6A"
-      accentForestDark: "#7CA98B"
-      
+    day_muhr:
+      paper: "#F3ECDD"
+      paperRaised: "#FAF6EC"
+      paperSunk: "#E8DFCB"
+      ink: "#1A1714"        # 15.2:1 on paper
+      inkSoft: "#4F473E"    # 7.8:1
+      inkMute: "#6B6256"    # 5.1:1
+      vermilion: "#B02E1C"  # 5.5:1 — seal, links, active states only
+      hairline: "rgba(26, 23, 20, 0.15)"
+    night_shab:
+      lapis: "#0B1222"
+      lapisRaised: "#131C33"
+      lapisSunk: "#070C18"
+      ivory: "#EFE7D6"          # 15.2:1 on lapis
+      ivorySoft: "#BDB5A4"      # 9.2:1
+      ivoryMute: "#948D7E"      # 5.7:1
+      vermilionNight: "#EC6A52" # 6.0:1
+    retired_roles: ["forest green (verified)", "antique gold", "burgundy blocks"]
+
   typography:
     families:
-      serif: "NotoSerif"
-      sans: "NotoSans"
-      persian: "NotoNaskhArabic"
-      fallback: ["NotoNaskhArabic", "NotoSans"]
-    scale:
-      heroProverb: { size: 28, height: 1.48, weight: 500, family: "NotoSerif" }
-      monographTitle: { size: 34, height: 1.25, weight: 700, family: "NotoSerif" }
-      pageTitle: { size: 30, height: 1.25, weight: 700, family: "NotoSans" }
-      literaryTitle: { size: 22, height: 1.35, weight: 600, family: "NotoSerif" }
-      sectionTitle: { size: 20, height: 1.30, weight: 600, family: "NotoSans" }
-      verseText: { size: 20, height: 1.85, weight: 400, family: "NotoSerif" }
-      body: { size: 16, height: 1.65, weight: 400, family: "NotoSans" }
-      bodySecondary: { size: 14, height: 1.60, weight: 400, family: "NotoSans" }
-      label: { size: 13, height: 1.35, weight: 600, family: "NotoSans" }
-      eyebrow: { size: 11, height: 1.20, weight: 700, letterSpacing: 1.2, family: "NotoSans" }
-      meta: { size: 12, height: 1.35, weight: 400, family: "NotoSans" }
-      navLabel: { size: 12, height: 1.20, weight: 500, family: "NotoSans" }
-      
-  spacing:
-    pageH: 24.0
-    sectionV: 32.0
-    sectionVTight: 20.0
-    cardPad: 20.0
-    cardPadSm: 14.0
-    inlineGap: 12.0
-    itemGap: 14.0
-    
-  radii:
-    none: 0.0
-    xs: 2.0
-    sm: 4.0
-    md: 8.0
-    lg: 12.0
-    xl: 16.0
-    pill: 999.0
+      display: "EBGaramond"        # exhibits, titles (500/600, italic 400)
+      reading: "PTSerif"           # verse, long reading (400/700, italic)
+      ui: "GolosText"              # interface (400–700)
+      persianReading: "NotoNaskhArabic"
+      persianUi: "Vazirmatn"
+      persianExhibit: "NotoNastaliqUrdu"  # pending review by a Persian reader
+      fallbacks: ["NotoSans", "NotoSerif"]
+    proof: "tool/design/font_proof_test.dart (Tajik Ҷ Ҳ Қ Ғ Ӣ Ӯ + Persian Nastaliq/Naskh)"
+    build: "tool/design/build_fonts.py (subset static instances)"
 ---
 
-# Qalam Design System — Zarbulmasal
+# Qalam Design System — Zarbulmasal («Муҳр»)
+
+> **v3 («Муҳр»)** supersedes the colour and type values below where they
+> differ. «Муҳр» by day, lapis-black «Шаб» by night; the ikat «Атлас» appears
+> only on collection covers, share cards and the splash, never behind reading
+> text. The v2 names in `QalamColors` (burgundy, forest, antiqueGold…) remain
+> as aliases of the new tokens until call sites migrate.
+>
+> **Components (v3):** `QalamSeal` (pressed = editorially approved, outline =
+> page-checked with review pending, absent = under review — sentence only;
+> artwork is a replaceable PLACEHOLDER asset), `QalamRecordTabs`
+> («Дар бора | Сабт»), `QalamIndexRow` (catalogue rows, no boxes),
+> `QalamMonogramPlate` (replaces portraits whose rights are not cleared).
+> Verification wording comes only from `ProvenanceState`.
 
 ## 1. Product Character & Philosophy
 Zarbulmasal is an authoritative digital home for Tajik proverbs, classical poetry, folklore, and national history. The visual language balances:
@@ -100,33 +70,41 @@ Zarbulmasal is an authoritative digital home for Tajik proverbs, classical poetr
 6. **Scholarly Transparency**: Verification levels (`Editorially Approved`, `Needs Review`, `Book Attested`, `Unverified`) are always explicit.
 
 ## 3. Surface & Elevation System
-- **Paper High (`#FAF8F2`)**: Primary reading fields, elevated cards, and hero panels.
-- **Paper Base (`#F4EFE6`)**: Main application background for light mode.
-- **Paper Low (`#EAE4D7`)**: Secondary sections, footers, and contrasting content blocks.
-- **Hairline Dividers**: 0.5px to 1px rules with soft ink tint (`0x1F1B221E`) rather than drop shadows.
-- **Dark Mode Surfaces**: `inkBg` (`#121614`), `inkCard` (`#1B221E`), `inkCardHigh` (`#252E28`).
+- **Paper Raised (`#FAF6EC`)**: Primary reading fields, elevated cards, and hero panels.
+- **Paper (`#F3ECDD`)**: Main application background for light mode («Муҳр»).
+- **Paper Sunk (`#E8DFCB`)**: Secondary sections, footers, and contrasting content blocks.
+- **Hairline Dividers**: 0.5px to 1px rules with a soft ink tint (`#261A1714`, ≈15% ink) rather than drop shadows; `hairlineSoft` (`#141A1714`) for lighter rules.
+- **Dark Mode Surfaces («Шаб`)**: `lapis` (`#0B1222`), `lapisRaised` (`#131C33`), `lapisHigh` (`#1B2540`), `lapisSunk` (`#070C18`).
 
 ## 4. Typography Matrix
 | Role | Family | Size | Height | Weight | Usage |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Hero Proverb** | NotoSerif | 28px | 1.48 | 500 | Daily proverb hero, flagship proverb display |
-| **Monograph Title** | NotoSerif | 34px | 1.25 | 700 | Poet monograph name, major literary author |
-| **Page Title** | NotoSans | 30px | 1.25 | 700 | Main screen titles, major headers |
-| **Literary Title** | NotoSerif | 22px | 1.35 | 600 | Poem titles, book titles, ghazal headings |
-| **Section Title** | NotoSans | 20px | 1.30 | 600 | Hub section titles, chapter labels |
-| **Verse Line** | NotoSerif | 18–24px | 1.85 | 400 | Poem reader body lines, hemistich pairs |
-| **Body** | NotoSans | 16px | 1.65 | 400 | Biographies, explanations, historical summaries |
-| **Body Secondary** | NotoSans | 14px | 1.60 | 400 | Subtitles, translations, secondary descriptions |
-| **Eyebrow** | NotoSans | 11px | 1.20 | 700 | Section numbering, folio category labels |
-| **Meta** | NotoSans | 12px | 1.35 | 400 | Dates, page numbers, authors, counts |
-| **Nav Label** | NotoSans | 12px | 1.20 | 500 | Bottom navigation items |
+| **Hero Proverb** | EBGaramond | 25px | 1.48 | 500 | Daily proverb hero, flagship proverb display |
+| **Monograph Title** | EBGaramond | 32px | 1.25 | 600 | Poet monograph name, major literary author |
+| **Page Title** | GolosText | 30px | 1.25 | 700 | Main screen titles, major headers |
+| **Literary Title** | EBGaramond | 20px | 1.35 | 600 | Poem titles, book titles, ghazal headings |
+| **Section Title** | GolosText | 21px | 1.30 | 600 | Hub section titles, chapter labels |
+| **Verse Line** | PTSerif | 19px | 1.85 | 400 | Poem reader body lines (see Hemistich below) |
+| **Hemistich** | PTSerif | 17px | 1.75 | 400 | Half-verse lines in paired verse view |
+| **Body** | GolosText | 16px | 1.65 | 400 | Biographies, explanations, historical summaries |
+| **Body Secondary** | GolosText | 14px | 1.60 | 400 | Subtitles, translations, secondary descriptions |
+| **Label** | GolosText | 13px | 1.35 | 600 | Button text, form labels, emphasized short text |
+| **Eyebrow** | GolosText | 11px | 1.20 | 700 | Section numbering, folio category labels |
+| **Meta** | GolosText | 12px | 1.35 | 400 | Dates, page numbers, authors, counts |
+| **Nav Label** | GolosText | 12px | 1.20 | 500 | Bottom navigation items |
+
+Persian-script text in a Cyrillic family falls back to the Persian faces, never
+to a missing glyph: `NotoNaskhArabic` (Persian reading), `Vazirmatn` (Persian
+interface), and `NotoNastaliqUrdu` (exhibited Persian verse, pending review by a
+Persian reader).
 
 ## 5. Color Roles & Palette
-- **Burgundy (`#9E3424`)**: Primary brand identity, focal accents, key calls-to-action.
-- **Forest (`#2E523A`)**: Verified state, secondary literature sections, nature/ethics categories.
-- **Antique Gold (`#C49A45`)**: Folio highlights, verse dates, illuminated badges, active tabs.
-- **Ink (`#1B221E`)**: Primary text, dark hero containers, authoritative headers.
-- **Parchment Cream (`#F4EFE6`)**: Natural background for reading comfort and low eye fatigue.
+Live `QalamColors` (v3) tokens; the v2 roles **Burgundy, Forest, Antique Gold** are retired as roles — their old hex values (`#9E3424`, `#2E523A`, `#C49A45`) no longer describe the palette and now resolve to the tokens below.
+- **Paper (`#F3ECDD`)**: Main «Муҳр» background; `paperRaised` (`#FAF6EC`) elevated cards, `paperSunk` (`#E8DFCB`) secondary sections.
+- **Ink (`#1A1714`)**: Primary text and dark authoritative headers; `inkSoft` (`#4F473E`) secondary, `inkMute` (`#6B6256`) muted.
+- **Vermilion (`#B02E1C`)**: The one colour that speaks — the seal, links, and active states only; `vermilionDeep` (`#8C2414`) for pressed/focus.
+- **«Шаб» night**: `lapis` (`#0B1222`) ground, `lapisRaised` (`#131C33`), `lapisHigh` (`#1B2540`), `lapisSunk` (`#070C18`); ivory text `ivory` (`#EFE7D6`), `ivorySoft` (`#BDB5A4`), `ivoryMute` (`#948D7E`), and `vermilionNight` (`#EC6A52`) seal.
+- **Stable category tokens**: deterministic brand colours per category (`categoryTokens`), e.g. `ilm`/`odob` (`#2E523A`), `hikmat` (`#9E3424`), `pul`/`vaqt` (`#C49A45`). These per-category values remain accurate; they are not the palette roles above.
 
 ## 6. Signature Surfaces
 - **Literature Hub**: Curated library entry with daily verse, canonical poem carousel, and five cultural gateways.

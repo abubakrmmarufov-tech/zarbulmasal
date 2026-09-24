@@ -70,24 +70,51 @@ class CategoriesScreen extends ConsumerWidget {
                 QalamSpacing.pageH,
                 48,
               ),
-              sliver: SliverList.builder(
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  final category = categories[index];
-                  return QalamCategoryTile(
-                    category: category,
-                    isSelected: selected == category.id,
-                    onTap: () {
-                      // Entering a subject starts a new browsing scope. The list
-                      // still supports combining filters deliberately afterward.
-                      ref.read(selectedLevelProvider.notifier).state = null;
-                      ref.read(searchQueryProvider.notifier).state = '';
-                      ref.read(selectedCategoryProvider.notifier).state =
-                          selected == category.id ? null : category.id;
-                      context.go('/proverbs');
-                    },
-                  );
-                },
+              // A rack of «Атлас» covers: two across on phones, more on wider
+              // screens. Each cover sizes to its title, so enlarged text grows
+              // the plate instead of overflowing it.
+              sliver: SliverToBoxAdapter(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    const spacing = 16.0;
+                    final columns = (constraints.maxWidth / 220).floor().clamp(
+                      2,
+                      4,
+                    );
+                    final width =
+                        (constraints.maxWidth - spacing * (columns - 1)) /
+                        columns;
+                    return Wrap(
+                      spacing: spacing,
+                      runSpacing: spacing,
+                      children: [
+                        for (final category in categories)
+                          SizedBox(
+                            width: width,
+                            child: QalamCategoryTile(
+                              category: category,
+                              isSelected: selected == category.id,
+                              onTap: () {
+                                // Entering a subject starts a new browsing
+                                // scope. The list still supports combining
+                                // filters deliberately afterward.
+                                ref.read(selectedLevelProvider.notifier).state =
+                                    null;
+                                ref.read(searchQueryProvider.notifier).state =
+                                    '';
+                                ref
+                                    .read(selectedCategoryProvider.notifier)
+                                    .state = selected == category.id
+                                    ? null
+                                    : category.id;
+                                context.go('/proverbs');
+                              },
+                            ),
+                          ),
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           ],

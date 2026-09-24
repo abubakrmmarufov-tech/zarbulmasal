@@ -42,71 +42,17 @@ class QalamBookmark extends ConsumerWidget {
   }
 }
 
-class QalamScriptSwitch extends ConsumerWidget {
-  const QalamScriptSwitch({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final lang = ref.watch(displayLanguageProvider);
-    final colors = Theme.of(context).colorScheme;
-
-    return Wrap(
-      spacing: 10,
-      runSpacing: 8,
-      children: [
-        for (final value in DisplayLanguage.values)
-          Semantics(
-            selected: lang == value,
-            child: OutlinedButton(
-              onPressed: () =>
-                  ref.read(displayLanguageProvider.notifier).setLanguage(value),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: lang == value
-                    ? colors.primary
-                    : colors.onSurfaceVariant,
-                backgroundColor: lang == value
-                    ? colors.primary.withValues(alpha: 0.08)
-                    : Colors.transparent,
-                side: BorderSide(
-                  color: lang == value ? colors.primary : colors.outlineVariant,
-                  width: lang == value ? 1.5 : 0.5,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                minimumSize: const Size(48, 48),
-              ),
-              child: Text(
-                value == DisplayLanguage.persian
-                    ? 'فارسی (عربی)'
-                    : 'Тоҷикӣ (Кириллӣ)',
-                style: QalamTypography.label(
-                  color: lang == value
-                      ? colors.primary
-                      : colors.onSurfaceVariant,
-                  fontSize: 13,
-                ),
-              ),
-            ),
-          ),
-      ],
-    );
-  }
-}
-
 class QalamSectionLink extends ConsumerWidget {
-  final String number;
+  /// Shown only where order means something (levels, grades); running
+  /// numbers on a plain index carry no meaning and are omitted.
+  final String? number;
   final String title;
   final String subtitle;
   final VoidCallback? onTap;
 
   const QalamSectionLink({
     super.key,
-    required this.number,
+    this.number,
     required this.title,
     required this.subtitle,
     required this.onTap,
@@ -117,71 +63,81 @@ class QalamSectionLink extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
-    final displayNumber = AppTranslations.formatDigits(number, lang);
+    final displayNumber = number == null
+        ? null
+        : AppTranslations.formatDigits(number!, lang);
     final enabled = onTap != null;
     final contentColor = enabled
         ? colors.onSurface
         : colors.onSurfaceVariant.withValues(alpha: 0.60);
 
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 18),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: colors.outlineVariant, width: 0.5),
-            ),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: 32,
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(
-                  displayNumber,
-                  style: QalamTypography.eyebrow(
-                    color: enabled
-                        ? colors.primary
-                        : colors.onSurfaceVariant.withValues(alpha: 0.60),
+    final theme = Theme.of(context);
+    // A boxed catalogue slip, like every list item in the app.
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Material(
+        color: theme.brightness == Brightness.dark
+            ? colors.surfaceContainer
+            : colors.surfaceContainerLowest,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+          side: BorderSide(color: colors.outlineVariant),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 14, 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (displayNumber != null) ...[
+                  Container(
+                    width: 32,
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text(
+                      displayNumber,
+                      style: QalamTypography.eyebrow(
+                        color: enabled
+                            ? colors.primary
+                            : colors.onSurfaceVariant.withValues(alpha: 0.60),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 14),
+                ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: QalamTypography.literaryTitle(
+                          color: contentColor,
+                          fontSize: 20,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        subtitle,
+                        style: QalamTypography.bodySecondary(
+                          color: colors.onSurfaceVariant,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: QalamTypography.sectionTitle(
-                        color: contentColor,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: QalamTypography.bodySecondary(
-                        color: colors.onSurfaceVariant,
-                        fontSize: 13,
-                      ),
-                    ),
-                  ],
+                const SizedBox(width: 12),
+                Icon(
+                  enabled
+                      ? (isPersian ? Icons.arrow_back : Icons.arrow_forward)
+                      : Icons.hourglass_empty,
+                  size: 18,
+                  color: enabled ? colors.primary : colors.onSurfaceVariant,
                 ),
-              ),
-              const SizedBox(width: 12),
-              Icon(
-                enabled
-                    ? (isPersian ? Icons.arrow_back : Icons.arrow_forward)
-                    : Icons.hourglass_empty,
-                size: 18,
-                color: enabled ? colors.primary : colors.onSurfaceVariant,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

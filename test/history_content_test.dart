@@ -55,6 +55,27 @@ void main() {
     },
   );
 
+  test('literature book source URLs point to their own grade category', () {
+    const gradeCategory = {'5': '27', '8': '30', '11': '33'};
+    for (final book in books) {
+      if (!book['id'].toString().startsWith('literature-')) continue;
+      expect(
+        book['sourceUrl'],
+        'https://maorif.tj/libraries?category='
+        '${gradeCategory[book['grade'].toString()]}',
+        reason:
+            '${book['id']} must point to the maorif.tj category of its '
+            'own grade, not another grade\'s category',
+      );
+    }
+    // literature-5 was previously mis-attributed to the grade-6 category; pin
+    // the corrected URL explicitly.
+    final literature5 = books.firstWhere(
+      (book) => book['id'] == 'literature-5',
+    );
+    expect(literature5['sourceUrl'], 'https://maorif.tj/libraries?category=27');
+  });
+
   test('Yusen spelling remains traceable to the grade 6 textbook', () {
     final evsen = entries.firstWhere((entry) => entry['id'] == 'person-evsen');
     expect(evsen['title'], contains('Евсенҳо'));

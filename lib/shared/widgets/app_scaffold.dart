@@ -6,6 +6,7 @@ import '../../core/l10n/app_translations.dart';
 import '../providers/app_providers.dart';
 
 import 'onboarding_overlay.dart';
+import 'reading_room.dart';
 
 final onboardingHomeKey = GlobalKey(debugLabel: 'onboarding-home');
 final onboardingExploreKey = GlobalKey(debugLabel: 'onboarding-explore');
@@ -82,70 +83,73 @@ class _AppScaffoldState extends ConsumerState<AppScaffold> {
         children: [
           Scaffold(
             body: widget.navigationShell,
-            bottomNavigationBar: DecoratedBox(
-              decoration: BoxDecoration(
-                color: colors.surface,
-                border: Border(top: BorderSide(color: colors.outline)),
-              ),
-              child: SafeArea(
-                top: false,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
+            // On desktop the reading-room rail carries navigation.
+            bottomNavigationBar: ReadingRoomScope.railVisibleOf(context)
+                ? null
+                : DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: colors.surface,
+                      border: Border(top: BorderSide(color: colors.outline)),
+                    ),
+                    child: SafeArea(
+                      top: false,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 6,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _buildNavItem(
+                              context,
+                              key: navKeys[0],
+                              index: 0,
+                              currentIndex: widget.navigationShell.currentIndex,
+                              icon: Icons.home_outlined,
+                              selectedIcon: Icons.home,
+                              label: AppTranslations.get('nav_home', lang),
+                              onTap: () => goBranch(0),
+                              colors: colors,
+                            ),
+                            _buildNavItem(
+                              context,
+                              key: navKeys[1],
+                              index: 1,
+                              currentIndex: widget.navigationShell.currentIndex,
+                              icon: Icons.explore_outlined,
+                              selectedIcon: Icons.explore,
+                              label: AppTranslations.get('nav_explore', lang),
+                              onTap: () => goBranch(1),
+                              colors: colors,
+                            ),
+                            _buildNavItem(
+                              context,
+                              key: navKeys[2],
+                              index: 2,
+                              currentIndex: widget.navigationShell.currentIndex,
+                              icon: Icons.school_outlined,
+                              selectedIcon: Icons.school,
+                              label: AppTranslations.get('nav_learn', lang),
+                              onTap: () => goBranch(2),
+                              colors: colors,
+                            ),
+                            _buildNavItem(
+                              context,
+                              key: navKeys[3],
+                              index: 3,
+                              currentIndex: widget.navigationShell.currentIndex,
+                              icon: Icons.bookmark_outline,
+                              selectedIcon: Icons.bookmark,
+                              label: AppTranslations.get('nav_saved', lang),
+                              onTap: () => goBranch(3),
+                              colors: colors,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildNavItem(
-                        context,
-                        key: navKeys[0],
-                        index: 0,
-                        currentIndex: widget.navigationShell.currentIndex,
-                        icon: Icons.home_outlined,
-                        selectedIcon: Icons.home,
-                        label: AppTranslations.get('nav_home', lang),
-                        onTap: () => goBranch(0),
-                        colors: colors,
-                      ),
-                      _buildNavItem(
-                        context,
-                        key: navKeys[1],
-                        index: 1,
-                        currentIndex: widget.navigationShell.currentIndex,
-                        icon: Icons.explore_outlined,
-                        selectedIcon: Icons.explore,
-                        label: AppTranslations.get('nav_explore', lang),
-                        onTap: () => goBranch(1),
-                        colors: colors,
-                      ),
-                      _buildNavItem(
-                        context,
-                        key: navKeys[2],
-                        index: 2,
-                        currentIndex: widget.navigationShell.currentIndex,
-                        icon: Icons.school_outlined,
-                        selectedIcon: Icons.school,
-                        label: AppTranslations.get('nav_learn', lang),
-                        onTap: () => goBranch(2),
-                        colors: colors,
-                      ),
-                      _buildNavItem(
-                        context,
-                        key: navKeys[3],
-                        index: 3,
-                        currentIndex: widget.navigationShell.currentIndex,
-                        icon: Icons.bookmark_outline,
-                        selectedIcon: Icons.bookmark,
-                        label: AppTranslations.get('nav_saved', lang),
-                        onTap: () => goBranch(3),
-                        colors: colors,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
           ),
           if (_showOnboarding)
             OnboardingOverlay(

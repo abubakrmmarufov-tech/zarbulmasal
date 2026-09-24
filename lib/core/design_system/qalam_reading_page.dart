@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'design_system.dart';
 import '../l10n/app_translations.dart';
 import '../../data/models/proverb.dart';
 import '../../shared/providers/app_providers.dart';
+import '../../shared/providers/bayoz_provider.dart';
+import '../../shared/widgets/bayoz_dialogs.dart';
+import '../../shared/providers/reading_position_provider.dart';
+import '../../shared/providers/reading_script_provider.dart';
 import '../../shared/providers/recent_activity_provider.dart';
 import '../../shared/widgets/empty_state.dart';
 
 /// A shared, script-aware reading page for the daily and collection routes.
-class QalamReadingPage extends ConsumerWidget {
+class QalamReadingPage extends ConsumerStatefulWidget {
   final Proverb? proverb;
   final bool daily;
   const QalamReadingPage({
@@ -17,12 +22,24 @@ class QalamReadingPage extends ConsumerWidget {
     required this.proverb,
     this.daily = false,
   });
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<QalamReadingPage> createState() => _QalamReadingPageState();
+}
+
+class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
+  @override
+  Widget build(BuildContext context) {
+    final proverb = widget.proverb;
+    final daily = widget.daily;
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final persian = lang == DisplayLanguage.persian;
     final p = proverb;
+    // The hero follows the reading script, never the interface language.
+    final heroPersian =
+        ref.watch(readingScriptProvider) == ReadingScript.persian &&
+        (p?.persianText.isNotEmpty ?? false);
     String tr(String key) => AppTranslations.get(key, lang);
     final categories = ref.watch(categoriesProvider);
     final proverbsById = {
@@ -33,7 +50,9 @@ class QalamReadingPage extends ConsumerWidget {
         : p.variants
               .map((variantId) {
                 final variant = proverbsById[variantId];
-                return persian ? variant?.persianText : variant?.tajikCyrillic;
+                return heroPersian
+                    ? variant?.persianText
+                    : variant?.tajikCyrillic;
               })
               .whereType<String>()
               .toList(growable: false);
@@ -41,7 +60,9 @@ class QalamReadingPage extends ConsumerWidget {
     final category = matches.isEmpty
         ? tr('detail_unknown')
         : QalamCategoryTile.nameFor(matches.first, lang);
-    final now = DateTime.now();
+    // Use the shared Tajikistan daily date so hero, reader and the proverb
+    // selection always agree regardless of the viewer's local timezone.
+    final now = ref.watch(dailyDateProvider);
 
     if (p != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -63,6 +84,18 @@ class QalamReadingPage extends ConsumerWidget {
                 subtitlePersian: 'ضرب‌المثل',
                 timestamp: DateTime.now(),
                 route: '/proverb/${p.id}',
+              ),
+            );
+        ref
+            .read(readingPositionProvider.notifier)
+            .open(
+              ReadingPosition(
+                kind: ReadingKind.proverb,
+                id: p.id,
+                route: '/proverb/${p.id}',
+                titleTajik: p.tajikCyrillic,
+                titlePersian: p.persianText.isNotEmpty ? p.persianText : null,
+                timestamp: DateTime.now(),
               ),
             );
       });
@@ -101,6 +134,14 @@ class QalamReadingPage extends ConsumerWidget {
                   }
                 }
               },
+            ),
+            IconButton(
+              tooltip: tr('bayoz_add_to'),
+              icon: const Icon(Icons.library_add_outlined, size: 21),
+              onPressed: () => BayozPickerSheet.show(
+                context,
+                BayozItem(BayozItemKind.proverb, p.id),
+              ),
             ),
             QalamBookmark(proverbId: p.id),
             const SizedBox(width: 8),
@@ -162,17 +203,17 @@ class QalamReadingPage extends ConsumerWidget {
                           const Divider(),
                           const SizedBox(height: 32),
                           SelectableText(
-                            persian ? p.persianText : p.tajikCyrillic,
-                            semanticsLabel: persian
+                            heroPersian ? p.persianText : p.tajikCyrillic,
+                            semanticsLabel: heroPersian
                                 ? p.persianText
                                 : p.tajikCyrillic,
-                            textDirection: persian
+                            textDirection: heroPersian
                                 ? TextDirection.rtl
                                 : TextDirection.ltr,
                             style: QalamTypography.heroProverb(
                               color: colors.onSurface,
                               fontSize:
-                                  30, // Optimized for mobile compatibility
+                                  27, // Optimized for mobile compatibility
                               height: 1.42,
                             ),
                           ),
@@ -190,28 +231,19 @@ class QalamReadingPage extends ConsumerWidget {
                           ),
                           const SizedBox(height: 24),
                           SelectableText(
-                            persian ? p.tajikCyrillic : p.persianText,
-                            semanticsLabel: persian
+                            heroPersian ? p.tajikCyrillic : p.persianText,
+                            semanticsLabel: heroPersian
                                 ? p.tajikCyrillic
                                 : p.persianText,
-                            textDirection: persian
+                            textDirection: heroPersian
                                 ? TextDirection.ltr
                                 : TextDirection.rtl,
                             style: QalamTypography.heroProverb(
                               color: colors.onSurfaceVariant,
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          const SizedBox(height: 32),
-                          Text(
-                            tr('reading_script'),
-                            style: QalamTypography.meta(
-                              color: colors.onSurfaceVariant,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          const QalamScriptSwitch(),
                           const SizedBox(height: 28),
                           Wrap(
                             spacing: 16,
@@ -290,50 +322,34 @@ class QalamReadingPage extends ConsumerWidget {
                         number: AppTranslations.formatDigits('04', lang),
                         title: persian ? 'گونه‌های دیگر' : 'Шаклҳои дигар',
                         text: variantTexts.join('\n\n'),
-                        textDirection: persian
+                        textDirection: heroPersian
                             ? TextDirection.rtl
                             : TextDirection.ltr,
                       ),
                     ),
+                  // One source line: the book the proverb is recorded in.
+                  if (p.sourceNote.isNotEmpty)
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+                        child: Text(
+                          AppTranslations.get('lit_source_line', lang, [
+                            p.sourceNote,
+                          ]),
+                          textDirection: _detectDirection(p.sourceNote),
+                          style: QalamTypography.meta(
+                            color: colors.onSurfaceVariant,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(24, 32, 24, 48),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          const Divider(),
-                          const SizedBox(height: 22),
-                          Text(
-                            tr('detail_source'),
-                            style: QalamTypography.eyebrow(
-                              color: colors.onSurfaceVariant,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            tr(_sourceStatusKey(p.sourceStatus)),
-                            style: QalamTypography.bodySecondary(
-                              color: colors.onSurfaceVariant,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            tr(_sourceStatusDescKey(p.sourceStatus)),
-                            style: QalamTypography.meta(
-                              color: colors.onSurfaceVariant,
-                            ),
-                          ),
-                          if (p.sourceNote.isNotEmpty) ...[
-                            const SizedBox(height: 8),
-                            Text(
-                              p.sourceNote,
-                              textDirection: _detectDirection(p.sourceNote),
-                              style: QalamTypography.bodySecondary(
-                                color: colors.onSurfaceVariant,
-                              ),
-                            ),
-                          ],
-                        ],
+                      padding: const EdgeInsets.fromLTRB(24, 40, 24, 48),
+                      child: _ProverbEndOfText(
+                        proverb: p,
+                        persianTitles: heroPersian,
                       ),
                     ),
                   ),
@@ -341,32 +357,6 @@ class QalamReadingPage extends ConsumerWidget {
               ),
             ),
     );
-  }
-
-  static String _sourceStatusKey(SourceStatus status) {
-    switch (status) {
-      case SourceStatus.pageVerified:
-        return 'badges_page_verified';
-      case SourceStatus.bookAttested:
-        return 'badges_book_attested';
-      case SourceStatus.needsReview:
-        return 'badges_needs_review';
-      case SourceStatus.unverified:
-        return 'badges_unverified';
-    }
-  }
-
-  static String _sourceStatusDescKey(SourceStatus status) {
-    switch (status) {
-      case SourceStatus.pageVerified:
-        return 'source_page_verified';
-      case SourceStatus.bookAttested:
-        return 'source_book_attested';
-      case SourceStatus.needsReview:
-        return 'source_needs_review';
-      case SourceStatus.unverified:
-        return 'source_unverified';
-    }
   }
 
   static TextDirection _detectDirection(String text) {
@@ -421,17 +411,24 @@ class _ReadingSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
+          // A Wrap (rather than a Row) so a long script badge falls onto its
+          // own line instead of overflowing the header on narrow widths or
+          // under enlarged text; on a single line the title and badge sit at
+          // opposite ends, as before.
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.start,
+            spacing: 8,
+            runSpacing: 4,
             children: [
-              Expanded(
-                child: Text(
-                  '$number / $title',
-                  style: QalamTypography.eyebrow(color: colors.primary),
-                ),
+              Text(
+                '$number / $title',
+                style: QalamTypography.eyebrow(color: colors.primary),
               ),
               if (scriptBadge != null)
                 Text(
                   scriptBadge!,
+                  textAlign: TextAlign.end,
                   style: QalamTypography.meta(color: colors.onSurfaceVariant),
                 ),
             ],
@@ -444,7 +441,7 @@ class _ReadingSection extends StatelessWidget {
             style: emphasis
                 ? QalamTypography.heroProverb(
                     color: colors.onSurface,
-                    fontSize: 22,
+                    fontSize: 20,
                     fontWeight: FontWeight.w400,
                   )
                 : QalamTypography.body(
@@ -455,6 +452,94 @@ class _ReadingSection extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// What follows a proverb: previous/next within its theme (in collection
+/// order), a few more from the same theme, and the whole theme.
+class _ProverbEndOfText extends ConsumerWidget {
+  const _ProverbEndOfText({required this.proverb, required this.persianTitles});
+
+  final Proverb proverb;
+
+  /// Titles follow the reading script, like the hero.
+  final bool persianTitles;
+
+  static const int _maxSameTheme = 3;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lang = ref.watch(displayLanguageProvider);
+    String tr(String key) => AppTranslations.get(key, lang);
+    final theme = ref
+        .watch(proverbsProvider)
+        .where((candidate) => candidate.categoryId == proverb.categoryId)
+        .toList(growable: false);
+    final index = theme.indexWhere((candidate) => candidate.id == proverb.id);
+    if (index < 0) return const SizedBox.shrink();
+    final categories = ref
+        .watch(categoriesProvider)
+        .where((category) => category.id == proverb.categoryId);
+    final themeName = categories.isEmpty
+        ? null
+        : QalamCategoryTile.nameFor(categories.first, lang);
+
+    String title(Proverb target) =>
+        persianTitles && target.persianText.isNotEmpty
+        ? target.persianText
+        : target.tajikCyrillic;
+    TextDirection direction(Proverb target) =>
+        persianTitles && target.persianText.isNotEmpty
+        ? TextDirection.rtl
+        : TextDirection.ltr;
+    QalamNeighbour? neighbour(int at, String labelKey) {
+      if (at < 0 || at >= theme.length) return null;
+      final target = theme[at];
+      return QalamNeighbour(
+        label: tr(labelKey),
+        title: title(target),
+        titleDirection: direction(target),
+        onTap: () => context.push('/proverb/${target.id}'),
+      );
+    }
+
+    final more = theme
+        .skip(index + 2)
+        .take(_maxSameTheme)
+        .toList(growable: false);
+
+    return QalamEndOfText(
+      heading: tr('end_heading'),
+      previous: neighbour(index - 1, 'end_previous'),
+      next: neighbour(index + 1, 'end_next'),
+      groups: [
+        QalamRelatedGroup(
+          title: tr('end_same_theme'),
+          rows: [
+            for (final other in more)
+              QalamIndexRow(
+                title: title(other),
+                onTap: () => context.push('/proverb/${other.id}'),
+              ),
+            if (themeName != null && theme.length > 1)
+              QalamIndexRow(
+                title: AppTranslations.get('end_all_in_theme', lang, [
+                  themeName,
+                ]),
+                onTap: () {
+                  // Open the theme as a fresh browsing scope, as the theme
+                  // covers do.
+                  ref.read(selectedLevelProvider.notifier).state = null;
+                  ref.read(searchQueryProvider.notifier).state = '';
+                  ref.read(selectedCategoryProvider.notifier).state =
+                      proverb.categoryId;
+                  context.push('/proverbs');
+                },
+              ),
+          ],
+        ),
+      ],
     );
   }
 }

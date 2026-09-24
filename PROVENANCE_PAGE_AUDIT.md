@@ -10,7 +10,7 @@
 
 | Category | Count |
 |---|---|
-| Total works | 5502 |
+| Total works | 5501 |
 | Works with `scriptSource: both` (ALL) | 0 |
 | Works with `scriptSource: both` but NO genuine Persian source evidence | 0 |
 | Works claiming `sourceImageVerified: true` without image file | 0 |
@@ -107,12 +107,12 @@ The baseline values below were read from commit `80b0fc8` before the repair work
 | Fake `sourceImageVerified` records | 1,460 | 0 |
 | Works labeled `scriptSource: both` | 1,472 | 0 |
 | Works with generated Persian-script content | 0 explicit | 0 |
-| Works with `persianScriptSource: generated` metadata | 1,472 | 5502 |
+| Works with `persianScriptSource: generated` metadata | 1,472 | 5501 |
 | Poet public-domain claims without attached rights evidence | 150 | 0 |
 | Source-backed local portraits | 0 | 67 |
 | Active unsupported/generated biographies | 0 quarantined | 14 |
 
-Current verification counts: 21 exact uploaded-book-page claims, 64 `SOURCE_LOCATED` history claims, 31 page-backed literary works, and 5218 works still needing review.
+Current verification counts: 21 exact uploaded-book-page claims, 64 `SOURCE_LOCATED` history claims, 28 page-backed literary works (all source-attested readable), and 5218 works still needing review.
 
 ---
 
@@ -124,3 +124,43 @@ Current verification counts: 21 exact uploaded-book-page claims, 64 `SOURCE_LOCA
 4. Completed: repeated page-1 placeholders were removed; un-rechecked claims are `SOURCE_LOCATED`.
 5. Completed: unsupported rights claims were reset to `unknown`.
 6. Completed: 67 source-backed local portraits are recorded with exact source-page metadata; the remaining authors use the consistent placeholder until a reliable image is verified.
+
+---
+
+## PHASE 2 — READABLE WORK CONTENT & PAGE AUDIT (2026-09-23)
+
+**Scope:** re-verified every readable (source-attested) work against its exact source page in the
+uploaded official-textbook PDFs; quarantined fragments/synthetic stitching; promoted exact
+in-source poems that were left pending.
+
+**Readable count:** 28 → 28 (set changed: 3 quarantined, 3 promoted). All 28 remain
+`rights.status: sourceAttested` + `textStatus: verified` + `verification.pageVerified: true`.
+
+| Work ID | Title | Source PDF (allowed) | Printed/PDF pages | Disposition |
+|---|---|---|---|---|
+| f4c025e3 | Зан агар оташ намешуд (Турсунзода) | `docs/literature/pdfs/adabiyet sinfi 11.pdf` | p161 | **Corrected** — recorded lines 2–4 were fabricated (absent from any checked source); replaced with the two couplets actually quoted on p161 of «Модарнома» analysis. |
+| 6686a9e9 | Баланд аст аз фалак маъвои Бедил (Туғрал) | `docs/literature/pdfs/adabiet sinfi 10.pdf` | p171 | **Corrected** — text stitched two different Tughral poems; reduced to the genuine 4-couplet excerpt quoted under «Нақибхони Туғрал мегӯяд» on p171. |
+| f9f475b2 | Сад ҷон фидои дӯст (Ҳилолӣ) | `docs/literature/pdfs/adabiet sinfi 5.pdf` | p148 | **Corrected** — recorded text was only the final 3 hemistiches; restored the full 14-hemistich ghazal from p148. |
+| 71f2cf41 | Яке Руму яке Юнон парастад (Лоҳутӣ) | `docs/literature/pdfs/adabiyet sinfi 11.pdf` | p113–114 | **Corrected** — pageEnd 113→114; poem's three couplets are quoted across pp. 113–114 in the biography prose. |
+| ced6cb49 | Дар шеър се тан паямбаронанд (Саъдӣ) | `docs/literature/pdfs/adabiyet sinfi 9.pdf` | p14 | **Corrected** — quatrain was collapsed into two lines; reformatted into its four hemistiches as printed on p14. |
+| c03e8139 | Агар ду бародар ниҳад пушт-пушт (Фирдавсӣ) | `docs/literature/pdfs/adabiyot sinfi 7.pdf` | p47–50 | **Quarantined** — recorded text stitched the «Панду андарзҳои Фирдавсӣ» maxim collection across pp. 47–50 with `## (Page N)` markers and footnote junk; a maxim collection, not a single work. `textStatus→needsReview`, `rights→unknown`. |
+| 385117c7 | Камол, аз Каъба рафтӣ бар дари ёр (Камол) | `docs/literature/pdfs/adabiyot sinfi 7.pdf` | p125 | **Quarantined** — single bayt (tombstone epitaph) quoted in biography prose; a fragment of a ghazal. `textStatus→needsReview`, `rights→unknown`. |
+| dce12ea8 | Имрӯз бикун чу метавонӣ коре (Ибни Сино) | `docs/literature/pdfs/adabiet sinfi 5.pdf` | p62 | **Quarantined** — single bayt quoted on p62; a fragment of a rubai. `textStatus→needsReview`, `rights→unknown`. |
+| qanoat_mavj_dar_sahro | Мавҷ дар саҳро (Қаноат) | `docs/literature/pdfs/adabiet sinfi 6.pdf` (2022 maorif.tj witness) | p147–148 | **Promoted** — full poem transcribed (modern orthography) from the official grade-6 PDF; exact match with 2022 maorif.tj witness. `sourceAttested`. |
+| qanoat_mavji_odam | Мавҷи одам (Қаноат) | `docs/literature/pdfs/adabiet sinfi 6.pdf` (2022 maorif.tj witness) | p149–150 | **Promoted** — full poem transcribed; `textMatchResult: exact`. `sourceAttested`. |
+| qanoat_mavji_barodari | Мавҷи бародарӣ (Қаноат) | `docs/literature/pdfs/adabiet sinfi 6.pdf` (2022 maorif.tj witness) | p150–151 | **Promoted** — full poem transcribed; `textMatchResult: exact`. `sourceAttested`. |
+
+**Page-evidence note (verified by pdftotext, legacy→modern Cyrillic normalisation):** the first and
+last hemistiche of all 28 readable works were confirmed on the cited PDF pages. Two apparent
+page mismatches are normalisation artifacts, not errors: d232629e («Теғиноҳақхӯрда» vs
+«Теғиноҳақхурда», ӯ/у) and fd2474e2 («сар4» footnote digit in «ба чашми сар4 саросар»).
+
+**Persian-witness honesty:** all 5501 works carry `persianScriptSource: generated` (0 claim a real
+Persian source); 0 works ship `textPersian`; corrected/promoted works set the generated
+`persianScriptRepresentation` to null where it had gone stale. No false Persian witness claims exist.
+
+**School-canon / author backlog:** school_canon.json (77 entries, all `workId:""`, `needsReview`) and
+the oral_heritage.json (14 entries, empty text) remain pending — no exact uploaded/Maorif evidence
+permits text or promotion. The `poem_*` records for Jomi/Navoi/Tursunzoda/Keldi are textbook prose
+chunks (biography/analysis), not poems; they stay pending. Only the three Qanoat «Мавҷ» poems were
+found exactly in an allowed source and promoted.

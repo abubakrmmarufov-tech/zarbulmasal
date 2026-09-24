@@ -60,6 +60,11 @@ class OralHeritageEntry {
   /// Page or item number in the printed volume.
   final String? page;
 
+  /// Machine-readable reference to the held source witness that attests this
+  /// folklore text: an uploaded PDF under `docs/literature/pdfs/` (or a
+  /// `maorif.tj` URL). Mirrors [SourceEdition.sourceReference].
+  final String? sourceReference;
+
   /// Verification and audit record confirming source fidelity.
   final VerificationRecord verification;
 
@@ -77,6 +82,7 @@ class OralHeritageEntry {
     required this.publisher,
     required this.year,
     this.page,
+    this.sourceReference,
     required this.verification,
     required this.rights,
   });
@@ -84,12 +90,47 @@ class OralHeritageEntry {
   /// Whether this folklore entry has passed full verification audit.
   bool get isVerified => verification.isFullyVerified;
 
-  /// Whether this entry is both verified and cleared for full-text display.
-  bool get isDisplayable =>
-      isVerified &&
-      rights.status.allowsFullText &&
-      rights.fullTextAllowed &&
-      text.trim().isNotEmpty;
+  /// Whether this folklore entry is displayable under the oral heritage gate.
+  ///
+  /// An entry may display through the legacy fully-editorial path, or through
+  /// the source-attested path: an exact, page-verified occurrence in an
+  /// uploaded PDF under `docs/literature/pdfs/` (or a `maorif.tj` URL).
+  /// Quarantined records (empty text or unestablished rights) stay hidden.
+  bool get isDisplayable {
+    if (text.trim().isEmpty) return false;
+    if (!rights.status.allowsFullText || !rights.fullTextAllowed) return false;
+    return isVerified || isPermittedSourceAttested;
+  }
+
+  /// Whether the checked source satisfies the project's one-source policy.
+  ///
+  /// The reference must point at an uploaded PDF under `docs/literature/pdfs/`
+  /// (or `pdf books/`) or at an `https` URL on `maorif.tj`, matching the
+  /// permitted-source policy applied to [LiteraryWork.isPermittedSourceAttested].
+  bool get isPermittedSourceAttested {
+    const checkedLevels = {
+      VerificationLevel.primaryChecked,
+      VerificationLevel.secondWitnessLocated,
+      VerificationLevel.collated,
+      VerificationLevel.editoriallyApproved,
+    };
+    final reference = sourceReference?.trim() ?? '';
+    if (!checkedLevels.contains(verification.evidenceLevel) ||
+        !verification.pageVerified ||
+        reference.isEmpty) {
+      return false;
+    }
+    final normalized = reference.replaceAll('\\', '/').toLowerCase();
+    if (normalized.startsWith('docs/literature/pdfs/') ||
+        normalized.startsWith('pdf books/')) {
+      return normalized.endsWith('.pdf') &&
+          !normalized.split('/').any((s) => s == '.' || s == '..');
+    }
+    final uri = Uri.tryParse(reference);
+    final host = uri?.host.toLowerCase();
+    return uri?.scheme == 'https' &&
+        (host == 'maorif.tj' || host?.endsWith('.maorif.tj') == true);
+  }
 
   /// Formatted source citation.
   String get citation {
@@ -121,6 +162,8 @@ class OralHeritageEntry {
       publisher: (json['publisher'] ?? '') as String,
       year: (json['year'] ?? '').toString(),
       page: (json['page'])?.toString(),
+      sourceReference:
+          (json['sourceReference'] ?? json['source_reference']) as String?,
       verification: verificationJson is Map<String, dynamic>
           ? VerificationRecord.fromJson(verificationJson)
           : const VerificationRecord(),
@@ -148,6 +191,7 @@ class OralHeritageEntry {
       'publisher': publisher,
       'year': year,
       'page': page,
+      'sourceReference': sourceReference,
       'verification': verification.toJson(),
       'rights': rights.toJson(),
     };
@@ -165,6 +209,7 @@ class OralHeritageEntry {
     String? publisher,
     String? year,
     String? page,
+    String? sourceReference,
     VerificationRecord? verification,
     RightsRecord? rights,
   }) {
@@ -179,6 +224,7 @@ class OralHeritageEntry {
       publisher: publisher ?? this.publisher,
       year: year ?? this.year,
       page: page ?? this.page,
+      sourceReference: sourceReference ?? this.sourceReference,
       verification: verification ?? this.verification,
       rights: rights ?? this.rights,
     );
@@ -189,10 +235,11 @@ class OralHeritageEntry {
       identical(this, other) ||
       other is OralHeritageEntry &&
           runtimeType == other.runtimeType &&
-          id == other.id;
+          id == other.id &&
+          sourceReference == other.sourceReference;
 
   @override
-  int get hashCode => id.hashCode;
+  int get hashCode => Object.hash(id, sourceReference);
 
   @override
   String toString() {

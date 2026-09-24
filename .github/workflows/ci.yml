@@ -40,9 +40,19 @@ jobs:
           dart format --output=none --set-exit-if-changed
           lib test tool/validate_literature_json.dart
           tool/validate_literary_content.dart
+          tool/build_runtime_literature.dart
+          tool/verify_runtime_literature.dart
 
       - name: Validate literature JSON
         run: dart run tool/validate_literature_json.dart
+
+      - name: Regenerate runtime catalog and check it is committed
+        run: |
+          dart run tool/build_runtime_literature.dart
+          git diff --exit-code -- assets/data/literature/runtime_works.json
+
+      - name: Verify runtime catalog against canonical works
+        run: dart run tool/verify_runtime_literature.dart
 
       - name: Validate literary content
         run: dart run tool/validate_literary_content.dart

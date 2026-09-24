@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/history/data/history_repository.dart';
 import 'package:zarbulmasal/features/history/domain/history_book.dart';
 import 'package:zarbulmasal/features/history/domain/history_entry.dart';
+import 'package:zarbulmasal/features/history/domain/history_section.dart';
 
 void main() {
   const entries = [
@@ -36,6 +37,14 @@ void main() {
       grade: '5',
       sourceBookId: 'history-5',
       sourceSection: 'Юнону Бохтар',
+      sections: [
+        HistoryDetailSection(
+          heading: 'Ҷанг дар наздикии Мароқанд',
+          body: 'Мудофиаи суғдиён дар атрофи Самарқанд.',
+          printedPage: 155,
+          pdfPage: 155,
+        ),
+      ],
     ),
     HistoryEntry(
       id: 'persian-kalila',
@@ -55,6 +64,14 @@ void main() {
     expect(repository.search(entries, '  Бухоро '), hasLength(1));
     expect(repository.search(entries, 'калила'), hasLength(1));
     expect(repository.search(entries, 'کالیلا'), hasLength(1));
+  });
+
+  test('search indexes long-form section bodies and headings', () {
+    final repository = HistoryRepository();
+
+    expect(repository.search(entries, 'Мароқанд'), hasLength(1));
+    expect(repository.search(entries, 'Мудофиаи суғдиён'), hasLength(1));
+    expect(repository.search(entries, 'Самарқанд'), hasLength(1));
   });
 
   test('missing book years remain empty instead of rendering null', () {

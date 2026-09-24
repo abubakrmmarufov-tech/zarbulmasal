@@ -69,7 +69,7 @@ class QalamProverbCard extends ConsumerWidget {
                       : TextDirection.ltr,
                   style: QalamTypography.heroProverb(
                     color: colors.onSurface,
-                    fontSize: 22,
+                    fontSize: 20,
                     height: 1.45,
                   ),
                 ),

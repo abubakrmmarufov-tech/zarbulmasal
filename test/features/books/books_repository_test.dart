@@ -18,13 +18,15 @@ void main() {
       'loads provider catalogue metadata with availability-only purpose',
       () async {
         final providers = await repository.loadProviders();
-        expect(providers, hasLength(1));
-        expect(providers.single.id, 'kitobkhon');
-        expect(providers.single.catalogueSize, 1092);
-        expect(
-          providers.single.sourcePurpose,
-          BookSourcePurpose.bookAvailability,
-        );
+        expect(providers, hasLength(2));
+        final kitobkhon = providers.firstWhere((p) => p.id == 'kitobkhon');
+        final khirad = providers.firstWhere((p) => p.id == 'khirad');
+        expect(kitobkhon.catalogueSize, 1092);
+        expect(kitobkhon.sourcePurpose, BookSourcePurpose.bookAvailability);
+        expect(khirad.catalogueSize, isNull);
+        expect(khirad.supportsReader, isTrue);
+        expect(khirad.supportsDownload, isFalse);
+        expect(khirad.catalogueUri?.host, 'khirad.tj');
       },
     );
 
@@ -82,7 +84,9 @@ void main() {
             .map((e) => e.id)
             .toSet();
 
-        expect(books.length, 18);
+        // 28 curated books + 682 imported from the kitobkhon.net catalogue
+        // (tool/books/import_kitobkhon.py).
+        expect(books.length, 710);
         expect(bookIds.length, books.length);
         expect(editionIds.length, books.expand((book) => book.editions).length);
         expect(books.every((book) => book.editions.isNotEmpty), isTrue);
@@ -91,7 +95,6 @@ void main() {
               .expand((book) => book.editions)
               .every(
                 (edition) =>
-                    edition.providerId == 'kitobkhon' &&
                     edition.availability == BookAvailability.readableExternal &&
                     edition.rightsStatus == BookRightsStatus.rightsUnclear &&
                     edition.downloadUrl == null &&
@@ -102,6 +105,45 @@ void main() {
       },
     );
 
+    test(
+      'imported catalogue books link to the provider page and PDF',
+      () async {
+        final books = await repository.loadBooks();
+        final kitobkhon = books
+            .expand((book) => book.editions)
+            .where((e) => e.providerId == 'kitobkhon')
+            .toList(growable: false);
+
+        expect(kitobkhon.length, greaterThan(600));
+        for (final edition in kitobkhon) {
+          expect(edition.sourceUri?.host, 'kitobkhon.net');
+          expect(edition.readUri?.host, 'kitobkhon.net');
+          expect(edition.readUrl, contains('/storage/books/'));
+        }
+      },
+    );
+
+    test('khirad provider books expose verified online-reader links', () async {
+      final books = await repository.loadBooks();
+      final khirad = books
+          .where((book) => book.editions.any((e) => e.providerId == 'khirad'))
+          .toList(growable: false);
+
+      expect(khirad, hasLength(10));
+      for (final book in khirad) {
+        final edition = book.editions.single;
+        expect(edition.providerId, 'khirad');
+        expect(edition.format, BookFormat.html);
+        expect(edition.readUri?.host, 'khirad.tj');
+        expect(edition.sourceUri?.host, 'khirad.tj');
+        expect(edition.coverUrl, isNull);
+        expect(edition.downloadUrl, isNull);
+        expect(edition.publisher, isNotNull);
+        expect(edition.publicationYear, isNotNull);
+        expect(edition.pageCount, greaterThanOrEqualTo(350));
+      }
+    });
+
     test('retains verified author and related-poet relationships', () async {
       final books = await repository.loadBooks();
       final badiBoron = books.firstWhere((book) => book.id == 'badi-boron');
@@ -109,6 +151,9 @@ void main() {
         (book) => book.id == 'ahmadi-donish',
       );
       final farzona = books.firstWhere((book) => book.id == 'devoni-farzona-1');
+      final sayidoiNasafi = books.firstWhere(
+        (book) => book.id == 'khirad-devoni-sayidoi-nasafi',
+      );
 
       expect(badiBoron.authorId, 'ef5a57a2-8949-43dd-85eb-8ceaf78335f3');
       expect(badiBoron.relatedPoetIds, contains(badiBoron.authorId));
@@ -116,6 +161,9 @@ void main() {
       expect(ahmadiDonish.relatedPoetIds, ['ahmad_donish']);
       expect(farzona.authorId, 'farzona');
       expect(farzona.relatedPoetIds, ['farzona']);
+      // Sayidoi Nasafi resolves to the verified poet dossier in poets.json.
+      expect(sayidoiNasafi.authorId, '5633556b-df45-4cab-83dc-760016db1ef2');
+      expect(sayidoiNasafi.relatedPoetIds, contains(sayidoiNasafi.authorId));
     });
 
     test(
@@ -155,7 +203,11 @@ void main() {
       () async {
         final books = await repository.loadBooks();
         final qobusnoma = books.firstWhere((book) => book.id == 'qobusnoma');
-        final edition = qobusnoma.editions.single;
+        // The 2016 printing is a second edition of the same book.
+        expect(qobusnoma.editions, hasLength(2));
+        final edition = qobusnoma.editions.firstWhere(
+          (e) => e.id == 'qobusnoma-kitobkhon-2007',
+        );
 
         expect(
           edition.coverUrl,

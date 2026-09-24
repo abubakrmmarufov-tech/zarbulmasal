@@ -108,6 +108,51 @@ class ExtractPortraitsTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "PDF must be a basename"):
                 extract_portraits.load_manifest(manifest)
 
+    def test_manifest_rejects_unknown_polarity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            manifest = Path(directory) / "manifest.json"
+            manifest.write_text(
+                json.dumps([
+                    {"authorId": "one", "pdf": "book.pdf", "pdfPage": 1,
+                     "polarity": "auto"},
+                ]),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "polarity"):
+                extract_portraits.load_manifest(manifest)
+
+    def test_tursunzoda_manifest_pins_explicit_inversion(self):
+        by_author = {entry["authorId"]: entry for entry in extract_portraits.load_manifest()}
+        self.assertEqual(by_author["tursunzoda"]["polarity"], "invert")
+
+    def test_force_invert_overrides_the_conservative_heuristic(self):
+        from io import BytesIO
+
+        from PIL import Image
+
+        # Corner luma 0, centre luma 54: the shipped Tursunzoda case, which the
+        # conservative heuristic (centre must exceed max(60, corner+15)) skips.
+        source = Image.new("RGB", (4, 4), (54, 54, 54))
+        source.putpixel((0, 0), (0, 0, 0))
+        source.putpixel((3, 0), (0, 0, 0))
+        source.putpixel((0, 3), (0, 0, 0))
+        source.putpixel((3, 3), (0, 0, 0))
+        raw = BytesIO()
+        source.save(raw, format="PNG")
+
+        normalized = extract_portraits.normalize_portrait(raw.getvalue(), "png")
+        with Image.open(BytesIO(normalized)) as image:
+            # Without the explicit override the dark centre keeps it a negative.
+            self.assertEqual(image.getpixel((0, 0)), (0, 0, 0))
+            self.assertEqual(image.getpixel((2, 2)), (54, 54, 54))
+
+        forced = extract_portraits.normalize_portrait(
+            raw.getvalue(), "png", force_invert=True
+        )
+        with Image.open(BytesIO(forced)) as image:
+            self.assertEqual(image.getpixel((0, 0)), (255, 255, 255))
+            self.assertEqual(image.getpixel((2, 2)), (201, 201, 201))
+
     def test_portrait_extraction_ignores_unpainted_image_resources(self):
         class FakePage:
             def get_image_info(self, *, xrefs):

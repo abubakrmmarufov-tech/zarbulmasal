@@ -15,6 +15,16 @@ void main() {
       TrustedUrlPolicy.parseExternal('https://maorif.tj/libraries'),
       isNotNull,
     );
+    expect(
+      TrustedUrlPolicy.parseExternal('https://khirad.tj/books/read/muntahabot'),
+      isNotNull,
+    );
+    expect(
+      TrustedUrlPolicy.parseExternal(
+        'https://khirad.tj/books/navodiru-l-vaqoea',
+      ),
+      isNotNull,
+    );
   });
 
   test(
@@ -24,6 +34,8 @@ void main() {
         'https://example.test/book',
         'https://kitobkhon.net.evil.test/book',
         'https://evil.kitobkhon.net/book',
+        'https://evil.khirad.tj/book',
+        'https://khirad.tj.evil.test/book',
         'https://cdn.maorif.tj/book',
         'https://user:pass@kitobkhon.net/book',
         'https://kitobkhon.net:8443/book',

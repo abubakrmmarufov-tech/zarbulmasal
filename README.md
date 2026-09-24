@@ -108,6 +108,8 @@ flutter analyze
 flutter test --coverage
 dart run tool/validate_literature_json.dart
 dart run tool/validate_literary_content.dart
+dart run tool/build_runtime_literature.dart   # regenerate runtime_works.json
+dart run tool/verify_runtime_literature.dart  # prove it stays a lossless projection
 flutter build web --release --base-href /zarbulmasal/
 flutter build appbundle --release  # requires production signing variables
 python3 tool/verify_android_bundle_alignment.py build/app/outputs/bundle/release/app-release.aab
@@ -115,7 +117,46 @@ bash tool/verify_android_release_artifacts.sh build/app/outputs/bundle/release/a
 python3 tool/deep_browser_audit.py https://abubakrmmarufov-tech.github.io/zarbulmasal/
 ```
 
-The regression suite currently covers 397 automated tests across all routes, 8 viewports (from 320px ultra-compact phones to tablet and desktop), both writing systems (Cyrillic and Persian Arabic RTL), large text, dark mode, filtering, parallel script reading, clipboard behavior, favorites, persisted preferences, quizzes, flashcards, and empty states. `tool/deep_browser_audit.py` validates viewport overflow, console errors, page exceptions, failed requests, and route diagnostics across all major destinations, and exits nonzero on a real browser failure.
+The regression suite covers automated tests across all routes, 8 viewports (from 320px ultra-compact phones to tablet and desktop), both writing systems (Cyrillic and Persian Arabic RTL), large text, dark mode, filtering, parallel script reading, clipboard behavior, favorites, persisted preferences, quizzes, flashcards, and empty states. `tool/deep_browser_audit.py` validates viewport overflow, console errors, page exceptions, failed requests, and route diagnostics across all major destinations, and exits nonzero on a real browser failure.
+
+## Runtime literary catalog
+
+`assets/data/literature/works.json` (10.7 MB, 5,501 mostly review-stage records)
+is the canonical editorial source of truth. It stays in the repo, unchanged,
+and continues to feed the content/provenance validators in `tool/`. The app
+itself ships a derived, deterministic runtime catalog at
+`assets/data/literature/runtime_works.json` (≈5.0 MB, ~53% smaller).
+
+The runtime catalog keeps every field any public screen reads — full text,
+incipit, titles in both scripts, composition evidence, sources, rights, and
+verification — for the 28 displayable and 5,260 auditable-citation works, while
+sharing the heavily repeated book metadata and rights records across works
+through small dictionaries. The 5,501st set of works that are neither
+displayable nor source-backed are shipped as identity-only stubs so author
+counts and the under-review gate stay correct.
+
+Because the runtime asset is derived, a content edit to `works.json` must be
+accompanied by a regenerated runtime asset. The CI pipeline enforces this:
+
+```sh
+dart run tool/build_runtime_literature.dart   # regenerate runtime_works.json
+git diff --exit-code -- assets/data/literature/runtime_works.json  # staleness gate
+dart run tool/verify_runtime_literature.dart  # semantic lossless-projection gate
+```
+
+`tool/build_runtime_literature.dart` is deterministic: dictionary order follows
+first-appearance order in the canonical file, work order is preserved, and no
+timestamps or environment values are embedded, so regenerating the asset always
+yields the identical bytes. `tool/verify_runtime_literature.dart` expands the
+runtime catalog and proves record-for-record that every displayable and
+auditable-citation work keeps all its text/source/rights/verification data, that
+stubs stay stub-only, and that global counts (displayable, auditable citations,
+searchable set, per-author under-review counts) and cross-references (school
+canon, history entries) match the canonical dataset.
+
+The runtime catalog is decoded in `lib/features/literature/data/runtime_works_codec.dart`
+and consumed by `LiteratureRepository.loadWorks()`; the repository caches a
+successful load and evicts failed loads so UI retry still works.
 
 ## Android release (currently withheld)
 

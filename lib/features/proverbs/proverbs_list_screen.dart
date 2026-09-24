@@ -5,6 +5,7 @@ import '../../core/design_system/design_system.dart';
 import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/widgets/empty_state.dart';
+import '../../core/utils/search_field_limits.dart';
 
 class ProverbsListScreen extends ConsumerStatefulWidget {
   const ProverbsListScreen({super.key});
@@ -80,7 +81,7 @@ class _ProverbsListScreenState extends ConsumerState<ProverbsListScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: TextField(
                   controller: _searchController,
-                  maxLength: 256,
+                  inputFormatters: searchQueryFormatters,
                   textDirection: lang == DisplayLanguage.persian
                       ? TextDirection.rtl
                       : TextDirection.ltr,

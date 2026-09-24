@@ -9,7 +9,9 @@ import '../domain/portrait_record.dart';
 /// Persian UI only renders values with an explicitly reviewed Persian form.
 abstract final class LiteraryAuthorDisplayText {
   static String name(LiteraryAuthor author, DisplayLanguage language) {
-    if (language != DisplayLanguage.persian) return author.canonicalName;
+    if (language != DisplayLanguage.persian) {
+      return _normalizeDisplayCase(author.canonicalName);
+    }
     final persianName = author.canonicalNamePersian?.trim() ?? '';
     return persianName.isNotEmpty
         ? persianName
@@ -60,7 +62,15 @@ abstract final class LiteraryAuthorDisplayText {
       portrait.sourcePage.toString(),
       language,
     );
+    final grade = RegExp(
+      r'sinfi\s*(\d+)',
+    ).firstMatch(portrait.sourceReference)?.group(1);
     return switch (portrait.sourceType) {
+      PortraitSourceType.uploadedBook when grade != null =>
+        AppTranslations.translate('lit_portrait_source_textbook', language, [
+          AppTranslations.formatDigits(grade, language),
+          page,
+        ]),
       PortraitSourceType.uploadedBook => AppTranslations.translate(
         'lit_portrait_source_book_page',
         language,
@@ -127,5 +137,28 @@ abstract final class LiteraryAuthorDisplayText {
       DisplayLanguage.persian,
     );
     return year.approximate ? 'حدود $localized' : localized;
+  }
+
+  /// Rewrites all-caps display names into a readable title case without
+  /// touching Persian/Tajik Arabic script.
+  ///
+  /// Only values dominated by uppercase Cyrillic/Latin letters are rewritten
+  /// (e.g. `"АНВАРӢ"` -> `"Анварӣ"`). Persian script has no upper/lower case
+  /// and mixed-case names are left exactly as authored, so this never corrupts
+  /// Arabic-script text or legitimate capitalization.
+  static String _normalizeDisplayCase(String value) {
+    if (value.isEmpty) return value;
+    final hasCasedLetters = RegExp(r'[A-Za-zЀ-ӿ]').hasMatch(value);
+    if (!hasCasedLetters || value != value.toUpperCase()) return value;
+
+    return value
+        .split(RegExp(r'\s+'))
+        .map((word) {
+          if (word.isEmpty) return word;
+          final first = word.substring(0, 1);
+          final rest = word.substring(1);
+          return first.toUpperCase() + rest.toLowerCase();
+        })
+        .join(' ');
   }
 }

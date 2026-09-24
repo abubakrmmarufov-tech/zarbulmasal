@@ -7,6 +7,7 @@ import 'package:zarbulmasal/core/theme/app_theme.dart';
 import 'package:zarbulmasal/features/history/data/history_providers.dart';
 import 'package:zarbulmasal/features/history/domain/history_book.dart';
 import 'package:zarbulmasal/features/history/domain/history_entry.dart';
+import 'package:zarbulmasal/features/history/domain/history_section.dart';
 import 'package:zarbulmasal/features/history/presentation/history_detail_screen.dart';
 import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
@@ -49,17 +50,55 @@ const _book = HistoryBook(
   sourceUrl: 'https://maorif.tj/history',
 );
 
+const _sectionsEntry = HistoryEntry(
+  id: 'spitamen',
+  kind: HistoryEntryKind.person,
+  title: 'Спитамен',
+  titlePersian: 'اسپیتامن',
+  summary: 'Фармондеҳи муқовимат бар зидди Искандар.',
+  summaryPersian: 'فرماندهٔ مقاومت در برابر اسکندر.',
+  period: 'Асри IV то милод',
+  grade: '5',
+  sourceBookId: 'history-5',
+  sourceSection: 'Юнону Бохтар',
+  sections: [
+    HistoryDetailSection(
+      heading: 'Замин ва пайдоиш',
+      headingPersian: 'سرزمین و پیدایش',
+      body:
+          'Матоне дар бораи пайдоиш.\n\nПорчаи дуюм дар бораи муборизаи суғдиён.',
+      bodyPersian: 'متن درباره پیدایش.\n\nپاراگراف دوم دربارهٔ مبارزهٔ سغدیان.',
+      printedPage: 34,
+      pdfPage: 34,
+      persianIsEditorial: true,
+    ),
+    HistoryDetailSection(
+      heading: 'Охири мубориза',
+      body: 'Матни охири мубориза.',
+      printedPage: 36,
+      pdfPage: 36,
+    ),
+  ],
+);
+
 Future<void> _pumpDetail(
   WidgetTester tester, {
   required String entryId,
   required Future<HistoryEntry?> Function() loadEntry,
   HistoryBook book = _book,
+  List<HistoryBook> extraBooks = const [],
   DisplayLanguage language = DisplayLanguage.tajik,
+  Size physicalSize = const Size(390, 844),
+  double textScaleFactor = 1.0,
 }) async {
-  tester.view.physicalSize = const Size(390, 844);
+  tester.view.physicalSize = physicalSize;
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
+  if (textScaleFactor != 1.0) {
+    tester.platformDispatcher.textScaleFactorTestValue = textScaleFactor;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+  }
 
   SharedPreferences.setMockInitialValues({
     AppConstants.prefsLanguage: language == DisplayLanguage.persian
@@ -71,7 +110,9 @@ Future<void> _pumpDetail(
     overrides: [
       sharedPreferencesProvider.overrideWithValue(prefs),
       historyEntryByIdProvider(entryId).overrideWith((ref) => loadEntry()),
-      historyBooksProvider.overrideWith((ref) => Future.value([book])),
+      historyBooksProvider.overrideWith(
+        (ref) => Future.value([book, ...extraBooks]),
+      ),
       authorByIdProvider('missing-author').overrideWith((ref) async => null),
       approvedWorksProvider.overrideWith((ref) async => const []),
     ],
@@ -110,8 +151,9 @@ void main() {
       findsOneWidget,
     );
     expect(find.text('Мутолиа дар сомонаи расмӣ (maorif.tj)'), findsOneWidget);
-    expect(find.text('missing-author'), findsOneWidget);
-    expect(find.text('missing-work'), findsOneWidget);
+    // Unresolvable related records are left out, never shown as raw IDs.
+    expect(find.text('missing-author'), findsNothing);
+    expect(find.text('missing-work'), findsNothing);
   });
 
   testWidgets('history detail switches to Persian fields and direction', (
@@ -204,5 +246,182 @@ void main() {
       loadEntry: () async => throw StateError('load failed'),
     );
     expect(find.text('Хато дар боргирии маълумот'), findsOneWidget);
+  });
+
+  testWidgets('history detail renders long-form reading sections with pages', (
+    tester,
+  ) async {
+    await _pumpDetail(
+      tester,
+      entryId: _sectionsEntry.id,
+      loadEntry: () async => _sectionsEntry,
+    );
+
+    expect(find.text('Хониши муфассал'), findsOneWidget);
+    expect(find.text('Замин ва пайдоиш'), findsOneWidget);
+    expect(find.text('Матоне дар бораи пайдоиш.'), findsOneWidget);
+    expect(
+      find.text('Порчаи дуюм дар бораи муборизаи суғдиён.'),
+      findsOneWidget,
+    );
+    expect(find.text('Охири мубориза'), findsOneWidget);
+    expect(find.text('Матни охири мубориза.'), findsOneWidget);
+    expect(find.text('Саҳифаи чопӣ 34 (PDF 34)'), findsOneWidget);
+    expect(find.text('Саҳифаи чопӣ 36 (PDF 36)'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('history detail shows Persian editorial section translations', (
+    tester,
+  ) async {
+    await _pumpDetail(
+      tester,
+      entryId: _sectionsEntry.id,
+      loadEntry: () async => _sectionsEntry,
+      language: DisplayLanguage.persian,
+    );
+
+    expect(find.text('خوانش تفصیلی'), findsOneWidget);
+    expect(find.text('سرزمین و پیدایش'), findsOneWidget);
+    expect(find.text('متن درباره پیدایش.'), findsOneWidget);
+    expect(find.text('پاراگراف دوم دربارهٔ مبارزهٔ سغدیان.'), findsOneWidget);
+    // A section without Persian falls back to the Tajik source witness.
+    expect(find.text('Матни охири мубориза.'), findsOneWidget);
+    expect(find.textContaining('ترجمهٔ ویراستاری'), findsNWidgets(2));
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets(
+    'history detail sections fit a narrow 320px viewport at 1.6x text',
+    (tester) async {
+      await _pumpDetail(
+        tester,
+        entryId: _sectionsEntry.id,
+        loadEntry: () async => _sectionsEntry,
+        physicalSize: const Size(320, 800),
+        textScaleFactor: 1.6,
+      );
+
+      expect(find.text('Хониши муфассал'), findsOneWidget);
+      expect(find.text('Замин ва пайдоиш'), findsOneWidget);
+      expect(find.text('Саҳифаи чопӣ 34 (PDF 34)'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets('history detail renders an inclusive page range citation', (
+    tester,
+  ) async {
+    const entry = HistoryEntry(
+      id: 'range-entry',
+      kind: HistoryEntryKind.event,
+      title: 'Ислоҳоти Дориюш',
+      summary: 'Хулоса.',
+      period: '—',
+      grade: '5',
+      sourceBookId: 'history-5',
+      sourceSection: 'Ҳахоманишиён',
+      sections: [
+        HistoryDetailSection(
+          heading: 'Молиёт ва бозоргонӣ',
+          body: 'Матни бахш.',
+          printedPage: 133,
+          pdfPage: 133,
+          printedPageEnd: 137,
+          pdfPageEnd: 137,
+        ),
+      ],
+    );
+
+    await _pumpDetail(tester, entryId: entry.id, loadEntry: () async => entry);
+
+    expect(find.text('Саҳифаҳои чопӣ 133–137 (PDF 133–137)'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets(
+    'Persian mode labels a Tajik fallback section as source text and keeps it LTR',
+    (tester) async {
+      const entry = HistoryEntry(
+        id: 'fallback-entry',
+        kind: HistoryEntryKind.person,
+        title: 'Спитамен',
+        summary: 'Хулоса.',
+        period: '—',
+        grade: '5',
+        sourceBookId: 'history-5',
+        sourceSection: 'Юнону Бохтар',
+        sections: [
+          HistoryDetailSection(
+            heading: 'Ҷанги Мароқанд',
+            body: 'Мудофиаи суғдиён дар атрофи Самарқанд.',
+            printedPage: 36,
+            pdfPage: 36,
+          ),
+        ],
+      );
+
+      await _pumpDetail(
+        tester,
+        entryId: entry.id,
+        loadEntry: () async => entry,
+        language: DisplayLanguage.persian,
+      );
+
+      expect(
+        find.text('متن اصلی به زبان تاجیکی (سیریلیک) است'),
+        findsOneWidget,
+      );
+      expect(
+        find.text('Мудофиаи суғдиён дар атрофи Самарқанд.'),
+        findsOneWidget,
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets('history detail captions a section cited from another book', (
+    tester,
+  ) async {
+    const literatureBook = HistoryBook(
+      id: 'literature-5',
+      grade: '5',
+      title: 'Адабиёти тоҷик',
+      titlePersian: 'ادبیات تاجیک',
+      author: 'Т. Мирзод',
+      authorPersian: 'ت. میرزاد',
+      year: '2017',
+      description: 'Китоби дарсӣ.',
+      sourceUrl: 'https://maorif.tj/libraries?category=27',
+    );
+    const entry = HistoryEntry(
+      id: 'poem-source-book',
+      kind: HistoryEntryKind.poem,
+      title: 'Халқӣ суруд',
+      summary: 'Хулоса.',
+      period: '—',
+      grade: '6',
+      sourceBookId: 'history-6',
+      sourceSection: 'Забон ва адабиёт',
+      sections: [
+        HistoryDetailSection(
+          heading: 'Замина',
+          body: 'Матни бахш аз китоби адабиёт.',
+          sourceBookId: 'literature-5',
+          printedPage: 29,
+          pdfPage: 29,
+        ),
+      ],
+    );
+
+    await _pumpDetail(
+      tester,
+      entryId: entry.id,
+      loadEntry: () async => entry,
+      extraBooks: [literatureBook],
+    );
+
+    expect(find.text('Сарчашмаи ин бахш: Адабиёти тоҷик'), findsOneWidget);
+    expect(tester.takeException(), isNull);
   });
 }

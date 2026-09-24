@@ -6,6 +6,7 @@ class TrustedUrlPolicy {
     'kitobkhon.net',
     'maorif.tj',
     'cdn.kitobkhon.net',
+    'khirad.tj',
   };
 
   const TrustedUrlPolicy._();

@@ -39,6 +39,11 @@ def load_manifest(path: Path = MANIFEST) -> list[dict[str, Any]]:
             raise ValueError(f"PDF must be a basename: {entry!r}")
         if not isinstance(pdf_page, int) or pdf_page < 1:
             raise ValueError(f"PDF page must be positive: {entry!r}")
+        polarity = entry.get("polarity")
+        if polarity is not None and polarity != "invert":
+            raise ValueError(
+                f"polarity must be 'invert' (explicit inversion) or absent: {entry!r}"
+            )
         seen.add(author_id)
     return entries
 
@@ -74,12 +79,20 @@ def _portrait_image(document: Any, page_number: int) -> tuple[bytes, str, int, i
     )
 
 
-def normalize_portrait(image: bytes, extension: str) -> bytes:
+def normalize_portrait(
+    image: bytes, extension: str, force_invert: bool = False
+) -> bytes:
     """Normalize scan polarity without adding or removing identity features.
 
     A subset of the textbook scans stores monochrome portraits as negatives.
     Detecting a dark border with a lighter interior is conservative for these
     page crops; only those images are inverted. Other source pixels are kept.
+
+    An explicit per-poet override is honored first: when ``force_invert`` is
+    true (manifest ``"polarity": "invert"``) the crop is inverted regardless
+    of the heuristic. This is the narrowly scoped escape hatch for sources
+    known by caption/photo cross-check to be photographic negatives whose
+    centre is too dark for the conservative heuristic to fire.
     """
     try:
         from PIL import Image, ImageOps  # type: ignore
@@ -89,15 +102,19 @@ def normalize_portrait(image: bytes, extension: str) -> bytes:
     with Image.open(BytesIO(image)) as source:
         rgb = source.convert("RGB")
         width, height = rgb.size
-        points = [
-            rgb.getpixel((0, 0)),
-            rgb.getpixel((width - 1, 0)),
-            rgb.getpixel((0, height - 1)),
-            rgb.getpixel((width - 1, height - 1)),
-        ]
-        corner_luma = sum(sum(pixel) / 3 for pixel in points) / len(points)
-        center_luma = sum(rgb.getpixel((width // 2, height // 2))) / 3
-        if corner_luma < 90 and center_luma > max(60, corner_luma + 15):
+        should_invert = bool(force_invert)
+        if not should_invert:
+            points = [
+                rgb.getpixel((0, 0)),
+                rgb.getpixel((width - 1, 0)),
+                rgb.getpixel((0, height - 1)),
+                rgb.getpixel((width - 1, height - 1)),
+            ]
+            corner_luma = sum(sum(pixel) / 3 for pixel in points) / len(points)
+            center_luma = sum(rgb.getpixel((width // 2, height // 2))) / 3
+            if corner_luma < 90 and center_luma > max(60, corner_luma + 15):
+                should_invert = True
+        if should_invert:
             rgb = ImageOps.invert(rgb)
         output = BytesIO()
         format_name = "PNG" if extension.lower() == "png" else "JPEG"
@@ -123,7 +140,11 @@ def extract_assets(entries: list[dict[str, Any]], root: Path = ROOT) -> dict[str
             raise FileNotFoundError(pdf_path)
         with fitz.open(pdf_path) as document:
             image, extension, width, height = _portrait_image(document, entry["pdfPage"])
-        image = normalize_portrait(image, extension)
+        image = normalize_portrait(
+            image,
+            extension,
+            force_invert=(entry.get("polarity") == "invert"),
+        )
         target = portrait_dir / f"{entry['authorId']}.{extension}"
         target.write_bytes(image)
         output[entry["authorId"]] = f"assets/data/literature/portraits/{target.name}"

@@ -1,4 +1,5 @@
 import 'history_epoch.dart';
+import 'history_section.dart';
 
 const _verifiedClaimStatus = 'VERIFIED_UPLOADED_BOOK_PAGE';
 const _sourceLocatedClaimStatus = 'SOURCE_LOCATED';
@@ -127,6 +128,11 @@ class HistoryEntry {
   /// Claim-level provenance citations verifying facts against exact pages.
   final List<HistoryClaimProvenance> claimProvenance;
 
+  /// Long-form, source-bound detail sections rendered on the full detail page.
+  /// The concise [summary] remains the card-facing text; these sections carry
+  /// the readable multi-paragraph explanation.
+  final List<HistoryDetailSection> sections;
+
   /// Chronological epoch of the entry.
   HistoryEpoch get epoch => HistoryEpoch.fromEntry(this);
 
@@ -171,6 +177,7 @@ class HistoryEntry {
     this.relatedWorkIds = const [],
     this.relatedEntryIds = const [],
     this.claimProvenance = const [],
+    this.sections = const [],
   });
 
   factory HistoryEntry.fromJson(Map<String, dynamic> json) {
@@ -234,6 +241,10 @@ class HistoryEntry {
           .whereType<Map<String, dynamic>>()
           .map((m) => HistoryClaimProvenance.fromJson(m))
           .toList(growable: false),
+      sections: (json['sections'] as List? ?? const [])
+          .whereType<Map<String, dynamic>>()
+          .map((m) => HistoryDetailSection.fromJson(m))
+          .toList(growable: false),
     );
   }
 
@@ -279,6 +290,8 @@ class HistoryEntry {
     if (relatedEntryIds.isNotEmpty) 'relatedEntryIds': relatedEntryIds,
     if (claimProvenance.isNotEmpty)
       'claimProvenance': claimProvenance.map((c) => c.toJson()).toList(),
+    if (sections.isNotEmpty)
+      'sections': sections.map((s) => s.toJson()).toList(),
   };
 
   static HistoryEntryKind _kindFromString(String? value) {

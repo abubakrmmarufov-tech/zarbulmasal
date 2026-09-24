@@ -3,6 +3,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:zarbulmasal/features/literature/domain/verse_structure.dart';
+
 void main() {
   print('Starting Literary Content Validation...');
 
@@ -261,6 +263,44 @@ void main() {
           'Violation: Source-attested work is missing verified Tajik text: ${work['id']}',
         );
         exit(1);
+      }
+      if (rights['status'] == 'sourceAttested' &&
+          textStatus == 'verified' &&
+          hasTajikText) {
+        final tajik = work['textTajik'].toString();
+        // Mirrors LiteraryWork.hasCoherentVerseStructure: appended
+        // pure-parenthesis attribution lines and truncated prose-gloss lines
+        // are ignored before counting, so they can neither inflate a fragment
+        // into a readable work nor block a genuine short form.
+        final lines = coherentVerseLines(tajik);
+        final hemistiches = lines.length;
+        final wordCount = lines
+            .join('\n')
+            .split(RegExp(r'\s+'))
+            .where((w) => w.isNotEmpty)
+            .length;
+        final hasStitching = RegExp(
+          r'##\s*\d+|\(Page \d+\)|\*\*\*',
+        ).hasMatch(tajik);
+        if (hemistiches <= 2) {
+          print(
+            'Violation: Source-attested readable text is a fragment '
+            '(<=2 hemistiches): ${work['id']}',
+          );
+          exit(1);
+        }
+        if (wordCount <= 2) {
+          print(
+            'Violation: Source-attested readable text is one-word/single-line: ${work['id']}',
+          );
+          exit(1);
+        }
+        if (hasStitching) {
+          print(
+            'Violation: Source-attested readable text carries page/stitching markers: ${work['id']}',
+          );
+          exit(1);
+        }
       }
     } else if (evidenceLevel == 'editoriallyApproved') {
       approved++;
