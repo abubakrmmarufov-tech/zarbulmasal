@@ -33,6 +33,9 @@ class LiteratureRepository {
   // so UI retry actions still have a chance to recover from transient errors.
   Future<List<LiteraryWork>>? _worksFuture;
 
+  // Cache `poets.json` parse similarly to works, as it is relatively large (402KB).
+  Future<List<LiteraryAuthor>>? _authorsFuture;
+
   LiteratureRepository({AssetBundle? bundle}) : _bundle = bundle ?? rootBundle;
 
   /// Normalizes common Persian keyboard variants for tolerant local search.
@@ -51,13 +54,33 @@ class LiteratureRepository {
 
   /// Loads verified literary authors from [authorsAssetPath].
   Future<List<LiteraryAuthor>> loadAuthors() async {
+    final cached = _authorsFuture;
+    if (cached != null) return cached;
+
+    final future = _loadAuthors();
+    _authorsFuture = future;
+    try {
+      return await future;
+    } catch (_) {
+      if (identical(_authorsFuture, future)) {
+        _authorsFuture = null;
+      }
+      rethrow;
+    }
+  }
+
+  Future<List<LiteraryAuthor>> _loadAuthors() async {
     final jsonString = await _bundle.loadString(authorsAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
-    if (decoded is! List) return const [];
-    return decoded
-        .whereType<Map>()
-        .map((json) => LiteraryAuthor.fromJson(Map<String, dynamic>.from(json)))
-        .toList();
+    final decoded = await compute(
+      _decodeJsonList,
+      jsonString,
+      debugLabel: 'decode-literary-authors',
+    );
+    return List.unmodifiable(
+      decoded.whereType<Map>().map(
+        (json) => LiteraryAuthor.fromJson(Map<String, dynamic>.from(json)),
+      ),
+    );
   }
 
   /// Loads literary works from [worksAssetPath].
