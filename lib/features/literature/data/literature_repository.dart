@@ -76,7 +76,6 @@ class LiteratureRepository {
       jsonString,
       debugLabel: 'decode-literary-authors',
     );
-    if (decoded is! List) return const [];
     return List.unmodifiable(
       decoded.whereType<Map>().map(
         (json) => LiteraryAuthor.fromJson(Map<String, dynamic>.from(json)),
