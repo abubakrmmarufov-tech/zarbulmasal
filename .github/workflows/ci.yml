@@ -186,6 +186,7 @@ jobs:
       - name: Check out repository for publication
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Download prepared site
@@ -198,8 +199,11 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
           PUBLISH_DIR: ${{ runner.temp }}/zarbulmasal-gh-pages
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git fetch origin gh-pages
+          pages_base_sha=$(git rev-parse origin/gh-pages)
           git worktree add --detach "$PUBLISH_DIR" origin/gh-pages
           find "$PUBLISH_DIR" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
           cp -R site/. "$PUBLISH_DIR"/
@@ -213,4 +217,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "deploy: ${GITHUB_SHA}"
-          git push origin HEAD:gh-pages
+          git push --force-with-lease="refs/heads/gh-pages:${pages_base_sha}" origin HEAD:gh-pages
