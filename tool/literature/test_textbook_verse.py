@@ -136,5 +136,46 @@ class AttributionTest(unittest.TestCase):
             'payrav', names))
 
 
+class LeadInTest(unittest.TestCase):
+    def test_folk_songs_elegies_and_examples_are_not_the_poets_own(self):
+        from extract_textbook_poems import lead_in_disqualifies
+        self.assertTrue(lead_in_disqualifies(
+            'Мардуми одии диёр ба ӯ меҳру муҳаббати беандоза доранд ва дар '
+            'борааш нақлу ривоятҳои рангин, шеъру таронаҳои намакин эҷод '
+            'кардаанд. Ҳоло муште аз он хирвор:'))
+        self.assertTrue(lead_in_disqualifies(
+            'Мавлоно Комӣ дар вафоти Ҷомӣ марсияе эҷод кард. Чанд байт аз он марсия:'))
+        self.assertTrue(lead_in_disqualifies('Истиора низ як навъи маҷоз аст. Мисолҳо:'))
+        self.assertTrue(lead_in_disqualifies('... Баюшки – баю... Тарҷума:'))
+        self.assertFalse(lead_in_disqualifies(
+            'Ба ин нукта худи Ҷомӣ ишорат карда мегӯяд:'))
+
+    def test_a_connector_ends_the_quotation(self):
+        page = VERSE + '        Ё худ:\n' + VERSE
+        _, lines, _, _ = extract_poem(['', page], 1, 'Бихандад лола дар саҳро')
+        self.assertEqual(len(lines), 4)
+
+
+class ChapterRangeTest(unittest.TestCase):
+    def test_a_page_belongs_to_the_one_poet_whose_chapter_covers_it(self):
+        from scan_textbook_chapters import chapter_ranges, owner
+        poets = [
+            {'id': 'nosir', 'biographySource': '«Адабиёти тоҷик», синфи 8 (2026), с. 179–200.'},
+            {'id': 'khayyom', 'biographySource': '«Адабиёти тоҷик», синфи 8 (2026), с. 201–211.'},
+            {'id': 'mention', 'biographySource': '«Адабиёти тоҷик», синфи 8 (2026), с. 35, 190.'},
+            {'id': 'wide', 'biographySource': '«Адабиёти тоҷик», синфи 9 (2026), с. 10–40; синфи 8 (2026), с. 205–207'},
+        ]
+        ranges = chapter_ranges(poets)
+        self.assertEqual(owner(ranges, 8, 186)['id'], 'nosir')
+        self.assertIsNone(owner(ranges, 8, 35))          # a mention, not a chapter
+        self.assertIsNone(owner(ranges, 8, 206))         # two chapters claim it
+        self.assertEqual(owner(ranges, 8, 210)['id'], 'khayyom')
+
+    def test_an_elegy_written_on_the_poets_death_is_not_his(self):
+        from extract_textbook_poems import lead_in_disqualifies
+        self.assertTrue(lead_in_disqualifies(
+            'Мир Ғуломалихони Озод дар вафоти Бедил қитъаи зеринро сурудааст:'))
+
+
 if __name__ == '__main__':
     unittest.main()

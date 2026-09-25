@@ -45,6 +45,29 @@ SECTION_HEADINGS = (
 )
 
 
+# Lead-ins that introduce verse the chapter's poet did not write: folk
+# songs about him, elegies and chronograms by others, translations, and
+# example lists in theory lessons.
+_NOT_THE_POETS_OWN = re.compile(
+    r'(халқ|мардум)\S*\b.{0,80}(суруд|таронаҳо|шеъру)\S*.{0,60}эҷод'
+    r'|аз халқ:|марсия|қитъаи таърихӣ|дар борааш|дар бораи ӯ'
+    r'|тарҷума:|мисолҳо:|мисол:|ҳаҷв карда буд|дар вафоти|дар ҳаққи',
+    re.IGNORECASE,
+)
+
+
+def lead_in_disqualifies(lead):
+    """True when the sentence right before a verse block says the verse is
+    someone else's (folk, an elegy about the poet, a translation, an
+    example list)."""
+    lead = ' '.join(lead.split())
+    lead = re.sub(r'(\s\d{1,3})+$', '', lead)
+    if not lead.endswith(':'):
+        return False
+    tail = lead[-260:]
+    return _NOT_THE_POETS_OWN.search(tail) is not None
+
+
 def quoted_from_other_poet(lead, author, names):
     """True when the sentence introducing the verse ("... Рӯдакӣ:") names
     a known poet other than `author`: the book is quoting someone else."""
@@ -181,8 +204,9 @@ def main(pages_dir, out_path):
                 break                     # an unknown name line: skip
             if author in review_poets:
                 break
-            if quoted_from_other_poet(text_above(pages, first_index, lines),
-                                      author, names):
+            lead = text_above(pages, first_index, lines)
+            if quoted_from_other_poet(lead, author, names) or \
+                    lead_in_disqualifies(lead):
                 break
             genre, title = split_heading(title) if title else (None, None)
             if title and (norm(title) in names

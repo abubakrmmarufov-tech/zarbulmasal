@@ -41,6 +41,9 @@ _dates = re.compile(r'\(\s*\d{3,4}\s*[–-]')
 # ("(фасли нахуст)"): not verse.
 _date_line = re.compile(r'^(?:Соли\s+)?\d{4}(?:\s*с\.)?\.?$')
 _label = re.compile(r'^\([^()]{2,30}\)$')
+# A connector between two separate quotations ("Ё худ:", "Ё ин ки:", "ё"),
+# or a source label ("Аз халқ:", "Аз Ҳофиз:"): the quotation ends here.
+_connector = re.compile(r'^(?:(?:Ва\s+)?[Ёё](?:\s+(?:худ|ин\s+ки))?|Аз\s+\S+(?:\s+\S+)?):?$')
 _ends_verse = re.compile(r'[,.!?;:…»"\-–—)]$')
 _column_gap = re.compile(r'\S\s{3,}\S')
 _latin = re.compile(r'[A-Za-z]')
@@ -96,6 +99,7 @@ def _stops(line):
         or _dates.search(stripped) is not None
         or _date_line.match(stripped) is not None
         or _label.match(stripped) is not None
+        or _connector.match(stripped) is not None
         or _indent(line) < MIN_INDENT
         or len(stripped) > MAX_VERSE_CHARS
         or stripped.endswith('-')
