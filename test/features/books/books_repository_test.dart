@@ -298,7 +298,9 @@ void main() {
                   'providerId': 'kitobkhon',
                   'sourceUrl': 'https://kitobkhon.net/book/fixture',
                   'readUrl': 'https://kitobkhon.net/storage/books/fixture.pdf',
+                  // ignore: use_null_aware_elements
                   if (coverUrl != null) 'coverUrl': coverUrl,
+                  // ignore: use_null_aware_elements
                   if (downloadUrl != null) 'downloadUrl': downloadUrl,
                   'language': 'Тоҷикӣ',
                   'format': 'pdf',
