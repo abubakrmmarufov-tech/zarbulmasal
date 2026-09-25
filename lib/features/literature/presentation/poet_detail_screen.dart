@@ -281,7 +281,7 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
                         children: [
                           Semantics(
                             header: true,
-                            child: Text(
+                            child: QalamWholeWordTitle(
                               name,
                               textDirection: isPersian
                                   ? TextDirection.rtl

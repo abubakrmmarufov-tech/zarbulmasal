@@ -23,3 +23,4 @@ export 'atlas_cover.dart';
 export 'qalam_search_entry.dart';
 export 'qalam_end_of_text.dart';
 export 'qalam_folio.dart';
+export 'qalam_whole_word_title.dart';

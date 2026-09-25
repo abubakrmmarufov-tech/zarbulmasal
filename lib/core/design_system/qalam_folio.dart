@@ -99,7 +99,7 @@ class QalamFolioTile extends StatelessWidget {
                           const SizedBox(width: 8),
                         ],
                         Expanded(
-                          child: Text(
+                          child: _FolioTitle(
                             title,
                             style: QalamTypography.monographTitle(
                               color: colors.onSurface,
@@ -240,6 +240,29 @@ class QalamSlip extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// A tile title that never breaks inside a word. Collection names are
+/// single words («Зарбулмасалҳо»): at large text sizes one is set smaller
+/// on one line rather than split. [FittedBox] also answers the intrinsic
+/// sizes the grid's [IntrinsicHeight] rows ask for.
+class _FolioTitle extends StatelessWidget {
+  const _FolioTitle(this.title, {required this.style});
+
+  final String title;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    if (title.trim().contains(RegExp(r'\s'))) {
+      return Text(title, style: style);
+    }
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      alignment: AlignmentDirectional.centerStart,
+      child: Text(title, style: style, maxLines: 1),
     );
   }
 }

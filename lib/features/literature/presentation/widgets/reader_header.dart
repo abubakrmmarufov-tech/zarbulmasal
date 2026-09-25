@@ -53,7 +53,7 @@ class ReaderHeader extends StatelessWidget {
       children: [
         Semantics(
           header: true,
-          child: Text(
+          child: QalamWholeWordTitle(
             title,
             textDirection: titleDirection,
             style: QalamTypography.monographTitle(
@@ -98,7 +98,7 @@ class ReaderHeader extends StatelessWidget {
           const SizedBox(height: 24),
           Semantics(
             header: true,
-            child: Text(
+            child: QalamWholeWordTitle(
               title,
               textAlign: TextAlign.center,
               textDirection: titleDirection,

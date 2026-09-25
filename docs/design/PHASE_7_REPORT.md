@@ -7,7 +7,7 @@ Date: 25 Sep 2026. Branch `phase7-2026-09-25`, commits `d8826d0` to the end of t
 | Check | Result |
 |---|---|
 | `flutter analyze` | No issues |
-| `flutter test` | **738 passed**, 0 failed (683 at the start of task 8) |
+| `flutter test` | **742 passed**, 0 failed (683 at the start of task 8) |
 | Coverage (`tool/check_coverage.py`, minimum 80%) | **88.9%** |
 | `tool/provenance_linter.py` | PASS, 0 errors |
 | `tool/provenance_repair_loop5_adversarial.py` | PASS |
@@ -90,6 +90,30 @@ Date: 25 Sep 2026. Branch `phase7-2026-09-25`, commits `d8826d0` to the end of t
 - **What the accessibility tests check** (`test/accessibility_phase7_test.dart`, 45 tests): 48 px tap targets, labelled buttons, text contrast, headings, and 200% text in Tajik and Persian, on every screen above in light and dark.
 - **Two contrast warnings were false alarms:** a single «Б» chip and a small heading low on a long page. Each measured above 4.5:1 when checked by its colours.
 - **Known limit:** looking up a word needs a finger tap on the word. TalkBack users reach the same meanings through the Lexicon screen and search.
+
+## 9. Phone check (Xiaomi 2412DPC0AG, debug build)
+
+I installed the debug build with `adb install -r -d` and walked the app on the phone. Screenshots are in `docs/design/phase7/`:
+- `device_*.png` were taken on the phone. The status bar is cropped off and the images are at half size.
+- The other images were rendered with the app's real fonts by `tool/design/screens_test.dart`.
+
+**Tour:**
+- Home;
+- Explore and «Шеърҳо аз рӯи шакл», then the ghazal list;
+- Рӯдакӣ's page and «Бӯйи Ҷӯйи Мулиён»;
+- tapping «парниён» shows «матои нафис, ҳарир.» (grade 8, p. 310);
+- History, then Садриддин Айнӣ with both new sections;
+- the Lexicon;
+- Settings, then dark mode, «Хеле калон» text and the Persian UI (Home and Рӯдакӣ's page right-to-left).
+
+The phone's own settings were put back afterwards: light, «Хурд», Tajik.
+
+**Found and fixed on the phone:**
+- **Titles broke inside a word.** At phone width Рӯдакӣ's name read «Абӯабдулло / ҳи Рӯдакӣ». At the largest text size the Home tile read «Зарбулмаса / лхо».
+  - Page titles (poet names, poem titles) now shrink just enough for their longest word to fit (`QalamWholeWordTitle`, floor 60%).
+  - Home tile names, which are single words, shrink onto one line.
+  - Tests cover both.
+- **A regression I caught during this fix:** the first version measured width with a `LayoutBuilder`. That cannot sit inside the tile grid's `IntrinsicHeight` rows, and Home went blank. The golden tests caught it, and the tiles now use a `FittedBox`.
 
 ## CONTENT/PROVENANCE — TEAM VERIFICATION REQUIRED
 
