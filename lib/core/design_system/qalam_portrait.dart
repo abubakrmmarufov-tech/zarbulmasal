@@ -68,6 +68,11 @@ class _QalamPortraitState extends State<QalamPortrait> {
             widget.portrait!.assetPath,
             width: widget.width,
             height: widget.height,
+            // Decode at the size shown: the list shows dozens of portraits.
+            cacheHeight: widget.height.isFinite
+                ? (widget.height * MediaQuery.devicePixelRatioOf(context))
+                      .round()
+                : null,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               _markAssetFailed();

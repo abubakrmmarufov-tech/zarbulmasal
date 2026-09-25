@@ -41,6 +41,15 @@ ARABIC = LATIN | ranges(
     (0x200C, 0x200F), (0x2066, 0x2069),
 )
 
+# Fallback faces (Noto Sans/Serif) catch whatever the subset faces above
+# lack: Greek, extended Latin, punctuation, arrows, symbols, dingbats.
+FALLBACK = CYRILLIC | ranges(
+    (0xA0, 0x24F), (0x370, 0x3FF), (0x1E00, 0x1EFF), (0x2000, 0x206F),
+    (0x2070, 0x209F), (0x20A0, 0x20CF), (0x2100, 0x218F), (0x2190, 0x21FF),
+    (0x2200, 0x22FF), (0x2460, 0x24FF), (0x2500, 0x257F), (0x25A0, 0x25FF),
+    (0x2600, 0x26FF), (0x2700, 0x27BF), (0xFB00, 0xFB06), 0xFEFF, 0xFFFD,
+)
+
 # (source file, output name, wght instance or None for static, unicodes)
 BUILDS = [
     ("EBGaramond.ttf", "EBGaramond-Medium.ttf", 500, CYRILLIC),
@@ -57,6 +66,10 @@ BUILDS = [
     ("Vazirmatn.ttf", "Vazirmatn-Regular.ttf", 400, ARABIC),
     ("Vazirmatn.ttf", "Vazirmatn-Medium.ttf", 500, ARABIC),
     ("Vazirmatn.ttf", "Vazirmatn-Bold.ttf", 700, ARABIC),
+    # Static regular instances: Flutter draws a variable fallback at its
+    # default instance anyway, and the variation data was 3/4 of the file.
+    ("NotoSans.ttf", "NotoSans.ttf", 400, FALLBACK),
+    ("NotoSerif.ttf", "NotoSerif.ttf", 400, FALLBACK),
 ]
 
 
@@ -65,7 +78,9 @@ def build(source: Path, target: Path, weight, unicodes) -> None:
     # Noto Nastaliq stays variable (default wght 400): instancing it grows the
     # file, and Flutter draws the default instance.
     if weight is not None and "fvar" in font:
-        font = instancer.instantiateVariableFont(font, {"wght": weight})
+        axes = {axis.axisTag: axis.defaultValue for axis in font["fvar"].axes}
+        axes["wght"] = weight
+        font = instancer.instantiateVariableFont(font, axes)
     options = subset.Options()
     # Arabic-script shaping needs every feature; Cyrillic/Latin faces keep
     # fontTools' standard set (kern, liga, calt, ccmp, locl, mark, mkmk, …).

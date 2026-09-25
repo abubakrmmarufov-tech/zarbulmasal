@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../../../core/utils/trusted_url_policy.dart';
 import '../domain/book_domain.dart';
+import '../../../core/utils/json_off_thread.dart';
 
 class BooksRepository {
   Future<List<BookProvider>> loadProviders() async {
@@ -32,7 +33,7 @@ class BooksRepository {
   }
 
   Future<List<Book>> loadBooks() async {
-    final decoded = jsonDecode(
+    final decoded = await decodeJsonOffThread(
       await rootBundle.loadString('assets/data/books/books.json'),
     );
     final books = (decoded as List)

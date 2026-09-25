@@ -1,9 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/word_entry.dart';
+import '../../../core/utils/json_off_thread.dart';
 
 /// The Luғатнома word list, loaded from the bundled editorial JSON.
 ///
@@ -12,7 +11,7 @@ import '../domain/word_entry.dart';
 /// `pdfPage`) lives on each [WordEntry] but is not shown in the list UI.
 final wordsProvider = FutureProvider<List<WordEntry>>((ref) async {
   final raw = await rootBundle.loadString('assets/data/vocabulary/words.json');
-  final decoded = jsonDecode(raw) as List<dynamic>;
+  final decoded = await decodeJsonOffThread(raw) as List<dynamic>;
   final words = decoded
       .whereType<Map<String, dynamic>>()
       .map(WordEntry.fromJson)

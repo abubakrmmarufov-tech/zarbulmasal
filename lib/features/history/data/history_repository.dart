@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../../../core/utils/search_normalizer.dart';
 import '../domain/history_domain.dart';
+import '../../../core/utils/json_off_thread.dart';
 
 class HistoryRepository {
   static const booksAssetPath = 'assets/data/history/books.json';
@@ -21,7 +22,9 @@ class HistoryRepository {
   }
 
   Future<List<HistoryEntry>> loadEntries() async {
-    final decoded = jsonDecode(await _bundle.loadString(entriesAssetPath));
+    final decoded = await decodeJsonOffThread(
+      await _bundle.loadString(entriesAssetPath),
+    );
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
