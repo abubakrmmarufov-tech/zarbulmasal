@@ -30,6 +30,32 @@ class GlobalSearchScreen extends ConsumerStatefulWidget {
 class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
   final TextEditingController _controller = TextEditingController();
   String _query = '';
+
+  /// [matches] ordered by their best score for the query, highest first;
+  /// equal scores keep the catalogue's order. Each item is scored once,
+  /// not once per comparison: a one-letter query matches most of the
+  /// catalogue, and re-normalising in the comparator froze the first
+  /// keystroke for half a second.
+  List<T> _ranked<T>(
+    Iterable<T> matches,
+    List<String> Function(T item) scoredFields,
+  ) {
+    final scored = [
+      for (final (index, item) in matches.indexed)
+        (
+          item: item,
+          index: index,
+          score: SearchNormalizer.scoreMatchAny(scoredFields(item), _query),
+        ),
+    ];
+    scored.sort(
+      (a, b) => a.score != b.score
+          ? b.score.compareTo(a.score)
+          : a.index.compareTo(b.index),
+    );
+    return [for (final entry in scored) entry.item];
+  }
+
   String _rawQuery = '';
 
   /// Result groups the reader has opened in full.
@@ -201,108 +227,67 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
       return '';
     }
 
-    final matchingAuthors =
-        authors.where((a) {
-          if (!a.hasCanonicalName) return false;
-          return SearchNormalizer.matchesAny([
-            a.canonicalName,
-            a.canonicalNamePersian ?? '',
-            a.literaryPeriod,
-            a.birthPlace ?? '',
-            ...a.aliases,
-          ], _query);
-        }).toList()..sort((a, b) {
-          final scoreA = SearchNormalizer.scoreMatchAny([
-            a.canonicalName,
-            a.canonicalNamePersian ?? '',
-            ...a.aliases,
-            a.literaryPeriod,
-          ], _query);
-          final scoreB = SearchNormalizer.scoreMatchAny([
-            b.canonicalName,
-            b.canonicalNamePersian ?? '',
-            ...b.aliases,
-            b.literaryPeriod,
-          ], _query);
-          return scoreB.compareTo(scoreA);
-        });
-
-    final matchingWorks =
-        works.where((w) {
-          return SearchNormalizer.matchesAny([
-            w.title,
-            w.titlePersian ?? '',
-            w.incipit ?? '',
-          ], _query);
-        }).toList()..sort((a, b) {
-          final scoreA = SearchNormalizer.scoreMatchAny([
-            a.title,
-            a.titlePersian ?? '',
-          ], _query);
-          final scoreB = SearchNormalizer.scoreMatchAny([
-            b.title,
-            b.titlePersian ?? '',
-          ], _query);
-          return scoreB.compareTo(scoreA);
-        });
-
-    final matchingProverbs =
-        proverbs.where((p) {
-          return SearchNormalizer.matchesAny([
-            p.tajikCyrillic,
-            p.persianText,
-            p.meaningTj,
-            p.simpleExplanationTj,
-          ], _query);
-        }).toList()..sort((a, b) {
-          final scoreA = SearchNormalizer.scoreMatchAny([
-            a.tajikCyrillic,
-            a.persianText,
-          ], _query);
-          final scoreB = SearchNormalizer.scoreMatchAny([
-            b.tajikCyrillic,
-            b.persianText,
-          ], _query);
-          return scoreB.compareTo(scoreA);
-        });
-
-    final matchingHistory =
-        history.where((h) {
-          return SearchNormalizer.matchesAny([
-            h.title,
-            h.titlePersian ?? '',
-            h.summary,
-            h.summaryPersian ?? '',
-            ...h.keywords,
-            ...h.keyFigures,
-            ...h.keyFiguresPersian,
-          ], _query);
-        }).toList()..sort((a, b) {
-          final scoreA = SearchNormalizer.scoreMatchAny([
-            a.title,
-            a.titlePersian ?? '',
-          ], _query);
-          final scoreB = SearchNormalizer.scoreMatchAny([
-            b.title,
-            b.titlePersian ?? '',
-          ], _query);
-          return scoreB.compareTo(scoreA);
-        });
-
-    final matchingBooks = books.where((book) => book.matches(_query)).toList()
-      ..sort((a, b) {
-        final scoreA = SearchNormalizer.scoreMatchAny([
-          a.titleTj,
-          a.titleFa ?? '',
-          a.canonicalTitle,
+    final matchingAuthors = _ranked(
+      authors.where((a) {
+        if (!a.hasCanonicalName) return false;
+        return SearchNormalizer.matchesAny([
+          a.canonicalName,
+          a.canonicalNamePersian ?? '',
+          a.literaryPeriod,
+          a.birthPlace ?? '',
+          ...a.aliases,
         ], _query);
-        final scoreB = SearchNormalizer.scoreMatchAny([
-          b.titleTj,
-          b.titleFa ?? '',
-          b.canonicalTitle,
+      }),
+      (a) => [
+        a.canonicalName,
+        a.canonicalNamePersian ?? '',
+        ...a.aliases,
+        a.literaryPeriod,
+      ],
+    );
+
+    final matchingWorks = _ranked(
+      works.where((w) {
+        return SearchNormalizer.matchesAny([
+          w.title,
+          w.titlePersian ?? '',
+          w.incipit ?? '',
         ], _query);
-        return scoreB.compareTo(scoreA);
-      });
+      }),
+      (w) => [w.title, w.titlePersian ?? ''],
+    );
+
+    final matchingProverbs = _ranked(
+      proverbs.where((p) {
+        return SearchNormalizer.matchesAny([
+          p.tajikCyrillic,
+          p.persianText,
+          p.meaningTj,
+          p.simpleExplanationTj,
+        ], _query);
+      }),
+      (p) => [p.tajikCyrillic, p.persianText],
+    );
+
+    final matchingHistory = _ranked(
+      history.where((h) {
+        return SearchNormalizer.matchesAny([
+          h.title,
+          h.titlePersian ?? '',
+          h.summary,
+          h.summaryPersian ?? '',
+          ...h.keywords,
+          ...h.keyFigures,
+          ...h.keyFiguresPersian,
+        ], _query);
+      }),
+      (h) => [h.title, h.titlePersian ?? ''],
+    );
+
+    final matchingBooks = _ranked(
+      books.where((book) => book.matches(_query)),
+      (b) => [b.titleTj, b.titleFa ?? '', b.canonicalTitle],
+    );
 
     if (matchingAuthors.isEmpty &&
         matchingWorks.isEmpty &&

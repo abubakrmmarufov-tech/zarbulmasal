@@ -114,6 +114,10 @@ class BayozNotifier extends StateNotifier<List<Bayoz>> {
       super(_load(_prefs));
 
   static const storageKey = 'bayoz_collections';
+
+  /// Caps that keep the stored list, and the time to load it, bounded.
+  static const int maxCollections = 100;
+  static const int maxItems = 500;
   final SharedPreferences? _prefs;
   final DateTime Function() _clock;
   final _random = math.Random();
@@ -126,17 +130,29 @@ class BayozNotifier extends StateNotifier<List<Bayoz>> {
       final decoded = jsonDecode(raw);
       if (decoded is! List) return const [];
       return List.unmodifiable(
-        decoded.map(Bayoz.tryFromJson).whereType<Bayoz>(),
+        decoded
+            .map(Bayoz.tryFromJson)
+            .whereType<Bayoz>()
+            .take(maxCollections)
+            .map(
+              (bayoz) => bayoz.items.length <= maxItems
+                  ? bayoz
+                  : bayoz.copyWith(items: bayoz.items.take(maxItems).toList()),
+            ),
       );
     } on FormatException {
       return const [];
     }
   }
 
-  /// Creates a Баёз and returns its id, or `null` for an empty title.
+  /// Whether another Баёз may be created ([maxCollections]).
+  bool get canCreate => state.length < maxCollections;
+
+  /// Creates a Баёз and returns its id, or `null` for an empty title or
+  /// when [maxCollections] are kept already.
   Future<String?> create(String title) async {
     final clean = Bayoz._cleanTitle(title);
-    if (clean.isEmpty) return null;
+    if (clean.isEmpty || !canCreate) return null;
     final now = _clock();
     // Web clocks tick in milliseconds: a sequence number and a random suffix
     // keep ids unique even for two creations within the same tick.
@@ -165,14 +181,17 @@ class BayozNotifier extends StateNotifier<List<Bayoz>> {
     await _save();
   }
 
-  /// Adds [item] to the Баёз, or removes it when it is already there.
+  /// Adds [item] to the Баёз, or removes it when it is already there. A
+  /// Баёз holding [maxItems] takes no more.
   Future<void> toggle(String id, BayozItem item) => _update(
     id,
-    (bayoz) => bayoz.copyWith(
-      items: bayoz.contains(item)
-          ? bayoz.items.where((existing) => existing != item).toList()
-          : [...bayoz.items, item],
-    ),
+    (bayoz) => bayoz.contains(item)
+        ? bayoz.copyWith(
+            items: bayoz.items.where((existing) => existing != item).toList(),
+          )
+        : bayoz.items.length >= maxItems
+        ? bayoz
+        : bayoz.copyWith(items: [...bayoz.items, item]),
   );
 
   Future<void> _update(String id, Bayoz Function(Bayoz) change) async {

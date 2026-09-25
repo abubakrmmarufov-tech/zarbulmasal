@@ -95,4 +95,58 @@ void main() {
       expect(notifier.state.firstWhere((x) => x.id == b).items, isEmpty);
     },
   );
+
+  group('caps', () {
+    test('no more than maxCollections anthologies can be created', () async {
+      final notifier = await _notifier();
+      for (var i = 0; i < BayozNotifier.maxCollections; i++) {
+        expect(await notifier.create('Баёз $i'), isNotNull);
+      }
+      expect(notifier.canCreate, isFalse);
+      expect(await notifier.create('Яке зиёд'), isNull);
+      expect(notifier.state, hasLength(BayozNotifier.maxCollections));
+
+      await notifier.delete(notifier.state.first.id);
+      expect(notifier.canCreate, isTrue);
+    });
+
+    test('a full anthology takes no more, but still lets items go', () async {
+      final notifier = await _notifier();
+      final id = (await notifier.create('Пур'))!;
+      for (var i = 0; i < BayozNotifier.maxItems; i++) {
+        await notifier.toggle(id, BayozItem(BayozItemKind.proverb, '$i'));
+      }
+      await notifier.toggle(id, _poem);
+      expect(notifier.state.single.items, hasLength(BayozNotifier.maxItems));
+      expect(notifier.state.single.contains(_poem), isFalse);
+
+      const first = BayozItem(BayozItemKind.proverb, '0');
+      await notifier.toggle(id, first);
+      expect(notifier.state.single.contains(first), isFalse);
+      await notifier.toggle(id, _poem);
+      expect(notifier.state.single.contains(_poem), isTrue);
+    });
+
+    test('an oversized stored list is cut to the caps on load', () async {
+      final stored = jsonEncode([
+        for (var i = 0; i < BayozNotifier.maxCollections + 5; i++)
+          {
+            'id': 'b$i',
+            'title': 'Баёз $i',
+            'createdAt': '2026-09-24T00:00:00.000Z',
+            'items': [
+              for (
+                var j = 0;
+                j < (i == 0 ? BayozNotifier.maxItems + 7 : 1);
+                j++
+              )
+                {'kind': 'proverb', 'id': '$j'},
+            ],
+          },
+      ]);
+      final notifier = await _notifier({BayozNotifier.storageKey: stored});
+      expect(notifier.state, hasLength(BayozNotifier.maxCollections));
+      expect(notifier.state.first.items, hasLength(BayozNotifier.maxItems));
+    });
+  });
 }

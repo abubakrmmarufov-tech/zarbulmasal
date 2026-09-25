@@ -87,6 +87,8 @@ const Map<String, String> tajikStringsA = {
   'bayoz_remove_item': 'Аз баёз баровардан',
   'bayoz_item_unavailable': 'Ин матн дигар дастрас нест',
   'bayoz_none_yet': 'Ҳоло баёзе нест. Аввалинашро созед.',
+  'bayoz_limit': 'Ин ҳадди аксар аст: \${0} баёз.',
+  'bayoz_full': 'Ин баёз пур аст: \${0} матн.',
   'saved_empty': 'Ҳоло чизе маҳфуз нашудааст',
   'saved_empty_hint':
       'Шеърҳо ва зарбулмасалҳои писандидаатонро нишон кунед то ҳамеша дар даст бошанд.',

@@ -322,5 +322,35 @@ void main() {
       // Should be back on Home
       expect(find.byType(GlobalSearchScreen), findsNothing);
     });
+
+    testWidgets(
+      'poems whose title matches come first; the rest keep catalogue order',
+      (tester) async {
+        LiteraryWork work(String id, String title, String incipit) =>
+            testWorkRudaki.copyWith(id: id, title: title, incipit: incipit);
+        await openApp(
+          tester,
+          route: '/search',
+          catalog: seedProverbs,
+          overrides: [
+            ...overrides,
+            approvedWorksProvider.overrideWith(
+              (ref) => Future.value([
+                work('w1', 'Якум', 'Гулшан ба баҳор омад'),
+                work('w2', 'Гулшани сабз', 'Мисраи дигар'),
+                work('w3', 'Дуюм', 'Гулшан шукуфт'),
+              ]),
+            ),
+          ],
+        );
+
+        await tester.enterText(find.byType(TextField), 'Гулшан');
+        await tester.pumpAndSettle();
+
+        double top(String title) => tester.getTopLeft(find.text(title)).dy;
+        expect(top('Гулшани сабз'), lessThan(top('Якум')));
+        expect(top('Якум'), lessThan(top('Дуюм')));
+      },
+    );
   });
 }

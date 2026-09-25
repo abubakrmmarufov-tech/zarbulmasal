@@ -188,6 +188,54 @@ void main() {
       await tester.pumpAndSettle();
       expect(app.container.read(bayozProvider).single.items, isEmpty);
     });
+
+    testWidgets('at the cap, no new Баёз is offered and the limit is said', (
+      tester,
+    ) async {
+      final app = await openApp(tester);
+      final notifier = app.container.read(bayozProvider.notifier);
+      for (var i = 0; i < BayozNotifier.maxCollections; i++) {
+        await notifier.create('Баёз $i');
+      }
+      app.router.go('/saved');
+      await tester.pumpAndSettle();
+
+      expect(find.text(tj('bayoz_new')), findsNothing);
+      final limit = find.text(
+        AppTranslations.get('bayoz_limit', DisplayLanguage.tajik, [
+          '${BayozNotifier.maxCollections}',
+        ]),
+      );
+      await tester.scrollUntilVisible(limit, 400);
+      expect(limit, findsOneWidget);
+      expect(find.text(tj('bayoz_new')), findsNothing);
+    });
+
+    testWidgets('a full Баёз cannot be ticked from the reader', (tester) async {
+      final app = await openApp(
+        tester,
+        route: '/literature/work/$_rudakiId',
+        overrides: _worksOverrides,
+      );
+      final notifier = app.container.read(bayozProvider.notifier);
+      final id = await notifier.create('Пур');
+      for (var i = 0; i < BayozNotifier.maxItems; i++) {
+        await notifier.toggle(id!, BayozItem(BayozItemKind.proverb, '$i'));
+      }
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byTooltip(tj('bayoz_add_to')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Пур'));
+      await tester.pumpAndSettle();
+
+      final bayoz = app.container.read(bayozProvider).single;
+      expect(bayoz.items, hasLength(BayozNotifier.maxItems));
+      expect(
+        bayoz.contains(const BayozItem(BayozItemKind.work, _rudakiId)),
+        isFalse,
+      );
+    });
   });
 
   testWidgets('Home labels a generated Persian title in Continue reading', (

@@ -119,26 +119,36 @@ class BayozPickerSheet extends ConsumerWidget {
               value: bayoz.contains(item),
               title: Text(bayoz.title),
               subtitle: Text(
-                AppTranslations.get('bayoz_count', lang, [
-                  AppTranslations.formatNumber(bayoz.items.length, lang),
-                ]),
+                AppTranslations.get(
+                  _isFull(bayoz, item) ? 'bayoz_full' : 'bayoz_count',
+                  lang,
+                  [AppTranslations.formatNumber(bayoz.items.length, lang)],
+                ),
               ),
-              onChanged: (_) =>
-                  ref.read(bayozProvider.notifier).toggle(bayoz.id, item),
+              onChanged: _isFull(bayoz, item)
+                  ? null
+                  : (_) =>
+                        ref.read(bayozProvider.notifier).toggle(bayoz.id, item),
             ),
-          TextButton.icon(
-            onPressed: () async {
-              final name = await askBayozName(context, lang);
-              if (name == null) return;
-              final notifier = ref.read(bayozProvider.notifier);
-              final id = await notifier.create(name);
-              if (id != null) await notifier.toggle(id, item);
-            },
-            icon: const Icon(Icons.add),
-            label: Text(tr('bayoz_new')),
-          ),
+          if (collections.length < BayozNotifier.maxCollections)
+            TextButton.icon(
+              onPressed: () async {
+                final name = await askBayozName(context, lang);
+                if (name == null) return;
+                final notifier = ref.read(bayozProvider.notifier);
+                final id = await notifier.create(name);
+                if (id != null) await notifier.toggle(id, item);
+              },
+              icon: const Icon(Icons.add),
+              label: Text(tr('bayoz_new')),
+            ),
         ],
       ),
     );
   }
+
+  /// A Баёз at [BayozNotifier.maxItems] takes no more; what it holds can
+  /// still be taken out.
+  static bool _isFull(Bayoz bayoz, BayozItem item) =>
+      !bayoz.contains(item) && bayoz.items.length >= BayozNotifier.maxItems;
 }

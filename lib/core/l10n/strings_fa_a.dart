@@ -86,6 +86,8 @@ const Map<String, String> persianStringsA = {
   'bayoz_remove_item': 'حذف از بیاض',
   'bayoz_item_unavailable': 'این متن دیگر در دسترس نیست',
   'bayoz_none_yet': 'هنوز بیاضی نیست. نخستین را بسازید.',
+  'bayoz_limit': 'این حد نهایی است: \${0} بیاض.',
+  'bayoz_full': 'این بیاض پر است: \${0} متن.',
   'saved_empty': 'هنوز چیزی ذخیره نشده است',
   'saved_empty_hint':
       'شعرها و ضرب‌المثل‌های مورد علاقه خود را نشان کنید تا همیشه در دسترس باشند.',

@@ -89,23 +89,24 @@ class SavedScreen extends ConsumerWidget {
                         onTap: () => context.push('/saved/bayoz/${bayoz.id}'),
                       ),
                     ),
-                  SizedBox(
-                    width: width,
-                    child: BayozCover(
-                      title: tr('bayoz_new'),
-                      isNew: true,
-                      onTap: () async {
-                        final name = await askBayozName(context, lang);
-                        if (name == null) return;
-                        final id = await ref
-                            .read(bayozProvider.notifier)
-                            .create(name);
-                        if (id != null && context.mounted) {
-                          await context.push('/saved/bayoz/$id');
-                        }
-                      },
+                  if (collections.length < BayozNotifier.maxCollections)
+                    SizedBox(
+                      width: width,
+                      child: BayozCover(
+                        title: tr('bayoz_new'),
+                        isNew: true,
+                        onTap: () async {
+                          final name = await askBayozName(context, lang);
+                          if (name == null) return;
+                          final id = await ref
+                              .read(bayozProvider.notifier)
+                              .create(name);
+                          if (id != null && context.mounted) {
+                            await context.push('/saved/bayoz/$id');
+                          }
+                        },
+                      ),
                     ),
-                  ),
                 ],
               );
             },
@@ -113,6 +114,18 @@ class SavedScreen extends ConsumerWidget {
           if (collections.isEmpty) ...[
             const SizedBox(height: 8),
             Text(tr('bayoz_none_yet'), style: meta),
+          ],
+          if (collections.length >= BayozNotifier.maxCollections) ...[
+            const SizedBox(height: 8),
+            Text(
+              AppTranslations.get('bayoz_limit', lang, [
+                AppTranslations.formatNumber(
+                  BayozNotifier.maxCollections,
+                  lang,
+                ),
+              ]),
+              style: meta,
+            ),
           ],
           eyebrow(
             '${tr('bayoz_all_saved').toUpperCase()} '

@@ -14,14 +14,6 @@ final historyEntriesProvider = FutureProvider<List<HistoryEntry>>((ref) async {
   return ref.watch(historyRepositoryProvider).loadEntries();
 });
 
-final historyEntriesByIdsProvider =
-    Provider.family<List<HistoryEntry>, List<String>>((ref, ids) {
-      final entriesAsync = ref.watch(historyEntriesProvider);
-      final all = entriesAsync.valueOrNull ?? const [];
-      final idSet = ids.toSet();
-      return all.where((e) => idSet.contains(e.id)).toList();
-    });
-
 final historyEntryByIdProvider = FutureProvider.family<HistoryEntry?, String>((
   ref,
   id,
