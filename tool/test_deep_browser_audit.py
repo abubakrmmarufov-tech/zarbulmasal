@@ -85,6 +85,7 @@ class DeepBrowserAuditRouteInventoryTest(unittest.TestCase):
             '/explore',
             '/learn',
             '/saved',
+            '/saved/bayoz/:id',
             '/search',
             '/proverbs',
             '/categories',
@@ -290,7 +291,7 @@ GoRoute(path: """/double-triple""")
         self.assertTrue(marker)
         # The marker is the aggregated entry's term: the proverb's own text,
         # which the detail screen renders as its title.
-        seed = Path('lib/data/seed/seed_proverbs.dart').read_text(encoding='utf-8')
+        seed = Path('lib/data/seed/seed_proverbs_part1.dart').read_text(encoding='utf-8')
         self.assertIn(marker, seed)
 
     def test_reader_cases_match_dart_readable_and_pending_gate(self):
