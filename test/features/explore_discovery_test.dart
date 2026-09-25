@@ -10,6 +10,8 @@ import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
 import 'package:zarbulmasal/features/literature/data/runtime_works_codec.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
 import 'package:zarbulmasal/features/literature/presentation/literary_work_display_text.dart';
+import 'package:zarbulmasal/features/vocabulary/data/words_provider.dart';
+import 'package:zarbulmasal/features/vocabulary/domain/word_entry.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
 import '../helpers/test_helper.dart';
@@ -174,5 +176,46 @@ void main() {
       LiteraryWorkDisplayText.form(WorkType.fragment, DisplayLanguage.tajik),
       'Қитъа',
     );
+  });
+
+  testWidgets('the word of the day opens that word in the Lexicon', (
+    tester,
+  ) async {
+    const words = [
+      WordEntry(
+        term: 'Тилисм',
+        definition: 'ҷоду.',
+        sourceBook: 'adabiet sinfi 5.pdf',
+        pdfPage: 17,
+      ),
+      WordEntry(
+        term: 'Ҳарир',
+        definition: 'матои абрешимӣ.',
+        sourceBook: 'adabiet sinfi 5.pdf',
+        pdfPage: 18,
+      ),
+    ];
+    final app = await openApp(
+      tester,
+      route: '/explore',
+      height: 2400,
+      overrides: [
+        approvedWorksProvider.overrideWith((ref) => Future.value(_works)),
+        wordsProvider.overrideWith((ref) async => words),
+      ],
+    );
+    final shown = words.firstWhere(
+      (w) => find.text(w.term).evaluate().isNotEmpty,
+    );
+    final other = words.firstWhere((w) => w != shown);
+    await tester.tap(find.text(shown.term));
+    await tester.pumpAndSettle();
+    expect(app.router.state.uri.path, '/vocabulary');
+    expect(app.router.state.uri.queryParameters['word'], shown.term);
+    expect(
+      tester.widget<TextField>(find.byType(TextField)).controller?.text,
+      shown.term,
+    );
+    expect(find.text(other.definition), findsNothing);
   });
 }

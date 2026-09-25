@@ -14,15 +14,18 @@ import '../domain/word_entry.dart';
 /// large letters in Tajik alphabetical order, with a search box and an
 /// alphabet strip. Follows the app theme (day paper, lapis at night).
 class VocabularyScreen extends ConsumerStatefulWidget {
-  const VocabularyScreen({super.key});
+  const VocabularyScreen({super.key, this.initialQuery});
+
+  /// A word to open the Lexicon on (from `?word=`), set in the search field.
+  final String? initialQuery;
 
   @override
   ConsumerState<VocabularyScreen> createState() => _VocabularyScreenState();
 }
 
 class _VocabularyScreenState extends ConsumerState<VocabularyScreen> {
-  final _search = TextEditingController();
-  String _query = '';
+  late final _search = TextEditingController(text: widget.initialQuery);
+  late String _query = widget.initialQuery ?? '';
   String? _letter;
 
   // Sorting ~1,900 headwords by the Tajik alphabet is done once per word

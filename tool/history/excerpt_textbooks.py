@@ -81,6 +81,11 @@ PLAN = {
     'person-jaloliddin': [(7, 191, 193, 'Шуҷоати Ҷалолуддини Хоразмшоҳ', None)],
     'person-ibrohim-bek': [(10, 55, 63, 'Иброҳимбек', r'Иброҳимбек')],
     'person-emomali-rahmon': [(11, 118, 122, 'Иҷлосияи таърихии тақдирсоз', None)],
+    # Phase 7: the history books do discuss these two after all.
+    'person-ayni': [(11, 215, 216, 'Қаҳрамони Тоҷикистон', r'Айнӣ'),
+                    (9, 148, 149, 'Мактаби усули нави Мунзим ва Айнӣ', r'Айнӣ')],
+    'poem-khurrami': [(6, 204, 206, 'Хуррамии Самарқандӣ ва шуубия',
+                       r'Хуррами')],
 }
 
 
@@ -147,6 +152,7 @@ def paragraphs(pages_dir, grade, first, last, whole_pages=False):
     cleaned = []
     for page, text in out:
         text = re.sub(r'(\w)[-\xad]\s+(\w)', r'\1\2', text)
+        text = text.replace('\xad', '')            # a soft hyphen
         text = re.sub(r'(?<=[^\W\d_])\d{1,2}(?=[\s,.;:])', '', text)
         text = re.sub(r'\s+', ' ', text).strip()
         if len(text) > 60 and not re.match(r'^\d{1,2}[.)]\s', text):
@@ -168,6 +174,11 @@ def excerpt(pages_dir, grade, first, last, name):
             break
     if not taken:
         return None
+    # A paragraph carried over from the previous page opens mid-sentence;
+    # the excerpt starts at its first whole sentence.
+    page, text = taken[0]
+    if text[:1].islower() and '. ' in text:
+        taken[0] = (page, text[text.index('. ') + 2:])
     body = '\n\n'.join(text for _, text in taken)
     if len(body) > LIMIT * 1.4:
         cut = body[:int(LIMIT * 1.4)]

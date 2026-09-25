@@ -82,7 +82,12 @@ class _DiscoverTodayState extends ConsumerState<DiscoverToday> {
           label: tr('explore_discover_word'),
           title: word.term,
           detail: word.definition,
-          onTap: () => context.push('/vocabulary'),
+          onTap: () => context.push(
+            Uri(
+              path: '/vocabulary',
+              queryParameters: {'word': word.term},
+            ).toString(),
+          ),
         ),
       );
     }

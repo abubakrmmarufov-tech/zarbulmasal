@@ -231,7 +231,8 @@ GoRouter _buildAppRouter() {
       ),
       GoRoute(
         path: '/vocabulary',
-        builder: (context, state) => const VocabularyScreen(),
+        builder: (context, state) =>
+            VocabularyScreen(initialQuery: state.uri.queryParameters['word']),
       ),
       GoRoute(
         path: '/vocabulary/:id',
