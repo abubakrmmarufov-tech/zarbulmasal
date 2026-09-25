@@ -1,0 +1,53 @@
+{
+  "pdfs": [
+    {
+      "file": "adabiet sinfi 5.pdf",
+      "bytes": 3371866,
+      "sha256": "9e673049c0597dbae87929b3ecf00bc6e215318036a901ce3f3e76e214e63bed",
+      "pdfPages": 304,
+      "textLayer": true
+    },
+    {
+      "file": "adabiet sinfi 6.pdf",
+      "bytes": 1885199,
+      "sha256": "648dc721e6d72ad13b7444bb298c3b3d557bbc4624ddf53171a588b23d372552",
+      "pdfPages": 192,
+      "textLayer": true
+    },
+    {
+      "file": "adabiyot sinfi 7.pdf",
+      "bytes": 2001675,
+      "sha256": "4a6880e6dbaa8706df8d6c028824065dd1842eec9e07d0fc75a72d683d6100d0",
+      "pdfPages": 288,
+      "textLayer": true
+    },
+    {
+      "file": "adabiyet sinfi 8.pdf",
+      "bytes": 12110856,
+      "sha256": "10fa1c4fdf25d4469fa234663e33d26f25e5862289964cb51a9927b27528bedd",
+      "pdfPages": 320,
+      "textLayer": true
+    },
+    {
+      "file": "adabiyet sinfi 9.pdf",
+      "bytes": 13939340,
+      "sha256": "0b10faf6aac4e9ae49707ba01ccef4e7b9071fb525e1c400aec2fe4fba6fbbb2",
+      "pdfPages": 352,
+      "textLayer": true
+    },
+    {
+      "file": "adabiet sinfi 10.pdf",
+      "bytes": 13849786,
+      "sha256": "68bed807a473efecba3c856712abb64ff2c3040c60db4fdb6e47c18c4f1c09db",
+      "pdfPages": 336,
+      "textLayer": true
+    },
+    {
+      "file": "adabiyet sinfi 11.pdf",
+      "bytes": 4068134,
+      "sha256": "5a5f56f3bd8a1e0e9bedbafebab28312ac458c239a71d578375913d89f860d54",
+      "pdfPages": 400,
+      "textLayer": true
+    }
+  ]
+}

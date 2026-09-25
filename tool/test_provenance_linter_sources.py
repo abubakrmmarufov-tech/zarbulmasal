@@ -628,6 +628,48 @@ class ProvenanceLinterSourceTest(unittest.TestCase):
         self.assertEqual(result, 1)
         self.assertIn("SOURCE_REFERENCE", stderr.getvalue())
 
+    def test_checked_source_pdf_must_be_in_the_pdf_manifest(self):
+        works = json.loads(provenance_linter.WORKS_PATH.read_text(encoding="utf-8"))
+        target = next(
+            work
+            for work in works
+            if work["verification"]["evidenceLevel"] == "primaryChecked"
+        )
+        target["primarySource"]["sourceReference"] = (
+            "docs/literature/pdfs/unknown book.pdf"
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            works_path = Path(directory) / "works.json"
+            works_path.write_text(
+                json.dumps(works, ensure_ascii=False), encoding="utf-8"
+            )
+            stderr = io.StringIO()
+            with patch.object(provenance_linter, "WORKS_PATH", works_path):
+                with contextlib.redirect_stderr(stderr):
+                    result = provenance_linter.main()
+
+        self.assertEqual(result, 1)
+        self.assertIn("not in the PDF manifest", stderr.getvalue())
+
+    def test_manifest_pdfs_pass_without_local_copies(self):
+        # CI checks out the repository without the textbook PDFs.
+        with tempfile.TemporaryDirectory() as directory:
+            pdf_dir = Path(directory)
+            (pdf_dir / "MANIFEST.json").write_text(
+                (provenance_linter.PDF_DIR / "MANIFEST.json").read_text(
+                    encoding="utf-8"
+                ),
+                encoding="utf-8",
+            )
+            stderr = io.StringIO()
+            with patch.object(provenance_linter, "PDF_DIR", pdf_dir):
+                with contextlib.redirect_stderr(stderr):
+                    result = provenance_linter.main()
+
+        self.assertNotIn("SOURCE_REFERENCE", stderr.getvalue())
+        self.assertEqual(result, 0, stderr.getvalue()[-2000:])
+
     def test_secondary_witness_requires_inspected_local_page_image(self):
         works = json.loads(provenance_linter.WORKS_PATH.read_text(encoding="utf-8"))
         target = next(

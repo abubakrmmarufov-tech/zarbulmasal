@@ -1,5 +1,7 @@
 # Phase 0 — Plan: «Муҳр» redesign
 
+> Screenshots for this phase were removed from the repository on 25 Sep 2026 to keep it small. They remain in git history: `git show dcd3805:docs/design/phase0/<file>`.
+
 Date: 24 Sep 2026 · Branch: `provenance-repair-2026-09-19` · Source of truth: `ZARBULMASAL_UX_RESEARCH_REPORT.md` (v2)
 
 Visuals for this phase are in `docs/design/phase0/`:

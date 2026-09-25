@@ -2,7 +2,7 @@
 """
 LOOP 1 — DETECTION
 Provenance & Data-Integrity Audit for Zarbulmasal
-Produces PROVENANCE_PAGE_AUDIT.md with every suspicious record.
+Produces docs/literature/PROVENANCE_PAGE_AUDIT.md with every suspicious record.
 Does NOT modify any data.
 """
 
@@ -19,7 +19,7 @@ HISTORY_PATH = ROOT / "assets/data/history/entries.json"
 BOOKS_PATH = ROOT / "assets/data/history/books.json"
 SOURCES_PATH = ROOT / "assets/data/literature/sources.json"
 PAGE_IMAGES_DIR = ROOT / "assets/data/literature/page_images"
-AUDIT_OUT = ROOT / "PROVENANCE_PAGE_AUDIT.md"
+AUDIT_OUT = ROOT / "docs/literature/PROVENANCE_PAGE_AUDIT.md"
 
 
 def load_json(path):

@@ -33,6 +33,9 @@ BOOKS_PATH = DATA / "history/books.json"
 APP_BOOKS_PATH = DATA / "books/books.json"
 PROVIDERS_PATH = DATA / "books/providers.json"
 IMAGES = DATA / "literature/page_images"
+# Textbook PDFs are held outside the repository; MANIFEST.json here names
+# each one by SHA-256 (see tool/literature_pipeline/scripts/discover_pdfs.py).
+PDF_DIR = ROOT / "docs/literature/pdfs"
 PORTRAITS = DATA / "literature/portraits"
 BOOK_COVERS = DATA / "books/covers"
 
@@ -312,6 +315,12 @@ def main() -> int:
     # Literature works -------------------------------------------------
     image_root = IMAGES.resolve()
     pdf_root = (ROOT / "docs/literature/pdfs").resolve()
+    manifest_path = PDF_DIR / "MANIFEST.json"
+    manifest_pdfs = (
+        {entry["file"] for entry in json.loads(manifest_path.read_text(encoding="utf-8"))["pdfs"]}
+        if manifest_path.is_file()
+        else set()
+    )
     canonical_work_keys: dict[tuple[str, str, str], str] = {}
 
     def validate_source(
@@ -365,11 +374,14 @@ def main() -> int:
                         f"local source is outside the approved PDF corpus: {source_reference!r}",
                     )
                 else:
-                    if reference_path.suffix.lower() != ".pdf" or not reference_path.is_file():
+                    if reference_path.suffix.lower() != ".pdf" or not (
+                        (PDF_DIR / reference_path.name).is_file()
+                        or reference_path.name in manifest_pdfs
+                    ):
                         fail(
                             "SOURCE_REFERENCE",
                             source_record,
-                            f"local source PDF does not exist: {source_reference!r}",
+                            f"local source PDF is not in the PDF manifest: {source_reference!r}",
                         )
             elif not source_reference.startswith("https://maorif.tj/"):
                 fail(

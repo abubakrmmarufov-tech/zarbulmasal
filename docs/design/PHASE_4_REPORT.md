@@ -1,5 +1,7 @@
 # Phase 4 — Roadmap NEXT + «Folio» boxes
 
+> Screenshots for this phase were removed from the repository on 25 Sep 2026 to keep it small. They remain in git history: `git show dcd3805:docs/design/phase4/<file>`.
+
 Date: 24 Sep 2026 · Screenshots: `docs/design/phase4/` (390 px and 1440 px, light and dark, Tajik and Persian). Contact sheets: `home.png`, `explore.png`, `history.png`, `reader.png`, `search.png`, `learn.png`, `saved.png`. Close-up: `home_390_detail.png`.
 
 ## Checks

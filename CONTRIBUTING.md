@@ -32,6 +32,9 @@ commit message such as `fix: correct Persian product name`.
   right-to-left direction and a font with the required glyphs.
 - Keep touch targets accessible and avoid conveying state through color alone.
 - Do not add network dependencies for content already bundled with the app.
+- Literary and historical content comes only from the school textbooks and
+  maorif.tj, with book and page. Never commit the textbook PDFs; they are named
+  in `docs/literature/pdfs/MANIFEST.json`.
 - Never commit credentials, signing keys, generated build output, or local tool
   state.
 

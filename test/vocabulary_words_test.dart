@@ -114,13 +114,18 @@ void main() {
       expect(words.every((w) => w.definition.isNotEmpty), isTrue);
       final keys = words.map((w) => (w.term, w.sourceBook, w.pdfPage)).toSet();
       expect(keys, hasLength(words.length));
-      // Every entry cites one of the uploaded textbooks.
+      // Every entry cites one of the textbooks in the PDF manifest (the
+      // PDFs themselves are held outside the repository).
+      final manifest =
+          jsonDecode(
+                File('docs/literature/pdfs/MANIFEST.json').readAsStringSync(),
+              )
+              as Map<String, dynamic>;
+      final textbooks = {
+        for (final entry in manifest['pdfs'] as List) entry['file'] as String,
+      };
       for (final book in words.map((w) => w.sourceBook).toSet()) {
-        expect(
-          File('docs/literature/pdfs/$book').existsSync(),
-          isTrue,
-          reason: 'unknown source $book',
-        );
+        expect(textbooks, contains(book), reason: 'unknown source $book');
       }
 
       // The five p.17 terms from the screenshot are present.

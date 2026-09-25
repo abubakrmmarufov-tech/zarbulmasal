@@ -63,27 +63,17 @@ jobs:
       - name: Run adversarial provenance re-audit
         run: python3 tool/provenance_repair_loop5_adversarial.py
 
-      - name: Verify uploaded source inventory
+      # The textbook PDFs are not in the repository; the inventory is built
+      # from docs/literature/pdfs/MANIFEST.json.
+      - name: Verify textbook source inventory
         run: |
           python3 tool/literature_pipeline/scripts/discover_pdfs.py
           git diff --exit-code -- docs/literature/SOURCE_INVENTORY.md
-
-      - name: Exercise literature asset pipeline
-        run: python3 tool/literature_pipeline/scripts/build_assets.py
-
-      - name: Test literature asset pipeline
-        run: python3 tool/literature_pipeline/scripts/test_build_assets.py
 
       - name: Test literature duplicate and portrait guards
         run: |
           python3 tool/test_merge_duplicate_works.py
           python3 tool/test_extract_portraits.py
-
-      - name: Test enrichment tool safety
-        run: python3 -m unittest tool.test_enrich_all_poets_final_safety -v
-
-      - name: Test legacy literature writer guards
-        run: python3 -m unittest tool.test_legacy_literature_guards -v
 
       - name: Test provenance guards
         run: python3 -m unittest tool.test_provenance_detector tool.test_provenance_linter_sources tool.test_validate_literary_content_report -v

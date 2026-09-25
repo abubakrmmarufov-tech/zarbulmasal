@@ -18,7 +18,7 @@ Written 25 Sep 2026, after the `1.0.0-preview.1` preview. The preview is **debug
    ```
 
 2. **Point the build at it.** The build reads `KEYSTORE_PATH`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD` from the environment or `-P` properties. It does not read `android/key.properties`. CI reads the same values from GitHub secrets, plus `EXPECTED_RELEASE_CERT_SHA256`, which `tool/verify_android_signing_material.sh` checks.
-3. **Check for an earlier key.** CI is already wired for `KEYSTORE_*` secrets, and the website once offered a v1.0.1 APK (versionCode 2002). If a key already signed that APK, decide whether it becomes the Play app-signing key, so website users can update, or is retired.
+3. **No earlier key exists.** CI is already wired for `KEYSTORE_*` secrets, but the v1.0.1 APKs on GitHub Releases were signed with `CN=Android Debug` too. So the Play upload key is the first real key, and nobody with v1.0.1 or the preview can update to the Play version without uninstalling.
 
 ## 3. Play App Signing and the first upload
 

@@ -1,5 +1,7 @@
 # Phase 1 — Roadmap NOW (N1–N8)
 
+> Screenshots for this phase were removed from the repository on 25 Sep 2026 to keep it small. They remain in git history: `git show dcd3805:docs/design/phase1/<file>`.
+
 Date: 24 Sep 2026 · Screenshots: `docs/design/phase1/` (390 px and 1440 px, light and dark, Tajik and Persian)
 
 ## Checks

@@ -1,5 +1,7 @@
 # Phase 5 — Owner feedback round
 
+> Screenshots for this phase were removed from the repository on 25 Sep 2026 to keep it small. They remain in git history: `git show dcd3805:docs/design/phase5/<file>`.
+
 Date: 24–25 Sep 2026. Screenshots are from the owner's phone (Android, dark theme, debug build) and live in `docs/design/phase5/`.
 
 ## Checks

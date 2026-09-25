@@ -11,7 +11,9 @@
 | `adabiyet sinfi 11.pdf` | *Адабиёти тоҷик (давраи нав), синфи 11* | Х. Асозода, А. Кӯчаров | Маориф, Душанбе | 2018 | Нашри панҷум | 978-99947-1-536-7 | 400 | Text extract available; held PDF; source record `tj_literature_grade_11_2018` |
 
 This inventory is generated from the active source records and the
-checked-in PDF files. PDF page counts are not printed page citations.
+PDF manifest (`docs/literature/pdfs/MANIFEST.json`). The PDFs are held
+outside the repository; the manifest records each file's SHA-256. PDF
+page counts are not printed page citations.
 A held PDF does not by itself establish publication rights or make a
 literary work displayable.
 The 2025 edition is a separate remote `maorif.tj`

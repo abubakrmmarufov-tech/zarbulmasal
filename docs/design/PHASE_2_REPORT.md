@@ -1,5 +1,7 @@
 # Phase 2 — Visual system
 
+> Screenshots for this phase were removed from the repository on 25 Sep 2026 to keep it small. They remain in git history: `git show dcd3805:docs/design/phase2/<file>`.
+
 Date: 24 Sep 2026 · Screenshots: `docs/design/phase2/` (390 px and 1440 px, light and dark, Tajik and Persian; `*_390_detail.png` are close-ups)
 
 ## Checks
