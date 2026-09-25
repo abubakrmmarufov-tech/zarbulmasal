@@ -279,14 +279,17 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            name,
-                            textDirection: isPersian
-                                ? TextDirection.rtl
-                                : TextDirection.ltr,
-                            style: QalamTypography.pageTitle(
-                              color: colors.onSurface,
-                              fontSize: compactHeader ? 28 : 34,
+                          Semantics(
+                            header: true,
+                            child: Text(
+                              name,
+                              textDirection: isPersian
+                                  ? TextDirection.rtl
+                                  : TextDirection.ltr,
+                              style: QalamTypography.pageTitle(
+                                color: colors.onSurface,
+                                fontSize: compactHeader ? 28 : 34,
+                              ),
                             ),
                           ),
                           if (altName != null && altName.isNotEmpty) ...[

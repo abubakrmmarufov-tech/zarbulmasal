@@ -164,6 +164,7 @@ class _RailItem extends StatelessWidget {
       selected: selected,
       label: label,
       excludeSemantics: true,
+      onTap: onTap,
       child: InkWell(
         onTap: onTap,
         child: Container(

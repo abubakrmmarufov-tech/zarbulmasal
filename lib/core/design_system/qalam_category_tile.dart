@@ -64,6 +64,7 @@ class QalamCategoryTile extends ConsumerWidget {
       button: true,
       label: '$name, $countLabel',
       excludeSemantics: true,
+      onTap: onTap,
       child: Material(
         color: Colors.transparent,
         child: InkWell(

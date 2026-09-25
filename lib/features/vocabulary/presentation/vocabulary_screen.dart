@@ -174,7 +174,14 @@ class _VocabularyScreenState extends ConsumerState<VocabularyScreen> {
               itemBuilder: (context, index) {
                 final letter = index == 0 ? null : letters[index - 1];
                 return ChoiceChip(
-                  label: Text(letter ?? tr('vocab_all')),
+                  // Single letters are the whole label: set them larger
+                  // than the 12 px chip text so they read at a glance.
+                  label: Text(
+                    letter ?? tr('vocab_all'),
+                    style: letter == null
+                        ? null
+                        : const TextStyle(fontSize: 16),
+                  ),
                   selected: _letter == letter,
                   onSelected: (_) => setState(() => _letter = letter),
                 );

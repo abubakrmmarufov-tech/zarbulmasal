@@ -161,7 +161,9 @@ class AppTheme {
         selectedColor: dark ? QalamColors.vermilionDeep : QalamColors.paperSunk,
         disabledColor: dark ? QalamColors.inkWell : QalamColors.paperLow,
         labelStyle: QalamTypography.meta(color: ink),
-        secondaryLabelStyle: QalamTypography.meta(color: accent),
+        // Selected chips: in dark mode vermilion on the deep-vermilion
+        // fill is 2.8:1, so the label turns ivory there (WCAG 4.5:1).
+        secondaryLabelStyle: QalamTypography.meta(color: dark ? ink : accent),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),

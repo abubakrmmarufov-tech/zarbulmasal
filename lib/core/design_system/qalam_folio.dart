@@ -53,6 +53,9 @@ class QalamFolioTile extends StatelessWidget {
       button: true,
       label: subtitle == null ? title : '$title. $subtitle',
       excludeSemantics: true,
+      // Excluding the children also drops the InkWell's tap; restore it so
+      // TalkBack's double tap opens the collection.
+      onTap: onTap,
       child: Material(
         color: _folioPaper(context),
         shape: RoundedRectangleBorder(

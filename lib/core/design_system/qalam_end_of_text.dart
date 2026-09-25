@@ -146,6 +146,7 @@ class _NeighbourLink extends StatelessWidget {
       button: true,
       label: '${neighbour.label}: ${neighbour.title}',
       excludeSemantics: true,
+      onTap: neighbour.onTap,
       child: QalamSlip(
         onTap: neighbour.onTap,
         showChevron: false,

@@ -42,9 +42,12 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          tr('app_name').toUpperCase(),
-          style: QalamTypography.eyebrow(color: colors.primary, fontSize: 12),
+        title: Semantics(
+          header: true,
+          child: Text(
+            tr('app_name').toUpperCase(),
+            style: QalamTypography.eyebrow(color: colors.primary, fontSize: 12),
+          ),
         ),
         actions: [
           IconButton(

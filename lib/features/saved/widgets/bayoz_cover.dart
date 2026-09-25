@@ -25,6 +25,7 @@ class BayozCover extends StatelessWidget {
       button: true,
       label: [title, ?countLabel].join(', '),
       excludeSemantics: true,
+      onTap: onTap,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),

@@ -45,18 +45,22 @@ class ReaderHeader extends StatelessWidget {
       color: colors.onSurfaceVariant,
       fontSize: 14,
     );
-    final separator = Text('  ·  ', style: meta);
+    // A visual divider only: TalkBack must not stop on "·".
+    final separator = ExcludeSemantics(child: Text('  ·  ', style: meta));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          title,
-          textDirection: titleDirection,
-          style: QalamTypography.monographTitle(
-            color: colors.onSurface,
-            fontSize: 38,
-            height: 1.15,
+        Semantics(
+          header: true,
+          child: Text(
+            title,
+            textDirection: titleDirection,
+            style: QalamTypography.monographTitle(
+              color: colors.onSurface,
+              fontSize: 38,
+              height: 1.15,
+            ),
           ),
         ),
         const SizedBox(height: 12),
@@ -92,14 +96,17 @@ class ReaderHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 24),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            textDirection: titleDirection,
-            style: QalamTypography.monographTitle(
-              color: colors.onSurface,
-              fontSize: 36,
-              height: 1.15,
+          Semantics(
+            header: true,
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              textDirection: titleDirection,
+              style: QalamTypography.monographTitle(
+                color: colors.onSurface,
+                fontSize: 36,
+                height: 1.15,
+              ),
             ),
           ),
           const SizedBox(height: 16),
@@ -171,12 +178,15 @@ class _AuthorLink extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              authorName,
-              style: QalamTypography.meta(
-                color: colors.primary,
-                fontSize: compact ? 13 : 14,
-                fontWeight: FontWeight.w600,
+            // Long names wrap at large text sizes instead of overflowing.
+            Flexible(
+              child: Text(
+                authorName,
+                style: QalamTypography.meta(
+                  color: colors.primary,
+                  fontSize: compact ? 13 : 14,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             const SizedBox(width: 2),

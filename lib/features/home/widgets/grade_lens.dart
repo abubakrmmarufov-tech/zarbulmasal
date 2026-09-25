@@ -23,10 +23,13 @@ class GradeLens extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          AppTranslations.get('home_grade_lens', lang).toUpperCase(),
-          style: QalamTypography.eyebrow(
-            color: Theme.of(context).colorScheme.primary,
+        Semantics(
+          header: true,
+          child: Text(
+            AppTranslations.get('home_grade_lens', lang).toUpperCase(),
+            style: QalamTypography.eyebrow(
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ),
         const SizedBox(height: 12),

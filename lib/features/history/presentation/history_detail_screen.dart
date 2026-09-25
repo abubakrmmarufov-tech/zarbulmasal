@@ -201,11 +201,14 @@ class HistoryDetailScreen extends ConsumerWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
-                Text(
-                  title,
-                  style: QalamTypography.monographTitle(
-                    color: colors.onSurface,
-                    fontSize: 30,
+                Semantics(
+                  header: true,
+                  child: Text(
+                    title,
+                    style: QalamTypography.monographTitle(
+                      color: colors.onSurface,
+                      fontSize: 30,
+                    ),
                   ),
                 ),
                 if (dates.isNotEmpty) ...[

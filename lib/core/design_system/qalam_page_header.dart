@@ -44,9 +44,12 @@ class QalamPageHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: Text(
-                  title,
-                  style: QalamTypography.pageTitle(color: colors.onSurface),
+                child: Semantics(
+                  header: true,
+                  child: Text(
+                    title,
+                    style: QalamTypography.pageTitle(color: colors.onSurface),
+                  ),
                 ),
               ),
               if (trailing != null) ...[const SizedBox(width: 12), trailing!],
