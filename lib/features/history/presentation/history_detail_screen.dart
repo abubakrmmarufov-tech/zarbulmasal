@@ -627,11 +627,20 @@ class _ReadingSectionCard extends StatelessWidget {
     return null;
   }
 
+  /// "Таърихи халқи тоҷик, синфи 8": every grade's book has the same
+  /// title, so the grade says which one.
   String _sectionBookTitle() {
     final book = _sectionBook!;
-    return isPersian
+    final title = isPersian
         ? _historyOptionalText(book.titlePersian) ?? book.title
         : book.title;
+    if (book.grade.trim().isEmpty) return title;
+    final grade = AppTranslations.get(
+      'hist_filter_grade',
+      isPersian ? DisplayLanguage.persian : DisplayLanguage.tajik,
+      [book.grade],
+    ).toLowerCase();
+    return '$title, $grade';
   }
 }
 

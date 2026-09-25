@@ -34,7 +34,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=28",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01J3F21SFE3931K60BV7BW8E4M.pdf"
   },
   {
     "id": "history-7",
@@ -52,7 +53,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=29",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01JBBC8JQ8WKGR4FX0YVGXMCW2.pdf"
   },
   {
     "id": "history-8",
@@ -70,7 +72,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=30",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01KH886BRG96V94GEWAFR9WFWY.pdf"
   },
   {
     "id": "history-9",
@@ -88,7 +91,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=31",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01KH88ZFH12EA1BMW7H3Z1YVHC.pdf"
   },
   {
     "id": "history-10",
@@ -106,7 +110,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=32",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01KH8JVPBYMMBV3YZ8YSH0ANTG.pdf"
   },
   {
     "id": "history-11",
@@ -124,7 +129,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=33",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01J3EZ9T0AGAHPFBHZXC5B8Q3B.pdf"
   },
   {
     "id": "literature-5",

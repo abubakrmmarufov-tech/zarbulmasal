@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/history/domain/history_entry.dart';
 import 'package:zarbulmasal/features/history/domain/history_section.dart';
@@ -238,6 +241,52 @@ void main() {
       );
       expect(entry.sections.single.sourceBookId, 'history-6');
       expect(entry.sourceBookId, 'history-7');
+    });
+  });
+
+  group('bundled History reading sections', () {
+    final entries =
+        (jsonDecode(File('assets/data/history/entries.json').readAsStringSync())
+                as List)
+            .cast<Map<String, dynamic>>();
+    final books =
+        (jsonDecode(File('assets/data/history/books.json').readAsStringSync())
+                as List)
+            .cast<Map<String, dynamic>>();
+    final bookIds = books.map((b) => b['id']).toSet();
+
+    test('every empire and dynasty has a cited reading section', () {
+      final thin = entries
+          .where((e) => e['kind'] == 'empire')
+          .where((e) => (e['sections'] as List?)?.isEmpty ?? true)
+          .map((e) => e['id'])
+          .toList();
+      expect(thin, isEmpty);
+    });
+
+    test('each section cites a known textbook and a page', () {
+      for (final entry in entries) {
+        for (final raw in (entry['sections'] as List?) ?? const []) {
+          final section = HistoryDetailSection.fromJson(
+            raw as Map<String, dynamic>,
+          );
+          final book = section.sourceBookId ?? entry['sourceBookId'];
+          expect(bookIds, contains(book), reason: '${entry['id']}');
+          expect(section.printedPage, isNotNull, reason: '${entry['id']}');
+          expect(section.body.trim(), isNotEmpty);
+        }
+      }
+    });
+
+    test('grade 6-11 textbooks link to their maorif.tj PDF', () {
+      for (final book in books.where(
+        (b) => (b['id'] as String).startsWith('history-') && b['grade'] != '5',
+      )) {
+        expect(
+          book['textbookPdfUrl'],
+          startsWith('https://maorif.tj/storage/libraries/'),
+        );
+      }
     });
   });
 }
