@@ -1,5 +1,5 @@
 {
- "about": "Phase 7 decisions on the 16 records withdrawn in ATTRIBUTION_AUDIT_2026-09-25.json and on «Қасидаи модар». Applied by tool/literature/apply_attribution_decisions.py. Each decision was taken by reading the printed page; the lead-in is quoted. 'drop' rejects the record; 'refile' moves it to the poet the book names (a single bayt stays needsReview: the app never ships a lone bayt as a readable work); 'publish' also copies the verse from the page; 'titleOnly' keeps an attested title and removes text that belongs to someone else.",
+ "about": "Phase 7 decisions on the 16 records withdrawn in ATTRIBUTION_AUDIT_2026-09-25.json and on «Қасидаи модар». Applied by tool/literature/apply_attribution_decisions.py. Each decision was taken by reading the printed page; the lead-in is quoted. 'drop' rejects the record; 'refile' moves it to the poet the book names (a single bayt stays needsReview: the app never ships a lone bayt as a readable work); 'publish' also copies the verse from the page; 'titleOnly' keeps an attested title and removes text that belongs to someone else; 'repair' takes a published text again from the page when it had joined two quotations or carried a non-verse line; 'truncate' cuts a published text before a prose line printed between two quotations.",
  "decisions": [
   {
    "id": "poem_rudaki_898d6b07e403c21a",
@@ -141,6 +141,107 @@
    "page": 296,
    "sourceFrom": "0c468886-d790-46eb-bc2c-07ce1f306f8a",
    "evidence": "The 12 lines this record held («Гуфт: «Аз як қатра ашки модарам…») are lines 6–17 of Халилӣ's «Ҳадя ба модарон» (grade 5, pp. 243–245), which has its own published record. The textbooks name Лоиқ's «Қасидаи модар» only by title (grade 11, p. 296) and in a test question (p. 304); they do not print its text."
+  },
+  {
+   "id": "poem_a7feaa09-c83f-44f2-a69e-0a46ba957dbc_41a7436273436931",
+   "action": "repair",
+   "book": "adabiet sinfi 5",
+   "page": 274,
+   "evidence": "The text began with the poem's printed title «Духтарони Дарвоз» as if it were a verse line.",
+   "publish": {
+    "pdfPage": 274,
+    "opening": "Мевазад боди тозаву форам",
+    "title": "Духтарони Дарвоз"
+   }
+  },
+  {
+   "id": "poem_465d3f4a-4924-4ca6-9371-7266ae4393c7_927863ebf7a06b76",
+   "action": "repair",
+   "book": "adabiet sinfi 10",
+   "page": 53,
+   "evidence": "Two ghazals joined across the lead-in «Ё худ дар ғазали дигар:»; the record keeps the first, and the second is published on its own (EXTRACTION_REVIEW).",
+   "publish": {
+    "pdfPage": 53,
+    "opening": "Шер рам мекунад аз шӯриши девонаи ишқ"
+   }
+  },
+  {
+   "id": "poem_121ce628-ff4b-44d2-a702-81db93040dee_ba437d8fb669ad53",
+   "action": "repair",
+   "book": "adabiet sinfi 10",
+   "page": 97,
+   "evidence": "A single bayt was joined across the lead-in «Ё худ дар ҷойи дигар низ ба ин маънӣ чунин ишорае дорад:»; the record keeps the four lines above it.",
+   "publish": {
+    "pdfPage": 97,
+    "opening": "Баландном нагардад, касе ки дар ватан аст"
+   }
+  },
+  {
+   "id": "poem_2e7a713f-c3d2-449e-bd6a-a4b5b7350201_bcb2da0082418843",
+   "action": "repair",
+   "book": "adabiyet sinfi 11",
+   "page": 31,
+   "evidence": "A single bayt was joined across the lead-in «Асирӣ дар ҳаққи амири Бухоро гуфтааст:»; the record keeps the six lines above it.",
+   "publish": {
+    "pdfPage": 31,
+    "opening": "Ба васфи лозими атфол дохилаш бингар"
+   }
+  },
+  {
+   "id": "poem_rudaki_63d5fd29956b4f06",
+   "action": "truncate",
+   "book": "adabiyet sinfi 8",
+   "page": 46,
+   "at": "Марги Рӯдакии шоир барои аҳли адаби замонааш ва асрҳои",
+   "evidence": "The text ran on through a prose paragraph («Марги Рӯдакии шоир барои аҳли адаби замонааш …») into an elegy on Рӯдакӣ by another poet («Рӯдакӣ рафту монд ҳикмати ӯй»). It now ends before the prose."
+  },
+  {
+   "id": "poem_c9ea2574-7623-4974-ada0-49c075b2831b_956980779af93779",
+   "action": "truncate",
+   "book": "adabiyet sinfi 8",
+   "page": 248,
+   "at": "Ҳудҳуд ба ӯ ҷавоб медиҳад ва он ин аст:",
+   "evidence": "The text ran on through the prose lead-in «Ҳудҳуд ба ӯ ҷавоб медиҳад ва он ин аст:» into the next quotation. It now ends before the lead-in."
+  },
+  {
+   "id": "poem_savdo_a3233a9b43475aa3",
+   "action": "truncate",
+   "book": "adabiet sinfi 10",
+   "page": 273,
+   "at": "Яке аз ҷанбаҳои ҳунарии ғазалиёти Абдулқодирхоҷаи Савдо",
+   "evidence": "The text ran on through a prose paragraph («Яке аз ҷанбаҳои ҳунарии ғазалиёти …») into another ghazal. It now ends before the prose."
+  },
+  {
+   "id": "065f049b-7455-5076-bd7b-a157b5ed6574",
+   "action": "truncate",
+   "book": "adabiyet sinfi 8",
+   "page": 89,
+   "at": "Суҳроб аз модараш мепурсад, ки:",
+   "evidence": "The text ran on through the prose lead-in «Суҳроб аз модараш мепурсад, ки:» into the next quotation. It now ends before the lead-in."
+  },
+  {
+   "id": "e0e4b510-c39a-5eba-832b-f583977504f1",
+   "action": "truncate",
+   "book": "adabiyet sinfi 8",
+   "page": 104,
+   "at": "Рустам пас аз он ки ба ҳуш меояд, аз Суҳроб мепурсад, ки:",
+   "evidence": "The text ran on through the prose lead-in «Рустам пас аз он ки ба ҳуш меояд, аз Суҳроб мепурсад, ки:» into the next quotation. It now ends before the lead-in."
+  },
+  {
+   "id": "e8be81cf-c4a4-58a2-959c-4bf33dea3d3f",
+   "action": "truncate",
+   "book": "adabiyet sinfi 8",
+   "page": 270,
+   "at": "Ширин савганд мехӯрад, ки қадами беҷо нахоҳад ниҳод:",
+   "evidence": "The text ran on through the prose lead-in «Ширин савганд мехӯрад, ки қадами беҷо нахоҳад ниҳод:» into the next quotation. It now ends before the lead-in."
+  },
+  {
+   "id": "37f6ea39-c7e8-5a05-b1df-9bc40f1035f7",
+   "action": "truncate",
+   "book": "adabiyet sinfi 9",
+   "page": 42,
+   "at": "Махсусан, мисраъҳои:",
+   "evidence": "The text ran on through the prose lead-in «Махсусан, мисраъҳои:» into the next quotation. It now ends before the lead-in."
   }
  ]
 }

@@ -136,6 +136,123 @@ class AttributionTest(unittest.TestCase):
             'payrav', names))
 
 
+class ShallowLeadInTest(unittest.TestCase):
+    """A one-line prose sentence ending in ':' is set with a shallower
+    indent than the verse around it; it separates two quotations."""
+    PAGE = (
+        '             Ёрам ҳар гоҳ дар сухан меояд,\n'
+        '             Бӯйи аҷабеш аз даҳан меояд.\n'
+        '             Ин бӯйи қаранфул аст, ё накҳати гул,\n'
+        '             Ё роиҳаи мушки Хутан меояд?\n'
+        '\n'
+        '      Бедил соли 1665 аз Биҳор ба шаҳри Деҳлӣ меояд:\n'
+        '             Аз мулки Биҳор сӯйи Деҳлӣ,\n'
+        '             Чун ашк равон шудем бекас.\n'
+    )
+
+    def test_the_block_ends_before_the_shallow_lead_in(self):
+        _, lines, _, _ = extract_poem(['', self.PAGE], 1, 'Ёрам ҳар гоҳ дар сухан меояд')
+        self.assertEqual(lines[-1], 'Ё роиҳаи мушки Хутан меояд?')
+
+    def test_the_next_quotation_does_not_rewind_past_it(self):
+        _, lines, _, _ = extract_poem(['', self.PAGE], 1, 'Аз мулки Биҳор сӯйи Деҳлӣ')
+        self.assertEqual(lines[0], 'Аз мулки Биҳор сӯйи Деҳлӣ,')
+
+    def test_verse_introducing_speech_at_the_same_indent_stays(self):
+        page = ('        Бигуфт ӯ ба шоҳ ин сухан дар замон:\n'
+                '        «Бихандад лола дар саҳро,\n'
+                '        Ба сони чеҳраи Лайло.\n'
+                '        Бигиряд абр дар гардун\n'
+                '        Ба сони дидаи Маҷнун».\n')
+        _, lines, _, _ = extract_poem(['', page], 1, '«Бихандад лола дар саҳро')
+        self.assertEqual(lines[0], 'Бигуфт ӯ ба шоҳ ин сухан дар замон:')
+
+
+class CenteredTitleTest(unittest.TestCase):
+    PAGE = (
+        '                   Духтарони Дарвоз\n'
+        '           Мевазад боди тозаву форам,\n'
+        '           Барги гулҳо ба ҷунбишанд аз он.\n'
+        '           Мешавад паҳн дар фазо ҳар дам\n'
+        '           Ин суруди қадими кӯҳистон:\n'
+        '           «Рӯзу шаб рӯди Панҷи ноором\n'
+        '           Мезанад доду мезанад фарёд.\n'
+    )
+
+    def test_a_centred_mixed_case_title_is_not_a_verse_line(self):
+        _, lines, _, _ = extract_poem(['', self.PAGE], 1, 'Мевазад боди тозаву форам')
+        self.assertEqual(lines[0], 'Мевазад боди тозаву форам,')
+        self.assertIn('Ин суруди қадими кӯҳистон:', lines)   # verse, same indent
+
+
+class FootnoteMarkerLineTest(unittest.TestCase):
+    def test_a_numbered_footnote_line_does_not_cut_the_last_verse_line(self):
+        page = ('            Раҳонам зи ғам ҳар ғамандешро,\n'
+                '            Кунам марҳаме ҳар дили решро.\n'
+                '            Чу шоҳ аз раийят бувад комхоҳ,\n'
+                '            Гадо бошад андар ҳақиқат, на шоҳ!\n'
+                '1.\n'
+                '   воя – ҳоҷат, мурод\n')
+        _, lines, _, _ = extract_poem(['', page], 1, 'Раҳонам зи ғам ҳар ғамандешро')
+        self.assertEqual(lines[-1], 'Гадо бошад андар ҳақиқат, на шоҳ!')
+
+
+class IndentedParagraphTest(unittest.TestCase):
+    def test_an_indented_paragraph_opening_is_not_verse(self):
+        page = ('        Дил ба ҷуз васли ту бо ҳеч тасалло нашавад,\n'
+                '        Нест дар ҳаҷри ту орому қарорам, бинишин.\n'
+                '        Дар ду олам набувад ғайри ту ёрам, бинишин.\n'
+                '        Омадӣ, ҳарфи ниҳонӣ ба ту дорам, бинишин.\n'
+                '    Яке аз ҷанбаҳои ҳунарии ғазалиёти Абдулқодирхоҷаи Савдо\n'
+                '    дарёфту корбасти радиф аст ва ҳунари ӯ дар истифодаи радиф ба\n')
+        _, lines, _, _ = extract_poem(['', page], 1, 'Дил ба ҷуз васли ту бо ҳеч тасалло')
+        self.assertEqual(lines[-1], 'Омадӣ, ҳарфи ниҳонӣ ба ту дорам, бинишин.')
+
+
+class ProseAtVerseIndentTest(unittest.TestCase):
+    def test_prose_after_the_poem_at_the_same_indent_keeps_the_last_line(self):
+        page = ('     Ҳазратам, аз гушнагӣ мурдам, ба ман нунам бидеҳ,\n'
+                '     Кофирам, гӯям агар инам бидеҳ, унам бидеҳ.\n'
+                '     Гулханиро ай қатори баччамардон кам мадон,\n'
+                '     Фӯтаву шофам бидеҳ, аспам бидеҳ, тунам бидеҳ.\n'
+                '     Хусусан, бори ғоявию мавзуӣ ва маънавию мундариҷавӣ бар дӯш\n'
+                'доштани радиф дар ғазали боло аз он ҳам маълум мегардад, ки дар\n')
+        _, lines, _, _ = extract_poem(['', page], 1, 'Ҳазратам, аз гушнагӣ мурдам')
+        self.assertEqual(lines[-1], 'Фӯтаву шофам бидеҳ, аспам бидеҳ, тунам бидеҳ.')
+
+
+class LeadInAtPageTopTest(unittest.TestCase):
+    def test_a_lead_in_opening_the_next_page_ends_the_poem(self):
+        page1 = ('               Чу мулки ҷаҳонат мусаллам шавад,\n'
+                 '               Дар он поя пойи ту муҳкам шавад,\n'
+                 '               Чӣ бошад ба пеши ту миқдори ман?\n'
+                 '               Чӣ равнақ пазирад зи ту кори ман?\n'
+                 '\n'
+                 '                                253\n')
+        page2 = ('   Искандар чунин ҷавоб медиҳад:\n'
+                 '\n'
+                 '          Бигуфто, ки бошад туро бартарӣ\n'
+                 '          Бари ман ба миқдори фармонбарӣ...\n')
+        _, lines, last, _ = extract_poem(['', page1, page2], 1, 'Чу мулки ҷаҳонат мусаллам шавад')
+        self.assertEqual(lines[-1], 'Чӣ равнақ пазирад зи ту кори ман?')
+        self.assertEqual(last, 1)
+
+
+class MarginShiftTest(unittest.TestCase):
+    def test_a_lead_in_on_a_page_with_a_wider_margin_ends_the_poem(self):
+        page1 = ('         Ман чунон аз ишқи гул мустағрақам,\n'
+                 '         К-аз вуҷуди хеш маҳви мутлақам.\n'
+                 '\n'
+                 '                                247\n')
+        page2 = ('           Дар сарам аз ишқи гул савдо бас аст,\n'
+                 '           З-он ки маъшуқам гули раъно бас аст.\n'
+                 '      Ҳудҳуд ба ӯ ҷавоб медиҳад ва он ин аст:\n'
+                 '           Ҳудҳудаш гуфт: «Ай ба сурат монда боз,\n')
+        _, lines, last, _ = extract_poem(['', page1, page2], 1, 'Ман чунон аз ишқи гул мустағрақам')
+        self.assertEqual(lines[-1], 'З-он ки маъшуқам гули раъно бас аст.')
+        self.assertEqual(last, 2)
+
+
 class PoetNamesTest(unittest.TestCase):
     POETS = [
         {'id': 'jomi', 'canonicalName': 'Абдурраҳмони Ҷомӣ', 'aliases': []},

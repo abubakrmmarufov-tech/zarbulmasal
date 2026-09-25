@@ -63,6 +63,18 @@ class PublishTest(unittest.TestCase):
         self.assertIn('reviewed by hand', record['editorialNotes'])
         self.assertIn(record, works)
 
+    def test_a_block_is_cut_before_a_prose_lead_in_inside_it(self):
+        page = PAGE.replace('    Дар ҳамин маврид чунон ки\nгуфтаанд:\n',
+                            '           Рӯзу шаб шармандагӣ, аз обу нон,\n'
+                            '           Ин ҳама бечорагӣ аз обу нон.\n'
+                            '    Шоир чунин ҷавоб медиҳад:\n')
+        works = [published('x')]
+        added, _ = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,')], {'b': ['', page]})
+        text = added[0]['textTajik']
+        self.assertNotIn('Шоир чунин ҷавоб медиҳад:', text)
+        self.assertEqual(text.split('\n')[-1], 'Ин ҳама бечорагӣ аз обу нон.')
+
     def test_rejected_blocks_are_ignored(self):
         works = [published('x')]
         added, _ = publish(works, [block('Пеши он кас, ки ихтиёраш ҳаст,',
@@ -109,7 +121,9 @@ class PublishTest(unittest.TestCase):
         self.assertEqual(len(skipped), 1)
 
     def test_a_block_that_does_not_start_at_the_opening_is_refused(self):
-        page = PAGE.replace('шикоят\nменамояд:', 'шикоят менамояд:')
+        # The lead-in set at the verse's indent reads as part of the verse.
+        page = PAGE.replace('    Шоир дар ғазали зерин аз рӯзгори худ шикоят\nменамояд:',
+                            '           Шоир аз рӯзгор чунин мегӯяд:')
         works = [published('x')]
         added, skipped = publish(works, [block(
             'Дар баҳор аз фоқа ранги заъфарон бошад маро,')], {'b': ['', page]})

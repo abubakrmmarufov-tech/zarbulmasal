@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
-from apply_attribution_decisions import apply  # noqa: E402
+from apply_attribution_decisions import ACTIONS, apply  # noqa: E402
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -21,6 +21,10 @@ PAGE = """\
   Ахтар – ситора.
                                 108
 """
+
+
+VERSE_4 = ('Бихандад лола дар саҳро,\nБа сони чеҳраи Лайло.\n'
+           'Бигиряд абр дар гардун,\nБа сони дидаи Маҷнун.')
 
 
 def record(rid, author='vosifi', text=None):
@@ -101,6 +105,82 @@ class RefileTest(unittest.TestCase):
                 {'b': ['', page]})
 
 
+class RepairTest(unittest.TestCase):
+    PAGE = """\
+             Шер рам мекунад аз шӯриши девонаи ишқ,
+             Дидаи дев бувад шамъи парихонаи ишқ.
+             Куфру ислом дар ин роҳ ду нақши қадам аст,
+             Каъба сангест зи девори санамхонаи ишқ.
+      Ё худ дар ғазали дигар:
+             Дар он саҳро, ки ваҳшат раҳравонро роҳбар бошад,
+             Саводи манзил аз чашми ғизолон шӯхтар бошад.
+                                53
+"""
+
+    def test_repair_retakes_the_text_from_the_page_for_the_same_poet(self):
+        works = [record('w1', author='shavkat', text='glued\ntext')]
+        works[0]['title'] = 'Шер рам мекунад аз шӯриши девонаи ишқ'
+        apply(works, [decision('repair', publish={
+            'pdfPage': 1, 'opening': 'Шер рам мекунад аз шӯриши девонаи ишқ'})],
+            {'b': ['', self.PAGE]})
+        w = works[0]
+        self.assertEqual(w['authorId'], 'shavkat')
+        self.assertEqual(w['textTajik'].split('\n')[-1],
+                         'Каъба сангест зи девори санамхонаи ишқ.')
+        self.assertEqual(len(w['textTajik'].split('\n')), 4)
+
+    def test_repair_keeps_a_printed_title(self):
+        works = [record('w1', author='shavkat', text='x')]
+        apply(works, [decision('repair', publish={
+            'pdfPage': 1, 'opening': 'Шер рам мекунад аз шӯриши девонаи ишқ',
+            'title': 'Ишқ'})], {'b': ['', self.PAGE]})
+        self.assertEqual(works[0]['title'], 'Ишқ')
+
+
+class TruncateTest(unittest.TestCase):
+    def test_truncate_cuts_at_the_prose_line_and_keeps_the_verse_above(self):
+        works = [record('w1', author='rudaki', text=(
+            'Басе нишастам ман бо акобиру аъён,\nБиёзмудамашон ошкору пинҳонӣ.\n'
+            'Нахостам зи таманно, магар ки дастурӣ,\nНаёфтам зи атоҳо, магар пушаймонӣ.\n'
+            'Марги Рӯдакии шоир барои аҳли адаби замонааш ва асрҳои\n'
+            'Рӯдакӣ рафту монд ҳикмати ӯй,'))]
+        works[0]['persianScriptRepresentation'] = 'x'
+        apply(works, [decision('truncate',
+                               at='Марги Рӯдакии шоир барои аҳли адаби замонааш ва асрҳои')])
+        w = works[0]
+        self.assertEqual(w['textTajik'].split('\n')[-1],
+                         'Наёфтам зи атоҳо, магар пушаймонӣ.')
+        self.assertEqual(len(w['textTajik'].split('\n')), 4)
+        self.assertNotEqual(w['persianScriptRepresentation'], 'x')   # regenerated
+        self.assertIn('p. 108', w['editorialNotes'])
+
+    def test_truncate_moves_the_end_page_to_the_last_kept_line(self):
+        works = [record('w1', text=VERSE_4 + '\nСатри дигар')]
+        works[0]['primarySource'].update(pageStart=52, pageEnd=53)
+        page52 = ''.join('        %s\n' % l for l in VERSE_4.split('\n')) + '                  52\n'
+        page53 = '        Сатри дигар\n                  53\n'
+        apply(works, [decision('truncate', at='Сатри дигар')], {'b': ['', page52, page53]})
+        self.assertEqual(works[0]['primarySource']['pageEnd'], 52)
+
+    def test_truncate_withdraws_a_record_left_with_a_single_bayt(self):
+        works = [record('w1', text='Ту худ донӣ, ки вақти сарфарозӣ\nНахоҳам кард бо ту ишқбозӣ.\n'
+                                   'Ширин савганд мехӯрад:\nСатри дигар')]
+        works[0]['verification'] = {'evidenceLevel': 'primaryChecked'}
+        works[0]['rights'] = {'status': 'sourceAttested', 'fullTextAllowed': True}
+        apply(works, [decision('truncate', at='Ширин савганд мехӯрад:')])
+        w = works[0]
+        self.assertIsNone(w['textTajik'])
+        self.assertEqual(w['verification']['evidenceLevel'], 'needsReview')
+        self.assertEqual(w['textStatus'], 'needsReview')
+        self.assertFalse(w['rights']['fullTextAllowed'])
+        self.assertIn('single bayt', w['editorialNotes'])
+
+    def test_truncate_needs_the_exact_line(self):
+        works = [record('w1', text='А\nБ')]
+        with self.assertRaises(ValueError):
+            apply(works, [decision('truncate', at='В')])
+
+
 class TitleOnlyTest(unittest.TestCase):
     def test_title_only_removes_the_borrowed_text_and_cites_the_title_page(self):
         works = [record('w1', author='loiq', text='Гуфт: «Аз як қатра ашки модарам,'),
@@ -134,9 +214,9 @@ class ShippedDecisionsTest(unittest.TestCase):
                             'ATTRIBUTION_DECISIONS_2026-09-25.json')
         with open(path, encoding='utf-8') as f:
             decisions = json.load(f)['decisions']
-        self.assertEqual(len(decisions), 17)
+        self.assertGreaterEqual(len(decisions), 17)
         for d in decisions:
-            self.assertIn(d['action'], ('drop', 'refile', 'titleOnly'))
+            self.assertIn(d['action'], ACTIONS)
             self.assertTrue(d['evidence'])
             self.assertIsInstance(d['page'], int)
             if d['action'] == 'drop':

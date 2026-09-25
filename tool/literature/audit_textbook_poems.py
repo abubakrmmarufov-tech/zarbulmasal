@@ -7,12 +7,16 @@ For each work published with verificationMethod textbookPdfTextExtraction:
   * text: every line of textTajik must be printed, verbatim after the
     legacy-font map and footnote-marker removal, on the cited pages
     (pageStart..pageEnd, printed numbers);
+  * pages: pageStart..pageEnd must be the pages the lines are printed on;
+  * form: no line may be prose printed among the verse -- a line that opens
+    a prose paragraph, or a lead-in ending in ':' set left of the verse;
   * attribution: the lead-in above the first line must not name another
     poet or introduce folk verse, an elegy, a translation or examples
     (the guards of extract_textbook_poems.py).
 
-A lead-in that a person read and confirmed is listed, with the reason, in
-docs/literature/ATTRIBUTION_GUARD_EXCEPTIONS.json and is not flagged again.
+A lead-in that a person read and confirmed is not flagged again: those
+listed, with the reason, in docs/literature/ATTRIBUTION_GUARD_EXCEPTIONS.json,
+and the blocks accepted in docs/literature/EXTRACTION_REVIEW_2026-09-25.json.
 
 Exits 1 when any poem fails, listing each failure.
 """
@@ -26,11 +30,23 @@ from extract_textbook_poems import (  # noqa: E402
     lead_in_disqualifies, load_pages, poet_names, printed_page,
     quoted_from_other_poet, text_above,
 )
-from textbook_verse import clean_line, norm  # noqa: E402
+from textbook_verse import (  # noqa: E402
+    SHALLOW, _indent, _indented_paragraph, _starts_paragraph, clean_line,
+    norm,
+)
 
 WORKS = 'assets/data/literature/works.json'
 POETS = 'assets/data/literature/poets.json'
 EXCEPTIONS = 'docs/literature/ATTRIBUTION_GUARD_EXCEPTIONS.json'
+REVIEW = 'docs/literature/EXTRACTION_REVIEW_2026-09-25.json'
+NEAR = 3        # lines of a poem are printed at most this far apart
+
+
+def reviewed_ids(blocks):
+    """Record ids of the blocks a person accepted in a hand review."""
+    from publish_reviewed_blocks import stable_id
+    return {stable_id(b['book'], b['pdfPage'], b['opening'])
+            for b in blocks if b.get('decision') == 'accept'}
 
 
 def printed_index(pages):
@@ -58,6 +74,96 @@ def missing_lines(work, pages, index):
     printed = page_lines(pages, first, last)
     return [line for line in work['textTajik'].split('\n')
             if line.strip() and norm(line) not in printed]
+
+
+def _find(pages, line, start, last):
+    """(page, line number) of `line` at or after `start`, else None."""
+    first_page, first_line = start
+    for i in range(first_page, min(last, len(pages) - 1) + 1):
+        lines = pages[i].split('\n')
+        begin = first_line if i == first_page else 0
+        for j in range(begin, len(lines)):
+            if norm(clean_line(lines[j])) == norm(line):
+                return i, j
+    return None
+
+
+def _gap(pages, at, found):
+    """Printed text lines between position `at` and `found` (across a page
+    break: those left on the first page, bar its number, and those above
+    `found` on the next)."""
+    def text(lines):
+        return sum(1 for l in lines if l.strip() and not re.fullmatch(r'\s*\d{1,3}\s*', l))
+    if found[0] == at[0]:
+        return found[1] - at[1]
+    rest = pages[at[0]].split('\n')[at[1]:]
+    above = pages[found[0]].split('\n')[:found[1]]
+    return text(rest) + text(above)
+
+
+def _anchor(pages, verse, first, last):
+    """Where the poem starts: the copy of its first line followed by the
+    most of its other lines, in order (a page may quote a line twice)."""
+    best, best_score = (first, 0), -1
+    start = (first, 0)
+    while True:
+        found = _find(pages, verse[0], start, last)
+        if found is None:
+            return best
+        score, at = 0, (found[0], found[1] + 1)
+        for line in verse[1:]:
+            nxt = _find(pages, line, at, last)
+            if nxt is None or _gap(pages, at, nxt) > NEAR:
+                break                 # the next line must follow closely,
+                                      # or open the next page
+            score, at = score + 1, (nxt[0], nxt[1] + 1)
+        if score > best_score:
+            best, best_score = found, score
+        start = (found[0], found[1] + 1)
+
+
+def locate(work, pages, index):
+    """[(line, pdf page, line number)]: where each line of the work is
+    printed within its cited pages, matched in order."""
+    source = work['primarySource']
+    first = max(index.get(source['pageStart'], source['pageStart']), 1)
+    last = index.get(source['pageEnd'], source['pageEnd'])
+    verse = [line for line in work['textTajik'].split('\n') if line.strip()]
+    located = []
+    at = _anchor(pages, verse, first, last)
+    for line in verse:
+        found = _find(pages, line, at, last) or _find(pages, line, (first, 0), last)
+        if found:
+            located.append((line, found[0], found[1]))
+            at = (found[0], found[1] + 1)
+    return located
+
+
+def printed_pages(work, pages, index):
+    """(first, last) printed page numbers on which the work's lines are
+    printed, or None when they are not found."""
+    located = locate(work, pages, index)
+    if not located:
+        return None
+    number = {pdf: printed for printed, pdf in index.items()}
+    return (number[min(i for _, i, _ in located)],
+            number[max(i for _, i, _ in located)])
+
+
+def prose_lines(work, pages, index):
+    """Lines of the work printed as prose: a paragraph opening, or a
+    lead-in ending in ':' set left of the verse."""
+    printed = [(line, pages[i].split('\n'), j)
+               for line, i, j in locate(work, pages, index)]
+    if not printed:
+        return []
+    indents = sorted(_indent(lines[j]) for _, lines, j in printed)
+    verse_indent = indents[len(indents) // 2]
+    return [line for line, lines, j in printed
+            if _starts_paragraph(lines, j) or
+            _indented_paragraph(lines, j, verse_indent) or
+            (line.strip().endswith(':') and
+             _indent(lines[j]) <= verse_indent - SHALLOW)]
 
 
 def lead_problem(work, pages, index, names):
@@ -89,6 +195,16 @@ def audit(works, books, names, confirmed=frozenset()):
         missing = missing_lines(work, pages, index)
         if missing:
             failures.append((work['id'], 'lines not on the cited pages', missing))
+        prose = prose_lines(work, pages, index)
+        if prose:
+            failures.append((work['id'], 'prose lines inside the poem', prose))
+        source = work['primarySource']
+        where = printed_pages(work, pages, index)
+        if where and not missing and \
+                where != (source['pageStart'], source['pageEnd']):
+            failures.append((work['id'], 'cited pages differ from the printed pages',
+                             {'cited': [source['pageStart'], source['pageEnd']],
+                              'printed': list(where)}))
         problem = None if work['id'] in confirmed else \
             lead_problem(work, pages, index, names)
         if problem:
@@ -104,6 +220,8 @@ def main(pages_dir, report_path=None):
     names = poet_names(poets)
     with open(EXCEPTIONS, encoding='utf-8') as f:
         confirmed = {e['id'] for e in json.load(f)['exceptions']}
+    with open(REVIEW, encoding='utf-8') as f:
+        confirmed |= reviewed_ids(json.load(f)['blocks'])
     books = {b: load_pages(pages_dir, b) for b in sorted(os.listdir(pages_dir))
              if os.path.isdir(os.path.join(pages_dir, b))}
     checked, failures = audit(works, books, names, confirmed)

@@ -35,7 +35,7 @@ _heading = re.compile(rf'^[{UPPER}A-Z«»"\-–—\s,.:!?()0-9]+$')
 _glossary = re.compile(rf'^[{CYR}][{CYR},\-\s]{{0,40}} – [а-яӣӯҳҷқғё]')
 _question = re.compile(r'^\d{1,2}\.\s')
 _page_number = re.compile(r'^\s*\d{1,3}\s*$')
-_footnote_line = re.compile(r'^\d{1,3}\s')      # "1 Ҳошим Шоиқ – ..."
+_footnote_line = re.compile(r'^\d{1,3}(?:\s|\.?$)')  # "1 Ҳошим Шоиқ – ...", "1."
 _dates = re.compile(r'\(\s*\d{3,4}\s*[–-]')
 # The date printed under a poem ("Соли 1938."), or a part label
 # ("(фасли нахуст)"): not verse.
@@ -123,16 +123,51 @@ def _starts_paragraph(lines, i):
         _footnote_line.match(nxt) is None
 
 
-def _collect(lines):
-    """Verse lines from the top of `lines`; returns (block, reached_end)."""
+def _indented_paragraph(lines, i, verse_indent):
+    """Where a page indents its prose as a whole: a line set left of the
+    verse that runs on, at its own indent, into a line too long for verse.
+    (Prose at the verse's own indent is caught by its length.)"""
+    nxt = _next_text_line(lines, i)
+    return nxt is not None and \
+        _indent(lines[i]) < verse_indent - 1 and \
+        len(nxt.strip()) > MAX_VERSE_CHARS and \
+        abs(_indent(nxt) - _indent(lines[i])) <= 1
+
+
+SHALLOW = 4     # a lead-in set this much left of the verse is prose
+
+
+def _shallow_lead_in(line, verse_indent):
+    """A one-line prose sentence ending in ':' set left of the verse
+    ("Бедил соли 1665 … меояд:"): it separates two quotations. (Refrains
+    and stepped lines are also set left of the verse, so only a line
+    ending in ':' counts.)"""
+    return line.strip().endswith(':') and \
+        _indent(line) <= verse_indent - SHALLOW
+
+
+def _collect(lines, verse_indent=None):
+    """Verse lines from the top of `lines`; returns (block, reached_end).
+    `verse_indent` is the indent of the verse carried from the previous
+    page, so that a lead-in opening this page ends the poem."""
     block = []
     blank_run = 0
+    continuing = verse_indent is not None
+    first = next((l for l in lines if l.strip()), '')
+    if not continuing or not first.strip().endswith(':'):
+        # Facing pages have different margins: measure on this page, unless
+        # its first line is a lead-in, which the carried indent judges.
+        verse_indent = _indent(first)
     for i, line in enumerate(lines):
         if not line.strip():
             blank_run += 1
             if blank_run > 1 and block:
                 return block, False
             continue
+        if (block or continuing) and (
+                _shallow_lead_in(line, verse_indent) or
+                _indented_paragraph(lines, i, verse_indent)):
+            return block, False
         if _stops(line) or _starts_paragraph(lines, i):
             return block, _page_number.match(line) is not None
         if blank_run == 1 and block and _gloss.match(line.strip()):
@@ -147,9 +182,17 @@ def _collect(lines):
 def _rewind(lines, start):
     """Move `start` up to the first line of the verse run it belongs to."""
     i = start
+    verse_indent = _indent(lines[start])
     while i > 0:
         prev = lines[i - 1]
         if not prev.strip() or _stops(prev) or _starts_paragraph(lines, i - 1):
+            break
+        if _shallow_lead_in(prev, verse_indent):
+            break
+        # A centred title in mixed case ("Духтарони Дарвоз"): set right of
+        # the verse, without verse-final punctuation.
+        if _indent(prev) >= verse_indent + SHALLOW and \
+                not _ends_verse.search(prev.strip()):
             break
         # A one- or two-word prose lead-in ("Чунончи:", "Масалан:"); longer
         # lines ending in ':' are verse introducing speech.
@@ -261,14 +304,15 @@ def extract_poem(pages, index, opening):
             continue
         break
     title = ' '.join(heading_lines) if heading_lines else None
+    verse_indent = _indent(lines[start])
     block, reached_end = _collect(lines[start:])
     block = carried + block
     page = index
     while reached_end and page + 1 < len(pages):
-        page += 1
-        more, reached_end = _collect(pages[page].split('\n'))
+        more, reached_end = _collect(pages[page + 1].split('\n'), verse_indent)
         if not more:
-            break
+            break                       # the poem ends with this page
+        page += 1
         block.extend(more)
     while block and block[-1] == '':
         block.pop()
