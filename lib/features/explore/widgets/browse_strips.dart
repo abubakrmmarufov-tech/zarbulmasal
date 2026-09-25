@@ -12,10 +12,13 @@ import '../../literature/domain/poet_era.dart';
 
 /// A titled horizontal row of cards.
 class _Strip extends StatelessWidget {
-  const _Strip({required this.title, required this.children});
+  const _Strip({required this.title, required this.children, this.lines = 3});
 
   final String title;
   final List<Widget> children;
+
+  /// Text lines a card needs (title lines plus the meta line).
+  final int lines;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,7 @@ class _Strip extends StatelessWidget {
         SizedBox(
           // Room for two title lines and a meta line at the reader's text
           // size, so large system fonts never clip a card.
-          height: 28 + MediaQuery.textScalerOf(context).scale(68),
+          height: 28 + MediaQuery.textScalerOf(context).scale(22.0 * lines),
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: children.length,
@@ -153,6 +156,7 @@ class GradeStrip extends ConsumerWidget {
     final lang = ref.watch(displayLanguageProvider);
     return _Strip(
       title: AppTranslations.get('explore_grades_title', lang),
+      lines: 1,
       children: [
         for (final grade in grades)
           _StripCard(
