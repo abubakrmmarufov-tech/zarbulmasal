@@ -17,6 +17,7 @@ import '../features/flashcards/flashcards_screen.dart';
 import '../features/daily/daily_proverb_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/literature/presentation/presentation.dart';
+import '../features/literature/domain/poet_era.dart';
 import '../features/history/presentation/history_screen.dart';
 import '../features/history/presentation/history_detail_screen.dart';
 import '../features/books/presentation/presentation.dart';
@@ -132,7 +133,9 @@ GoRouter _buildAppRouter() {
       ),
       GoRoute(
         path: '/literature/poets',
-        builder: (context, state) => const PoetsListScreen(),
+        builder: (context, state) => PoetsListScreen(
+          initialEra: PoetEra.fromName(state.uri.queryParameters['era']),
+        ),
       ),
       GoRoute(
         path: '/literature/poet/:id',

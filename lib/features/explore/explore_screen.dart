@@ -8,8 +8,12 @@ import '../books/data/books_providers.dart';
 import '../history/data/history_providers.dart';
 import '../literature/data/literature_providers.dart';
 import '../vocabulary/data/words_provider.dart';
+import 'widgets/browse_strips.dart';
+import 'widgets/discover_today.dart';
 
-/// The one collection index: every domain once, each with its parts.
+/// Explore: things to discover today, ways to browse (poets by era, the
+/// school grades, the history timeline), then the collection index —
+/// every domain once, each with its parts.
 ///
 /// A domain heading opens the domain itself (e.g. the Literature page with
 /// the bayt of the day); the rows beneath open its parts. Empty collections
@@ -55,6 +59,18 @@ class ExploreScreen extends ConsumerWidget {
         padding: const EdgeInsets.fromLTRB(20, 4, 20, 48),
         children: [
           QalamSearchEntry(label: tr('explore_search_placeholder')),
+          const SizedBox(height: 20),
+          const DiscoverToday(),
+          const PoetEraStrip(),
+          const GradeStrip(),
+          const HistoryTimelineStrip(),
+          Padding(
+            padding: const EdgeInsets.only(top: 32),
+            child: Text(
+              tr('explore_all_sections').toUpperCase(),
+              style: QalamTypography.eyebrow(color: colors.primary),
+            ),
+          ),
           _Domain(
             seed: 'literature',
             icon: Icons.auto_stories_outlined,

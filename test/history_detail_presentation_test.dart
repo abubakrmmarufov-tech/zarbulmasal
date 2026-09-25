@@ -421,7 +421,10 @@ void main() {
       extraBooks: [literatureBook],
     );
 
-    expect(find.text('Сарчашмаи ин бахш: Адабиёти тоҷик, синфи 5'), findsOneWidget);
+    expect(
+      find.text('Сарчашмаи ин бахш: Адабиёти тоҷик, синфи 5'),
+      findsOneWidget,
+    );
     expect(tester.takeException(), isNull);
   });
 }

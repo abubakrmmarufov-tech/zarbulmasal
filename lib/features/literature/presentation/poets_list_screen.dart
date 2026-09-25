@@ -13,7 +13,10 @@ import '../../../core/utils/search_field_limits.dart';
 
 /// A screen presenting canonical Tajik literary authors and poets.
 class PoetsListScreen extends ConsumerStatefulWidget {
-  const PoetsListScreen({super.key});
+  const PoetsListScreen({super.key, this.initialEra});
+
+  /// Opens the list filtered to one era (Explore links here).
+  final PoetEra? initialEra;
 
   @override
   ConsumerState<PoetsListScreen> createState() => _PoetsListScreenState();
@@ -22,6 +25,29 @@ class PoetsListScreen extends ConsumerStatefulWidget {
 class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
   final TextEditingController _filterController = TextEditingController();
   String _filterQuery = '';
+  late PoetEra? _era = widget.initialEra;
+
+  Widget _eraChips(DisplayLanguage lang) {
+    Widget chip(PoetEra? era, String key) => Padding(
+      padding: const EdgeInsetsDirectional.only(end: 8),
+      child: ChoiceChip(
+        label: Text(AppTranslations.get(key, lang)),
+        selected: _era == era,
+        onSelected: (_) => setState(() => _era = era),
+      ),
+    );
+    return SizedBox(
+      height: 48,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+        children: [
+          chip(null, 'lit_era_all'),
+          for (final era in PoetEra.values) chip(era, era.labelKey),
+        ],
+      ),
+    );
+  }
 
   @override
   void dispose() {
@@ -126,6 +152,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                 ),
               ),
             ),
+            SliverToBoxAdapter(child: _eraChips(lang)),
             // Poets list
             authorsAsync.when(
               loading: () => const SliverFillRemaining(
@@ -147,6 +174,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
               data: (authors) {
                 final filtered = authors.where((author) {
                   if (!author.hasCanonicalName) return false;
+                  if (_era != null && PoetEra.of(author) != _era) return false;
                   if (_filterQuery.isEmpty) return true;
                   final matchName = LiteratureRepository.normalizeSearchText(
                     author.canonicalName,
