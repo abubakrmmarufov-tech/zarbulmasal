@@ -4061,6 +4061,7 @@
    "authorId": "tursunzoda",
    "author": "Мирзо Турсунзода",
    "reason": "printed under the poet's own title in the chapter",
+   "after": "Боз ба ин оила бегона монд.",
    "lenient": true,
    "heading": true,
    "note": "«МЕҲМОНИ МАҒРИБӢ», pp. 225–229 (flush left on pp. 227 and 229).",
@@ -7503,6 +7504,443 @@
    "recordIds": [
     "poem_f09073cb-33b4-4fcc-abf8-75959350245c_7979eb87871b38db"
    ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 74,
+   "page": 74,
+   "opening": "Як-ду пандаш дод тӯтӣ бенифоқ,",
+   "leadIn": "поҳ. Нӯҳу Мӯсоро94 на дарё ёр шуд, Не бар аъдошон ба кин қаҳҳор шуд Оташ Иброҳимроне95 қалъа буд, То баровард аз дили Намруд96дуд. Кӯҳ Яҳёро97 на сӯи хеш хонд, Қосидонашро ба захми санг ронд. Гуфт: «Ай Яҳё, биё, дар ман гурез, То паноҳат бошам аз шамшери тез». ВИДОЪ КАРДАНИ ТӮТӢ ХОҶАРО ВА ПАРИДАН",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_e0c5c633e80d7c68"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 75,
+   "page": 75,
+   "opening": "Аждаҳо чун хирсро дармекашид,",
+   "closing": "Нолаашро ту хушу марҳум кун.",
+   "leadIn": "з камон» - ро гӯед. 6. Бигӯед, ки афтодан ва мурдани тӯтии Ҳиндустон ва ҳолати тӯтии маҳбуси бозаргон ба ҳам чӣ муносибат доранд? 7. Бигӯед, ки Ҷалолуддини Балхӣ қиссаи бозаргон ватӯтии маҳбуси ӯро бо кадом мақсад овардааст? 8.Чунин тарзи ифодаро дар адабиёт чӣ мегӯянд? ҲИКОЯТИ «МАРДИ АБЛАҲ ВА ХИРС»",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "1924a097-be5f-4c23-9533-3f8f71be852b"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 77,
+   "page": 77,
+   "opening": "Хирс ҳам аз аждаҳо чун вораҳид",
+   "closing": "Хирсро донист аҳли меҳру дод…",
+   "leadIn": " даҳони аждаҳоӣ ҳамчу хирс, Зорие мекун, чу зӯрат нест, ҳин105! Чунки кӯрӣ, сар макаш аз роҳбин, Ту кам аз хирсӣ? Наменолӣ зи дард? Хирс раст аз дард, чун фарёд кард. Ай Худо, ин санги дилро мум кун, Нолаашро ту хушу марҳум кун. ТАТИММАИ106 ҲИКОЯТИ ХИРС ВА ОН АБЛАҲ, КИ БАР ВАФОИ Ӯ ЭЪТИМОД КАРДА БУД.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_897270bf43829441"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 79,
+   "page": 79,
+   "opening": "Он мусулмон тарки аблаҳ карду тафт.",
+   "closing": "То чӣ кард он хирс бо он некмард.",
+   "leadIn": "ад-ин, Ки битарсонад маро з-ин ҳамнишин? Худ наёмад ҳеч аз хубси118 сираш, Як гумони нек андар хотираш, Занни некаш ҷумлагӣ бар хирс буд, Ӯ магар он хирсро ҳамҷинс буд?! Оқилеро аз сагӣ туҳмат ниҳод, Хирсро донист аҳли меҳру дод… ТАРК КАРДАНИ ОН МАРДИ НОСЕҲ БАЪД АЗ МУБОЛИҒАИ ПАНД МАҒРУРИ ХИРСРО",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_2c255af76e86e4c9"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 81,
+   "page": 81,
+   "opening": "Шахс хуфту хирс мерондаш магас",
+   "closing": "Тан кунад чун тору гирди ӯ танад.",
+   "leadIn": ", Ҳар харидорею дархур колае. Ман на говам, то ки гӯсолам харад, Ман на хорам, к-уштуре аз ман чарад. Ӯ гумон дорад, ки бо ман ҷавр кард? Балки аз ойинаи ман рӯфт гард… Ин сухан поён надорад, бозгард, То чӣ кард он хирс бо он некмард. ТАТИММАИ ЭЪРОФИ ОН МАҒРУР БАР ТАМАЛЛУҚИ ХИРС",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_2185503124ce3031"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 82,
+   "page": 82,
+   "opening": "Бишнавед, ай дӯстон, ин достон,",
+   "closing": "Чашми шаҳ аз ашки хун чун ҷӯй шуд.",
+   "leadIn": "қро сохт дар паймон санад, Тан кунад чун тору гирди ӯ танад. САВОЛ ВА СУПОРИШ: 1. Қиссаро бодиққат хонда, мазмуни онро нақл кунед. 2. Кадом хислати мард водор сохт, ки хирсро аз дасти аждаҳо наҷот диҳад? 3. Хислатҳои мардони шердил кадомҳоянд? 4. Қисса чӣ тавр анҷом меёбад? «ҲИКОЯТИ «ТАБИБ ВА БЕМОР»",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_76fa39bd29fcbe9f"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 83,
+   "page": 83,
+   "opening": "Шаҳ чу аҷзи он ҳакимонро бидид,",
+   "closing": "Пеши он меҳмони ғайби хеш рафт,",
+   "leadIn": "уфтанд, аз батар, Пас Худо бинмудашон аҷзи башар. Ҳар чӣ карданд аз илоҷу аз даво, Гашт ранҷ афзуну ҳоҷат нораво. Он канизак аз мараз чун мӯй шуд, Чашми шаҳ аз ашки хун чун ҷӯй шуд. ЗОҲИР ШУДАНИ АҶЗИ ҲАКИМОН АЗ МУОЛИҶАИ КАНИЗАК ВА РӮЙ ОВАРДАНИ ПОДШОҲ БА ДАРГОҲИ ИЛОҲ ВА ДАР ХОБ ДИДАНИ ВАЛИЕРО",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_26c15562fa83e46d"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 84,
+   "page": 84,
+   "opening": "Қиссаи ранҷуру ранҷурӣ бихонд,",
+   "leadIn": "ара шаҳ мунтазир, То бибинад, он чи бинмуданд сир. Дид шахсе фозиле, пурмояе, Офтобе дар миёни сояе. Он хаёле, ки шаҳ андар хоб дид, Дар рухи меҳмон ҳамеомад падид. Шаҳ ба ҷойи ҳоҷибон144 фопеш рафт, Пеши он меҳмони ғайби хеш рафт, БУРДАНИ ПОДШОҲ ОН ТАБИБРО БАР САРИ БЕМОР, ТО ҲОЛИ ӮРО БИБИНАД",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_0512756ed9fbd19a"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 84,
+   "page": 84,
+   "opening": "Гуфт: - Ай шаҳ, хилвате кун хонаро,",
+   "closing": "Гарчи аз ту шаҳ кунад бас ҷустуҷӯ.",
+   "leadIn": "РИ БЕМОР, ТО ҲОЛИ ӮРО БИБИНАД Қиссаи ранҷуру ранҷурӣ бихонд, Баъд аз он дар пеши ранҷураш нишонд. Ранги рӯю набзу қорура145 бидид, Ҳам аломоташ, ҳам асбобаш шунид. Дид ранҷу кашф шуд бар вай нуҳуфт, Лек пинҳон карду бо султон нагуфт. ХИЛВАТ ТАЛАБИДАНИ ОН ВАЛӢ АЗ ПОДШОҲ ҶИҲАТИ ДАРЁФТАНИ РАНҶИ КАНИЗАК",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_2f8d5d1131c9c5c1"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 85,
+   "page": 85,
+   "opening": "Баъд аз он бархост, азми шоҳ кард,",
+   "closing": "Панди ӯро аз дилу ҷон баргузид.",
+   "leadIn": "бегазанд, То бипурсид аз Самарқанди чу қанд. Набз ҷасту рӯй сурху зард шуд, К-аз самарқандии заргар фард шуд. Чун зи ранҷур он ҳаким ин роз ёфт, Асли он дарду балоро бозёфт. Ҳону ҳон! Ин розро бо кас магӯ, Гарчи аз ту шаҳ кунад бас ҷустуҷӯ. ДАРЁФТАНИ ОН ВАЛӢ РАНҶРО ВА АРЗ КАРДАНИ РАНҶИ Ӯ ПЕШИ ПОДШОҲ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_fdae2c0cf38291e6"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 85,
+   "page": 85,
+   "opening": "Шаҳ фиристод он тараф як - ду расул,",
+   "closing": "Андак - андак дар дили ӯ сард шуд.",
+   "leadIn": "шоҳ кард, Шоҳро з-он шаммае огоҳ кард. Гуфт: - Тадбир он бувад, к -он мардро Ҳозир орем аз пайи ин дардро. Марди заргарро бихон з-он шаҳри дур, Бо зару хилъат бидеҳ ӯро ғурур. Чунки султон аз ҳаким онро шунид, Панди ӯро аз дилу ҷон баргузид. ФИРИСТОДАНИ ПОДШОҲ РАСУЛОН БА САМАРҚАНД БА ОВАРДАНИ ЗАРГАР",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of «Маснавии маънавӣ» under its printed heading in Балхӣ's chapter (grade 7), taken whole across the footnotes at the foot of its pages.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_6825dc179ec14790"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 88,
+   "page": 88,
+   "opening": "Ақл бо ақли дигар дуто шавад,",
+   "leadIn": "*** Узри аҳмақ бадтар аз ҷурмаш бувад, Узри нодон заҳри ҳар дониш бувад. *** Ҳамзабонӣ хешию пайвандӣ аст, Мард бо номаҳрамон чун бандӣ аст. *** Пас, забони маҳрамӣ худ дигар аст, Ҳамдилӣ аз ҳамзабонӣ беҳтар аст. *** Ҳар кӣ нақси хешро диду шинохт, Андар истикмоли худ даҳаспа тохт. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_c3b18d4b61ad9088"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 90,
+   "page": 90,
+   "opening": "Аз муҳаббат талхҳо ширин шавад",
+   "leadIn": "*** Лаб бибанду каффи пурзар баркушо, Бухли тан бигзору пеш овар сахо. *** Чун қалам дар дасти ғаддоре бувад, Бегумон, Мансур бар доре бувад. *** Дӯст ҳамчун зар, бало чун оташ аст, Зарри холис дар дили оташ х(в)аш аст. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_99ef50e795c25a32"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 92,
+   "page": 92,
+   "opening": "Марги ҳар як, ай писар, ҳамранги ӯст,",
+   "leadIn": "** З-аҳмақон бигрез, чун Исо гурехт, Суҳбати аҳмақ басе хунҳо, бирехт. *** Қимати ҳар кола медонӣ, ки чист, Қимати худро надонӣ, аҳмақист. *** Шукри ҷони неъмату неъмат чу пӯст, З-он ки шукр орад туро то кӯи дӯст. *** Баъди навмедӣ басе уммедҳост, Аз паси зулмат басе хуршедҳост. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_f08cda5724d05621"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 92,
+   "page": 92,
+   "opening": "Халқи обиро бувад дарё чу боғ,",
+   "leadIn": "Пеши душман душману бар дӯст дӯст. Ҷӯяке кӯчак, ки доим меравад, На наҷис гардад, на ганда мешавад. Модар ар гӯяд туро: «Марги ту бод!» Марги он хӯ хоҳаду марги фасод. Он гурӯҳе, к-аз адаб бигрехтанд, Оби мардӣ в-оби мардон рехтанд. Ҳеч бонги каф задан н-ояд бадар Аз яке дасти ту бе дасти дигар. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_ab8204474de756b9"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 93,
+   "page": 93,
+   "opening": "Ҳам суол аз илм хезад, ҳам ҷавоб,",
+   "leadIn": ". *** Асли лашкар бегумон сарвар бувад, Қавми бесарвар тани бесар бувад. *** Хомушӣ баҳр асту гуфтан ҳамчу ҷӯ, Баҳр меҷӯяд туро, ҷӯро маҷӯ. *** Кай шавад бустону кишту баргу бар, То нагардад назми ӯ зеру забар? ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_7868c2f885266e75"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 94,
+   "page": 94,
+   "opening": "Ҳар киро бошад мизоҷу табъи суст,",
+   "leadIn": "Ақли ҷузвӣ ақлро бадном кард, Коми дунё мардро ноком кард. *** Мурғи ғофил мехурад дона зи дом, Ҳамчу андар доми дунё ин авом. *** Ҳар гурусна оқибат қуте биёфт, Офтоби давлате бар вай битофт. *** Чун дарахт аст одамию бех аҳд, Бехро тимор мебояд ба ҷаҳд. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_eef9e4fa479d674d"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 94,
+   "page": 94,
+   "opening": "Меъдаи тан сӯи каҳдон мекашад,",
+   "leadIn": "*** Ҳар кӣ ранҷе дид, ганҷе шуд падид, Ҳар кӣ ҷидде кард, дар ҷидде расид. *** Ҳадди худ бишносу бар боло мапар, То наяфтӣ дар нишеби шӯру шар. *** Аз қаноат ҳеч кас беҷон нашуд, Аз ҳарисӣ ҳеч кас султон нашуд. *** Меъдаро хӯ кун бад-он райҳону гул, То биёбӣ ҳикмату қути русул. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_b64566249320bc0b"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 95,
+   "page": 95,
+   "opening": "Ишқ бар мурда набошад пойдор,",
+   "leadIn": "Ҳирс кӯру аҳмақу нодон кунад, Маргро бар аҳмақон осон кунад. *** Чун набошад нури дил, дил нест он, Чун набошад рӯҳ, ҷуз гил нест он. *** Чун наӣ ранҷур, сарро бармабанд, Ихтиёрат ҳаст, бар сиблат148 маханд. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_6dcf1bb34a98b4a6"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 89,
+   "page": 89,
+   "opening": "Гуфт Пайғамбар: «Худо-ш имон надод,",
+   "closing": "Аз паи ҳар дард дармон офарид.",
+   "leadIn": "шиду сард сард. *** Дар замини мардумон хона макун, Кори худ кун, кори бегона накун. *** Гарчи ҳикматро ба такрор оварӣ, Чун ту ноаҳлӣ, шавад аз ту барӣ. *** То нашуд таҳқиқ, аз ёрон мабур, Аз садаф магсил, нагашт он қатра дур. *** Гар тарозуро тамаъ будӣ ба мол, Рост кай гуфтӣ тарозу васфи ҳол? ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published. Set flush left.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_38d55a0b259e7ac8"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 91,
+   "page": 91,
+   "opening": "Мори шаҳватро бикуш дар ибтидо",
+   "closing": "«Гӯри ақл омад ватан дар русто».",
+   "leadIn": ". *** Хӯй, к-он бо шир рафт андар вуҷуд, Кай тавон онро зи мардум во кушуд. *** Бар умеди рост кажро мехаранд, Заҳр дар қанде равад, он гаҳ х(в)аранд. *** Гарм бош, ай сард, то гармӣ расад, Бо дуруштӣ соз, то нармӣ расад. *** Ту чӣ донӣ завқи сабр, ай шишадил? Хоса, сабр аз баҳри он нақши Чигил. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "An item of several bayts under «АНДАРЗҲОИ МАВЛАВӢ» (grade 7, pp. 86–95), set apart from the next by ***; single-bayt items are not published. Set flush left.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_834104d91cde758e"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 167,
+   "page": 167,
+   "opening": "Оҳанги хорпушт чу рӯбоҳ гӯш кард,",
+   "closing": "Ёбам зи рӯи ақли худ аз дасти вай амон.",
+   "leadIn": "н қавм шуд хунук, Ай баднамой, хезу бирав зуд аз миён! Ман умри худ ба хоркашӣ сарф кардаам, З-он ваҷҳ214 гармрӯй намоям ба мардумон. Пероҳане ба сӯзани худ бахя215 кардаам, Дорам ба дӯш ҷомаи шодӣ чу ҳоҷиён. Бошад ҳамеша дар шаби маҳтоб хоби ман, Болину бистарам ҳама хорест парниён». РАСИДАНИ РӮБОҲ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "5633556b-df45-4cab-83dc-760016db1ef2",
+   "author": "Саййидои Насафӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of Саййидо's poem on the animals under its printed heading («РАСИДАНИ …»), taken whole across the footnotes at the foot of the page.",
+   "recordIds": [
+    "poem_5633556b-df45-4cab-83dc-760016db1ef2_e570d7f25e495b83"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 169,
+   "page": 169,
+   "opening": "З-ин гуфтугӯ паланг даромад ба ҷастухез,",
+   "closing": "Акси думи ман аст, ки гӯянд Каҳкашон».",
+   "leadIn": " нест одамӣ, Лекин марост сурати некӯ чу дилбарон. Чашмам бувад зи ғамзаи Лайлӣ барандатар, Девонаи мананд чу Маҷнун паривашон. Гардад зи бӯи мушк муаттар димоғҳо, Бар ҳар тараф, ки рӯй ниҳам ҳамчу навхатон. Гоҳе ки ҳамчу бод шавам дар давандагӣ, Барқи ситезакор наёбад зи ман нишон». РАСИДАНИ ПАЛАНГ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "5633556b-df45-4cab-83dc-760016db1ef2",
+   "author": "Саййидои Насафӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "A section of Саййидо's poem on the animals under its printed heading («РАСИДАНИ …»), taken whole across the footnotes at the foot of the page.",
+   "recordIds": [
+    "poem_5633556b-df45-4cab-83dc-760016db1ef2_7e8bbee5145ae09e"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 171,
+   "page": 171,
+   "opening": "Карк ин сухан зи фил шуниду қадам ниҳод,",
+   "leadIn": "Бузругтаре230 зи ман набувад дар миёни қавм, Имрӯз зиндафил маро гуфта метавон». РАСИДАНИ КАРК",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "the text layer of p. 171 prints the «РАСИДАНИ КАРК» and «РАСИДАНИ ШЕР» sections out of order; it cannot be copied reliably (team to check against the page)"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 127,
+   "page": 127,
+   "opening": "Нахшабӣ, гиря кун ба мурдани халқ,",
+   "leadIn": "ЗИЁУДДИНИ НАХШАБӢ (1290 – 1350)",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "ec41abdc-c530-4745-825f-a23cd7515ca5",
+   "author": "Зиёуддини Нахшабӣ",
+   "reason": "the poet's pen name in the last bayt, in the poet's chapter",
+   "note": "The epigraph to his chapter; the first line names «Нахшабӣ».",
+   "recordIds": [
+    "524338fd-0d47-5489-9798-ef1a2cd6a245"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 244,
+   "page": 244,
+   "opening": "Нигар бар хонаи болои дарё...",
+   "leadIn": "рад. Суханҳои пурҳарорати Шарафҷон дар бораи ободии диёр симои ӯро чун шахси ватандӯсту воқеъбин ва сухандону маънирас ба назар ҷилва медиҳад. Ӯ дастгоҳи барқҳосилкуниро чунин тасвир менамояд: 1 Ҳамъинон — ҳамроҳ, шарик. 2 Тоҷи Маҳал — Тоҷмаҳал, ёдгории машҳури асри 17 дар шаҳри Аграи Ҳиндустон. 243",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "an excerpt of seven lines that starts mid-passage («…»); not a whole bayt structure to publish"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 310,
+   "page": 310,
+   "opening": "Тоҷикистон, Тоҷикистон!",
+   "leadIn": "да, то ноҳияи Файзобод, Ҷумҳурии Тоҷикистон ва ҳатто тамоми минтақаи форсизабонон- ро фаро мегирад. Аз ин ҷиҳат, «Тоҷикистон», ки дар шакли шеъ- ри озод суруда шуда, аз панҷ банд иборат мебошад, ҷолиб аст. Дар ин шеър Бозор Собир аз камзаминии сарзамини Тоҷикистон маънии амиқи ватанхоҳӣ бардоштааст:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "the extract stops mid-stanza at a stepped line («Аз заминат»); the stepped layout was not taken this round"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 315,
+   "page": 315,
+   "opening": "Соате Чингиз девори Бухороро шикаст,",
+   "leadIn": "сотири халқҳои аҷаму араб номи марди ҳакиме, ки аслаш ҳабашӣ буда, дар аҳди Довуд пайғамбар мезистааст. Дар байни халқи тоҷик Луқмони Ҳакимро ба Абӯалӣ ибни Сино айният додаанд. 2 Қутайба ибни Муслим (соли вафот 715) – сарлашкари араб, ки солҳои 705 – 715 қисми зиёди Осиёи Миёнаро забт кардааст. 314",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "seven lines ending in the next poem's title «Асп»; the excerpt's end is unclear"
   }
  ]
 }
