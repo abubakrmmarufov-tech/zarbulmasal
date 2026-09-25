@@ -25,6 +25,21 @@ class _VocabularyScreenState extends ConsumerState<VocabularyScreen> {
   String _query = '';
   String? _letter;
 
+  // Sorting ~1,900 headwords by the Tajik alphabet is done once per word
+  // list, not on every keystroke.
+  List<WordEntry>? _sourceWords;
+  List<WordEntry> _sorted = const [];
+  List<String> _letters = const [];
+
+  void _index(List<WordEntry> words) {
+    if (identical(words, _sourceWords)) return;
+    _sourceWords = words;
+    _sorted = TajikAlphabet.sort(words);
+    _letters = <String>{
+      for (final word in _sorted) TajikAlphabet.initialOf(word.term),
+    }.toList(growable: false);
+  }
+
   @override
   void dispose() {
     _search.dispose();
@@ -78,10 +93,9 @@ class _VocabularyScreenState extends ConsumerState<VocabularyScreen> {
   ) {
     final colors = Theme.of(context).colorScheme;
     String tr(String key) => AppTranslations.get(key, lang);
-    final sorted = TajikAlphabet.sort(words);
-    final letters = <String>{
-      for (final word in sorted) TajikAlphabet.initialOf(word.term),
-    }.toList(growable: false);
+    _index(words);
+    final sorted = _sorted;
+    final letters = _letters;
     final visible = sorted
         .where(
           (word) =>

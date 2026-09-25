@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:convert';
 import 'dart:math' as math;
 
@@ -104,17 +105,23 @@ void main() {
     test('bundled word list carries only reviewed lexical pairs', () async {
       final words = await _loadBundled();
 
-      // The full reviewed list: 284 headword–definition pairs. All 284 source
-      // entries are kept — none are dropped. Five headwords legitimately
-      // repeat across different source PDF pages (e.g. «Гил», «Кадхудо»), so
-      // uniqueness is keyed by the (term, pdfPage) pair, not by term alone.
-      expect(words, hasLength(284));
+      // 284 reviewed grade 5 entries plus 1583 glossary entries from the
+      // grade 6-11 textbooks (tool/vocabulary/extract_glossary.py). A few
+      // headwords repeat on different pages («Гил», «Кадхудо»), so
+      // uniqueness is keyed by term, book and page.
+      expect(words, hasLength(1867));
       expect(words.every((w) => w.term.isNotEmpty), isTrue);
       expect(words.every((w) => w.definition.isNotEmpty), isTrue);
-      final termPageKeys = words.map((w) => (w.term, w.pdfPage)).toSet();
-      expect(termPageKeys, hasLength(284));
-      // The five repeat on different pages, so there are 279 distinct terms.
-      expect(words.map((w) => w.term).toSet(), hasLength(279));
+      final keys = words.map((w) => (w.term, w.sourceBook, w.pdfPage)).toSet();
+      expect(keys, hasLength(words.length));
+      // Every entry cites one of the uploaded textbooks.
+      for (final book in words.map((w) => w.sourceBook).toSet()) {
+        expect(
+          File('docs/literature/pdfs/$book').existsSync(),
+          isTrue,
+          reason: 'unknown source $book',
+        );
+      }
 
       // The five p.17 terms from the screenshot are present.
       final terms = words.map((w) => w.term).toSet();
