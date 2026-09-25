@@ -201,7 +201,9 @@ class Phase8OptionsTest(unittest.TestCase):
         self.assertEqual(added[0]['id'], 'cand-1')
         self.assertEqual(first['verification']['evidenceLevel'], 'primaryChecked')
         self.assertIn('Promoted', first['editorialNotes'])
-        self.assertEqual(twin['verification']['rejectionReason'], 'duplicate_of:cand-1')
+        self.assertEqual(twin['verification']['rejectionReason'],
+                         'extraction_false_positive:duplicate_of:cand-1')
+        self.assertIsNone(twin['textTajik'])
         self.assertEqual(len(works), 3)
 
     def test_a_candidate_from_another_page_is_not_promoted(self):
@@ -258,7 +260,13 @@ class Phase8OptionsTest(unittest.TestCase):
             {'b': ['', PAGE]})
         self.assertEqual(skipped, [])
         self.assertEqual(excerpt['verification']['rejectionReason'],
-                         f"duplicate_of:{added[0]['id']}")
+                         f"duplicate_canonical_work:{added[0]['id']}")
+        self.assertEqual(excerpt['verification']['verificationMethod'],
+                         'manualCanonicalDuplicateReview')
+        self.assertIsNone(excerpt['textTajik'])
+        self.assertIsNone(excerpt['incipit'])
+        self.assertEqual(excerpt['textStatus'], 'needsReview')
+        self.assertFalse(excerpt['rights']['fullTextAllowed'])
         self.assertIn('c, p. 1', added[0]['editorialNotes'])
 
     def test_an_unknown_record_to_repair_is_reported(self):

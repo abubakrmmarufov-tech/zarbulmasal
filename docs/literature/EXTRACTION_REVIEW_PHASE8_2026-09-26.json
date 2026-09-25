@@ -1,0 +1,2226 @@
+{
+ "about": "Phase 8 hand review (26 Sep 2026) of the verse blocks the textbooks print that were not yet published: first the chapters of poets with no or few poems, then the rest. Each block was read with its lead-in. Accepted only when the lead-in makes the chapter's poet (or the poet it names) the speaker, the book signs the verse with the poet's name, or the verse sits under the poet's printed title; folk verse, verse by others, elegies, translations, metre/device examples and exam items are rejected. 'closing' marks a block taken between two named lines (textbook_span.take_span) because it is set flush left or spans pages with different margins; 'split: quatrains' publishes each quatrain of an unseparated run of rubais or dubaitis; 'replaces' repairs a published record that held only part of the poem. Published by tool/literature/publish_reviewed_blocks.py, which writes back 'recordIds'.",
+ "reviewedAt": "2026-09-26",
+ "blocks": [
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 55,
+   "page": 55,
+   "opening": "Ба сухан монад шеъри шуаро,",
+   "closing": "Рӯдакиро хаву аҳсант ҳиҷост.",
+   "leadIn": "ДАР МАДҲИ УСТОД РӮДАКӢ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "a6b5eb18-39e9-4fdf-b492-e5956a553436",
+   "author": "Шаҳиди Балхӣ",
+   "reason": "the book signs the verse with this poet's name",
+   "type": "fragment",
+   "note": "Under «ДАР МАДҲИ УСТОД РӮДАКӢ», signed «Шаҳиди Балхӣ (асри Х)»; the glossary calls it a qit'a. Set flush left.",
+   "recordIds": [
+    "26604816-b082-521b-8f91-46d1d422ba03"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 56,
+   "page": 56,
+   "opening": "Гар сарӣ ёбад ба олам кас ба некӯшоирӣ,",
+   "closing": "Ҳам фузун ояд, агар чандон, ки бояд бишмарӣ.",
+   "leadIn": "Киро Рӯдакӣ гуфта бошад мадеҳ, Имоми7 фунуну8 суханвар бувад. Дақиқӣ мадеҳ оварад пеши ӯ, Чу хурмо ба пеши Хаҷевар9 бувад. Дақиқӣ (асри Х) Ғазал Рӯдакивор неку бувад, Ғазалҳои ман Рӯдакивор нест. Унсурӣ (асри ХI)",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "79b50923-ea65-4554-b65d-bbf3ee49f35c",
+   "author": "Рашидии Самарқандӣ",
+   "reason": "the book signs the verse with this poet's name",
+   "note": "Signed «Рашидии Самарқандӣ (асри ХII)» under the verse; the questions ask what Рашидӣ said of Рӯдакӣ.",
+   "recordIds": [
+    "poem_rudaki_898d6b07e403c21a"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 220,
+   "page": 220,
+   "opening": "Ҳазор бухтии сармасту ҳар кадом ба шакл",
+   "leadIn": "Ба соли панҷаҳу анд аз паси ҳазору дивист, Чу кард оҳуи Ховар ба бурҷи Шер ватан, Ба азми чолиши афғонхудо зи Рай ба Ҳирот Сипаҳ кашиду барангехт азмро тавсан. Ин ҷо низ ҳайбати лашкари шоҳӣ ва васоити ҷангии ӯ ситоиш карда шудааст:",
+   "chapterOf": "Гулханӣ",
+   "decision": "accept",
+   "authorId": "qooni",
+   "author": "Қоонӣ (Мирзо Ҳабиби Шерозӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "qasida",
+   "note": "A passage of Қоонӣ's qasida on the Herat campaign, in his chapter (grade 10, pp. 216–224).",
+   "recordIds": [
+    "fad437c5-9742-58b9-8131-8ef8e5ec11dd"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 220,
+   "page": 220,
+   "opening": "Яке анишаи маккорпеша бурд хабар",
+   "leadIn": "и шоҳӣ ва васоити ҷангии ӯ ситоиш карда шудааст: Ҳазор бухтии сармасту ҳар кадом ба шакл Чу заврақе, ки аз ӯ чор лангар аст ован. Ҳазор ародаи гардандатӯпи қалъакушой, Чунонки бар китифи бод садде аз оҳан. Шоир лаҳзаҳои пирӯзии лашкари шоҳ ва мағлубияти ҳиротиёнро чунин мавриди арзёбӣ қарор медиҳад:",
+   "chapterOf": "Гулханӣ",
+   "decision": "accept",
+   "authorId": "qooni",
+   "author": "Қоонӣ (Мирзо Ҳабиби Шерозӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "qasida",
+   "note": "The same qasida.",
+   "recordIds": [
+    "18004643-73a1-5f0c-b6ae-54b08cf7bbbc"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 220,
+   "page": 220,
+   "opening": "Шунидаам, ки сафире зи ингилисхудой",
+   "leadIn": ". Шоир омодагии ҳиротиёнро ба муқобили ин ҳуҷум чунин баён кардааст: Ҳам аз миёна гузин кард шаш ҳазор далер, Ҳужабрзаҳраву пӯлодпӯшу теғожан. Ба ҳамин тариқ, дар боби чӣ тавр тавассути сафорати Англия ёрӣ расонидан барои пешгирии паҳншавии ҷанги мазкур ва анҷоми ин кишваркушоӣ шоир чунин мефармояд:",
+   "chapterOf": "Гулханӣ",
+   "decision": "accept",
+   "authorId": "qooni",
+   "author": "Қоонӣ (Мирзо Ҳабиби Шерозӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "qasida",
+   "note": "The same qasida.",
+   "recordIds": [
+    "5e875c8b-5026-5d01-9387-cb3b028cdd2b"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 222,
+   "page": 222,
+   "opening": "Ҳадяи золим ар ситонад шоҳ,",
+   "leadIn": "уқоиса зикр намуда, афзалияти адлро бар зулм, бартарии одилро аз золим нишон медиҳад. Ҳикояти мазкури Қоонӣ бо андаке ихтисор доир ба ин мавзуъ хеле ҷолиб аст: Подшоҳе кисаи тамаъ дӯхта ва анбони ҳирс аз шаҳвати золимон андӯхта, бад-ин сабаб ҷониби мазлумон нагирифтӣ ва насиҳати носеҳон напазируфтӣ…",
+   "chapterOf": "Гулханӣ",
+   "decision": "accept",
+   "authorId": "qooni",
+   "author": "Қоонӣ (Мирзо Ҳабиби Шерозӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Verse inside Қоонӣ's prose work «Парешон», quoted in his chapter.",
+   "recordIds": [
+    "e048e20f-9b83-502a-b519-633163c9d98e"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 14,
+   "page": 14,
+   "opening": "Ранге шикан аз чеҳра ба савдояшу зар гир,",
+   "leadIn": "ндаанд. Ҳунари волои нигорандагии онҳо аз тарафи тазкиранависони давр эътироф шудааст. Шоирони номбурда осори гаронбаҳо боқӣ гузоштанд. Ашъори онҳо гувоҳ бар он аст, ки дар адабиёти давраи ҷадидия анъанаи назми классикии тоҷик мавқеи босазо дорад. Ин чанд байт гувоҳи истеъдоди волои Ҷавҳарӣ мебошад:",
+   "chapterOf": "Садри Зиё, Аҷзии Самарқандӣ, Аҳмадҷони Ҳамдӣ",
+   "decision": "accept",
+   "authorId": "da40ae16-883d-4232-86a1-976aa9ffc941",
+   "author": "Ҷавҳарӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Ин чанд байт гувоҳи истеъдоди волои Ҷавҳарӣ мебошад:»; the last bayt names «Ҷавҳарии мо».",
+   "recordIds": [
+    "5c4fe073-d63d-5365-a32c-3980f7d04c6a"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 15,
+   "page": 15,
+   "opening": "Агар сесад забон донӣ, фузун нест,",
+   "leadIn": "ани халқи тоҷикро ба омӯхтани забон, махсусан забони русӣ вобаста мекунад. Ба қавли шоир омӯхтани илмҳои гуногун, аз ҷумла илмҳои тиҷорат, тиб, ҳикмат, ихтироъҳои техникию иттилоотӣ ба туфайли омӯхтани забони русӣ ба кас муяссар мешавад ва забондонӣ аз хуб дониста- ни забони модарӣ сарчашма мегирад:",
+   "chapterOf": "Садри Зиё, Аҷзии Самарқандӣ, Аҳмадҷони Ҳамдӣ",
+   "decision": "accept",
+   "authorId": "a2e5259d-9c1c-46f5-b845-04fb18d07858",
+   "author": "Аҷзии Самарқандӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Аҷзии Самарқандӣ дар «Миръоти ибрат» … Ба қавли шоир …:»",
+   "recordIds": [
+    "cd9a1b20-870e-58ba-9dbc-7d1c78a05121"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 16,
+   "page": 16,
+   "opening": "Рӯйи чаманат хандазани Пориҷу Маскав,",
+   "leadIn": "да шуд. Шоирон дар ифодаи мавзӯъҳои рӯзмарраи мактабу ма- ориф, бедории миллӣ, ватандорӣ, муносибатҳои нави фарҳангиву иҷтимоӣ бештар аз забони содаву баёни шево истифода мекар- данд. Дар ғазали зерини Аҳмадҷони Ҳамдӣ калимаҳои нави ба ҳаёти мардум воридгардида басо ҷолибу дилкаш истифода шу- даанд:",
+   "chapterOf": "Садри Зиё, Аҷзии Самарқандӣ, Аҳмадҷони Ҳамдӣ",
+   "decision": "accept",
+   "authorId": "26906a5a-692c-40a3-a991-6b3559cda394",
+   "author": "Аҳмадҷони Ҳамдӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "ghazal",
+   "note": "Lead-in: «Дар ғазали зерини Аҳмадҷони Ҳамдӣ …»; the last bayt names «Ҳамдӣ».",
+   "recordIds": [
+    "d66cb72a-1d13-5928-beef-2e74dead7ecb"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 57,
+   "page": 57,
+   "opening": "Кунун, ки меҳри ин Ватан",
+   "leadIn": ", тасвири реалистӣ инкишоф ёфт. Дар солҳои Ҷанги Бузурги Ватанӣ мавзӯъҳои асосии ада- биёти шӯравӣ, аз ҷумла адабиёти тоҷик, ҳимояи Ватан ва му- бориза ба муқобили фашизми Германия буд. Асарҳои адибони тоҷик, чун мисраъҳои зерини Боқӣ Раҳимзода, моломоли ғояҳои ватанхоҳона ва душманбадбинона буданд:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "eff956d5-9b8c-4522-9ac6-8791f15495ce",
+   "author": "Боқӣ Раҳимзода",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Асарҳои адибони тоҷик, чун мисраъҳои зерини Боқӣ Раҳимзода, …:»",
+   "recordIds": [
+    "c41cf9f0-73e4-557e-a981-bfb80af92e08"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 96,
+   "page": 96,
+   "opening": "Мири қушбегӣ дар ойина бубинад риши хеш,",
+   "leadIn": "Бухоро – Ҷӯрабек Ара- бов ҳунармандона ба қалам омада, дорои оҳангҳои пурқуввати иҷтимоӣ мебошанд. Ӯ дар шеърҳои ҳаҷвӣ низ маҳорат доштааст. Рӯзе қушбегӣ (ба таъбири имрӯза, сарвазир) Ҷонмирзо, ки риши калоне доштааст, аз Яҳёхоҷа илтимос мекунад, ки дар ҳаққаш шеъре гӯяд. Яҳёхоҷа бадоҳатан гуфтааст:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "1f97e6af-4d9c-4d58-9812-847d89348dfc",
+   "author": "Яҳёхоҷа",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Яҳёхоҷа бадоҳатан гуфтааст:». Phase 7 rejected it from Айнӣ's chapter as another poet's; it is filed under Яҳёхоҷа now.",
+   "recordIds": [
+    "feee93d2-20fb-5f95-bb04-c9ae60130649"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 343,
+   "page": 343,
+   "opening": "Ватан, «Шаҳнома»-и рӯҳи туро",
+   "closing": "Туро обод хоҳам кард!",
+   "leadIn": "ошт ба ғайр аз ғами шикам Андешае ба сар. Ба шеъри тасвирӣ аз шоирони ҷоизадор бештар Гулрухсор ва Раҳмат Назрӣ рӯ овардаанд. Дар шеъри «Зодрӯзи дард»-и Гулрух- сор садоқати қаҳрамони лирикӣ ба Ватан чунин тасвир ёфтааст: 1 Минётур (миниатюра) — тасвирҳои нозуку зебо ва хурд дар санъати наққошӣ. 342",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "gulrukhsor",
+   "author": "Гулрухсор",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Дар шеъри «Зодрӯзи дард»-и Гулрухсор садоқати қаҳрамони лирикӣ ба Ватан чунин тасвир ёфтааст:»; an excerpt, printed on p. 343.",
+   "recordIds": [
+    "958ba965-e080-5de9-b0b3-70ea4360d527"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 345,
+   "page": 345,
+   "opening": "Инак, шинохтам, ки қонуни ҷозибаи ишқ Ирфон аст,",
+   "closing": "Ирфон раҳ ба раҳ нозанинтар шудан аст.",
+   "leadIn": "взӯи асосии ашъори Фарзона ишқ аст, ишқи маъна- вию илоҳӣ, ишқе, ки инсонро ба покию шаффофӣ водор мекунад. Дар китобҳои «Шабохуни барқ», «Ояти ишқ», «Паёми ниёгон», “Муҳри дили мино” ин мавзӯъ бо услуби хоси шоирона баён ёф- тааст. Дар шеъри «Қонуни ҷозибаи ишқ» мафҳуми ишқ чунин шарҳ дода шудааст:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "farzona",
+   "author": "Фарзона",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Мавзӯи асосии ашъори Фарзона ишқ аст … Дар шеъри «Қонуни ҷозибаи ишқ» мафҳуми ишқ чунин шарҳ дода шудааст:»",
+   "recordIds": [
+    "0c4ed216-d1fa-5c32-bf24-ed634ac543e8"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 341,
+   "page": 341,
+   "opening": "Айёми баҳор асту чаман лоладароғӯш,",
+   "leadIn": "ои суннатӣ ва ҳам дар қолабҳои нави шеърӣ боз ҳам муассиртару ҷаззобтар ба назар мерасад. Ашӯр Сафар ба ҷузъитарин хусусияти услубии жанри ғазал чун ҳусни матлаъ, ҳусни мақтаъ ва ҳусни тахаллус диққат дода, бо ҳамин маънирасӣ, хаёлангезӣ ва тартиби баёни саромадони наз- ми тоҷикро пайгирӣ намудааст:",
+   "chapterOf": "Гулрухсор, Фарзона",
+   "decision": "reject",
+   "reason": "verse the survey gives to a poet with no poet record (Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким)"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 341,
+   "page": 341,
+   "opening": "Дили ман, шод бошӣ, шод, эй кош,",
+   "leadIn": "ҷӯш... Аз хотирам ояндаву бигзашта равад дур, Дасти ману гул бошаду дилдору баногӯш. Жанрҳои суннатӣ дар шеъри имрӯзи тоҷик мавқеи баландтар доранд ва баъзе шоирон дар жанрҳои алоҳидаи суннатӣ бештар муваффақият ба даст дароварданд. «Хирмани моҳ» ном асари Раҳмат Назрӣ танҳо аз дубайтиҳо иборат аст:",
+   "chapterOf": "Гулрухсор, Фарзона",
+   "decision": "reject",
+   "reason": "verse the survey gives to a poet with no poet record (Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким)"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 342,
+   "page": 342,
+   "opening": "Ман аз торикӣ метарсам,",
+   "leadIn": "уш: Хоҳари ман субҳро мешуст Бо ду дасти офтобиаш, Ман ташнатар зи рӯҳи биёбонам. Падидаи дигари шеъри ин айём бо номи шеъри хусравонӣ муаррифӣ гардидааст. Шеъри хусравонӣ, асосан, аз вазни арӯз ва қофия орист. Аммо имкон дорад, ки гоҳ-гоҳе дар он вазну қофия истифода шавад. Камол Насрулло гуфтааст:",
+   "chapterOf": "Гулрухсор, Фарзона",
+   "decision": "reject",
+   "reason": "verse the survey gives to a poet with no poet record (Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким)"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 342,
+   "page": 342,
+   "opening": "Дар як заволи рӯз",
+   "leadIn": "гари шеър паҳн гардид, ки онро шеъ- ри тасвирӣ ё минётурҳои1 манзум номидаанд. Ин шеърҳо бисёр кӯтоҳ буда, аз тасвири маконе, замоне, фазое, ҳолате ё манза- рае иборат мебошанд. Дар навиштани чунин шеърҳо, аз ҷумла, Алимуҳаммад Муродӣ маҳорат нишон додааст. Шеъри «Заволи рӯз» ҳамагӣ панҷ мисраъ аст:",
+   "chapterOf": "Гулрухсор, Фарзона",
+   "decision": "reject",
+   "reason": "verse the survey gives to a poet with no poet record (Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким)"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 343,
+   "page": 343,
+   "opening": "Ҳар дам ба рӯйи ман,",
+   "leadIn": " Раҷаб «То ҳаст оламе, то ҳаст ода- ме» эътирози сахт ба касоне буд, ки тарафдори барҳам хӯрдани забонҳои миллии Иттифоқи Шӯравӣ, аз ҷумла забони тоҷикӣ, буданд. Шеъри мазкур низ бо ҳисси баланди ифтихори миллӣ су- руда шуда, дар тамоми Шарқ шуҳрат пайдо намуд. Ин шеър бо чунин мисраъҳо оғоз меёбад:",
+   "chapterOf": "Гулрухсор, Фарзона",
+   "decision": "reject",
+   "reason": "verse the survey gives to a poet with no poet record (Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким)"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 344,
+   "page": 344,
+   "opening": "Ба тан пӯшед, ёрон, ҷомаи идонаи ваҳдат,",
+   "leadIn": "рифтааст. Қаҳрамони лирикӣ дар рӯзҳои душвори миллат аз рӯҳи ниёгон мадад мехоҳад: Эй замини падарон! Кош ба хушбахтии мо Ба сарат бори дигар тоҷи Фаридун1 бошад. Дар «Суруди ваҳдат» Ҳақназар аз дилу ҷон ваҳдату ягонагии халқи тоҷикро, ки бар асари ҷанги шаҳрвандӣ халалдор гардид, тараннум менамояд:",
+   "chapterOf": "Гулрухсор, Фарзона",
+   "decision": "reject",
+   "reason": "verse the survey gives to a poet with no poet record (Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким)"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 345,
+   "page": 345,
+   "opening": "Дили ман мехоҳад,",
+   "leadIn": " ворид гардида, хаёлоти шоиронаро бойтару рангинтар намуданд. Дар «Санги ман –алмос» ном достони Аскар Ҳаким талмеҳҳои таърихию динӣ бисёр истифода шудаанд: 1 Тоҷи Фаридун рамзи хушбахтии бардавоми миллат аст. Фаридун образи асотириест дар “Шоҳнома”. 2 Ирфон — шинохтан, донистан, шинохтани Худо. 344",
+   "chapterOf": "Гулрухсор, Фарзона",
+   "decision": "reject",
+   "reason": "verse the survey gives to a poet with no poet record (Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким)"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 377,
+   "page": 377,
+   "opening": "Надорам орзуи умри ҷовид,",
+   "leadIn": "ЛИРИКА (шеъри ғиноӣ) Ба ҷинси лирика1 асарҳое тааллуқ доранд, Назария ки дар онҳо фикру ҳиссиёти аз зиндагӣ ва адабиёт ҳодисаҳои давр ҳосилкардаи адиб бевосита тасвир меёбанд. Гулрухсор гуфтааст:",
+   "chapterOf": "Гулназар Келдӣ",
+   "decision": "reject",
+   "reason": "metre/device example: a quatrain of Гулрухсор quoted in the theory lesson on lyric poetry; the book names her, but examples in theory lessons are excluded"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 378,
+   "page": 378,
+   "opening": "Диле дорам харидори муҳаббат,–а",
+   "leadIn": "лон: V – – – V– – – /V– ~) ё ҳазаҷи мусаддаси маҳзуф (ма­фоӣ­лун, ма­ фоӣ­лун, фаӯлун: V – – –/V – – –/ V – –) навишта мешавад. Дубайтӣ мавзӯъҳои гуногунро фаро гирифта, аксаран дар шакли ааба ва баъзан дар шаклҳои аааа ва аабб қофия баста мешавад. Бобо Тоҳири Урён дар мавзӯи ишқу муҳаббат гуфтааст:",
+   "chapterOf": "Гулназар Келдӣ",
+   "decision": "reject",
+   "reason": "metre/device example: a dubaiti with rhyme-scheme marks in the theory lesson"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 379,
+   "page": 379,
+   "opening": "Банӣ одам аъзои як пайкаранд,–а",
+   "leadIn": "маснавӣ аз ҷиҳати қофия васеъ аст. Бинобар ин, бештари достонҳои адабиё- ти тоҷик дар шакли маснавӣ эҷод гардидаанд. Шеърҳои лирикӣ низ дар шакли маснавӣ эҷод мешаванд. Маснавиҳои лирикӣ аз ҷиҳати ҳаҷм гуногун, мавзӯи марказии онҳо панду ахлоқ мебо- шад. Ин шеъри машҳури Саъдӣ дар шакли маснавӣ аст:",
+   "chapterOf": "Гулназар Келдӣ",
+   "decision": "reject",
+   "reason": "metre/device example: Саъдӣ's bayts with rhyme-scheme marks in the theory lesson"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 56,
+   "page": 56,
+   "opening": "Нағмаи шодӣ баро аз сози ман,",
+   "leadIn": "ифта бошад ҳам, дар аввал назм мавқеи калонтар дошт. Шоирон дар ифодаи мазмунҳои нав аз шаклҳои суннатии шеър, чун маснавӣ, қитъа, қасида, ғазал, рубоӣ, дубайтӣ, мусаммат, мустазод, истифода мекарданд. Ма- салан, мавзӯи озодии занон дар «Таронаи духтари Помир» ном ғазали Деҳотӣ ин тавр садо медиҳад:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "a ghazal the book gives to Деҳотӣ, who has no poet record"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 57,
+   "page": 57,
+   "opening": "Рафт номеҳрубон,",
+   "leadIn": "онет2 роиҷ гардиданд. Таваҷҷуҳ намоед ба порчае аз «Ишқи духтари Черкас» ном шеъри Ҳабиб Юсуфӣ: 1 Баллада аз як ё чанд асари манзум иборат буда, воқеаҳо дар атрофи як сужет гирд оварда шудаанд. 2 Сонет (калимаи италиявӣ) шеърест, ки аз 14 мисраъ иборат буда, қофияааш абба, абба, ввг, дгд мебошад. 56",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "a sonnet example broken into word lines; not a poem the book attributes"
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 296,
+   "page": 296,
+   "opening": "Кист он бе аниси танҳо, кист?",
+   "closing": "Дар ҳақиқат, чу обу нон аст он.",
+   "leadIn": "у шавқовар офарид. Достонҳои «Тоҷи давлат», «Асрор» маҷмӯаи шеърҳои «Рӯйи сурх», «Марди майдон», «366 паҳлу», «Нору нур» ва ғайраҳоро хонандагон хеле хуш пазируфтанд. Инак, шогирдони азиз, бароятон шеъри «Дӯст», оғози достони «Тоҷи давлат» ва «Дар сари гаҳвора»-и Ғаффор Мирзоро пешкаш менамоем. ДӮСТ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "400b9785-ae80-4957-a653-d65c72cdbf79",
+   "author": "Ғаффор Мирзо",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "replaces": "poem_400b9785-ae80-4957-a653-d65c72cdbf79_3df526023a13a77a",
+   "note": "«ДӮСТ» ends on p. 297 with three more lines; the published record stopped before «Ҷош холӣ бубинӣ дар бари худ-», a verse line ending in a dash.",
+   "recordIds": [
+    "poem_400b9785-ae80-4957-a653-d65c72cdbf79_3df526023a13a77a"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 297,
+   "page": 297,
+   "opening": "Баҳоре чун арӯси бениёз омад,",
+   "leadIn": "йӣ, обу нон аст он. Дар бари туст, ту аз он серӣ, Гаҳ варо дар назар намегирӣ. Лек аз он ҷудо шавӣ нафасе, Ҷойи дигар равӣ, ягона касе, Ки ба ёдат биёяд аз ҳама зуд, Ҷош холӣ бубинӣ дар бари худ- Дӯстон, дӯстон, ҳамон аст он, Дар ҳақиқат, чу обу нон аст он. ИБТИДОИ ДОСТОН («Тоҷу давлат») Баҳор омад.",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "«ИБТИДОИ ДОСТОН («Тоҷу давлат»)» is set in stepped half-lines, and the text layer drops the first half of most lines on pp. 297 and 299; it cannot be copied reliably from the text layer (team to check against the printed page)"
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 48,
+   "page": 48,
+   "opening": "Ин ду ҷону ҷигарбанд",
+   "leadIn": "Дегу табақро, - 5 ҳиҷо Худам мешӯям. – 5 ҳиҷо. Вазни ҳиҷо дар байни мардуми мо таърихи қадимӣ дорад. Як қисми китоби муқаддаси «Авесто», махсусан фасли Готҳо ва Яштҳо, достони «Ёдгори Зарирон» низ бо ҳамин вазн гуфта шудаанд. Суол ва супориш",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "metre/device example: a syllabic-metre sample with exercise questions, no poet named"
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 76,
+   "page": 76,
+   "opening": "Макун, ки оҳи фақире шабе бурун ояд,",
+   "leadIn": ". Ба ҳангоми ҷавонӣ корҳои ҳардуҷаҳонӣ бисоз, ёрон ва дӯстонро азиз дор. Харҷ ба андозаи дахл кун, илму адаб омӯз ва тир андохтану савориҳо ёд гиру ёд деҳ. 60. Эй азизо! Дари зулм макшой ва аз оҳи мазлумон ҳазар намой, ки зулм намудан аз Худо бехабарист ва мазлумонро кӯ ба кӯ рондан мояи бехирадист.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "a4b182d3-1c06-4c82-9858-0e71d95edeb3",
+   "author": "Абдуллоҳи Ансорӣ",
+   "reason": "the poet's pen name in the last bayt, in the poet's chapter",
+   "note": "Printed after saying 60 of Ансорӣ's «Панд»; the last bayt names «Абдуллоҳ» («Зи баҳри ҷаври лаимон манол, Абдуллоҳ»).",
+   "recordIds": [
+    "f9bc005c-c4ae-57a5-a058-fa5c48602c6b"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 242,
+   "page": 242,
+   "opening": "Гуфт устод: «Мабар дарс аз ёд! »",
+   "leadIn": "На падар дӯст дорадаш на амӯ, На касе идӣ оварад бари ӯ. Идӣ он рӯз ҳаққи он писар аст, Ки наҷибу шарифу боҳунар аст. ҚАДРИ УСТОД",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "10a9ad7d-fd0d-462f-8cb4-594a869f8229",
+   "author": "Эраҷ Мирзо",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "note": "Under the printed title «ҚАДРИ УСТОД» in Эраҷ Мирзо's chapter (pp. 239–242).",
+   "recordIds": [
+    "866e3066-26bd-41e4-aa49-40bf4c81a4cd"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 245,
+   "page": 245,
+   "opening": "Нури чашми Ватан, эй бачаи афғон, афсӯс,",
+   "closing": "Ай писар, кор накардан ба ту ор аст, биё!",
+   "leadIn": "ърифати мусофире. 2. Тира шуд – ба маънои абр рӯйи осмонро пӯшонд. 3. Фисурд – сахт шуд. 4. Фарт – зиёдатӣ, бисёрӣ, шиддат. Савол ва супориш 1. Номи шеър ба мазмуни он чӣ муносибат дорад? 2. Шумо дар ҳаққи модар чӣ некӣ кардед? 3. Шеърро ифоданок хонед ва мазмунашро нақл кунед. ХИТОБ БА АВЛОДИ ВАТАН",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "fd212071-6a30-4b8d-870a-ae784002e8f2",
+   "author": "Халилуллоҳ Халилӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "replaces": "poem_fd212071-6a30-4b8d-870a-ae784002e8f2_17ce71ac72d8a1ed",
+   "note": "«ХИТОБ БА АВЛОДИ ВАТАН» is set flush left on p. 245 and runs on to p. 246; the published record held only its last 4 lines (p. 246).",
+   "recordIds": [
+    "poem_fd212071-6a30-4b8d-870a-ae784002e8f2_17ce71ac72d8a1ed"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 248,
+   "page": 248,
+   "opening": "Мусулмонон! Зи дур ояд садое,",
+   "leadIn": "р аз ту касе нест дар ин марзи кухан, вой, Ай вой Ватан, вой! Не тоҷ ба кор оядат имрӯз, на авранг1, Не соҳиби сармоя, ки бо суди гаронсанг. Хуни дили ту хӯрда ба сад ҳилаву найранг, Кас нест, ки пирӯз шавад ҷуз ту дар ин ҷанг. Ай бозуи размандаи занҷиршикан, вой, Ай вой Ватан, вой! ДУБАЙТИЮ РУБОИЁТ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "fd212071-6a30-4b8d-870a-ae784002e8f2",
+   "author": "Халилуллоҳ Халилӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "split": "quatrains",
+   "type": "rubai",
+   "note": "Under «ДУБАЙТИЮ РУБОИЁТ» in Халилӣ's chapter: five quatrains printed without separators, published one by one.",
+   "recordIds": [
+    "c08506ba-0794-41d6-b71c-661cc0e19347",
+    "b369ef83-c846-58d8-a9d2-010aae06a093",
+    "poem_fd212071-6a30-4b8d-870a-ae784002e8f2_f644958c0790cef3",
+    "poem_fd212071-6a30-4b8d-870a-ae784002e8f2_010017da03b17132",
+    "00fd1a44-cbae-516d-9f83-ff1ad0e8df95"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 252,
+   "page": 252,
+   "opening": "Ду қоши сиёҳ дорию мӯйҳои дароз,",
+   "leadIn": "баромад. Сафар бо кадом як мулоҳиза оҳиста- оҳиста қадам монду ба даромади заминкан расида, як дам рост истод. Ба гӯши вай овози думбра ва суруди Нозир аз ҳарвақта дида, чунон форам мерасид, ки гӯё аввалин бор ме- шунида бошад. Нозири камаровӣ бо овози на он қадар баланд, вале фо- рами худ месароид:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "a song sung by a character in Фотеҳ Ниёзӣ's novel «Вафо»; not the author's own verse"
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 148,
+   "page": 148,
+   "opening": "Надонам, к-ин ҳама тарки адаб чист?",
+   "closing": "Далели покии мо фи-замир аст.",
+   "leadIn": "д ҷойи миннат аст, Зеро, ки нест ҳеч вафо чун ҷафойи дӯст. Бо дӯст ошно шуда, бегонаам зи халқ, То ошнойи ман набувад ошнойи дӯст. Дар ҳалқаи сагони дараш меравам, ки боз Аҳбоб2 саф зананд ба гирди саройи дӯст. Дасти дуо кушод Ҳилолӣ ба ҳазратат, Яъне ба даст нест маро ҷуз дуойи дӯст. ДАР БОРАИ ОДОБ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "f09073cb-33b4-4fcc-abf8-75959350245c",
+   "author": "Бадриддин Ҳилолӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "replaces": "poem_f09073cb-33b4-4fcc-abf8-75959350245c_f8d00659816a9d91",
+   "note": "«ДАР БОРАИ ОДОБ» runs on to p. 149, where it is set flush left; the published record stopped at the foot of p. 148.",
+   "recordIds": [
+    "poem_f09073cb-33b4-4fcc-abf8-75959350245c_f8d00659816a9d91"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 149,
+   "page": 149,
+   "opening": "Оҳ, аз ин рӯзгори баргашта,",
+   "closing": "Натавонад аз ин батар гардад.",
+   "leadIn": "шинос. Сомеъ – шунаванда. Шамъи мунир – шамъи равшан. Фи-замир – аз таҳти дил. Савол ва супориш 1. Ба ақидаи адиб барои боадаб шудан чӣ бояд кард? 2. Адаб дар зиндагӣ чӣ аҳамият дорад? 3. Синонимҳои адабро номбар кунед. 4. Калимаи адаб дар матн чанд маротиба такрор шудааст? ҚИТЪА ДАР САХТИИ ҲОЛИ ХУД",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "f09073cb-33b4-4fcc-abf8-75959350245c",
+   "author": "Бадриддин Ҳилолӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "type": "fragment",
+   "replaces": "poem_f09073cb-33b4-4fcc-abf8-75959350245c_61fd5ec10e2a853c",
+   "merges": [
+    "8db2433e-82b4-5a70-90b5-204385aa76ad"
+   ],
+   "note": "«ҚИТЪА ДАР САХТИИ ҲОЛИ ХУД» starts flush left on p. 149 and ends on p. 150; the published record held only the 4 lines on p. 150.",
+   "recordIds": [
+    "poem_f09073cb-33b4-4fcc-abf8-75959350245c_61fd5ec10e2a853c"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 138,
+   "page": 138,
+   "opening": "Буд марде ба рӯзгори қадим,",
+   "closing": "Гар нахоҳӣ, ки уфтӣ ба газанд.",
+   "leadIn": "ЧОҲКАН ЗЕРИ ЧОҲ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
+   "author": "Камолиддин Биноӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "replaces": "eb1e73ad-0e6d-5dac-b3a6-e25f26065dec",
+   "note": "«ЧОҲКАН ЗЕРИ ЧОҲ» runs from p. 138 to p. 140 (flush left on p. 139); the published record stopped at the foot of p. 138.",
+   "recordIds": [
+    "eb1e73ad-0e6d-5dac-b3a6-e25f26065dec"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 142,
+   "page": 142,
+   "opening": "Дар замоне, ки Ҳотам андар даҳр,",
+   "closing": "В-аз тамаъ гашт рӯ сиёҳ маро.»",
+   "leadIn": "дар фазлу дониш. Илзом кардан – мағлуб кардан, қоил намудан. Савол ва супориш 1. Нисбати амали рақиби Мавлавӣ андешаи хешро баён кунед. 2. «Мард бояд, ки худ падар бошад», чӣ маъно дорад? 3. Байтҳои охири ҳикояро, ки сиёҳтар чоп шудаанд, аз ёд кунед. 4. Аз рӯйи мазмуни ҳикоя иншо нависед. САРИ ҲОТАМ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
+   "author": "Камолиддин Биноӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "replaces": "b0e2a425-f507-5960-bf69-82d39026bf2f",
+   "note": "«САРИ ҲОТАМ» runs on to p. 143 (flush left); the published record stopped mid-sentence at the foot of p. 142.",
+   "recordIds": [
+    "b0e2a425-f507-5960-bf69-82d39026bf2f"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 135,
+   "page": 135,
+   "opening": "Чатри аъзам Ҳасаншоҳи баққол,",
+   "closing": "Офарин гуфт бар иборати ӯ.",
+   "leadIn": "ПИСАРИ ПИРАМАРД",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
+   "author": "Камолиддин Биноӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "note": "Under the printed title «ПИСАРИ ПИРАМАРД» in Биноӣ's chapter; flush left on p. 135, ends on p. 136.",
+   "recordIds": [
+    "f7b63b00-6776-43dc-a6f3-47ed0335a436"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 137,
+   "page": 137,
+   "opening": "Сухани хуш зи ҳар чӣ марғуб аст,",
+   "leadIn": "нагуфтӣ ҳеч », Эй писар, дар сухан тааммул кун, Баду неки сухан тахайюл3 кун! Гар сухан лоиқ аст, дар вай печ, В-ар на сад сол гуфтаӣ, ҳама ҳеч . Гуфт Бузарҷумеҳри олирой, Он ба дониш ҳакими уқдакушой4. «Ҳар кӣ гӯяд сухан зи ҳад берун, Шак маёвар, ки ҳаст аҳли ҷунун». ХУЛОСА",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
+   "author": "Камолиддин Биноӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "The part headed «ХУЛОСА» that closes Биноӣ's «Мавриди сухан гуфтан».",
+   "recordIds": [
+    "poem_ef0f434c-c5a7-4cdd-b13a-35f999319fbf_a803fdb5a3a56378"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 96,
+   "page": 96,
+   "opening": "Эй бародар, меҳмонро нек дор,",
+   "closing": "Пеши ӯ мебояд овардан таом.",
+   "leadIn": "ар набард4. Ҳар кӣ биншинад забардасти судур5, Гар расад хорӣ ба рӯяш нест дур. Нест ҷамъеро чу бар қавли ту гӯш, Сад сухан гар бошадат яксар бигӯш. Ҳоҷати худро магӯ бо душманон! З-ин батар хорӣ мабошад дар ҷаҳон. Аз фурӯмоя муроди худ маҷӯй, То наёяд мар туро хорӣ ба рӯй. ДАР БОРАИ ФАЗИЛАТИ МЕҲМОН",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "c9ea2574-7623-4974-ada0-49c075b2831b",
+   "author": "Фаридуддини Аттори Нишопурӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "note": "Under «ДАР БОРАИ ФАЗИЛАТИ МЕҲМОН» in Аттор's chapter; runs on to p. 97, where it is flush left.",
+   "recordIds": [
+    "f18e4d97-a7d1-46bf-8f26-6aaa18ebd298"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 97,
+   "page": 97,
+   "opening": "Дӯсти бад бошад зиёнкор, эй писар!",
+   "closing": "Гар сари худ бар қадамҳои ту суд.",
+   "leadIn": " боз кун. Ҳаст меҳмон аз атоҳои карим, Ҳар кӣ з-ӯ пинҳон шавад, бошад лаим. Маърифат дорӣ, гиреҳ бар зар мабанд, Чун расад меҳмон ба рӯяш дар мабанд. Ҳар кӣ меҳмонро гиромӣ мекунад, Кӯшише дар некномӣ мекунад. Ҳар кӣ меҳмонат шавад, ар хосу ом, Пеши ӯ мебояд овардан таом. ДАР БАЁНИ ФАЗИЛАТИ МАҚБУЛОН",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "c9ea2574-7623-4974-ada0-49c075b2831b",
+   "author": "Фаридуддини Аттори Нишопурӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "note": "Under «ДАР БАЁНИ ФАЗИЛАТИ МАҚБУЛОН» in Аттор's chapter.",
+   "recordIds": [
+    "poem_c9ea2574-7623-4974-ada0-49c075b2831b_d064b34e8892cf0b"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 5",
+   "pdfPage": 97,
+   "page": 97,
+   "opening": "Бар сари болини беморон гузар,",
+   "closing": "Дар тани ӯ дил ҳамемирад тамом.",
+   "leadIn": "БУЛОН Дӯсти бад бошад зиёнкор, эй писар! Ту тамаъ з-он дӯст бардор, эй писар! Дӯстӣ ҳаргиз макун бо бодахор! Аз чунин кас хештанро дур дор! Мунъиме гар мекунад тарки закот, Дур аз вай бош то дорӣ ҳаёт. Дур шав, з-он кас, ки хоҳад аз ту суд! Гар сари худ бар қадамҳои ту суд. ДАР БАЁНИ ҒАМХОРИИ МАРДУМ",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "c9ea2574-7623-4974-ada0-49c075b2831b",
+   "author": "Фаридуддини Аттори Нишопурӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "note": "Under «ДАР БАЁНИ ҒАМХОРИИ МАРДУМ»; flush left on p. 97, ends on p. 98.",
+   "recordIds": [
+    "a8e74b1a-51d2-4cb8-8a93-1f32ff03c031"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 40,
+   "page": 40,
+   "opening": "Ҳамегуфтам, ки кай бошад, ки хуррам рӯзгор ояд,",
+   "leadIn": "б мекунад: Некхӯтар з-ӯ ҳамоно дар ҷаҳон як шоҳ нест, Хӯи неку беҳтар аз шоҳиву мулки бекарон. Ашъори Фаррухӣ асосан бо услуби сода эҷод шуда, ташбеҳу истиора, тасвироти воқеӣ, зарбулмасалу мақолҳои халқӣ, ифо- даву таъбирҳои гуфтугӯйӣ, калимоти равону хушоҳанг фаро- вон истифода шудаанд. ТАРҶЕЪБАНД",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "282f4c69-1d14-4be2-89d3-d21f867e4964",
+   "author": "Фаррухӣ Систонӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "Under the printed heading «ТАРҶЕЪБАНД» in Фаррухӣ's chapter (pp. 39–43).",
+   "recordIds": [
+    "poem_282f4c69-1d14-4be2-89d3-d21f867e4964_d7bc01a5e50a2822"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 42,
+   "page": 42,
+   "opening": "Имсол тозарӯйтар омад ҳаме баҳор,",
+   "leadIn": " Зи сорӣ ҳадиси хуб, зи қумрӣ хурӯши зор. Яке бар канори гул, яке дар миёни бед, Яке зери шохи сарв, яке бар сари чанор. Ҳаво хуррам аз насим, замин хуррам аз либос, Ҷаҳон хуррам аз ҷамол, малик хуррам аз шикор. Яке мушк дар даҳон, яке ҳулла бар катаф2 Яке орзу ба даст, яке дӯст дар канор... БАҲОРИЯ",
+   "chapterOf": "Фаррухӣ Систонӣ",
+   "decision": "accept",
+   "authorId": "282f4c69-1d14-4be2-89d3-d21f867e4964",
+   "author": "Фаррухӣ Систонӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "Under the printed heading «БАҲОРИЯ» in Фаррухӣ's chapter.",
+   "recordIds": [
+    "poem_282f4c69-1d14-4be2-89d3-d21f867e4964_47fe2f187a7337a2"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 124,
+   "page": 124,
+   "opening": "Саҳаргоҳон, ки оҳам шуъла бар афлок мерезад,",
+   "closing": "Ба ҳар ҷо шамъи назме Нозими ғамнок мерезад.",
+   "leadIn": "САҲАРГОҲОН, КИ ОҲАМ ШУЪЛА БАР АФЛОК МЕРЕЗАД",
+   "chapterOf": "Нозими Ҳиротӣ",
+   "decision": "accept",
+   "authorId": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
+   "author": "Нозими Ҳиротӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "type": "ghazal",
+   "note": "Under its first line printed as a title, in Нозим's chapter; the last bayt names «Нозим».",
+   "recordIds": [
+    "c39b1ff6-6e5a-4105-ab66-d9fcffbb530e"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 124,
+   "page": 124,
+   "opening": "Маҷлис ороста чун базми баҳор аст имшаб,",
+   "closing": "Ку ҳумое, ки на парвонашиор аст имшаб.",
+   "leadIn": " ғорати гулзор меойӣ, ки гулгунат Баҳор аз ҷилва мепошад, гул аз фитрок мерезад. Фасоди фитнаангезон бар ишон мешавад роҷеъ, Кунад гар бод гарде бар сари худ, хок мерезад. Ҳасад чун муми оташдида бигдозад ҳарифонро, Ба ҳар ҷо шамъи назме Нозими ғамнок мерезад. МАҶЛИС ОРОСТА ЧУН БАЗМИ БАҲОР ACT ИМШАБ",
+   "chapterOf": "Нозими Ҳиротӣ",
+   "decision": "accept",
+   "authorId": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
+   "author": "Нозими Ҳиротӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "type": "ghazal",
+   "note": "Under its first line printed as a title, in Нозим's chapter.",
+   "recordIds": [
+    "poem_22097ef5-9ab2-4b03-a971-e62927f2f8c8_fa94ce1f1c3acfae"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 125,
+   "page": 125,
+   "opening": "Боз ид омад, ки оламро парипайкар кунад,",
+   "leadIn": "БОЗ ИД ОМАД, КИ ОЛАМРО ПАРИПАЙКАР КУНАД",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
+   "author": "Нозими Ҳиротӣ",
+   "reason": "the poet's pen name in the last bayt, in the poet's chapter",
+   "type": "ghazal",
+   "note": "Under its first line printed as a title; the last bayt names «Нозим». The exercise below calls it a ghazal.",
+   "recordIds": [
+    "040e992e-1009-45cd-87c7-8cef4742fccf"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 9,
+   "page": 9,
+   "opening": "Дилакам зардоб шуд аз чақ-чақи бофандагӣ,",
+   "leadIn": "ӣ, меҳнати тоқатфарсову миёншикан суруда шудаанд. Ба тариқи мисол «Таронаи бофандагон» аз қабили сурудҳои ғамангез аст, ки дар он азоби бандагӣ, гаронии кор ва беқадрии касби бофандагӣ бо сӯзу гудоз акс ёфтааст. Ин та- рона як навъ шикоятномаест аз рӯзгори талху сангину гарони бофандагон ва косибон:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 10,
+   "page": 10,
+   "opening": "Мусалмонон, дар ин шаҳри шумоем,",
+   "leadIn": "ои «Ғарибӣ» дар эҷодиёти даҳонакии халқ ва ада- биёти хаттӣ гардид. «Ғарибӣ»-ҳо дар шаклҳои гуногуни шеър – рубоӣ, дубайтӣ, ғазал, мухаммас, маснавӣ эҷод шудаанд. Махсусан, рубоиёти ғарибӣ бештар суруда шудаанд, дар онҳо эҳсоси аҳволи шахси ғариб, изтироби ёру дӯстон ва хешу ақрабои ӯ ифода ёфтаанд:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 11,
+   "page": 11,
+   "opening": "Эй мусофирбачаи саргардони тоҷик",
+   "leadIn": "аст. Дар адабиёти шифоҳӣ ва хаттии даврони муосир асосан дар ибтидои ҷанги шаҳрвандӣ, ки қисме аз ҳамватанони мо ба кишварҳои ҳамсоя фирор карда буданд, суруду таронаҳои фа- ровони «Ғарибӣ» ба вуҷуд омада буданд. Ҳатто дар рӯзгори мо пайдо шудани тарона – суруди зайл сурати ин падидаи но- гувор аст:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 11,
+   "page": 11,
+   "opening": "Ғарибӣ кӯйи сахт аст, эй бародар,",
+   "leadIn": " ҳамватанони мо ба кишварҳои ҳамсоя фирор карда буданд, суруду таронаҳои фа- ровони «Ғарибӣ» ба вуҷуд омада буданд. Ҳатто дар рӯзгори мо пайдо шудани тарона – суруди зайл сурати ин падидаи но- гувор аст: Эй мусофирбачаи саргардони тоҷик Наврӯз мерасад. Дар базми Ватан боз биё, Ҷойи ту холист! ҒАРИБӢ",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 13,
+   "page": 13,
+   "opening": "Сари сарчашма рафтам ман ба вахте,",
+   "leadIn": "рдааст: Бар кӯзагаре парер кардам гузаре, Аз хок ҳаменамуд ҳар дам ҳунаре. Ман дидам, агар надид ҳар бебасаре, Хоки падарон дар кафи ҳар кӯзагаре. Вале бо вуҷуди ба жанри рубоӣ рӯ овардани бузургони адабиёти классикӣ ва муосири мо, афзалияти рубоисароӣ боз ҳам дар эҷодиёти шифоҳии халқ боқӣ мемонад.",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 14,
+   "page": 14,
+   "opening": "Диле дорам, ки аз султон натарсад,",
+   "leadIn": "ад. Баъзан, дар дубайтӣ ҳамаи мисраъҳо ҳамқофия мешаванд. Дубайтӣ асосан чунин тарзи қофиябандӣ дорад: ааба, яъне мисраи сеюм аз қофия озод аст. Доираи мавзӯи дубайтӣ хеле васеъ буда, он шарҳи ҳол, шико- ят, ҳаҷву танқид ва амсоли онҳоро дар бар мегирад, вале акса- ран дубайтиҳо мазмуни ишқӣ доранд:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 15,
+   "page": 15,
+   "opening": "Эй дӯст, агар меҳри ту бар мо бошад,",
+   "leadIn": "Нигори нозанин, ман аҳли дардам, Сарамро гар буранд, аз ту нагардам. Сарамро гар буранд бо ханҷари тез, Ба хун ҷавлон занам, гирди ту гардам. Намунаҳо аз рубоиёт ва дубайтиҳои халқӣ:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 18,
+   "page": 18,
+   "opening": "Чист, к-андар даҳони бедандон-ш",
+   "leadIn": " рост аст. Дар илми бадеъ луғз он аст, ки шоир шеъре менависад ва чизеро дар назар гирифта сифат, аломатҳо ва хусусиятҳои онро дар либоси ибораҳои мушкилу монанд ва ғайри зикри номи предмет баён мекунад ва ёфтани онро аз хонанда ба тав- ри хитобу суол ва аксаран бо ибораи «чист он?» ифода меку- над:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 19,
+   "page": 19,
+   "opening": "Гуле дидам, ки он бе хор бошад,",
+   "leadIn": "ни чистон – масъалаҳо ме- гардад: «Агар булбул ба гул як-як нишинад, як булбул зиёдӣ мекунад ва агар булбул ба гул ду-ду нишинад, он гоҳ як гул боқӣ мемонад. Ҳар кадом чанд адад будааст?» Ҷавоб: Булбул 4 адад ва гул 3 адад. НАМУНАИ ЧИСТОНҲО Як чодари зангорӣ, Шабҳо пуру рӯз холӣ. (Осмон ва ситораҳо)",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 19,
+   "page": 19,
+   "opening": "Ҳамдаме дорам, ки бе овоз суҳбат мекунад,",
+   "leadIn": "гул боқӣ мемонад. Ҳар кадом чанд адад будааст?» Ҷавоб: Булбул 4 адад ва гул 3 адад. НАМУНАИ ЧИСТОНҲО Як чодари зангорӣ, Шабҳо пуру рӯз холӣ. (Осмон ва ситораҳо) Гуле дидам, ки он бе хор бошад, На дар дашту на дар бозор бошад. На кас ӯро харад, не кас фурӯшад, Ҳамеша дар сараш бозор бошад. (Илм)",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 20,
+   "page": 20,
+   "opening": "Мисли тарбуз лӯндаву аммо нарӯяд аз замин,",
+   "closing": "Бе ҳамон ҳаргиз надонӣ рӯйи олам инчунин.",
+   "leadIn": "дар бозор бошад. На кас ӯро харад, не кас фурӯшад, Ҳамеша дар сараш бозор бошад. (Илм) Ҳамдаме дорам, ки бе овоз суҳбат мекунад, Бе даҳону бе забон нақлу ривоят мекунад. Ҳушу гӯшу ақл афзун мекунад гуфтори ӯ, Аз кадомин фан, ки хоҳӣ, ӯ ҳикоят мекунад. (Китоб) 19",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 20,
+   "page": 20,
+   "opening": "Як саволе аз ту дорам, эй ҷавони боҳунар,",
+   "closing": "Филгардан, шерсина, уштурзону аспсар.",
+   "leadIn": "Мисли тарбуз лӯндаву аммо нарӯяд аз замин, Бе замин аммо намешуд шакли вай тарбуз барин. Гар ту ҳастӣ бохабар аз илму олам, чист он? Бе ҳамон ҳаргиз надонӣ рӯйи олам инчунин. (Глобус – кураи арз)",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 20,
+   "page": 20,
+   "opening": "Об дар об чӣ бошад?",
+   "closing": "Ба ин ҷавоб чӣ бошад?",
+   "leadIn": ", эй ҷавони боҳунар, Дар биёбоне бидидам як аҷоиб ҷонвар. Мӯрпову морчашм, лайлакпару аждаршикам, Филгардан, шерсина, уштурзону аспсар. (Малах) Аз осмон афтад, намешиканад, Аз дарахт афтад, мешиканад. (Барф) Худаш якта, чашмаш садта. (Элак) Ҳавзи сангин , оби рангин, Мори печон, гули хандон. (Чароғ)",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 20,
+   "page": 20,
+   "opening": "Он чист, ки ҷилваҳо карду шукуфт,",
+   "closing": "Ҳар чиз, ки аз ту дид, филҳол бигуфт.",
+   "leadIn": "лгардан, шерсина, уштурзону аспсар. (Малах) Аз осмон афтад, намешиканад, Аз дарахт афтад, мешиканад. (Барф) Худаш якта, чашмаш садта. (Элак) Ҳавзи сангин , оби рангин, Мори печон, гули хандон. (Чароғ) Об дар об чӣ бошад? Ҳавзи гулоб чӣ бошад? Оташ расад ях кунад, Ба ин ҷавоб чӣ бошад? (Тухм )",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 21,
+   "page": 21,
+   "opening": "Он чист, ки панҷ хона дорад,",
+   "leadIn": "шад? Ҳавзи гулоб чӣ бошад? Оташ расад ях кунад, Ба ин ҷавоб чӣ бошад? (Тухм ) Он чист, ки ҷилваҳо карду шукуфт, Чун ханда задӣ, зи шарм рухро бинуҳуфт. Бе он ки ба умри хештан дам бизанад, Ҳар чиз, ки аз ту дид, филҳол бигуфт. (Оина) Дорад даҳону забон надорад, Сад чӯб занӣ, фиғон надорад. (Моҳӣ) 20",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "folk verse: songs, dubaitis and riddles in the lesson on oral literature"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 60,
+   "page": 60,
+   "opening": "Дар банди ту, ай шоҳ, Маликшаҳ бояд,",
+   "leadIn": "ҳ. Султонро ғайрат кард ва чунон сохт, ки ӯро ногоҳ бигирифту бибаст ва ба ҳисор фиристод. Ва надимони ӯро банд карду ба ҳисорҳо фиристод. Аз ҷумла, яке Масъуди Саъди Салмон буд ва ӯро ба Ваҷиристон, ба қалъаи Ной фиристоданд. Аз қалъаи Ной ду байте ба султон фиристод (Масъуди Саъди Салмон фармояд):",
+   "chapterOf": "Заҳирии Самарқандӣ",
+   "decision": "accept",
+   "authorId": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
+   "author": "Масъуди Саъди Салмон",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "rubai",
+   "note": "Lead-in (Низомии Арӯзӣ's tale, quoted in the book): «Аз қалъаи Ной ду байте ба султон фиристод (Масъуди Саъди Салмон фармояд):»; the book calls it «Ин дубайтӣ (рубоӣ …)».",
+   "recordIds": [
+    "d4feada3-1219-52fa-8822-b4176002a00e"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 64,
+   "page": 64,
+   "opening": "Тиру теғ аст бар дилу ҷигарам",
+   "closing": "Аз ҳама халқ миннате набарам…",
+   "leadIn": " ҳеҷ бок н-омад аз он-к Нуздаҳ сол будаам бандӣ. Бояд гуфт, ки беҳтарин солҳои умри азизи шоир, яъне солҳои аз 40 то 60 дар зиндонҳо сипарӣ гардид. Аммо ӯ ноумед нашуд, ҳар чӣ ки як инсон дар ин солҳо барои инсонҳои дигар кори хайре бояд бикунад, кард. ҚАСИДАИ ҲАБСИЯИ «ТИРУ ТЕҒ АСТ БАР ДИЛУ ҶИГАРАМ»",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
+   "author": "Масъуди Саъди Салмон",
+   "reason": "printed under the poet's own title in the chapter",
+   "type": "qasida",
+   "note": "Under «ҚАСИДАИ ҲАБСИЯИ «ТИРУ ТЕҒ АСТ БАР ДИЛУ ҶИГАРАМ»» in Масъуд's chapter; indented on p. 64, flush left on p. 65, ends on p. 66.",
+   "recordIds": [
+    "9b9ff669-e7b9-418d-b324-67b126d3133c"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 66,
+   "page": 66,
+   "opening": "То тавонӣ, макаш зи мардӣ даст,",
+   "leadIn": "То ба гардан, аз ин ҷаҳон чу равам, Аз ҳама халқ миннате набарам… «ТО ТАВОНӢ, МАКАШ ЗИ МАРДӢ ДАСТ»",
+   "chapterOf": "Масъуди Саъди Салмон",
+   "decision": "accept",
+   "authorId": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
+   "author": "Масъуди Саъди Салмон",
+   "reason": "printed under the poet's own title in the chapter",
+   "note": "Under the printed title «ТО ТАВОНӢ, МАКАШ ЗИ МАРДӢ ДАСТ» in Масъуд's chapter.",
+   "recordIds": [
+    "6890e4ff-6fed-4294-ac45-62d77e69f3c5"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 159,
+   "page": 159,
+   "opening": "Андар ҳама дашти Ховарон санге нест,",
+   "leadIn": "Ховарони ишқ дар сайр аст, ҳасбулҳолаш мақолаи (гуфтан) Абӯсаиди Абулхайр аст:",
+   "chapterOf": "Самандархоҷаи Тирмизӣ",
+   "decision": "accept",
+   "authorId": "b28a4de3-06a8-406c-b2e9-db363f7aa2d5",
+   "author": "Абӯсаиди Абулхайр",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "rubai",
+   "note": "Lead-in (Тирмизӣ's «Дастур-ул-мулук»): «… ҳасбулҳолаш мақолаи Абӯсаиди Абулхайр аст:»",
+   "recordIds": [
+    "173d94b5-5582-5ddb-85b1-992c10b69671"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 23,
+   "page": 23,
+   "opening": "Ҳинност он, ки нохуни дилбанд риштаӣ,",
+   "leadIn": "Ҷавонро салом гуфтам, ҷавоб рад кард. Пас гуфтам: – Ё ахиялараб, бо ман бигӯ, ки ту кистӣ ва зуҳраҷабин дар паҳлуи ту кист? Ҷавон соате сар дар зер афканд. Чун сар бардошт, ба ман гуфт:",
+   "chapterOf": "Абӯтоҳири Тарсусӣ",
+   "decision": "reject",
+   "reason": "verse recited by characters in Абӯтоҳири Тарсусӣ's prose romance «Доробнома»; the book does not say who wrote it (one of these passages is Масъуди Саъди Салмон's, grade 7, p. 66)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 25,
+   "page": 25,
+   "opening": "То тавонӣ, макаш зи мардӣ даст,",
+   "leadIn": "Ёрони ман ба ин паймон розӣ шуданд ва олати ҳарб пӯшида, савор гаштанд ва оҳанги ҷавон карданд. Дидам, ки ҷавон низ олати ҳарб пӯшидаву бар асп нишастааст. Вале хоҳараш дар рикоби ӯ овехта ва бурқаи худ аз си- ришк тар сохта буд ва аз бародараш ҳаметарсид ва ин абёт ҳамехонд:",
+   "chapterOf": "Абӯтоҳири Тарсусӣ",
+   "decision": "reject",
+   "reason": "verse recited by characters in Абӯтоҳири Тарсусӣ's prose romance «Доробнома»; the book does not say who wrote it (one of these passages is Масъуди Саъди Салмон's, grade 7, p. 66)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 25,
+   "page": 25,
+   "opening": "Ай басе размгоҳи чун дӯзах,",
+   "leadIn": "мехонд: То тавонӣ, макаш зи мардӣ даст, Ки ба сустӣ касе зи марг наҷаст. Ҳар кӣ ӯро баланд мардӣ кард, То ба рӯзи аҷал нагардад паст. Сар фурорад чу тир дар мардӣ, Ки миён ҷангро чу найза бибаст. Чун ин абёт аз хоҳар бишнид, сахт бигрист ва асп ба сӯйи хоҳар бозгардонид ва дар ҷавоб ин абёт бархонд:",
+   "chapterOf": "Абӯтоҳири Тарсусӣ",
+   "decision": "reject",
+   "reason": "verse recited by characters in Абӯтоҳири Тарсусӣ's prose romance «Доробнома»; the book does not say who wrote it (one of these passages is Масъуди Саъди Салмон's, grade 7, p. 66)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 26,
+   "page": 26,
+   "opening": "Агар чарх бо ман барорад хурӯш,",
+   "leadIn": "Маро моми ман ном марги ту кард, Замона маро путки тарки ту кард. Ҳам акнун ба хок андарорам сарат, Бисӯзам дили меҳрубон модарат! Пас ба ҳамдигар ҳамла карданд, ҷавон найза бар синаи ӯ зад ва синони найза аз муҳраи пушти ӯ даргузашт. Пас аз он дигаре ба муборизат пеш омад. Ҷавон ба ӯ гуфт:",
+   "chapterOf": "Абӯтоҳири Тарсусӣ",
+   "decision": "reject",
+   "reason": "verse recited by characters in Абӯтоҳири Тарсусӣ's prose romance «Доробнома»; the book does not say who wrote it (one of these passages is Масъуди Саъди Салмон's, grade 7, p. 66)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 27,
+   "page": 27,
+   "opening": "Бизӣ шодмон, ай паричеҳра хоҳар!",
+   "leadIn": " Пас духтар гӯшаи домани маро гириф- та, чун саги мурда ҳамекашид. Он гоҳ олоти ҳарб аз тани бародар бадар овардаву ҷома бар ӯ бипӯшонид ва тахте аз ҷо бигзошт. Ҷавон бар тахт биншаст. Хоҳараш гуфт: – Худо рӯйи туро сафед кунад ва ҳодисот аз ту баргардонад! Ҷавон дар ҷавоби хоҳар ин абёт бархонд: 26",
+   "chapterOf": "Абӯтоҳири Тарсусӣ",
+   "decision": "reject",
+   "reason": "verse recited by characters in Абӯтоҳири Тарсусӣ's prose romance «Доробнома»; the book does not say who wrote it (one of these passages is Масъуди Саъди Салмон's, grade 7, p. 66)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 27,
+   "page": 27,
+   "opening": "Бас хун, ки ба теғи ғамзагон рехтаӣ,",
+   "leadIn": "рмуд хунаш Паямбар. Чун абёти ӯро бишнидам, дар кори худ ҳайрон бимондам ва ба асирии худ назора карда, хештанро маломат намудам. Пас аз он духтари парирӯйро назар карда, бо худ гуфтам: «Ин фитнаҳоро сабаб ҳамин моҳрӯй шуд». Пас дар ҷамоли ӯ шигифт мондам ва об аз дида равон карда, ин абёт бихондам:",
+   "chapterOf": "Абӯтоҳири Тарсусӣ",
+   "decision": "reject",
+   "reason": "verse recited by characters in Абӯтоҳири Тарсусӣ's prose romance «Доробнома»; the book does not say who wrote it (one of these passages is Масъуди Саъди Салмон's, grade 7, p. 66)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 28,
+   "page": 28,
+   "opening": "Бинолед, ай дӯстону бигирйед",
+   "leadIn": "и ҷанги ман доранд. Пас шамшер ба зери сар ниҳода бихуфт. Маро нафс дар куштани ӯ васваса кард. Ба суръати тамом бархоста, шамшер аз зери сари ӯ бадар овардам ва ба як зарба сар аз танаш ҷудо кардам. Чун хоҳараш аз кори ман огоҳ шуд, хештан ба бародар андохт ва ҷомаҳои худ бидарид ва ин абёт бихонд:",
+   "chapterOf": "Абӯтоҳири Тарсусӣ",
+   "decision": "reject",
+   "reason": "verse recited by characters in Абӯтоҳири Тарсусӣ's prose romance «Доробнома»; the book does not say who wrote it (one of these passages is Масъуди Саъди Салмон's, grade 7, p. 66)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 56,
+   "page": 56,
+   "opening": "Суратат маҳзари ҳусн аст, вале ин маънӣ",
+   "leadIn": "маҳои адоти ташбеҳ донистаанд. Мисол: Ватан, меҳрат ба дил азбаски ҷо шуд, Дилам аз хуррамӣ чун ғунча во шуд. Мирзо Турсунзода Дар мисраи дуюми ин байт «дилам» монанд (ташбеҳша- ванда), «чун» адоти ташбеҳ, «ғунча» монанда (ташбеҳку- нанда), «хуррамӣ» ваҷҳи ташбеҳ (сабаби ташбеҳ) мебошад. Чанд мисол:",
+   "chapterOf": "Заҳирии Самарқандӣ",
+   "decision": "reject",
+   "reason": "metre/device example: similes in the lesson on tashbeh («Чанд мисол:»)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 67,
+   "page": 67,
+   "opening": "Ҳар субҳ шитобон биравам бар сари роҳе,",
+   "leadIn": "воноӣ”, ё “моҳ”, “наргис”,“сарв” ба маънои “рӯй”, “чашм” ва “қад”. Дар су- рате, ки шоир калимаеро истифода намояд, ки маънои му- холиф ба вуҷуд ояду ин маънои мухолиф ба муҳокима ҳеҷ гуна вобастагӣ надошта бошад, онро маҷози ақлӣ мегӯянд. Истиора низ аз ҷиҳати маъно як навъи маҷоз мебошад. Мисолҳо:",
+   "chapterOf": "Масъуди Саъди Салмон",
+   "decision": "reject",
+   "reason": "metre/device example: the lesson on istiora («Мисолҳо:»)"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 86,
+   "page": 86,
+   "opening": "Ҳамзабонӣ хешию пайвандӣ аст,",
+   "leadIn": "зму- нашро нақл кунед. 2. Подшоҳ барои табобат кардани канизак чӣ чораҳо андешид? 3. Қисса бо кадом ҳодиса ба охир мерасад? 4. Бигӯед, ки Мавлавӣ дар «Маснавии маънавӣ» бештар ба кадом масъалаҳои пандуахлоқӣ диққат додааст? 5. Даҳ байти андарзҳои Мавлавиро азёд кунед. 6. Маънои ин абётро шарҳ диҳед:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "reject",
+   "reason": "exam/exercise item: «Маънои ин абётро шарҳ диҳед:»"
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 247,
+   "page": 247,
+   "opening": "Ман аз бегонагон ҳаргиз нанолам,",
+   "leadIn": "м табассуми зӯрбазӯракӣ сохта, аммо дар дилам илова кардам: «Нав аз кор омада, нафасамро рост мекунам гуфта будам, ки Аҳрор- амакатон ба саёҳат бурданд ва ба гарданам супориши тозае бор карданд. Акнун шумо бо бобоҷонатон чой нӯшида, чақ- чақ карда нишинед, ман аризанависӣ мекунам, балотон ба ҷонам!»",
+   "chapterOf": "ФАЗЛИДДИН МУҲАММАДИЕВ",
+   "decision": "reject",
+   "reason": "a bayt a character speaks in Фазлиддин Муҳаммадиев's prose story"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 3,
+   "page": 3,
+   "opening": "Эй Шарқ, ту ибтидои лавҳу қаламӣ,",
+   "leadIn": " бароятон сабақ дода меша- вад, аз они тоҷикон буда, аз тарафи онҳо офарида шудааст. Адабиёти тоҷик аз ҷумлаи қадимтарин адабиёти мардумони рӯйи дунё ба шумор меравад ва таърихи беш аз сеҳазорсола до- рад. Рубоии зерини шоири муосири тоҷик Лоиқ Шералӣ ишора ба ҳамин қадимӣ будани адабиёти тоҷик аст:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "loiq_sherali",
+   "author": "Лоиқ Шералӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "rubai",
+   "note": "Lead-in: «Рубоии зерини шоири муосири тоҷик Лоиқ Шералӣ …:»",
+   "recordIds": [
+    "7fdcd09f-0d88-5da0-9d3f-e0af0fce2bda"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 22,
+   "page": 22,
+   "opening": "Юсуфрӯе, к-аз ӯ фиғон кард дилам,",
+   "leadIn": "ҳ он санъа- ти бадеии маънавиеро гӯянд, ки адиб дар зимни каломи манзум ё мансури худ ба воқеаҳои таърихӣ, асотирӣ, қиссаву афсонаҳо, ба қаҳрамонон ва шахсиятҳои таърихӣ, асотирӣ, ба шеъри нодири машҳур ё масали машҳур, ё оят ва ҳадиси маъруф ишора намояд. Монанди рубоии зери Абуабдуллоҳи Рӯдакӣ: 21",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "metre/device example: a rubai quoted to illustrate talmeh («Монанди рубоии зери Абуабдуллоҳи Рӯдакӣ:»); the book names Рӯдакӣ, but examples in device lessons are excluded"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 22,
+   "page": 22,
+   "opening": "Маст аст замин, зеро хӯрдаст ба ҷойи май",
+   "leadIn": "онӣ. Ӯ ин санъати шеъриро ба дараҷае фаровон истеъмол намудааст, ки баъзе аз шеърҳояш гумон мера- вад, ки маҷмуаи талмеҳҳо мебошад. Чунончи, чанд байте аз як қасидаи шоир, ки дар он силсилаи талмеҳҳо ба кор бурда шуда- аст ва ишора ба замони Сосониён, шоҳони сосонӣ ва хонадони онҳоро дар худ доранд:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "metre/device example: bayts quoted to illustrate talmeh; the poet is not named"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 32,
+   "page": 32,
+   "opening": "Ёрам сипанд агарчи бар оташ ҳамефиганд",
+   "leadIn": "то аз чашми баде ба вай газанде нарасад. Ин як одати маъмулест дар байни мардум ва зикри он ҳанӯз осори ҳунарӣ нест. Вале вақте ки ӯ мегӯяд ёри ӯро сипанду оташ ба кор нест, зеро рӯйи вай ҳамчу оташ асту холаш чун сипанд, маънии шоиронаи зебоест ва як тасвири гӯё ва заминие аз зебоиҳои ёраш мебошад.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "2a94d1c2-8f15-4d08-948c-b7e9491d8273",
+   "author": "Ҳанзалаи Бодғисӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Ҳанзалаи Бодғисӣ дар шеъре аз он ёд овардааст … вақте ки ӯ мегӯяд …»",
+   "recordIds": [
+    "1bac2af3-20c1-5eb4-8ce7-acbce7654237"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 32,
+   "page": 32,
+   "opening": "Ба мижа дил зи ман бидуздидӣ,",
+   "leadIn": " бо холи чун сипанд. Абусулайки Ҷурҷонӣ маънии ошиқонаро бо ҳазли малеҳе омехтааст. Ӯ лаби дилбарро ба қозию мижгони ӯро ба дузд мо- нанд намудааст ва ба шигифт афтодааст, чӣ тавр мешавад дил- бар, ки бо мижааш дили ӯро бибурд, аз ӯ музд мехоҳад. Ва савол медиҳад, ки магар дуздӣ ба музд ҳам мешавад:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "d1bb3938-3e96-42a9-b73d-bafbabf8554f",
+   "author": "Абусулайки Ҷурҷонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Абусулайки Ҷурҷонӣ маънии ошиқонаро бо ҳазли малеҳе омехтааст … Ва савол медиҳад …:». Phase 7 rejected it as unclear; the paragraph names Абусулайк.",
+   "recordIds": [
+    "acc0c916-ae1d-5dba-811f-06046aded492"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 32,
+   "page": 32,
+   "opening": "Нигорино, ба нақди ҷон-т надҳам,",
+   "leadIn": "ман бидуздидӣ, Эй ба лаб қозию ба мижгон дузд! Музд хоҳӣ, ки дил зи ман бибарӣ? Ин шигифтӣ кӣ дид: дузди бамузд? Маҳмуди Варроқ ба нигори хеш гуфтааст, ки ту гаронбаҳоӣ, арзон намедиҳам, ҳатто ба нақди ҷони хеш. Чун домани вас- латро ба даст гирифтам, ҷон медиҳам, вале домони туро раҳо нахоҳам кард:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "1b65d9d8-0e3d-4e02-8c65-30f98e84e109",
+   "author": "Маҳмуди Варроқи Ҳиравии ас-Сиҷзӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Маҳмуди Варроқ ба нигори хеш гуфтааст …:». Phase 7 rejected it because it is not the page-range owner's; it is filed under Варроқ now.",
+   "recordIds": [
+    "493a4e9f-3bdb-52cf-ac8b-235d29c56a7b"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 33,
+   "page": 33,
+   "opening": "Меҳтарӣ гар ба коми шер-дар аст,",
+   "leadIn": " андоз ва онро аз коми шер биҷӯй, зеро роҳи дигаре нест: ё бузургию иззату неъмату ҷоҳ ё бояд чун мардон дар марги рӯёрӯй бимурд. Чунин имтиҳон дар таомули шаҳрёрӣ маъмул буд, тоҷи шоҳиро миёни ду шери жаён меандохтанд ва талабгори тахти шоҳӣ онро мебоист аз он миён мегирифт ва ба сари хеш мегузошт:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "2a94d1c2-8f15-4d08-948c-b7e9491d8273",
+   "author": "Ҳанзалаи Бодғисӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Пораи дигаре, ки аз Ҳанзалаи Бодғисӣ мондааст, панд аст …:»",
+   "recordIds": [
+    "32e57b2d-78ad-508a-8c4f-d7d3599fefa7"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 33,
+   "page": 33,
+   "opening": "Нахустин Каюмарс омад ба шоҳӣ,",
+   "leadIn": " замин, Беҳ, ки оби рӯй резӣ бар канор! Бут парастидан беҳ аз мардумпараст, Панд гиру кор банду гӯш дор! Масъуди Марвазӣ аз шоирони охири асри IХ буда, аз се бай- те, ки аз ӯ боқӣ мондааст, маълум мешавад, ки таърихи Аҷамро аз оғоз то замони фурӯпошии Сосониён дар қолаби маснавӣ да- роварда будааст.",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "three separate bayts of Масъуди Марвазӣ set apart by *** («аз се байте, ки аз ӯ боқӣ мондааст»); a lone bayt is not published as a work"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 36,
+   "page": 36,
+   "opening": "Ту инро дурӯғу фасона мадон,",
+   "leadIn": "фу тавсифи ин ва ё он мамдуҳ бахшида шудааст, ҳамчунин дар ҳамосаҳои худ, ки дар бораи корнамоӣ ва қаҳрамониҳои паҳлавонони номдори устураӣ ва шоҳони афсонавӣ ва таърихӣ мебошад, дурӯғро раво намедош- танд. Фирдавсӣ ҳодисаву воқеаҳои дар «Шоҳнома» баёнгардида- ро дурӯғу фасона намешуморад ва мегӯяд:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
+   "author": "Абулқосими Фирдавсӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Фирдавсӣ … дурӯғу фасона намешуморад ва мегӯяд:»",
+   "recordIds": [
+    "dbd4a221-2978-5125-a129-4b9166900563"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 37,
+   "page": 37,
+   "opening": "Ба ҳаво дарнигар, ки лашкари барф",
+   "leadIn": "буда, саршори тасвирҳои зинда, гӯё ва хонои зиндагии рӯзмарра мебошанд. Дар онҳо тасвиру маъниҳои муҷаррад, бофта ва хаёлию ғайривоқеӣ тақрибан вуҷуд надорад, чунончи: Абр ҳамегиряд чун ошиқон, Боғ ҳамехандад маъшуқвор. Раъд ҳаменолад монанди ман, Чунки бинолам ба саҳаргоҳ зор. (Шаҳиди Балхӣ) ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "5228f270-7e20-47cf-9e0b-4e6cc6fca51c",
+   "author": "Абулҳасани Оғоҷӣ",
+   "reason": "the book signs the verse with this poet's name",
+   "note": "Signed «(Абдулҳасан Оғоҷӣ)» under the verse; the book misprints Абулҳасан.",
+   "recordIds": [
+    "92d3769e-e10a-5311-b277-95235bc9dfb1"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 37,
+   "page": 37,
+   "opening": "Нилуфари кабуд нигаҳ кун миёни об",
+   "leadIn": "д ҳаменолад монанди ман, Чунки бинолам ба саҳаргоҳ зор. (Шаҳиди Балхӣ) *** Ба ҳаво дарнигар, ки лашкари барф Чун кунанд андар он ҳаме парвоз, Рост ҳамчун кабӯтарони сафед, Роҳгумкардагон зи ҳайбати боз. (Абдулҳасан Оғоҷӣ) ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0079c49a-da77-47d1-bc1e-8ff4cbb9d337",
+   "author": "Кисоии Марвазӣ",
+   "reason": "the book signs the verse with this poet's name",
+   "note": "Signed «(Кисоии Марвазӣ)» under the verse.",
+   "recordIds": [
+    "19783db0-dc85-553a-974c-7e53c1231e28"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 37,
+   "page": 37,
+   "opening": "Бар пилгӯш қатраи борон нигоҳ кун",
+   "leadIn": "н Оғоҷӣ) *** Нилуфари кабуд нигаҳ кун миёни об Чун теғи обдодаву ёқути обдор, Ҳамранги осмону ба кирдори осмон, Зардиш дар миёна чу моҳи даҳу чаҳор, Чун роҳибе, ки ду рухи ӯ солу моҳ зард В-аз митрафи кабуд ридо кардаву изор. (Кисоии Марвазӣ) ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "0079c49a-da77-47d1-bc1e-8ff4cbb9d337",
+   "author": "Кисоии Марвазӣ",
+   "reason": "the book signs the verse with this poet's name",
+   "note": "Signed «(Кисоии Марвазӣ)» under the verse.",
+   "recordIds": [
+    "33c26851-c935-5a9c-b1c2-e1fb65e3ce9b"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 38,
+   "page": 38,
+   "opening": "Ошиқӣ хоҳӣ, ки то поён барӣ,",
+   "leadIn": "*** Гунҷишк чӣ гуна ларзад аз борон, Чун ёд кунам туро, чунон ларзам. (Абулаббоси Марвазӣ) *** Моҳ гоҳе чу рӯйи ёри ман аст, Гаҳ чу ман кӯжпушту зарду низор. (Қамарии Ҷурҷонӣ) ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "3d5d70c0-6294-4b7d-b830-79db08edd6b8",
+   "author": "Робиаи Балхӣ",
+   "reason": "the book signs the verse with this poet's name",
+   "note": "Signed «(Робиаи Балхӣ)» under the verse.",
+   "recordIds": [
+    "2b18e6ff-b407-5492-9bed-f331f7a3b1ad"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 38,
+   "page": 38,
+   "opening": "Шунидам, ки бошад забони сухан",
+   "leadIn": "д сохт бо ҳар нописанд. Зишт бояд диду ангорид хуб, Заҳр бояд хӯрду пиндорид қанд. (Робиаи Балхӣ) Шоирони асри Х ба қувваи муъҷизаосои шеър, ки дар хонанда ва шунаванда ҳиссиёти нек ё бадро бармеангезад, ба аҳаммияти тарбиятӣ ва зебоишиносии он бовар доштанд. Абушакури Балхӣ дар замина чунин мегӯяд:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "dea74b1e-32da-4afc-862f-4a08fd22f8f5",
+   "author": "Абушакури Балхӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Абушакури Балхӣ дар замина чунин мегӯяд:»",
+   "recordIds": [
+    "538259ae-2396-5b48-a3f8-ea0f23316fae"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 39,
+   "page": 39,
+   "opening": "Он ҷо, ки дирам бояд, динор дарандозам",
+   "leadIn": "ни разм иштирок дошт. Байтҳои зерини Абузироаи Ҷурҷонӣ на танҳо ишора ба баландии пояи шеъри замонааш мебошад, балки нақши бузурги он дар зиндагиро низ таъкид мекунад.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "98e43b59-1d3a-440a-9d73-83b599cee7c5",
+   "author": "Абузироаи Ҷурҷонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Байтҳои зерини Абузироаи Ҷурҷонӣ …»",
+   "recordIds": [
+    "b167c42e-61dc-5aa7-abec-19a677730d8e"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 40,
+   "page": 40,
+   "opening": "Ҷоно, зи фироқи ту дилам пурхун шуд",
+   "leadIn": "аънии дигар равад. Чунонки устод Рӯдакӣ гуфтааст: Ҷуз он ки мастии ишқ аст, ҳеч мастӣ нест, Ҳамин бало-т бас аст, эй ба ҳар бало хурсанд! Бадеъшиносон аз ду навъи илтифот ёд кардаанд. Агар дар навъи якум шоир аз як маънӣ ба маънии дигар гузарад, дар навъи дувум мухотаби худро дигар мекунад. Чунончи:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "metre/device example: iltifot («Чунончи:»), no poet named"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 40,
+   "page": 40,
+   "opening": "Замони айшу вақти комронӣ",
+   "leadIn": "д. Алқисса, ба коми душманон гаштам дӯст, Як бор напурсид, ки ҳолат чун шуд? Ҳамчунин агар шоирон суханеро тамом кунанд ва сипас ҷумла ё мисраъ ва байте биоваранд, ки ба сари худ мустақил бо- шад, аммо бо суханони қаблӣ пайваст шавад ва боиси зебоии ка- лом гардад, онро низ илтифот номидаанд. Мисол:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "metre/device example: iltifot («Мисол:»), no poet named"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 45,
+   "page": 45,
+   "opening": "Агар ба давлат бо Рӯдакӣ на ҳамсонам,",
+   "leadIn": "анро кам аз вай намедонад. Ин шоири ҳасуд ва нотавонбин таъна ба кӯрии чашми Рӯдакӣ намуда, нозидааст, ки аз баҳри гетӣ (дунё, моли дунё) кӯр будан наметавонад. Ба гумони хатои вай, агар му- лук аз ҳазор як ҳиссаи он чиро, ки ба Рӯдакӣ ато кардаанд, ба ӯ диҳанд, суханро (шеърро) ҳазор чандон мегуфт:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "98e43b59-1d3a-440a-9d73-83b599cee7c5",
+   "author": "Абузироаи Ҷурҷонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Яке аз шоирони ҳамасри Рӯдакӣ бо номи Абузироаи Ҷурҷонӣ … гуфтааст, ки …:». Phase 7 rejected it from Рӯдакӣ's chapter as another poet's; it is filed under Абузироа now.",
+   "recordIds": [
+    "5632aa20-3ba8-5372-b835-3514d19730cb"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 46,
+   "page": 46,
+   "opening": "Ман мӯйи хешро на аз он мекунам сиёҳ,",
+   "leadIn": "раси- да ва мусибати пириро дида будааст. Ӯ ду байти зебое дорад ва дар он шаҳодат медиҳад, ки дар пирӣ мӯяшро сиёҳ карда будааст. Шоир аз ҳамин як ҳодисаи маъмули зиндагӣ, яъне сиёҳ кардани мӯй, ки аслан барои ҷавон шудан будааст, шеъре сохтааст, ки пур аз ҳасрати хушиҳои ҷавонӣ ва мусибати пирист.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Шоир аз ҳамин як ҳодисаи маъмули зиндагӣ … шеъре сохтааст …»",
+   "recordIds": [
+    "d30617a0-9122-5a9d-a07d-1d5f6592e996"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 47,
+   "page": 47,
+   "opening": "Рӯдакӣ рафту монд ҳикмати ӯй,",
+   "leadIn": "урӣ, Наёфтам зи атоҳо, магар пушаймонӣ. Марги Рӯдакии шоир барои аҳли адаби замонааш ва асрҳои баъдӣ андуҳи бузурге буд. Онҳо хеле хуб фаҳмида буданд, ки марг шоиреро рабуд, ки ҷовидона чун ӯ дигар нахоҳад буд ва чун ӯ пайдо нахоҳад шуд. Ин маънӣ дар марсияи яке аз ҳамасрони шоир баён гардидааст. 46",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "an elegy on Рӯдакӣ by an unnamed contemporary («дар марсияи яке аз ҳамасрони шоир»)"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 50,
+   "page": 50,
+   "opening": "Ҷаҳон ҳамеша чу чашмест, гирду гардон аст,",
+   "leadIn": "тағйир ва радду бадал будани онҳоро ба воситаи тағйири ҷой ва радду бадал овардани мазмунҳо, калимаву таркибҳо, пояҳои ҷудогонаи шеър ва қисме аз мисраъҳои он ва истеъмоли тазодҳо таъкид на- мудааст. Чунин ба назар менамояд, ки ҳар байт дар гирди меҳвари худ ба мисоли ҷаҳони гирдгардон давр мезанад.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "A passage of Рӯдакӣ's qasida «Шикоят аз пирӣ», quoted in his chapter.",
+   "recordIds": [
+    "c20c733c-968b-5539-b195-698a08cf0962"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 51,
+   "page": 51,
+   "opening": "Ҳаме чӣ донӣ, эй моҳрӯйи мушкинмӯй,",
+   "leadIn": "на бебозгашт гузаштааст. Беҳуда нест, ки «надидӣ он гаҳ», «шуд он замона» ва «бишуд, ки боз наёмад»- гӯён мисраъ ва байтҳоро ибтидо мекунад. Ва барои таъкиди ду- рии замон Рӯдакӣ, ки суханро бевосита «маро»- гӯён шуруъ на- муда буд, дар ин қисмат ҳатто дар бораи худаш ҳамчун шахси ғоиб ҳарф задааст.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "A passage of Рӯдакӣ's qasida «Шикоят аз пирӣ» (the part the book calls «Сурат»).",
+   "recordIds": [
+    "8e03219c-7fbc-5e36-b576-e24a25b1fe17"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 51,
+   "page": 51,
+   "opening": "Шуд он замона, ки ӯ шод буду хуррам буд,",
+   "leadIn": " ду- рии замон Рӯдакӣ, ки суханро бевосита «маро»- гӯён шуруъ на- муда буд, дар ин қисмат ҳатто дар бораи худаш ҳамчун шахси ғоиб ҳарф задааст. Ҳаме чӣ донӣ, эй моҳрӯйи мушкинмӯй, Ки ҳоли банда аз ин пеш бар чӣ сомон буд? Ба зулфи чавгон нозиш ҳамекунӣ ту бад-ӯ, Надидӣ он гаҳ ӯро, ки зулфчавгон буд!",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "A passage of Рӯдакӣ's qasida «Шикоят аз пирӣ» («Кайфият»).",
+   "recordIds": [
+    "c2b077be-0a0f-5c38-8f5a-f85a79ba27f9"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 53,
+   "page": 53,
+   "opening": "Ту, Рӯдакиро, эй моҳрӯ, ҳамебинӣ,",
+   "leadIn": "тақозо намудааст. Мисраъ ва байтҳои зиёди ин қисмат саропо аз санъати так­рору тарсеъ иборат шудааст.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "A passage of Рӯдакӣ's qasida «Шикоят аз пирӣ»; his name is in its first line.",
+   "recordIds": [
+    "poem_rudaki_9dd13f305fd700f1"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 58,
+   "page": 58,
+   "opening": "Ин ҷаҳонро нигар бо чашми хирад,",
+   "leadIn": "шти рӯзгор, Низ н-омӯзад зи ҳеч омӯзгор. *** Бирав, зи таҷрибаи рӯзгор баҳра бигир, Ки баҳри дафъи ҳаводис туро ба кор ояд. Ӯ ба ҷаҳон на бо чашми сар, балки бо чашми хирад нигарис­ танро таъкид мекунад ва мегӯяд, ки ин дунё мисли дарёи бузур- гест, барои гузаштан аз он аз накукорӣ киштие бояд сохт.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Ӯ ба ҷаҳон … нигаристанро таъкид мекунад ва мегӯяд …»",
+   "recordIds": [
+    "4c2eb891-57e0-5f78-afad-43c5fc35a58f"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 60,
+   "page": 60,
+   "opening": "Ай аз гули сурх ранг бирбудаву бӯ,",
+   "leadIn": "Дар шеъри Рӯдакӣ ба ҷуз мадҳ ва панд мавзуи дигаре, ки мақоми асосиро дорост, ишқ мебошад ва дар ғазал, қитъа ва рубоиҳои ӯ бозтоби густарда дорад. Муҳтавои ишқияҳои шоир- ро васфи ҷамоли зебои ёр ва шарҳи сангиндилию бемурувватӣ ва бевафоиҳои он, вафои ошиқ ташкил медиҳад.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "note": "One of three rubais set apart by *** under «ишқияҳои шоир … дар ғазал, қитъа ва рубоиҳои ӯ».",
+   "recordIds": [
+    "a99d5872-4f83-555d-a51f-05cca8988ec9"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 60,
+   "page": 60,
+   "opening": "Бе рӯйи ту хуршеди ҷаҳонсӯз мабод,",
+   "leadIn": "оби густарда дорад. Муҳтавои ишқияҳои шоир- ро васфи ҷамоли зебои ёр ва шарҳи сангиндилию бемурувватӣ ва бевафоиҳои он, вафои ошиқ ташкил медиҳад. Ай аз гули сурх ранг бирбудаву бӯ, Ранг аз пайи рух рабуда, бӯ аз пайи мӯ. Гулранг шавад, чу рӯй шӯйӣ, ҳама ҷӯ, Мушкин гардад, чу мӯ фишонӣ, ҳама кӯ. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "recordIds": [
+    "poem_rudaki_da560af384055c8d"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 60,
+   "page": 60,
+   "opening": "Бар ишқи туам на сабр пайдост, на дил,",
+   "leadIn": "сурх ранг бирбудаву бӯ, Ранг аз пайи рух рабуда, бӯ аз пайи мӯ. Гулранг шавад, чу рӯй шӯйӣ, ҳама ҷӯ, Мушкин гардад, чу мӯ фишонӣ, ҳама кӯ. *** Бе рӯйи ту хуршеди ҷаҳонсӯз мабод, Ҳам бе ту чароғи оламафрӯз мабод. Бо васли ту кас чу ман бадомӯз мабод, Рӯзе, ки туро набинам, он рӯз мабод! ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "rudaki",
+   "author": "Абӯабдуллоҳи Рӯдакӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "recordIds": [
+    "poem_rudaki_c09e8ca6d6dce271"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 60,
+   "page": 60,
+   "opening": "Ғазал рӯдакивор неку бувад,",
+   "leadIn": "ӯ баёни ғаму дарди ишқ аз ҷудоӣ, бемурувватӣ ва сангиндилии ёри зебо мебошад. ШЕЪРИ РӮДАКИВОР Шеъри рӯдакивореро, ки сурудани онро маликушшуарои дарбори Ғазнавиён ва шоири тавонои нимаи аввали асри XI Унсурӣ орзу намудаасту бо вуҷуди кӯшишаш натавониста буда- аст, чӣ шеърест ва чӣ хусусиятҳое дорад?",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "d48ec80f-951d-4dfd-b65a-6e409561a712",
+   "author": "Унсурӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Шеъри рӯдакивореро, ки сурудани онро … Унсурӣ орзу намудаасту бо вуҷуди кӯшишаш натавониста будааст, чӣ шеърест …?» The verse speaks as that poet («Ғазалҳои ман рӯдакивор нест»).",
+   "recordIds": [
+    "94559085-1ddf-571a-bc4c-d6b2b96d41bf"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 65,
+   "page": 65,
+   "opening": "Устоди Шаҳид зинда боистӣ",
+   "leadIn": "асрони номдори Абуабдуллоҳи Рӯдакӣ, бунёдгузори адабиёти фор- сии дарӣ буда, тахминан дар миёнаҳои нимаи аввали асри Х дар Балх ба дунё омадааст. Дақиқӣ дар ду маврид аз Рӯдакӣ ба сифати устоди шеъри мадеҳ ёд овардааст: ҷое бо ишораи «шоири тирачашми равшанбин» ва дигаре бо зикри бевоси- таи номи ӯ:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Дақиқӣ дар ду маврид аз Рӯдакӣ … ёд овардааст: ҷое … ва дигаре …:». Рӯдакӣ is the subject, Дақиқӣ the speaker.",
+   "recordIds": [
+    "ab94545c-bf2c-5e98-bd5b-077b5dccba86"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 65,
+   "page": 65,
+   "opening": "Киро Рӯдакӣ гуфта бошад мадеҳ,",
+   "leadIn": "дар Балх ба дунё омадааст. Дақиқӣ дар ду маврид аз Рӯдакӣ ба сифати устоди шеъри мадеҳ ёд овардааст: ҷое бо ишораи «шоири тирачашми равшанбин» ва дигаре бо зикри бевоси- таи номи ӯ: Устоди Шаҳид зинда боистӣ В-он шоири тирачашми равшанбин, То шоҳи маро мадеҳ гуфтандӣ Б-алфози хушу маонии рангин. ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "The second of the two passages the lead-in announces.",
+   "recordIds": [
+    "6cb73c59-ce13-47ea-bbd5-014c43f70686"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 66,
+   "page": 66,
+   "opening": "Маро гӯяд: «Зи чандин шеъри шоҳон",
+   "leadIn": "қиқӣ тахми- нан соли 977-978 мебошад. Дақиқӣ ҳамчун пайрави мактаби шоирии устод Рӯдакӣ чун ӯ ба ҷуз шеъри мадеҳ – қасида дар навъҳои дигари шеърӣ, мис- ли ғазал, қитъа, рубоӣ ва маснавӣ эҷод намудааст. Дар тағаззули қасидае дар мадҳи Абусаъди Музаффар аз номи «паричеҳра бути айёру дилбар» гуфтааст:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Дар тағаззули қасидае дар мадҳи Абусаъди Музаффар … гуфтааст:»",
+   "recordIds": [
+    "8e241502-3f3e-53c7-8f67-c2b8a6009b77"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 67,
+   "page": 67,
+   "opening": "Хуҷастапаю номи ӯ Зардуҳушт,",
+   "leadIn": "Маснавии Дақиқӣ бо баёни он сар мешавад, ки шоҳи яздон- параст Луҳросп тахти шоҳиро ба писараш Гуштосп медиҳад ва ба Балх меравад ва дар оташкадаи Навбаҳор ҷой мегирад ва дар ба рӯйи бегонагон баста, рӯйи ниёиш ба сӯйи Яздон мекунад. Сипас дар маснавӣ сухан аз пайдо шудани Зардушт меравад:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "note": "Lead-in: «Сипас дар маснавӣ сухан аз пайдо шудани Зардушт меравад:» (Дақиқӣ's «Гуштоспнома»).",
+   "recordIds": [
+    "279f202c-4428-5a07-89ea-9c44e10280fe"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 67,
+   "page": 67,
+   "opening": "Бигиред яксар раҳи Зардуҳушт,",
+   "leadIn": "зурги кишварҳо, пизишкони донову донишмандон ҳама ба он дин имон овардаанд ва куштӣ – камарбанди зардуштиро ба миён бастаанд. Гуштосп бо фиристодани сипоҳ ба кишварҳо ва мубадон, бунё- ди озаронгунбадон (гунбадҳои оташпарастӣ), аз ҷумла Меҳрбарзин ба густариши дини зардуштӣ пардохт ва паём фиристод:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "recordIds": [
+    "ff3a1f48-eedf-5b56-9e62-76836c0cda86"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 67,
+   "page": 67,
+   "opening": "Ба шоҳи ҷаҳон гуфт Зардушти пир,",
+   "leadIn": "здон- параст Луҳросп тахти шоҳиро ба писараш Гуштосп медиҳад ва ба Балх меравад ва дар оташкадаи Навбаҳор ҷой мегирад ва дар ба рӯйи бегонагон баста, рӯйи ниёиш ба сӯйи Яздон мекунад. Сипас дар маснавӣ сухан аз пайдо шудани Зардушт меравад: Хуҷастапаю номи ӯ Зардуҳушт, Ки Оҳармани бадкунишро бикушт.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "recordIds": [
+    "4e1a0d73-0cd0-4c24-91df-20b3dff19764"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 69,
+   "page": 69,
+   "opening": "Чунин гуфта будӣ ту, то чанд гоҳ",
+   "leadIn": "ргоҳи фархунда шоҳ, Набандад миён пеши зебанда гоҳ. Нагирад аз ӯ роҳу дини беҳӣ, Мар ин дини беҳро набошад раҳӣ, Ба шамшер ҷон аз танаш барканем . Сарашро ба дори барин бар кунем!». Ҷавоб навиштанро Зарир ба зимма мегирад ва ҳамроҳ бо Ҷомосп ва Исфандёр ҷавоб менависад ва дар он аз ҷумла мегӯяд, ки:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "recordIds": [
+    "f7cbc5e4-85b1-50b7-a886-0d73740a2c07"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 70,
+   "page": 70,
+   "opening": "Ту з-ин хок бархезу бар шав ба гоҳ,",
+   "leadIn": "аз пеши ман, Зи тан баркананд ин дили реши ман! Гуштосп бародараш Зарир, писараш Исфандёр ва дигар наз­ диконашро аз рафтан ба ҷанг нигоҳ доштанӣ мешавад. Ҷомоспи хирадманд барояш мефаҳмонад, ки агар онҳо дар сафи пеши сипоҳ набошанд, касе нахоҳад ёрист, ки пеши гурдони Чин равад ва насиҳат мекунад:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "recordIds": [
+    "bf314a8c-9d02-529a-9dee-9b1677dd55a0"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 71,
+   "page": 71,
+   "opening": "Ки «Эй номдорони эрониён,",
+   "leadIn": "ши Исфандёр таслим мешаванд ва савганд мехӯранд, ки ба дини зардуштӣ мегараванд. Бо вуҷуди зинҳор хостани сипоҳиёни Арҷосп лашкариёни Гуштоспозодагон аз сари кин: Задан(д) теғу куштанд аз эшон ҳаме, Ҷаҳон шуд зи хуншон дурахшон ҳаме. Он гоҳ Исфандёр ба онҳо хитоб намуд, ки аз куштан даст би- доранд:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "recordIds": [
+    "2f0e93e4-f373-5948-856a-a1b04e8cc442"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 73,
+   "page": 73,
+   "opening": "Шаби сиёҳ бад-он зулфакони ту монад,",
+   "leadIn": "дар навъҳои дига- ри шеърӣ – ғазал, қасида, қитъа ва рубоӣ бармеояд, ки шоир нис- бат ба гуфтани маснавӣ дар инҳо ҳунари волотаре доштааст. Дар ин қисмати осори ӯ намунаҳои шеъри нағз, «шеърҳои рӯдакивор» зиёд мебошанд. Барои мисол, ғазали зери Дақиқӣ аз беҳтарин намунаҳои шеъри ӯ ва асри Х мебошад.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "ghazal",
+   "note": "Lead-in: «ғазали зери Дақиқӣ аз беҳтарин намунаҳои шеъри ӯ …»",
+   "recordIds": [
+    "80dfaf8f-da90-5930-845f-9e5e21fedca7"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 74,
+   "page": 74,
+   "opening": "Ай абри баҳманӣ, на ба чашми ман андарӣ,",
+   "leadIn": "борандаи баҳман дар ғазали дигаре онро ба инсони ошиқе, ки аз ёр дур афтодаву аз ғами ишқи ӯ рӯзону шабон мегиряд, монанд кардааст ва як маънии шоиронаи бисёр зебо ва инсонии хотир- мон офаридааст.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "ghazal",
+   "note": "Lead-in: «… дар ғазали дигаре онро ба инсони ошиқе … монанд кардааст …»",
+   "recordIds": [
+    "8a7389dd-22b0-5199-9dc3-cd91ca5ecd76"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 74,
+   "page": 74,
+   "opening": "Кошкӣ, андар ҷаҳон шаб нестӣ,",
+   "leadIn": "н имрӯз чун парӣ. Лашкар бирафту он бути лашкаршикан бирафт, Ҳаргиз мабод кас, ки диҳад дил ба лашкарӣ! Дар шеъри Дақиқӣ, чун дар шеъри Рӯдакӣ, ҳама чиз табиӣ, равшан, сода ва шинос мебошад, зеро онҳоро ҳамарӯза дар гир- ду атрофи худ мебинад. Онҳо ҳосили мушоҳидаҳои ӯ аз зиндагии рӯзмарра мебошанд.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Дар шеъри Дақиқӣ … ҳама чиз табиӣ …»",
+   "recordIds": [
+    "e39eda03-0746-5f13-810d-3d74b86295e4"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 74,
+   "page": 74,
+   "opening": "Барафганд, эй санам, абри биҳиштӣ",
+   "leadIn": "аб, Мӯнисам то рӯз кавкаб нестӣ. В-ар мураккаб нестӣ аз некуӣ, Ҷонам аз ишқаш мураккаб нестӣ. В-ар маро бе ёр бояд зистан, Зиндагонӣ, кош, ё раб, нестӣ! Дақиқӣ, мисли ҳамаи шоирони ҳамзамонаш, дар гуфтани баҳория ҳунари воло дорад. Тасвирҳои ӯ, дар ин гуна шеърҳояш бағоят гӯё, зинда ва зебо ҳастанд.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "author": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Дақиқӣ … дар гуфтани баҳория ҳунари воло дорад …»",
+   "recordIds": [
+    "43dee5f0-9bfe-4921-b1a3-b734e7acf46e"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 147,
+   "page": 147,
+   "opening": "Гули хандон хиҷил гардад баҳорӣ,",
+   "leadIn": "ъбанд (Фаррухӣ) ва ихтирои мусаммат (Манучеҳрӣ), агарчи миқдоран дар нис- бати мадҳияҳояшон ночиз мебошанд, ҳамчунин дар ташбибу тағаззулоти қасидаҳои онҳо ба назар мерасад. Чунончи, Унсурӣ дар ташбиби яке аз қасидаҳояш ҳусни зебои нигорро ба ин хубию зебоӣ ва ба ин содагию расоӣ ба қалам овардааст:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "d48ec80f-951d-4dfd-b65a-6e409561a712",
+   "author": "Унсурӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Чунончи, Унсурӣ дар ташбиби яке аз қасидаҳояш ҳусни зебои нигорро … ба қалам овардааст:»",
+   "recordIds": [
+    "2baa4527-0386-534c-914c-216bda93480b"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 147,
+   "page": 147,
+   "opening": "Чун паранди нилгун бар рӯй пӯшад марғзор,",
+   "closing": "Боғҳои пурнигор аз доғгоҳи шаҳрёр.",
+   "leadIn": " нигори қандаҳорӣ… Ба ранг аз лолаи хуршед аксӣ, Ба бӯй аз анбари суда бухорӣ. Ҳамехандӣ, ки моҳи сарвқаддӣ, Ҳамеболӣ, ки сарви ҷӯйборӣ. Фаррухӣ дар тасвири манзараҳои табиат, хусусан фас- ли баҳорон истеъдоди фавқулода дорад. Шеъри зерин яке аз беҳтарин баҳорияҳо дар адабиёти форсии тоҷикӣ мебошад:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "282f4c69-1d14-4be2-89d3-d21f867e4964",
+   "author": "Фаррухӣ Систонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Фаррухӣ дар тасвири манзараҳои табиат … истеъдоди фавқулода дорад. Шеъри зерин яке аз беҳтарин баҳорияҳо …». The verse runs on to p. 148.",
+   "recordIds": [
+    "9f6ad4d6-1689-523a-b724-4224bdfecdfc"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 148,
+   "page": 148,
+   "opening": "Ё мо сари хасмро бикӯбем ба санг,",
+   "leadIn": "қалмуннамой, Об марворидрангу абр марворидбор. Рост пиндорӣ, ки хилъатҳои рангин ёфтанд Боғҳои пурнигор аз доғгоҳи шаҳрёр. Фаррухӣ рубоие дорад, ки дар он аз замонаи пурнайранги худ ёд меорад ва нуктаеро эрод мекунад, ки дар чунин замона як куш- таи баном будан беҳтар аз он аст, ки сад зинда бананг:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "282f4c69-1d14-4be2-89d3-d21f867e4964",
+   "author": "Фаррухӣ Систонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "rubai",
+   "note": "Lead-in: «Фаррухӣ рубоие дорад, ки …:»",
+   "recordIds": [
+    "f5ee35a7-e24c-527b-834a-5cd4d45053ff"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 148,
+   "page": 148,
+   "opening": "Хезеду хаз оред, ки ҳангоми хазон аст,",
+   "leadIn": "уртарин мусамматҳои ӯ дар тасвири фасли хазон – тирамоҳ аст. Вақте ки онро мехонед, мебинед, шоир ба воситаи сухан ҳамчун рассоми табиатпардози касбӣ рангҳои тил- лоии ин фаслро ба устодӣ бозтоб намуда, хурдтарин дигаргуниро басо нозук ва дақиқ дар ҳар яке аз мавҷудоти табиат ба мушоҳида гирифтааст.",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "1c82210c-343c-4499-9639-93f0a766b5f7",
+   "author": "Манучеҳрии Домғонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Манучеҳрӣ аз ихтироъкорони навъи шеърии мусаммат мебошад. Яке аз машҳуртарин мусамматҳои ӯ …». One band of the musammat.",
+   "recordIds": [
+    "52c65802-2032-5c41-8da1-2e181690b177"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 149,
+   "page": 149,
+   "opening": "Баромад нилгун абре зи рӯйи нилгун дарё,",
+   "closing": "Ба парвоз-андар овардаст ногаҳ баччагон анқо.",
+   "leadIn": "Хезеду хаз оред, ки ҳангоми хазон аст, Боди хунук аз ҷониби Хоразм вазон аст. Он барги хазон аст, ки бар шохи разон аст, Гӯӣ ба масал пераҳани рангразон аст. Деҳқон ба тааҷҷуб сари ангушт газон аст, К-андар чаману боғ на гул монд, на гулнор. Ва ё ӯ дар тасвири абри нилгуни баҳорӣ чунин гуфтааст: 148",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "1c82210c-343c-4499-9639-93f0a766b5f7",
+   "author": "Манучеҳрии Домғонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in (p. 148): «Ва ё ӯ дар тасвири абри нилгуни баҳорӣ чунин гуфтааст:» — ӯ is Манучеҳрӣ.",
+   "recordIds": [
+    "d293c23d-3477-56b6-b367-b618f609c32a"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 156,
+   "page": 156,
+   "opening": "Рафт ҳангоми шоирию сухан,",
+   "leadIn": "аҳояшон бештар мегардад ва дар онҳо аз беқадрии сухан, суханшинос ва мақоми иҷтимоии он дар замона баҳс ме- равад. Чунончи, Анварии Абевардӣ (ваф. 1187/88) ва Саноии Ғазнавӣ (ваф. 1140/1141), ки ҳар ду замоне дар дарбор буданд, аз пастии завқи аҳли дарбор ва бефаҳмии онҳо гувоҳӣ додаанд ва гуфтаанд:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
+   "author": "Саноии Ғазнавӣ",
+   "reason": "the book signs the verse with this poet's name",
+   "note": "Signed «(Саноӣ)» under the verse.",
+   "recordIds": [
+    "325d027d-b909-583d-9fe8-e7f7631070a2"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 156,
+   "page": 156,
+   "opening": "Эй хоҷа, макун то битавонӣ талаби илм,",
+   "leadIn": "Чунончи, Анварии Абевардӣ (ваф. 1187/88) ва Саноии Ғазнавӣ (ваф. 1140/1141), ки ҳар ду замоне дар дарбор буданд, аз пастии завқи аҳли дарбор ва бефаҳмии онҳо гувоҳӣ додаанд ва гуфтаанд: Рафт ҳангоми шоирию сухан, Рӯзи шӯхист, вақти нодонӣ. Чӣ ҳама рӯз баҳри муште дун Жожхоию ришҷунбонӣ! (Саноӣ) ***",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
+   "author": "АНВАРӢ",
+   "reason": "the book signs the verse with this poet's name",
+   "note": "Signed «(Анварӣ)» under the verse.",
+   "recordIds": [
+    "c37cc1ff-86af-55b3-9e58-712b8d10964f"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 157,
+   "page": 157,
+   "opening": "То ки шоир ба мадҳ даргӯяд:",
+   "leadIn": "** Эй хоҷа, макун то битавонӣ талаби илм, К-андар талаби ротиби ҳаррӯза бимонӣ. Рав, масхарагӣ пеша куну мутрибӣ омӯз, То доди худ аз меҳтару кеҳтар биситонӣ. (Анварӣ) Моҳияти назми дарбории асрҳои XI-XII ва дурӯғу сафса- таи хушкухолӣ будани онро Носири Хусрав беҳтар аз дигарон ошкор намудааст: 156",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "nasir_khusraw",
+   "author": "Носири Хусрав",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in (p. 156): «… дурӯғу сафсатаи хушкухолӣ будани онро Носири Хусрав беҳтар аз дигарон ошкор намудааст:»",
+   "recordIds": [
+    "80b9213f-b9a6-5f77-9402-667c77067ca5"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 157,
+   "page": 157,
+   "opening": "Боз агар шоир набошад, ҳеч нуқсон кай фитад",
+   "leadIn": "андад Бар ту, эй фитна бар сарои ғурур! Бар ту хандад, ки ғофилӣ ту аз он-к Дар сарои ғурур нест сурур. Анварӣ аз хорию залилии шеъру шоирӣ дар замонаш ба чунин натиҷае расида буд, ки шоирро дар ҷамъият вуҷуди зиёдатӣ ва бефоида шуморида, канносӣ (хокрӯбӣ, фаррошӣ)-ро аз пешаи шоирӣ авлотар медонад:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
+   "author": "АНВАРӢ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Анварӣ … канносӣ … аз пешаи шоирӣ авлотар медонад:»",
+   "recordIds": [
+    "b2a49832-c66e-56ff-a5eb-109cd6e1d915"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 160,
+   "page": 160,
+   "opening": "Ба «Шаҳнома» Фирдавсии нағзгӯй",
+   "leadIn": " маснавиаш аз «Гаршоспнома»-и мансури Абулмуайяди Балхӣ ва ки- тобе ҳам, ки бо номи «Китоби Гаршоспнома» ё «Ахбори Гаршосп- нома» шуҳрат дошта, ба сифати сарчашма истифода намудааст. Муаллифи маснавии «Гаршоспнома» ба он ифтихор дорад, ки ӯ кореро мекунад, ки Фирдавсии нағзгӯй онро анҷом надода буд:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
+   "author": "Асадии Тӯсӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Муаллифи маснавии «Гаршоспнома» ба он ифтихор дорад, ки …:». Фирдавсӣ is the subject, Асадӣ the speaker.",
+   "recordIds": [
+    "bcfd8204-768b-5c22-9c79-818f30dfe557"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 160,
+   "page": 160,
+   "opening": "Зи Рустам сухан чанд хоҳӣ шунуд,",
+   "closing": "Бикард, он чи Дастону Рустам накард.",
+   "leadIn": " достон ёд н-оварда буд. Ниҳоле буд ин руста ҳам з-он дарахт, Шуда хушку бебору пажмурда сахт. Ман акнун зи табъам баҳор оварам, Мар ин шохи навро ба бор оварам! Гузашта аз ин Асадии Тӯсӣ қаҳрамони худ – Гаршоспро аз Рус­там, ки чеҳраи адабии калидии «Шоҳнома»-и Фирдавсист, боло мегузорад ва мегӯяд:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
+   "author": "Асадии Тӯсӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Асадии Тӯсӣ қаҳрамони худ – Гаршоспро аз Рустам … боло мегузорад ва мегӯяд:». Runs on to p. 161.",
+   "recordIds": [
+    "09b1e958-4ba1-46c5-b0e4-a90ac0ed696b"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 161,
+   "page": 161,
+   "opening": "Биғуррид чун тундар андар баҳор,",
+   "leadIn": "и ҳамосӣ, аз ҷумла «Шоҳнома»-и Фирдавсӣ хос аст, аз муболиға фаровон истифода намудааст. Вале ӯ дар он ҳеч ҳаддеро риоя накардааст, муболиғаро ҳамеша аз иғроқ гузаронида, ба ғулув расонидааст. Барои намуна аз «Гаршоспнома» пораеро меорем, ки дар он аз ҷанги Гаршосп бо чаҳор бабри жаён сухан меравад:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
+   "author": "Асадии Тӯсӣ",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "note": "Lead-in: «Барои намуна аз «Гаршоспнома» пораеро меорем …:»",
+   "recordIds": [
+    "d0031f12-f3c3-46a7-a0d5-1b0d627938ed"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 164,
+   "page": 164,
+   "opening": "Рӯзе ману ҷавқе араби ҷалду сухандон",
+   "leadIn": "Дар байни панҷ қасидаи мунозирае, ки Асадии Тӯсӣ навиш- тааст, монанди «Замину осмон» , «Найзаву камон», «Шабу рӯз», «Габру мусулмон» ва «Арабу Аҷам», охирӣ арзиши хосса дорад. Дар он шуубӣ будани муаллиф ва дорои ифтихороти миллии эронӣ будани ӯ баён гардидааст. Бинобар гуфтаи муаллиф:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
+   "author": "Асадии Тӯсӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "From Асадӣ's munozara «Арабу Аҷам», quoted in his chapter.",
+   "recordIds": [
+    "512af50d-a9cf-5f7f-885f-1f630f4cf53f"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 176,
+   "page": 176,
+   "opening": "Гар бар сари моҳ барниҳӣ пояи тахт,",
+   "leadIn": "ҷавонӣ назебад. Чунонки ҷавононро пирӣ кардан назебад». Пириро нависанда ба ғаллаи сафедгашта ва меваи пухта монанд кар- дааст ва гуфтааст: «Аз он ки чун ғалла сапед гаштӣ, агар на- дараванд, ночор худ бирезад ва ҳамчунин мева, ки пухта гашт, агар начинанд, худ аз дарахт бияфтад, чунонки ман гуфтам:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "92753b88-1d31-4f79-aae4-5d36c83ab4a1",
+   "author": "Амир Унсурулмаолии Кайковус",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "note": "Printed inside a passage of «Қобуснома» that the book gives as Кайковус's words («… монанд кардааст ва гуфтааст: «…»»). Team to confirm the quatrain is his.",
+   "recordIds": [
+    "ac0ba72c-ae43-528c-a25b-e585ffcff4c2"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 233,
+   "page": 233,
+   "opening": "Гар боварат намешавад аз банда ин сухан,",
+   "leadIn": "рате ба он бувад, то шунавандаро туҳмат ва шубҳа ба сирқа наафтад. Агар шоири тазминкунанда дар аввал ба таври равшан ишора ба он кунад, ки чизе аз фалонӣ шоир тазмин мекунам ё аз гуфтаи худ, писандидатар аст. Чунонки Ҳофизи Шерозӣ ошкоро гуфтааст, ки ба шеъри Камолиддини Исмоил тазмин кардааст: 232",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "metre/device example: tazmin, a Ҳофиз quotation in the lesson on tazmin"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 260,
+   "page": 260,
+   "opening": "Нахустин бор гуфташ, к-«Аз куҷоӣ?»",
+   "leadIn": "ма ва таркибҳое мисли «гуфтам» ва «гуфто», «би- гуфт» ва «бигуфто», «савол» ва «ҷавоб», «пайғом» ва «паём» ва ғ. фаровон истифода менамоянд. Чунончи, Низомии Ганҷавӣ дар дос­тони «Хусрав ва Ширин» ҳангоми баёни мунозираи Хусрав ва Фарҳод намунаи олии истифода аз санъати саволу ҷавобро нишон додааст.",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "metre/device example: Низомӣ's «Хусрав ва Ширин» quoted in the lesson on «саволу ҷавоб», in Хоқонӣ's chapter"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 8,
+   "page": 8,
+   "opening": "Саломи ман бирасон, эй сабо, Бухороро,",
+   "leadIn": "яшон ёди ватан, ёди ёру дӯст мекарданд. Масалан, Носири Бухороӣ дар як ғазал ёди Бухоро карда, аз боди сабо хоҳиш мекунад, ки салому паёми ӯро ба зодгоҳаш Бухоро расонад ва бигӯяд, ки дар ғамаш зору нолон аст. Дар ин маврид хешро ба Маҷнуну Фарҳоди кӯҳкан ва Бухороро ба Лайлию Ширин ташбеҳ кардааст.",
+   "chapterOf": "Бадри Чочӣ",
+   "decision": "accept",
+   "authorId": "337370dd-7731-490b-9e92-b7f9be6ba695",
+   "author": "Носири Бухороӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "note": "Lead-in: «Масалан, Носири Бухороӣ дар як ғазал ёди Бухоро карда … ташбеҳ кардааст.»",
+   "recordIds": [
+    "6ffd8bd8-9eb7-5661-a868-164933ce9421"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 8,
+   "page": 8,
+   "opening": "Зулмати зулм тира дорад роҳ,",
+   "leadIn": " назар дар эҷодиёти адибон, пеш аз ҳама, мавзуи ватан, ғарибӣ, зулму ваҳшонияти Чингизхону Темуриён мақоми босазо доранд ва онҳо бо сад алам дарди хешро дар асарҳояшон иброз намудаанд. Дар ин мавзуъ Авҳадии Мароғӣ садои эътирозашро нисбат ба золимон баланд намуда, ононро ба адлу дод ҳидоят кардааст:",
+   "chapterOf": "Бадри Чочӣ",
+   "decision": "reject",
+   "reason": "verse the lead-in gives to Авҳадии Мароғӣ, who has no poet record"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 10,
+   "page": 10,
+   "opening": "Хуррам он рӯз, ки аз хиттаи Кирмон биравам,",
+   "leadIn": "они ин ҷараён ба ғазал зиёд буд ва андешаҳои ирфонии хешро бештар дар ғазал ифшо ме- карданд. Ғайр аз ин, ғазалҳое низ эҷод шудаанд, ки бевосита дар бораи зиндагии қаҳрамонони лирикӣ мебошанд. Ҳамин тавр, ғазалҳои тарҷумаиҳолӣ арзи вуҷуд намуданд. Чунончи, ба ин ғазали Хоҷуи Кирмонӣ таваҷҷуҳ намоед:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "a ghazal the lead-in gives to Хоҷуи Кирмонӣ, who has no poet record"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 11,
+   "page": 11,
+   "opening": "Эй абри баҳор, хор парвардаи туст,",
+   "leadIn": "1 аз акси рухи зарди ман аст, Боди саҳарӣ аз нафаси сарди ман аст. Дар чашми хушат, ки ҷони ман куштаи ӯст, Он сурхии хуни дили пурдарди ман аст. Сироҷиддини Қумрӣ дар аҳди муғулҳо рӯзгори нохуш дошт. Ин шоири хушзавқ дар сурудани рубоӣ табъи расо дошт. Ба табъи болидаи ӯ рубоии зер мисолест равшан:",
+   "chapterOf": "",
+   "decision": "reject",
+   "reason": "a rubai the lead-in gives to Маҷиддини Қумрӣ, who has no poet record"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 91,
+   "page": 91,
+   "opening": "Накутар чиз андар шеър ном аст,",
+   "leadIn": "они шоир жанрҳои рубоӣ ва қитъа ба назар мерасанд. Ҳамон шеъри аввалини Хусрав, ки дар ҳаштсолагиаш эҷод карда буд, рубоист. Мавзуи қитъаоту рубоиёти шоир рангин буда, ба масъалаҳои муҳим бахшида шудаанд. Мурод аз шеър гуфтану асар офаридан, – мегӯяд Хусрав, – номи нек гузоштан аст. Таваҷҷуҳ намоед:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "fragment",
+   "note": "Lead-in: «Мурод аз шеър гуфтану асар офаридан, – мегӯяд Хусрав, – номи нек гузоштан аст.»; his name is in the last line.",
+   "recordIds": [
+    "e98e1bad-886c-597a-a8c0-d4a72114d2d7"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 92,
+   "page": 92,
+   "opening": "Чандин тамаъу ҳирс дар обу гили ту",
+   "leadIn": "ҳалок хоҳанд гашт. Шамъ киноя аз зулм аст. Ҳар кас ки ба зулм кардан омӯхта шуд, Аз новаки мазлум дилаш дӯхта шуд. Парвона, ки бар шамъ зад, афрӯхта шуд, Бар сӯхтагон ҳар ки бизад, сӯхта шуд. Адиб чандин бор мегӯяд, ки дарбор ҷойи ришвахӯрону тамаъгарон аст. Дар рубоие ӯ ин нуктаро зикр мекунад, ки:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "note": "Lead-in: «Дар рубоие ӯ ин нуктаро зикр мекунад, ки:» — in Амир Хусрав's chapter (pp. 87–106).",
+   "recordIds": [
+    "43f5d41f-022b-578f-a9c1-125573b81708"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 92,
+   "page": 92,
+   "opening": "Не сина зи ҳирси зар ба оташ дорем,",
+   "leadIn": "у гили ту В-охир ба дили хоки сияҳ манзили ту. Ҳарчанд ки хокро бибезӣ, эй дӯст, Аз хок ҳамин хок бувад ҳосили ту. Дар ҷойи дигар шоир шукрона мекунад, ки мисли он дӯсташ дар ҳирси молу сарвати дунё нест. Бо нони ҷаву оби чоҳ зиндагии хуш ва босаодате дорад. Воқеан, Хусрав зиндагии миёнаҳолона дошт.",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "note": "Lead-in: «Дар ҷойи дигар шоир шукрона мекунад …»",
+   "recordIds": [
+    "6f094645-1720-52e9-bdf9-2e6e25d12e3f"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 93,
+   "page": 93,
+   "opening": "Дабдабаи хусравиям шуд баланд,",
+   "leadIn": "нахустин шоирест, ки ба «Хамса»-и Низомии Ганҷавӣ пайравӣ намуда, «Хамса»-и хешро офаридааст. Абдурраҳмони Ҷомӣ дар «Баҳористон» Хусравро ситоиш намуда мегӯяд: «Ба «Хамса»-и Низомӣ беҳ аз вай (Амир Хусрав) касе ҷавоб нагуфта». Амир Хусрав дар оғози «Хамса» Низомиро ба некӣ ёд карда, чунин мегӯяд: 92",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Амир Хусрав дар оғози «Хамса» Низомиро ба некӣ ёд карда, чунин мегӯяд:»",
+   "recordIds": [
+    "poem_7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482_2c1dcebcadf7eb4b"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 98,
+   "page": 98,
+   "opening": "Агарчи давлатамро субҳгоҳ аст,",
+   "leadIn": "т кардаанд. Хизрхон ишқи пок дорад ва барои ба мақсад расидан дар ин роҳ устувор аст, саъю талош дорад, вале мубориз нест. Ба гапи падару модар гӯш медиҳад. Ба ҷуз зорию тавалло, ашк рехтан, нолаи пурсӯз намудан роҳи дигареро намебинад. Барои ӯ давлату сарват, ҷоҳу мансаб ҳеҷ аст. Бинобар ин мегӯяд:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "note": "From Амир Хусрав's «Дувалронӣ ва Хизрхон», retold in his chapter.",
+   "recordIds": [
+    "6164b74e-d7f9-559b-8dad-c9dcc2d86a00"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 99,
+   "page": 99,
+   "opening": "В-агар ҳамхобае дорам дар оғӯш,",
+   "leadIn": "дар як мактубаш дарди дилашро ба тарзи зайл баён кардааст, ки бисёр риққатангез аст:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "note": "From «Дувалронӣ ва Хизрхон».",
+   "recordIds": [
+    "8f9fdeb5-df52-5993-8280-cf7cad7919ee"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 99,
+   "page": 99,
+   "opening": "Даме бо ман нишин, эй ёри дилбанд,",
+   "leadIn": " духтари тағояш сар ба болин монд, боз аз гуноҳи Хизрхон мегузарад, боз ҳамроҳи Хизрхон бо амри дил ба зиндон меравад. Лаҳзаҳои дар зиндон будани ин ду дилдода рӯзҳои фаромӯшнашаванда ва ҳаёти хушбахтонаи Дувалронӣ маҳсуб меёфт. Хусрав дар достон ин лаҳзаҳоро бисёр ҷолиб ва шоирона ба қалам додааст:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "note": "Lead-in: «Хусрав дар достон ин лаҳзаҳоро бисёр ҷолиб … ба қалам додааст:»",
+   "recordIds": [
+    "9b6e8cc4-ed8a-5554-a6a7-a4f16455f08b"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 99,
+   "page": 99,
+   "opening": "Ҳанӯзам абрувон муҳкамкамонанд,",
+   "leadIn": "анин басо шоиста тавсиф ёфтааст. Зан ҳамчун як олиҳаи зебои ин табиат бо ҳусну ҷамоли худододу расояш бо камоли маҳорат ба қалам дода шудааст. Шоир ақли расо, ишқи поки духтарони ҳиндуро дар симои Дувалронӣ нишон додааст. Дувалронӣ дар ин пора хешро аз назари зан баҳо дода, бо камоли ифтихор мегӯяд:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "author": "Амир Хусрав",
+   "reason": "a passage of the poet's masnavi, retold in the chapter",
+   "note": "From «Дувалронӣ ва Хизрхон».",
+   "recordIds": [
+    "poem_7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482_69c1086095551561"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 109,
+   "page": 109,
+   "opening": "Маро боз иттифоқ уфтод ишқи сарвболое,",
+   "leadIn": "Фарғонӣ дар сурудани ғазалу қасида ба Саноии Ғазнавӣ, Хоқонии Шервонӣ ва махсусан, ба Саъдии Шерозӣ пайравӣ кардааст. Адиб 90 ғазали хешро дар пайравӣ ба ғазалиёти Саъдӣ эҷод кардааст. Масалан, бар ғазали Саъдӣ «На ман танҳо гирифторам ба доми зулфи зебое» ғазали зерро бисёр шоирона тазмин кардааст:",
+   "chapterOf": "Сайфи Фарғонӣ",
+   "decision": "accept",
+   "authorId": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
+   "author": "Сайфи Фарғонӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "ghazal",
+   "note": "Lead-in: «… бар ғазали Саъдӣ … ғазали зерро бисёр шоирона тазмин кардааст:». Саъдӣ is the model, Сайф the author.",
+   "recordIds": [
+    "eb5132d2-07bf-52fd-8642-7ac100b03f06"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 109,
+   "page": 109,
+   "opening": "Азизи Миср нашносад, ки ӯро кист дар хона",
+   "leadIn": "фитнаангезе, Аё бе зикри ту чун най забонам бодпаймое. Чу васлат орзу дорам, нахоҳам зистан бе ту, Раво дорӣ, ки ман мискин бимирам дар таманное. Сайфи Фарғонӣ дар мақтаи ғазал боз Шайх Саъдиро ёд намуда, дар мазмуну муҳтавои ғазал ҳамақида ва ҳаммароми ӯ будани хешро иброз медорад. Таваҷҷуҳ намоед:",
+   "chapterOf": "Сайфи Фарғонӣ",
+   "decision": "accept",
+   "authorId": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
+   "author": "Сайфи Фарғонӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "The closing bayts of the same ghazal; its last line quotes Саъдӣ's «На ман танҳо гирифторам ба доми зулфи зебое» in «».",
+   "recordIds": [
+    "1c614bd3-2c1d-5224-8685-28d34d7be246"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 110,
+   "page": 110,
+   "opening": "Эй ки андар мулк гӯйӣ, мениҳам қонуни адл!",
+   "leadIn": " тозиёнаи танқид мегирад. Ғазале дорад дар радифи «адл». Дар он қаҳрамони лирикӣ амирон, ҳокимон ва дигар волиёни мутаассиби муғулро ба он хотир танқид мекунад, ки онҳо ба ном аз « адл» сухан мегӯянд, вале дар амал дар кишвар ягон қонуни адл вуҷуд надорад. Биёед, ба ин гуфтаҳои шоир таваҷҷуҳ намоем:",
+   "chapterOf": "Сайфи Фарғонӣ",
+   "decision": "accept",
+   "authorId": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
+   "author": "Сайфи Фарғонӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "note": "Lead-in: «Биёед, ба ин гуфтаҳои шоир таваҷҷуҳ намоем:»",
+   "recordIds": [
+    "a387ec52-18b7-5cb5-bd04-924828dd3876"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 111,
+   "page": 111,
+   "opening": "Манам ёро, бад-ин сон уфтода,",
+   "closing": "Ҳазин дар байтулэҳзон уфтода.",
+   "leadIn": "ишвар ҷони хешро нисор намоем. Қасидаҳои Сайфи Фарғонӣ содаю фаҳмо мебошанд. Сайфи Фарғонӣ дар қасидаи «Манам, ёро, бад-ин сон уфтода» садои эътирозу шикояташро боз ҳам баландтар кардааст. Метавон ин қасидаро қасидаи тарҷумаиҳолӣ ҳисобид. Худи ҳамин ном ҳам то андозае мазмуни қасидаро бозгӯ мекунад:",
+   "chapterOf": "",
+   "decision": "accept",
+   "authorId": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
+   "author": "Сайфи Фарғонӣ",
+   "reason": "the lead-in names this poet as the speaker",
+   "type": "qasida",
+   "note": "Lead-in: «Сайфи Фарғонӣ дар қасидаи «Манам, ёро, бад-ин сон уфтода» …:»; the last bayt names «Сайфи Фарғонӣ». The text layer's «capҳou» is «сарҳои» on the page.",
+   "recordIds": [
+    "poem_cfb751a8-dce3-4553-aef8-bc4574b2b85e_eb038c6fe9614442"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 342,
+   "page": 342,
+   "opening": "Рӯз аз хунукӣ кашида дарҳам",
+   "leadIn": "ақл мекунад. Масалан, аз як нақли Восифӣ равшан мегардад, ки ӯ дар соли 1514 дар Бухоро 100 ғазал эҷод кардааст, ки онҳо дар «Бадоеъ-ул-вақоеъ» пурра оварда шудаанд. Инчунин Восифӣ сабаби ба вуҷуд омадани қасидаи «Қаҳтӣ ва сардӣ»-ро чунин ҳикоя мекунад, ки соли 1512 дар Самарқанд зимистон сахт омад.",
+   "chapterOf": "Зайниддин Маҳмуди Восифӣ",
+   "decision": "accept",
+   "authorId": "7c389f92-ffdc-4f8e-b901-1de71acc34a9",
+   "author": "Зайниддин Маҳмуди Восифӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "qasida",
+   "note": "Lead-in: «Восифӣ сабаби ба вуҷуд омадани қасидаи «Қаҳтӣ ва сардӣ»-ро чунин ҳикоя мекунад …»",
+   "recordIds": [
+    "poem_7c389f92-ffdc-4f8e-b901-1de71acc34a9_b7963ee8145fb87e"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 162,
+   "page": 162,
+   "opening": "Бигзор, фурӯ равад ҷаҳоне!",
+   "leadIn": "ҲОФИЗИ ШЕРОЗӢ (1325 – 1389)",
+   "chapterOf": "Ҳофиз",
+   "decision": "reject",
+   "reason": "a translation: the epigraph to Ҳофиз's chapter is signed «Иоҳан Ҳёте»"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 124,
+   "page": 124,
+   "opening": "Агар сад кӯҳ бояд канд фӯлод,",
+   "leadIn": "зиёд овардааст. Масалан, дар ҳикояи «Панди Аристотолис ба фарзанд» омадааст, ки чун вафоти Аристотолис наздик омад, ӯ писарашро наздаш хонд ва гуфт: «Эй писар, дар асрори улум, дақоиқи ҳикмат умри худро базл (сарф) кардам ва бисёр гиреҳҳо ба нури ҳикмат кушодам, валекин маргро ҳеч ҳилат натвонистам:",
+   "chapterOf": "Муҳаммад Авфии Бухороӣ",
+   "decision": "reject",
+   "reason": "verse spoken inside Авфӣ's prose tale; the book does not say who wrote it"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 114,
+   "page": 114,
+   "opening": "Дамсози муғанниёни фарёд,",
+   "leadIn": "зебову мавзунтар мекунад». Дониш- манди ин соҳа Родуёнӣ хона-хона, бахш-бахш оварда- ни мисраъҳои байт, Шамси Қайси Розӣ «мусаҷҷаъ гардонда- ни калимот ва мутасовӣ доштани алфоз дар вазну қофия»-ро санъати тарсеъ гуфтаанд. Дар ин ду байт Абдурраҳмони Ҷомӣ санъати тарсеъро хеле хуб истифода бурдааст:",
+   "chapterOf": "Сайфи Фарғонӣ",
+   "decision": "reject",
+   "reason": "metre/device example: tarsee, in a lesson (two bayts of Ҷомӣ)"
+  }
+ ]
+}

@@ -496,6 +496,10 @@ void main() {
               'c03e8139-0ed8-4167-9ded-212ba3c7c564',
           'poem_5fc69b51-c38a-4427-a362-5c8a14bca835_def097ba98516b2e':
               'f3088f90-d92d-4008-83a8-a1963f50a717',
+          // Phase 8: grade 9, p. 310 prints the opening of Ҳилолӣ's qit'a
+          // that grade 5, pp. 149–150 prints in full.
+          '8db2433e-82b4-5a70-90b5-204385aa76ad':
+              'poem_f09073cb-33b4-4fcc-abf8-75959350245c_61fd5ec10e2a853c',
         };
         for (final work in rejected) {
           final verification = work['verification'] as Map<String, dynamic>;

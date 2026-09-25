@@ -23,13 +23,13 @@ Optional fields of an accepted block:
     held part of the poem); the record keeps its id and gets the full text;
   * merges -- ids of published records that print a shorter excerpt of the
     same poem (another book reprints its opening); they are merged into
-    this record (rejected as `duplicate_of:<id>`, their page named in its
-    note).
+    this record (rejected as `duplicate_canonical_work:<id>`, without text;
+    their page named in its note).
 
 A needsReview record of the same poem -- a citation that fits the block
 (`_near`) and a title that opens one of its lines -- is promoted (it keeps its id and gets the text) rather than a new record
 created; further such records are merged into it (rejected as
-`duplicate_of:<id>`).
+`extraction_false_positive:duplicate_of:<id>`, without text).
 
 A block is skipped, and reported, when
   * it is no longer found on the page, or does not read as verse;
@@ -232,13 +232,27 @@ def candidates(works, ref, first_page, last_page, lines, author=None):
     return found
 
 
-def merge_duplicate(record, into, note):
+def merge_duplicate(record, into, note, canonical=False):
+    """Retire `record` as a duplicate of `into`, in the catalogue's terms: a
+    needsReview dump candidate is an extraction false positive; a published
+    excerpt of the same poem is a duplicate of the canonical work. Either
+    way it keeps no text and no rights to show one."""
+    reason = (f"duplicate_canonical_work:{into['id']}" if canonical else
+              f"extraction_false_positive:duplicate_of:{into['id']}")
     record['verification'] = {
         'evidenceLevel': 'rejected',
-        'rejectionReason': f"duplicate_of:{into['id']}",
-        'verificationMethod': 'manualAttributionReview',
+        'rejectionReason': reason,
+        'verificationMethod': 'manualCanonicalDuplicateReview' if canonical
+        else 'manualAttributionReview',
         'verifiedAt': TODAY,
     }
+    record.update({
+        'incipit': None, 'textTajik': None, 'textPersian': None,
+        'persianScriptRepresentation': None, 'textStatus': 'needsReview',
+        'rights': {'status': 'unknown',
+                   'reasoning': f"Merged into {into['id']}.",
+                   'fullTextAllowed': False, 'excerptAllowed': False},
+    })
     record['editorialNotes'] = (
         f"Merged {TODAY} into {into['id']} («{into['title']}»), the "
         f"published text of the same poem: {note}.")
@@ -367,7 +381,7 @@ def _publish_poem(works, by_id, catalogue, templates, block, lines, pages,
         where = (f"{os.path.basename(source['sourceReference'])[:-4]}, "
                  f"p. {source['pageStart']}")
         merge_duplicate(excerpt, record, f'{where} prints the opening '
-                        'of the same poem')
+                        'of the same poem', canonical=True)
         catalogue.texts.pop(excerpt_id, None)
         record['editorialNotes'] += f' Its opening is also printed in {where}.'
     catalogue.add(record['id'], lines, block['authorId'])
