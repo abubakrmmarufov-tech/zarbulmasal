@@ -514,4 +514,29 @@ void main() {
           'Android release builds must reject dependencies without approved checksums.',
     );
   });
+
+  test('a release without the upload key fails unless it is a marked '
+      'debug-signed preview', () {
+    final gradle = File('android/app/build.gradle.kts').readAsStringSync();
+    final release = gradle.substring(gradle.indexOf('buildTypes {'));
+
+    // The real key always wins; the preview switch is checked next; with
+    // neither, a release build stops.
+    final real = release.indexOf('if (releaseConfig != null)');
+    final preview = release.indexOf('} else if (previewDebugSigning)');
+    final fail = release.indexOf(
+      'throw GradleException("Release signing '
+      'config missing")',
+    );
+    expect(real, greaterThanOrEqualTo(0));
+    expect(preview, greaterThan(real));
+    expect(fail, greaterThan(preview));
+    expect(release, contains('"previewDebugSigning"'));
+    expect(release, contains('== "true"'));
+    expect(release, contains('Not for Google Play'));
+    // The preview is only ever signed with the debug key.
+    expect(release, contains('signingConfigs.getByName("debug")'));
+    expect(release, contains('isMinifyEnabled = true'));
+    expect(release, contains('isShrinkResources = true'));
+  });
 }

@@ -53,8 +53,20 @@ android {
             val releaseBuildRequested = gradle.startParameter.taskNames.any { taskName ->
                 taskName.contains("Release", ignoreCase = true)
             }
+            // PREVIEW ONLY: -PpreviewDebugSigning=true (or the environment
+            // variable ZARBULMASAL_PREVIEW_DEBUG_SIGNING=true) signs a release
+            // build with the local debug key so testers can install it. Such
+            // an APK can never be uploaded to Google Play or updated by a
+            // Play build; without the switch a release still needs the real
+            // upload key.
+            val previewDebugSigning =
+                (project.findProperty("previewDebugSigning") as? String
+                    ?: System.getenv("ZARBULMASAL_PREVIEW_DEBUG_SIGNING")) == "true"
             if (releaseConfig != null) {
                 signingConfig = releaseConfig
+            } else if (previewDebugSigning) {
+                logger.warn("PREVIEW BUILD: release signed with the DEBUG key. Not for Google Play.")
+                signingConfig = signingConfigs.getByName("debug")
             } else if (releaseBuildRequested) {
                 // Keep production artifacts fail-closed, but do not block debug
                 // APK validation when CI/local builds have no release secret.

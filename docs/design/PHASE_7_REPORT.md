@@ -7,7 +7,7 @@ Date: 25 Sep 2026. Branch `phase7-2026-09-25`, commits `d8826d0` to the end of t
 | Check | Result |
 |---|---|
 | `flutter analyze` | No issues |
-| `flutter test` | **742 passed**, 0 failed (683 at the start of task 8) |
+| `flutter test` | **743 passed**, 0 failed (683 at the start of task 8) |
 | Coverage (`tool/check_coverage.py`, minimum 80%) | **88.9%** |
 | `tool/provenance_linter.py` | PASS, 0 errors |
 | `tool/provenance_repair_loop5_adversarial.py` | PASS |
@@ -114,6 +114,48 @@ The phone's own settings were put back afterwards: light, «Хурд», Tajik.
   - Home tile names, which are single words, shrink onto one line.
   - Tests cover both.
 - **A regression I caught during this fix:** the first version measured width with a `LayoutBuilder`. That cannot sit inside the tile grid's `IntrinsicHeight` rows, and Home went blank. The golden tests caught it, and the tiles now use a `FittedBox`.
+
+## 10. Merge and the preview release APK
+
+- **Merged into `main` locally** as a fast-forward to `fc49cdb`, so the merged tree is exactly the one where every check passed. Not pushed.
+- **Made lighter:**
+  - 8 book covers re-encoded as progressive JPEG with a quality floor (PSNR ≥ 38 dB): −342 KB.
+  - Every shipped image is referenced, so there was nothing to delete.
+  - Fonts are subset to the scripts they serve (checked with fontTools).
+  - Icon fonts are tree-shaken: MaterialIcons 1.6 MB → 11 KB.
+  - R8 minify and shrinkResources are on.
+  - No test or debug data is in the APK.
+- **Permissions:** none requested. The only entry is AndroidX's internal `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`; there is no INTERNET permission.
+- **Version:**
+  - The APKs say versionName `1.0.0-preview.1`, versionCode 2005 (4005 for the arm64 split APK), minSdk 24, targetSdk 36.
+  - `pubspec.yaml` stays on the `2.0.0` line with the versionCode raised to 2005; a test pins `2.0.0` above the published v1.0.1.
+- **Signing: debug key, preview only.**
+  - The APKs are signed with `CN=Android Debug`, v2 scheme, SHA-256 `93287a41…57f91e`, and pass `apksigner verify`.
+  - The build needs an explicit `-P previewDebugSigning=true`. Without it and without the real key, a release still fails, and a test checks that order.
+- **Build:**
+  - `flutter build apk --release --split-per-abi --obfuscate --split-debug-info=build/debug-info --tree-shake-icons --build-name=1.0.0-preview.1 --build-number=2005 -P previewDebugSigning=true`.
+  - The fallback is the same build with `--target-platform android-arm,android-arm64` instead of `--split-per-abi`.
+  - Both APKs carry the same arm64 `libapp.so`, so one debug-info folder reads crash traces from either.
+
+| APK | Size |
+|---|---|
+| arm64-v8a (send this one) | **25.0 MB** (24,969,827 bytes) |
+| armeabi-v7a | 22.4 MB (not copied) |
+| universal, arm + arm64 | 40.5 MB (60.1 MB with x86_64, which only emulators need) |
+| Phase 6 for comparison | release arm64 26.5 MB, profile arm64 36.9 MB |
+
+The arm64 APK is 1.5 MB smaller than Phase 6's, although the catalogue now has twice the poems (706 vs 347).
+
+- **On the phone:**
+  - The release build installed and started in 1.1 s (cold, `am start -W`).
+  - A tour passed: Home, Explore, Literature, Рӯдакӣ, «Бӯйи Ҷӯйи Мулиён» with the «парниён» lookup, the Lexicon and History. Screenshots are `docs/design/phase7/release_*.png`.
+  - About 170 MB PSS. The crash log has no entries for the app.
+- **Files in `~/Desktop/Zarbulmasal-preview/`:**
+  - `Zarbulmasal-1.0.0-preview.1-arm64.apk`: send this one.
+  - `Zarbulmasal-1.0.0-preview.1-universal.apk`: only if the first will not install.
+  - `debug-info/`: arm and arm64 symbols; keep them to read crash traces. They are also in `build/debug-info`, which is not committed.
+  - `FRIEND_TEST_NOTES.md`: how to install, what to try and how to report, in Tajik.
+- **For Google Play later:** see `docs/design/PLAY_STORE_READINESS.md`. The Play version cannot update over this preview; testers uninstall it first.
 
 ## CONTENT/PROVENANCE — TEAM VERIFICATION REQUIRED
 
