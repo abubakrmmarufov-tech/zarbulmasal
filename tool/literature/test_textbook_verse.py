@@ -136,6 +136,40 @@ class AttributionTest(unittest.TestCase):
             'payrav', names))
 
 
+class PoetNamesTest(unittest.TestCase):
+    POETS = [
+        {'id': 'jomi', 'canonicalName': 'Абдурраҳмони Ҷомӣ', 'aliases': []},
+        {'id': 'ahmad', 'canonicalName': 'Аҳмади Ҷомӣ', 'aliases': []},
+        {'id': 'tursun', 'canonicalName': 'Мирзо Турсунзода', 'aliases': []},
+        {'id': 'ghaffor', 'canonicalName': 'Ғаффор Мирзо', 'aliases': []},
+        {'id': 'dar', 'canonicalName': 'Дар', 'aliases': [],
+         'recordStatus': 'rejected'},
+        {'id': 'rudaki', 'canonicalName': 'Абӯабдуллоҳи Рӯдакӣ', 'aliases': []},
+    ]
+
+    def names(self):
+        from extract_textbook_poems import poet_names
+        return poet_names(self.POETS)
+
+    def test_rejected_records_give_no_names(self):
+        self.assertNotIn('дар', self.names())
+
+    def test_a_shared_last_word_names_no_one(self):
+        names = self.names()
+        self.assertNotIn('ҷомӣ', names)          # two poets: ambiguous
+        self.assertNotIn('мирзо', names)         # a title in another name
+        self.assertEqual(names['абдурраҳмони ҷомӣ'], 'jomi')
+        self.assertEqual(names['аҳмади ҷомӣ'], 'ahmad')
+
+    def test_a_unique_last_word_names_its_poet(self):
+        self.assertEqual(self.names()['рӯдакӣ'], 'rudaki')
+
+    def test_an_ordinary_word_does_not_flag_a_lead_in(self):
+        from extract_textbook_poems import quoted_from_other_poet
+        lead = 'Дар ин бора худи адиб чунин мегӯяд:'
+        self.assertFalse(quoted_from_other_poet(lead, 'jomi', self.names()))
+
+
 class LeadInTest(unittest.TestCase):
     def test_folk_songs_elegies_and_examples_are_not_the_poets_own(self):
         from extract_textbook_poems import lead_in_disqualifies

@@ -129,16 +129,25 @@ def text_above(pages, index, lines, width=400):
 
 
 def poet_names(poets):
+    """{lower-case name: poet id} for recognising poets in lead-ins and
+    signatures. Rejected records give no names. The last word of a name
+    ("Ҳофиз", "Рӯдакӣ") counts only when no other poet's name contains it:
+    a shared nisba ("Ҷомӣ", "Балхӣ") or a title ("Мирзо") names no one."""
+    poets = [p for p in poets if p.get('recordStatus') != 'rejected']
     names = {}
+    owners = {}
     for poet in poets:
         for name in [poet.get('canonicalName', '')] + list(poet.get('aliases') or []):
             key = norm(name)
             if key:
                 names[key] = poet['id']
-        # Also the last word of the canonical name ("Ҳофиз", "Рӯдакӣ").
+                for word in key.split(' '):
+                    owners.setdefault(word, set()).add(poet['id'])
+    for poet in poets:
         parts = norm(poet.get('canonicalName', '')).split(' ')
-        if parts and len(parts[-1]) > 3:
-            names.setdefault(parts[-1], poet['id'])
+        last = parts[-1] if parts else ''
+        if len(last) > 3 and owners.get(last) == {poet['id']}:
+            names.setdefault(last, poet['id'])
     return names
 
 

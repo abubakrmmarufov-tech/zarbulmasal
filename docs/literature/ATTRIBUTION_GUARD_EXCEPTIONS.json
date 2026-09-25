@@ -1,0 +1,12 @@
+{
+ "about": "Published textbook poems whose lead-in trips an automatic guard in tool/literature/audit_textbook_poems.py, but which a person read and confirmed. Each entry quotes the lead-in and says why the guard is wrong here.",
+ "reviewedAt": "2026-09-25",
+ "exceptions": [
+  {"id": "poem_7c389f92-ffdc-4f8e-b901-1de71acc34a9_318810cd487b4d39", "leadIn": "Мавлоно Наҳвии Ҳиротӣ … ҳаҷв карда буд ва баъзе абёти он қасидаи ҳаҷвия ин аст:", "note": "«ҳаҷв карда буд» trips the satire guard; the satire is Наҳвӣ's own, and the record is filed under Наҳвӣ."},
+  {"id": "poem_5ec16ef0-b9c8-44e1-a6fc-4a01ee3f7def_83e345c4a59e3250", "leadIn": "Ибни Ямин дар ғазалсароӣ ба Камол ва Саъдӣ пайравӣ намудааст:", "note": "Камол and Саъдӣ are named as models; the verse, signed «Ибни Ямин» in its first line, is his."},
+  {"id": "poem_savdo_72faa2594c24ad08", "leadIn": "Чунончи, ғазали зеринро, ки зери нуфузи ашъори … Бедил гуфтааст, мунтахабан зикр хоҳем кард:", "note": "Бедил is named as an influence; the ghazal is Савдо's."},
+  {"id": "poem_2e7a713f-c3d2-449e-bd6a-a4b5b7350201_f7e642e8a511ca5b", "leadIn": "… ном маснавиаш, ки дар ҷавоби «Миръоти ибрат»-и Аҷзии Самарқандӣ эҷод гардидааст …:", "note": "Аҷзӣ wrote the work Асирӣ answers; the masnavi is Асирӣ's."},
+  {"id": "poem_e859c1ae-03b9-4add-8079-7fa5bcf64ef7_03ae5755744c7497", "leadIn": "… қасри подшоҳӣ равшану возеҳ эҳсос мешавад:", "note": "«возеҳ» here is the adjective 'clear', not the poet Возеҳ."},
+  {"id": "3ea8f63f-54e7-5edf-9c07-e2cb45af8474", "leadIn": "… дар фасли Хоҷа Ҳофиз андешаи худро бо як пора шеъри устод Лоиқ ҳусни анҷом бубахшем:", "note": "The chapter is Ҳофиз's; the lead-in names Лоиқ as the author, and the record is filed under Лоиқ."}
+ ]
+}
