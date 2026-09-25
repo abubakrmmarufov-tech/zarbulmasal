@@ -500,6 +500,16 @@ void main() {
           // that grade 5, pp. 149–150 prints in full.
           '8db2433e-82b4-5a70-90b5-204385aa76ad':
               'poem_f09073cb-33b4-4fcc-abf8-75959350245c_61fd5ec10e2a853c',
+          // Grade 5, pp. 275–278: two pieces of Миршакар's «Ленин дар
+          // Помир» (фасли нахуст), now one passage.
+          'poem_a7feaa09-c83f-44f2-a69e-0a46ba957dbc_da64ab2ee3ff5cff':
+              'poem_a7feaa09-c83f-44f2-a69e-0a46ba957dbc_eca93af5527d4f40',
+          'poem_a7feaa09-c83f-44f2-a69e-0a46ba957dbc_3ad8a490343d82d3':
+              'poem_a7feaa09-c83f-44f2-a69e-0a46ba957dbc_eca93af5527d4f40',
+          // Grade 7, p. 222 quotes the opening of Аминзода's «Имзо мекунем»
+          // (pp. 227–229).
+          'poem_12fb0e82-f108-4e71-8207-74d0540639d3_3f89fb0bcd1bec1f':
+              'poem_12fb0e82-f108-4e71-8207-74d0540639d3_f398887d5a62325b',
         };
         for (final work in rejected) {
           final verification = work['verification'] as Map<String, dynamic>;

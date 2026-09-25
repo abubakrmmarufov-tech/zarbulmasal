@@ -65,6 +65,32 @@ class TakeSpanTest(unittest.TestCase):
                                'Додар – бародари хурд.')
         self.assertIn('glossary', why)
 
+    def test_a_refrain_closes_the_span_only_after_the_named_line(self):
+        page = ('Духтари ҳиндӣ адолатхоҳ шуд,\n'
+                'Олам аз таърихи он огоҳ шуд.\n'
+                'Ҳиндудухтарро саодатманд кард,\n'
+                'Меҳмон бинмудаву хурсанд кард.\n'
+                'Олам аз таърихи он огоҳ шуд.\n')
+        taken, _ = take_span(['', page], 1, 'Духтари ҳиндӣ адолатхоҳ шуд,',
+                             'Олам аз таърихи он огоҳ шуд.')
+        self.assertEqual(len(taken[0]), 2)
+        taken, _ = take_span(['', page], 1, 'Духтари ҳиндӣ адолатхоҳ шуд,',
+                             'Олам аз таърихи он огоҳ шуд.',
+                             after='Ҳиндудухтарро саодатманд кард,')
+        self.assertEqual(len(taken[0]), 5)
+
+    def test_a_lenient_span_keeps_dashed_verse_on_a_flush_page(self):
+        page = ('Буд равшан ҳаст оташ! Лекин он –\n'
+                'Хонаи кӣ – дӯстон ё душманон\n'
+                'Гарму равшан мешавад аз шӯълааш?\n'
+                'Дигаре мегуфт: «Оре, Болшевой» -\n')
+        args = (['', page], 1, 'Буд равшан ҳаст оташ! Лекин он –',
+                'Дигаре мегуфт: «Оре, Болшевой» -')
+        self.assertIsNone(take_span(*args)[0])
+        taken, why = take_span(*args, lenient=True)
+        self.assertIsNone(why)
+        self.assertEqual(len(taken[0]), 4)
+
     def test_a_span_that_takes_in_a_glossary_is_refused(self):
         taken, why = take_span(['', PAGE_A, PAGE_B], 1,
                                'Нури чашми Ватан, эй бачаи афғон, афсӯс,',

@@ -19,6 +19,8 @@ Optional fields of an accepted block:
   * heading: true -- the poem is known by the printed title above it
     (sentence case), not by its first line;
   * type -- the form the book names (ghazal, rubai, qasida, fragment, epic);
+  * after, lenient -- passed to take_span (a refrain that ends the poem is
+    printed earlier too; dashed verse lines on a flush-left page);
   * replaces -- the id of a published record this block repairs (the record
     held part of the poem); the record keeps its id and gets the full text;
   * merges -- ids of published records that print a shorter excerpt of the
@@ -87,7 +89,8 @@ def take_block(pages, block):
     """(lines, first page, last page) of `block`, or None with a reason."""
     if block.get('closing'):
         taken, why = take_span(pages, block['pdfPage'], block['opening'],
-                               block['closing'])
+                               block['closing'], block.get('after'),
+                               bool(block.get('lenient')))
         if taken is None:
             return None, why
         lines, first, last = taken
@@ -120,12 +123,14 @@ def printed_heading(pages, index, opening):
         return result[0]
     lines = pages[index].split('\n')
     key = norm(opening)[:24]
-    from textbook_verse import clean_line, is_heading
+    from textbook_verse import _label, clean_line, is_heading
     for i, line in enumerate(lines):
         if norm(clean_line(line)).startswith(key):
             above = [l for l in lines[:i] if l.strip()]
             heading = []
             for raw in reversed(above):
+                if _label.match(raw.strip()) and not heading:
+                    continue            # «(фасли нахуст)» under the title
                 if not is_heading(raw):
                     break
                 heading.insert(0, raw.strip())
@@ -259,23 +264,22 @@ def merge_duplicate(record, into, note, canonical=False):
 
 
 def pages_of(pages, first, last, lines):
-    """(first, last) PDF pages on which `lines` are printed, searched
-    within first..last: the page of the first line, and of the last line
-    after it."""
+    """(first, last) PDF pages on which `lines` are printed, within
+    first..last: the page of the first line, and the last page there that
+    prints the last line (a closing refrain may also be the poem's title)."""
     from textbook_verse import clean_line
     verse = [line for line in lines if line]
 
-    def find(line, begin):
-        for i in range(begin, last + 1):
-            if any(norm(clean_line(raw)) == norm(line)
-                   for raw in pages[i].split('\n')):
-                return i
-        return None
-    start = find(verse[0], first)
+    def prints(i, line):
+        return any(norm(clean_line(raw)) == norm(line)
+                   for raw in pages[i].split('\n'))
+    start = next((i for i in range(first, last + 1) if prints(i, verse[0])),
+                 None)
     if start is None:
         return first, last
-    end = find(verse[-1], start)
-    return start, end if end is not None else last
+    end = next((i for i in range(last, start - 1, -1) if prints(i, verse[-1])),
+               last)
+    return start, end
 
 
 def _poems(block, lines):

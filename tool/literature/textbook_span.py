@@ -30,7 +30,7 @@ from textbook_verse import (
     norm,
 )
 
-MAX_PAGES = 4       # a span never runs over more pages than this
+MAX_PAGES = 8       # a span never runs over more pages than this
 _STARS = ('***', '* * *', '*')
 
 _LOOKALIKE = str.maketrans({
@@ -74,14 +74,14 @@ def fix_lookalikes(text):
     return '\n'.join(out_lines), changes
 
 
-def _not_verse(line, verse_indent=0):
+def _not_verse(line, verse_indent=0, lenient=False):
     """Why `line` cannot be part of a poem, or None. A line with a dash
     («Додарам – қуввати рӯҳ…») reads as a glossary entry, and one ending in
     a hyphen («…дар бари худ-») as hyphenated prose, only when it is set
     left of indented verse, or the verse is flush left."""
     stripped = line.strip()
     indent = len(line) - len(line.lstrip(' '))
-    glossary_like = verse_indent < 2 or indent < verse_indent - 1
+    glossary_like = not lenient and (verse_indent < 2 or indent < verse_indent - 1)
     if stripped.lower().strip(' .:') in _SECTION_LABELS:
         return 'a glossary or exercise label'
     if is_heading(line):
@@ -104,8 +104,15 @@ def _matches(line, wanted):
     return bool(key) and norm(clean_line(line)).startswith(key)
 
 
-def take_span(pages, index, opening, closing):
-    """((lines, first page, last page), None) or (None, reason)."""
+def take_span(pages, index, opening, closing, after=None, lenient=False):
+    """((lines, first page, last page), None) or (None, reason).
+
+    `after`: a line the span must pass before `closing` counts (a refrain
+    that ends the poem is printed earlier too). `lenient`: a reviewer who
+    read the page says its dashed lines («Хонаи кӣ – дӯстон …») and lines
+    ending in a hyphen are verse, on a page set flush left where the
+    indent cannot tell; headings, questions, labels, footnotes and
+    prose-length lines are still refused."""
     if len(norm(opening)) < 10 or len(norm(closing)) < 10:
         return None, 'opening and closing must quote a whole line'
     lines = pages[index].split('\n')
@@ -114,6 +121,7 @@ def take_span(pages, index, opening, closing):
     if start is None:
         return None, 'the opening line is not on the page'
     block, blank = [], False
+    passed = after is None
     page, row = index, start
     verse_indent = len(lines[start]) - len(lines[start].lstrip(' '))
     while page < len(pages) and page < index + MAX_PAGES:
@@ -134,14 +142,16 @@ def take_span(pages, index, opening, closing):
                 continue
             if verse_indent is None:
                 verse_indent = len(line) - len(line.lstrip(' '))
-            why = _not_verse(line, verse_indent)
+            why = _not_verse(line, verse_indent, lenient)
             if why:
                 return None, f'the span takes in {why}: «{line.strip()}»'
             if blank:
                 block.append('')
                 blank = False
             block.append(clean_line(line))
-            if _matches(line, closing):
+            if not passed and _matches(line, after):
+                passed = True
+            elif passed and _matches(line, closing):
                 return (block, index, page), None
         page, row, blank = page + 1, 0, False
     return None, 'the closing line was not found after the opening'

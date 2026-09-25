@@ -277,6 +277,15 @@ class Phase8OptionsTest(unittest.TestCase):
         self.assertEqual(skipped[0][1], 'unknown record nope')
 
 
+class PagesOfTest(unittest.TestCase):
+    def test_the_last_line_is_found_on_the_last_page_that_prints_it(self):
+        from publish_reviewed_blocks import pages_of
+        pages = ['', 'ДАВОМИ НЕК РОҲАТРО!\nСатри якум,\n',
+                 'Сатри дуюм,\nДавоми нек роҳатро!\n']
+        self.assertEqual(pages_of(pages, 1, 2, ['Сатри якум,', 'Сатри дуюм,',
+                                               'Давоми нек роҳатро!']), (1, 2))
+
+
 class ShippedReviewTest(unittest.TestCase):
     def test_every_block_has_a_decision_and_a_reason(self):
         paths = glob.glob(os.path.join(ROOT, 'docs', 'literature',

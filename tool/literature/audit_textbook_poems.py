@@ -39,7 +39,7 @@ from extract_textbook_poems import (  # noqa: E402
 )
 from textbook_verse import (  # noqa: E402
     MAX_VERSE_CHARS, MIN_INDENT, SHALLOW, _indent, _indented_paragraph,
-    _starts_paragraph, clean_line, norm,
+    _starts_paragraph, clean_line, is_heading, norm,
 )
 
 WORKS = 'assets/data/literature/works.json'
@@ -162,6 +162,15 @@ def printed_pages(work, pages, index):
             number[max(i for _, i, _ in located)])
 
 
+def _opens_paragraph(lines, j):
+    """textbook_verse._starts_paragraph, except that a heading set flush
+    left under the last line of a poem is not a prose paragraph."""
+    if not _starts_paragraph(lines, j):
+        return False
+    nxt = next((l for l in lines[j + 1:] if l.strip()), '')
+    return not is_heading(nxt)
+
+
 def prose_lines(work, pages, index):
     """Lines of the work printed as prose: a paragraph opening, or a
     lead-in ending in ':' set left of the verse. Each page is judged by
@@ -180,7 +189,7 @@ def prose_lines(work, pages, index):
                       if len(lines[j].strip()) > MAX_VERSE_CHARS]
             continue
         prose += [line for line, j in rows
-                  if _starts_paragraph(lines, j) or
+                  if _opens_paragraph(lines, j) or
                   _indented_paragraph(lines, j, verse_indent) or
                   (line.strip().endswith(':') and
                    _indent(lines[j]) <= verse_indent - SHALLOW)]

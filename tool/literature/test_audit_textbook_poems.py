@@ -90,6 +90,13 @@ class Phase8AuditTest(unittest.TestCase):
         _, failures = audit([work(text)], {'b': ['', page]}, NAMES)
         self.assertEqual(failures[0][1], 'prose lines inside the poem')
 
+    def test_a_heading_flush_left_under_the_last_line_is_not_prose(self):
+        page = PAGE.replace('                                   52',
+                            'САВОЛ ВА СУПОРИШ\n    Шоир дар ин шеър чӣ мегӯяд?\n'
+                            '                                   52')
+        _, failures = audit([work(POEM)], {'b': ['', page]}, NAMES)
+        self.assertEqual(failures, [])
+
     def test_reviewed_ids_prefer_the_ids_the_publisher_recorded(self):
         blocks = [{'decision': 'accept', 'book': 'b', 'pdfPage': 1,
                    'opening': 'x', 'recordIds': ['r1', 'r2']},
