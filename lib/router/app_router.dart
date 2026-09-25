@@ -17,6 +17,7 @@ import '../features/flashcards/flashcards_screen.dart';
 import '../features/daily/daily_proverb_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/literature/presentation/presentation.dart';
+import '../features/literature/domain/literary_work.dart';
 import '../features/literature/domain/poet_era.dart';
 import '../features/history/presentation/history_screen.dart';
 import '../features/history/presentation/history_detail_screen.dart';
@@ -153,7 +154,12 @@ GoRouter _buildAppRouter() {
       ),
       GoRoute(
         path: '/literature/works',
-        builder: (context, state) => const WorksListScreen(),
+        builder: (context, state) {
+          final form = WorkType.fromString(state.uri.queryParameters['form']);
+          return WorksListScreen(
+            initialForm: form == WorkType.other ? null : form,
+          );
+        },
       ),
       GoRoute(
         path: '/literature/work/:id',

@@ -12,9 +12,13 @@ import '../../../core/utils/search_normalizer.dart';
 import 'literary_author_display_text.dart';
 import 'literary_work_display_text.dart';
 
-/// A screen listing all verified and approved literary works.
+/// A screen listing all verified and approved literary works, searchable
+/// and filtered by form (ghazal, rubai, masnavi, qit'a, qasida).
 class WorksListScreen extends ConsumerStatefulWidget {
-  const WorksListScreen({super.key});
+  const WorksListScreen({super.key, this.initialForm});
+
+  /// The form to show first (from `?form=`); null shows every work.
+  final WorkType? initialForm;
 
   @override
   ConsumerState<WorksListScreen> createState() => _WorksListScreenState();
@@ -23,6 +27,7 @@ class WorksListScreen extends ConsumerStatefulWidget {
 class _WorksListScreenState extends ConsumerState<WorksListScreen> {
   final _search = TextEditingController();
   String _query = '';
+  late WorkType? _form = widget.initialForm;
 
   @override
   void dispose() {
@@ -30,8 +35,12 @@ class _WorksListScreenState extends ConsumerState<WorksListScreen> {
     super.dispose();
   }
 
-  /// Works whose title, first line or poet matches the query.
+  /// Works of the chosen form whose title, first line or poet matches the
+  /// query.
   List<LiteraryWork> _filter(List<LiteraryWork> works, DisplayLanguage lang) {
+    if (_form != null) {
+      works = works.where((work) => work.type == _form).toList();
+    }
     if (_query.trim().isEmpty) return works;
     final authors = {
       for (final author
@@ -162,26 +171,96 @@ class _WorksListScreenState extends ConsumerState<WorksListScreen> {
                 }
 
                 final shown = _filter(works, lang);
+                final forms = _FormChips(
+                  works: works,
+                  selected: _form,
+                  onSelected: (form) => setState(() => _form = form),
+                );
                 if (shown.isEmpty) {
-                  return SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: EmptyState(
-                      icon: Icons.search_off,
-                      title: AppTranslations.get('lit_no_results', lang),
-                    ),
+                  return SliverMainAxisGroup(
+                    slivers: [
+                      SliverToBoxAdapter(child: forms),
+                      SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: EmptyState(
+                          icon: Icons.search_off,
+                          title: AppTranslations.get('lit_no_results', lang),
+                        ),
+                      ),
+                    ],
                   );
                 }
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate((context, index) {
-                    final work = shown[index];
-                    return _WorkListItem(work: work);
-                  }, childCount: shown.length),
+                return SliverMainAxisGroup(
+                  slivers: [
+                    SliverToBoxAdapter(child: forms),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        final work = shown[index];
+                        return _WorkListItem(work: work);
+                      }, childCount: shown.length),
+                    ),
+                  ],
                 );
               },
             ),
             const SliverToBoxAdapter(child: SizedBox(height: 32)),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// "All" and each browsable form that has works, with its count.
+class _FormChips extends ConsumerWidget {
+  const _FormChips({
+    required this.works,
+    required this.selected,
+    required this.onSelected,
+  });
+
+  final List<LiteraryWork> works;
+  final WorkType? selected;
+  final ValueChanged<WorkType?> onSelected;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lang = ref.watch(displayLanguageProvider);
+    final counts = <WorkType, int>{};
+    for (final work in works) {
+      counts[work.type] = (counts[work.type] ?? 0) + 1;
+    }
+    final forms = [
+      for (final form in LiteraryWorkDisplayText.browsableForms)
+        if ((counts[form] ?? 0) > 0) form,
+    ];
+    if (forms.isEmpty) return const SizedBox.shrink();
+    Widget chip(String label, WorkType? form) => Padding(
+      padding: const EdgeInsetsDirectional.only(end: 8),
+      child: ChoiceChip(
+        label: Text(label),
+        selected: selected == form,
+        onSelected: (_) => onSelected(form),
+      ),
+    );
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.fromLTRB(
+        QalamSpacing.pageH,
+        0,
+        QalamSpacing.pageH,
+        12,
+      ),
+      child: Row(
+        children: [
+          chip(AppTranslations.get('lit_form_all', lang), null),
+          for (final form in forms)
+            chip(
+              '${LiteraryWorkDisplayText.form(form, lang)} · '
+              '${AppTranslations.formatNumber(counts[form]!, lang)}',
+              form,
+            ),
+        ],
       ),
     );
   }

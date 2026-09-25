@@ -608,24 +608,6 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
     );
   }
 
-  static String _genreLabel(WorkType type, DisplayLanguage lang) {
-    switch (type) {
-      case WorkType.ghazal:
-        return AppTranslations.get('lit_genre_ghazal', lang);
-      case WorkType.rubai:
-        return AppTranslations.get('lit_genre_rubai', lang);
-      case WorkType.qasida:
-        return AppTranslations.get('lit_genre_qasida', lang);
-      case WorkType.poem:
-        return AppTranslations.get('lit_genre_poem', lang);
-      case WorkType.epic:
-        return AppTranslations.get('lit_genre_masnavi', lang);
-      case WorkType.folk:
-        return AppTranslations.get('lit_genre_folk', lang);
-      case WorkType.fragment:
-      case WorkType.anthem:
-      case WorkType.other:
-        return AppTranslations.get('lit_genre_other', lang);
-    }
-  }
+  static String _genreLabel(WorkType type, DisplayLanguage lang) =>
+      LiteraryWorkDisplayText.form(type, lang);
 }

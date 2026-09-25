@@ -445,20 +445,8 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
     return ReaderScriptMode.persian;
   }
 
-  String _genreName(WorkType type, DisplayLanguage lang) {
-    final key = switch (type) {
-      WorkType.ghazal => 'lit_genre_ghazal',
-      WorkType.rubai => 'lit_genre_rubai',
-      WorkType.qasida => 'lit_genre_qasida',
-      WorkType.poem => 'lit_genre_poem',
-      WorkType.fragment => 'lit_genre_qita',
-      WorkType.folk => 'lit_genre_folk',
-      WorkType.anthem => 'lit_genre_song',
-      WorkType.epic => 'lit_genre_masnavi',
-      WorkType.other => 'lit_genre_other',
-    };
-    return AppTranslations.get(key, lang);
-  }
+  String _genreName(WorkType type, DisplayLanguage lang) =>
+      LiteraryWorkDisplayText.form(type, lang);
 }
 
 /// The desktop context pane: the connections (more by the poet, the

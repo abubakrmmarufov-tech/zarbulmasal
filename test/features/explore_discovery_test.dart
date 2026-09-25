@@ -9,6 +9,7 @@ import 'package:zarbulmasal/features/explore/widgets/discover_today.dart';
 import 'package:zarbulmasal/features/literature/data/literature_providers.dart';
 import 'package:zarbulmasal/features/literature/data/runtime_works_codec.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
+import 'package:zarbulmasal/features/literature/presentation/literary_work_display_text.dart';
 import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
 import '../helpers/test_helper.dart';
@@ -98,5 +99,80 @@ void main() {
     await tester.tap(find.text(tj('lit_era_all')));
     await tester.pumpAndSettle();
     expect(find.textContaining('Рӯдакӣ'), findsWidgets);
+  });
+
+  testWidgets('Explore offers poems by form, each with its count', (
+    tester,
+  ) async {
+    await openApp(
+      tester,
+      route: '/explore',
+      height: 2400,
+      overrides: [
+        approvedWorksProvider.overrideWith((ref) => Future.value(_works)),
+      ],
+    );
+    expect(find.byType(FormStrip), findsOneWidget);
+    expect(find.text(tj('explore_forms_title').toUpperCase()), findsOneWidget);
+    final ghazals = _works.where((w) => w.type == WorkType.ghazal).length;
+    expect(ghazals, greaterThan(0));
+    expect(find.text(tj('lit_genre_ghazal')), findsOneWidget);
+    expect(
+      find.text(
+        AppTranslations.get('explore_poems_count', DisplayLanguage.tajik, [
+          AppTranslations.formatNumber(ghazals, DisplayLanguage.tajik),
+        ]),
+      ),
+      findsWidgets,
+    );
+  });
+
+  testWidgets('the poem list opens filtered by form and can show all', (
+    tester,
+  ) async {
+    LiteraryWork work(String id, String title, String type) =>
+        LiteraryWork.fromJson({
+          ..._works.first.toJson(),
+          'id': id,
+          'title': title,
+          'incipit': title,
+          'type': type,
+        });
+    await openApp(
+      tester,
+      route: '/literature/works?form=rubai',
+      height: 1600,
+      overrides: [
+        approvedWorksProvider.overrideWith(
+          (ref) async => [
+            work('a', 'Рубоии нахуст', 'rubai'),
+            work('b', 'Ғазали дуюм', 'ghazal'),
+          ],
+        ),
+      ],
+    );
+    final selected = tester
+        .widgetList<ChoiceChip>(find.byType(ChoiceChip))
+        .where((c) => c.selected)
+        .map((c) => (c.label as Text).data)
+        .toList();
+    expect(selected, ['${tj('lit_genre_rubai')} · 1']);
+    expect(find.text('Рубоии нахуст'), findsOneWidget);
+    expect(find.text('Ғазали дуюм'), findsNothing);
+
+    await tester.tap(find.text(tj('lit_form_all')));
+    await tester.pumpAndSettle();
+    expect(find.text('Ғазали дуюм'), findsOneWidget);
+  });
+
+  test('a masnavi is named «Маснавӣ», a qit\'a «Қитъа»', () {
+    expect(
+      LiteraryWorkDisplayText.form(WorkType.epic, DisplayLanguage.tajik),
+      'Маснавӣ',
+    );
+    expect(
+      LiteraryWorkDisplayText.form(WorkType.fragment, DisplayLanguage.tajik),
+      'Қитъа',
+    );
   });
 }

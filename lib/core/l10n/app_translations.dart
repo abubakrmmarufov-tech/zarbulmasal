@@ -66,6 +66,9 @@ class AppTranslations {
     'explore_poets_count': '\${0} шоир',
     'explore_grades_title': 'Аз рӯи синф',
     'explore_timeline_title': 'Роҳи таърих',
+    'explore_forms_title': 'Шеърҳо аз рӯи шакл',
+    'explore_poems_count': '\${0} шеър',
+    'lit_form_all': 'Ҳама',
     'explore_all_sections': 'Ҳамаи бахшҳо',
     'learn_title': 'Омӯзиш',
     'saved_title': 'Баёзи ман',
@@ -799,7 +802,7 @@ class AppTranslations {
     'lit_genre_qita': 'Қитъа',
     'lit_genre_folk': 'Халқӣ',
     'lit_genre_song': 'Суруд',
-    'lit_genre_masnavi': 'Достон',
+    'lit_genre_masnavi': 'Маснавӣ',
     'lit_genre_other': 'Асари адабӣ',
 
     // Source Panel
@@ -1069,6 +1072,9 @@ class AppTranslations {
     'explore_poets_count': '\${0} شاعر',
     'explore_grades_title': 'بر پایه صنف',
     'explore_timeline_title': 'راه تاریخ',
+    'explore_forms_title': 'شعرها بر پایه قالب',
+    'explore_poems_count': '\${0} شعر',
+    'lit_form_all': 'همه',
     'explore_all_sections': 'همه بخش‌ها',
     'learn_title': 'آموزش',
     'saved_title': 'بیاض من',
@@ -1787,7 +1793,7 @@ class AppTranslations {
     'lit_genre_qita': 'قطعه',
     'lit_genre_folk': 'فولکلور',
     'lit_genre_song': 'سرود',
-    'lit_genre_masnavi': 'منظومه',
+    'lit_genre_masnavi': 'مثنوی',
     'lit_genre_other': 'اثر ادبی',
 
     // Source Panel

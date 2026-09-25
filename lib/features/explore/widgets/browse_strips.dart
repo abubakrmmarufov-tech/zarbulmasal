@@ -8,7 +8,9 @@ import '../../../shared/providers/app_providers.dart';
 import '../../history/data/history_providers.dart';
 import '../../history/domain/history_entry.dart';
 import '../../literature/data/literature_providers.dart';
+import '../../literature/domain/literary_work.dart';
 import '../../literature/domain/poet_era.dart';
+import '../../literature/presentation/literary_work_display_text.dart';
 
 /// A titled horizontal row of cards.
 class _Strip extends StatelessWidget {
@@ -139,6 +141,44 @@ class PoetEraStrip extends ConsumerWidget {
               AppTranslations.formatNumber(counts[era] ?? 0, lang),
             ]),
             onTap: () => context.push('/literature/poets?era=${era.name}'),
+          ),
+      ],
+    );
+  }
+}
+
+/// Poems by form (ghazal, rubai, masnavi, qit'a, qasida), each with its
+/// count, opening the poem list filtered to that form. Forms with no poem
+/// get no card.
+class FormStrip extends ConsumerWidget {
+  const FormStrip({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lang = ref.watch(displayLanguageProvider);
+    final works = ref.watch(approvedWorksProvider).valueOrNull;
+    if (works == null) return const SizedBox.shrink();
+    final counts = <WorkType, int>{};
+    for (final work in works) {
+      counts[work.type] = (counts[work.type] ?? 0) + 1;
+    }
+    final forms = [
+      for (final form in LiteraryWorkDisplayText.browsableForms)
+        if ((counts[form] ?? 0) > 0) form,
+    ];
+    if (forms.isEmpty) return const SizedBox.shrink();
+    return _Strip(
+      title: AppTranslations.get('explore_forms_title', lang),
+      lines: 2,
+      children: [
+        for (final form in forms)
+          _StripCard(
+            width: 132,
+            title: LiteraryWorkDisplayText.form(form, lang),
+            subtitle: AppTranslations.get('explore_poems_count', lang, [
+              AppTranslations.formatNumber(counts[form]!, lang),
+            ]),
+            onTap: () => context.push('/literature/works?form=${form.name}'),
           ),
       ],
     );

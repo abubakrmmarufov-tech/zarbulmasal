@@ -11,8 +11,9 @@ import '../vocabulary/data/words_provider.dart';
 import 'widgets/browse_strips.dart';
 import 'widgets/discover_today.dart';
 
-/// Explore: things to discover today, ways to browse (poets by era, the
-/// school grades, the history timeline), then the collection index —
+/// Explore: things to discover today, ways to browse (poets by era, poems
+/// by form, the school grades, the history timeline), then the collection
+/// index —
 /// every domain once, each with its parts.
 ///
 /// A domain heading opens the domain itself (e.g. the Literature page with
@@ -62,6 +63,7 @@ class ExploreScreen extends ConsumerWidget {
           const SizedBox(height: 20),
           const DiscoverToday(),
           const PoetEraStrip(),
+          const FormStrip(),
           const GradeStrip(),
           const HistoryTimelineStrip(),
           Padding(

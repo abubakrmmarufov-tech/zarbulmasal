@@ -74,4 +74,29 @@ abstract final class LiteraryWorkDisplayText {
     final pages = source.formattedPages;
     return pages == null ? title : '$title — $pages';
   }
+
+  /// The forms a reader can browse by, in the order they are offered.
+  static const browsableForms = [
+    WorkType.ghazal,
+    WorkType.rubai,
+    WorkType.epic,
+    WorkType.fragment,
+    WorkType.qasida,
+  ];
+
+  /// The name of a work's form («Ғазал», «Рубоӣ», «Маснавӣ», «Қитъа» …).
+  static String form(WorkType type, DisplayLanguage language) {
+    final key = switch (type) {
+      WorkType.ghazal => 'lit_genre_ghazal',
+      WorkType.rubai => 'lit_genre_rubai',
+      WorkType.qasida => 'lit_genre_qasida',
+      WorkType.poem => 'lit_genre_poem',
+      WorkType.fragment => 'lit_genre_qita',
+      WorkType.folk => 'lit_genre_folk',
+      WorkType.anthem => 'lit_genre_song',
+      WorkType.epic => 'lit_genre_masnavi',
+      WorkType.other => 'lit_genre_other',
+    };
+    return AppTranslations.get(key, language);
+  }
 }
