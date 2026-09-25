@@ -599,6 +599,7 @@ void main() {
         (entry) => entry['id'] == '49a09b23-21e1-47a0-9cec-c5ae9c98b06b',
       );
 
+      expect(work['authorId'], 'loiq_sherali');
       expect(work['secondarySource'], isNull);
       expect(work['sourceOccurrences'], hasLength(1));
       final occurrence = work['sourceOccurrences'].single;
@@ -608,15 +609,35 @@ void main() {
         occurrence['sourceReference'],
         'https://maorif.tj/storage/libraries/01J3F02T45W6EQD3B5FPGGTTXJ.pdf',
       );
-      expect(occurrence['sourceImageVerified'], isTrue);
+      // The grade 11 book names the poem on p. 296 but does not print it.
+      expect(work['primarySource']['pageStart'], 296);
       expect(
-        occurrence['sourceImagePath'],
-        'assets/data/literature/page_images/loiq_qasidai_modar_maorif_2022_p304.png',
+        work['primarySource']['sourceReference'],
+        'docs/literature/pdfs/adabiyet sinfi 11.pdf',
       );
-      expect(work['textStatus'], 'verified');
-      expect(work['rights']['status'], 'sourceAttested');
-      expect((work['textTajik'] as String).trim(), isNotEmpty);
+      expect(work['textStatus'], 'needsReview');
+      expect(work['verification']['evidenceLevel'], 'needsReview');
+      expect(work['rights']['fullTextAllowed'], isFalse);
+      expect(work['textTajik'], isNull);
       expect(work['textPersian'], isNull);
+    });
+
+    test('Халилӣ keeps the mother poem that was filed under Лоиқ', () {
+      final khalili = works.firstWhere(
+        (entry) =>
+            entry['id'] ==
+            'poem_fd212071-6a30-4b8d-870a-ae784002e8f2_af106dc3d6c291df',
+      );
+      expect(khalili['title'], 'Ҳадя ба модарон');
+      expect(
+        khalili['textTajik'] as String,
+        contains('Гуфт: «Аз як қатра ашки модарам,'),
+      );
+      final loiqText = works
+          .where((entry) => entry['authorId'] == 'loiq_sherali')
+          .map((entry) => (entry['textTajik'] as String?) ?? '')
+          .join('\n');
+      expect(loiqText, isNot(contains('Аз як қатра ашки модарам')));
     });
 
     test('Lo(iq) four-line poem keeps the exact Maorif 2025 witness', () {

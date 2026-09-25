@@ -383,6 +383,8 @@ witness.
 ```
 
 ### 11. Қасидаи модар (`49a09b23-21e1-47a0-9cec-c5ae9c98b06b`)
+> **Withdrawn 25 Sep 2026 (Phase 7).** The page image below is grade 5, p. 244, in Халилӣ's chapter: these 12 lines are part of Халилӣ's «Ҳадя ба модарон» (pp. 243–245), which has its own record. The textbooks name Лоиқ's «Қасидаи модар» only by title (grade 11, p. 296). The record now keeps the title only. See `docs/literature/ATTRIBUTION_DECISIONS_2026-09-25.json`.
+
 - **Муаллиф (ID):** `loiq_sherali`
 - **Сарчашма:** Синфи 5, саҳифаи 244 (adabiet sinfi 5.pdf)
 - **Ҳолати ҳуқуқӣ:** `unknown` (Rights not established by the uploaded source record; page evidence alone does not authorize publication.)

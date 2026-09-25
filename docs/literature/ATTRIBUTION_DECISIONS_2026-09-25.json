@@ -1,0 +1,146 @@
+{
+ "about": "Phase 7 decisions on the 16 records withdrawn in ATTRIBUTION_AUDIT_2026-09-25.json and on «Қасидаи модар». Applied by tool/literature/apply_attribution_decisions.py. Each decision was taken by reading the printed page; the lead-in is quoted. 'drop' rejects the record; 'refile' moves it to the poet the book names (a single bayt stays needsReview: the app never ships a lone bayt as a readable work); 'publish' also copies the verse from the page; 'titleOnly' keeps an attested title and removes text that belongs to someone else.",
+ "decisions": [
+  {
+   "id": "poem_rudaki_898d6b07e403c21a",
+   "action": "refile",
+   "authorId": "79b50923-ea65-4554-b65d-bbf3ee49f35c",
+   "book": "adabiet sinfi 5",
+   "page": 49,
+   "evidence": "Epigraph of the Рӯдакӣ chapter, signed «Рашидии Самарқандӣ» under the bayt «Гар сарӣ ёбад ба олам кас ба некӯшоирӣ…». A single bayt: not publishable as a work. The bayt above it is signed «Низомии Арӯзӣ»; it has no record."
+  },
+  {
+   "id": "poem_9ab32712-ce1d-4054-a7cc-163ca4a8f11f_ec27bca224848c49",
+   "action": "drop",
+   "reason": "folk_verse",
+   "book": "adabiet sinfi 5",
+   "page": 89,
+   "evidence": "Lead-in: «Мардуми одии диёр … дар борааш нақлу ривоятҳои рангин, шеъру таронаҳои намакин эҷод кардаанд. Ҳоло муште аз он хирвор:»"
+  },
+  {
+   "id": "poem_c3d4e5f6-d7e8-4f9a-0b1c-2d3e4f5a6b7c_496dbc61a97dbb04",
+   "action": "drop",
+   "reason": "metre_example",
+   "book": "adabiet sinfi 6",
+   "page": 74,
+   "evidence": "Unsigned example in the lesson «Мутадорик» («Мисолҳо: Мутадорики мусаммани солим:»), followed by its scansion."
+  },
+  {
+   "id": "poem_d1abb54a-9804-4baf-b238-fd2203d7673e_b447351f7011852d",
+   "action": "refile",
+   "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
+   "book": "adabiet sinfi 6",
+   "page": 97,
+   "evidence": "Three separate single bayts quoted in the Ҳофиз biography, joined by «Ё ин ки:» and «ё». The record keeps only the bayt it is titled by, under Ҳофиз; the lead-in does not say «Ҳофиз мегӯяд», and a single bayt is not publishable as a work."
+  },
+  {
+   "id": "poem_7c389f92-ffdc-4f8e-b901-1de71acc34a9_318810cd487b4d39",
+   "action": "refile",
+   "authorId": "281c1b94-267e-4bbf-a7e5-47c24f99f0b5",
+   "book": "adabiet sinfi 6",
+   "page": 108,
+   "evidence": "Lead-in: «Восифӣ мегӯяд: … Мавлоно Наҳвии Ҳиротӣ … мардуми Нимрӯз … ҳаҷв карда буд ва баъзе абёти он қасидаи ҳаҷвия ин аст:»",
+   "publish": {
+    "pdfPage": 108,
+    "opening": "Саргаштатар зи ахтарам аз гардиши фалак",
+    "type": "qasida"
+   }
+  },
+  {
+   "id": "poem_8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65_ea610f3df083db51",
+   "action": "drop",
+   "reason": "device_examples",
+   "book": "adabiyot sinfi 7",
+   "page": 67,
+   "evidence": "Three single bayts under «Мисолҳо:» in the lesson on маҷоз, signed Боқӣ, Ҳофиз and Фирдавсӣ. Examples in a theory lesson; «Боқӣ» is not identified further."
+  },
+  {
+   "id": "poem_kamol_khujandi_a174037d39c0a2a2",
+   "action": "drop",
+   "reason": "prose_context",
+   "book": "adabiyot sinfi 7",
+   "page": 107,
+   "evidence": "Lesson on киноя: prose with example bayts signed Мирзо Турсунзода, Бисотӣ, Возеҳ and Ҳофиз. None is Низомӣ's."
+  },
+  {
+   "id": "poem_3ec91317-fcfe-4960-9ca0-fd87f3e96875_29266e16f93706c7",
+   "action": "refile",
+   "authorId": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
+   "book": "adabiyet sinfi 9",
+   "page": 18,
+   "evidence": "Lead-in: «Масалан, байти хушомадгӯёнаи Заҳири Форёбӣ [bayt] -ро холисона мазаммат намудааст:» (pp. 18–19). A single bayt: not publishable as a work."
+  },
+  {
+   "id": "poem_d1abb54a-9804-4baf-b238-fd2203d7673e_a450babb8c502b37",
+   "action": "drop",
+   "reason": "folk_verse",
+   "book": "adabiyet sinfi 9",
+   "page": 167,
+   "evidence": "Printed under «Аз халқ:» as a folk quatrain compared with Ҳофиз's; Ҳофиз's own quatrain follows under «Аз Ҳофиз:» and has its own record."
+  },
+  {
+   "id": "poem_9debff75-8664-43ab-a7a9-ed1a4725f69b_5d292b810541b06d",
+   "action": "drop",
+   "reason": "elegy_by_other_poet",
+   "book": "adabiyet sinfi 9",
+   "page": 223,
+   "evidence": "Lead-in: «Комӣ дар вафоти Ҷомӣ бо як сӯзу гудоз марсияе эҷод кард … Чанд байт аз он марсия:». The app has no record for Комӣ."
+  },
+  {
+   "id": "poem_f09073cb-33b4-4fcc-abf8-75959350245c_12c2e417dee247b9",
+   "action": "drop",
+   "reason": "prose_context",
+   "book": "adabiyet sinfi 9",
+   "page": 306,
+   "evidence": "Prose dialogue («– Кист? – Кушо, мо одамони хон!») in the Ҳилолӣ biography."
+  },
+  {
+   "id": "poem_5633556b-df45-4cab-83dc-760016db1ef2_2fd9aaf54df8336a",
+   "action": "drop",
+   "reason": "folk_verse",
+   "book": "adabiet sinfi 10",
+   "page": 67,
+   "evidence": "Lead-in: «халқ бо дили пурдард дар бораи сахтию душвориҳои бофандагӣ сурудҳо эҷод кардааст:»"
+  },
+  {
+   "id": "poem_mirzosodiq_6c42842e594f240a",
+   "action": "drop",
+   "reason": "chronogram_by_other_poet",
+   "book": "adabiet sinfi 10",
+   "page": 174,
+   "evidence": "Lead-in: «ҳамасри ӯ Хумулии Моғиёнӣ дар санаи вафоти Содиқ қитъаи таърихӣ эҷод намудааст:». The app has no record for Хумулӣ."
+  },
+  {
+   "id": "poem_hoziq_fc43cc1df4925e1d",
+   "action": "drop",
+   "reason": "verse_by_other_poet",
+   "book": "adabiet sinfi 10",
+   "page": 186,
+   "evidence": "Lead-in: «Шоир ва тазкиранигор Абдулкарими Фазлӣ … ӯро … «марди девона» … ном мебарад:». The app has no record for Фазлӣ."
+  },
+  {
+   "id": "poem_26c985a4-88ca-47ea-8981-ba5529b62a7c_8821d3b24bacaffc",
+   "action": "drop",
+   "reason": "translation",
+   "book": "adabiyet sinfi 11",
+   "page": 146,
+   "evidence": "Printed under «Тарҷума:» after the Russian original of Lermontov's «Аллаи зани казак»; a translation, not Ҳабиб Юсуфӣ's own poem."
+  },
+  {
+   "id": "poem_sattor_tursun_69a6f05004c515b5",
+   "action": "drop",
+   "reason": "prose_context",
+   "book": "adabiyet sinfi 11",
+   "page": 330,
+   "evidence": "Prose analysis of the story «Санг дар бағал ба тӯфон» («Образҳои асар»)."
+  },
+  {
+   "id": "49a09b23-21e1-47a0-9cec-c5ae9c98b06b",
+   "action": "titleOnly",
+   "book": "adabiyet sinfi 11",
+   "page": 296,
+   "sourceFrom": "0c468886-d790-46eb-bc2c-07ce1f306f8a",
+   "evidence": "The 12 lines this record held («Гуфт: «Аз як қатра ашки модарам…») are lines 6–17 of Халилӣ's «Ҳадя ба модарон» (grade 5, pp. 243–245), which has its own published record. The textbooks name Лоиқ's «Қасидаи модар» only by title (grade 11, p. 296) and in a test question (p. 304); they do not print its text."
+  }
+ ]
+}

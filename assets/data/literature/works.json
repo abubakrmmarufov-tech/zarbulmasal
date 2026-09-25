@@ -510,31 +510,31 @@
     "authorId": "loiq_sherali",
     "title": "Қасидаи модар",
     "titlePersian": "قصیده مادر",
-    "incipit": "Гуфт: «Аз як қатра ашки модарам,",
+    "incipit": null,
     "type": "qasida",
     "scriptSource": "tajikOnly",
-    "textTajik": "Гуфт: «Аз як қатра ашки модарам,\nШоҳиди мақсуд омад дар барам.\nГанҷҳо дар дидаи намноки ӯст,\nИн гуҳарҳо ашкҳои поки ӯст.\nШомҳо чун боз хуфтӣ модарам,\nБуд дар поёни пояш бистарам.\nТо дили шаб дошт бо ман розҳо,\nГуфтугӯҳо, қиссаҳо, овозҳо.\nҚиссаҳо ширинтар аз шаҳду шакар,\nНағмаҳои ҷонбахш аз боди саҳар.\nНогаҳон шоме ҳаво бас тира шуд,\nБарф бар шаҳру деҳи мо чира шуд.",
+    "textTajik": null,
     "textPersian": null,
-    "textStatus": "verified",
-    "editorial": "transliteration",
-    "editorialNotes": "Mechanical Tajik Cyrillic to Persian-script representation; not a Persian source witness or semantic translation. A Maorif Grade 11 2022 source occurrence on printed p. 304 contains only the identifying couplet in a test question, not a complete secondary witness.",
+    "textStatus": "needsReview",
+    "editorial": "extraction",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyet sinfi 11, p. 296): The 12 lines this record held («Гуфт: «Аз як қатра ашки модарам…») are lines 6–17 of Халилӣ's «Ҳадя ба модарон» (grade 5, pp. 243–245), which has its own published record. The textbooks name Лоиқ's «Қасидаи модар» only by title (grade 11, p. 296) and in a test question (p. 304); they do not print its text.",
     "primarySource": {
-      "bookTitle": "Адабиёти тоҷик",
-      "authorAsPrinted": "Т. Мирзод, Р. Ҳамидов, М. Пирзод",
-      "editor": null,
-      "volume": null,
-      "edition": null,
+      "bookTitle": "Адабиёти тоҷик (давраи нав)",
+      "editor": "Х. Асозода, А. Кӯчаров",
       "publisher": "Маориф",
       "city": "Душанбе",
-      "year": "2017",
-      "pageStart": 244,
-      "pageEnd": 244,
+      "year": "2018",
       "sourceType": "official-textbook",
-      "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
-      "sourceImageVerified": true,
-      "sourceImagePath": "assets/data/literature/page_images/49a09b23-21e1-47a0-9cec-c5ae9c98b06b.png",
-      "isbn": "978-999-47-1-436-0",
-      "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон"
+      "sourceImageVerified": false,
+      "pageStart": 296,
+      "pageEnd": 296,
+      "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
+      "authorAsPrinted": "Х. Асозода, А. Кӯчаров",
+      "edition": "Нашри панҷум",
+      "isbn": "978-99947-1-536-7",
+      "sourceInstitution": "Вазорати маориф ва илми Ҷумҳурии Тоҷикистон",
+      "accessDate": "2026-09-14",
+      "sourceImagePath": null
     },
     "secondarySource": null,
     "sourceOccurrences": [
@@ -561,21 +561,18 @@
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "sourceAttested",
-      "reasoning": "Zarbulmasal source-attested publication policy: exact text attributed in the checked source at page 244.",
-      "rightsSource": "docs/literature/pdfs/adabiet sinfi 5.pdf",
-      "fullTextAllowed": true,
-      "excerptAllowed": true,
-      "permissionReference": null
+      "status": "unknown",
+      "reasoning": "Title attested in the textbook; its text is not printed there.",
+      "fullTextAllowed": false,
+      "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "primaryChecked",
-      "pageVerified": true,
-      "verificationMethod": "primaryPdfPageExtractionAndPixMapProof",
-      "verifiedAt": "2026-09-18",
-      "evidenceHash": "35af14783e439487"
+      "evidenceLevel": "needsReview",
+      "pageVerified": false,
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
-    "persianScriptRepresentation": "گفت: «از یاک قتره اشکی مادرم،\nشاهیدی مقسود آمد در برم.\nگنجها در دیدی نـمناکی اوست،\nاین گوهرها اشکهای پاکی اوست.\nشام‌ها چون باز خوفتی مادرم،\nبود در پایانی پایاش بیسترم.\nتا دیلی شب داشت با من رازها،\nگوفتوگوها، قصه‌ها، آوازها.\nقصه‌ها شیرینتر از شهدو شکر،\nنـغمهای جانبخش از بادی سحر.\nناگهان شامی هوا بس تیره شد،\nبرف بر شهرو دیهی ما چیره شد.",
+    "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
     "titlePersianSource": "generated"
   },
@@ -5752,7 +5749,7 @@
   },
   {
     "id": "poem_rudaki_898d6b07e403c21a",
-    "authorId": "rudaki",
+    "authorId": "79b50923-ea65-4554-b65d-bbf3ee49f35c",
     "title": "Гар сарӣ ёбад ба олам кас ба некӯшоирӣ",
     "titlePersian": null,
     "incipit": null,
@@ -5762,7 +5759,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 5, с. 49.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiet sinfi 5, p. 49): Epigraph of the Рӯдакӣ chapter, signed «Рашидии Самарқандӣ» under the bayt «Гар сарӣ ёбад ба олам кас ба некӯшоирӣ…». A single bayt: not publishable as a work. The bayt above it is signed «Низомии Арӯзӣ»; it has no record.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Т. Мирзод, Р. Ҳамидов, М. Пирзод",
@@ -10270,7 +10267,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 5, с. 89.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiet sinfi 5, p. 89): Lead-in: «Мардуми одии диёр … дар борааш нақлу ривоятҳои рангин, шеъру таронаҳои намакин эҷод кардаанд. Ҳоло муште аз он хирвор:»",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Т. Мирзод, Р. Ҳамидов, М. Пирзод",
@@ -10299,11 +10296,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "ec27bca224848c49"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:folk_verse",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -51245,7 +51241,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 6, с. 69.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiet sinfi 6, p. 74): Unsigned example in the lesson «Мутадорик» («Мисолҳо: Мутадорики мусаммани солим:»), followed by its scansion.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Қурбон Хоҷаев, Аҳмад Абдувалиев, Нуриддин Шарафиддинов, Баҳодур Раҳматов",
@@ -51275,11 +51271,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "496dbc61a97dbb04"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:metre_example",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -57026,7 +57021,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 6, с. 97.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiet sinfi 6, p. 97): Three separate single bayts quoted in the Ҳофиз biography, joined by «Ё ин ки:» and «ё». The record keeps only the bayt it is titled by, under Ҳофиз; the lead-in does not say «Ҳофиз мегӯяд», and a single bayt is not publishable as a work.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Қурбон Хоҷаев, Аҳмад Абдувалиев, Нуриддин Шарафиддинов, Баҳодур Раҳматов",
@@ -60004,17 +59999,17 @@
   },
   {
     "id": "poem_7c389f92-ffdc-4f8e-b901-1de71acc34a9_318810cd487b4d39",
-    "authorId": "7c389f92-ffdc-4f8e-b901-1de71acc34a9",
-    "title": "Қозии Сиистонро писаре буд зариф ва хуштабъ ва ӯ",
-    "titlePersian": null,
-    "incipit": null,
-    "type": "poem",
+    "authorId": "281c1b94-267e-4bbf-a7e5-47c24f99f0b5",
+    "title": "Саргаштатар зи ахтарам аз гардиши фалак",
+    "titlePersian": "سرگشتتر زی اخترم از گردیشی فلک",
+    "incipit": "Саргаштатар зи ахтарам аз гардиши фалак,",
+    "type": "qasida",
     "scriptSource": "tajikOnly",
-    "textTajik": null,
+    "textTajik": "Саргаштатар зи ахтарам аз гардиши фалак,\nТолеъ намекунад мададу бахт-ҳеч як.\nАфтодаам ба хиттаи вайронае, ки ҳаст,\nБодаш самуми оташеву хоки ӯ намак.\nҲар сӯ ба рӯз пай барияш дузд дар камин,\nБар қасди ҷон нишаста чун бемории лакак...",
     "textPersian": null,
-    "textStatus": "needsReview",
-    "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 6, с. 107.",
+    "textStatus": "verified",
+    "editorial": "asPrinted",
+    "editorialNotes": "Text layer of the cited textbook page; legacy Tajik font encoding mapped to Unicode and footnote markers removed; no other change. Attribution review 2026-09-25 (adabiet sinfi 6, p. 108): Lead-in: «Восифӣ мегӯяд: … Мавлоно Наҳвии Ҳиротӣ … мардуми Нимрӯз … ҳаҷв карда буд ва баъзе абёти он қасидаи ҳаҷвия ин аст:»",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Қурбон Хоҷаев, Аҳмад Абдувалиев, Нуриддин Шарафиддинов, Баҳодур Раҳматов",
@@ -60024,8 +60019,8 @@
       "publisher": "Маориф",
       "city": "Душанбе",
       "year": "2014",
-      "pageStart": 107,
-      "pageEnd": 119,
+      "pageStart": 108,
+      "pageEnd": 108,
       "sourceType": "official-textbook",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
       "sourceImageVerified": false,
@@ -60038,19 +60033,20 @@
     "textMatchResult": null,
     "variantNotes": null,
     "rights": {
-      "status": "unknown",
-      "reasoning": "Rights status not established.",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Zarbulmasal source-attested publication policy: text as printed in the official textbook, attributed there, page 108.",
+      "rightsSource": "docs/literature/pdfs/adabiet sinfi 6.pdf",
+      "fullTextAllowed": true,
+      "excerptAllowed": true,
+      "permissionReference": null
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "318810cd487b4d39"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "textbookPdfTextExtraction",
+      "verifiedAt": "2026-09-25"
     },
-    "persianScriptRepresentation": null,
+    "persianScriptRepresentation": "سرگشتتر زی اخترم از گردیشی فلک،\nتالیع نـمیکوند مددو بخت-هیچ یاک.\nافتادم به خیتتی ویرانی، که هست،\nبادش سمومی آتشیوو خاکی او نـمک.\nهر سو به روز پی برییاش دوزد در کمین،\nبر قسدی جان نیشسته چون بی‌ماریی لکک...",
     "persianScriptSource": "generated",
     "titlePersianSource": "generated",
     "attributionStatus": null
@@ -85875,7 +85871,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 7, с. 62.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyot sinfi 7, p. 67): Three single bayts under «Мисолҳо:» in the lesson on маҷоз, signed Боқӣ, Ҳофиз and Фирдавсӣ. Examples in a theory lesson; «Боқӣ» is not identified further.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "У. Тоиров, М. Солеҳов, Н. Ширинов",
@@ -85905,11 +85901,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "ea610f3df083db51"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:device_examples",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -97869,7 +97864,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 7, с. 104.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyot sinfi 7, p. 107): Lesson on киноя: prose with example bayts signed Мирзо Турсунзода, Бисотӣ, Возеҳ and Ҳофиз. None is Низомӣ's.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "У. Тоиров, М. Солеҳов, Н. Ширинов",
@@ -97899,11 +97894,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "a174037d39c0a2a2"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:prose_context",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -153566,7 +153560,7 @@
   },
   {
     "id": "poem_3ec91317-fcfe-4960-9ca0-fd87f3e96875_29266e16f93706c7",
-    "authorId": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
+    "authorId": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
     "title": "Нуҳ курсии фалак ниҳад андеша зери пой",
     "titlePersian": null,
     "incipit": null,
@@ -153576,7 +153570,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 9, с. 14.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyet sinfi 9, p. 18): Lead-in: «Масалан, байти хушомадгӯёнаи Заҳири Форёбӣ [bayt] -ро холисона мазаммат намудааст:» (pp. 18–19). A single bayt: not publishable as a work.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Т. Мирзод, С. Давлатзода, Ф. Мирзода",
@@ -174028,7 +174022,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 9, с. 162.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyet sinfi 9, p. 167): Printed under «Аз халқ:» as a folk quatrain compared with Ҳофиз's; Ҳофиз's own quatrain follows under «Аз Ҳофиз:» and has its own record.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Т. Мирзод, С. Давлатзода, Ф. Мирзода",
@@ -174058,11 +174052,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "a450babb8c502b37"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:folk_verse",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -179231,7 +179224,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 9, с. 219.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyet sinfi 9, p. 223): Lead-in: «Комӣ дар вафоти Ҷомӣ бо як сӯзу гудоз марсияе эҷод кард … Чанд байт аз он марсия:». The app has no record for Комӣ.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Т. Мирзод, С. Давлатзода, Ф. Мирзода",
@@ -179261,11 +179254,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "5d292b810541b06d"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:elegy_by_other_poet",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -190848,7 +190840,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 9, с. 306.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyet sinfi 9, p. 306): Prose dialogue («– Кист? – Кушо, мо одамони хон!») in the Ҳилолӣ biography.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Т. Мирзод, С. Давлатзода, Ф. Мирзода",
@@ -190878,11 +190870,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "12c2e417dee247b9"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:prose_context",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -200758,7 +200749,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 10, с. 67.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiet sinfi 10, p. 67): Lead-in: «халқ бо дили пурдард дар бораи сахтию душвориҳои бофандагӣ сурудҳо эҷод кардааст:»",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "У. Тоир, М. Солеҳ, Н. Ширинзода",
@@ -200788,11 +200779,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "2fd9aaf54df8336a"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:folk_verse",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -212372,7 +212362,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 10, с. 173.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiet sinfi 10, p. 174): Lead-in: «ҳамасри ӯ Хумулии Моғиёнӣ дар санаи вафоти Содиқ қитъаи таърихӣ эҷод намудааст:». The app has no record for Хумулӣ.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "У. Тоир, М. Солеҳ, Н. Ширинзода",
@@ -212402,11 +212392,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "6c42842e594f240a"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:chronogram_by_other_poet",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -214022,7 +214011,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 10, с. 185.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiet sinfi 10, p. 186): Lead-in: «Шоир ва тазкиранигор Абдулкарими Фазлӣ … ӯро … «марди девона» … ном мебарад:». The app has no record for Фазлӣ.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "У. Тоир, М. Солеҳ, Н. Ширинзода",
@@ -214052,11 +214041,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "fc43cc1df4925e1d"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:verse_by_other_poet",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -249520,7 +249508,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 11, с. 144.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyet sinfi 11, p. 146): Printed under «Тарҷума:» after the Russian original of Lermontov's «Аллаи зани казак»; a translation, not Ҳабиб Юсуфӣ's own poem.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик (давраи нав)",
       "authorAsPrinted": "Х. Асозода, А. Кӯчаров",
@@ -249550,11 +249538,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "8821d3b24bacaffc"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:translation",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",
@@ -281163,7 +281150,7 @@
     "textPersian": null,
     "textStatus": "needsReview",
     "editorial": "extraction",
-    "editorialNotes": "Автоматически извлечено из Адабиёт: Китоби дарсӣ барои синфи 11, с. 326.",
+    "editorialNotes": "Attribution review 2026-09-25 (adabiyet sinfi 11, p. 330): Prose analysis of the story «Санг дар бағал ба тӯфон» («Образҳои асар»).",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик (давраи нав)",
       "authorAsPrinted": "Х. Асозода, А. Кӯчаров",
@@ -281193,11 +281180,10 @@
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "needsReview",
-      "pageVerified": false,
-      "verificationMethod": "automaticDumpExtraction",
-      "verifiedAt": "2026-09-20",
-      "evidenceHash": "69a6f05004c515b5"
+      "evidenceLevel": "rejected",
+      "rejectionReason": "extraction_false_positive:prose_context",
+      "verificationMethod": "manualAttributionReview",
+      "verifiedAt": "2026-09-25"
     },
     "persianScriptRepresentation": null,
     "persianScriptSource": "generated",

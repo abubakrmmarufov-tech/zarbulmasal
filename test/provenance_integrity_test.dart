@@ -322,7 +322,6 @@ void main() {
     test('A checked primary source publishes without a second witness', () {
       const unresolvedIds = {
         'cd7a02a9-54cb-4d30-a915-a90a6fd9a2e9',
-        '49a09b23-21e1-47a0-9cec-c5ae9c98b06b',
         'f3088f90-d92d-4008-83a8-a1963f50a717',
         'd8035663-2d5c-46f7-bc9a-c20a98beb7b6',
         'f9f475b2-5a47-4128-8c13-16d828359c3f',
@@ -383,6 +382,13 @@ void main() {
       final occurrences = loiq['sourceOccurrences'] as List<dynamic>;
       expect(occurrences, hasLength(1));
       expect((occurrences.single as Map<String, dynamic>)['pageStart'], 304);
+      // The textbooks print this poem's title only; the text it once held
+      // was Халилӣ's (Phase 7), so it is not published.
+      expect(loiq['textTajik'], isNull);
+      expect(
+        (loiq['verification'] as Map<String, dynamic>)['evidenceLevel'],
+        'needsReview',
+      );
     });
 
     test('No fake institutional verifiedBy names', () {
