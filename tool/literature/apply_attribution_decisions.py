@@ -200,8 +200,11 @@ def apply(works, decisions, pages_by_book=None):
 
 
 def main(decisions_path, pages_dir=None):
+    global TODAY
     works = json.load(open(WORKS, encoding='utf-8'))
-    decisions = json.load(open(decisions_path, encoding='utf-8'))['decisions']
+    document = json.load(open(decisions_path, encoding='utf-8'))
+    TODAY = document.get('reviewedAt', TODAY)
+    decisions = document['decisions']
     books = {d['book'] for d in decisions
              if d.get('publish') or d['action'] == 'truncate'}
     pages = {b: load_pages(pages_dir, b) for b in books} if pages_dir else {}

@@ -30,6 +30,7 @@ from textbook_verse import (  # noqa: E402
     decode_legacy, extract_poem, norm, proper_nouns, sentence_case,
     split_heading, split_series,
 )
+from textbook_span import fix_lookalikes  # noqa: E402
 
 PAGE_OFFSETS = (0, 1, 2, 3, -1, 4, 5, -2)
 
@@ -84,12 +85,15 @@ def quoted_from_other_poet(lead, author, names):
 
 
 def load_pages(pages_dir, book):
+    """Page texts, 1-based, with the legacy font mapped to Unicode and
+    Latin look-alike letters in Cyrillic words set as the Cyrillic letters
+    the page shows (textbook_span.fix_lookalikes)."""
     folder = os.path.join(pages_dir, book)
     count = len([f for f in os.listdir(folder) if f.endswith('.txt')])
     pages = [''] * (count + 1)          # 1-based
     for n in range(1, count + 1):
         with open(os.path.join(folder, f'{n}.txt'), encoding='utf-8') as f:
-            pages[n] = decode_legacy(f.read())
+            pages[n] = fix_lookalikes(decode_legacy(f.read()))[0]
     return pages
 
 

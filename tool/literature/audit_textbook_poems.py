@@ -12,14 +12,21 @@ For each work published with verificationMethod textbookPdfTextExtraction:
     a prose paragraph, or a lead-in ending in ':' set left of the verse;
   * attribution: the lead-in above the first line must not name another
     poet or introduce folk verse, an elegy, a translation or examples
-    (the guards of extract_textbook_poems.py).
+    (the guards of extract_textbook_poems.py); and the line right under
+    the last line must not sign the verse with another poet's name
+    («(Шаҳиди Балхӣ)»).
 
 A lead-in that a person read and confirmed is not flagged again: those
 listed, with the reason, in docs/literature/ATTRIBUTION_GUARD_EXCEPTIONS.json,
-and the blocks accepted in docs/literature/EXTRACTION_REVIEW_2026-09-25.json.
+and the blocks accepted in the hand-review logs
+docs/literature/EXTRACTION_REVIEW_*.json.
+
+Verse the text layer sets flush left (no indent) is judged against its own
+margin: a line counts as prose there only when it is too long for verse.
 
 Exits 1 when any poem fails, listing each failure.
 """
+import glob
 import json
 import os
 import re
@@ -31,22 +38,27 @@ from extract_textbook_poems import (  # noqa: E402
     quoted_from_other_poet, text_above,
 )
 from textbook_verse import (  # noqa: E402
-    SHALLOW, _indent, _indented_paragraph, _starts_paragraph, clean_line,
-    norm,
+    MAX_VERSE_CHARS, MIN_INDENT, SHALLOW, _indent, _indented_paragraph,
+    _starts_paragraph, clean_line, norm,
 )
 
 WORKS = 'assets/data/literature/works.json'
 POETS = 'assets/data/literature/poets.json'
 EXCEPTIONS = 'docs/literature/ATTRIBUTION_GUARD_EXCEPTIONS.json'
-REVIEW = 'docs/literature/EXTRACTION_REVIEW_2026-09-25.json'
+REVIEWS = 'docs/literature/EXTRACTION_REVIEW_*.json'
 NEAR = 3        # lines of a poem are printed at most this far apart
 
 
 def reviewed_ids(blocks):
-    """Record ids of the blocks a person accepted in a hand review."""
+    """Record ids of the blocks a person accepted in a hand review: those
+    the publisher recorded (`recordIds`), else the stable id of the block."""
     from publish_reviewed_blocks import stable_id
-    return {stable_id(b['book'], b['pdfPage'], b['opening'])
-            for b in blocks if b.get('decision') == 'accept'}
+    ids = set()
+    for b in blocks:
+        if b.get('decision') == 'accept':
+            ids |= set(b.get('recordIds') or
+                       [stable_id(b['book'], b['pdfPage'], b['opening'])])
+    return ids
 
 
 def printed_index(pages):
@@ -152,18 +164,45 @@ def printed_pages(work, pages, index):
 
 def prose_lines(work, pages, index):
     """Lines of the work printed as prose: a paragraph opening, or a
-    lead-in ending in ':' set left of the verse."""
-    printed = [(line, pages[i].split('\n'), j)
-               for line, i, j in locate(work, pages, index)]
-    if not printed:
-        return []
-    indents = sorted(_indent(lines[j]) for _, lines, j in printed)
-    verse_indent = indents[len(indents) // 2]
-    return [line for line, lines, j in printed
-            if _starts_paragraph(lines, j) or
-            _indented_paragraph(lines, j, verse_indent) or
-            (line.strip().endswith(':') and
-             _indent(lines[j]) <= verse_indent - SHALLOW)]
+    lead-in ending in ':' set left of the verse. Each page is judged by
+    the verse's margin on that page (facing pages differ, and the text
+    layer sets some pages' verse flush left)."""
+    located = locate(work, pages, index)
+    prose = []
+    for page in sorted({i for _, i, _ in located}):
+        lines = pages[page].split('\n')
+        rows = [(line, j) for line, i, j in located if i == page]
+        indents = sorted(_indent(lines[j]) for _, j in rows)
+        verse_indent = indents[len(indents) // 2]
+        if verse_indent < MIN_INDENT:
+            # Flush-left verse: the indent rules cannot tell verse from prose.
+            prose += [line for line, j in rows
+                      if len(lines[j].strip()) > MAX_VERSE_CHARS]
+            continue
+        prose += [line for line, j in rows
+                  if _starts_paragraph(lines, j) or
+                  _indented_paragraph(lines, j, verse_indent) or
+                  (line.strip().endswith(':') and
+                   _indent(lines[j]) <= verse_indent - SHALLOW)]
+    return prose
+
+
+_SIGNATURE = re.compile(r'^\(?\s*([^()\d]{3,40}?)\s*\)?$')
+
+
+def signed_by(work, pages, index, names):
+    """The poet id the book signs the verse with, in a name line right
+    under its last line, or None."""
+    located = locate(work, pages, index)
+    if not located:
+        return None
+    _, page, row = located[-1]
+    below = pages[page].split('\n')[row + 1:]
+    line = next((l.strip() for l in below if l.strip()), '')
+    match = _SIGNATURE.match(line)
+    if not match or line.startswith('***'):
+        return None
+    return names.get(norm(match.group(1)))
 
 
 def lead_problem(work, pages, index, names):
@@ -175,6 +214,13 @@ def lead_problem(work, pages, index, names):
         return 'the lead-in names another poet'
     if lead_in_disqualifies(lead):
         return 'the lead-in introduces verse that is not the poet\'s own'
+    return None
+
+
+def signature_problem(work, pages, index, names):
+    signer = signed_by(work, pages, index, names)
+    if signer and signer != work['authorId']:
+        return f'the book signs the verse with another poet ({signer})'
     return None
 
 
@@ -209,6 +255,9 @@ def audit(works, books, names, confirmed=frozenset()):
             lead_problem(work, pages, index, names)
         if problem:
             failures.append((work['id'], problem, work['title']))
+        problem = signature_problem(work, pages, index, names)
+        if problem:
+            failures.append((work['id'], problem, work['title']))
     return checked, failures
 
 
@@ -220,8 +269,9 @@ def main(pages_dir, report_path=None):
     names = poet_names(poets)
     with open(EXCEPTIONS, encoding='utf-8') as f:
         confirmed = {e['id'] for e in json.load(f)['exceptions']}
-    with open(REVIEW, encoding='utf-8') as f:
-        confirmed |= reviewed_ids(json.load(f)['blocks'])
+    for path in sorted(glob.glob(REVIEWS)):
+        with open(path, encoding='utf-8') as f:
+            confirmed |= reviewed_ids(json.load(f)['blocks'])
     books = {b: load_pages(pages_dir, b) for b in sorted(os.listdir(pages_dir))
              if os.path.isdir(os.path.join(pages_dir, b))}
     checked, failures = audit(works, books, names, confirmed)

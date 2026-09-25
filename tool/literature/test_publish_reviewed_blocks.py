@@ -1,4 +1,5 @@
 """Tests for publish_reviewed_blocks.py (python3 -m unittest)."""
+import glob
 import json
 import os
 import sys
@@ -138,13 +139,147 @@ class PublishTest(unittest.TestCase):
         self.assertEqual(skipped[0][1], 'not found on the page')
 
 
+FLUSH = """\
+    Шоир дар ин бора мегӯяд:
+Ҳар кӣ меҳмонро гиромӣ мекунад,
+Кӯшише дар некномӣ мекунад.
+Ҳар кӣ меҳмонат шавад, ар хосу ом,
+Пеши ӯ мебояд овардан таом.
+                                    97
+"""
+
+QUATRAINS = """\
+              ДУБАЙТИЮ РУБОИЁТ
+      Мусулмонон! Зи дур ояд садое,
+      Садои ҷонгудозе, ғамфизое.
+      Надонам, куҷо шабехун зада гург,
+      Вале донам, ки нолад ошное.
+      Ятиме, дардманде, бенавое,
+      Баровард аз дили саҳро садое:
+      «Манеҳ зинҳор аз каф шамъи умед,
+      Агар хоҳӣ расӣ рӯзе ба ҷое».
+                                    248
+"""
+
+
+def candidate(record_id, title, page=68):
+    return {
+        'id': record_id, 'authorId': 'x', 'title': title, 'textTajik': None,
+        'primarySource': {'sourceReference': REF, 'pageStart': page},
+        'verification': {'evidenceLevel': 'needsReview',
+                         'verificationMethod': 'automaticDumpExtraction'},
+    }
+
+
+class Phase8OptionsTest(unittest.TestCase):
+    def test_a_block_with_a_closing_line_is_taken_as_a_span(self):
+        works = [published('x')]
+        b = block('Ҳар кӣ меҳмонро гиромӣ мекунад,',
+                  closing='Пеши ӯ мебояд овардан таом.')
+        added, skipped = publish(works, [b], {'b': ['', FLUSH]})
+        self.assertEqual(skipped, [])
+        self.assertEqual(len(added[0]['textTajik'].split('\n')), 4)
+        self.assertEqual(added[0]['primarySource']['pageStart'], 97)
+        self.assertEqual(b['recordIds'], [added[0]['id']])
+
+    def test_quatrains_printed_without_separators_become_poems(self):
+        works = [published('x')]
+        b = block('Мусулмонон! Зи дур ояд садое,', split='quatrains', type='rubai')
+        added, _ = publish(works, [b], {'b': ['', QUATRAINS]})
+        self.assertEqual(len(added), 2)
+        self.assertEqual(added[1]['textTajik'].split('\n')[0],
+                         'Ятиме, дардманде, бенавое,')
+        self.assertEqual({r['type'] for r in added}, {'rubai'})
+        self.assertEqual(len(b['recordIds']), 2)
+
+    def test_a_needs_review_candidate_is_promoted_and_its_twins_merged(self):
+        first = candidate('cand-1', 'Рӯзу шаб дар кӯча-кӯча дар ҷустуҷӯйи нон')
+        twin = candidate('cand-2', 'Пораҳо бар дӯш аз барги хазон бошад', page=67)
+        works = [published('x'), first, twin]
+        added, _ = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,')], {'b': ['', PAGE]})
+        self.assertEqual(added[0]['id'], 'cand-1')
+        self.assertEqual(first['verification']['evidenceLevel'], 'primaryChecked')
+        self.assertIn('Promoted', first['editorialNotes'])
+        self.assertEqual(twin['verification']['rejectionReason'], 'duplicate_of:cand-1')
+        self.assertEqual(len(works), 3)
+
+    def test_a_candidate_from_another_page_is_not_promoted(self):
+        far = candidate('far', 'Рӯзу шаб дар кӯча-кӯча дар ҷустуҷӯйи нон', page=90)
+        works = [published('x'), far]
+        added, _ = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,')], {'b': ['', PAGE]})
+        self.assertNotEqual(added[0]['id'], 'far')
+        self.assertEqual(far['verification']['evidenceLevel'], 'needsReview')
+
+    def test_the_same_poets_candidate_citing_the_chapter_page_is_promoted(self):
+        chapter = candidate('chap', 'Рӯзу шаб дар кӯча-кӯча дар ҷустуҷӯйи нон', page=50)
+        chapter['authorId'] = 'sayyido'
+        works = [published('x'), chapter]
+        added, _ = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,')], {'b': ['', PAGE]})
+        self.assertEqual(added[0]['id'], 'chap')
+
+    def test_a_title_only_record_of_another_edition_is_promoted_with_the_pdf_citation(self):
+        title_only = candidate('t', 'Дар баҳор аз фоқа ранги заъфарон бошад маро')
+        title_only.update(authorId='sayyido', primarySource={
+            'bookTitle': 'Адабиёти тоҷик (Китоби дарсӣ)', 'year': '2020',
+            'pageStart': 60, 'pageEnd': 70})
+        works = [published('x'), title_only]
+        added, _ = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,')], {'b': ['', PAGE]})
+        self.assertEqual(added[0]['id'], 't')
+        self.assertEqual(title_only['primarySource']['year'], '2017')
+        self.assertEqual(title_only['primarySource']['sourceReference'], REF)
+
+    def test_a_record_holding_part_of_the_poem_is_repaired_in_place(self):
+        part = published('Рӯзу шаб дар кӯча-кӯча дар ҷустуҷӯйи нон,\n'
+                         'Рӯзу шаб шармандагӣ аз обу нон бошад маро.')
+        works = [part]
+        added, skipped = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,', replaces='old')],
+            {'b': ['', PAGE]})
+        self.assertEqual(skipped, [])
+        self.assertIs(added[0], part)
+        self.assertEqual(len(part['textTajik'].split('\n')), 4)
+        self.assertIn('only part of the poem', part['editorialNotes'])
+
+    def test_a_shorter_excerpt_in_another_book_is_merged(self):
+        excerpt = published('Дар баҳор аз фоқа ранги заъфарон бошад маро,\n'
+                            'Пораҳо бар дӯш аз барги хазон бошад маро.')
+        excerpt.update(id='excerpt', authorId='sayyido',
+                       title='Дар баҳор аз фоқа ранги заъфарон бошад маро',
+                       incipit='Дар баҳор аз фоқа ранги заъфарон бошад маро,')
+        excerpt['primarySource'] = dict(excerpt['primarySource'],
+                                        sourceReference='docs/literature/pdfs/c.pdf')
+        works = [published('x'), excerpt]
+        added, skipped = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,', merges=['excerpt'])],
+            {'b': ['', PAGE]})
+        self.assertEqual(skipped, [])
+        self.assertEqual(excerpt['verification']['rejectionReason'],
+                         f"duplicate_of:{added[0]['id']}")
+        self.assertIn('c, p. 1', added[0]['editorialNotes'])
+
+    def test_an_unknown_record_to_repair_is_reported(self):
+        works = [published('x')]
+        _, skipped = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,', replaces='nope')],
+            {'b': ['', PAGE]})
+        self.assertEqual(skipped[0][1], 'unknown record nope')
+
+
 class ShippedReviewTest(unittest.TestCase):
     def test_every_block_has_a_decision_and_a_reason(self):
-        path = os.path.join(ROOT, 'docs', 'literature',
-                            'EXTRACTION_REVIEW_2026-09-25.json')
-        with open(path, encoding='utf-8') as f:
-            blocks = json.load(f)['blocks']
-        self.assertGreater(len(blocks), 200)
+        paths = glob.glob(os.path.join(ROOT, 'docs', 'literature',
+                                       'EXTRACTION_REVIEW_*.json'))
+        self.assertTrue(paths)
+        for path in paths:
+            with open(path, encoding='utf-8') as f:
+                self._check(json.load(f)['blocks'], 50)
+
+    def _check(self, blocks, least):
+        self.assertGreater(len(blocks), least)
         for b in blocks:
             self.assertIn(b['decision'], ('accept', 'reject'))
             self.assertTrue(b['reason'])

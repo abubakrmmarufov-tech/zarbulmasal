@@ -1,0 +1,338 @@
+{
+ "about": "Per-poet verdicts from the Phase 8 reading of the textbooks (tool/literature/poet_coverage.py). a: verse exists and can be published; b: verse exists but is not the poet's; c: the chapter prints no publishable verse (prose, or only a lone bayt, which is never published as a work); d: no chapter in these books. «chapters» corrects the pages a biography cites.",
+ "reviewedAt": "2026-09-26",
+ "poets": {
+  "717847cd-64b0-47e7-9d1c-75866e880647": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "9becac52-2650-408f-8ecf-d496a233d71a": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "ed2d18a8-f33e-4a66-8052-65128fe6295a": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "2564937c-eaeb-4faa-a4eb-0c9191a535fb": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "8648e50d-ff7d-413d-a0fb-e1829ff940bb": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "2b5af239-bce6-4b05-98ad-fbeef1a54c12": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "ec7e9596-18d3-47dc-b952-bcbdfa023934": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "483ec51d-a691-4b78-918a-0fbc13f29a46": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "1b317e1f-83b1-43be-a0c0-4e210809c938": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "896648b7-c7b7-4451-b8b3-cd37e4710fa1": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "4ea4300f-493d-40bd-bf55-a83d9b397bf3": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "6866f29f-e813-4843-b346-ad5ff69191e8": {
+   "verdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs."
+  },
+  "cf6c66fa-1c48-4819-a4d9-287225e766b2": {
+   "verdict": "d",
+   "note": "Named only in the survey of 9th-century poets (grade 8, p. 31); no verse printed."
+  },
+  "c76a0058-db4d-4bd3-83dd-a66f2b3578b4": {
+   "verdict": "d",
+   "note": "Named only in the survey of 9th-century poets (grade 8, pp. 31–32); no verse printed."
+  },
+  "7d0a189b-d704-4c0e-bc8b-8504ffcb4e9f": {
+   "verdict": "d",
+   "note": "Named only in the survey of 9th-century poets (grade 8, pp. 31–32); no verse printed."
+  },
+  "cfe58486-55c2-474d-b329-248040b519ee": {
+   "verdict": "d",
+   "note": "A vizier named in surveys (grade 8, pp. 35, 44–45); the lines under his name in grade 6 are a character's in Айюбӣ's verse drama."
+  },
+  "1b50e1c6-7881-47ee-8965-4c19164dbf4a": {
+   "verdict": "d",
+   "note": "Named in Ҷалолуддини Балхӣ's biography (grade 9, pp. 60–61); no verse of his. (The detected grade 10 chapter is Соиби Табрезӣ's, matched by the shared «Табрезӣ».)"
+  },
+  "16d7d64a-fca1-43cc-be01-86d776cde770": {
+   "verdict": "d",
+   "note": "Named on grade 8, p. 251 (Хоқонӣ's chapter); no verse of his."
+  },
+  "gulchehra_sulaymoni": {
+   "verdict": "d",
+   "note": "No chapter: the biography cites grade 5, pp. 248–255, which are Халилӣ's and Фотеҳ Ниёзӣ's chapters; she is only named on grade 11, p. 58. Team: correct the biography's citation."
+  },
+  "eb037eb9-ba72-49bd-b009-8f9c84d46105": {
+   "verdict": "d",
+   "note": "Named in Восифӣ's chapter (grade 6, pp. 108–110); no verse of his."
+  },
+  "bdca68f7-2ee1-49bf-9780-27da55cea473": {
+   "verdict": "c",
+   "note": "Pre-Islamic figure (grade 8, p. 5); no verse."
+  },
+  "4830f7a5-85aa-4418-8785-40867a995614": {
+   "verdict": "c",
+   "note": "Pre-Islamic andarz in prose (grade 8, pp. 13–14)."
+  },
+  "buzurgmehr": {
+   "verdict": "c",
+   "note": "Pre-Islamic andarz in prose (grade 8, pp. 19–21)."
+  },
+  "2c8b026f-bab7-4cd8-9d86-26794a1573eb": {
+   "verdict": "c",
+   "note": "Only a lone bayt (grade 8, p. 30); a lone bayt is never published as a work."
+  },
+  "d708065a-1337-495f-ae6b-b0b5ce40e90f": {
+   "verdict": "c",
+   "note": "Only a lone bayt, the opening of a qasida (grade 8, p. 31)."
+  },
+  "58010d8f-2575-4b92-89e0-373f05b32929": {
+   "verdict": "c",
+   "note": "Only three separate bayts set apart by *** (grade 8, pp. 33–34)."
+  },
+  "68bc433e-b316-46e1-bbe8-d53066764834": {
+   "verdict": "c",
+   "note": "Only a lone bayt, signed (grade 8, p. 38)."
+  },
+  "9915eac4-559e-4f20-9bdf-bb7a50e153db": {
+   "verdict": "c",
+   "note": "Only a lone bayt, signed (grade 8, p. 38)."
+  },
+  "91bf5726-5e0a-451e-be4b-7d91650f6cfa": {
+   "verdict": "c",
+   "note": "Only lone bayts (grade 8, p. 36)."
+  },
+  "7a4cc3dc-3d9c-4cf2-aa27-a9b66f68937f": {
+   "verdict": "c",
+   "note": "Only a lone bayt («РУБОӢ (БАЙТ)», grade 7, p. 150)."
+  },
+  "79049bfd-1f01-4f9d-8e59-851cdbd4bba2": {
+   "verdict": "c",
+   "note": "Only lone bayts quoted in the Jadid survey (grade 11, pp. 15–16)."
+  },
+  "nasrulloh": {
+   "verdict": "c",
+   "note": "«Калила ва Димна», prose (grade 8, pp. 220–225)."
+  },
+  "faromuz": {
+   "verdict": "c",
+   "note": "«Самаки айёр», prose (grade 8, pp. 226–231)."
+  },
+  "42d303b5-f20f-440d-8079-a8e25ef52d2e": {
+   "verdict": "c",
+   "note": "«Сиёсатнома», prose (grade 5, pp. 80–88)."
+  },
+  "c3d4e5f6-d7e8-4f9a-0b1c-2d3e4f5a6b7c": {
+   "verdict": "c",
+   "note": "Prose tales (grade 6, pp. 69–76)."
+  },
+  "b2c3d4e5-c6d7-4e8f-9a0b-1c2d3e4f5a6b": {
+   "verdict": "c",
+   "note": "«Ҷавомеъ-ул-ҳикоёт», prose; the verse inside his tales is not attributed (grade 6, pp. 80–89; grade 9, pp. 116–126)."
+  },
+  "6b080d51-336b-48ba-92cd-85fe29149e0d": {
+   "verdict": "c",
+   "note": "«Чаҳор мақола», prose (grade 7, pp. 58–61; grade 8, pp. 232–233); the bayt on grade 5, p. 49 is lone."
+  },
+  "ada69601-01d5-493f-b1a0-9b886be8daa8": {
+   "verdict": "c",
+   "note": "«Синдбоднома», prose (grade 7, pp. 51–57); the verse there is tashbeh examples by others."
+  },
+  "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6f": {
+   "verdict": "c",
+   "note": "The chapter prints his prose story «Ду моҳи пурмағал» (grade 5, pp. 286–294)."
+  },
+  "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5e": {
+   "verdict": "c",
+   "note": "A novel (grade 5, pp. 250–272); the one song in it is a character's."
+  },
+  "ef5a57a2-8949-43dd-85eb-8ceaf78335f3": {
+   "verdict": "c",
+   "note": "Prose writer (grade 11, pp. 222–235)."
+  },
+  "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c": {
+   "verdict": "c",
+   "note": "Prose writer (grade 11, pp. 207–221); the epigraph there is Саъдӣ's."
+  },
+  "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b": {
+   "verdict": "c",
+   "note": "Prose writer (grade 7, pp. 174–211; grade 11, pp. 182–206)."
+  },
+  "a74ea72d-864f-4c25-b42e-95435794a42d": {
+   "verdict": "c",
+   "note": "Prose writer (grade 7, pp. 231–248; grade 11, pp. 253–269); the verse in his stories is recited by characters."
+  },
+  "sattor_tursun": {
+   "verdict": "c",
+   "note": "Prose writer (grade 11, pp. 326–333)."
+  },
+  "abdulhamid_samad": {
+   "verdict": "c",
+   "note": "Prose writer (grade 11, pp. 381–389)."
+  },
+  "karomatullohi_mirzo": {
+   "verdict": "c",
+   "note": "Prose writer (grade 11, pp. 390–396)."
+  },
+  "sayf_rahimzod": {
+   "verdict": "c",
+   "note": "Prose writer (grade 11, pp. 317–325)."
+  },
+  "juma_odina": {
+   "verdict": "c",
+   "note": "Prose (grade 6, pp. 155–162); the verse after it is Айюбӣ's drama."
+  },
+  "b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9e": {
+   "verdict": "b",
+   "note": "A prose romance («Доробнома», grade 7, pp. 6–21); the verse in it is recited by characters and not attributed — one passage is Масъуди Саъди Салмон's (grade 7, p. 66)."
+  },
+  "82f30a4e-f468-4a7d-bf03-bd29d3279fe0": {
+   "verdict": "b",
+   "note": "Only a metre example (grade 6, p. 76)."
+  },
+  "bda36de4-2636-4079-b473-d8f9f620820a": {
+   "verdict": "b",
+   "note": "Named only in the lesson on tazmin (grade 8, p. 233)."
+  },
+  "cef7fd49-54c8-4e46-9361-123cc52de5eb": {
+   "verdict": "b",
+   "note": "Grade 10, p. 168 names him in a survey; the verse printed there is Толиби Омулӣ's."
+  },
+  "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482": {
+   "verdict": "a",
+   "note": "Chapter grade 9, pp. 87–106 (the biography cites only p. 87).",
+   "chapters": {
+    "9": "87–106"
+   }
+  },
+  "b0133115-7ead-4ec8-bc6d-115f4540bdb2": {
+   "verdict": "a",
+   "note": "Chapter grade 8, pp. 65–74 (the biography cites pp. 77–80, which are Фирдавсӣ's).",
+   "chapters": {
+    "8": "65–74"
+   }
+  },
+  "400b9785-ae80-4957-a653-d65c72cdbf79": {
+   "verdict": "a",
+   "note": "Two poems; the stepped «Ибтидои достон» (grade 5, pp. 297–299) cannot be copied from the text layer."
+  },
+  "mehmon_bakhti": {
+   "verdict": "a",
+   "note": "Prose writer and dramatist; the one song from his play (grade 11, p. 356) is published."
+  },
+  "ahmad_donish": {
+   "verdict": "a",
+   "note": "Mostly prose («Наводир-ул-вақоеъ»); the verse the chapters print is published."
+  },
+  "92753b88-1d31-4f79-aae4-5d36c83ab4a1": {
+   "verdict": "a",
+   "note": "Prose («Қобуснома»); one quatrain inside a passage the book gives as his words (grade 8, p. 176) — team to confirm."
+  },
+  "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f": {
+   "verdict": "a",
+   "note": "Most verse in his chapter is dialogue of his verse dramas (grade 6, pp. 163–189), not published as poems."
+  },
+  "98e43b59-1d3a-440a-9d73-83b599cee7c5": {
+   "verdict": "a",
+   "note": "Two passages the book gives to him by name (grade 8, pp. 39, 45)."
+  },
+  "5228f270-7e20-47cf-9e0b-4e6cc6fca51c": {
+   "verdict": "a",
+   "note": "A quatrain signed with his name (grade 8, p. 37)."
+  },
+  "b28a4de3-06a8-406c-b2e9-db363f7aa2d5": {
+   "verdict": "a",
+   "note": "A rubai quoted as his in Тирмизӣ's «Дастур-ул-мулук» (grade 7, p. 159)."
+  },
+  "26906a5a-692c-40a3-a991-6b3559cda394": {
+   "verdict": "a",
+   "note": "A ghazal named as his, with his pen name (grade 11, p. 16)."
+  },
+  "a2e5259d-9c1c-46f5-b845-04fb18d07858": {
+   "verdict": "a",
+   "note": "Verse from his «Миръоти ибрат», named (grade 11, p. 15)."
+  },
+  "gulrukhsor": {
+   "verdict": "a",
+   "note": "An excerpt of «Зодрӯзи дард», named (grade 11, pp. 342–343); grade 5, p. 61 only names her."
+  },
+  "farzona": {
+   "verdict": "a",
+   "note": "An excerpt of «Қонуни ҷозибаи ишқ», named (grade 11, p. 345)."
+  },
+  "0079c49a-da77-47d1-bc1e-8ff4cbb9d337": {
+   "verdict": "a",
+   "note": "Two passages signed with his name (grade 8, p. 37).",
+   "chapters": {
+    "8": "37"
+   }
+  },
+  "1c82210c-343c-4499-9639-93f0a766b5f7": {
+   "verdict": "a",
+   "note": "Two passages named as his in the survey of Ghaznavid poets (grade 8, pp. 148–149)."
+  },
+  "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65": {
+   "verdict": "a",
+   "note": "His chapter (grade 7, pp. 62–67) prints a qasida and a qit'a; Низомии Арӯзӣ's tale quotes a rubai of his (p. 60).",
+   "chapters": {
+    "7": "60–67"
+   }
+  },
+  "1b65d9d8-0e3d-4e02-8c65-30f98e84e109": {
+   "verdict": "a",
+   "note": "One passage named as his (grade 8, pp. 32–33).",
+   "chapters": {
+    "8": "32–33"
+   }
+  },
+  "79b50923-ea65-4554-b65d-bbf3ee49f35c": {
+   "verdict": "a",
+   "note": "Two bayts signed with his name (grade 5, p. 56); the epigraph bayt on grade 5, p. 49 is lone.",
+   "chapters": {
+    "5": "56"
+   }
+  },
+  "d48ec80f-951d-4dfd-b65a-6e409561a712": {
+   "verdict": "a",
+   "note": "Two passages named as his (grade 8, pp. 60, 147).",
+   "chapters": {
+    "8": "60"
+   }
+  },
+  "a6b5eb18-39e9-4fdf-b492-e5956a553436": {
+   "verdict": "a",
+   "note": "A qit'a signed with his name (grade 5, p. 55) and a quatrain signed with it (grade 8, p. 37), which Phase 7 had filed under Абушакур."
+  },
+  "1f97e6af-4d9c-4d58-9812-847d89348dfc": {
+   "verdict": "a",
+   "note": "A satire he spoke, named in Айнӣ's memoirs (grade 11, p. 96)."
+  },
+  "2a94d1c2-8f15-4d08-948c-b7e9491d8273": {
+   "verdict": "a",
+   "note": "Two passages named as his (grade 8, pp. 32–33)."
+  },
+  "da40ae16-883d-4232-86a1-976aa9ffc941": {
+   "verdict": "a",
+   "note": "Verse named as his, with his pen name (grade 11, p. 14); the grade 10 pages his biography cites print no verse of his.",
+   "chapters": {
+    "11": "14"
+   }
+  }
+ }
+}

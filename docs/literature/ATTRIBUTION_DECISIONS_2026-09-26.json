@@ -1,0 +1,15 @@
+{
+ "about": "Phase 8 attribution decisions, taken by reading the printed page (tool/literature/apply_attribution_decisions.py). The audit's new signature check found one published record whose verse the book signs with another poet's name.",
+ "reviewedAt": "2026-09-26",
+ "decisions": [
+  {
+   "id": "d417bcd6-d351-50e8-ad31-26ab7771bbc2",
+   "action": "refile",
+   "authorId": "a6b5eb18-39e9-4fdf-b492-e5956a553436",
+   "book": "adabiyet sinfi 8",
+   "page": 37,
+   "evidence": "The quatrain «Абр ҳамегиряд чун ошиқон…» is signed «(Шаҳиди Балхӣ)» on the line under it. Phase 7 filed it under Абушакури Балхӣ, whose biography cites the page; the signature under the verse was not read then.",
+   "publish": {"pdfPage": 37, "opening": "Абр ҳамегиряд чун ошиқон,"}
+  }
+ ]
+}

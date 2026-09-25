@@ -1,0 +1,89 @@
+{
+ "about": "Latin look-alike letters set as the Cyrillic letters the page shows (tool/literature/fix_lookalike_letters.py).",
+ "changes": [
+  {
+   "id": "71f2cf41-17fc-409b-a953-16ec0dac8188",
+   "field": "textTajik",
+   "before": "Xалоси",
+   "after": "Халоси"
+  },
+  {
+   "id": "3772bd06-3459-4ee1-add5-c3244b889c1b",
+   "field": "incipit",
+   "before": "КИШТИНИШACTАГОНЕМ",
+   "after": "КИШТИНИШАСТАГОНЕМ"
+  },
+  {
+   "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_a7eb2d23d5623d63",
+   "field": "title",
+   "before": "гap",
+   "after": "гар"
+  },
+  {
+   "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_a7eb2d23d5623d63",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_3dd9bd6975187744",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_3785623ec49aaaf7",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_c2743d99b0539df5",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_ahmad_donish_511e4b6eaaa32835",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_310a8288-d554-4b9c-9ad1-3273b1edce85_709e6c91d7703e63",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f_832300d0e6e2ffe1",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f_6a5a6a03c955897c",
+   "field": "title",
+   "before": "Typo",
+   "after": "Туро"
+  },
+  {
+   "id": "poem_a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f_bb577140c18191d3",
+   "field": "title",
+   "before": "cap",
+   "after": "сар"
+  },
+  {
+   "id": "poem_nasir_khusraw_f273d5d4ef64fd03",
+   "field": "title",
+   "before": "Cаёҳатро",
+   "after": "Саёҳатро"
+  },
+  {
+   "id": "7c9046a6-ea7c-4ddf-9d00-e77d81580826",
+   "field": "title",
+   "before": "Xудой",
+   "after": "Худой"
+  }
+ ]
+}

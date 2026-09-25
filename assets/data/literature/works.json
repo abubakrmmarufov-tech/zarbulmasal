@@ -2316,7 +2316,7 @@
     "incipit": "Яке Руму яке Юнон парастад,",
     "type": "poem",
     "scriptSource": "tajikOnly",
-    "textTajik": "Яке Руму яке Юнон парастад,\nЯке куфру яке имон парастад...\nЯке аз дасти зулми Инглистон\nXалоси мулки Ҳиндустон парастад...\nАгар аз кеши Лоҳутӣ бипурсӣ,\nНаҷоти фаълаву деҳқон парастад.",
+    "textTajik": "Яке Руму яке Юнон парастад,\nЯке куфру яке имон парастад...\nЯке аз дасти зулми Инглистон\nХалоси мулки Ҳиндустон парастад...\nАгар аз кеши Лоҳутӣ бипурсӣ,\nНаҷоти фаълаву деҳқон парастад.",
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "transliteration",
@@ -2375,7 +2375,7 @@
       "verifiedAt": "2026-09-22",
       "evidenceHash": "3b0affc12c743a24"
     },
-    "persianScriptRepresentation": "یاکی رومو یاکی یونان پرستد،\nیاکی کوفرو یاکی ایمان پرستد...\nیاکی از دستی زولمی اینگلیستان\nXالاسی مولکی هیندوستان پرستد...\nاگر از کیشی لاهوتی بیپورسی،\nنـجاتی فعلوو دیهقان پرستد.",
+    "persianScriptRepresentation": "یاکی رومو یاکی یونان پرستد،\nیاکی کوفرو یاکی ایمان پرستد...\nیاکی از دستی زولمی اینگلیستان\nخلاسی مولکی هیندوستان پرستد...\nاگر از کیشی لاهوتی بیپورسی،\nنـجاتی فعلوو دیهقان پرستد.",
     "persianScriptSource": "generated",
     "titlePersianSource": "generated"
   },
@@ -3365,7 +3365,7 @@
     "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
     "title": "Киштинишастагонем",
     "titlePersian": "کشتی‌نشستگانیم",
-    "incipit": "КИШТИНИШACTАГОНЕМ",
+    "incipit": "КИШТИНИШАСТАГОНЕМ",
     "type": "ghazal",
     "scriptSource": "tajikOnly",
     "textTajik": "Дил меравад зи дастам, соҳибдилон Худоро,\nДардо, ки рози пинҳон хоҳад шуд ошкоро,\nКиштинишастагонем, эй боди шӯрта, бархез.\nБошад, ки боз бинем, дидори ошноро.\nДаҳрӯза меҳри гардун афсона асту афсун,\nНекӣ ба ҷои ёрон фурсат шумор, ёро...\nЭй соҳиби каромат, шукронаи саломат,\nРӯзе тафаққуде кун дарвеши бенаворо.\nОсоиши ду гетӣ тафсири ин ду ҳарф аст:\nБо дӯстон мурувват, ба душманон мадоро.\nҲангоми тангдастӣ дар айш кӯшу мастӣ,\nК-ин кимиёи ҳастӣ Қорун кунад гадоро...\nХубони порсигӯ бахшандагони умранд,\nСоқӣ, бидеҳ башорат риндони порсоро.\nҲофиз ба худ напӯшид ин хирқаи майолуд,\nЭй шайхи покдоман, маъзур дор моро.",
@@ -44388,7 +44388,7 @@
   {
     "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_a7eb2d23d5623d63",
     "authorId": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
-    "title": "Чашма гap cap шавад, чӣ суд аз пеш",
+    "title": "Чашма гар сар шавад, чӣ суд аз пеш",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -45397,7 +45397,7 @@
   {
     "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_3dd9bd6975187744",
     "authorId": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
-    "title": "Нозанинро зи cap бурун шуд ноз",
+    "title": "Нозанинро зи сар бурун шуд ноз",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -46669,7 +46669,7 @@
   {
     "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_3785623ec49aaaf7",
     "authorId": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
-    "title": "мағзи cap, майна, ақл, мазмуни мисраъ: аз насимаш ақл кушо­",
+    "title": "мағзи сар, майна, ақл, мазмуни мисраъ: аз насимаш ақл кушо­",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -49269,7 +49269,7 @@
   {
     "id": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_c2743d99b0539df5",
     "authorId": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
-    "title": "То ҳама cap бар хати фармон ниҳанд",
+    "title": "То ҳама сар бар хати фармон ниҳанд",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -64182,7 +64182,7 @@
   {
     "id": "poem_ahmad_donish_511e4b6eaaa32835",
     "authorId": "ahmad_donish",
-    "title": "бастам. Хирси дасторӣ дасторро аз cap бияндохт ва рӯй ба гу­",
+    "title": "бастам. Хирси дасторӣ дасторро аз сар бияндохт ва рӯй ба гу­",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -68113,7 +68113,7 @@
   {
     "id": "poem_310a8288-d554-4b9c-9ad1-3273b1edce85_709e6c91d7703e63",
     "authorId": "310a8288-d554-4b9c-9ad1-3273b1edce85",
-    "title": "Зиндагӣ охир cap ояд, бандагӣ даркор нест",
+    "title": "Зиндагӣ охир сар ояд, бандагӣ даркор нест",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -70293,7 +70293,7 @@
   {
     "id": "poem_a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f_832300d0e6e2ffe1",
     "authorId": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
-    "title": "Ҳар кӣ cap бардошт, пояшро бибур",
+    "title": "Ҳар кӣ сар бардошт, пояшро бибур",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -70773,7 +70773,7 @@
   {
     "id": "poem_a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f_6a5a6a03c955897c",
     "authorId": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
-    "title": "Typo беинтиҳо мо дӯст дорем",
+    "title": "Туро беинтиҳо мо дӯст дорем",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -74910,7 +74910,7 @@
   {
     "id": "poem_a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f_bb577140c18191d3",
     "authorId": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
-    "title": "Сухани Исмоили Сомониро, ки чунин cap мешавад, аз ёд ку­",
+    "title": "Сухани Исмоили Сомониро, ки чунин сар мешавад, аз ёд ку­",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -140709,7 +140709,7 @@
   {
     "id": "poem_nasir_khusraw_f273d5d4ef64fd03",
     "authorId": "nasir_khusraw",
-    "title": "а)\tCаёҳатро дӯст медошт",
+    "title": "а)\tСаёҳатро дӯст медошт",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -243302,7 +243302,7 @@
   {
     "id": "7c9046a6-ea7c-4ddf-9d00-e77d81580826",
     "authorId": "310a8288-d554-4b9c-9ad1-3273b1edce85",
-    "title": "Додӣ Лоҳутиям Xудой лақаб,",
+    "title": "Додӣ Лоҳутиям Худой лақаб,",
     "titlePersian": null,
     "incipit": null,
     "type": "poem",
@@ -308779,7 +308779,7 @@
   },
   {
     "id": "d417bcd6-d351-50e8-ad31-26ab7771bbc2",
-    "authorId": "dea74b1e-32da-4afc-862f-4a08fd22f8f5",
+    "authorId": "a6b5eb18-39e9-4fdf-b492-e5956a553436",
     "title": "Абр ҳамегиряд чун ошиқон",
     "titlePersian": "ابر همیگیریاد چون آشیقان",
     "incipit": "Абр ҳамегиряд чун ошиқон,",
@@ -308789,7 +308789,7 @@
     "textPersian": null,
     "textStatus": "verified",
     "editorial": "asPrinted",
-    "editorialNotes": "Text layer of the cited textbook page; legacy Tajik font encoding mapped to Unicode and footnote markers removed; no other change. Attribution from the lead-in, reviewed by hand 2026-09-25: the lead-in makes the chapter's poet the speaker, or introduces the poet's own work.",
+    "editorialNotes": "Text layer of the cited textbook page; legacy Tajik font encoding mapped to Unicode and footnote markers removed; no other change. Attribution review 2026-09-26 (adabiyet sinfi 8, p. 37): The quatrain «Абр ҳамегиряд чун ошиқон…» is signed «(Шаҳиди Балхӣ)» on the line under it. Phase 7 filed it under Абушакури Балхӣ, whose biography cites the page; the signature under the verse was not read then.",
     "primarySource": {
       "bookTitle": "Адабиёти тоҷик",
       "authorAsPrinted": "Абдунабӣ Сатторзода",
@@ -308824,7 +308824,7 @@
       "evidenceLevel": "primaryChecked",
       "pageVerified": true,
       "verificationMethod": "textbookPdfTextExtraction",
-      "verifiedAt": "2026-09-25"
+      "verifiedAt": "2026-09-26"
     },
     "persianScriptRepresentation": "ابر همیگیریاد چون آشیقان،\nباغ همیخندد معشوقوار.\nرعد همینالد مانندی من،\nچونکی بینالم به سهرگاه زار.",
     "persianScriptSource": "generated",

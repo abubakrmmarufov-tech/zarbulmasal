@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(__file__))
-from audit_textbook_poems import audit  # noqa: E402
+from audit_textbook_poems import audit, reviewed_ids  # noqa: E402
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
@@ -53,6 +53,49 @@ class AuditTest(unittest.TestCase):
         w = work(POEM)
         w['verification']['verificationMethod'] = 'manualReview'
         self.assertEqual(audit([w], {'b': ['', PAGE]}, NAMES), (0, []))
+
+
+SIGNED = PAGE.replace('           Ба сони дидаи Маҷнун.\n',
+                      '           Ба сони дидаи Маҷнун.\n'
+                      '                             (Рӯдакӣ)\n')
+FLUSH = """\
+    Дар ин бора худи шоир чунин
+мегӯяд:
+Бихандад лола дар саҳро
+Ба сони чеҳраи Лайло.
+Бигиряд абр дар гардун
+Ба сони дидаи Маҷнун.
+                                   52
+"""
+
+
+class Phase8AuditTest(unittest.TestCase):
+    def test_verse_the_book_signs_with_another_poet_fails(self):
+        _, failures = audit([work(POEM)], {'b': ['', SIGNED]}, NAMES)
+        self.assertEqual(failures[0][1], 'the book signs the verse with another poet (rudaki)')
+
+    def test_verse_signed_with_its_own_poet_passes(self):
+        _, failures = audit([work(POEM, author='rudaki')], {'b': ['', SIGNED]}, NAMES)
+        self.assertEqual(failures, [])
+
+    def test_flush_left_verse_is_not_read_as_prose(self):
+        checked, failures = audit([work(POEM)], {'b': ['', FLUSH]}, NAMES)
+        self.assertEqual((checked, failures), (1, []))
+
+    def test_a_long_prose_line_in_flush_left_verse_fails(self):
+        page = FLUSH.replace('Ба сони дидаи Маҷнун.',
+                             'Ба сони дидаи Маҷнун, ки ин сатр аз панҷоҳу ҳашт ҳарф дарозтар аст.')
+        text = POEM.replace('Ба сони дидаи Маҷнун.',
+                            'Ба сони дидаи Маҷнун, ки ин сатр аз панҷоҳу ҳашт ҳарф дарозтар аст.')
+        _, failures = audit([work(text)], {'b': ['', page]}, NAMES)
+        self.assertEqual(failures[0][1], 'prose lines inside the poem')
+
+    def test_reviewed_ids_prefer_the_ids_the_publisher_recorded(self):
+        blocks = [{'decision': 'accept', 'book': 'b', 'pdfPage': 1,
+                   'opening': 'x', 'recordIds': ['r1', 'r2']},
+                  {'decision': 'reject', 'book': 'b', 'pdfPage': 1,
+                   'opening': 'y', 'recordIds': ['r3']}]
+        self.assertEqual(reviewed_ids(blocks), {'r1', 'r2'})
 
 
 class ProseLineTest(unittest.TestCase):
