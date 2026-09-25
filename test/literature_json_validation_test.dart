@@ -23,6 +23,18 @@ import 'package:zarbulmasal/features/literature/domain/verification_record.dart'
 }
 
 void main() {
+  // The textbook PDFs are held outside the repository; the manifest names
+  // each one (docs/literature/pdfs/MANIFEST.json).
+  final manifestPdfs = {
+    for (final entry
+        in (jsonDecode(
+                  File('docs/literature/pdfs/MANIFEST.json').readAsStringSync(),
+                )
+                as Map<String, dynamic>)['pdfs']
+            as List)
+      entry['file'] as String,
+  };
+
   group('Literature JSON Data Files Validation', () {
     test('poets.json is valid and conforms to LiteraryAuthor model', () {
       final file = File('assets/data/literature/poets.json');
@@ -575,9 +587,9 @@ void main() {
             startsWith('docs/literature/pdfs/'),
           );
           expect(
-            File(work.primarySource!.sourceReference!).existsSync(),
-            isTrue,
-            reason: 'Cited textbook PDF missing for ${work.id}',
+            manifestPdfs,
+            contains(work.primarySource!.sourceReference!.split('/').last),
+            reason: 'Cited textbook PDF is not in the manifest: ${work.id}',
           );
           continue;
         }

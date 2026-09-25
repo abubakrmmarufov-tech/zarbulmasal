@@ -321,6 +321,12 @@ def main() -> int:
         if manifest_path.is_file()
         else set()
     )
+
+    def held_pdf(path: Path) -> bool:
+        """A textbook PDF named in the manifest (or present locally)."""
+        return path.suffix.lower() == ".pdf" and (
+            (PDF_DIR / path.name).is_file() or path.name in manifest_pdfs
+        )
     canonical_work_keys: dict[tuple[str, str, str], str] = {}
 
     def validate_source(
@@ -374,10 +380,7 @@ def main() -> int:
                         f"local source is outside the approved PDF corpus: {source_reference!r}",
                     )
                 else:
-                    if reference_path.suffix.lower() != ".pdf" or not (
-                        (PDF_DIR / reference_path.name).is_file()
-                        or reference_path.name in manifest_pdfs
-                    ):
+                    if not held_pdf(reference_path):
                         fail(
                             "SOURCE_REFERENCE",
                             source_record,
@@ -647,8 +650,8 @@ def main() -> int:
                         except ValueError:
                             fail("PORTRAIT_SOURCE_REFERENCE", record, "portrait source escapes the approved PDF corpus")
                         else:
-                            if source_path.suffix.lower() != ".pdf" or not source_path.is_file():
-                                fail("PORTRAIT_SOURCE_REFERENCE", record, f"portrait source PDF does not exist: {portrait_source!r}")
+                            if not held_pdf(source_path):
+                                fail("PORTRAIT_SOURCE_REFERENCE", record, f"portrait source PDF is not in the PDF manifest: {portrait_source!r}")
                 elif portrait_type == "maorif_tj" and not portrait_source.startswith("https://maorif.tj/"):
                     fail("PORTRAIT_SOURCE_REFERENCE", record, "maorif_tj portrait must cite maorif.tj")
                 if text(portrait.get("rightsStatus")) not in {"unknown", "permission_granted", "public_domain"}:
