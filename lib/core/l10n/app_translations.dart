@@ -984,6 +984,11 @@ class AppTranslations {
     'explore_books_sub': 'Кашф ва хондани китобҳои дастрас',
     // Vocabulary / glossary
     'vocab_title': 'Луғатнома',
+    'lex_sheet_not_found': 'Ин калима дар Луғатнома нест.',
+    'lex_sheet_open': 'Луғатнома',
+    'lex_sheet_source': 'Адабиёти тоҷик, синфи \${0}, с. \${1}',
+    'lex_sheet_loading': 'Луғатнома бор мешавад…',
+    'reader_word_hint': 'Барои маънии калима ба он зер кунед.',
     'vocab_eyebrow': 'ФАРҲАНГИ МАФҲУМҲО',
     'vocab_subtitle':
         'Маънии зарбулмасалҳо, вожаҳои таърих ва адабиёт аз манбаъҳои асл',
@@ -1970,6 +1975,11 @@ class AppTranslations {
     'explore_books_sub': 'کشف و خواندن کتاب‌های در دسترس',
     // Vocabulary / glossary
     'vocab_title': 'لغت‌نامه',
+    'lex_sheet_not_found': 'این واژه در لغت‌نامه نیست.',
+    'lex_sheet_open': 'لغت‌نامه',
+    'lex_sheet_source': 'ادبیات تاجیک، صنف \${0}، ص. \${1}',
+    'lex_sheet_loading': 'لغت‌نامه بارگذاری می‌شود…',
+    'reader_word_hint': 'برای معنای واژه روی آن بزنید.',
     'vocab_eyebrow': 'واژه‌نامهٔ مفاهیم',
     'vocab_subtitle':
         'معنی ضرب‌المثل‌ها و واژه‌های تاریخ و ادبیات از منابع اصلی',

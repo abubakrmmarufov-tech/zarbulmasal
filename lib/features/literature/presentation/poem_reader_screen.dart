@@ -19,6 +19,7 @@ import 'widgets/reader_script_bar.dart';
 import 'widgets/reader_toolbar.dart';
 import 'widgets/source_line.dart';
 import 'widgets/verse_view.dart';
+import '../../vocabulary/presentation/lexicon_sheet.dart';
 
 /// A reader screen displaying a verified [LiteraryWork] with full provenance,
 /// script-aware typography, one status line, and a bottom action bar.
@@ -385,6 +386,14 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                               ? TextDirection.rtl
                                               : TextDirection.ltr,
                                           unitKeys: _unitKeys,
+                                          // The Lexicon is Tajik: words are
+                                          // looked up in Cyrillic only.
+                                          onWordTap: showsPersianText
+                                              ? null
+                                              : (word) => showLexiconSheet(
+                                                  context,
+                                                  word,
+                                                ),
                                         )
                                 else
                                   _ReviewPlaceholder(
@@ -394,6 +403,20 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                     showIncipit: mode == ReaderScriptMode.tajik,
                                     fontSizeDelta: readerPrefs.fontSizeDelta,
                                     lang: lang,
+                                  ),
+                                if (hasVerifiedText && !showsPersianText)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Text(
+                                      AppTranslations.get(
+                                        'reader_word_hint',
+                                        lang,
+                                      ),
+                                      style: QalamTypography.meta(
+                                        color: colors.onSurfaceVariant,
+                                        fontSize: 12,
+                                      ),
+                                    ),
                                   ),
                                 const SizedBox(height: 28),
                                 SourceLine(work: work, lang: lang),

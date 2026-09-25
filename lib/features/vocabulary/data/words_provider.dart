@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../domain/lexicon_index.dart';
 import '../domain/word_entry.dart';
 import '../../../core/utils/json_off_thread.dart';
 
@@ -18,4 +19,9 @@ final wordsProvider = FutureProvider<List<WordEntry>>((ref) async {
       .where((w) => w.term.isNotEmpty && w.definition.isNotEmpty)
       .toList(growable: false);
   return List.unmodifiable(words);
+});
+
+/// The Lexicon keyed for looking up words tapped in a poem.
+final lexiconIndexProvider = FutureProvider<LexiconIndex>((ref) async {
+  return LexiconIndex(await ref.watch(wordsProvider.future));
 });

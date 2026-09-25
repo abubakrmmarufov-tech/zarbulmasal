@@ -1,6 +1,29 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/verse_layout.dart';
+import 'lookup_text.dart';
+
+/// A verse line as [Text], or as [LookupText] when words can be looked up.
+Widget _line(
+  String text, {
+  required TextStyle style,
+  required TextDirection textDirection,
+  ValueChanged<String>? onWordTap,
+  TextAlign? textAlign,
+}) => onWordTap == null
+    ? Text(
+        text,
+        style: style,
+        textDirection: textDirection,
+        textAlign: textAlign,
+      )
+    : LookupText(
+        text,
+        style: style,
+        textDirection: textDirection,
+        textAlign: textAlign,
+        onWord: onWordTap,
+      );
 
 /// Renders a [VerseLayout]: bayts as couplet blocks separated by space,
 /// stanzas separated by more space, and wrapped continuations set flush to
@@ -16,6 +39,7 @@ class VerseView extends StatelessWidget {
     required this.style,
     required this.textDirection,
     this.unitKeys = const [],
+    this.onWordTap,
   });
 
   final VerseLayout layout;
@@ -25,6 +49,9 @@ class VerseView extends StatelessWidget {
   /// Optional keys, one per unit in reading order, so a reader can scroll to
   /// or observe a specific bayt/line.
   final List<GlobalKey> unitKeys;
+
+  /// Called with a word the reader taps, when words can be looked up.
+  final ValueChanged<String>? onWordTap;
 
   static const double hangingIndentEm = 1.5;
   static const double sideBySideMinWidth = 600;
@@ -61,6 +88,7 @@ class VerseView extends StatelessWidget {
                         unit: unit,
                         style: style,
                         textDirection: textDirection,
+                        onWordTap: onWordTap,
                       )
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -71,6 +99,7 @@ class VerseView extends StatelessWidget {
                               style: style,
                               textDirection: textDirection,
                               indent: fontSize * hangingIndentEm,
+                              onWordTap: onWordTap,
                             ),
                         ],
                       ),
@@ -117,11 +146,13 @@ class _SideBySideBayt extends StatelessWidget {
     required this.unit,
     required this.style,
     required this.textDirection,
+    this.onWordTap,
   });
 
   final List<String> unit;
   final TextStyle style;
   final TextDirection textDirection;
+  final ValueChanged<String>? onWordTap;
 
   @override
   Widget build(BuildContext context) {
@@ -132,20 +163,22 @@ class _SideBySideBayt extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Text(
+              child: _line(
                 unit.first,
                 style: style,
                 textDirection: textDirection,
                 textAlign: TextAlign.start,
+                onWordTap: onWordTap,
               ),
             ),
             const SizedBox(width: VerseView.hemistichGap),
             Expanded(
-              child: Text(
+              child: _line(
                 unit.last,
                 style: style,
                 textDirection: textDirection,
                 textAlign: TextAlign.end,
+                onWordTap: onWordTap,
               ),
             ),
           ],
@@ -166,12 +199,16 @@ class HangingIndentLine extends StatelessWidget {
     required this.style,
     required this.textDirection,
     required this.indent,
+    this.onWordTap,
   });
 
   final String text;
   final TextStyle style;
   final TextDirection textDirection;
   final double indent;
+
+  /// Called with a word the reader taps, when words can be looked up.
+  final ValueChanged<String>? onWordTap;
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +226,12 @@ class HangingIndentLine extends StatelessWidget {
         painter.dispose();
 
         if (!wraps || firstEnd <= 0 || firstEnd >= text.length) {
-          return Text(text, style: style, textDirection: textDirection);
+          return _line(
+            text,
+            style: style,
+            textDirection: textDirection,
+            onWordTap: onWordTap,
+          );
         }
         // Split without trimming so the two parts rejoin to the exact
         // original characters (e.g. when a selection is copied).
@@ -201,16 +243,22 @@ class HangingIndentLine extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(first, style: style, textDirection: textDirection),
+                _line(
+                  first,
+                  style: style,
+                  textDirection: textDirection,
+                  onWordTap: onWordTap,
+                ),
                 // The overflow drops under the line, set flush to the end
                 // edge (right in Cyrillic), as printed divans set it.
                 Padding(
                   padding: EdgeInsetsDirectional.only(start: indent),
-                  child: Text(
+                  child: _line(
                     rest,
                     style: style,
                     textDirection: textDirection,
                     textAlign: TextAlign.end,
+                    onWordTap: onWordTap,
                   ),
                 ),
               ],
