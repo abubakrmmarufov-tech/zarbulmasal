@@ -49,6 +49,39 @@ void main() {
     expect(find.byType(HistoryTimelineStrip), findsOneWidget);
   });
 
+  testWidgets('the daily picks follow the shared Tajikistan day', (
+    tester,
+  ) async {
+    Future<String> poemAt(DateTime now) async {
+      await openApp(
+        tester,
+        route: '/explore',
+        height: 2400,
+        overrides: [
+          nowProvider.overrideWithValue(() => now),
+          approvedWorksProvider.overrideWith((ref) => Future.value(_works)),
+        ],
+      );
+      final slip = find.ancestor(
+        of: find.text(tj('explore_discover_poem').toUpperCase()),
+        matching: find.byType(Column),
+      );
+      return tester
+          .widgetList<Text>(
+            find.descendant(of: slip.first, matching: find.byType(Text)),
+          )
+          .map((t) => t.data)
+          .join('|');
+    }
+
+    // 20:00 UTC on the 24th is already the 25th in Dushanbe (UTC+5).
+    final evening = await poemAt(DateTime.utc(2026, 9, 24, 20));
+    final morning = await poemAt(DateTime.utc(2026, 9, 25, 6));
+    final nextDay = await poemAt(DateTime.utc(2026, 9, 26, 6));
+    expect(morning, evening);
+    expect(nextDay, isNot(morning));
+  });
+
   testWidgets('"again" draws a different proverb', (tester) async {
     await openApp(tester, route: '/explore', height: 2400);
     final proverbSlip = find.ancestor(

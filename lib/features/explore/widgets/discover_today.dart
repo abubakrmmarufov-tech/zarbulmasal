@@ -15,7 +15,8 @@ import '../../vocabulary/data/words_provider.dart';
 class DiscoverToday extends ConsumerStatefulWidget {
   const DiscoverToday({super.key, this.today});
 
-  /// The day the picks follow (tests pass a fixed date).
+  /// The day the picks follow. Defaults to the shared Tajikistan calendar
+  /// day ([dailyDateProvider]), so a frozen clock freezes the picks too.
   final DateTime? today;
 
   @override
@@ -27,9 +28,14 @@ class _DiscoverTodayState extends ConsumerState<DiscoverToday> {
 
   /// A stable index for the day and draw, spread differently per list.
   int _pick(int length, int salt) {
-    final day = (widget.today ?? DateTime.now())
-        .difference(DateTime(2024))
-        .inDays;
+    final DateTime date = widget.today ?? ref.watch(dailyDateProvider);
+    // Whole calendar days in UTC, so the pick never shifts with the
+    // device's time zone.
+    final day = DateTime.utc(
+      date.year,
+      date.month,
+      date.day,
+    ).difference(DateTime.utc(2024)).inDays;
     return ((day + _draw * 37) * 7919 + salt * 104729).abs() % length;
   }
 
