@@ -6,6 +6,7 @@ import '../../core/l10n/app_translations.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/reading_position_provider.dart';
 import '../../shared/providers/reading_script_provider.dart';
+import '../literature/presentation/widgets/portrait_warm_up.dart';
 import 'widgets/bayt_of_the_day.dart';
 import 'widgets/collection_index.dart';
 import 'widgets/grade_lens.dart';
@@ -63,6 +64,7 @@ class HomeScreen extends ConsumerWidget {
           padding: const EdgeInsets.fromLTRB(20, 4, 20, 48),
           children: [
             QalamSearchEntry(label: tr('search_hint_global')),
+            const PortraitWarmUp(),
             const SizedBox(height: 20),
             // The collections first: every part of the app one tap away.
             const CollectionIndex(),

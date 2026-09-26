@@ -51,7 +51,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/rudaki.jpeg",
+      "assetPath": "assets/data/literature/portraits/rudaki.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 49,
@@ -103,7 +103,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/nasir_khusraw.jpeg",
+      "assetPath": "assets/data/literature/portraits/nasir_khusraw.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
       "sourcePage": 179,
@@ -153,7 +153,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/kamol_khujandi.jpeg",
+      "assetPath": "assets/data/literature/portraits/kamol_khujandi.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 191,
@@ -210,7 +210,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/tursunzoda.jpeg",
+      "assetPath": "assets/data/literature/portraits/tursunzoda.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 216,
@@ -260,7 +260,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/qanoat.jpeg",
+      "assetPath": "assets/data/literature/portraits/qanoat.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
       "sourcePage": 147,
@@ -315,7 +315,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/loiq_sherali.jpeg",
+      "assetPath": "assets/data/literature/portraits/loiq_sherali.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 288,
@@ -364,7 +364,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/bozor_sobir.jpeg",
+      "assetPath": "assets/data/literature/portraits/bozor_sobir.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 308,
@@ -410,7 +410,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/gulnazar_keldi.jpeg",
+      "assetPath": "assets/data/literature/portraits/gulnazar_keldi.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 281,
@@ -533,7 +533,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/47c1dc67-363a-4506-8a9c-bbbb38f98d20.jpeg",
+      "assetPath": "assets/data/literature/portraits/47c1dc67-363a-4506-8a9c-bbbb38f98d20.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 153,
@@ -583,7 +583,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/455f0420-3834-48f0-86b9-7da673a2a684.jpeg",
+      "assetPath": "assets/data/literature/portraits/455f0420-3834-48f0-86b9-7da673a2a684.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 117,
@@ -633,7 +633,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/d1abb54a-9804-4baf-b238-fd2203d7673e.jpeg",
+      "assetPath": "assets/data/literature/portraits/d1abb54a-9804-4baf-b238-fd2203d7673e.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
       "sourcePage": 97,
@@ -685,7 +685,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/1a55efdd-6a1f-43b8-834f-94af060b4329.jpeg",
+      "assetPath": "assets/data/literature/portraits/1a55efdd-6a1f-43b8-834f-94af060b4329.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 62,
@@ -909,7 +909,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/5fc69b51-c38a-4427-a362-5c8a14bca835.jpeg",
+      "assetPath": "assets/data/literature/portraits/5fc69b51-c38a-4427-a362-5c8a14bca835.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
       "sourcePage": 201,
@@ -988,7 +988,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/3ec91317-fcfe-4960-9ca0-fd87f3e96875.jpeg",
+      "assetPath": "assets/data/literature/portraits/3ec91317-fcfe-4960-9ca0-fd87f3e96875.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 100,
@@ -1050,7 +1050,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/f09073cb-33b4-4fcc-abf8-75959350245c.jpeg",
+      "assetPath": "assets/data/literature/portraits/f09073cb-33b4-4fcc-abf8-75959350245c.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 146,
@@ -1086,7 +1086,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/ef5a57a2-8949-43dd-85eb-8ceaf78335f3.jpeg",
+      "assetPath": "assets/data/literature/portraits/ef5a57a2-8949-43dd-85eb-8ceaf78335f3.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 222,
@@ -1121,7 +1121,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/a7feaa09-c83f-44f2-a69e-0a46ba957dbc.jpeg",
+      "assetPath": "assets/data/literature/portraits/a7feaa09-c83f-44f2-a69e-0a46ba957dbc.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 273,
@@ -1154,7 +1154,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/400b9785-ae80-4957-a653-d65c72cdbf79.jpeg",
+      "assetPath": "assets/data/literature/portraits/400b9785-ae80-4957-a653-d65c72cdbf79.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 295,
@@ -1209,7 +1209,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/310a8288-d554-4b9c-9ad1-3273b1edce85.jpeg",
+      "assetPath": "assets/data/literature/portraits/310a8288-d554-4b9c-9ad1-3273b1edce85.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
       "sourcePage": 141,
@@ -1353,7 +1353,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/a6dd1c54-753d-4a52-8e5b-5365b7908aa3.jpeg",
+      "assetPath": "assets/data/literature/portraits/a6dd1c54-753d-4a52-8e5b-5365b7908aa3.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 8.pdf",
       "sourcePage": 77,
@@ -1388,7 +1388,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/92a7c4fa-3191-4301-ba53-8087ce7ef3d8.jpeg",
+      "assetPath": "assets/data/literature/portraits/92a7c4fa-3191-4301-ba53-8087ce7ef3d8.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 26,
@@ -1446,7 +1446,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/6b080d51-336b-48ba-92cd-85fe29149e0d.jpeg",
+      "assetPath": "assets/data/literature/portraits/6b080d51-336b-48ba-92cd-85fe29149e0d.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
       "sourcePage": 58,
@@ -1533,7 +1533,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/d5abab06-07e9-4247-b8a8-f4801b6a5be4.jpeg",
+      "assetPath": "assets/data/literature/portraits/d5abab06-07e9-4247-b8a8-f4801b6a5be4.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
       "sourcePage": 44,
@@ -1595,7 +1595,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/a4b182d3-1c06-4c82-9858-0e71d95edeb3.jpeg",
+      "assetPath": "assets/data/literature/portraits/a4b182d3-1c06-4c82-9858-0e71d95edeb3.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 73,
@@ -1747,7 +1747,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/6ab9cd0a-0ff0-4a73-99ba-6604d9c61847.jpeg",
+      "assetPath": "assets/data/literature/portraits/6ab9cd0a-0ff0-4a73-99ba-6604d9c61847.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 282,
@@ -1782,7 +1782,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/43004ccf-0d32-463c-aad5-b6aaec73fbb4.jpeg",
+      "assetPath": "assets/data/literature/portraits/43004ccf-0d32-463c-aad5-b6aaec73fbb4.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 22,
@@ -1817,7 +1817,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/2e7a713f-c3d2-449e-bd6a-a4b5b7350201.jpeg",
+      "assetPath": "assets/data/literature/portraits/2e7a713f-c3d2-449e-bd6a-a4b5b7350201.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 31,
@@ -1984,7 +1984,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/604d62c2-62fc-4aa3-a7d2-8348e714b52d.jpeg",
+      "assetPath": "assets/data/literature/portraits/604d62c2-62fc-4aa3-a7d2-8348e714b52d.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 312,
@@ -3052,7 +3052,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/228feecd-8a97-4aaf-9b92-b9896c3a7d7d.jpeg",
+      "assetPath": "assets/data/literature/portraits/228feecd-8a97-4aaf-9b92-b9896c3a7d7d.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 271,
@@ -3085,7 +3085,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/7c389f92-ffdc-4f8e-b901-1de71acc34a9.jpeg",
+      "assetPath": "assets/data/literature/portraits/7c389f92-ffdc-4f8e-b901-1de71acc34a9.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 328,
@@ -3123,7 +3123,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/465d3f4a-4924-4ca6-9371-7266ae4393c7.jpeg",
+      "assetPath": "assets/data/literature/portraits/465d3f4a-4924-4ca6-9371-7266ae4393c7.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 50,
@@ -3211,7 +3211,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/c9ea2574-7623-4974-ada0-49c075b2831b.jpeg",
+      "assetPath": "assets/data/literature/portraits/c9ea2574-7623-4974-ada0-49c075b2831b.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 92,
@@ -3273,7 +3273,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482.jpeg",
+      "assetPath": "assets/data/literature/portraits/7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 87,
@@ -3330,7 +3330,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/9debff75-8664-43ab-a7a9-ed1a4725f69b.jpeg",
+      "assetPath": "assets/data/literature/portraits/9debff75-8664-43ab-a7a9-ed1a4725f69b.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 219,
@@ -3365,7 +3365,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/e859c1ae-03b9-4add-8079-7fa5bcf64ef7.jpeg",
+      "assetPath": "assets/data/literature/portraits/e859c1ae-03b9-4add-8079-7fa5bcf64ef7.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 132,
@@ -3400,7 +3400,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/26c985a4-88ca-47ea-8981-ba5529b62a7c.jpeg",
+      "assetPath": "assets/data/literature/portraits/26c985a4-88ca-47ea-8981-ba5529b62a7c.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 144,
@@ -3622,7 +3622,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/10a9ad7d-fd0d-462f-8cb4-594a869f8229.jpeg",
+      "assetPath": "assets/data/literature/portraits/10a9ad7d-fd0d-462f-8cb4-594a869f8229.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 239,
@@ -3660,7 +3660,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/eff956d5-9b8c-4522-9ac6-8791f15495ce.jpeg",
+      "assetPath": "assets/data/literature/portraits/eff956d5-9b8c-4522-9ac6-8791f15495ce.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
       "sourcePage": 217,
@@ -3693,7 +3693,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/12fb0e82-f108-4e71-8207-74d0540639d3.jpeg",
+      "assetPath": "assets/data/literature/portraits/12fb0e82-f108-4e71-8207-74d0540639d3.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
       "sourcePage": 222,
@@ -3728,7 +3728,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/65bd67be-a18d-4679-8721-cd13818933b1.jpeg",
+      "assetPath": "assets/data/literature/portraits/65bd67be-a18d-4679-8721-cd13818933b1.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
       "sourcePage": 249,
@@ -3786,7 +3786,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/ada69601-01d5-493f-b1a0-9b886be8daa8.jpeg",
+      "assetPath": "assets/data/literature/portraits/ada69601-01d5-493f-b1a0-9b886be8daa8.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
       "sourcePage": 51,
@@ -3898,7 +3898,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65.jpeg",
+      "assetPath": "assets/data/literature/portraits/8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
       "sourcePage": 62,
@@ -3962,7 +3962,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/0b0f1032-b36a-45e4-9930-8953b067db65.jpeg",
+      "assetPath": "assets/data/literature/portraits/0b0f1032-b36a-45e4-9930-8953b067db65.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 59,
@@ -3997,7 +3997,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/0e91d643-d947-4f0d-b3ac-ec2715a4b87c.jpeg",
+      "assetPath": "assets/data/literature/portraits/0e91d643-d947-4f0d-b3ac-ec2715a4b87c.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 150,
@@ -4030,7 +4030,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/ea87e35a-6a03-44f2-837e-648d1c84aecc.jpeg",
+      "assetPath": "assets/data/literature/portraits/ea87e35a-6a03-44f2-837e-648d1c84aecc.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 9.pdf",
       "sourcePage": 279,
@@ -4066,7 +4066,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/06b70024-a028-43dd-8c23-cdb75e96fac8.jpeg",
+      "assetPath": "assets/data/literature/portraits/06b70024-a028-43dd-8c23-cdb75e96fac8.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyot sinfi 7.pdf",
       "sourcePage": 141,
@@ -4131,7 +4131,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/121ce628-ff4b-44d2-a702-81db93040dee.jpeg",
+      "assetPath": "assets/data/literature/portraits/121ce628-ff4b-44d2-a702-81db93040dee.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 96,
@@ -4209,7 +4209,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/5633556b-df45-4cab-83dc-760016db1ef2.jpeg",
+      "assetPath": "assets/data/literature/portraits/5633556b-df45-4cab-83dc-760016db1ef2.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 67,
@@ -4242,7 +4242,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/a74ea72d-864f-4c25-b42e-95435794a42d.jpeg",
+      "assetPath": "assets/data/literature/portraits/a74ea72d-864f-4c25-b42e-95435794a42d.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 253,
@@ -4321,7 +4321,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/ahmad_donish.jpeg",
+      "assetPath": "assets/data/literature/portraits/ahmad_donish.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 238,
@@ -4392,7 +4392,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b.jpeg",
+      "assetPath": "assets/data/literature/portraits/e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 182,
@@ -4430,7 +4430,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c.jpeg",
+      "assetPath": "assets/data/literature/portraits/f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 207,
@@ -4536,7 +4536,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5e.jpeg",
+      "assetPath": "assets/data/literature/portraits/d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5e.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 250,
@@ -4577,7 +4577,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6f.jpeg",
+      "assetPath": "assets/data/literature/portraits/e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6f.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
       "sourcePage": 286,
@@ -4616,7 +4616,7 @@
     "biographyTjProvenance": "EDITORIAL_SUMMARY_FROM_SOURCES",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f.jpeg",
+      "assetPath": "assets/data/literature/portraits/a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
       "sourcePage": 163,
@@ -4677,7 +4677,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/juma_odina.jpeg",
+      "assetPath": "assets/data/literature/portraits/juma_odina.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
       "sourcePage": 155,
@@ -4793,7 +4793,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/mirzosodiq.jpeg",
+      "assetPath": "assets/data/literature/portraits/mirzosodiq.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 173,
@@ -4827,7 +4827,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/hoziq.jpeg",
+      "assetPath": "assets/data/literature/portraits/hoziq.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 185,
@@ -4861,7 +4861,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/gulkhani.jpeg",
+      "assetPath": "assets/data/literature/portraits/gulkhani.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 207,
@@ -4925,7 +4925,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/savdo.jpeg",
+      "assetPath": "assets/data/literature/portraits/savdo.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 270,
@@ -4961,7 +4961,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/vozeh.jpeg",
+      "assetPath": "assets/data/literature/portraits/vozeh.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiet sinfi 10.pdf",
       "sourcePage": 319,
@@ -4995,7 +4995,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/kangurti.jpeg",
+      "assetPath": "assets/data/literature/portraits/kangurti.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 40,
@@ -5028,7 +5028,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/sattor_tursun.jpeg",
+      "assetPath": "assets/data/literature/portraits/sattor_tursun.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 326,
@@ -5064,7 +5064,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/mehmon_bakhti.jpeg",
+      "assetPath": "assets/data/literature/portraits/mehmon_bakhti.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 355,
@@ -5097,7 +5097,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/abdulhamid_samad.jpeg",
+      "assetPath": "assets/data/literature/portraits/abdulhamid_samad.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 381,
@@ -5130,7 +5130,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/karomatullohi_mirzo.jpeg",
+      "assetPath": "assets/data/literature/portraits/karomatullohi_mirzo.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 390,
@@ -5166,7 +5166,7 @@
     "biographyTjProvenance": "SOURCE_BACKED",
     "biographyFaProvenance": "EDITORIAL_TRANSLATION",
     "portrait": {
-      "assetPath": "assets/data/literature/portraits/sayf_rahimzod.jpeg",
+      "assetPath": "assets/data/literature/portraits/sayf_rahimzod.webp",
       "sourceType": "uploaded_book",
       "sourceReference": "docs/literature/pdfs/adabiyet sinfi 11.pdf",
       "sourcePage": 317,

@@ -4,6 +4,42 @@ import '../../features/literature/domain/portrait_record.dart';
 import 'qalam_monogram_plate.dart';
 import 'qalam_spacing.dart';
 
+/// The image a [QalamPortrait] of [height] draws: the bundled asset, decoded
+/// at the size shown. Precaching this same provider fills the cache the
+/// portrait reads from.
+ImageProvider portraitImage(
+  PortraitRecord portrait, {
+  required double height,
+  required double devicePixelRatio,
+}) => ResizeImage.resizeIfNeeded(
+  null,
+  height.isFinite ? (height * devicePixelRatio).round() : null,
+  AssetImage(portrait.assetPath),
+);
+
+/// Decodes the portraits of the first screenful of a poet list, drawn at
+/// [height], so the list shows them at once.
+Future<void> precachePortraits(
+  BuildContext context,
+  Iterable<PortraitRecord> portraits, {
+  double height = QalamPortrait.defaultHeight,
+}) async {
+  final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
+  for (final portrait in portraits) {
+    if (!context.mounted) return;
+    if (!portrait.isDisplayable) continue;
+    await precacheImage(
+      portraitImage(
+        portrait,
+        height: height,
+        devicePixelRatio: devicePixelRatio,
+      ),
+      context,
+      onError: (_, _) {},
+    );
+  }
+}
+
 /// A consistent, accessible portrait treatment for poet cards and dossiers.
 ///
 /// A portrait image is shown when it comes from one of the two approved
@@ -28,12 +64,15 @@ class QalamPortrait extends StatefulWidget {
     required this.portrait,
     required this.label,
     this.width = 64,
-    this.height = 80,
+    this.height = defaultHeight,
     this.unavailableLabel,
     this.citationLabel,
     this.monogramName,
     this.persianName,
   });
+
+  /// The height of a portrait in a poet card.
+  static const double defaultHeight = 80;
 
   @override
   State<QalamPortrait> createState() => _QalamPortraitState();
@@ -64,15 +103,15 @@ class _QalamPortraitState extends State<QalamPortrait> {
     final colors = Theme.of(context).colorScheme;
     final sourceBacked = widget.portrait?.isDisplayable == true;
     final child = sourceBacked && !_assetFailed
-        ? Image.asset(
-            widget.portrait!.assetPath,
+        ? Image(
+            // Decoded at the size shown: the list shows dozens of portraits.
+            image: portraitImage(
+              widget.portrait!,
+              height: widget.height,
+              devicePixelRatio: MediaQuery.devicePixelRatioOf(context),
+            ),
             width: widget.width,
             height: widget.height,
-            // Decode at the size shown: the list shows dozens of portraits.
-            cacheHeight: widget.height.isFinite
-                ? (widget.height * MediaQuery.devicePixelRatioOf(context))
-                      .round()
-                : null,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               _markAssetFailed();
