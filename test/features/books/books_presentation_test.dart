@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/books/data/books_providers.dart';
@@ -283,8 +284,51 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(BookDetailScreen), findsOneWidget);
     expect(find.text('Хондан дар Китобхон'), findsOneWidget);
-    expect(find.text('Ҳуқуқи бознашр норӯшан аст'), findsOneWidget);
     expect(find.text('Муаллиф дар феҳристи манбаъ'), findsOneWidget);
+  });
+
+  testWidgets('book detail shows only its source, linked to the book page', (
+    tester,
+  ) async {
+    final launched = <String>[];
+    const channel = MethodChannel('plugins.flutter.io/url_launcher');
+    final messenger = tester.binding.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'canLaunch') return true;
+      if (call.method == 'launch') {
+        launched.add((call.arguments as Map)['url'] as String);
+        return true;
+      }
+      return null;
+    });
+    addTearDown(() => messenger.setMockMethodCallHandler(channel, null));
+
+    await openApp(
+      tester,
+      route: '/books/books-fixture',
+      overrides: overrides(),
+    );
+
+    expect(find.byType(BookDetailScreen), findsOneWidget);
+    expect(find.text('Манбаъ: kitobkhon.net'), findsOneWidget);
+    // No rights or copyright notice, provider note or second source button.
+    expect(find.text('Ҳуқуқи бознашр норӯшан аст'), findsNothing);
+    expect(find.text('Манбаи санҷишӣ'), findsNothing);
+    expect(find.text('Саҳифаи манбаъ'), findsNothing);
+    expect(find.text('Китобхон · kitobkhon.net'), findsNothing);
+
+    final link = find.text('Манбаъ: kitobkhon.net');
+    expect(
+      tester
+          .getSize(
+            find.ancestor(of: link, matching: find.byType(InkWell)).first,
+          )
+          .height,
+      greaterThanOrEqualTo(48),
+    );
+    await tester.tap(link);
+    await tester.pumpAndSettle();
+    expect(launched, ['https://kitobkhon.net/book/books-fixture']);
   });
 
   testWidgets(
@@ -313,8 +357,9 @@ void main() {
       expect(find.byType(BookDetailScreen), findsOneWidget);
       expect(find.text('Хондан дар Хирад'), findsOneWidget);
       expect(find.text('Хондан дар Китобхон'), findsNothing);
-      expect(find.textContaining('khirad.tj'), findsNothing);
-      expect(find.text('Китобхон · kitobkhon.net'), findsNothing);
+      // The source is the book's own provider, never Kitobkhon.
+      expect(find.text('Манбаъ: khirad.tj'), findsOneWidget);
+      expect(find.textContaining('kitobkhon'), findsNothing);
     },
   );
 
@@ -338,12 +383,8 @@ void main() {
 
       expect(find.text('خواندن در خرد'), findsOneWidget);
       expect(find.text('خواندن در کتاب‌خوان'), findsNothing);
-      await tester.scrollUntilVisible(
-        find.text('خرد · khirad.tj'),
-        300,
-        scrollable: find.byType(Scrollable).first,
-      );
-      expect(find.text('خرد · khirad.tj'), findsOneWidget);
+      expect(find.text('منبع: khirad.tj'), findsOneWidget);
+      expect(find.textContaining('kitobkhon'), findsNothing);
     },
   );
 
@@ -373,12 +414,8 @@ void main() {
     );
     await tester.tap(find.text('کتاب آزمایشی').last);
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(
-      find.text('Kitobkhon · kitobkhon.net'),
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
-    expect(find.text('Kitobkhon · kitobkhon.net'), findsOneWidget);
+    expect(find.text('منبع: kitobkhon.net'), findsOneWidget);
+    expect(find.text('حقوق بازنشر روشن نیست'), findsNothing);
     expect(find.text('زبان تاجیکی'), findsOneWidget);
     expect(find.text('خط سیریلیک'), findsOneWidget);
     expect(find.text('cyrillic'), findsNothing);
@@ -395,7 +432,8 @@ void main() {
       find.text(
         'یادداشت فهرست منبع فقط به تاجیکی ثبت شده و برای حفظ دقت پنهان شده است.',
       ),
-      findsOneWidget,
+      findsNothing,
+      reason: 'The provider note is gone; only the source link remains.',
     );
   });
 

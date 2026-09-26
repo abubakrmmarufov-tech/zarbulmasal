@@ -279,33 +279,6 @@ class _BookDetailBody extends ConsumerWidget {
                 ),
               ),
             ),
-            SliverToBoxAdapter(
-              child: _Section(
-                title: AppTranslations.get('books_provider', lang),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _providerNameLabel(edition?.providerId, lang),
-                      style: QalamTypography.body(color: colors.onSurface),
-                    ),
-                    const SizedBox(height: 8),
-                    if (edition?.metadataNote.trim().isNotEmpty == true)
-                      Text(
-                        lang == DisplayLanguage.persian
-                            ? AppTranslations.get(
-                                'books_metadata_note_translation_pending',
-                                lang,
-                              )
-                            : edition!.metadataNote,
-                        style: QalamTypography.meta(
-                          color: colors.onSurfaceVariant,
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-            ),
             const SliverToBoxAdapter(child: SizedBox(height: 48)),
           ],
         ),
@@ -349,29 +322,66 @@ class _ActionPanel extends StatelessWidget {
           icon: const Icon(Icons.open_in_new),
           label: Text(_providerReadLabel(providerId, lang)),
         ),
-        const SizedBox(height: 8),
-        OutlinedButton.icon(
-          onPressed: edition.sourceUri == null
-              ? null
-              : () => _open(context, edition.sourceUri!),
-          icon: const Icon(Icons.source_outlined),
-          label: Text(AppTranslations.get('books_source_page', lang)),
-        ),
-        const SizedBox(height: 10),
-        if (edition.rightsStatus == BookRightsStatus.rightsUnclear)
-          Text(
-            AppTranslations.get('books_rights_unclear', lang),
-            textAlign: TextAlign.center,
-            style: QalamTypography.meta(color: colors.error),
-          ),
-        if (edition.rightsStatus == BookRightsStatus.rightsUnclear)
-          const SizedBox(height: 6),
+        const SizedBox(height: 6),
         Text(
           AppTranslations.get('books_external_note', lang),
           textAlign: TextAlign.center,
           style: QalamTypography.meta(color: colors.onSurfaceVariant),
         ),
+        if (edition.sourceUri case final source?) ...[
+          const SizedBox(height: 8),
+          _SourceLink(
+            source: source,
+            lang: lang,
+            onTap: () => _open(context, source),
+          ),
+        ],
       ],
+    );
+  }
+}
+
+/// «Манбаъ: kitobkhon.net» — the book's page on the site it comes from.
+class _SourceLink extends StatelessWidget {
+  final Uri source;
+  final DisplayLanguage lang;
+  final VoidCallback onTap;
+
+  const _SourceLink({
+    required this.source,
+    required this.lang,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Center(
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 48),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Text(
+                    AppTranslations.get('lit_source_line', lang, [source.host]),
+                    style: QalamTypography.meta(
+                      color: colors.primary,
+                    ).copyWith(decoration: TextDecoration.underline),
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Icon(Icons.open_in_new, size: 16, color: colors.primary),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -514,18 +524,6 @@ String _localizedBookScript(String value, DisplayLanguage lang) {
 }
 
 bool _isPersian(DisplayLanguage lang) => lang == DisplayLanguage.persian;
-
-/// Provider name label derived from the edition's provider id.
-///
-/// Falls back to the generic Kitobkhon label only for unknown provider ids,
-/// so a khirad edition is never presented as Kitobkhon.
-String _providerNameLabel(String? providerId, DisplayLanguage lang) {
-  final key = 'books_provider_name_$providerId';
-  if (providerId != null && AppTranslations.hasKey(key)) {
-    return AppTranslations.get(key, lang);
-  }
-  return AppTranslations.get('books_provider_name', lang);
-}
 
 /// "Read on `provider`" button label derived from the edition's provider id.
 String _providerReadLabel(String providerId, DisplayLanguage lang) {

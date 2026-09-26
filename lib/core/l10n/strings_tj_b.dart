@@ -397,8 +397,6 @@ const Map<String, String> tajikStringsB = {
   'books_science': 'Илмӣ',
   'books_grade_11': 'Синфи 11',
   'books_category_translation_pending': 'Тарҷумаи бахш дастрас нест',
-  'books_metadata_note_translation_pending':
-      'Ёддошти феҳристи манбаъ танҳо ба тоҷикӣ сабт шудааст ва барои нигоҳ доштани дурустӣ пинҳон аст.',
   'books_classical': 'Адабиёти классикӣ',
   'books_modern': 'Адабиёти муосир',
   'books_history': 'Таърих',
@@ -410,9 +408,6 @@ const Map<String, String> tajikStringsB = {
   'books_load_error_sub':
       'Феҳристи китобхона дастрас нест. Дубора кӯшиш кунед.',
   'books_provider': 'Манбаъ',
-  'books_provider_name': 'Китобхон · kitobkhon.net',
-  'books_provider_name_kitobkhon': 'Китобхон · kitobkhon.net',
-  'books_provider_name_khirad': 'Хирад · khirad.tj',
   'books_author_unavailable':
       'Муаллиф дар маълумоти манбаъ нишон дода нашудааст',
   'books_title_translation_pending': 'Тарҷумаи номи китоб дастрас нест',
@@ -421,13 +416,11 @@ const Map<String, String> tajikStringsB = {
   'books_original_title_tajik': 'Номи аслӣ ба тоҷикӣ',
   'books_original_author_tajik': 'Номи муаллиф ба тоҷикӣ',
   'books_original_publisher_tajik': 'Нашриёти аслӣ ба тоҷикӣ',
-  'books_source_page': 'Саҳифаи манбаъ',
   'books_read': 'Хондан',
   'books_read_on_provider': 'Хондан дар Китобхон',
   'books_read_on_provider_kitobkhon': 'Хондан дар Китобхон',
   'books_read_on_provider_khirad': 'Хондан дар Хирад',
   'books_download_unavailable': 'Боргирӣ дар барнома дастрас нест',
-  'books_rights_unclear': 'Ҳуқуқи бознашр норӯшан аст',
   'books_external_note': 'Хондан дар саҳифаи аслии провайдер кушода мешавад.',
   'books_link_error': 'Саҳифаи китоб кушода нашуд.',
   'books_edition': 'Нашр',
