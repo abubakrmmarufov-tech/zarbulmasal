@@ -1,4 +1,5 @@
 import '../models/proverb.dart';
+import '../models/source_ref.dart';
 
 /// Seed proverbs 21–58; see seed_proverbs.dart.
 const List<Proverb> seedProverbsPart1 = [
@@ -14,8 +15,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'padaru_modar',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '22',
@@ -30,8 +31,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '23',
@@ -46,24 +47,36 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'padaru_modar',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '24',
-    tajikCyrillic: 'Илм хоҳӣ, такрор кун; ҳосил хоҳӣ, шудгор кун.',
-    persianText: 'علم خواهی، تکرار کن؛ حاصل خواهی، شیار کن.',
+    tajikCyrillic: 'Илм хоҳӣ, такрор кун, ҳосил хоҳӣ, шудгор кун.',
+    persianText: 'علم خواهی، تکرار کن، حاصل خواهی، شیار کن.',
     simpleExplanationTj:
         'Барои омӯхтани илм такрор ва барои гирифтани ҳосил шудгору меҳнат лозим аст.',
     meaningTj:
         'Ҳар натиҷа роҳи худро дорад ва бе машқу меҳнати мувофиқ ба даст намеояд.',
     exampleSentenceTj:
-        'Ӯ ҳар рӯз дарсҳоро аз нав мехонд, зеро медонист: «Илм хоҳӣ, такрор кун; ҳосил хоҳӣ, шудгор кун».',
+        'Ӯ ҳар рӯз дарсҳоро аз нав мехонд, зеро медонист: «Илм хоҳӣ, такрор кун, ҳосил хоҳӣ, шудгор кун».',
     categoryId: 'ilm',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 25',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 24,
+        printedPage: 25,
+        printedText: 'Илм хоҳӣ, такрор кун, ҳосил хоҳӣ, шудгор кун.',
+      ),
+    ],
   ),
   Proverb(
     id: '25',
@@ -77,8 +90,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '26',
@@ -86,14 +99,93 @@ const List<Proverb> seedProverbsPart1 = [
     persianText: 'دست آدمیزاد — گل.',
     simpleExplanationTj: 'Дасти инсон қодир аст чизҳои зебо ва фоиданок созад.',
     meaningTj:
-        'Бо ҳунар ва меҳнат инсон метавонад чизҳоро обод, таъмир ё беҳтар кунад.',
+        '1. Одамизод ҳар кореро ба хубӣ иҷро намояд, 2. ҳар неъмату зебоие, ки дар ҷаҳон ҳаст, маҳсули меҳнати одамон аст.',
     exampleSentenceTj:
-        'Усто мизи кӯҳнаро чунон таъмир кард, ки нав барин шуд; дасти одамизод — гул.',
+        '«Дасти одамизод гул аст» – мегӯяд зарбулмасали тоҷик. Мо ба ин калима «озод»-ро ҳамроҳ карда мегӯем: «Дасти одами озод гул аст». Чунки меҳнати озод набудагӣ барои одамизод ранҷу кулфат аст. Меҳнат озод бошад, гул аст, ки димоғи одамизоди меҳнаткашро муаттар мекунад.',
     categoryId: 'mehnat',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38',
+    sources: [
+      SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 5',
+        authorEditor: 'Т. Мирзод, Р. Ҳамидов, М. Пирзод',
+        year: 2017,
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        pdfPage: 38,
+        printedPage: 38,
+        printedText: 'Дасти одамизод – гул.',
+        note: 'lesson «Зарбулмасалу мақолҳо», list of proverbs',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 46,
+        printedPage: 46,
+        printedText: 'Дасти одамизод гул.',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 47,
+        printedPage: 50,
+        printedText: 'Дасти одамизод гул аст.',
+        note: 'variant',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 366,
+        printedPage: 363,
+        printedText: 'ДАСТИ ОДАМИЗОД (ОДАМ) ГУЛ (АСТ).',
+        note: 'main entry with printed meaning and examples',
+      ),
+      SourceRef(
+        bookTitle: 'Адабиёти тоҷик (давраи нав), синфи 11',
+        authorEditor: 'Х. Асозода, А. Кӯчаров',
+        year: 2018,
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        pdfPage: 234,
+        printedPage: 234,
+        printedText: '«Дасти одамизод гул аст» – мегӯяд зарбулмасали тоҷик.',
+        note: 'variant',
+      ),
+    ],
+    meaningSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 366,
+      printedPage: 363,
+    ),
+    exampleSource: SourceRef(
+      bookTitle: 'Адабиёти тоҷик (давраи нав), синфи 11',
+      authorEditor: 'Х. Асозода, А. Кӯчаров',
+      year: 2018,
+      publisher: 'Маориф',
+      city: 'Душанбе',
+      pdfPage: 234,
+      printedPage: 234,
+    ),
+    exampleAttribution: 'Раҳим Ҷалил',
   ),
   Proverb(
     id: '27',
@@ -102,14 +194,75 @@ const List<Proverb> seedProverbsPart1 = [
     simpleExplanationTj:
         'Ҷавон ҳар қадар ҳунару малака омӯзад, боз ҳам ба фоидаи ӯст.',
     meaningTj:
-        'Давраи ҷавонӣ вақти муносиб барои омӯхтани ҳунарҳои гуногун аст.',
+        'Мард ҳарчи бештар ҳунар омӯзад, хуб аст, ҳар як ҳунар вақте ҳатман ба кор меояд.',
     exampleSentenceTj:
-        'Ӯ ҳам барномасозӣ меомӯхт, ҳам забон ва ҳам ронандагӣ; ба як ҷавон чил ҳунар кам.',
+        'Ҳарчанд ӯ чун наългар ном бароварда бошад ҳам, ба мақоли «ба як мард чил ҳунар кам аст» амал намуда, ҳам мисгару ҳам оҳангар, ҳам дегрезу ҳам кандакори бомаҳорате шуда буд.',
     categoryId: 'omuzish',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 45',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 45,
+        printedPage: 45,
+        printedText: 'Ба як ҷавон чил ҳунар кам.',
+        note: 'section «Касбу ҳунар»',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 37,
+        printedPage: 40,
+        printedText: 'Ба як ҷавонмард 40 ҳунар кам аст.',
+        note: 'variant',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 195,
+        printedPage: 192,
+        printedText: 'БА ЯК МАРД (ЙИГИТ, ҶАВОН) ЧИЛ ҲУНАР КАМ АСТ.',
+        note: 'variant',
+      ),
+    ],
+    meaningSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 195,
+      printedPage: 192,
+      note: 'entry «Ба як мард (йигит, ҷавон) чил ҳунар кам аст»',
+    ),
+    exampleSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 195,
+      printedPage: 192,
+    ),
+    exampleAttribution: 'Раҳим Ҷалил',
   ),
   Proverb(
     id: '28',
@@ -124,7 +277,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 4,
     type: ProverbType.modernCustom,
     sourceStatus: SourceStatus.needsReview,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceNote: '',
   ),
   Proverb(
     id: '29',
@@ -139,8 +292,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'sabr',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '30',
@@ -148,14 +301,40 @@ const List<Proverb> seedProverbsPart1 = [
     persianText: 'ادب بهترین گنج است.',
     simpleExplanationTj:
         'Одобу рафтори хуб аз сарвати моддӣ ҳам арзишмандтар аст.',
-    meaningTj: 'Адаб обрӯе медиҳад, ки пулу мол ҷойи онро гирифта наметавонад.',
+    meaningTj: 'Беҳтарин хислати неки ҳар кас хулқу одоби хуби ӯст.',
     exampleSentenceTj:
         'Ҳама ӯро барои муомилаи хубаш эҳтиром мекарданд; адаб беҳтарин ганҷ аст.',
     categoryId: 'odob',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 54',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 55,
+        printedPage: 54,
+        printedText:
+            '1. АДАБ БЕҲТАРИН ГАНҶ АСТ. 2. АДАБИ МАРД БЕҲТАР АЗ ЗАР(Р)И ӮСТ.',
+        note: 'main entry, printed meaning',
+      ),
+    ],
+    meaningSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 55,
+      printedPage: 54,
+    ),
   ),
   Proverb(
     id: '31',
@@ -170,8 +349,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '32',
@@ -186,8 +365,24 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 47',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 47,
+        printedPage: 47,
+        printedText: 'Меҳнати ҳалол — нони бемалол.',
+        note: 'section «Ҳаракату баракат»',
+      ),
+    ],
   ),
   Proverb(
     id: '33',
@@ -201,8 +396,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '34',
@@ -215,23 +410,59 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'hikmat',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 32',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 29,
+        printedPage: 32,
+        printedText: 'Аз бад—касофат, аз нек—шарофат.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 57,
+        printedPage: 56,
+        printedText: 'АЗ БАД КАСОФАТ, АЗ НЕК ШАРОФАТ.',
+        note: 'cross-reference entry',
+      ),
+    ],
   ),
   Proverb(
     id: '35',
-    tajikCyrillic: 'Салом аз хурд, калом аз калон.',
-    persianText: 'سلام از خرد، کلام از کلان.',
+    tajikCyrillic: 'Салом аз хурду калом аз калон.',
+    persianText: 'سلام از خرد و کلام از کلان.',
     simpleExplanationTj:
         'Дар одоби анъанавӣ хурдтар аввал салом мекунад ва калонтар суханро оғоз мекунад.',
     meaningTj: 'Ҳар синну мақом дар муошират одобу навбати худро дорад.',
     exampleSentenceTj:
-        'Ҷавон ба устод аввал салом дод ва баъд ба сухани ӯ гӯш кард: «Салом аз хурд, калом аз калон».',
+        'Ҷавон ба устод аввал салом дод ва баъд ба сухани ӯ гӯш кард: «Салом аз хурду калом аз калон».',
     categoryId: 'odob',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 71',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 68,
+        printedPage: 71,
+        printedText: 'Салом аз хурду калом аз калон.',
+      ),
+    ],
   ),
   Proverb(
     id: '36',
@@ -245,13 +476,26 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'ilm',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 81',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 78,
+        printedPage: 81,
+        printedText: 'Як китоби хуб беҳтар аз як хазинаи бузург.',
+      ),
+    ],
   ),
   Proverb(
     id: '37',
-    tajikCyrillic: 'Ҳунар аз мулку мероси падар беҳ.',
-    persianText: 'هنر از ملک و میراث پدر به.',
+    tajikCyrillic:
+        'Ҳунар аз нуқраю тиллою зар беҳ, Ҳунар аз мулку мероси падар беҳ.',
+    persianText: 'هنر از نقره و طلا و زر به، هنر از ملک و میراث پدر به.',
     simpleExplanationTj:
         'Ҳунари шахсӣ аз молу мулке, ки ба мерос мерасад, пойдортар аст.',
     meaningTj:
@@ -261,8 +505,38 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'omuzish',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 45',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 45,
+        printedPage: 45,
+        printedText:
+            'Ҳунар аз нуқраю тиллою зар беҳ, / Ҳунар аз мулку мероси падар беҳ.',
+        note: 'our text was the second line only',
+      ),
+      SourceRef(
+        bookTitle: 'Фолклори Роғун',
+        authorEditor:
+            'Рӯзии Аҳмад, Салоҳиддин Фатҳуллоев (гирдоварӣ ва тадвин)',
+        year: 2017,
+        publisher: 'ЭР-граф',
+        city: 'Душанбе',
+        pdfPage: 296,
+        printedPage: 296,
+        printedText:
+            'Ҳунар аз нуқраву тиллову зар беҳ, / Ҳунар аз молу мероси падар беҳ.',
+        note: 'variant',
+      ),
+    ],
   ),
   Proverb(
     id: '38',
@@ -275,8 +549,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'ilm',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '39',
@@ -291,8 +565,20 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 74',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 71,
+        printedPage: 74,
+        printedText: 'Тилло дар оташ, одам дар меҳнат маълум мешавад.',
+      ),
+    ],
   ),
   Proverb(
     id: '40',
@@ -306,54 +592,176 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'odob',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '41',
-    tajikCyrillic: 'Нури ақл дониш аст.',
-    persianText: 'نور عقل دانش است.',
+    tajikCyrillic: 'Нури ақл — дониш аст.',
+    persianText: 'نور عقل — دانش است.',
     simpleExplanationTj:
         'Дониш ақлро равшан карда, барои фаҳмидани ҷаҳон ёрӣ медиҳад.',
     meaningTj: 'Ақл бо омӯзиш ва дониш қавӣ ва равшан мешавад.',
     exampleSentenceTj:
-        'Пас аз хондани китоб масъала барои ӯ равшан шуд; нури ақл дониш аст.',
+        'Пас аз хондани китоб масъала барои ӯ равшан шуд; нури ақл — дониш аст.',
     categoryId: 'ilm',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 65',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 62,
+        printedPage: 65,
+        printedText: 'Нури ақл—дониш аст.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 44,
+        printedPage: 44,
+        printedText: 'Нури ақл дониш аст.',
+        note: 'section «Ақл»',
+      ),
+    ],
   ),
   Proverb(
     id: '42',
     tajikCyrillic: 'Аввал андеша, баъд гуфтор.',
     persianText: 'اول اندیشه، بعد گفتار.',
     simpleExplanationTj: 'Пеш аз он ки сухан гӯӣ, аввал фикр кун.',
-    meaningTj: 'Сухани боандеша аз пушаймонии баъдӣ пешгирӣ мекунад.',
+    meaningTj:
+        '1. Пеш аз гуфтани сухане фикр бояд кард, 2. сухан аз андеша карда гуфтан пуртаъсиру судмандтар мегардад.',
     exampleSentenceTj:
-        'Ӯ пеш аз ҷавоб додан чанд сония фикр кард: «Аввал андеша, баъд гуфтор».',
+        '— Дар омади гап гуфтам-дия, раис, мебахшед,— узрхоҳӣ кард Улфатов.\n— «Аввал андеша, баъд гуфтор»,— гӯён раис дар сари дураҳа аз Улфатов ҷудо шуд...',
     categoryId: 'hikmat',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Баёзи фолклори тоҷик. Ҷилди 2',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 31',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 28,
+        printedPage: 31,
+        printedText: 'Аввал андеша, баъд гуфтор.',
+      ),
+      SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 5',
+        authorEditor: 'Т. Мирзод, Р. Ҳамидов, М. Пирзод',
+        year: 2017,
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        pdfPage: 38,
+        printedPage: 38,
+        printedText: '«Аввал – андеша, баъд – гуфтор»',
+        note: 'cited as a мақол',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 38,
+        printedPage: 38,
+        printedText: 'Аввал андеша в-он гаҳ гуфтор.',
+        note: 'variant',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 26,
+        printedPage: 25,
+        printedText: 'АВВАЛ АНДЕША В-ОН ГАҲЕ (БАЪД) ГУФТОР.',
+        note: 'variant, main entry',
+      ),
+    ],
+    meaningSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 26,
+      printedPage: 25,
+    ),
+    exampleSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 26,
+      printedPage: 25,
+      note: 'continues on p. 26',
+    ),
+    exampleAttribution: 'Фотеҳ Ниёзӣ',
   ),
   Proverb(
     id: '43',
-    tajikCyrillic: 'Забони сурх сари сабзро медиҳад бар бод.',
-    persianText: 'زبان سرخ سر سبز را می‌دهد بر باد.',
+    tajikCyrillic: 'Забони сурх сари сабз медиҳад барбод.',
+    persianText: 'زبان سرخ سر سبز می‌دهد برباد.',
     simpleExplanationTj:
         'Сухани беэҳтиёт метавонад ба худи гӯянда зарари ҷиддӣ расонад.',
     meaningTj:
         'Забонро бояд нигоҳ дошт, зеро сухани нодуруст метавонад обрӯ, амният ё ҳатто ҷони инсонро зери хатар гузорад.',
     exampleSentenceTj:
-        'Ӯ фаҳмид, ки дар бораи сирри дигарон беэҳтиёт сухан гуфтан хатарнок аст; забони сурх сари сабзро медиҳад бар бод.',
+        'Ӯ фаҳмид, ки дар бораи сирри дигарон беэҳтиёт сухан гуфтан хатарнок аст; забони сурх сари сабз медиҳад барбод.',
     categoryId: 'odob',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Баёзи фолклори тоҷик. Ҷилди 2',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 54',
     variants: ['44'],
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 51,
+        printedPage: 54,
+        printedText: 'Забони сурх сари сабз медиҳад барбод.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 51,
+        printedPage: 51,
+        printedText:
+            'Забони сурх сари сабз медиҳад бар бод, / Киро забон на ба банд аст, пой дар банд аст. (Рӯдакӣ)',
+        note: 'couplet signed Рӯдакӣ',
+      ),
+    ],
   ),
   Proverb(
     id: '44',
@@ -367,8 +775,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'odob',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Баёзи фолклори тоҷик. Ҷилди 2',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
     canonicalId: '43',
   ),
   Proverb(
@@ -384,8 +792,25 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Баёзи фолклори тоҷик. Ҷилди 2',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 31',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 31,
+        printedPage: 31,
+        printedText: 'Сари хамро (каҷро) шамшер намебурад (набуридааст).',
+        note:
+            'our text is the base reading; the book gives alternatives in brackets',
+      ),
+    ],
   ),
   Proverb(
     id: '46',
@@ -400,9 +825,34 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'xomushhi',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
+    sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 35',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 35,
+        printedPage: 35,
+        printedText: 'Даҳони пӯшида сад тилло.',
+      ),
+      SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 5',
+        authorEditor: 'Т. Мирзод, Р. Ҳамидов, М. Пирзод',
+        year: 2017,
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        pdfPage: 121,
+        printedPage: 121,
+        printedText: 'ДАҲОНИ ПӮШИДА ҲАЗОР ТИЛЛО',
+        note: 'variant, heading of a «Гулистон» story',
+      ),
+    ],
   ),
   Proverb(
     id: '47',
@@ -416,8 +866,34 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 243',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 246,
+        printedPage: 243,
+        printedText: 'БО ҲАЛВО ГУФТАН ДАҲОН ШИРИН НАМЕШАВАД.',
+        note: 'cross-reference to «Ба ҳалво гуфтан…» (vol. II)',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 40,
+        printedPage: 43,
+        printedText: 'Бо „ҳалво, ҳалво“ гуфтан даҳон ширин намешавад.',
+        note: 'variant',
+      ),
+    ],
   ),
   Proverb(
     id: '48',
@@ -431,24 +907,49 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '49',
-    tajikCyrillic: 'Сухани хуб морро аз хонааш мебарорад.',
-    persianText: 'سخن خوب مار را از خانه‌اش برمی‌آرد.',
+    tajikCyrillic: 'Гапи нағз морро аз хонааш мебарорад.',
+    persianText: 'گپ نغز مار را از خانه‌اش برمی‌آرد.',
     simpleExplanationTj:
         'Сухани нарму хуб ҳатто мавҷуди тарснокро аз ҷояш берун меорад — ин тасвири маҷозӣ аст.',
     meaningTj:
         'Муомилаи хуб ва сухани ширин метавонад одамони душворро ҳам розӣ ё ором кунад.',
     exampleSentenceTj:
-        'Ба ҷойи ҷанҷол ӯ оромона хоҳиш кард ва масъала ҳал шуд; сухани хуб морро аз хонааш мебарорад.',
+        'Ба ҷойи ҷанҷол ӯ оромона хоҳиш кард ва масъала ҳал шуд; гапи нағз морро аз хонааш мебарорад.',
     categoryId: 'dusti',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 269',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 272,
+        printedPage: 269,
+        printedText: 'ГАПИ НАҒЗ МОРРО АЗ ХОНААШ МЕБАРОРАД.',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 39,
+        printedPage: 42,
+        printedText: 'Бо сухани ширин мор аз хонааш мебарояд.',
+        note: 'variant',
+      ),
+    ],
   ),
   Proverb(
     id: '50',
@@ -460,9 +961,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '51',
@@ -477,9 +977,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '52',
@@ -494,9 +993,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'mehnat',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '53',
@@ -511,8 +1009,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'odob',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '54',
@@ -525,8 +1023,46 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'rostqavli',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 26',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 26,
+        printedPage: 26,
+        printedText: 'Гапи рост талх мешавад.',
+        note: 'section «Ростӣ»',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 272,
+        printedPage: 269,
+        printedText: 'ГАПИ РОСТ ТАЛХ МЕШАВАД.',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 70,
+        printedPage: 73,
+        printedText: 'Сухани рост талх мешавад.',
+        note: 'variant',
+      ),
+    ],
   ),
   Proverb(
     id: '55',
@@ -539,8 +1075,35 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'rostqavli',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 90',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 91,
+        printedPage: 90,
+        printedText: 'мук. Ростӣ — растӣ.',
+        note: 'cross-reference line',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 15,
+        printedPage: 15,
+        printedText: 'Ростӣ, растӣ.',
+      ),
+    ],
   ),
   Proverb(
     id: '56',
@@ -554,8 +1117,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'rostqavli',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '57',
@@ -569,9 +1132,8 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'rostqavli',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '58',
@@ -585,8 +1147,7 @@ const List<Proverb> seedProverbsPart1 = [
     categoryId: 'rostqavli',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
 ];

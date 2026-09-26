@@ -14,8 +14,8 @@ const List<Proverb> seedProverbsPart2 = [
     categoryId: 'ilm',
     level: 2,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Баёзи фолклори тоҷик. Ҷилди 2',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '60',
@@ -29,9 +29,8 @@ const List<Proverb> seedProverbsPart2 = [
     categoryId: 'omuzish',
     level: 3,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '61',

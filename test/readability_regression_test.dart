@@ -318,7 +318,9 @@ void main() {
   });
 
   group('Source citation', () {
-    testWidgets('the proverb names its source in one line', (tester) async {
+    testWidgets('a verified proverb lists its books; no status sentence', (
+      tester,
+    ) async {
       tester.view.physicalSize = const Size(390, 1400);
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.resetPhysicalSize);
@@ -326,27 +328,28 @@ void main() {
       final container = freshContainer();
       addTearDown(container.dispose);
 
-      final proverb = seedProverbs.first;
-      expect(proverb.sourceNote, isNotEmpty);
+      final proverb = seedProverbs.firstWhere((p) => p.isPageVerified);
 
       await tester.pumpWidget(
         appHarness(container, QalamReadingPage(proverb: proverb)),
       );
       await tester.pumpAndSettle();
 
-      // One source line: the book the proverb is recorded in. No status
-      // sentence and no record tab.
-      final citation = AppTranslations.get(
-        'lit_source_line',
-        DisplayLanguage.tajik,
-        [proverb.sourceNote],
+      // The sources section: the printed form and page of each book. No
+      // status sentence and no record tab.
+      final heading = find.textContaining(
+        AppTranslations.get('proverb_sources', DisplayLanguage.tajik),
       );
       await tester.scrollUntilVisible(
-        find.text(citation),
+        heading,
         300,
         scrollable: find.byType(Scrollable).first,
       );
-      expect(find.text(citation), findsOneWidget);
+      expect(heading, findsOneWidget);
+      expect(
+        find.textContaining('«${proverb.sources.first.printedText}»'),
+        findsOneWidget,
+      );
       expect(
         find.text(
           AppTranslations.get('source_book_attested', DisplayLanguage.tajik),
@@ -359,6 +362,37 @@ void main() {
         ),
         findsNothing,
       );
+    });
+
+    testWidgets('an unsourced proverb says so instead of naming a book', (
+      tester,
+    ) async {
+      tester.view.physicalSize = const Size(390, 1400);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final container = freshContainer();
+      addTearDown(container.dispose);
+
+      final proverb = seedProverbs.firstWhere(
+        (p) => p.sourceStatus == SourceStatus.needsReview,
+      );
+      expect(proverb.sourceNote, isEmpty);
+
+      await tester.pumpWidget(
+        appHarness(container, QalamReadingPage(proverb: proverb)),
+      );
+      await tester.pumpAndSettle();
+
+      final notice = find.text(
+        AppTranslations.get('proverb_no_printed_source', DisplayLanguage.tajik),
+      );
+      await tester.scrollUntilVisible(
+        notice,
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(notice, findsOneWidget);
     });
   });
 
@@ -406,8 +440,7 @@ void main() {
         );
         addTearDown(container.dispose);
 
-        final proverb = seedProverbs.first;
-        expect(proverb.sourceNote, isNotEmpty);
+        final proverb = seedProverbs.firstWhere((p) => p.isPageVerified);
 
         // The proverb itself is at the top of the page, so its presence is
         // asserted before any scrolling.
@@ -422,22 +455,20 @@ void main() {
         expect(find.byType(SelectableText), findsWidgets);
         expect(tester.takeException(), isNull);
 
-        // Scrolling to the source citation at the bottom forces every sliver
+        // Scrolling to the sources section at the bottom forces every sliver
         // (meaning, explanation, example, variants) to lay out under the narrow
         // RTL, enlarged-text viewport.
-        final citation = AppTranslations.get(
-          'lit_source_line',
-          DisplayLanguage.persian,
-          [proverb.sourceNote],
+        final citation = find.textContaining(
+          AppTranslations.get('proverb_sources', DisplayLanguage.persian),
         );
         await tester.scrollUntilVisible(
-          find.text(citation),
+          citation,
           300,
           // SelectableText fields carry their own Scrollables; target the
           // page's scroll view.
           scrollable: find.byType(Scrollable).first,
         );
-        expect(find.text(citation), findsOneWidget);
+        expect(citation, findsOneWidget);
         expect(tester.takeException(), isNull);
       },
     );
