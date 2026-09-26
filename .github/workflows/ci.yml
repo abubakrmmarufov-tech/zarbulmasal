@@ -111,6 +111,17 @@ jobs:
       - name: Test
         run: flutter test --coverage
 
+      # Goldens are rendered on this runner and on macOS; when one fails, keep
+      # the masked and isolated diffs so the cause can be seen.
+      - name: Upload golden failure images
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: golden-failures
+          path: test/golden/failures
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Enforce coverage threshold
         run: python3 tool/check_coverage.py coverage/lcov.info --minimum 80
 
