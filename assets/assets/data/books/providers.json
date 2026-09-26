@@ -12,5 +12,16 @@
     "supportsReader": false,
     "supportsDownload": true,
     "sourcePurpose": "bookAvailability"
+  },
+  {
+    "id": "khirad",
+    "name": "Хирад",
+    "domain": "khirad.tj",
+    "catalogueUrl": "https://khirad.tj/all-books",
+    "descriptionTj": "Китобхонаи электронии «Хирад» бо хонандаи онлайн ва китобҳои ройгон.",
+    "descriptionFa": "کتابخانهٔ الکترونیکی «خرد» با خوانندهٔ آنلاین و کتاب‌های رایگان.",
+    "supportsReader": true,
+    "supportsDownload": false,
+    "sourcePurpose": "bookAvailability"
   }
 ]

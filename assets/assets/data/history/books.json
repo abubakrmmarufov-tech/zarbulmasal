@@ -34,7 +34,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=28",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01J3F21SFE3931K60BV7BW8E4M.pdf"
   },
   {
     "id": "history-7",
@@ -52,7 +53,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=29",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01JBBC8JQ8WKGR4FX0YVGXMCW2.pdf"
   },
   {
     "id": "history-8",
@@ -70,7 +72,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=30",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01KH886BRG96V94GEWAFR9WFWY.pdf"
   },
   {
     "id": "history-9",
@@ -88,7 +91,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=31",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01KH88ZFH12EA1BMW7H3Z1YVHC.pdf"
   },
   {
     "id": "history-10",
@@ -106,7 +110,8 @@
     "sourceUrl": "https://maorif.tj/libraries?category=32",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01KH8JVPBYMMBV3YZ8YSH0ANTG.pdf"
   },
   {
     "id": "history-11",
@@ -124,6 +129,64 @@
     "sourceUrl": "https://maorif.tj/libraries?category=33",
     "isUploadedBook": false,
     "totalPages": null,
-    "totalPagesNote": "Not verified from an uploaded PDF"
+    "totalPagesNote": "Pages cited from the maorif.tj PDF (printed page = PDF page)",
+    "textbookPdfUrl": "https://maorif.tj/storage/libraries/01J3EZ9T0AGAHPFBHZXC5B8Q3B.pdf"
+  },
+  {
+    "id": "literature-5",
+    "grade": "5",
+    "title": "Адабиёти тоҷик",
+    "titlePersian": "ادبیات تاجیک",
+    "author": "Т. Мирзод, Р. Ҳамидов, М. Пирзод",
+    "authorPersian": "ت. میرزاد، ر. حمیدوف، م. پیرزاد",
+    "year": "2017",
+    "edition": "Китоби дарсӣ барои синфи 5-уми муассисаҳои таҳсилоти умумӣ",
+    "publisher": "Душанбе: Маориф, 2017",
+    "pages": 304,
+    "description": "Китоби дарсии адабиёти тоҷик барои синфи 5: аз ҳикояҳои қадимӣ, ғазалиёти Рӯдакӣ то достонҳои Садриддин Айнӣ.",
+    "descriptionPersian": "کتاب درسی ادبیات تاجیک برای کلاس پنجم: از حکایت‌های قدیم و غزلیات رودکی تا داستان‌های صدرالدین عینی.",
+    "sourceUrl": "https://maorif.tj/libraries?category=27",
+    "isUploadedBook": true,
+    "localPath": "pdf books/adabiet sinfi 5.pdf",
+    "totalPages": 304,
+    "totalPagesNote": "Verified with uploaded PDF on 2026-09-23"
+  },
+  {
+    "id": "literature-8",
+    "grade": "8",
+    "title": "Адабиёти тоҷик",
+    "titlePersian": "ادبیات تاجیک",
+    "author": "Абдунабӣ Сатторзода",
+    "authorPersian": "عبدالنبی ستارزاده",
+    "year": "2026",
+    "edition": "Нашри панҷум, китоби дарсӣ барои синфи 8-уми муассисаҳои таҳсилоти умумӣ",
+    "publisher": "Душанбе: Маориф, 2026",
+    "pages": 320,
+    "description": "Китоби дарсии адабиёти тоҷик барои синфи 8: аз адабиёти тоҷик ба забони порсии дарӣ (асри IX) то осори асрҳои XVI–XVII.",
+    "descriptionPersian": "کتاب درسی ادبیات تاجیک برای کلاس هشتم: از ادبیات تاجیک به زبان فارسی دری (قرن نهم) تا آثار قرن‌های شانزدهم و هفدهم.",
+    "sourceUrl": "https://maorif.tj/libraries?category=30",
+    "isUploadedBook": true,
+    "localPath": "pdf books/adabiyet sinfi 8.pdf",
+    "totalPages": 320,
+    "totalPagesNote": "Verified with uploaded PDF on 2026-09-23"
+  },
+  {
+    "id": "literature-11",
+    "grade": "11",
+    "title": "Адабиёти тоҷик (давраи нав)",
+    "titlePersian": "ادبیات تاجیک (دورهٔ نو)",
+    "author": "Х. Асозода, А. Кӯчаров",
+    "authorPersian": "خ. آس‌زاده، ا. کوچروف",
+    "year": "2018",
+    "edition": "Нашри ҳафтум, китоби дарсӣ барои синфи 11-уми муассисаҳои таҳсилоти умумӣ",
+    "publisher": "Душанбе: Маориф, 2018",
+    "pages": 400,
+    "description": "Китоби дарсии адабиёти тоҷик (давраи нав) барои синфи 11: адабиёти давраи афзор, Ҷанги Бузурги Ватанӣ ва солҳои баъд аз он.",
+    "descriptionPersian": "کتاب درسی ادبیات تاجیک (دورهٔ نو) برای کلاس یازدهم: ادبیات دورهٔ روشنگری، جنگ بزرگ میهنی و سال‌های پس از آن.",
+    "sourceUrl": "https://maorif.tj/libraries?category=33",
+    "isUploadedBook": true,
+    "localPath": "pdf books/adabiyet sinfi 11.pdf",
+    "totalPages": 400,
+    "totalPagesNote": "Verified with uploaded PDF on 2026-09-23"
   }
 ]

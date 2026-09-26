@@ -1,254 +1,314 @@
 [
   {
     "id": "oral-rubai-001",
-    "text": "",
+    "text": "Сари сарчашма рафтам ман ба вахте,\nБа оби дида биншондам дарахте.\nШамол омад, дарахтам решакан шуд,\nМани мискин надорам ҳеҷ бахте.",
     "textPersian": null,
     "type": "rubaiKhalqi",
-    "region": "Суғд (Зарафшон)",
-    "collectionSource": "Фолклори тоҷик: Рубоиёт ва дубайтиҳои халқӣ",
-    "collector": "Б. Шермуҳаммадов",
-    "publisher": "Дониш",
-    "year": "1980",
-    "page": "с. 45",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 6",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2014",
+    "page": "13",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 13 of the uploaded Grade 6 textbook (docs/literature/pdfs/adabiet sinfi 6.pdf; source tj_literature_grade_6_2014). Folk rubai transmitted in the official curriculum as an example of the oral tradition (рубоии халқӣ).",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "3ac53e6f"
     }
   },
   {
     "id": "oral-rubai-002",
-    "text": "",
+    "text": "Хоки Ватан аз тахти Сулаймон хуштар,\nХори Ватан аз лолаву райҳон хуштар.\nЮсуф, ки ба Миср подшоҳӣ мекард,\nСад кош гадо будӣ ба Канъон хуштар.",
     "textPersian": null,
     "type": "rubaiKhalqi",
-    "region": "Хатлон (Кӯлоб)",
-    "collectionSource": "Фолклори тоҷик: Сурудҳои мардумӣ",
-    "collector": "Р. Амонов",
-    "publisher": "Дониш",
-    "year": "1982",
-    "page": "с. 78",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 6",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2014",
+    "page": "13",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 13 of the uploaded Grade 6 textbook (docs/literature/pdfs/adabiet sinfi 6.pdf; source tj_literature_grade_6_2014). Folk rubai transmitted in the official curriculum as an example of the oral tradition (рубоии халқӣ).",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "97d9c409"
     }
   },
   {
     "id": "oral-dubayti-001",
-    "text": "",
+    "text": "Диле дорам, ки аз султон натарсад,\nЗи банди кундаву зиндон натарсад.\nДили ошиқ мисоли гурги гушна,\nКи гурги гушна аз чӯпон натарсад.",
     "textPersian": null,
     "type": "dubaytiKhalqi",
-    "region": "Бадахшон",
-    "collectionSource": "Фолклори Бадахшон: Дубайтиҳо ва чорбайтиҳои халқӣ",
-    "collector": "Н. Шакармамадов",
-    "publisher": "Дониш",
-    "year": "1985",
-    "page": "с. 112",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 6",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2014",
+    "page": "14",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 14 of the uploaded Grade 6 textbook (docs/literature/pdfs/adabiet sinfi 6.pdf; source tj_literature_grade_6_2014). Folk dubayti transmitted in the official curriculum as an example of the oral tradition (дубайтии халқӣ).",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "eb0a83bd"
     }
   },
   {
     "id": "oral-dubayti-002",
-    "text": "",
+    "text": "Нигори нозанин, ман аҳли дардам,\nСарамро гар буранд, аз ту нагардам.\nСарамро гар буранд бо ханҷари тез,\nБа хун ҷавлон занам, гирди ту гардам.",
     "textPersian": null,
     "type": "dubaytiKhalqi",
-    "region": "Ҳисор",
-    "collectionSource": "Фолклори водии Ҳисор",
-    "collector": "Ф. Муродов",
-    "publisher": "Дониш",
-    "year": "1987",
-    "page": "с. 64",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 6",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2014",
+    "page": "15",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 15 of the uploaded Grade 6 textbook (docs/literature/pdfs/adabiet sinfi 6.pdf; source tj_literature_grade_6_2014). Folk dubayti transmitted in the official curriculum as an example of the oral tradition (дубайтии халқӣ).",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "dfade01e"
     }
   },
   {
     "id": "oral-chiston-001",
-    "text": "",
+    "text": "Як чодари зангорӣ,\nШабҳо пуру рӯз холӣ.\n(Осмон ва ситораҳо)",
     "textPersian": null,
     "type": "chiston",
-    "region": "Самарқанд ва Бухоро",
-    "collectionSource": "Чистонҳои халқии тоҷикӣ",
-    "collector": "Б. Шермуҳаммадов",
-    "publisher": "Ирфон",
-    "year": "1975",
-    "page": "с. 23",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 6",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2014",
+    "page": "19",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 19 of the uploaded Grade 6 textbook (docs/literature/pdfs/adabiet sinfi 6.pdf; source tj_literature_grade_6_2014). Folk riddle (чистони халқӣ) with its answer, as printed in the official curriculum.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "200e36f1"
     }
   },
   {
     "id": "oral-chiston-002",
-    "text": "",
+    "text": "Гуле дидам, ки он бе хор бошад,\nНа дар дашту на дар бозор бошад.\nНа кас ӯро харад, не кас фурӯшад,\nҲамеша дар сараш бозор бошад.\n(Илм)",
     "textPersian": null,
     "type": "chiston",
-    "region": "Хуҷанд",
-    "collectionSource": "Чистонҳои халқии тоҷикӣ",
-    "collector": "Р. Амонов",
-    "publisher": "Ирфон",
-    "year": "1975",
-    "page": "с. 35",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 6",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2014",
+    "page": "19",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 19 of the uploaded Grade 6 textbook (docs/literature/pdfs/adabiet sinfi 6.pdf; source tj_literature_grade_6_2014). Folk riddle (чистони халқӣ) with its answer, as printed in the official curriculum.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "9f58ef90"
     }
   },
   {
     "id": "oral-chiston-003",
-    "text": "",
+    "text": "Аз осмон афтад, намешиканад,\nАз дарахт афтад, мешиканад.\n(Барф)",
     "textPersian": null,
     "type": "chiston",
-    "region": "Рашт",
-    "collectionSource": "Чистонҳои тоҷикӣ",
-    "collector": "Б. Шермуҳаммадов",
-    "publisher": "Ирфон",
-    "year": "1975",
-    "page": "с. 48",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 6",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2014",
+    "page": "20",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 6.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 20 of the uploaded Grade 6 textbook (docs/literature/pdfs/adabiet sinfi 6.pdf; source tj_literature_grade_6_2014). Folk riddle (чистони халқӣ) with its answer, as printed in the official curriculum.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "0016831d"
     }
   },
   {
     "id": "oral-zarbulmasal-001",
-    "text": "",
+    "text": "Дасти одамизод – гул.",
     "textPersian": null,
     "type": "zarbulmasal",
     "region": "Умумимиллӣ",
-    "collectionSource": "Зарбулмасал ва мақолҳои тоҷикӣ",
-    "collector": "М. Фозилов",
-    "publisher": "Дониш",
-    "year": "1977",
-    "page": "с. 14",
+    "collectionSource": "Адабиёти тоҷик, синфи 5",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2017",
+    "page": "38",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 38 of the uploaded Grade 5 textbook (docs/literature/pdfs/adabiet sinfi 5.pdf; source tj_literature_grade_5_2017). Folk proverb (зарбулмасали халқӣ) from the official curriculum section ЗАРБУЛМАСАЛУ МАҚОЛҲО.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "cfccd5b4"
     }
   },
   {
     "id": "oral-zarbulmasal-002",
-    "text": "",
+    "text": "Ҷӯянда – ёбанда.",
     "textPersian": null,
     "type": "zarbulmasal",
     "region": "Умумимиллӣ",
-    "collectionSource": "Зарбулмасал ва мақолҳои тоҷикӣ",
-    "collector": "М. Фозилов",
-    "publisher": "Дониш",
-    "year": "1977",
-    "page": "с. 89",
+    "collectionSource": "Адабиёти тоҷик, синфи 5",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2017",
+    "page": "38",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 38 of the uploaded Grade 5 textbook (docs/literature/pdfs/adabiet sinfi 5.pdf; source tj_literature_grade_5_2017). Folk proverb (зарбулмасали халқӣ) from the official curriculum section ЗАРБУЛМАСАЛУ МАҚОЛҲО.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "0b1c6358"
     }
   },
   {
     "id": "oral-zarbulmasal-003",
-    "text": "",
+    "text": "Кӯдак азиз аст, адабаш – аз он азизтар.",
     "textPersian": null,
     "type": "zarbulmasal",
     "region": "Умумимиллӣ",
-    "collectionSource": "Зарбулмасал ва мақолҳои тоҷикӣ",
-    "collector": "М. Фозилов",
-    "publisher": "Дониш",
-    "year": "1977",
-    "page": "с. 120",
+    "collectionSource": "Адабиёти тоҷик, синфи 5",
+    "collector": null,
+    "publisher": "Маориф",
+    "year": "2017",
+    "page": "38",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 38 of the uploaded Grade 5 textbook (docs/literature/pdfs/adabiet sinfi 5.pdf; source tj_literature_grade_5_2017). Folk proverb (зарбулмасали халқӣ) from the official curriculum section ЗАРБУЛМАСАЛУ МАҚОЛҲО.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "2fd5984d"
     }
   },
   {
     "id": "oral-maqol-001",
-    "text": "",
+    "text": "То меҳнат накунӣ, роҳат набинӣ",
     "textPersian": null,
     "type": "maqol",
-    "region": "Суғд",
-    "collectionSource": "Мақол ва зарбулмасалҳои халқи тоҷик",
-    "collector": "Б. Шермуҳаммадов",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 5",
+    "collector": null,
     "publisher": "Маориф",
-    "year": "1983",
-    "page": "с. 52",
+    "year": "2017",
+    "page": "38",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 38 of the uploaded Grade 5 textbook (docs/literature/pdfs/adabiet sinfi 5.pdf; source tj_literature_grade_5_2017). Folk saying (мақоли халқӣ) explicitly labelled a мақол in the official curriculum section ЗАРБУЛМАСАЛУ МАҚОЛҲО.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "35527db3"
     }
   },
   {
     "id": "oral-maqol-002",
-    "text": "",
+    "text": "Аввал – андеша, баъд – гуфтор",
     "textPersian": null,
     "type": "maqol",
-    "region": "Хатлон",
-    "collectionSource": "Мақол ва зарбулмасалҳои халқи тоҷик",
-    "collector": "Б. Шермуҳаммадов",
+    "region": "Умумимиллӣ",
+    "collectionSource": "Адабиёти тоҷик, синфи 5",
+    "collector": null,
     "publisher": "Маориф",
-    "year": "1983",
-    "page": "с. 67",
+    "year": "2017",
+    "page": "38",
+    "sourceReference": "docs/literature/pdfs/adabiet sinfi 5.pdf",
     "rights": {
-      "status": "unknown",
-      "reasoning": "Pending review",
-      "fullTextAllowed": false,
-      "excerptAllowed": false
+      "status": "sourceAttested",
+      "reasoning": "Exact text verified verbatim on printed page 38 of the uploaded Grade 5 textbook (docs/literature/pdfs/adabiet sinfi 5.pdf; source tj_literature_grade_5_2017). Folk saying (мақоли халқӣ) explicitly labelled a мақол in the official curriculum section ЗАРБУЛМАСАЛУ МАҚОЛҲО.",
+      "fullTextAllowed": true,
+      "excerptAllowed": true
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "primaryChecked",
+      "pageVerified": true,
+      "verificationMethod": "primaryPdfTextPageCheck",
+      "verifiedAt": "2026-09-23",
+      "evidenceHash": "335dec5a"
     }
   },
   {
@@ -261,15 +321,18 @@
     "collector": "Р. Амонов, К. Улуғзода",
     "publisher": "Дониш",
     "year": "1978",
-    "page": "с. 34",
+    "page": "34",
     "rights": {
       "status": "unknown",
-      "reasoning": "Pending review",
+      "reasoning": "Rights unestablished. The cited collection volume (Дониш, 1978) is not held in the workspace, and no uploaded PDF or maorif.tj page for a complete tale has been page-checked. Quarantined pending editorial review of an exact printed page.",
       "fullTextAllowed": false,
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "needsReview",
+      "pageVerified": false,
+      "verificationMethod": "quarantinedNoHeldSourcePageChecked",
+      "rejectionReason": "Cited collection volume (Афсонаҳои халқии тоҷикӣ, ҷилди I) is not held; a full multi-page tale cannot be page-attested to an uploaded source. Needs an editor to page-check an exact printed page of a held source before text and rights are cleared."
     }
   },
   {
@@ -282,15 +345,18 @@
     "collector": "Р. Амонов",
     "publisher": "Дониш",
     "year": "1980",
-    "page": "с. 92",
+    "page": "92",
     "rights": {
       "status": "unknown",
-      "reasoning": "Pending review",
+      "reasoning": "Rights unestablished. The cited collection volume (Дониш, 1980) is not held in the workspace, and no uploaded PDF or maorif.tj page for a complete tale has been page-checked. Quarantined pending editorial review of an exact printed page.",
       "fullTextAllowed": false,
       "excerptAllowed": false
     },
     "verification": {
-      "evidenceLevel": "extracted"
+      "evidenceLevel": "needsReview",
+      "pageVerified": false,
+      "verificationMethod": "quarantinedNoHeldSourcePageChecked",
+      "rejectionReason": "Cited collection volume (Афсонаҳои халқии тоҷикӣ, ҷилди II) is not held; a full multi-page tale cannot be page-attested to an uploaded source. Needs an editor to page-check an exact printed page of a held source before text and rights are cleared."
     }
   }
 ]
