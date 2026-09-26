@@ -16,9 +16,10 @@ class SearchNormalizer {
 
     var s = text.trim().toLowerCase();
 
-    // 1. Unicode ZWNJ & Arabic diacritics removal
+    // 1. Unicode ZWNJ, Arabic diacritics and tatweel removal
     s = s.replaceAll(_zwnjRegex, '');
     s = s.replaceAll(_arabicDiacritics, '');
+    s = s.replaceAll('ـ', '');
 
     // 2. Persian / Arabic letter unification
     s = s
@@ -28,6 +29,10 @@ class SearchNormalizer {
         .replaceAll('أ', 'ا') // Alef with hamza above
         .replaceAll('إ', 'ا') // Alef with hamza below
         .replaceAll('ٱ', 'ا') // Alef wasla
+        .replaceAll('ى', 'ی') // Alef maksura (Arabic keyboard) to Yeh
+        .replaceAll('ئ', 'ی') // Yeh with hamza
+        .replaceAll('ؤ', 'و') // Waw with hamza
+        .replaceAll('ھ', 'ه') // Heh doachashmee
         .replaceAll('ة', 'ه') // Teh marbuta to Heh
         .replaceAll('ۀ', 'ه'); // Heh with yeh
 
@@ -38,8 +43,11 @@ class SearchNormalizer {
       s = s.replaceAll(faDigits[i], enDigits[i]);
     }
 
-    // 4. Tajik Cyrillic diacritic folding
+    // 4. Tajik Cyrillic diacritic folding; a Russian keyboard writes ҷ as
+    // «дж» and has э where Tajik has е.
     s = s
+        .replaceAll('дж', 'ч')
+        .replaceAll('э', 'е')
         .replaceAll('ӣ', 'и') // I with macron to plain I
         .replaceAll('ӯ', 'у') // U with macron to plain U
         .replaceAll('ҳ', 'х') // H with descender to Kh
@@ -191,7 +199,18 @@ class SearchNormalizer {
   static bool matches(String target, String query) {
     if (query.isEmpty) return true;
     if (target.isEmpty) return false;
+    return _strictlyMatches(target, query);
+  }
 
+  /// [matches], or failing that [looselyMatches]: for names and titles,
+  /// where a reader types what they heard on whatever keyboard they have.
+  static bool matchesOnAnyKeyboard(String target, String query) =>
+      matches(target, query) ||
+      (target.isNotEmpty && looselyMatches(target, query));
+
+  /// Containment after folding, with or without spaces, and Latin queries
+  /// read as Tajik Cyrillic.
+  static bool _strictlyMatches(String target, String query) {
     // 1. Fast path: direct case-insensitive containment
     final lowerTarget = target.toLowerCase();
     final lowerQuery = query.toLowerCase().trim();
@@ -241,11 +260,343 @@ class SearchNormalizer {
     return false;
   }
 
+  /// Word by word, on any keyboard: every word of [query] is found in
+  /// [target] — whole or in part, spelled in Tajik, Russian or Latin
+  /// letters ([skeleton]), or in Persian or Arabic letters compared by
+  /// consonants ([consonants]) — and a word of [typoMinLength] letters or
+  /// more may be one typo away from a word of [target].
+  static bool looselyMatches(String target, String query) =>
+      _looseScore(target, query) > 0;
+
+  /// 15 when every word is found, 10 when one needed a typo forgiven, 0.
+  static int _looseScore(String target, String query) {
+    final normQuery = normalize(query);
+    if (normQuery.isEmpty) return 0;
+    var best = _wordsFound(normQuery, normalize(target));
+    if (best == _allExact) return 15;
+    final latinQuery = skeleton(query);
+    // A word the skeleton shrank to one letter («ққққ» → «k») would be
+    // found everywhere.
+    if (latinQuery.isNotEmpty && !latinQuery.split(' ').any(_isOneLetter)) {
+      final found = _wordsFound(latinQuery, skeleton(target));
+      if (found == _allExact) return 15;
+      if (found > best) best = found;
+    }
+    if (_hasArabicScript.hasMatch(normQuery)) {
+      final queryConsonants = consonants(normQuery);
+      if (queryConsonants.replaceAll(' ', '').length >= _minConsonants &&
+          _wordsFound(queryConsonants, consonants(target), typos: false) ==
+              _allExact) {
+        return 15;
+      }
+    }
+    return best == _withTypos ? 10 : 0;
+  }
+
+  static bool _isOneLetter(String word) => word.length == 1;
+
+  static final RegExp _hasArabicScript = RegExp(r'[\u0600-\u06FF]');
+  static const int _minConsonants = 3;
+
+  /// Words of at least this many letters may differ by one typo.
+  static const int typoMinLength = 5;
+
+  static const int _notFound = 0;
+  static const int _withTypos = 1;
+  static const int _allExact = 2;
+
+  /// Whether each word of [query] is in [target] ([_allExact]), some only
+  /// within one edit of a word of [target] when they have [typoMinLength]
+  /// letters ([_withTypos]), or not ([_notFound]).
+  static int _wordsFound(String query, String target, {bool typos = true}) {
+    if (query.isEmpty || target.isEmpty) return _notFound;
+    var result = _allExact;
+    List<String>? targetWords;
+    for (final word in query.split(' ')) {
+      if (word.isEmpty || target.contains(word)) continue;
+      if (!typos || word.length < typoMinLength) return _notFound;
+      targetWords ??= target.split(' ');
+      if (!targetWords.any((candidate) => _nearWord(word, candidate))) {
+        return _notFound;
+      }
+      result = _withTypos;
+    }
+    return result;
+  }
+
+  /// [word] within one edit of [candidate] or of its start (a word typed in
+  /// part, with a typo).
+  static bool _nearWord(String word, String candidate) {
+    if (candidate.length < typoMinLength - 1) return false;
+    if (withinOneEdit(word, candidate)) return true;
+    for (final length in [word.length, word.length + 1]) {
+      if (candidate.length > length &&
+          withinOneEdit(word, candidate.substring(0, length))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /// Whether [a] becomes [b] by at most one inserted, deleted or replaced
+  /// letter, or two neighbouring letters swapped.
+  static bool withinOneEdit(String a, String b) {
+    if (a == b) return true;
+    if ((a.length - b.length).abs() > 1) return false;
+    var i = 0;
+    while (i < a.length && i < b.length && a[i] == b[i]) {
+      i++;
+    }
+    if (a.length == b.length) {
+      if (a.substring(i + 1) == b.substring(i + 1)) return true;
+      return i + 1 < a.length &&
+          a[i] == b[i + 1] &&
+          a[i + 1] == b[i] &&
+          a.substring(i + 2) == b.substring(i + 2);
+    }
+    final (longer, shorter) = a.length > b.length ? (a, b) : (b, a);
+    return longer.substring(i + 1) == shorter.substring(i);
+  }
+
+  static const Map<String, String> _cyrillicToLatin = {
+    'а': 'a',
+    'б': 'b',
+    'в': 'v',
+    'г': 'g',
+    'ғ': 'g',
+    'д': 'd',
+    'е': 'e',
+    'ё': 'yo',
+    'ж': 'zh',
+    'з': 'z',
+    'и': 'i',
+    'ӣ': 'i',
+    'й': 'y',
+    'к': 'k',
+    'қ': 'k',
+    'л': 'l',
+    'м': 'm',
+    'н': 'n',
+    'о': 'o',
+    'п': 'p',
+    'р': 'r',
+    'с': 's',
+    'т': 't',
+    'у': 'u',
+    'ӯ': 'u',
+    'ф': 'f',
+    'х': 'kh',
+    'ҳ': 'h',
+    'ц': 's',
+    'ч': 'ch',
+    'ҷ': 'j',
+    'ш': 'sh',
+    'щ': 'sh',
+    'ъ': '',
+    'ы': 'i',
+    'ь': '',
+    'э': 'e',
+    'ю': 'yu',
+    'я': 'ya',
+  };
+
+  static const Map<String, String> _latinLetters = {
+    'ā': 'a',
+    'á': 'a',
+    'à': 'a',
+    'â': 'a',
+    'ä': 'a',
+    'ã': 'a',
+    'ē': 'e',
+    'é': 'e',
+    'è': 'e',
+    'ê': 'e',
+    'ë': 'e',
+    'ī': 'i',
+    'í': 'i',
+    'ì': 'i',
+    'î': 'i',
+    'ï': 'i',
+    'ō': 'o',
+    'ó': 'o',
+    'ò': 'o',
+    'ô': 'o',
+    'ö': 'o',
+    'õ': 'o',
+    'ū': 'u',
+    'ú': 'u',
+    'ù': 'u',
+    'û': 'u',
+    'ü': 'u',
+    'ğ': 'gh',
+    'ǧ': 'gh',
+    'ḥ': 'h',
+    'ḳ': 'q',
+    'š': 'sh',
+    'č': 'ch',
+    'ž': 'zh',
+    'ǰ': 'j',
+    'ñ': 'n',
+    'ç': 'ch',
+    'ẓ': 'z',
+    'ṣ': 's',
+    'ṭ': 't',
+  };
+
+  /// Digraphs and vowels written in many ways, folded to one: Khayyam and
+  /// Khayyom, Ferdowsi and Firdavsi, Jami and Jomi meet. Order matters.
+  static const List<(String, String)> _latinFolds = [
+    ('dzh', 'ç'),
+    ('dj', 'ç'),
+    ('zh', 'ž'),
+    ('kh', 'h'),
+    ('gh', 'g'),
+    ('sh', 'ş'),
+    ('ch', 'ç'),
+    ('j', 'ç'),
+    ('ph', 'f'),
+    ('ts', 's'),
+    ('c', 'k'),
+    ('q', 'k'),
+    ('x', 'h'),
+    ('w', 'v'),
+    ('ee', 'i'),
+    ('oo', 'u'),
+    ('ou', 'av'),
+    ('ow', 'av'),
+    ('au', 'av'),
+    ('e', 'i'),
+    ('o', 'a'),
+    ('y', 'i'),
+  ];
+
+  static final RegExp _notSkeleton = RegExp(r'[^a-z0-9şçž ]');
+  static final RegExp _repeated = RegExp(r'(.)\1+');
+
+  /// A loose Latin spelling of Tajik Cyrillic or Latin text: «Рӯдакӣ»,
+  /// "Rudakiy" and "Rūdakī" all become "rudaki". Empty for text in other
+  /// scripts.
+  static String skeleton(String text) {
+    final cached = _skeletons[text];
+    if (cached != null) return cached;
+    final buffer = StringBuffer();
+    for (final char in text.toLowerCase().split('')) {
+      buffer.write(_cyrillicToLatin[char] ?? _latinLetters[char] ?? char);
+    }
+    var s = buffer.toString().replaceAll(RegExp(r"['’‘ʻʼ`´\-‐–]"), '');
+    for (final (from, to) in _latinFolds) {
+      s = s.replaceAll(from, to);
+    }
+    s = s
+        .replaceAll(_notSkeleton, ' ')
+        .replaceAllMapped(_repeated, (m) => m[1]!)
+        .replaceAll(_multiSpace, ' ')
+        .trim();
+    if (!RegExp(r'[a-zşçž]').hasMatch(s)) s = '';
+    return _remember(_skeletons, text, s);
+  }
+
+  /// Persian-Arabic and Tajik letters grouped by consonant, vowels and the
+  /// letters that also write vowels (ا و ی ع, в й ъ) left out, so a Persian
+  /// query «بوی جوی مولیان» meets «Бӯйи Ҷӯйи Мулиён».
+  static const Map<String, String> _consonantClasses = {
+    'ب': 'b',
+    'б': 'b',
+    'پ': 'p',
+    'п': 'p',
+    'ت': 't',
+    'ط': 't',
+    'т': 't',
+    'ث': 's',
+    'س': 's',
+    'ص': 's',
+    'с': 's',
+    'ц': 's',
+    'ج': 'j',
+    'ҷ': 'j',
+    'چ': 'j',
+    'ч': 'j',
+    'ح': 'h',
+    'ه': 'h',
+    'ҳ': 'h',
+    'خ': 'x',
+    'х': 'x',
+    'د': 'd',
+    'д': 'd',
+    'ذ': 'z',
+    'ز': 'z',
+    'ض': 'z',
+    'ظ': 'z',
+    'з': 'z',
+    'ر': 'r',
+    'р': 'r',
+    'ژ': 'ž',
+    'ж': 'ž',
+    'ش': 'š',
+    'ш': 'š',
+    'щ': 'š',
+    'ف': 'f',
+    'ф': 'f',
+    'ق': 'q',
+    'қ': 'q',
+    'ک': 'k',
+    'к': 'k',
+    'گ': 'g',
+    'г': 'g',
+    'غ': 'ğ',
+    'ғ': 'ğ',
+    'ل': 'l',
+    'л': 'l',
+    'م': 'm',
+    'м': 'm',
+    'ن': 'n',
+    'н': 'n',
+  };
+
+  /// [text]'s consonants by class, word by word (see [_consonantClasses]).
+  /// A Persian word's final ه is a vowel (زاده, «зода») and is dropped.
+  static String consonants(String text) {
+    final cached = _consonantCache[text];
+    if (cached != null) return cached;
+    final words = <String>[];
+    for (final word in text.toLowerCase().split(_multiSpace)) {
+      final trimmed = word.endsWith('ه')
+          ? word.substring(0, word.length - 1)
+          : word;
+      final buffer = StringBuffer();
+      for (final char in trimmed.split('')) {
+        final mapped = _consonantClasses[char];
+        if (mapped != null) buffer.write(mapped);
+      }
+      if (buffer.isNotEmpty) words.add(buffer.toString());
+    }
+    return _remember(_consonantCache, text, words.join(' '));
+  }
+
+  static final Map<String, String> _skeletons = {};
+  static final Map<String, String> _consonantCache = {};
+  static const int _cacheLimit = 20000;
+
+  static String _remember(Map<String, String> cache, String key, String value) {
+    if (cache.length >= _cacheLimit) cache.clear();
+    cache[key] = value;
+    return value;
+  }
+
   /// Returns true if any of the given targets match the query.
   static bool matchesAny(List<String> targets, String query) {
     if (query.trim().isEmpty) return true;
     for (final t in targets) {
       if (matches(t, query)) return true;
+    }
+    return false;
+  }
+
+  /// [matchesAny] with [matchesOnAnyKeyboard].
+  static bool matchesAnyOnAnyKeyboard(List<String> targets, String query) {
+    if (query.trim().isEmpty) return true;
+    for (final t in targets) {
+      if (matchesOnAnyKeyboard(t, query)) return true;
     }
     return false;
   }
@@ -258,6 +609,7 @@ class SearchNormalizer {
   /// - Word boundary / prefix of a word (50)
   /// - Partial / substring match (35)
   /// - Space-agnostic / transliterated match (20)
+  /// - Any keyboard, word by word (15), or with one typo (10)
   /// - No match (0)
   static int scoreMatch(String target, String query) {
     if (query.trim().isEmpty) return 100;
@@ -284,9 +636,9 @@ class SearchNormalizer {
 
     if (normTarget.contains(normQuery)) return 35;
 
-    if (matches(target, query)) return 20;
-
-    return 0;
+    // Transliterated or folded containment, then the any-keyboard fallback.
+    if (_strictlyMatches(target, query)) return 20;
+    return _looseScore(target, query);
   }
 
   /// Returns the highest relevance score among all candidate targets.

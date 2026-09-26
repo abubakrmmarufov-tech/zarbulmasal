@@ -11,6 +11,7 @@ import '../../../core/utils/search_field_limits.dart';
 import '../../../core/utils/search_normalizer.dart';
 import 'literary_author_display_text.dart';
 import 'literary_work_display_text.dart';
+import '../domain/literature_search.dart';
 
 /// A screen listing all verified and approved literary works, searchable
 /// and filtered by form (ghazal, rubai, masnavi, qit'a, qasida).
@@ -49,11 +50,10 @@ class _WorksListScreenState extends ConsumerState<WorksListScreen> {
     };
     return works
         .where(
-          (work) => SearchNormalizer.matchesAny([
-            work.title,
-            work.titlePersian ?? '',
-            work.incipit ?? '',
+          (work) => SearchNormalizer.matchesAnyOnAnyKeyboard([
+            ...LiteratureSearch.workFields(work),
             authors[work.authorId]?.canonicalName ?? '',
+            authors[work.authorId]?.canonicalNamePersian ?? '',
             ...?authors[work.authorId]?.aliases,
           ], _query),
         )

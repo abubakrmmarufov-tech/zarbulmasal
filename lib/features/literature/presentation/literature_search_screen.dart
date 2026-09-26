@@ -6,12 +6,13 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
-import '../data/literature_repository.dart';
 import '../domain/literary_author.dart';
 import '../domain/literary_work.dart';
 import 'literary_author_display_text.dart';
 import 'literary_work_display_text.dart';
 import '../../../core/utils/search_field_limits.dart';
+import '../../../core/utils/search_normalizer.dart';
+import '../domain/literature_search.dart';
 
 /// A unified search screen querying across canonical authors and literary works.
 class LiteratureSearchScreen extends ConsumerStatefulWidget {
@@ -62,7 +63,7 @@ class _LiteratureSearchScreenState
           style: QalamTypography.body(color: colors.onSurface),
           onChanged: (val) {
             setState(() {
-              _query = LiteratureRepository.normalizeSearchText(val);
+              _query = SearchNormalizer.normalize(val);
             });
           },
         ),
@@ -145,13 +146,18 @@ class _LiteratureSearchScreenState
                 label: Text(term),
                 onPressed: () {
                   _controller.text = term;
-                  setState(
-                    () =>
-                        _query = LiteratureRepository.normalizeSearchText(term),
-                  );
+                  setState(() => _query = SearchNormalizer.normalize(term));
                 },
               );
             }).toList(),
+          ),
+          const SizedBox(height: QalamSpacing.sectionVTight),
+          Text(
+            AppTranslations.get('search_any_script_tip', lang),
+            style: QalamTypography.meta(
+              color: colors.onSurfaceVariant,
+              fontSize: 13,
+            ),
           ),
         ],
       ),
@@ -165,38 +171,15 @@ class _LiteratureSearchScreenState
     DisplayLanguage lang,
   ) {
     final isPersian = lang == DisplayLanguage.persian;
-    final matchingAuthors = authors.where((a) {
-      if (!a.hasCanonicalName) return false;
-      final name = LiteratureRepository.normalizeSearchText(a.canonicalName);
-      final fa = LiteratureRepository.normalizeSearchText(
-        a.canonicalNamePersian ?? '',
-      );
-      final period = LiteratureRepository.normalizeSearchText(a.literaryPeriod);
-      final place = LiteratureRepository.normalizeSearchText(
-        a.birthPlace ?? '',
-      );
-      final aliases = a.aliases.any(
-        (x) => LiteratureRepository.normalizeSearchText(x).contains(_query),
-      );
-      return name.contains(_query) ||
-          fa.contains(_query) ||
-          period.contains(_query) ||
-          place.contains(_query) ||
-          aliases;
-    }).toList();
+    final matchingAuthors = authors
+        .where(
+          (a) =>
+              a.hasCanonicalName && LiteratureSearch.matchesAuthor(a, _query),
+        )
+        .toList();
 
-    bool matches(LiteraryWork work) {
-      final title = LiteratureRepository.normalizeSearchText(work.title);
-      final titleFa = LiteratureRepository.normalizeSearchText(
-        work.titlePersian ?? '',
-      );
-      final incipit = LiteratureRepository.normalizeSearchText(
-        work.incipit ?? '',
-      );
-      return title.contains(_query) ||
-          titleFa.contains(_query) ||
-          incipit.contains(_query);
-    }
+    bool matches(LiteraryWork work) =>
+        LiteratureSearch.matchesWork(work, _query);
 
     // Readers see readable poems only; records still being checked stay in
     // the data for the team.

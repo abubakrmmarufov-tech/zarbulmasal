@@ -19,6 +19,7 @@ import '../books/data/books_providers.dart';
 import '../books/domain/book_domain.dart';
 import '../books/presentation/book_display_text.dart';
 import '../../core/utils/search_field_limits.dart';
+import '../literature/domain/literature_search.dart';
 
 class GlobalSearchScreen extends ConsumerStatefulWidget {
   const GlobalSearchScreen({super.key});
@@ -181,6 +182,14 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
           AppTranslations.get('search_empty_prompt_sub', lang),
           style: QalamTypography.bodySecondary(color: colors.onSurfaceVariant),
         ),
+        const SizedBox(height: QalamSpacing.metaGap),
+        Text(
+          AppTranslations.get('search_any_script_tip', lang),
+          style: QalamTypography.meta(
+            color: colors.onSurfaceVariant,
+            fontSize: 13,
+          ),
+        ),
         if (recent.isNotEmpty) ...[
           const SizedBox(height: 32),
           Text(
@@ -228,16 +237,9 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
     }
 
     final matchingAuthors = _ranked(
-      authors.where((a) {
-        if (!a.hasCanonicalName) return false;
-        return SearchNormalizer.matchesAny([
-          a.canonicalName,
-          a.canonicalNamePersian ?? '',
-          a.literaryPeriod,
-          a.birthPlace ?? '',
-          ...a.aliases,
-        ], _query);
-      }),
+      authors.where(
+        (a) => a.hasCanonicalName && LiteratureSearch.matchesAuthor(a, _query),
+      ),
       (a) => [
         a.canonicalName,
         a.canonicalNamePersian ?? '',
@@ -247,13 +249,8 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
     );
 
     final matchingWorks = _ranked(
-      works.where((w) {
-        return SearchNormalizer.matchesAny([
-          w.title,
-          w.titlePersian ?? '',
-          w.incipit ?? '',
-        ], _query);
-      }),
+      works.where((w) => LiteratureSearch.matchesWork(w, _query)),
+      // Ranked by title, so poems named after the query come first.
       (w) => [w.title, w.titlePersian ?? ''],
     );
 

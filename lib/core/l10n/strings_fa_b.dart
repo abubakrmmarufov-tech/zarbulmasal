@@ -494,4 +494,6 @@ const Map<String, String> persianStringsB = {
   'settings_text_sample_label': 'نمونهٔ اندازهٔ قلم',
   'hist_grade_no_catalog_title': 'فهرست تفصیلی صنف \${0} فعلاً در دسترس نیست',
   'lit_poet_no_textbook_poem': 'در کتاب‌های درسی شعری از او چاپ نشده است.',
+  'search_any_script_tip':
+      'نام شاعر و شعر را به خط فارسی، سیریلیک یا لاتین بنویسید؛ مثلاً Rudaki یا رودکی.',
 };

@@ -497,7 +497,7 @@ const Map<String, String> tajikStringsA = {
   'lit_poets_title': 'Шоирони тоҷик',
   'lit_poets_subtitle':
       'Бузургони адабиёти классик ва муосири тоҷик бо зиндагиномаи мустанад',
-  'lit_poets_search_hint': 'Ҷустуҷӯи шоир аз рӯи ном ё давр...',
+  'lit_poets_search_hint': 'Ном ё давр — ҳамчунин бо лотинӣ: Rudaki',
   'lit_works_eyebrow': 'ШЕЪРҲО',
   'lit_works_title': 'Осори манзум',
   'lit_works_subtitle': 'Ғазалҳо, рубоиҳо ва дигар шеърҳо аз китобҳои дарсӣ',

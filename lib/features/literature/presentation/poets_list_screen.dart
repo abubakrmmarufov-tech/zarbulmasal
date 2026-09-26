@@ -6,10 +6,11 @@ import '../../../core/l10n/app_translations.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
-import '../data/literature_repository.dart';
 import '../domain/domain.dart';
 import 'literary_author_display_text.dart';
 import '../../../core/utils/search_field_limits.dart';
+import '../../../core/utils/search_normalizer.dart';
+import '../domain/literature_search.dart';
 
 /// A screen presenting canonical Tajik literary authors and poets.
 class PoetsListScreen extends ConsumerStatefulWidget {
@@ -104,9 +105,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                   inputFormatters: searchQueryFormatters,
                   onChanged: (val) {
                     setState(() {
-                      _filterQuery = LiteratureRepository.normalizeSearchText(
-                        val,
-                      );
+                      _filterQuery = SearchNormalizer.normalize(val);
                     });
                   },
                   decoration: InputDecoration(
@@ -176,23 +175,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                   if (!author.hasCanonicalName) return false;
                   if (_era != null && PoetEra.of(author) != _era) return false;
                   if (_filterQuery.isEmpty) return true;
-                  final matchName = LiteratureRepository.normalizeSearchText(
-                    author.canonicalName,
-                  ).contains(_filterQuery);
-                  final matchFa =
-                      author.canonicalNamePersian != null &&
-                      LiteratureRepository.normalizeSearchText(
-                        author.canonicalNamePersian!,
-                      ).contains(_filterQuery);
-                  final matchPeriod = LiteratureRepository.normalizeSearchText(
-                    author.literaryPeriod,
-                  ).contains(_filterQuery);
-                  final matchAliases = author.aliases.any(
-                    (a) => LiteratureRepository.normalizeSearchText(
-                      a,
-                    ).contains(_filterQuery),
-                  );
-                  return matchName || matchFa || matchPeriod || matchAliases;
+                  return LiteratureSearch.matchesAuthor(author, _filterQuery);
                 }).toList();
 
                 if (filtered.isEmpty) {

@@ -502,4 +502,6 @@ const Map<String, String> tajikStringsB = {
   'hist_grade_no_catalog_title':
       'Барои синфи \${0} феҳристи муфассал ҳоло дастрас нест',
   'lit_poet_no_textbook_poem': 'Дар китобҳои дарсӣ шеъре аз ӯ чоп нашудааст.',
+  'search_any_script_tip':
+      'Бо ҳар алифбо ҷустуҷӯ кунед: رودکی, Rudaki, Рудаки ё Рӯдакӣ.',
 };

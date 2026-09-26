@@ -493,7 +493,7 @@ const Map<String, String> persianStringsA = {
   'lit_poets_title': 'شاعران تاجیک',
   'lit_poets_subtitle':
       'بزرگان ادب کلاسیک و معاصر تاجیک با زندگینامه و اسناد معتبر',
-  'lit_poets_search_hint': 'جستجوی شاعر بر اساس نام یا دوره...',
+  'lit_poets_search_hint': 'نام یا دوره — به لاتین هم: Rudaki',
   'lit_works_eyebrow': 'شعرها',
   'lit_works_title': 'آثار منظوم',
   'lit_works_subtitle': 'غزل‌ها، رباعی‌ها و شعرهای دیگر از کتاب‌های درسی',
