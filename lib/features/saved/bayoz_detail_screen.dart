@@ -117,21 +117,17 @@ class BayozDetailScreen extends ConsumerWidget {
               ),
             ),
           for (final item in bayoz.items)
-            if (_resolve(item, works, proverbs, persian, lang) case (
+            if (_resolve(item, works, proverbs, persian) case (
               final title,
               final route,
-              final generated,
             ))
               _ItemRow(
                 title: title,
-                subtitle: [
-                  item.kind == BayozItemKind.work
-                      ? tr('lit_genre_poem')
-                      : (lang == DisplayLanguage.persian
-                            ? 'ضرب‌المثل'
-                            : 'Зарбулмасал'),
-                  if (generated) tr('lit_generated_script_label'),
-                ].join('\n'),
+                subtitle: item.kind == BayozItemKind.work
+                    ? tr('lit_genre_poem')
+                    : (lang == DisplayLanguage.persian
+                          ? 'ضرب‌المثل'
+                          : 'Зарбулмасал'),
                 onTap: () => context.push(route),
                 onRemove: () =>
                     ref.read(bayozProvider.notifier).toggle(bayoz.id, item),
@@ -151,27 +147,22 @@ class BayozDetailScreen extends ConsumerWidget {
     );
   }
 
-  /// Title, route, and whether the shown title is a generated Persian
-  /// transliteration — or `null` when the text is no longer published.
-  static (String, String, bool)? _resolve(
+  /// Title and route — or `null` when the text is no longer published.
+  static (String, String)? _resolve(
     BayozItem item,
     Map<String, LiteraryWork> works,
     Map<String, Proverb> proverbs,
     bool persian,
-    DisplayLanguage lang,
   ) {
     switch (item.kind) {
       case BayozItemKind.work:
         final work = works[item.id];
         if (work == null) return null;
-        final persianTitle =
-            persian && (work.titlePersian?.isNotEmpty ?? false);
         return (
           persian
               ? LiteraryWorkDisplayText.title(work, DisplayLanguage.persian)
               : work.title,
           '/literature/work/${item.id}',
-          persianTitle && work.titlePersianSource == 'generated',
         );
       case BayozItemKind.proverb:
         final proverb = proverbs[item.id];
@@ -179,7 +170,7 @@ class BayozDetailScreen extends ConsumerWidget {
         final text = persian && proverb.persianText.isNotEmpty
             ? proverb.persianText
             : proverb.tajikCyrillic;
-        return (text, '/proverb/${item.id}', false);
+        return (text, '/proverb/${item.id}');
     }
   }
 

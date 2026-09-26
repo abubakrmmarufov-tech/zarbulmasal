@@ -12,7 +12,6 @@ import '../../literature/presentation/literary_author_display_text.dart';
 import '../../literature/presentation/widgets/verse_view.dart';
 
 /// The opening bayt of the day's poem, in the reading script, with its poet.
-/// Generated Persian script carries its label here too.
 class BaytOfTheDay extends ConsumerWidget {
   const BaytOfTheDay({super.key});
 
@@ -36,7 +35,6 @@ class BaytOfTheDay extends ConsumerWidget {
     final lines = firstStanza.unitsAreBayts
         ? firstStanza.units.first
         : firstStanza.units.take(2).expand((unit) => unit).toList();
-    final generated = showPersian && work.persianScriptSource == 'generated';
     final direction = showPersian ? TextDirection.rtl : TextDirection.ltr;
 
     return InkWell(
@@ -64,13 +62,6 @@ class BaytOfTheDay extends ConsumerWidget {
                   height: 1.6,
                 ),
               ),
-            if (generated) ...[
-              const SizedBox(height: 6),
-              Text(
-                AppTranslations.get('lit_generated_script_label', lang),
-                style: QalamTypography.meta(color: colors.onSurfaceVariant),
-              ),
-            ],
             const SizedBox(height: 8),
             Text(
               LiteraryAuthorDisplayText.nameOrFallback(

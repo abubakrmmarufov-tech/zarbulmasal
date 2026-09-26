@@ -238,7 +238,7 @@ void main() {
     });
   });
 
-  testWidgets('Home labels a generated Persian title in Continue reading', (
+  testWidgets('Home shows a Persian title in Continue reading, no note', (
     tester,
   ) async {
     final app = await openApp(
@@ -253,18 +253,12 @@ void main() {
     await tester.pumpAndSettle();
     await tester.drag(find.byType(Scrollable).first, const Offset(0, -700));
     await tester.pumpAndSettle();
-    final label = AppTranslations.get(
-      'lit_generated_script_label',
-      DisplayLanguage.tajik,
+    final row = find.byWidgetPredicate(
+      (widget) => widget is QalamIndexRow && widget.title == 'بوی جوی مولیان',
     );
-    expect(
-      find.byWidgetPredicate(
-        (widget) =>
-            widget is QalamIndexRow &&
-            widget.title == 'بوی جوی مولیان' &&
-            (widget.subtitle ?? '').contains(label),
-      ),
-      findsOneWidget,
-    );
+    expect(row, findsOneWidget);
+    final subtitle = tester.widget<QalamIndexRow>(row).subtitle ?? '';
+    expect(subtitle, isNot(contains('механикӣ')));
+    expect(subtitle, isNot(contains('\n')));
   });
 }

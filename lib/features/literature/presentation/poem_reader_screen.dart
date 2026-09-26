@@ -369,8 +369,6 @@ class _PoemReaderContentState extends ConsumerState<_PoemReaderContent> {
                                     onSelected: (value) =>
                                         setState(() => _userScriptMode = value),
                                   ),
-                                if (showsPersianText && hasGeneratedPersian)
-                                  _GeneratedScriptLabel(lang: lang),
                                 if (hasVerifiedText)
                                   mode == ReaderScriptMode.parallel &&
                                           hasBothScripts
@@ -496,38 +494,6 @@ class _ReaderContextPane extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(24, 28, 24, 40),
           children: [ReaderEndOfText(work: work, showNeighbours: false)],
         ),
-      ),
-    );
-  }
-}
-
-/// States that the Persian-script text is a mechanical transliteration, not
-/// a Persian source (data: `persianScriptSource: "generated"`).
-class _GeneratedScriptLabel extends StatelessWidget {
-  const _GeneratedScriptLabel({required this.lang});
-
-  final DisplayLanguage lang;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(Icons.info_outline, size: 16, color: colors.onSurfaceVariant),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              AppTranslations.get('lit_generated_script_label', lang),
-              style: QalamTypography.meta(
-                color: colors.onSurfaceVariant,
-                fontSize: 13,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

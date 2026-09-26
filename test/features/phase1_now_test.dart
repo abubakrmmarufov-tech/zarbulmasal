@@ -188,16 +188,19 @@ void main() {
     });
   });
 
-  group('N5 · generated Persian script is labelled', () {
-    testWidgets('label appears only while the generated text is shown', (
+  group('N5 · Persian script is shown without a disclaimer', () {
+    testWidgets('the Persian text carries no transliteration note', (
       tester,
     ) async {
       await _open(tester, route: '/literature/work/$_rudakiId');
-      expect(find.text(tj('lit_generated_script_label')), findsNothing);
-
       await tester.tap(find.text(tj('lit_script_persian')));
       await tester.pumpAndSettle();
-      expect(find.text(tj('lit_generated_script_label')), findsOneWidget);
+      // The owner removed the note (26 Sep 2026): the Persian script is shown
+      // as it is, with no «табдили механикӣ» label.
+      expect(find.textContaining('Хатти форсӣ —'), findsNothing);
+      expect(find.textContaining('механикӣ'), findsNothing);
+      expect(find.byIcon(Icons.info_outline), findsNothing);
+      expect(find.textContaining('بوی جوی مولیان'), findsWidgets);
       // Interface language is untouched.
       expect(find.text(tj('lit_reader_title')), findsOneWidget);
     });

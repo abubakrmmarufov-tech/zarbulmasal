@@ -49,21 +49,14 @@ class ReaderEndOfText extends ConsumerWidget {
     String title(LiteraryWork w) => persianTitles
         ? LiteraryWorkDisplayText.title(w, DisplayLanguage.persian)
         : w.title;
-    bool generated(LiteraryWork w) =>
-        persianTitles &&
-        w.titlePersianSource == 'generated' &&
-        (w.titlePersian?.trim().isNotEmpty ?? false);
     TextDirection direction() =>
         persianTitles ? TextDirection.rtl : TextDirection.ltr;
 
     QalamNeighbour? neighbour(int at, String labelKey) {
       if (index < 0 || at < 0 || at >= works.length) return null;
       final target = works[at];
-      final label = generated(target)
-          ? '${tr(labelKey)} · ${tr('lit_generated_script_label')}'
-          : tr(labelKey);
       return QalamNeighbour(
-        label: label,
+        label: tr(labelKey),
         title: title(target),
         titleDirection: direction(),
         onTap: () => context.push('/literature/work/${target.id}'),
@@ -100,9 +93,10 @@ class ReaderEndOfText extends ConsumerWidget {
               for (final other in byPoet)
                 QalamIndexRow(
                   title: title(other),
-                  subtitle: generated(other)
-                      ? tr('lit_generated_script_label')
-                      : LiteraryWorkDisplayText.distinctIncipit(other, lang),
+                  subtitle: LiteraryWorkDisplayText.distinctIncipit(
+                    other,
+                    lang,
+                  ),
                   onTap: () => context.push('/literature/work/${other.id}'),
                 ),
               if (author != null)

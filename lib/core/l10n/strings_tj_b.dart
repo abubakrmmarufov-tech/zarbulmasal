@@ -216,8 +216,6 @@ const Map<String, String> tajikStringsB = {
   'lit_script_parallel': 'Матни мувозӣ',
   'lit_cyrillic_only_notice':
       'Матни ин асар тибқи нусхаҳои муътамад ба хатти кириллии тоҷикӣ сабт шудааст.',
-  'lit_generated_script_notice':
-      'Намоиши ҳарфии тавлидшуда аз хатти кириллии тоҷикӣ; ин матн нусхаи аслии форсӣ ё тарҷумаи маъноӣ нест.',
   'lit_editorial_review_pending': 'Матн дар ҳоли муқобала бо нусхаҳои чопӣ аст',
   'lit_editorial_policy_notice':
       'Матни шеър танҳо баъд аз санҷиши дақиқ бо саҳифаи сарчашмаи китобии боршуда ё maorif.tj намоиш дода мешавад.',
@@ -260,7 +258,6 @@ const Map<String, String> tajikStringsB = {
   'prov_seal_label': 'Муҳри санҷиш: \${0}',
   'record_tab_about': 'Дар бора',
   'record_tab_record': 'Сабт',
-  'lit_generated_script_label': 'Хатти форсӣ — табдили механикӣ, на матни аслӣ',
   'resume_bayt': 'Байти \${0} аз \${1}',
   'end_heading': 'Боз хонед',
   'lit_source_line': 'Манбаъ: \${0}',

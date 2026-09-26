@@ -57,6 +57,9 @@ Proverb _proverb({
   persianOrigin: persianOrigin,
 );
 
+/// The badge the owner removed (26 Sep 2026).
+const _persianBadge = 'Хатти форсӣ: транслитератсия';
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -185,14 +188,19 @@ void main() {
       expect(find.text(tj('proverb_no_printed_source')), findsNothing);
     });
 
-    testWidgets('labels editorial sections and the transliteration', (
+    testWidgets('labels editorial sections, not the Persian script', (
       tester,
     ) async {
       await pumpPage(tester, _proverb());
 
       // Meaning, explanation and example are all editorial here.
       expect(find.text(tj('proverb_editorial')), findsNWidgets(3));
-      expect(find.text(tj('proverb_persian_translit')), findsOneWidget);
+      // The Persian script is shown without a transliteration badge.
+      expect(find.text(_persianBadge), findsNothing);
+      expect(
+        find.text('علم خواهی، تکرار کن، حاصل خواهی، شیار کن.'),
+        findsWidgets,
+      );
     });
 
     testWidgets('a printed example shows its signature and book', (
@@ -216,7 +224,7 @@ void main() {
       // Only the simple explanation stays editorial.
       expect(find.text(tj('proverb_editorial')), findsOneWidget);
       expect(find.text('Мисоли озмоишӣ.\n— Сотим Улуғзода'), findsOneWidget);
-      expect(find.text(tj('proverb_persian_translit')), findsNothing);
+      expect(find.text(_persianBadge), findsNothing);
     });
 
     testWidgets('an unsourced proverb says no printed source was found', (

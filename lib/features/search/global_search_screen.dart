@@ -374,9 +374,7 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
             for (final work in matchingWorks)
               _SearchRow(
                 title: LiteraryWorkDisplayText.title(work, lang),
-                subtitle: isPersian && work.titlePersianSource == 'generated'
-                    ? AppTranslations.get('lit_generated_script_label', lang)
-                    : LiteraryWorkDisplayText.distinctIncipit(work, lang),
+                subtitle: LiteraryWorkDisplayText.distinctIncipit(work, lang),
                 query: _rawQuery,
                 onTap: () {
                   ref

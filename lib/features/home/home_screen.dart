@@ -87,14 +87,7 @@ class HomeScreen extends ConsumerWidget {
               QalamIndexRow(
                 leading: _iconForKind(position.kind),
                 title: resumeTitle,
-                subtitle: [
-                  _resumeSubtitle(position, lang),
-                  // A generated Persian title says so wherever it is shown.
-                  if (readingPersian &&
-                      position.titlePersian != null &&
-                      position.titlePersianGenerated)
-                    tr('lit_generated_script_label'),
-                ].join('\n'),
+                subtitle: _resumeSubtitle(position, lang),
                 onTap: () => context.push(position.resumeRoute),
               ),
             ],

@@ -216,8 +216,6 @@ const Map<String, String> persianStringsB = {
   'lit_script_parallel': 'متن موازی',
   'lit_cyrillic_only_notice':
       'متن این اثر طبق نسخه‌های معتبر به خط سیریلیک تاجیکی ثبت شده است.',
-  'lit_generated_script_notice':
-      'نمایش نوشتاریِ تولیدشده از خط سیریلیک تاجیکی؛ این متن شاهد اصلی فارسی یا ترجمهٔ معنایی نیست.',
   'lit_editorial_review_pending': 'متن در حال مقابله با نسخه‌های چاپی است',
   'lit_editorial_policy_notice':
       'متن شعر تنها پس از بررسی دقیق با صفحهٔ منبع کتابی بارگذاری‌شده یا maorif.tj نمایش داده می‌شود.',
@@ -258,7 +256,6 @@ const Map<String, String> persianStringsB = {
   'prov_seal_label': 'مُهر بررسی: \${0}',
   'record_tab_about': 'درباره',
   'record_tab_record': 'ثبت',
-  'lit_generated_script_label': 'خط فارسی — برگردان ماشینی، نه متن اصلی',
   'resume_bayt': 'بیت \${0} از \${1}',
   'end_heading': 'بیشتر بخوانید',
   'lit_source_line': 'منبع: \${0}',

@@ -123,9 +123,6 @@ class HistoryEndOfText extends ConsumerWidget {
                 title: isPersian
                     ? (work.titlePersian ?? '').trim()
                     : work.title,
-                subtitle: isPersian && work.titlePersianSource == 'generated'
-                    ? tr('lit_generated_script_label')
-                    : null,
                 onTap: () => context.push('/literature/work/${work.id}'),
               ),
           ],

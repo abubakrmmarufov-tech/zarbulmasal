@@ -261,7 +261,6 @@ const Map<String, String> persianStringsA = {
   'proverb_sources': 'در کتاب‌ها',
   'proverb_no_printed_source':
       'منبع چاپی یافت نشد: این ضرب‌المثل در کتاب‌های بررسی‌شده هنوز پیدا نشده است.',
-  'proverb_persian_translit': 'خط فارسی: نویسه‌گردانی',
 
   // Literature
   'literature_title': 'میراث ادبی',

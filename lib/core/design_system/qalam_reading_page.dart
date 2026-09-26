@@ -275,15 +275,6 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                                   color: colors.onSurfaceVariant,
                                 ),
                               ),
-                              if (p.persianText.isNotEmpty &&
-                                  p.persianOrigin ==
-                                      PersianOrigin.transliteration)
-                                Text(
-                                  tr('proverb_persian_translit'),
-                                  style: QalamTypography.meta(
-                                    color: colors.onSurfaceVariant,
-                                  ),
-                                ),
                             ],
                           ),
                         ],
