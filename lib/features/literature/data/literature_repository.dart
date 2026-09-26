@@ -9,14 +9,6 @@ import 'package:zarbulmasal/core/utils/json_off_thread.dart';
 /// Decodes the works asset and expands the dictionary-compressed runtime
 /// catalog into plain work maps. A legacy top-level JSON `List` (used by the
 /// repository's failure-retry test asset `'[]'`) is passed through unchanged.
-List<dynamic> _decodeWorksAsset(String source) {
-  final decoded = jsonDecode(source);
-  if (decoded is List<dynamic>) return decoded;
-  if (decoded is Map<String, dynamic>) {
-    return expandRuntimeWorks(decoded);
-  }
-  return const <dynamic>[];
-}
 
 /// Repository responsible for loading and querying literary heritage data.
 ///
@@ -112,11 +104,17 @@ class LiteratureRepository {
 
   Future<List<LiteraryWork>> _loadWorks() async {
     final jsonString = await _bundle.loadString(worksAssetPath);
-    final decoded = await compute(
-      _decodeWorksAsset,
-      jsonString,
-      debugLabel: 'decode-literary-works',
-    );
+    final dynamic rawDecoded = await decodeJsonOffThread(jsonString);
+    List<dynamic> decoded = const <dynamic>[];
+    if (rawDecoded is List<dynamic>) {
+      decoded = rawDecoded;
+    } else if (rawDecoded is Map<String, dynamic>) {
+      decoded = await compute(
+        expandRuntimeWorks,
+        rawDecoded,
+        debugLabel: 'expand-runtime-works',
+      );
+    }
     return List.unmodifiable(
       decoded.whereType<Map>().map(
         (json) => LiteraryWork.fromJson(Map<String, dynamic>.from(json)),
