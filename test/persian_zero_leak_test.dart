@@ -540,12 +540,12 @@ void main() {
     );
 
     test(
-      'seedProverbs contains 150 verified proverbs with 0 Cyrillic characters in persianText',
+      'seedProverbs contains 186 production proverbs with 0 Cyrillic characters in persianText',
       () {
         expect(
           seedProverbs.length,
-          equals(150),
-          reason: 'Expected 150 verified production proverbs',
+          equals(186),
+          reason: 'Expected 186 production proverbs (IDs 21-206)',
         );
 
         final leaks = <String>[];

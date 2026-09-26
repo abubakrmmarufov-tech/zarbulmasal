@@ -5140,6 +5140,1223 @@
    "meaningPrinted": false,
    "examplePrinted": false,
    "note": ""
+  },
+  {
+   "id": 171,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Панҷ ангушт баробар нест.",
+    "persianText": "پنج انگشت برابر نیست.",
+    "meaningTj": "Инсонҳо ҳам мисли ангуштони даст якранг нестанд: доноанду нодон ва амсоли ин.",
+    "exampleSentenceTj": "Ду бародар дар як хона тарбия ёфтанд, вале яке ба илм майл дошт, дигаре ба ҳунар; панҷ ангушт баробар нест.",
+    "simpleExplanationTj": "Ангуштони даст як хел нестанд: калону хурд, бориканду ғафс.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 37"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 37,
+     "pdfPage": 37,
+     "printed": "«Панҷ ангушт баробар нест»",
+     "note": "lesson «Зарбулмасалу мақолҳо»; explained as a зарбулмасал"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 68,
+     "pdfPage": 65,
+     "printed": "Панҷ панҷа баробар нест.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 172,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Аз одами бекор Худо безор.",
+    "persianText": "از آدم بیکار خدا بیزار.",
+    "meaningTj": "Одами бекору танбал на назди Худо ва на назди мардум қадр дорад.",
+    "exampleSentenceTj": "Ӯ тамоми рӯз бекор мегашт ва ҳамсояҳо ҳам аз ӯ дилгир шуданд; аз одами бекор Худо безор.",
+    "simpleExplanationTj": "Касе, ки кор намекунад, ҳеҷ кас аз ӯ розӣ нест.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "«Аз одами бекор Худо безор»",
+     "note": "cited as a мақол"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 32,
+     "pdfPage": 29,
+     "printed": "Аз бекор худо безор.",
+     "note": ""
+    },
+    {
+     "book": "fozilov1_1975",
+     "printedPage": 57,
+     "pdfPage": 58,
+     "printed": "АЗ (ОДАМИ) БЕКОР — ХУДО (ҲАМА) БЕЗОР.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 173,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Намур, бузакам, баҳор мешавад.",
+    "persianText": "نمیر، بزکم، بهار می‌شود.",
+    "meaningTj": "Ба ваъдаи беҳбудии дур тасаллӣ медиҳанд, дар ҳоле ки мушкил ҳозир аст; мақол чунин ваъдаҳоро ба киноя мегӯяд.",
+    "exampleSentenceTj": "Ба коргарон гуфтанд, ки музд соли оянда зиёд мешавад; яке хандида гуфт: «Намур, бузакам, баҳор мешавад».",
+    "simpleExplanationTj": "Ба бузи гурусна мегӯянд, ки то баҳор тоқат кунад, вале то баҳор роҳ дароз аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Намур, бузакам, баҳор мешавад.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 43,
+     "pdfPage": 40,
+     "printed": "Бузак, бузак, намур, ки баҳор меояд, вақти гули хор меояд.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 174,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Ҷӯянда — ёбанда.",
+    "persianText": "جوینده — یابنده.",
+    "meaningTj": "Касе, ки бо ҷидду ҷаҳд меҷӯяд, ба мақсадаш мерасад.",
+    "exampleSentenceTj": "Ӯ муддати дароз кор ҷуст ва ниҳоят ҷои дилхоҳашро ёфт; ҷӯянда — ёбанда.",
+    "simpleExplanationTj": "Ҳар кӣ ҷустуҷӯ кунад, пайдо мекунад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Ҷӯянда – ёбанда.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    },
+    {
+     "book": "grade9_2026",
+     "printedPage": 318,
+     "pdfPage": 318,
+     "printed": "«Ҷӯянда – ёбанда»",
+     "note": "named among well-known зарбулмасалу мақолҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 88,
+     "pdfPage": 85,
+     "printed": "Ҷӯянда ёбанда аст.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 175,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Моҳ бе айб намешавад.",
+    "persianText": "ماه بی عیب نمی‌شود.",
+    "meaningTj": "Ҳеҷ кас ва ҳеҷ чиз комилан беайб нест.",
+    "exampleSentenceTj": "Дӯсташ хатои хурде кард ва ӯ онро бахшид; моҳ бе айб намешавад.",
+    "simpleExplanationTj": "Ҳатто моҳи равшан ҳам доғ дорад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Моҳ бе айб намешавад.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 176,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Кӯдак азиз аст, адабаш — аз он азизтар.",
+    "persianText": "کودک عزیز است، ادبش — از آن عزیزتر.",
+    "meaningTj": "Фарзандро дӯст доштан бояд бо тарбияи одоби ӯ ҳамроҳ бошад.",
+    "exampleSentenceTj": "Бобо набераашро дӯст медошт, вале ҳамеша ба ӯ салом доданро ёд медод; кӯдак азиз аст, адабаш — аз он азизтар.",
+    "simpleExplanationTj": "Кӯдак ба волидайн азиз аст, вале одоби ӯ аз худаш ҳам қимматтар аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Кӯдак азиз аст, адабаш – аз он азизтар.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 177,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Забон донӣ, ҷаҳон донӣ.",
+    "persianText": "زبان دانی، جهان دانی.",
+    "meaningTj": "Донистани забонҳо дари шинохти ҷаҳону мардумро мекушояд.",
+    "exampleSentenceTj": "Ӯ забони англисиро омӯхт ва дар сафар бо одамони зиёд ҳамсуҳбат шуд; забон донӣ, ҷаҳон донӣ.",
+    "simpleExplanationTj": "Касе, ки забон медонад, ҷаҳонро беҳтар мешиносад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Забон донӣ, ҷаҳон донӣ.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 178,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Пурсидан айб нест.",
+    "persianText": "پرسیدن عیب نیست.",
+    "meaningTj": "Барои донистани чизе пурсидан шарм нест; шарм нодон мондан аст.",
+    "exampleSentenceTj": "Шогирд қоидаро нафаҳмида буд ва аз устод пурсид; пурсидан айб нест.",
+    "simpleExplanationTj": "Савол додан кори айб нест.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Пурсидан айб нест.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 69,
+     "pdfPage": 66,
+     "printed": "Пурсидан айб нест.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 179,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Дӯст гӯяд табарвор, душман гӯяд шакарвор.",
+    "persianText": "دوست گوید تبروار، دشمن گوید شکروار.",
+    "meaningTj": "Дӯст ҳақиқати талхро рӯирост мегӯяд, душман бо сухани ширин фиреб медиҳад.",
+    "exampleSentenceTj": "Дӯсташ хатояшро рӯирост гуфт ва ӯ фаҳмид, ки ин барои некии ӯст; дӯст гӯяд табарвор, душман гӯяд шакарвор.",
+    "simpleExplanationTj": "Сухани дӯст мисли табар сахт, сухани душман мисли шакар ширин аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Дӯст гӯяд табарвор, душман гӯяд шакарвор.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 180,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Гап дар калла, на дар салла.",
+    "persianText": "گپ در کله، نه در سلّه.",
+    "meaningTj": "Арзиши инсон дар ақлу дониши ӯст, на дар намуди зоҳирӣ.",
+    "exampleSentenceTj": "Ӯ либоси сода дошт, вале маслиҳаташ аз ҳама оқилона буд; гап дар калла, на дар салла.",
+    "simpleExplanationTj": "Муҳим он аст, ки дар сар чӣ ҳаст, на он чӣ бар сар аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Гап дар калла, на дар салла.",
+     "note": "list «Зарбулмасалу мақолҳо»"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 44,
+     "pdfPage": 41,
+     "printed": "Гап дар салла не, дар калла.",
+     "note": ""
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 44,
+     "pdfPage": 44,
+     "printed": "Гап дар салла не, дар калла.",
+     "note": "section «Ақл»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 181,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Он чӣ дар дег аст, ба чумча меояд.",
+    "persianText": "آن چه در دیگ است، به چمچه می‌آید.",
+    "meaningTj": "Он чӣ дар дили инсон аст, дер ё зуд дар гуфтору рафтораш зоҳир мешавад.",
+    "exampleSentenceTj": "Гурусна сар дар дег кард, ки мулоҳиза намояд, ки чӣ таом аст.\nХаббоз гуфт: Изтироб чист, «он чӣ дар дег аст, ба чумча меояд».",
+    "simpleExplanationTj": "Ҳар чӣ дар дег пухта шавад, ҳамон ба чумча мебарояд.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 39"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 39,
+     "pdfPage": 39,
+     "printed": "«он чӣ дар дег аст, ба чумча меояд»",
+     "note": "section «Чанд мисол аз зарбулмасалҳо», example 2"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 66,
+     "pdfPage": 63,
+     "printed": "Он чи дар дег аст, ба кафгир мебарояд.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 182,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Дили нохоҳам — узри бисёр.",
+    "persianText": "دل ناخواهم — عذر بسیار.",
+    "meaningTj": "Касе, ки майлу шавқу ҳаваси иҷрои коре надорад, баҳонаҳои зиёде меоварад.",
+    "exampleSentenceTj": "Ба таҳрики қозикалону раису қушбегӣ дар байни аҳолӣ шӯриш пайдо шуд. «Дили нохоҳамро узри бисёр» бо одамоне, ки огаҳи ин маънӣ буданд, баҳона ба зуҳур оварда амирро аз қабули ин кор мунҳариф сохтанд.",
+    "simpleExplanationTj": "Касе, ки коре намехоҳад, барои накардани он сабабҳои зиёд меёбад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 39"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 39,
+     "pdfPage": 39,
+     "printed": "ДИЛИ НОХОҲАМ – УЗРИ БИСЁР",
+     "note": "lesson heading with printed meaning and example"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 51,
+     "pdfPage": 48,
+     "printed": "Дили нохоҳам—узри бисьёр.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 183,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Ё тир мекафад ё ҷувоз.",
+    "persianText": "یا تیر می‌کفد یا جواز.",
+    "meaningTj": "Вақте ба кори пурхатар даст мезананд, ки натиҷааш ё комёбӣ ё нокомист, инро мегӯянд.",
+    "exampleSentenceTj": "Ё ғалаба, ё мағлубият, ё марг, ё зиндагӣ, ҳарчи бодо, бод. Коре, ки ӯ ба ивази ин дастаҳои пул ба ҷо меоварад, низ хиёнат аст, хиёнати аз пештараҳо дучанд сахттар. Аммо садқаи сар, «ё тир мекафад ё ҷувоз», тарсончак ҳеҷ гоҳ рӯзи нек намебинад.",
+    "simpleExplanationTj": "Дар ҷувоз ё тир мешиканад ё худи ҷувоз: кор ба як тараф ҳал мешавад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 40"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 40,
+     "pdfPage": 40,
+     "printed": "Ё ТИР МЕКАФАД Ё ҶУВОЗ",
+     "note": "lesson heading with a signed example"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 54,
+     "pdfPage": 51,
+     "printed": "Ё тир мекафад, ё ҷувоз.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 184,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Моргазида аз ресмони ало метарсад.",
+    "persianText": "مارگزیده از ریسمان الا می‌ترسد.",
+    "meaningTj": "Одами аз касе, чизе ва ё аз ҷое ранҷидаву зарардида ҳамеша аз он касу чизу он ҷо ҳарос дорад.",
+    "exampleSentenceTj": "– Падарат дар вақташ кор гуфта ҷойи гармашро хунук кард, шаҳрро партофта ба қишлоқ омад. Ҳангоми сохтани роҳ ҳалок шуд.\nҲунари ман роҳсозӣ не-ку, оча?\n«Моргазида аз ресмони ало метарсад», писарам.",
+    "simpleExplanationTj": "Касе, ки аз мор газида шудааст, ҳатто аз ресмони ало ҳам метарсад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 40"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 40,
+     "pdfPage": 40,
+     "printed": "МОРГАЗИДА АЗ РЕСМОНИ АЛО МЕТАРСАД",
+     "note": "lesson heading with printed meaning and examples"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 61,
+     "pdfPage": 58,
+     "printed": "Моргазида аз ресмони ало метарсад.",
+     "note": ""
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 36,
+     "pdfPage": 36,
+     "printed": "Моргазида аз банди (ресмони) ало метарсад.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 185,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Ростгӯйро ҳамеша роҳат дар пеш аст.",
+    "persianText": "راستگوی را همیشه راحت در پیش است.",
+    "meaningTj": "Ростгӯӣ дар охир ба инсон осудагӣ ва обрӯ меорад.",
+    "exampleSentenceTj": "Бинобар риояи ростӣ, ҳамаи он зарҳоро шоҳ ба ман бахшид. Чандин сол аст, ки аз он зарҳо харҷ мекунам, ҳаргиз адо намешаванд. Аз он замон то ба ин замон хосияти ростиро ба дарвозаи худ навишта мондаам, ки «ростгӯйро ҳамеша роҳат дар пеш аст». Ҳар кӣ бошад, ба ҷуз ростӣ дигар сухан нагӯяд.",
+    "simpleExplanationTj": "Одами ростгӯ ҳамеша ором ва осуда аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 41"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 41,
+     "pdfPage": 41,
+     "printed": "РОСТГӮЙРО ҲАМЕША РОҲАТ ДАР ПЕШ АСТ",
+     "note": "lesson heading with an example"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 186,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Меҳрубониҳои султон — бозии гурба бо мушон.",
+    "persianText": "مهربانی‌های سلطان — بازی گربه با موشان.",
+    "meaningTj": "Меҳрубонии зӯрмандон нисбат ба заифон аксар вақт фиреб аст ва зараре дар пас дорад.",
+    "exampleSentenceTj": "Ҳоким ба деҳқонон ваъдаҳои ширин медод, вале андозро зиёд мекард; меҳрубониҳои султон — бозии гурба бо мушон.",
+    "simpleExplanationTj": "Гурба бо муш бозӣ мекунад, вале охир онро мехӯрад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 41"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 41,
+     "pdfPage": 41,
+     "printed": "Меҳрубониҳои султон – бозии гурба бо мушон.",
+     "note": "list «Чанд намуна»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 187,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Хурӯс дар ҳама ҷо як хел ҷеғ мезанад.",
+    "persianText": "خروس در همه جا یک خیل جیغ می‌زند.",
+    "meaningTj": "Одамон ва урфу одатҳо дар ҳама ҷо аз бисёр ҷиҳат монанданд.",
+    "exampleSentenceTj": "Дар шаҳри бегона ҳам ӯ ҳамон ғаму шодиҳои зодгоҳашро дид; хурӯс дар ҳама ҷо як хел ҷеғ мезанад.",
+    "simpleExplanationTj": "Хурӯс дар ҳар деҳа ҳамон хел бонг мезанад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 41"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 41,
+     "pdfPage": 41,
+     "printed": "Хурӯс дар ҳама ҷо як хел ҷеғ мезанад.",
+     "note": "list «Чанд намуна»"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 78,
+     "pdfPage": 75,
+     "printed": "Хурӯс дар ҳама ҷо як хел ҷеғ мезанад.",
+     "note": ""
+    },
+    {
+     "book": "grade11_2018",
+     "printedPage": 174,
+     "pdfPage": 174,
+     "printed": "«Хурӯс дар ҳама ҷо як хел садо медиҳад»",
+     "note": "variant, named a зарбулмасал"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 188,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "На сих сӯзад, на кабоб.",
+    "persianText": "نه سیخ سوزد، نه کباب.",
+    "meaningTj": "Вақте дар коре нафъи ҳар ду тараф дар назар гирифта шавад, ин зарбулмасалро мегӯянд.",
+    "exampleSentenceTj": "Ду ҳамсоя замини байни ҳавлиҳоро баробар тақсим карданд; на сих сӯзад, на кабоб.",
+    "simpleExplanationTj": "Кабоб ҳам пухта шавад, сих ҳам насӯзад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "НА СИХ СӮЗАД, НА КАБОБ",
+     "note": "lesson heading with printed meaning"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 63,
+     "pdfPage": 60,
+     "printed": "На сих сӯзад, на кабоб.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 189,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Кори шаб — хандаи рӯз.",
+    "persianText": "کار شب — خندهٔ روز.",
+    "meaningTj": "Коре, ки дар шаб иҷро мешавад, бе камбудӣ намешавад, сифати кори шаб нисбат ба кори рӯз пасттар мешавад.",
+    "exampleSentenceTj": "Бисёр фикр накун, писарам, – гуфт Акамирзо, - рӯз шавад, боз гап мезанем, «Кори шаб - хандаи рӯз» гуфтаанд.",
+    "simpleExplanationTj": "Коре, ки шаб мекунанд, рӯз хандаовар менамояд.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "КОРИ ШАБ – ХАНДАИ РӮЗ",
+     "note": "lesson heading with printed meaning and example"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 58,
+     "pdfPage": 55,
+     "printed": "Кори шаб—хандаи рӯз.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 190,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Чӯҷаро дар тирамоҳ мешуморанд.",
+    "persianText": "جوجه را در تیرماه می‌شمارند.",
+    "meaningTj": "Натиҷаи корро дар охираш баҳо медиҳанд, на дар аввал.",
+    "exampleSentenceTj": "– Ҳоло сабр кунед, «чӯҷаҳоро дар тирамоҳ мешуморанд».",
+    "simpleExplanationTj": "Ҷӯҷаҳоро тирамоҳ, вақте калон шуданд, мешуморанд.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "«Чӯҷаро дар тирамоҳ мешуморанд»",
+     "note": "exercise list of зарбулмасалҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 80,
+     "pdfPage": 77,
+     "printed": "Ҷӯҷаро дар тирамоҳ шумур.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 191,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Забони мурғонро мурғон медонанд.",
+    "persianText": "زبان مرغان را مرغان می‌دانند.",
+    "meaningTj": "Одамони ҳамфикр ва ҳамкасб якдигарро беҳтар мефаҳманд.",
+    "exampleSentenceTj": "Ду рассом бе суханони зиёд якдигарро фаҳмиданд; забони мурғонро мурғон медонанд.",
+    "simpleExplanationTj": "Мурғон забони ҳамдигарро мефаҳманд.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "«Забони мурғонро мурғон медонанд»",
+     "note": "exercise list of зарбулмасалҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 54,
+     "pdfPage": 51,
+     "printed": "Забони мурғонро мурғон медонанд.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 192,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Хар ҳамону полонаш дигар.",
+    "persianText": "خر همان و پالانش دیگر.",
+    "meaningTj": "Тағйири зоҳирӣ моҳиятро дигар намекунад.",
+    "exampleSentenceTj": "Идора номашро иваз кард, вале корҳо ҳамон тавр суст монданд; хар ҳамону полонаш дигар.",
+    "simpleExplanationTj": "Хар ҳамон хар аст, танҳо полонаш нав шудааст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "«Хар ҳамону полонаш дигар»",
+     "note": "exercise list of зарбулмасалҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 77,
+     "pdfPage": 74,
+     "printed": "Хар ҳамону полон дигар.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 193,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Кам-кам хӯру доим хӯр.",
+    "persianText": "کم‌کم خور و دایم خور.",
+    "meaningTj": "Сарфакорона харҷ кардан имкон медиҳад, ки неъмат барои муддати дароз расад.",
+    "exampleSentenceTj": "Ӯ маошашро якбора харҷ накард, балки барои тамоми моҳ тақсим кард; кам-кам хӯру доим хӯр.",
+    "simpleExplanationTj": "Кам-кам бихӯр, то ҳамеша хӯрок дошта бошӣ.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "«Кам-кам хӯру доим хӯр»",
+     "note": "exercise list of зарбулмасалҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 56,
+     "pdfPage": 53,
+     "printed": "Кам-кам хӯру ҳар рӯз хӯр.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 194,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Сукут аломати ризост.",
+    "persianText": "سکوت علامت رضاست.",
+    "meaningTj": "Агар касе ба пешниҳод эътироз накунад, хомӯшии ӯро розигӣ медонанд.",
+    "exampleSentenceTj": "Касе ба нақша эътироз накард ва онро қабул карданд; сукут аломати ризост.",
+    "simpleExplanationTj": "Хомӯш мондан нишонаи розӣ будан аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "«Сукут аломати ризост»",
+     "note": "exercise list of зарбулмасалҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 72,
+     "pdfPage": 69,
+     "printed": "Сукут—аломати ризо.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 195,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Илоҷи воқеа пеш аз вуқӯъ.",
+    "persianText": "علاج واقعه پیش از وقوع.",
+    "meaningTj": "Чораи мушкилро пеш аз рӯй додани он бояд андешид.",
+    "exampleSentenceTj": "Пеш аз зимистон боми хонаро таъмир карданд; илоҷи воқеа пеш аз вуқӯъ.",
+    "simpleExplanationTj": "Пеш аз он ки ҳодиса рӯй диҳад, бояд чора дид.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 72"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 72,
+     "pdfPage": 72,
+     "printed": "«Илоҷи воқеа пеш аз вуқӯъ»",
+     "note": "exercise list of зарбулмасалу мақолҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 55,
+     "pdfPage": 52,
+     "printed": "Илоҷи воқеа қабл аз вуқӯъ бояд кард.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 196,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Гӯр сӯзаду дег ҷӯшад.",
+    "persianText": "گور سوزد و دیگ جوشد.",
+    "meaningTj": "Касе дар ғам аст, касе аз ҳамон ғам нафъ мебинад.",
+    "exampleSentenceTj": "Хонаи ҳамсоя сӯхт ва фурӯшандаи чӯбу тахта аз ин фоида дид; гӯр сӯзаду дег ҷӯшад.",
+    "simpleExplanationTj": "Дар як ҷо гӯр месӯзаду дар ҳамон ҷо деги маърака меҷӯшад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 72"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 72,
+     "pdfPage": 72,
+     "printed": "«Гӯр сӯзаду дег ҷӯшад»",
+     "note": "exercise list of зарбулмасалу мақолҳо"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 46,
+     "pdfPage": 43,
+     "printed": "Гӯр сӯзаду дег ҷӯшад.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 197,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Намак хӯрда ба намакдон туф накунед.",
+    "persianText": "نمک خورده به نمکدان تف نکنید.",
+    "meaningTj": "Ба касе, ки ба ту некӣ кардааст, носипосӣ накун.",
+    "exampleSentenceTj": "Устод ӯро солҳо дастгирӣ карда буд, бинобар ин ӯ бар зидди устод гап назад; намак хӯрда ба намакдон туф накунед.",
+    "simpleExplanationTj": "Аз намаки касе хӯрда, намакдони ӯро таҳқир накун.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 152"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 152,
+     "pdfPage": 152,
+     "printed": "Зарбулмасали «Намак хӯрда ба намакдон туф накунед»",
+     "note": "named a зарбулмасал"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 198,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Эрка балои ҷон.",
+    "persianText": "ارکه بلای جان.",
+    "meaningTj": "Кӯдаке, ки аз ҳад зиёд эрка карда шудааст, барои худаш ва барои дигарон ташвиш меорад.",
+    "exampleSentenceTj": "Ҳар хоҳиши писарро иҷро мекарданд ва ӯ ба ҳеҷ кас гӯш намедод; эрка балои ҷон.",
+    "simpleExplanationTj": "Эркагӣ ва нозу нузи беандоза ба бало мерасонад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 294"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 294,
+     "pdfPage": 294,
+     "printed": "Мақоли халқӣ: «Эрка балои ҷон»",
+     "note": "named a мақоли халқӣ"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 39,
+     "pdfPage": 36,
+     "printed": "Бачаи эрка балои ҷон.",
+     "note": ""
+    },
+    {
+     "book": "grade11_2018",
+     "printedPage": 234,
+     "pdfPage": 234,
+     "printed": "«бачаи эрка – балои ҷон»",
+     "note": "variant, named a мақол"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 199,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Девона ба кори худ ҳушёр.",
+    "persianText": "دیوانه به کار خود هشیار.",
+    "meaningTj": "Ҳатто касе, ки беандеша менамояд, дар манфиати худ ҳушёр аст.",
+    "exampleSentenceTj": "Ӯ худро соддадил нишон медод, вале ҳангоми тақсими фоида ҳеҷ чизро фаромӯш накард; девона ба кори худ ҳушёр.",
+    "simpleExplanationTj": "Девона ҳам кори худашро хуб медонад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 9» (2026), саҳ. 265"
+   },
+   "sources": [
+    {
+     "book": "grade9_2026",
+     "printedPage": 265,
+     "pdfPage": 265,
+     "printed": "зарбулмасали халқии «Девона ба кори худ ҳушёр»",
+     "note": "named a зарбулмасали халқӣ"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 51,
+     "pdfPage": 48,
+     "printed": "Девона ба кори худ ҳушьёр.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 200,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Дасти ману домони ту.",
+    "persianText": "دست من و دامان تو.",
+    "meaningTj": "Ба касе пурра умед бастан ва аз ӯ ёрӣ хостан.",
+    "exampleSentenceTj": "Ҳамсоя ба дари ӯ омаду гуфт: «Дасти ману домони ту, ба ҷуз ту касе ёрӣ дода наметавонад».",
+    "simpleExplanationTj": "Дасти ман ба домани туст, яъне танҳо ба ту умед дорам.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 9» (2026), саҳ. 318"
+   },
+   "sources": [
+    {
+     "book": "grade9_2026",
+     "printedPage": 318,
+     "pdfPage": 318,
+     "printed": "«Дасти ману домони ту»",
+     "note": "named among well-known зарбулмасалу мақолҳо"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 201,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "То дам аст, ғам аст.",
+    "persianText": "تا دم است، غم است.",
+    "meaningTj": "То инсон зинда аст, ғаму ташвиш аз ӯ дур намешавад.",
+    "exampleSentenceTj": "Пирамард ба ташвишҳои нави набераҳо хандида гуфт: «То дам аст, ғам аст».",
+    "simpleExplanationTj": "То нафас ҳаст, ғам ҳам ҳаст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 9» (2026), саҳ. 318"
+   },
+   "sources": [
+    {
+     "book": "grade9_2026",
+     "printedPage": 318,
+     "pdfPage": 318,
+     "printed": "«То дам аст, ғам аст»",
+     "note": "named among well-known зарбулмасалу мақолҳо"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 202,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Дил дили Зайнаб.",
+    "persianText": "دل دل زینب.",
+    "meaningTj": "Дар кори дил ихтиёр ба дасти худи соҳиби дил аст.",
+    "exampleSentenceTj": "Падар гуфт, ки интихоби ҳамсарро ба духтараш вомегузорад: «Дил дили Зайнаб».",
+    "simpleExplanationTj": "Дил аз они Зайнаб аст, яъне қарор ба ихтиёри худи ӯст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик (давраи нав), синфи 11» (2018), саҳ. 157"
+   },
+   "sources": [
+    {
+     "book": "grade11_2018",
+     "printedPage": 157,
+     "pdfPage": 157,
+     "printed": "зарбулмасали халқии «Дил дили Зайнаб»",
+     "note": "named a зарбулмасали халқӣ"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 51,
+     "pdfPage": 48,
+     "printed": "Дил—дили Зайнаб.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 203,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Ба гузашта салавот.",
+    "persianText": "به گذشته صلوات.",
+    "meaningTj": "Аз гузашта афсӯс нахӯр ва онро бахшида, ба оянда нигар.",
+    "exampleSentenceTj": "Баъди ҷанҷоли кӯҳна ду ҳамсоя дасти ҳамдигарро фишурданд; ба гузашта салавот.",
+    "simpleExplanationTj": "Ба он чи гузашт, дуо гӯю онро раҳо кун.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик (давраи нав), синфи 11» (2018), саҳ. 174"
+   },
+   "sources": [
+    {
+     "book": "grade11_2018",
+     "printedPage": 174,
+     "pdfPage": 174,
+     "printed": "мақоли «Ба гузашта салавот»",
+     "note": "named a мақол"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 37,
+     "pdfPage": 34,
+     "printed": "Ба гузашта салавот.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 204,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Тоқати меҳмон надошт, хона ба меҳмон гузошт.",
+    "persianText": "طاقت مهمان نداشت، خانه به مهمان گذاشت.",
+    "meaningTj": "Ба киноя дар бораи касе мегӯянд, ки аз меҳмондорӣ безор шуда, худаш аз хона меравад.",
+    "exampleSentenceTj": "Меҳмонон як ҳафта монданд ва соҳибхона ба деҳа рафт; тоқати меҳмон надошт, хона ба меҳмон гузошт.",
+    "simpleExplanationTj": "Соҳибхона тоқати меҳмонро надошт ва хонаро ба ӯ гузошта рафт.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик (давраи нав), синфи 11» (2018), саҳ. 234"
+   },
+   "sources": [
+    {
+     "book": "grade11_2018",
+     "printedPage": 234,
+     "pdfPage": 234,
+     "printed": "«Тоқати меҳмон надошт, хона ба меҳмон гузошт»",
+     "note": "listed among the мақолу зарбулмасал Раҳим Ҷалил uses"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 75,
+     "pdfPage": 72,
+     "printed": "Тоқати меҳмон надошт, хона ба меҳмон гузошт.",
+     "note": ""
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 102,
+     "pdfPage": 102,
+     "printed": "Тоқати меҳмон надошт, / Хона ба меҳмон гузошт.",
+     "note": "section «Меҳмон»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 205,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Гап зану муомила шунав.",
+    "persianText": "گپ زن و معامله شنو.",
+    "meaningTj": "Чӣ гуна сухан гӯӣ, ҳамон гуна муомила мебинӣ.",
+    "exampleSentenceTj": "Ӯ бо фурӯшанда хушмуомила буд ва нархро арзон карданд; гап зану муомила шунав.",
+    "simpleExplanationTj": "Аввал гап зан, баъд бубин, ки бо ту чӣ гуна рафтор мекунанд.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик (давраи нав), синфи 11» (2018), саҳ. 234"
+   },
+   "sources": [
+    {
+     "book": "grade11_2018",
+     "printedPage": 234,
+     "pdfPage": 234,
+     "printed": "«Гап зану муомила шунав»",
+     "note": "listed among the мақолу зарбулмасал Раҳим Ҷалил uses"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 44,
+     "pdfPage": 41,
+     "printed": "Гап зану муомила шунав.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Added in round 6: the textbook names it a proverb."
+  },
+  {
+   "id": 206,
+   "verdict": "added",
+   "before": null,
+   "after": {
+    "tajikCyrillic": "Бе шамол шохи дарахт намеҷунбад.",
+    "persianText": "بی شمال شاخ درخت نمی‌جنبد.",
+    "meaningTj": "Ҳар овоза ё ҳодиса сабабе дорад; бесабаб чизе рӯй намедиҳад.",
+    "exampleSentenceTj": "Дар маҳаллаи мо тамоми навигариҳоро аввал занон мефаҳманд. Аксар хабарҳои ёфта омадаашон пурра набошанд ҳам, қисман тасдиқ мегардад. Бечиз намегӯянд, ки «бе шамол шохи дарахт намеҷунбад».",
+    "simpleExplanationTj": "Шохи дарахт танҳо аз шамол меҷунбад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик (давраи нав), синфи 11» (2018), саҳ. 234"
+   },
+   "sources": [
+    {
+     "book": "grade11_2018",
+     "printedPage": 234,
+     "pdfPage": 234,
+     "printed": "«Бе шамол шохи дарахт намеҷунбад»",
+     "note": "listed among the мақолу зарбулмасал Раҳим Ҷалил uses; example printed"
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 75,
+     "pdfPage": 72,
+     "printed": "То шамол набошад, шохи дарахт намеҷунбад.",
+     "note": ""
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "То шамол набошад, шохи дарахт намеҷунбад.",
+     "note": ""
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": true,
+   "note": "Added in round 6: the textbook names it a proverb."
   }
  ]
 }

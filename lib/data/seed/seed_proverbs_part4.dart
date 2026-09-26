@@ -1,241 +1,33 @@
 import '../models/proverb.dart';
 import '../models/source_ref.dart';
 
-/// Seed proverbs 135–170; see seed_proverbs.dart.
+/// Seed proverbs 97–120; see seed_proverbs.dart.
 const List<Proverb> seedProverbsPart4 = [
   Proverb(
-    id: '135',
-    tajikCyrillic: 'Ба шаҳр рафтӣ, расми шаҳрро гир.',
-    persianText: 'به شهر رفتی، رسم شهر را گیر.',
-    simpleExplanationTj: 'Ба ҷойи нав рафтӣ, қоида ва расми он ҷоро риоя кун.',
-    meaningTj:
-        'Инсон бояд ба муҳити нав бо эҳтиром мутобиқ шавад, агар он ба ӯ зарар нарасонад.',
-    exampleSentenceTj:
-        'Дар кишвари дигар қоидаҳои маҳаллиро омӯхт; ба шаҳр рафтӣ, расми шаҳрро гир.',
-    categoryId: 'odob',
-    level: 4,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '136',
-    tajikCyrillic: 'Қарға ба қарға чашм намеканад.',
-    persianText: 'قارغه به قارغه چشم نمی‌کند.',
+    id: '97',
+    tajikCyrillic: 'Аз дӯсти нодон душмани доно беҳ.',
+    persianText: 'از دوست نادان دشمن دانا به.',
     simpleExplanationTj:
-        'Қарға ба қарғаи дигар зарар намерасонад — ин ташбеҳ ба ҳамдигарпуштибонии гурӯҳ аст.',
-    meaningTj:
-        'Одамони як гурӯҳ баъзан ҳатто ҳангоми хато ҳамдигарро ҳимоя мекунанд; мақол аксар вақт бо маънои танқидӣ истифода мешавад.',
+        'Дӯсти нодон метавонад аз рӯйи нодонӣ зарари бештар аз душман расонад.',
+    meaningTj: 'Нияти хуб кофӣ нест; ақлу фаҳм ҳам муҳиманд.',
     exampleSentenceTj:
-        'Ду ҳамкор хатои якдигарро пинҳон карданд; қарға ба қарға чашм намеканад.',
-    categoryId: 'hikmat',
-    level: 5,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '137',
-    tajikCyrillic: 'Оқибат гургзода гург шавад, Гарчи бо одамӣ бузург шавад.',
-    persianText: 'عاقبت گرگزاده گرگ شود، گرچه با آدمی بزرگ شود.',
-    simpleExplanationTj:
-        'Мақол мегӯяд, ки табиати аслӣ дер ё зуд худро нишон медиҳад.',
-    meaningTj:
-        'Одат ё хислати решадорро танҳо бо намуди зоҳирӣ пинҳон кардан душвор аст; ин маънои маҷозӣ дорад, на ҳукми қатъӣ дар бораи ирс.',
-    exampleSentenceTj:
-        'Ӯ муддате худро ором нишон дод, вале боз ба рафтори пешина баргашт; оқибат гургзода гург шавад, гарчи бо одамӣ бузург шавад.',
-    categoryId: 'hikmat',
+        'Дӯсташ барои ёрӣ коре кард, ки вазъро бадтар намуд; аз дӯсти нодон душмани доно беҳ.',
+    categoryId: 'dusti',
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote:
-        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 30',
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 33',
+    canonicalId: '98',
     sources: [
       SourceRef(
-        bookTitle:
-            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
-        authorEditor:
-            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
-        year: 1990,
-        publisher: 'Адиб',
-        city: 'Душанбе',
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
         pdfPage: 30,
-        printedPage: 30,
-        printedText:
-            'Оқибат гургзода гург шавад, / Гарчи бо одамӣ бузург шавад. (Саъдии Шерозӣ)',
-        note: 'signed Саъдӣ',
-      ),
-      SourceRef(
-        bookTitle: 'Фарҳанги мардуми диёри Турсунзода',
-        authorEditor: 'Рӯзии Аҳмад, Дилшод Раҳимов (гирдоварӣ ва тадвин)',
-        year: 2012,
-        city: 'Душанбе',
-        pdfPage: 11,
-        printedPage: 18,
-        printedText:
-            '12. Оқибат гургзода гург шавад, / Гарчӣ бо одамӣ бузург шавад.',
-        note: 'footnote: a bayt of Саъдӣ that became a proverb',
-      ),
-      SourceRef(
-        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
-        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
-        year: 1956,
-        publisher: 'Нашриёти давлатии Тоҷикистон',
-        city: 'Сталинобод',
-        pdfPage: 95,
-        printedPage: 99,
-        printedText:
-            'Оқибат гургзода гург шавад, Гарчи бо одами бузург шавад. (Саъдӣ)',
-        note: 'classics section',
-      ),
-    ],
-  ),
-  Proverb(
-    id: '138',
-    tajikCyrillic: 'Саг меҷағад, корвон мегузарад.',
-    persianText: 'سگ می‌جغد، کاروان می‌گذرد.',
-    simpleExplanationTj: 'Саг меҷағад, вале корвон роҳи худро идома медиҳад.',
-    meaningTj:
-        'Ба ҳар танқид, овоза ё садои халалрасон таваққуф накун; кори муҳимро идома деҳ.',
-    exampleSentenceTj:
-        'Бо вуҷуди масхараи дигарон ӯ таҳсилро давом дод; саг меҷағад, корвон мегузарад.',
-    categoryId: 'hikmat',
-    level: 6,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 71',
-    sources: [
-      SourceRef(
-        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
-        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
-        year: 1956,
-        publisher: 'Нашриёти давлатии Тоҷикистон',
-        city: 'Сталинобод',
-        pdfPage: 68,
-        printedPage: 71,
-        printedText: 'Саг меҷағад, корвон мегузарад.',
-      ),
-    ],
-  ),
-  Proverb(
-    id: '139',
-    tajikCyrillic: 'Саги аккосак газанда нест.',
-    persianText: 'سگ عقاسک گزنده نیست.',
-    simpleExplanationTj:
-        'Саге, ки бисёр аккос мезанад, одатан камтар газиданӣ аст — маънои маҷозӣ.',
-    meaningTj:
-        'Касе, ки бисёр таҳдид мекунад, на ҳамеша хатарноктарин аст; сухани баланд ҳатман амали сахт нест.',
-    exampleSentenceTj:
-        'Ӯ бисёр таҳдид мекард, вале коре намекард; саги аккосак газанда нест.',
-    categoryId: 'hikmat',
-    level: 5,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '140',
-    tajikCyrillic: 'Аз асп афтӣ, аз асл наафт.',
-    persianText: 'از اسپ افتی، از اصل نیفت.',
-    simpleExplanationTj:
-        'Агар молу мақом ё муваффақиятро аз даст диҳӣ, асли инсонӣ ва иззати худро аз даст надеҳ.',
-    meaningTj:
-        'Нокомӣ набояд сабаб шавад, ки инсон арзишҳо, шараф ё худшиносиашро фаромӯш кунад.',
-    exampleSentenceTj:
-        'Корашро аз даст дод, вале ростқавлиашро не; аз асп афтӣ, аз асл наафт.',
-    categoryId: 'jasorat',
-    level: 5,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '141',
-    tajikCyrillic: 'Харро бо зин асп намешавад.',
-    persianText: 'خر را با زین اسپ نمی‌شود.',
-    simpleExplanationTj: 'Зин бастан ба хар онро ба асп табдил намедиҳад.',
-    meaningTj:
-        'Ороиши зоҳирӣ моҳият, қобилият ё хислати аслиро худ аз худ дигар намекунад.',
-    exampleSentenceTj:
-        'Либоси гарон пӯшид, вале одобаш тағйир наёфт; харро бо зин асп намешавад.',
-    categoryId: 'hikmat',
-    level: 6,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '142',
-    tajikCyrillic: 'Қурбоққа шӯ дорад, обрӯ дорад.',
-    persianText: 'قورباغه شو دارد، آبرو دارد.',
-    simpleExplanationTj:
-        'Ин мақоли кӯҳна бо киноя мегӯяд, ки ҳатто қурбоққа бо шавҳардор будан «обрӯ» дорад.',
-    meaningTj:
-        'Мақол фишори анъанавии ҷомеаро инъикос мекунад, ки мақоми занро ба издивоҷ мепайваст; ин андеша арзёбии таърихию фарҳангӣ аст, на меъёри имрӯза.',
-    exampleSentenceTj:
-        'Дар суҳбат дар бораи фишори пешина ба духтарони бешавҳар ин мақоли қадимиро ёд карданд: «Қурбоққа шӯ дорад, обрӯ дорад».',
-    categoryId: 'hikmat',
-    level: 6,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.pageVerified,
-    sourceNote:
-        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 95',
-    sources: [
-      SourceRef(
-        bookTitle:
-            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
-        authorEditor:
-            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
-        year: 1990,
-        publisher: 'Адиб',
-        city: 'Душанбе',
-        pdfPage: 95,
-        printedPage: 95,
-        printedText: 'Қурбоққа шӯ дорад, обрӯ дорад.',
-        note: 'section «Шавҳар»',
-      ),
-    ],
-  ),
-  Proverb(
-    id: '143',
-    tajikCyrillic: 'Моҳӣ аз сар бадбӯй мешавад.',
-    persianText: 'ماهی از سر بدبوی می‌شود.',
-    simpleExplanationTj:
-        'Моҳӣ аз сар бадбӯй шуданро ба таври рамзӣ ба сарварӣ монанд мекунанд.',
-    meaningTj:
-        'Фасод, бесарусомонӣ ё рафтори бад аксар вақт аз боло ва роҳбарӣ оғоз мешавад.',
-    exampleSentenceTj:
-        'Вақте роҳбар қоидаҳоро вайрон мекард, кормандон ҳам пайравӣ мекарданд; моҳӣ аз сар бадбӯй мешавад.',
-    categoryId: 'hikmat',
-    level: 6,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '144',
-    tajikCyrillic: 'Аз як даст садо намебарояд.',
-    persianText: 'از یک دست صدا برنمی‌آید.',
-    simpleExplanationTj: 'Бо як даст каф задан ва садо баровардан намешавад.',
-    meaningTj:
-        '1. Барои бомуваффақият ба анҷом расидани ҳар коре иттифоқу иттиҳод лозим аст. 2. кас дар танҳоӣ ба иҷрои неки корҳо оҷиз аст.',
-    exampleSentenceTj:
-        'Ду-се соли пеш раиси нав интихобшуда — Раҷабалӣ Давлатов ва ҷонишини вай Пахол Ҳалимов ба кори пурҷӯш сар карданд. Лекин чунон ки дар урфият мегӯянд: «Аз як даст садо барнамеояд», раис ҳар қадар чашми кордон бошад ҳам, бе мадади омма кори намоёне карда наметавонист.',
-    categoryId: 'mehnat',
-    level: 3,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 35',
-    sources: [
-      SourceRef(
-        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
-        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
-        year: 1956,
-        publisher: 'Нашриёти давлатии Тоҷикистон',
-        city: 'Сталинобод',
-        pdfPage: 32,
-        printedPage: 35,
-        printedText: 'Аз як даст садо намебарояд.',
+        printedPage: 33,
+        printedText: 'Аз дӯсти нодон душмани доно беҳ.',
       ),
       SourceRef(
         bookTitle:
@@ -247,7 +39,7 @@ const List<Proverb> seedProverbsPart4 = [
         city: 'Душанбе',
         pdfPage: 23,
         printedPage: 23,
-        printedText: 'Аз як даст садо намебарояд.',
+        printedText: 'Аз дӯсти нодон душмани доно беҳ.',
       ),
       SourceRef(
         bookTitle:
@@ -256,90 +48,53 @@ const List<Proverb> seedProverbsPart4 = [
         year: 1975,
         publisher: 'Ирфон',
         city: 'Душанбе',
-        pdfPage: 102,
-        printedPage: 101,
-        printedText: 'АЗ ЯК ДАСТ САДО БАРНАЁЯД (БАРНАМЕХЕЗАД).',
-        note: 'variant, main entry',
+        pdfPage: 70,
+        printedPage: 69,
+        printedText: 'АЗ ДӮСТИ НОДОН ДУШМАНИ ДОНО БЕҲ!',
+        note: 'main entry with an example by Ҷалол Икромӣ',
       ),
     ],
-    meaningSource: SourceRef(
-      bookTitle:
-          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
-      authorEditor: 'Муллоҷон Фозилов',
-      year: 1975,
-      publisher: 'Ирфон',
-      city: 'Душанбе',
-      pdfPage: 102,
-      printedPage: 101,
-      note: 'entry «Аз як даст садо барнаояд (барнамехезад)»',
-    ),
-    exampleSource: SourceRef(
-      bookTitle:
-          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
-      authorEditor: 'Муллоҷон Фозилов',
-      year: 1975,
-      publisher: 'Ирфон',
-      city: 'Душанбе',
-      pdfPage: 102,
-      printedPage: 101,
-    ),
-    exampleAttribution: 'Абдусалом Деҳотӣ',
   ),
   Proverb(
-    id: '145',
-    tajikCyrillic: 'Як даст гул намекунад.',
-    persianText: 'یک دست گل نمی‌کند.',
+    id: '98',
+    tajikCyrillic: 'Душмани доно беҳ аз дӯсти нодон.',
+    persianText: 'دشمن دانا به از دوست نادان.',
     simpleExplanationTj:
-        'Як даст танҳо барои анҷоми баъзе корҳои ҷамъӣ кофӣ нест.',
+        'Душмани оқил баъзан аз дӯсти нодон пешгӯишавандатар ва камзарартар аст.',
     meaningTj:
-        'Кори калон бо ҳамкорӣ ва ёрии дигарон осонтар ва пурратар мешавад.',
+        'Ақлу фаҳм дар муносибат муҳиманд; дӯстии беақлона метавонад зарар расонад.',
     exampleSentenceTj:
-        'Барои омода кардани чорабинӣ ҳама кумак карданд; як даст гул намекунад.',
-    categoryId: 'mehnat',
-    level: 3,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '146',
-    tajikCyrillic: 'Як тан танҳо ҷанг намекунад.',
-    persianText: 'یک تن تنها جنگ نمی‌کند.',
-    simpleExplanationTj: 'Як нафар танҳо наметавонад ҷанги калонро пеш барад.',
-    meaningTj:
-        'Барои кори бузург қувва, ҳамкорӣ ва дастгирии дигарон лозим мешавад.',
-    exampleSentenceTj:
-        'Лоиҳаро як нафар танҳо анҷом дода наметавонист; як тан танҳо ҷанг намекунад.',
+        'Маслиҳати дӯсти беандеша ба ӯ зиён овард; душмани доно беҳ аз дӯсти нодон.',
     categoryId: 'dusti',
-    level: 3,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '147',
-    tajikCyrillic: 'Оҳанро дар гармиаш мекӯбанд.',
-    persianText: 'آهن را در گرمی‌اش می‌کوبند.',
-    simpleExplanationTj: 'Оҳанро ҳангоми гарм будан осонтар шакл медиҳанд.',
-    meaningTj:
-        'Имконияти мувофиқро бояд сари вақт истифода кард; баъдтар метавонад дер шавад.',
-    exampleSentenceTj:
-        'Пас аз пайдо шудани имкони хуб фавран ариза дод; оҳанро дар гармиаш мекӯбанд.',
-    categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 68',
+    sourceNote:
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 69',
+    variants: ['97'],
     sources: [
       SourceRef(
-        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
-        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
-        year: 1956,
-        publisher: 'Нашриёти давлатии Тоҷикистон',
-        city: 'Сталинобод',
-        pdfPage: 65,
-        printedPage: 68,
-        printedText: 'Оҳанро дар гармиаш мекӯбанд.',
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 70,
+        printedPage: 69,
+        printedText: 'ниг. Душмани доно беҳ аз дӯсти нодон.',
+        note: 'cross-reference line under «Аз дӯсти нодон…»',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 147,
+        printedPage: 144,
+        printedText: 'мук. Душмани доно беҳ аз дӯсти нодон!',
       ),
       SourceRef(
         bookTitle:
@@ -349,59 +104,44 @@ const List<Proverb> seedProverbsPart4 = [
         year: 1990,
         publisher: 'Адиб',
         city: 'Душанбе',
-        pdfPage: 7,
-        printedPage: 7,
-        printedText: 'Оҳанро дар гармиаш мекӯбанд.',
-        note: 'introduction',
+        pdfPage: 23,
+        printedPage: 23,
+        printedText: 'Душмани доно беҳ аз нодони дӯст. (Саъдии Шерозӣ)',
+        note: 'variant, signed',
       ),
     ],
   ),
   Proverb(
-    id: '148',
-    tajikCyrillic: 'Кор аз кордон тарсад.',
-    persianText: 'کار از کاردان ترسد.',
-    simpleExplanationTj: 'Кори душвор дар дасти кордон осон менамояд.',
-    meaningTj:
-        'Мутахассиси моҳир аз кори вазнин наметарсад ва роҳи дурусти анҷом додани онро медонад.',
-    exampleSentenceTj: 'Усто мушкили дастгоҳро зуд ёфт; кор аз кордон тарсад.',
-    categoryId: 'mehnat',
-    level: 5,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '149',
-    tajikCyrillic: 'Корро ба кордон супор.',
-    persianText: 'کار را به کاردان سپار.',
+    id: '99',
+    tajikCyrillic: 'Дӯст оинаи дӯст аст.',
+    persianText: 'دوست آیینهٔ دوست است.',
     simpleExplanationTj:
-        'Корро ба касе супор, ки дониш ва таҷрибаи он корро дорад.',
+        'Дӯсти наздик мисли оина хислат ва рафтори туро нишон медиҳад.',
     meaningTj:
-        'Барои натиҷаи дуруст бояд аз мутахассиси мувофиқ истифода кард.',
+        'Аз дӯстони инсон бисёр вақт метавон дар бораи худи ӯ ва арзишҳояш чизе фаҳмид.',
     exampleSentenceTj:
-        'Барои таъмири ноқилҳо барқчиро даъват карданд; корро ба кордон супор.',
-    categoryId: 'mehnat',
+        'Ҳарду ба ростгӯӣ аҳамият медоданд; дӯст оинаи дӯст аст.',
+    categoryId: 'dusti',
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.needsReview,
     sourceNote: '',
-    canonicalId: '70',
   ),
   Proverb(
-    id: '150',
-    tajikCyrillic: 'Бо як даст ду тарбуз бардошта намешавад.',
-    persianText: 'با یک دست دو تربز برداشته نمی‌شود.',
+    id: '100',
+    tajikCyrillic: 'Бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ.',
+    persianText: 'با ماه شینی، ماه شوی، با دیگ شینی، سیاه شوی.',
     simpleExplanationTj:
-        'Бо як даст ду тарбузи калонро якбора гирифтан душвор аст.',
+        'Ҳамнишинӣ ба инсон таъсир мекунад: бо некон некӣ ва бо бадон бадӣ мегирад.',
     meaningTj:
-        '1. Якбора ду корро иҷро кардан мумкин нест, 2. ишқи ду ёр дар як дил гунҷоиш надорад, як дил дорӣ, як ёр гир!',
+        '1. Аз некон некӣ сироят кунаду аз бадон бадӣ, 2. феълу хӯи ҳамнишин бетаъсир намемонад.',
     exampleSentenceTj:
-        'Ӯ мехост ҳамзамон ду кори пурравақт кунад, вале фаҳмид: бо як даст ду тарбуз бардошта намешавад.',
-    categoryId: 'hikmat',
-    level: 3,
+        'Ман дар ин хусус пеш аз ҳама аз раисамон миннатдор, рафиқ Воҳидов, чунки дар паҳлуи ҳамин кас нишастаю хеста хеле чиз ёд гирифтам. Барои ҳамин ҳам оқилон беҳуда нагуфтаанд, ки «бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ».',
+    categoryId: 'dusti',
+    level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 43',
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 42',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -409,9 +149,9 @@ const List<Proverb> seedProverbsPart4 = [
         year: 1956,
         publisher: 'Нашриёти давлатии Тоҷикистон',
         city: 'Сталинобод',
-        pdfPage: 40,
-        printedPage: 43,
-        printedText: 'Бо як даст ду тарбуз бардошта намешавад.',
+        pdfPage: 39,
+        printedPage: 42,
+        printedText: 'Бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ.',
       ),
       SourceRef(
         bookTitle:
@@ -420,11 +160,413 @@ const List<Proverb> seedProverbsPart4 = [
         year: 1975,
         publisher: 'Ирфон',
         city: 'Душанбе',
-        pdfPage: 195,
-        printedPage: 192,
-        printedText: 'ниг. Бо як даст ду тарбуз бардошта намешавад.',
-        note: 'cross-reference line',
+        pdfPage: 234,
+        printedPage: 231,
+        printedText: 'БО МОҲ ШИНӢ, МОҲ ШАВӢ, / БО ДЕГ ШИНӢ, СИЁҲ ШАВӢ.',
+        note: 'main entry with printed meaning and examples',
       ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 30,
+        printedPage: 30,
+        printedText: 'Бо моҳ шинӣ, моҳ шавӣ, / Бо дег шинӣ, сиёҳ шавӣ.',
+      ),
+      SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 5',
+        authorEditor: 'Т. Мирзод, Р. Ҳамидов, М. Пирзод',
+        year: 2017,
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        pdfPage: 116,
+        printedPage: 116,
+        printedText: '«Бо моҳ шинӣ моҳ шавӣ, бо дег шинӣ сиёҳ шавӣ»',
+        note: 'cited as a зарбулмасал',
+      ),
+    ],
+    meaningSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 234,
+      printedPage: 231,
+    ),
+    exampleSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 235,
+      printedPage: 232,
+    ),
+    exampleAttribution: 'Фотеҳ Ниёзӣ',
+  ),
+  Proverb(
+    id: '101',
+    tajikCyrillic: 'Ҳамнишинатро гӯй, то туро бишиносам.',
+    persianText: 'همنشینت را گوی، تا تو را بشناسم.',
+    simpleExplanationTj:
+        'Аз ҳамнишинони шахс метавон дар бораи хислат ва завқи ӯ чизе фаҳмид.',
+    meaningTj:
+        'Инсон аксар вақт аз муҳити наздик ва дӯстонаш таъсир мегирад; ҳамнишинӣ нишонаи баъзе арзишҳои ӯст.',
+    exampleSentenceTj:
+        'Вақте дид, ки дӯстонаш ҳама китобхонанд, гуфт: «Ҳамнишинатро гӯй, то туро бишиносам».',
+    categoryId: 'dusti',
+    level: 6,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '102',
+    tajikCyrillic: 'Бо некон нишинӣ, нек шавӣ.',
+    persianText: 'با نیکان نشینی، نیک شوی.',
+    simpleExplanationTj:
+        'Ҳамнишинӣ бо одамони нек ба рафтори хуб таъсир мекунад.',
+    meaningTj:
+        'Муҳити солим ва дӯстони хуб метавонанд инсонро ба одатҳои нек ҳидоят кунанд.',
+    exampleSentenceTj:
+        'Ӯ бо донишҷӯёни ҷиддӣ дӯст шуд ва худаш ҳам бештар мехонд; бо некон нишинӣ, нек шавӣ.',
+    categoryId: 'dusti',
+    level: 3,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '103',
+    tajikCyrillic: 'Бо бадон нишинӣ, бад шавӣ.',
+    persianText: 'با بدان نشینی، بد شوی.',
+    simpleExplanationTj:
+        'Ҳамнишинӣ бо одамони бад метавонад ба одат ва рафтори инсон таъсири манфӣ расонад.',
+    meaningTj: 'Муҳити носолим метавонад инсонро ба кори нодуруст одат диҳад.',
+    exampleSentenceTj:
+        'Баъд аз ҳамроҳӣ бо гурӯҳи бадрафтор мушкилҳояш зиёд шуданд; бо бадон нишинӣ, бад шавӣ.',
+    categoryId: 'dusti',
+    level: 3,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '104',
+    tajikCyrillic: 'Некӣ куну ба об андоз!',
+    persianText: 'نیکی کن و به آب انداز!',
+    simpleExplanationTj:
+        'Некӣ кун, ҳатто агар касе онро набинад ё ҷавоб надиҳад.',
+    meaningTj:
+        'Кори хайрро барои подошу таъриф не, балки барои худи некӣ анҷом деҳ.',
+    exampleSentenceTj:
+        'Ӯ пинҳонӣ ба оилаи ниёзманд кумак кард; некӣ куну ба об андоз.',
+    categoryId: 'muhabbat',
+    level: 4,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасалу мақолҳо дар тамсилу ҳикояҳо» (1973), саҳ. 94',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасалу мақолҳо дар тамсилу ҳикояҳо',
+        authorEditor: 'М. Фозилов',
+        year: 1973,
+        publisher: 'Дониш',
+        city: 'Душанбе',
+        pdfPage: 95,
+        printedPage: 94,
+        printedText: 'НЕКӢ КУНУ БА ОБ АНДОЗ!',
+        note: 'story title; the story prints the saying',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 60,
+        printedPage: 63,
+        printedText: 'Накӯӣ куну дар об андоз.',
+        note: 'variant',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 30,
+        printedPage: 30,
+        printedText:
+            'Некӣ мекуну дар Даҷла андоз, / Ки эзид дар биёбонат диҳад боз.',
+        note: 'variant',
+      ),
+    ],
+  ),
+  Proverb(
+    id: '105',
+    tajikCyrillic: 'Некӣ бо некӣ ҷавоб дорад.',
+    persianText: 'نیکی با نیکی جواب دارد.',
+    simpleExplanationTj: 'Кори нек бисёр вақт бо некӣ ҷавоб мегирад.',
+    meaningTj: 'Муносибати хуб боварӣ ва ҷавоби хубро ба вуҷуд меорад.',
+    exampleSentenceTj:
+        'Ӯ ҳамсояашро дар рӯзи сахт ёрӣ дод ва баъд ҳамсоя низ дастгирӣ кард; некӣ бо некӣ ҷавоб дорад.',
+    categoryId: 'muhabbat',
+    level: 3,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '106',
+    tajikCyrillic: 'Бадӣ кунӣ, бадӣ мебинӣ.',
+    persianText: 'بدی کنی، بدی بینی.',
+    simpleExplanationTj: 'Кори бад оқибати бад оварда метавонад.',
+    meaningTj: 'Зараре, ки ба дигарон мерасонӣ, метавонад ба худат баргардад.',
+    exampleSentenceTj:
+        'Ӯ дигаронро фиреб медод ва охир касе ба ӯ бовар накард; бадӣ кунӣ, бадӣ мебинӣ.',
+    categoryId: 'hikmat',
+    level: 3,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '107',
+    tajikCyrillic: 'Одами нек аз суханаш маълум.',
+    persianText: 'آدم نیک از سخنش معلوم.',
+    simpleExplanationTj:
+        'Аз тарзи сухан гуфтан одоб ва хислати инсон то андозае маълум мешавад.',
+    meaningTj:
+        'Сухани боэҳтиром, рост ва боандеша нишонаи тарбия ва хислати хуб аст.',
+    exampleSentenceTj:
+        'Ӯ ҳатто дар баҳс бо эҳтиром сухан гуфт; одами нек аз суханаш маълум.',
+    categoryId: 'hikmat',
+    level: 4,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '108',
+    tajikCyrillic: 'Ҳеҷ кас айби худро намебинад.',
+    persianText: 'هیچ کس عیب خود را نمی‌بیند.',
+    simpleExplanationTj:
+        'Одам одатан айби худро аз айби дигарон камтар мебинад.',
+    meaningTj:
+        'Худбаҳодиҳӣ метавонад яктарафа бошад; барои ислоҳ худтанқидӣ лозим аст.',
+    exampleSentenceTj:
+        'Ӯ ҳамаро танқид мекард, вале хатои худашро намедид; ҳеҷ кас айби худро намебинад.',
+    categoryId: 'hikmat',
+    level: 4,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '109',
+    tajikCyrillic: 'Ҳеҷ кас думи харашро каҷ намегӯяд.',
+    persianText: 'هیچ کس دم خرش را کج نمی‌گوید.',
+    simpleExplanationTj:
+        'Ҳар кас моли худ ё кори худро одатан беҳтар мешуморад ва айбашро кам мебинад.',
+    meaningTj:
+        'Инсон ба чизҳои вобаста ба худ бо чашми ҷонибдорона нигоҳ мекунад.',
+    exampleSentenceTj:
+        'Ҳар ду фурӯшанда моли худро беҳтарин мегуфтанд; ҳеҷ кас думи харашро каҷ намегӯяд.',
+    categoryId: 'hikmat',
+    level: 5,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '110',
+    tajikCyrillic: 'Кал агар табиб будӣ, сари худ даво намудӣ.',
+    persianText: 'کل اگر طبیب بودی، سر خود دوا نمودی.',
+    simpleExplanationTj:
+        'Агар кас воқеан роҳи ҳалли мушкилро медонист, пеш аз дигарон онро барои худ истифода мекард.',
+    meaningTj:
+        'Ба маслиҳат ё даъвои касе, ки мушкили худашро ҳал карда наметавонад, бояд бо андеша муносибат кард.',
+    exampleSentenceTj:
+        'Ӯ ба ҳама роҳи бой шуданро мефаҳмонд, вале худаш қарздор буд; кал агар табиб будӣ, сари худ даво намудӣ.',
+    categoryId: 'hikmat',
+    level: 6,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 272',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 275,
+        printedPage: 272,
+        printedText: 'мук. Кал агар табиб будӣ, сари худ даво намудӣ.',
+        note: 'cross-reference line under «Гар ба чора пизишк битвонад…»',
+      ),
+    ],
+  ),
+  Proverb(
+    id: '111',
+    tajikCyrillic: 'Айби худ кӯр, айби мардум дурбин.',
+    persianText: 'عیب خود کور، عیب مردم دوربین.',
+    simpleExplanationTj:
+        'Одам айби худро намебинад, вале айби дигаронро аз дур ҳам мебинад.',
+    meaningTj: 'Пеш аз танқиди дигарон бояд камбудии худро низ дид.',
+    exampleSentenceTj:
+        'Ӯ хатои хурди ҳамкорашро калон кард, аммо хатои худашро нодида гирифт; айби худ кӯр, айби мардум дурбин.',
+    categoryId: 'hikmat',
+    level: 5,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '112',
+    tajikCyrillic: 'Чоҳи дигаронро макан, ки худ меафтӣ.',
+    persianText: 'چاه دیگران را مکن، که خود می‌افتی.',
+    simpleExplanationTj:
+        'Барои дигарон дом ё бадӣ омода накун, зеро оқибаташ метавонад ба худат расад.',
+    meaningTj:
+        'Нияти зарар расондан ба дигарон бисёр вақт ба худи инсон бармегардад.',
+    exampleSentenceTj:
+        'Ӯ мехост ҳамкорашро фиреб диҳад, вале худ ошкор шуд; чоҳи дигаронро макан, ки худ меафтӣ.',
+    categoryId: 'hikmat',
+    level: 5,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+    canonicalId: '168',
+  ),
+  Proverb(
+    id: '113',
+    tajikCyrillic: 'Дари касеро ба мушт назан, ки даратро бо лагад мезананд.',
+    persianText: 'در کسی را با مشت نزن، که درت را با لگد می‌زنند.',
+    simpleExplanationTj:
+        'Ба дигарон озор нарасон, зеро ҷавоб метавонад аз кори худат сахттар бошад.',
+    meaningTj:
+        'Рафтори бад зиддият ва ҷавоби бадтарро ба вуҷуд оварда метавонад.',
+    exampleSentenceTj:
+        'Ӯ пеш аз таҳқири ҳамсоя худро нигоҳ дошт; дари касеро ба мушт назан, ки даратро бо лагад мезананд.',
+    categoryId: 'odob',
+    level: 5,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
+  ),
+  Proverb(
+    id: '114',
+    tajikCyrillic: 'Як дари баста, сад дари кушода.',
+    persianText: 'یک در بسته، صد در کشاده.',
+    simpleExplanationTj:
+        'Агар як роҳ баста шавад, роҳу имкониятҳои дигар вуҷуд доранд.',
+    meaningTj:
+        'Аз як нокомӣ ноумед нашав; имконият танҳо ба як роҳ маҳдуд нест.',
+    exampleSentenceTj:
+        'Ба як донишгоҳ қабул нашуд, вале имкониятҳои дигарро ҷуст; як дари баста, сад дари кушода.',
+    categoryId: 'odob',
+    level: 5,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 81',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 78,
+        printedPage: 81,
+        printedText: 'Як дари баста, сад дари кушода.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 27,
+        printedPage: 27,
+        printedText: 'Як дари баста, сад дари кушода.',
+      ),
+    ],
+  ),
+  Proverb(
+    id: '115',
+    tajikCyrillic: 'Як гулу сад харидор.',
+    persianText: 'یک گل و صد خریدار.',
+    simpleExplanationTj:
+        'Чизи хуб ё шахси писандида метавонад хоҳишмандони зиёд дошта бошад.',
+    meaningTj:
+        'Вақте чизе арзишманд ва камёб аст, рақобат барои он зиёд мешавад.',
+    exampleSentenceTj:
+        'Барои он ҷойи кор довталабони зиёд буданд; як гулу сад харидор.',
+    categoryId: 'hikmat',
+    level: 4,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 49',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 49,
+        printedPage: 49,
+        printedText: 'Як гулу сад харидор.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 10,
+        printedPage: 10,
+        printedText: 'Як гулу сад харидор.',
+        note: 'introduction',
+      ),
+    ],
+  ),
+  Proverb(
+    id: '116',
+    tajikCyrillic: 'Бо як гул баҳор намешавад.',
+    persianText: 'با یک گل بهار نمی‌شود.',
+    simpleExplanationTj: 'Як гул барои ба вуҷуд омадани баҳор кофӣ нест.',
+    meaningTj:
+        '1. Бо як кори хуб ҳама корҳо хуб намегардад, 2. бо як шахси нек ҳама нек намешаванд.',
+    exampleSentenceTj:
+        'Навоӣ баъд аз чанд гоҳе дар Астаробод ҳукумат карда дид, ки аҳолии мамлакати Хуросон тамоман хонавайрон шуда истодаанд, давлат бошад, қадам ба қадам ба инқироз наздик мешавад, бо обод нигоҳ доштани як Астаробод ва бо сер кардани аҳолии он ҷо ҳеҷ коре пеш намеравад ва «бо як гул баҳор намешавад».',
+    categoryId: 'hikmat',
+    level: 4,
+    type: ProverbType.traditional,
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote:
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 242',
+    sources: [
       SourceRef(
         bookTitle:
             'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
@@ -434,9 +576,30 @@ const List<Proverb> seedProverbsPart4 = [
         city: 'Душанбе',
         pdfPage: 245,
         printedPage: 242,
-        printedText:
-            'БО (БА) ЯК ДАСТ ДУ ХАРБУЗА (ТАРБУЗ, ҲИНДУВОНА) БАРДОШТА НАМЕШАВАД.',
-        note: 'main entry with printed meaning',
+        printedText: 'БО (БА) ЯК ГУЛ БАҲОР НАМЕШАВАД.',
+        note:
+            'main entry with printed meaning and an example by Садриддин Айнӣ',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 40,
+        printedPage: 43,
+        printedText: 'Бо як гул баҳор намешавад.',
+      ),
+      SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 10',
+        authorEditor: 'У. Тоир, М. Солеҳ, Н. Ширинзода',
+        year: 2026,
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        pdfPage: 257,
+        printedPage: 257,
+        printedText: '«ба як гул баҳор намешавад»',
+        note: 'variant',
       ),
     ],
     meaningSource: SourceRef(
@@ -449,165 +612,33 @@ const List<Proverb> seedProverbsPart4 = [
       pdfPage: 245,
       printedPage: 242,
     ),
+    exampleSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 245,
+      printedPage: 242,
+    ),
+    exampleAttribution: 'Садриддин Айнӣ',
   ),
   Proverb(
-    id: '151',
-    tajikCyrillic: 'Одат балои ҷон аст.',
-    persianText: 'عادت بلای جان است.',
+    id: '117',
+    tajikCyrillic: 'Гул бе хор намешавад.',
+    persianText: 'گل بی خار نمی‌شود.',
     simpleExplanationTj:
-        'Одати бад агар реша давонад, халос шудан аз он душвор мешавад.',
-    meaningTj:
-        'Рафтори носолиме, ки ба одат табдил ёфтааст, метавонад ба зиндагӣ ва саломатии инсон зарар расонад.',
+        'Гул одатан хор ҳам дорад; чизи хуб метавонад душворӣ ҳам дошта бошад.',
+    meaningTj: 'Ҳар чизи хуб ҷиҳати баде ҳам дорад ва билъакс.',
     exampleSentenceTj:
-        'Ҳар шаб корро ба таъхир меандохт ва ин ба мушкил табдил шуд; одат балои ҷон аст.',
-    categoryId: 'tanbali',
-    level: 4,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '152',
-    tajikCyrillic: 'Одат табиати дуюм аст.',
-    persianText: 'عادت طبیعت دوم است.',
-    simpleExplanationTj:
-        'Коре, ки бисёр такрор мешавад, гӯё қисми табиати инсон мегардад.',
-    meaningTj:
-        'Одати такроршаванда ба рафтори худкор табдил меёбад, бинобар ин одатҳои хубро бояд барвақт сохт.',
-    exampleSentenceTj:
-        'Ҳар саҳар китоб мехонд ва баъд дигар бе он рӯзашро оғоз намекард; одат табиати дуюм аст.',
-    categoryId: 'tanbali',
-    level: 4,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '153',
-    tajikCyrillic: 'Дарахтро дар навниҳолӣ рост мекунанд.',
-    persianText: 'درخت را در نونهالی راست می‌کنند.',
-    simpleExplanationTj:
-        'Дарахтро ҳангоми навниҳол будан осонтар рост кардан мумкин аст.',
-    meaningTj: 'Тарбия ва одатҳои асосӣ дар кӯдакӣ осонтар шакл мегиранд.',
-    exampleSentenceTj:
-        'Волидайн аз хурдӣ ба фарзанд ростгӯӣ меомӯзонданд; дарахтро дар навниҳолӣ рост мекунанд.',
-    categoryId: 'padaru_modar',
-    level: 5,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '154',
-    tajikCyrillic: 'Пири корро хор мадор.',
-    persianText: 'پیر کار را خوار مدار.',
-    simpleExplanationTj:
-        'Каси солҳо таҷрибаандӯхтаро дар кори худ беқадр накун.',
-    meaningTj:
-        'Таҷрибаи устодон ва собиқадорони касб арзишманд аст ва сазовори эҳтиром мебошад.',
-    exampleSentenceTj:
-        'Ҷавон пеш аз қарор аз устои куҳансол маслиҳат пурсид; пири корро хор мадор.',
-    categoryId: 'ehtirom',
-    level: 3,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '155',
-    tajikCyrillic: 'Калонро ҳурмат кун, хурдро иззат.',
-    persianText: 'کلان را حرمت کن، خرد را عزت.',
-    simpleExplanationTj:
-        'Ба калонсолон эҳтиром ва ба хурдсолон низ иззату меҳрубонӣ нишон деҳ.',
-    meaningTj:
-        'Одоб танҳо нисбат ба калон нест; ҳар инсон бояд мувофиқи ҷойгоҳаш бо эҳтиром муносибат бинад.',
-    exampleSentenceTj:
-        'Ӯ бо пирон боэҳтиром ва бо кӯдакон меҳрубон буд; калонро ҳурмат кун, хурдро иззат.',
-    categoryId: 'ehtirom',
-    level: 2,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '156',
-    tajikCyrillic: 'Пандро аз душман ҳам шунав.',
-    persianText: 'پند را از دشمن هم شنو.',
-    simpleExplanationTj:
-        'Ҳатто агар насиҳат аз душман бошад, аввал дурустии онро бисанҷ.',
-    meaningTj:
-        'Арзиши маслиҳат ба ҳақиқату фоидаи он вобаста аст, на танҳо ба он ки кӣ онро гуфтааст.',
-    exampleSentenceTj:
-        'Рақибаш як хатои воқеиро нишон дод ва ӯ онро ислоҳ кард; пандро аз душман ҳам шунав.',
+        'Кори нав маоши хуб дошт, аммо масъулияташ ҳам зиёд буд; гул бе хор намешавад.',
     categoryId: 'hikmat',
-    level: 5,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '157',
-    tajikCyrillic: 'Илм ганҷи бебаҳост.',
-    persianText: 'علم گنج بی‌بهاست.',
-    simpleExplanationTj:
-        'Дониш ганҷест, ки арзиши онро бо пул пурра чен кардан мумкин нест.',
-    meaningTj:
-        'Илм сарвати пойдорест, ки ба инсон имкони фаҳмидан, рушд кардан ва кор кардан медиҳад.',
-    exampleSentenceTj:
-        'Ӯ маблағашро барои таҳсил сарф кард; илм ганҷи бебаҳост.',
-    categoryId: 'ilm',
-    level: 2,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '158',
-    tajikCyrillic: 'Илм бе амал — дарахти бе ҳосил.',
-    persianText: 'علم بی عمل — درخت بی حاصل.',
-    simpleExplanationTj:
-        'Донише, ки истифода намешавад, мисли дарахте аст, ки мева намедиҳад.',
-    meaningTj:
-        'Илм вақте арзиши амалӣ пайдо мекунад, ки ба рафтор, кор ё фоидаи воқеӣ табдил ёбад.',
-    exampleSentenceTj:
-        'Ӯ қоидаҳоро медонист, вале иҷро намекард; илм бе амал — дарахти бе ҳосил.',
-    categoryId: 'ilm',
-    level: 4,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '159',
-    tajikCyrillic: 'Нодонро панд гуфтан — об дар ҳован кӯфтан.',
-    persianText: 'نادان را پند گفتن — آب در هاون کوفتن.',
-    simpleExplanationTj:
-        'Обро дар ҳован кӯфтан натиҷа намедиҳад; панд ба касе, ки қабул кардан намехоҳад, низ беҳуда мешавад.',
-    meaningTj:
-        'Насиҳат танҳо вақте фоида дорад, ки шунаванда омодаи фаҳмидан ва қабул кардан бошад.',
-    exampleSentenceTj:
-        'Ҳар бор далел меоварданд, вале ӯ ҳатто гӯш намекард; нодонро панд гуфтан — об дар ҳован кӯфтан.',
-    categoryId: 'ilm',
-    level: 6,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '160',
-    tajikCyrillic: 'Ба доно як ишорат бас аст.',
-    persianText: 'به دانا یک اشارت بس است.',
-    simpleExplanationTj: 'Одами доно аз як ишораи кӯтоҳ ҳам мақсадро мефаҳмад.',
-    meaningTj:
-        'Ба шахси фаҳмо шарҳи дароз лозим нест; ӯ маъниро аз аломати кам дарк мекунад.',
-    exampleSentenceTj:
-        'Устод танҳо ба хатогӣ ишора кард ва шогирд фавран фаҳмид; ба доно як ишорат бас аст.',
-    categoryId: 'ilm',
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 148',
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 289',
     sources: [
       SourceRef(
         bookTitle:
@@ -616,82 +647,10 @@ const List<Proverb> seedProverbsPart4 = [
         year: 1975,
         publisher: 'Ирфон',
         city: 'Душанбе',
-        pdfPage: 151,
-        printedPage: 148,
-        printedText: 'БА ДОНО ЯК ИШОРАТ (ИМО) БАС АСТ.',
-        note: 'main entry with an example by Раҳим Ҷалил',
-      ),
-    ],
-  ),
-  Proverb(
-    id: '161',
-    tajikCyrillic: 'Кам гӯю бисёр шунав.',
-    persianText: 'کم گوی و بسیار شنو.',
-    simpleExplanationTj: 'Камтар сухан гӯ ва бештар ба дигарон гӯш деҳ.',
-    meaningTj:
-        'Гӯш кардан барои фаҳмидан ва омӯхтан муҳим аст; сухани зиёд ҳамеша нишонаи дониш нест.',
-    exampleSentenceTj:
-        'Дар вохӯрӣ аввал ба ҳама гӯш дод ва баъд ҷавоб гуфт; кам гӯю бисёр шунав.',
-    categoryId: 'odob',
-    level: 3,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '162',
-    tajikCyrillic: 'Ҳар сухан ҷое дорад.',
-    persianText: 'هر سخن جایی دارد.',
-    simpleExplanationTj: 'Ҳар сухан ҷой, вақт ва шароити муносиб дорад.',
-    meaningTj:
-        'Ҳатто сухани дуруст агар дар вақти номуносиб гуфта шавад, метавонад таъсири бад дошта бошад.',
-    exampleSentenceTj:
-        'Ӯ масъалаи шахсиро дар назди ҳама нагуфт; ҳар сухан ҷое дорад.',
-    categoryId: 'odob',
-    level: 3,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '163',
-    tajikCyrillic: 'Дурӯғ пой надорад.',
-    persianText: 'دروغ پای ندارد.',
-    simpleExplanationTj: 'Дурӯғ пой надорад, яъне роҳи дур рафта наметавонад.',
-    meaningTj: 'Дурӯғ пойдор нест ва дер ё зуд ошкор мешавад.',
-    exampleSentenceTj:
-        'Ҳикояаш бо далелҳо мувофиқ наомад ва зуд фош шуд; дурӯғ пой надорад.',
-    categoryId: 'rostqavli',
-    level: 3,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '164',
-    tajikCyrillic: 'Офтобро бо доман пӯшида намешавад.',
-    persianText: 'آفتاب را با دامن پوشیده نمی‌شود.',
-    simpleExplanationTj: 'Офтобро бо доман пинҳон кардан ғайриимкон аст.',
-    meaningTj:
-        '1. Ҳақиқатро бо сафсата, дурӯғ ва фиребу найранг пинҳон кардан мумкин нест. 2. Чизи нағзу одами хуб ҳаргиз аз назари одамон пӯшида намемонад.',
-    exampleSentenceTj:
-        'Ҳама далелҳоро дида буданд, бинобар ин инкор кардан фоида надошт; офтобро бо доман пӯшида намешавад.',
-    categoryId: 'rostqavli',
-    level: 5,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 37',
-    sources: [
-      SourceRef(
-        bookTitle: 'Адабиёти тоҷик, синфи 5',
-        authorEditor: 'Т. Мирзод, Р. Ҳамидов, М. Пирзод',
-        year: 2017,
-        publisher: 'Маориф',
-        city: 'Душанбе',
-        pdfPage: 37,
-        printedPage: 37,
-        printedText: '1. Офтобро бо доман пӯшида намешавад.',
-        note: 'lesson «Зарбулмасалу мақолҳо»: printed meanings and examples',
+        pdfPage: 292,
+        printedPage: 289,
+        printedText: 'ГУЛ БЕ ХОР НАМЕШАВАД, (ГӮШТ БЕ УСТУХОН).',
+        note: 'main entry; the second half is optional; printed meaning',
       ),
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -699,9 +658,10 @@ const List<Proverb> seedProverbsPart4 = [
         year: 1956,
         publisher: 'Нашриёти давлатии Тоҷикистон',
         city: 'Сталинобод',
-        pdfPage: 64,
-        printedPage: 67,
-        printedText: 'Офтобро бо доман пӯшида намешавад.',
+        pdfPage: 42,
+        printedPage: 45,
+        printedText: 'Гул бе хор намешавад, гӯшт бе устухон.',
+        note: 'longer form',
       ),
       SourceRef(
         bookTitle:
@@ -711,111 +671,93 @@ const List<Proverb> seedProverbsPart4 = [
         year: 1990,
         publisher: 'Адиб',
         city: 'Душанбе',
-        pdfPage: 37,
-        printedPage: 37,
-        printedText: 'Офтобро бо доман пӯшида намешавад.',
+        pdfPage: 9,
+        printedPage: 9,
+        printedText: 'Гул бе хор намешавад, гӯшт бе устухон.',
+        note: 'longer form',
       ),
     ],
     meaningSource: SourceRef(
-      bookTitle: 'Адабиёти тоҷик, синфи 5',
-      authorEditor: 'Т. Мирзод, Р. Ҳамидов, М. Пирзод',
-      year: 2017,
-      publisher: 'Маориф',
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
       city: 'Душанбе',
-      pdfPage: 37,
-      printedPage: 37,
+      pdfPage: 292,
+      printedPage: 289,
     ),
   ),
   Proverb(
-    id: '165',
-    tajikCyrillic: 'Аввал худро бин, баъд дигаронро.',
-    persianText: 'اول خود را بین، بعد دیگران را.',
-    simpleExplanationTj: 'Пеш аз дидани айби дигарон ба рафтори худ нигоҳ кун.',
-    meaningTj: 'Худтанқидӣ бояд пеш аз доварӣ ва танқиди дигарон бошад.',
-    exampleSentenceTj:
-        'Пеш аз сарзаниши ҳамкораш хатои худашро санҷид; аввал худро бин, баъд дигаронро.',
-    categoryId: 'hikmat',
-    level: 4,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '166',
-    tajikCyrillic: 'Дарахти пурмева сар хам мекунад.',
-    persianText: 'درخت پرمیوه سر خم می‌کند.',
-    simpleExplanationTj: 'Шохаи пурмева аз вазни мева ба поён хам мешавад.',
-    meaningTj: 'Одами воқеан донишманд ва соҳибдастовард одатан фурӯтан аст.',
-    exampleSentenceTj:
-        'Бо вуҷуди донишаш худро аз дигарон боло намегирифт; дарахти пурмева сар хам мекунад.',
-    categoryId: 'ilm',
-    level: 4,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-    canonicalId: '120',
-  ),
-  Proverb(
-    id: '167',
-    tajikCyrillic: 'Некӣ кун, некӣ бин.',
-    persianText: 'نیکی کن، نیکی بین.',
-    simpleExplanationTj: 'Ба дигарон некӣ кун, то дар зиндагӣ некӣ бинӣ.',
-    meaningTj:
-        'Рафтори хайрхоҳона муҳити нек ва муносибати хубро зиёд мекунад.',
-    exampleSentenceTj:
-        'Ҳамсояашро ёрӣ дод ва баъд худ ҳам дастгирӣ ёфт; некӣ кун, некӣ бин.',
-    categoryId: 'muhabbat',
-    level: 2,
-    type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-  ),
-  Proverb(
-    id: '168',
-    tajikCyrillic: 'Чоҳи касро макан, ки худ меафтӣ.',
-    persianText: 'چاه کس را مکن، که خود می‌افتی.',
+    id: '118',
+    tajikCyrillic: 'Гул гулро дида мешукуфад.',
+    persianText: 'گل گل را دیده می‌شکفد.',
     simpleExplanationTj:
-        'Барои каси дигар чоҳ ё дом насоз, зеро худат гирифтор шуда метавонӣ.',
+        'Гул аз дидани гули дигар мешукуфад — тасвири рамзии таъсири мусбати ҳамнишинӣ.',
     meaningTj:
-        'Бадие, ки барои дигарон тарҳрезӣ мешавад, метавонад ба худи шахс баргардад.',
+        'Одамон аз дидани пешрафт, зебоӣ ё некӣ дар дигарон рӯҳбаланд мешаванд.',
     exampleSentenceTj:
-        'Нақшаи фиребаш баръакс худи ӯро шарманда кард; чоҳи касро макан, ки худ меафтӣ.',
-    categoryId: 'hikmat',
-    level: 4,
+        'Баъд аз дидани муваффақияти дӯсташ ӯ ҳам ба омӯзиш ҷиддӣ шуд; гул гулро дида мешукуфад.',
+    categoryId: 'muhabbat',
+    level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.needsReview,
-    sourceNote: '',
-    variants: ['112'],
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 45',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 42,
+        printedPage: 45,
+        printedText: 'Гул гулро дида мешукуфад.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 294,
+        printedPage: 291,
+        printedText: 'ГУЛ ГУЛРО ДИДА МЕШУКУФАД.',
+        note: 'cross-reference entry',
+      ),
+    ],
   ),
   Proverb(
-    id: '169',
-    tajikCyrillic: 'Ҳар чӣ киштӣ, ҳамон даравӣ.',
-    persianText: 'هر چه کشتی، همان دروی.',
-    simpleExplanationTj: 'Ҳар чизе, ки мекорӣ, аз ҳамон навъ ҳосил мегирӣ.',
-    meaningTj: 'Кору рафтори имрӯз оқибати фардоро месозад.',
+    id: '119',
+    tajikCyrillic: 'Дарахтро аз мевааш мешиносанд.',
+    persianText: 'درخت را از میوه‌اش می‌شناسند.',
+    simpleExplanationTj:
+        'Дарахтро аз мевааш ва инсонро аз натиҷаи кораш мешиносанд.',
+    meaningTj:
+        'Амалу натиҷа бештар аз даъво хислати воқеии шахсро нишон медиҳад.',
     exampleSentenceTj:
-        'Солҳо ба мардум бо эҳтиром муносибат кард ва дар пирӣ ҳама эҳтиромаш карданд; ҳар чӣ киштӣ, ҳамон даравӣ.',
+        'Ваъдаҳо зиёд буданд, вале ӯ натиҷаро дид: дарахтро аз мевааш мешиносанд.',
     categoryId: 'hikmat',
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.needsReview,
     sourceNote: '',
-    variants: ['71'],
   ),
   Proverb(
-    id: '170',
-    tajikCyrillic: 'Дӯст дар рӯзи сахт маълум мешавад.',
-    persianText: 'دوست در روز سخت معلوم می‌شود.',
-    simpleExplanationTj: 'Дӯсти воқеӣ дар вақти мушкилӣ маълум мешавад.',
+    id: '120',
+    tajikCyrillic: 'Дарахти пурбор сар хам мекунад.',
+    persianText: 'درخت پربار سر خم می‌کند.',
+    simpleExplanationTj: 'Шохаи пурмева аз вазни мева хам мешавад.',
     meaningTj:
-        'Дӯстӣ бо амал санҷида мешавад: касе, ки дар рӯзҳои сахт паҳлӯят мемонад, боэътимодтар аст.',
+        'Одами воқеан донишманду соҳибкамол одатан фурӯтан аст, на худнамо.',
     exampleSentenceTj:
-        'Вақте ба кӯмак ниёз дошт, дӯсташ аввал расид; дӯст дар рӯзи сахт маълум мешавад.',
-    categoryId: 'dusti',
-    level: 2,
+        'Бо вуҷуди дастовардҳои зиёд хеле хоксор буд; дарахти пурбор сар хам мекунад.',
+    categoryId: 'ehtirom',
+    level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.needsReview,
     sourceNote: '',
-    canonicalId: '96',
+    variants: ['166'],
   ),
 ];

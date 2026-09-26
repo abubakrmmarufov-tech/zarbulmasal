@@ -39,12 +39,12 @@ void main() {
     test('aggregates every glossary record into one flat lexicon', () {
       final entries = aggregate();
 
-      // Counts mirror the verified catalog at the time of writing: 150
+      // Counts mirror the verified catalog at the time of writing: 186
       // proverbs, 85 history entries, and 144 active poet dossiers.
-      expect(entries, hasLength(379));
+      expect(entries, hasLength(415));
       expect(
         entries.where((e) => e.kind == VocabularyKind.proverb),
-        hasLength(150),
+        hasLength(186),
       );
       expect(
         entries.where((e) => e.kind == VocabularyKind.history),
@@ -173,7 +173,7 @@ void main() {
       final entries = aggregate();
       expect(
         entries.where((e) => e.kind == VocabularyKind.proverb),
-        hasLength(150),
+        hasLength(186),
       );
       expect(
         entries.where((e) => e.kind == VocabularyKind.history),
