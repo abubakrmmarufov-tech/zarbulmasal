@@ -35,9 +35,10 @@ Written 25 Sep 2026, after the `1.0.0-preview.1` preview. The preview is **debug
 
 ## 4. Version and SDK checks before each upload
 
-- **versionCode** must be higher than every code uploaded before. `pubspec.yaml` is now `2.0.0+2005`.
-  - The preview used versionName `1.0.0-preview.1` with code 2005 (4005 for the arm64 split APK).
-  - The first Play bundle can be `2.0.0+2006` or higher.
+- **versionCode** must be higher than every code uploaded before. `pubspec.yaml` is now `2.0.0+2007`.
+  - The preview used versionName `1.0.0-preview.1` with code 2005 (4005 for the arm64 split APK); the Phase 10 phone check used `1.0.0-preview.2`, code 4006.
+  - The first Play bundle (26 Sep 2026) is `2.0.0+2007`; its arm64 split APK is 4007.
+- **Upload key:** kept outside the repository, never committed; the owner holds the location and must keep a backup. Build with its variables exported (`KEYSTORE_PATH`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`, `EXPECTED_RELEASE_CERT_SHA256`); `tool/verify_android_bundle.sh` checks the signed bundle.
 - **versionName** is only shown to users. Choose one line and keep it: `2.0.0` is in `pubspec.yaml`, while the preview said `1.0.0-preview.1`.
 - **targetSdk** is 36 today (from Flutter). Play requires the current yearly level; check it in Play Console before each upload.
 - **minSdk** is 24 (Android 7).
