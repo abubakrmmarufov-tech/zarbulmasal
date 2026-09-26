@@ -256,6 +256,14 @@ const Map<String, String> persianStringsA = {
   'source_needs_review': 'منبع و متن نیاز به بررسی تکمیلی دارد',
   'source_page_verified': 'متن و صفحه از کتاب تأیید شده است',
   'reading_tajik_explanation': 'توضیح تاجیکی (خط سیریلیک)',
+  'proverb_editorial': 'شرح ویراستار (در کتاب چاپ نشده است)',
+  'proverb_printed_from': 'از کتاب: \${0}',
+  'proverb_sources': 'در کتاب‌ها',
+  'proverb_no_printed_source':
+      'منبع چاپی یافت نشد: این ضرب‌المثل در کتاب‌های بررسی‌شده هنوز پیدا نشده است.',
+  'proverb_persian_translit': 'خط فارسی: نویسه‌گردانی',
+  'citation_page': 'ص. \${0}',
+  'citation_pdf_page': 'برگ \${0} نسخهٔ PDF',
 
   // Literature
   'literature_title': 'میراث ادبی',

@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'design_system.dart';
 import '../l10n/app_translations.dart';
+import '../l10n/source_citation.dart';
 import '../../data/models/proverb.dart';
+import '../../data/models/source_ref.dart';
 import '../../shared/providers/app_providers.dart';
 import '../../shared/providers/bayoz_provider.dart';
 import '../../shared/widgets/bayoz_dialogs.dart';
@@ -273,6 +275,15 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                                   color: colors.onSurfaceVariant,
                                 ),
                               ),
+                              if (p.persianText.isNotEmpty &&
+                                  p.persianOrigin ==
+                                      PersianOrigin.transliteration)
+                                Text(
+                                  tr('proverb_persian_translit'),
+                                  style: QalamTypography.meta(
+                                    color: colors.onSurfaceVariant,
+                                  ),
+                                ),
                             ],
                           ),
                         ],
@@ -286,6 +297,7 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                         title: tr('detail_meaning'),
                         text: p.meaningTj,
                         emphasis: true,
+                        provenance: _provenance(p.meaningSource, lang),
                         scriptBadge: persian
                             ? tr('reading_tajik_explanation')
                             : null,
@@ -298,6 +310,7 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                         number: AppTranslations.formatDigits('02', lang),
                         title: tr('detail_simple_explanation'),
                         text: p.simpleExplanationTj,
+                        provenance: tr('proverb_editorial'),
                         scriptBadge: persian
                             ? tr('reading_tajik_explanation')
                             : null,
@@ -309,7 +322,8 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                       child: _ReadingSection(
                         number: AppTranslations.formatDigits('03', lang),
                         title: tr('detail_example'),
-                        text: p.exampleSentenceTj,
+                        text: _exampleText(p),
+                        provenance: _provenance(p.exampleSource, lang),
                         scriptBadge: persian
                             ? tr('reading_tajik_explanation')
                             : null,
@@ -327,16 +341,36 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                             : TextDirection.ltr,
                       ),
                     ),
-                  // One source line: the book the proverb is recorded in.
-                  if (p.sourceNote.isNotEmpty)
+                  // The books that print the proverb, each with its printed
+                  // form and page; or a plain statement that none was found.
+                  if (p.sources.isNotEmpty)
+                    SliverToBoxAdapter(
+                      child: _ReadingSection(
+                        number: AppTranslations.formatDigits(
+                          variantTexts.isNotEmpty ? '05' : '04',
+                          lang,
+                        ),
+                        title: tr('proverb_sources'),
+                        text: _sourcesText(p, lang),
+                        textDirection: TextDirection.ltr,
+                      ),
+                    )
+                  else if (p.sourceStatus == SourceStatus.needsReview ||
+                      p.sourceNote.isNotEmpty)
                     SliverToBoxAdapter(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                         child: Text(
-                          AppTranslations.get('lit_source_line', lang, [
-                            p.sourceNote,
-                          ]),
-                          textDirection: _detectDirection(p.sourceNote),
+                          p.sourceStatus == SourceStatus.needsReview
+                              ? tr('proverb_no_printed_source')
+                              : AppTranslations.get('lit_source_line', lang, [
+                                  p.sourceNote,
+                                ]),
+                          textDirection:
+                              persian &&
+                                  p.sourceStatus == SourceStatus.needsReview
+                              ? TextDirection.rtl
+                              : _detectDirection(p.sourceNote),
                           style: QalamTypography.meta(
                             color: colors.onSurfaceVariant,
                             fontSize: 13,
@@ -359,6 +393,30 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
     );
   }
 
+  static String _provenance(SourceRef? source, DisplayLanguage lang) =>
+      source == null
+      ? AppTranslations.get('proverb_editorial', lang)
+      : AppTranslations.get('proverb_printed_from', lang, [
+          formatSourceCitation(source, lang),
+        ]);
+
+  /// The example, followed by its printed signature when it has one.
+  static String _exampleText(Proverb p) {
+    final attribution = p.exampleAttribution?.trim() ?? '';
+    return attribution.isEmpty
+        ? p.exampleSentenceTj
+        : '${p.exampleSentenceTj}\n— $attribution';
+  }
+
+  /// One paragraph per book: the saying as that page prints it, then where.
+  static String _sourcesText(Proverb p, DisplayLanguage lang) => p.sources
+      .map((source) {
+        final printed = source.printedText?.trim() ?? '';
+        final citation = formatSourceCitation(source, lang);
+        return printed.isEmpty ? citation : '«$printed»\n$citation';
+      })
+      .join('\n\n');
+
   static TextDirection _detectDirection(String text) {
     return RegExp(r'[\u0600-\u06FF]').hasMatch(text)
         ? TextDirection.rtl
@@ -374,6 +432,10 @@ class _ReadingSection extends StatelessWidget {
   final String? scriptBadge;
   final TextDirection? textDirection;
 
+  /// Printed (with its citation) or editorial; null for sections that are
+  /// neither, such as the list of sources itself.
+  final String? provenance;
+
   const _ReadingSection({
     required this.number,
     required this.title,
@@ -381,6 +443,7 @@ class _ReadingSection extends StatelessWidget {
     this.emphasis = false,
     this.scriptBadge,
     this.textDirection,
+    this.provenance,
   });
 
   @override
@@ -433,6 +496,16 @@ class _ReadingSection extends StatelessWidget {
                 ),
             ],
           ),
+          if (provenance != null) ...[
+            const SizedBox(height: 6),
+            Text(
+              provenance!,
+              style: QalamTypography.meta(
+                color: colors.onSurfaceVariant,
+                fontSize: 12,
+              ),
+            ),
+          ],
           const SizedBox(height: 16),
           SelectableText(
             text,

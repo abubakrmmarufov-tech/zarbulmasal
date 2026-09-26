@@ -259,6 +259,14 @@ const Map<String, String> tajikStringsA = {
   'source_needs_review': 'Манбаъ ва матн ба санҷиши иловагӣ ниёз дорад',
   'source_page_verified': 'Матн ва саҳифа аз китоб тасдиқ шудааст',
   'reading_tajik_explanation': 'Шарҳи тоҷикӣ (бо хати сириллик)',
+  'proverb_editorial': 'Шарҳи муҳаррир (дар китоб чоп нашудааст)',
+  'proverb_printed_from': 'Аз китоб: \${0}',
+  'proverb_sources': 'Дар китобҳо',
+  'proverb_no_printed_source':
+      'Манбаи чопӣ ёфт нашуд: ин зарбулмасал дар китобҳои санҷидашуда ҳанӯз пайдо нашудааст.',
+  'proverb_persian_translit': 'Хатти форсӣ: транслитератсия',
+  'citation_page': 'саҳ. \${0}',
+  'citation_pdf_page': 'варақи \${0}-и нусхаи PDF',
 
   // Literature
   'literature_title': 'Мероси адабӣ',

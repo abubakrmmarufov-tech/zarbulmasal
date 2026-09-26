@@ -47,6 +47,55 @@ void main() {
     },
   );
 
+  test('every verified proverb names its pages; unsourced ones name none', () {
+    for (final proverb in seedProverbs) {
+      switch (proverb.sourceStatus) {
+        case SourceStatus.pageVerified:
+          expect(proverb.sources, isNotEmpty, reason: proverb.id);
+          expect(proverb.sourceNote, isNotEmpty, reason: proverb.id);
+          for (final source in proverb.sources) {
+            expect(source.bookTitle.trim(), isNotEmpty, reason: proverb.id);
+            expect(source.pdfPage, greaterThan(0), reason: proverb.id);
+            expect(source.year, isNotNull, reason: proverb.id);
+          }
+        case SourceStatus.needsReview:
+          expect(proverb.sources, isEmpty, reason: proverb.id);
+          expect(proverb.isPageVerified, isFalse, reason: proverb.id);
+        case SourceStatus.bookAttested || SourceStatus.unverified:
+          expect(proverb.sources, isEmpty, reason: proverb.id);
+      }
+      for (final source in [proverb.meaningSource, proverb.exampleSource]) {
+        if (source == null) continue;
+        expect(proverb.isPageVerified, isTrue, reason: proverb.id);
+        expect(source.pdfPage, greaterThan(0), reason: proverb.id);
+      }
+      if (proverb.exampleAttribution != null) {
+        expect(proverb.isExamplePrinted, isTrue, reason: proverb.id);
+      }
+    }
+  });
+
+  test('saved data keyed by proverb ID still resolves', () async {
+    // Favorites, bayoz and learning progress store only IDs. IDs 21–170 must
+    // never be renumbered or removed, or saved items would vanish.
+    final ids = seedProverbs.map((p) => p.id).toSet();
+    for (var id = 21; id <= 170; id++) {
+      expect(ids, contains('$id'));
+    }
+    SharedPreferences.setMockInitialValues({
+      AppConstants.prefsFavorites: ['24', '87', '170'],
+    });
+    final container = ProviderContainer();
+    addTearDown(container.dispose);
+    container.read(favoritesProvider);
+    await preferencesLoaded();
+    expect(container.read(favoritesListProvider).map((p) => p.id).toSet(), {
+      '24',
+      '87',
+      '170',
+    });
+  });
+
   test('available levels are derived from real catalog content', () {
     final container = ProviderContainer();
     addTearDown(container.dispose);
