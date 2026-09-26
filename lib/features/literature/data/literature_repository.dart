@@ -4,18 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:zarbulmasal/features/literature/data/runtime_works_codec.dart';
 import 'package:zarbulmasal/features/literature/data/tajikistan_day.dart';
 import 'package:zarbulmasal/features/literature/domain/domain.dart';
+import 'package:zarbulmasal/core/utils/json_off_thread.dart';
 
 /// Decodes the works asset and expands the dictionary-compressed runtime
 /// catalog into plain work maps. A legacy top-level JSON `List` (used by the
 /// repository's failure-retry test asset `'[]'`) is passed through unchanged.
-List<dynamic> _decodeWorksAsset(String source) {
-  final decoded = jsonDecode(source);
-  if (decoded is List<dynamic>) return decoded;
-  if (decoded is Map<String, dynamic>) {
-    return expandRuntimeWorks(decoded);
-  }
-  return const <dynamic>[];
-}
 
 /// Repository responsible for loading and querying literary heritage data.
 ///
@@ -46,6 +39,7 @@ class LiteratureRepository {
   // repeatedly allocate and decode the same catalog. Failed loads are evicted
   // so UI retry actions still have a chance to recover from transient errors.
   Future<List<LiteraryWork>>? _worksFuture;
+  Future<List<LiteraryAuthor>>? _authorsFuture;
 
   LiteratureRepository({AssetBundle? bundle}) : _bundle = bundle ?? rootBundle;
 
@@ -65,13 +59,30 @@ class LiteratureRepository {
 
   /// Loads verified literary authors from [authorsAssetPath].
   Future<List<LiteraryAuthor>> loadAuthors() async {
+    final cached = _authorsFuture;
+    if (cached != null) return cached;
+
+    final future = _loadAuthors();
+    _authorsFuture = future;
+    try {
+      return await future;
+    } catch (_) {
+      if (identical(_authorsFuture, future)) {
+        _authorsFuture = null;
+      }
+      rethrow;
+    }
+  }
+
+  Future<List<LiteraryAuthor>> _loadAuthors() async {
     final jsonString = await _bundle.loadString(authorsAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    final dynamic decoded = await decodeJsonOffThread(jsonString);
     if (decoded is! List) return const [];
-    return decoded
-        .whereType<Map>()
-        .map((json) => LiteraryAuthor.fromJson(Map<String, dynamic>.from(json)))
-        .toList();
+    return List.unmodifiable(
+      decoded.whereType<Map>().map(
+        (json) => LiteraryAuthor.fromJson(Map<String, dynamic>.from(json)),
+      ),
+    );
   }
 
   /// Loads literary works from [worksAssetPath].
@@ -93,11 +104,17 @@ class LiteratureRepository {
 
   Future<List<LiteraryWork>> _loadWorks() async {
     final jsonString = await _bundle.loadString(worksAssetPath);
-    final decoded = await compute(
-      _decodeWorksAsset,
-      jsonString,
-      debugLabel: 'decode-literary-works',
-    );
+    final dynamic rawDecoded = await decodeJsonOffThread(jsonString);
+    List<dynamic> decoded = const <dynamic>[];
+    if (rawDecoded is List<dynamic>) {
+      decoded = rawDecoded;
+    } else if (rawDecoded is Map<String, dynamic>) {
+      decoded = await compute(
+        expandRuntimeWorks,
+        rawDecoded,
+        debugLabel: 'expand-runtime-works',
+      );
+    }
     return List.unmodifiable(
       decoded.whereType<Map>().map(
         (json) => LiteraryWork.fromJson(Map<String, dynamic>.from(json)),
@@ -108,7 +125,7 @@ class LiteratureRepository {
   /// Loads source editions and bibliographic witnesses from [sourcesAssetPath].
   Future<List<SourceEdition>> loadSources() async {
     final jsonString = await _bundle.loadString(sourcesAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    final dynamic decoded = await decodeJsonOffThread(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -119,7 +136,7 @@ class LiteratureRepository {
   /// Loads official school canon curriculum mappings from [schoolCanonAssetPath].
   Future<List<SchoolCanonEntry>> loadSchoolCanon() async {
     final jsonString = await _bundle.loadString(schoolCanonAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    final dynamic decoded = await decodeJsonOffThread(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -132,7 +149,7 @@ class LiteratureRepository {
   /// Loads verified folklore oral heritage entries from [oralHeritageAssetPath].
   Future<List<OralHeritageEntry>> loadOralHeritage() async {
     final jsonString = await _bundle.loadString(oralHeritageAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    final dynamic decoded = await decodeJsonOffThread(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
