@@ -1,4 +1,5 @@
 import '../models/proverb.dart';
+import '../models/source_ref.dart';
 
 /// Seed proverbs 135–170; see seed_proverbs.dart.
 const List<Proverb> seedProverbsPart4 = [
@@ -14,9 +15,8 @@ const List<Proverb> seedProverbsPart4 = [
     categoryId: 'odob',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '136',
@@ -31,42 +31,91 @@ const List<Proverb> seedProverbsPart4 = [
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '137',
-    tajikCyrillic: 'Гургзода оқибат гург шавад.',
-    persianText: 'گرگزاده عاقبت گرگ شود.',
+    tajikCyrillic: 'Оқибат гургзода гург шавад, Гарчи бо одамӣ бузург шавад.',
+    persianText: 'عاقبت گرگزاده گرگ شود، گرچه با آدمی بزرگ شود.',
     simpleExplanationTj:
         'Мақол мегӯяд, ки табиати аслӣ дер ё зуд худро нишон медиҳад.',
     meaningTj:
         'Одат ё хислати решадорро танҳо бо намуди зоҳирӣ пинҳон кардан душвор аст; ин маънои маҷозӣ дорад, на ҳукми қатъӣ дар бораи ирс.',
     exampleSentenceTj:
-        'Ӯ муддате худро ором нишон дод, вале боз ба рафтори пешина баргашт; гургзода оқибат гург шавад.',
+        'Ӯ муддате худро ором нишон дод, вале боз ба рафтори пешина баргашт; оқибат гургзода гург шавад, гарчи бо одамӣ бузург шавад.',
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
+    sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 30',
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 30,
+        printedPage: 30,
+        printedText:
+            'Оқибат гургзода гург шавад, / Гарчи бо одамӣ бузург шавад. (Саъдии Шерозӣ)',
+        note: 'signed Саъдӣ',
+      ),
+      SourceRef(
+        bookTitle: 'Фарҳанги мардуми диёри Турсунзода',
+        authorEditor: 'Рӯзии Аҳмад, Дилшод Раҳимов (гирдоварӣ ва тадвин)',
+        year: 2012,
+        city: 'Душанбе',
+        pdfPage: 11,
+        printedPage: 18,
+        printedText:
+            '12. Оқибат гургзода гург шавад, / Гарчӣ бо одамӣ бузург шавад.',
+        note: 'footnote: a bayt of Саъдӣ that became a proverb',
+      ),
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 95,
+        printedPage: 99,
+        printedText:
+            'Оқибат гургзода гург шавад, Гарчи бо одами бузург шавад. (Саъдӣ)',
+        note: 'classics section',
+      ),
+    ],
   ),
   Proverb(
     id: '138',
-    tajikCyrillic: 'Саг аккос мезанад, корвон мегузарад.',
-    persianText: 'سگ عقاس می‌زند، کاروان می‌گذرد.',
-    simpleExplanationTj:
-        'Саг аккос мезанад, вале корвон роҳи худро идома медиҳад.',
+    tajikCyrillic: 'Саг меҷағад, корвон мегузарад.',
+    persianText: 'سگ می‌جغد، کاروان می‌گذرد.',
+    simpleExplanationTj: 'Саг меҷағад, вале корвон роҳи худро идома медиҳад.',
     meaningTj:
         'Ба ҳар танқид, овоза ё садои халалрасон таваққуф накун; кори муҳимро идома деҳ.',
     exampleSentenceTj:
-        'Бо вуҷуди масхараи дигарон ӯ таҳсилро давом дод; саг аккос мезанад, корвон мегузарад.',
+        'Бо вуҷуди масхараи дигарон ӯ таҳсилро давом дод; саг меҷағад, корвон мегузарад.',
     categoryId: 'hikmat',
     level: 6,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 71',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 68,
+        printedPage: 71,
+        printedText: 'Саг меҷағад, корвон мегузарад.',
+      ),
+    ],
   ),
   Proverb(
     id: '139',
@@ -81,8 +130,8 @@ const List<Proverb> seedProverbsPart4 = [
     categoryId: 'hikmat',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '140',
@@ -97,9 +146,8 @@ const List<Proverb> seedProverbsPart4 = [
     categoryId: 'jasorat',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '141',
