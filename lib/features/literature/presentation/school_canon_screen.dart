@@ -290,32 +290,33 @@ class _CanonEntryCard extends StatelessWidget {
                     fontSize: 12,
                   ),
                 ),
-                const SizedBox(width: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: QalamSpacing.badgePadH,
-                    vertical: QalamSpacing.badgePadV,
-                  ),
-                  decoration: BoxDecoration(
-                    color: isMandatory
-                        ? QalamColors.forest.withValues(alpha: 0.1)
-                        : colors.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(3),
-                  ),
-                  child: Text(
-                    isCitationVerified
-                        ? (isMandatory
-                              ? AppTranslations.get('lit_mandatory', lang)
-                              : AppTranslations.get('lit_recommended', lang))
-                        : AppTranslations.get('lit_source_pending', lang),
-                    style: QalamTypography.meta(
-                      color: isCitationVerified && isMandatory
-                          ? QalamColors.forest
-                          : colors.onSurfaceVariant,
-                      fontSize: 10,
+                // The curriculum tag, once its citation is checked.
+                if (isCitationVerified) ...[
+                  const SizedBox(width: 8),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: QalamSpacing.badgePadH,
+                      vertical: QalamSpacing.badgePadV,
+                    ),
+                    decoration: BoxDecoration(
+                      color: isMandatory
+                          ? QalamColors.forest.withValues(alpha: 0.1)
+                          : colors.surfaceContainerHighest,
+                      borderRadius: BorderRadius.circular(3),
+                    ),
+                    child: Text(
+                      isMandatory
+                          ? AppTranslations.get('lit_mandatory', lang)
+                          : AppTranslations.get('lit_recommended', lang),
+                      style: QalamTypography.meta(
+                        color: isMandatory
+                            ? QalamColors.forest
+                            : colors.onSurfaceVariant,
+                        fontSize: 10,
+                      ),
                     ),
                   ),
-                ),
+                ],
                 const Spacer(),
                 const QalamChevron(size: 18),
               ],

@@ -229,7 +229,7 @@ class _PoetsListScreenState extends ConsumerState<PoetsListScreen> {
                     final dates =
                         poet.hasAuditableBiographySource && lifespan.isNotEmpty
                         ? lifespan
-                        : AppTranslations.get('lit_search_dates_pending', lang);
+                        : '';
                     final exactDates =
                         (!isPersian &&
                             poet.hasAuditableBiographySource &&

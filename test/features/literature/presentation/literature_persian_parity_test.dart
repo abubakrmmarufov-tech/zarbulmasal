@@ -168,7 +168,7 @@ void main() {
     );
 
     testWidgets(
-      'PoetDetailScreen review header collapses pending list in Persian',
+      'PoetDetailScreen never lists records still under review in Persian',
       (tester) async {
         final pendingWork = testWorkRudaki.copyWith(
           id: 'rudaki-pending-textbook-work',
@@ -199,25 +199,14 @@ void main() {
           language: DisplayLanguage.persian,
         );
 
-        expect(find.text('رکوردهای آثار در بررسی: ۱'), findsOneWidget);
+        // Records still being checked stay in the data, not on screen.
         expect(find.text('مادر'), findsNothing);
         expect(find.text('Модар'), findsNothing);
-
-        await tester.scrollUntilVisible(
-          find.text('رکوردهای آثار در بررسی: ۱'),
-          300,
-          scrollable: find.byType(Scrollable).first,
+        expect(find.textContaining('در بررسی'), findsNothing);
+        expect(
+          find.text('در کتاب‌های درسی شعری از او چاپ نشده است.'),
+          findsOneWidget,
         );
-        await tester.tap(find.text('رکوردهای آثار در بررسی: ۱'));
-        await tester.pumpAndSettle();
-
-        await tester.scrollUntilVisible(
-          find.text('مادر'),
-          300,
-          scrollable: find.byType(Scrollable).first,
-        );
-        expect(find.text('مادر'), findsOneWidget);
-        expect(find.text('Модар'), findsNothing);
       },
     );
 

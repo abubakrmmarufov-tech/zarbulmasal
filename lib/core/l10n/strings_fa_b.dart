@@ -55,7 +55,7 @@ const Map<String, String> persianStringsB = {
   'explore_poets_title': 'شاعران و نویسندگان',
   'explore_poets_sub': 'زندگینامه و آثار',
   'explore_works_title': 'شعرها و کتاب‌ها',
-  'explore_works_sub': 'شعرهایی که با چاپ منبع مقابله شده‌اند',
+  'explore_works_sub': 'شعرها از کتاب‌های درسی ادبیات',
   'explore_school_title': 'ادبیات مکتب',
   'explore_school_sub': 'برنامه درسی صنف‌های ۵–۱۱',
   'explore_hub_title': 'مرکز میراث ادبی',
@@ -156,7 +156,6 @@ const Map<String, String> persianStringsB = {
   'lit_canon_empty_title': 'برنامهٔ درسی خالی است',
   'lit_subject_tajik': 'ادبیات تاجیک',
   'lit_subject_reading': 'خوانش ادبی',
-  'lit_source_pending': 'ارجاع در دست بررسی',
 
   // Literature Hub
   'lit_hub_loading_works': 'آثار در حال بارگیری هستند...',
@@ -168,9 +167,7 @@ const Map<String, String> persianStringsB = {
       'نام‌ها، دولت‌ها و شعرهای کتاب‌های صنف‌های ۵ تا ۱۱',
   'lit_hub_poets_count': 'زندگینامه و آثار \${0} شاعر و ادیب بزرگ',
   'lit_hub_works_count':
-      'غزل‌ها، قصیده‌ها و رباعی‌های مقابله‌شده با منبع (\${0} اثر)',
-  'lit_hub_works_under_review': 'غزل‌ها، قصیده‌ها و رباعی‌ها از منابع کتابی',
-  'lit_hub_review_works_count': 'رکوردهای صفحه‌دار آثار در بررسی: \${0}',
+      'غزل‌ها، قصیده‌ها و رباعی‌ها از کتاب‌های درسی (\${0} اثر)',
   'lit_hub_school_canon_count':
       'آثار شامل بر برنامهٔ تعلیمی مکتب‌ها (\${0} اثر)',
   'lit_hub_oral_count':
@@ -180,28 +177,16 @@ const Map<String, String> persianStringsB = {
   'lit_hub_read_work': 'خوانش کامل',
 
   // Poet Detail
-  'lit_poet_header_dates_pending':
-      'تاریخ و زادگاه تا بررسی صفحهٔ منبع در دست بررسی است.',
   'lit_poet_approved_works_count': 'شعرها برای خواندن: \${0}',
   'lit_poet_review_works_count': 'رکوردها تحت بررسی: \${0}',
-  'lit_poet_bio_pending':
-      'متن زندگینامه تا ثبت و بررسی ارجاع صفحه‌دار در دسترس نیست.',
   'lit_poet_explore_world': 'جهان او را بشناسید',
   'lit_poet_explore_world_sub':
       'دوره‌ها، حاکمان و وقایع تاریخی هم‌دوره در برنامه',
   'lit_poet_approved_works_header': 'آثار برای خواندن (\${0})',
-  'lit_poet_works_in_review_label': 'رکوردهای آثار در بررسی: \${0}',
-  'lit_poet_review_unlinked':
-      '\${0} رکورد دیگر تا یافتن ارجاع صفحه‌دار در فهرست نشان داده نمی‌شود.',
-  'lit_poet_works_review_desc':
-      'اشعار این شاعر در حال تطبیق با نسخه‌های خطی و چاپی معتبر است.',
   'lit_poet_bio_source_verified': 'منبع استناد زندگینامه:',
-  'lit_poet_bio_source_unverified': 'منبع صفحه‌دارِ تأییدشده ثبت نشده است:',
   'lit_poet_bio_translation_pending':
       'ترجمهٔ فارسی این زندگی‌نامه هنوز بررسی نشده است؛ متن تاجیکی نمایش داده نمی‌شود.',
-  'lit_poet_source_tag': 'برچسب واردشده: \${0}',
   'lit_poet_composition_year': 'سرایش: \${0}',
-  'lit_poet_work_in_review_sub': 'در بررسی منبع؛ متن هنوز منتشر نشده است',
 
   // Poem Reader
   'lit_page_image': 'تصویر صفحه',
@@ -328,12 +313,8 @@ const Map<String, String> persianStringsB = {
   // Literature Search
   'lit_search_suggestions': 'پیشنهادهای جست‌وجو:',
   'lit_search_no_results_for': 'با واژهٔ «\${0}» شاعر یا اثری یافت نشد.',
-  'lit_search_dates_pending': 'تاریخ‌ها در بررسی',
   'lit_search_poets_section': 'شاعران',
   'lit_search_works_section': 'شعرها و آثار',
-  'lit_search_review_show_tooltip': 'نمایش رکوردهای در بررسی',
-  'lit_search_review_hide_tooltip': 'پنهان کردن رکوردهای در بررسی',
-  'lit_search_readable_empty': 'برای «\${0}» شعر قابل خواندن یافت نشد.',
 
   // Poets & Works Lists
   'lit_poets_error_title': 'خطا در بارگیری شاعران',
@@ -512,4 +493,5 @@ const Map<String, String> persianStringsB = {
   'settings_text_sample': 'ضرب‌المثل، گفتار کوتاه پندآموز است.',
   'settings_text_sample_label': 'نمونهٔ اندازهٔ قلم',
   'hist_grade_no_catalog_title': 'فهرست تفصیلی صنف \${0} فعلاً در دسترس نیست',
+  'lit_poet_no_textbook_poem': 'در کتاب‌های درسی شعری از او چاپ نشده است.',
 };

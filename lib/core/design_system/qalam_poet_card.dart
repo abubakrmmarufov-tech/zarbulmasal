@@ -97,27 +97,30 @@ class QalamPoetCard extends StatelessWidget {
                           fontSize: 17,
                         ),
                       ),
-                      const SizedBox(height: 6),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_today_outlined,
-                            size: 13,
-                            color: colors.primary,
-                          ),
-                          const SizedBox(width: 6),
-                          Expanded(
-                            child: Text(
-                              displayDates,
-                              style: QalamTypography.meta(
-                                color: colors.primary,
-                                fontSize: 13,
-                              ),
-                              overflow: TextOverflow.ellipsis,
+                      // No dates line when none are checked yet.
+                      if (displayDates.isNotEmpty) ...[
+                        const SizedBox(height: 6),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.calendar_today_outlined,
+                              size: 13,
+                              color: colors.primary,
                             ),
-                          ),
-                        ],
-                      ),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                displayDates,
+                                style: QalamTypography.meta(
+                                  color: colors.primary,
+                                  fontSize: 13,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                       if (place != null && place!.trim().isNotEmpty) ...[
                         const SizedBox(height: 6),
                         // The birthplace sits on its own line and wraps in full,

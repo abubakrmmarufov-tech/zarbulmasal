@@ -1,0 +1,500 @@
+{
+ "about": "Phase 11, round 2 (26 Sep 2026): verse blocks the textbooks print that no earlier review had seen. textbook_verse.extract_poem did not clean footnote markers from an opening line («пайки1»), so blocks whose first line carries one were never found; after the fix, every such block in the poets' chapters was read with its lead-in. Accepted when the lead-in makes the chapter's poet the speaker, the book signs the verse with the poet's name, or the verse sits under the poet's printed title; elegies, verse by others, examples and prose are rejected. Published by tool/literature/publish_reviewed_blocks.py, which writes back 'recordIds'.",
+ "reviewedAt": "2026-09-26",
+ "blocks": [
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 71,
+   "page": 71,
+   "opening": "Эй қуввати ҷисму қути ҷонам,",
+   "leadIn": "Шеъри «Заминро бояд нафурӯшед» ҳушдорест, ки заҳматкашонро аз оқибати фоҷиабори заминфурӯшӣ огоҳ месозад:",
+   "chapterOf": "Садриддин Айнӣ",
+   "decision": "accept",
+   "authorId": "47c1dc67-363a-4506-8a9c-bbbb38f98d20",
+   "author": "Садриддин Айнӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "recordIds": [
+    "poem_47c1dc67-363a-4506-8a9c-bbbb38f98d20_87c09f25b8512d27"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 89,
+   "page": 89,
+   "opening": "Ин боғ зи нахли куҳан оростаам",
+   "leadIn": "С.Айнӣ таассуроти худро аз эҷодиёти Восифӣ бо рубоии зерин ифода намудааст:",
+   "chapterOf": "Садриддин Айнӣ",
+   "decision": "accept",
+   "authorId": "47c1dc67-363a-4506-8a9c-bbbb38f98d20",
+   "author": "Садриддин Айнӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "recordIds": [
+    "poem_47c1dc67-363a-4506-8a9c-bbbb38f98d20_66588765f8d1103f"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 127,
+   "page": 127,
+   "opening": "Маоли кор нуқсонҳост ҳар соҳибкамолиро,",
+   "leadIn": "Ғазали дигари шоири мутафаккир, ки бо матлаи зерин шуруъ мешавад, хеле ҷолибу ҳунармандона ва марғуб рӯйи кор омадааст:",
+   "chapterOf": "Бедил",
+   "decision": "accept",
+   "authorId": "455f0420-3834-48f0-86b9-7da673a2a684",
+   "author": "Бедил",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "ghazal",
+   "note": "Signed «Бедил» in the last bayt.",
+   "recordIds": [
+    "e683c172-9a07-567c-8753-d07beff733d3"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 134,
+   "page": 134,
+   "opening": "Ай шамъи базми қудс, надонам, чӣ мазҳарӣ,",
+   "leadIn": "Ӯ ҳатто оид ба мақому мартаба, ҷоҳу ҷалоли инсон қасидаи ҷудогона дорад, ки метавон чанд байте аз онро зикр намуд:",
+   "chapterOf": "Бедил",
+   "decision": "accept",
+   "authorId": "455f0420-3834-48f0-86b9-7da673a2a684",
+   "author": "Бедил",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "qasida",
+   "recordIds": [
+    "poem_455f0420-3834-48f0-86b9-7da673a2a684_78c49b8bfa43bfbf"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 99,
+   "page": 99,
+   "opening": "Марҳабо, эй пайки муштоқон, бидеҳ пайғоми дӯст,",
+   "leadIn": "ПАЙҒОМИ ДӮСТ",
+   "chapterOf": "Ҳофиз",
+   "decision": "accept",
+   "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
+   "author": "Ҳофиз",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "type": "ghazal",
+   "note": "Signed «Ҳофиз» in the last bayt. Missed before: its first line carries a footnote marker («пайки1»), which the extractor did not clean when matching an opening (fixed in textbook_verse.extract_poem).",
+   "recordIds": [
+    "poem_d1abb54a-9804-4baf-b238-fd2203d7673e_14e846c891fe66f6"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 99,
+   "page": 99,
+   "opening": "Зи дасти кӯтаҳи худ зери борам,",
+   "leadIn": "ЗИ ДАСТИ КӮТАҲИ ХУД ЗЕРИ БОРАМ",
+   "chapterOf": "Ҳофиз",
+   "decision": "accept",
+   "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
+   "author": "Ҳофиз",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "type": "ghazal",
+   "closing": "Ба лутфи он сари умедворам.",
+   "note": "Signed «Ҳофиз» in the last bayt; runs onto p. 100.",
+   "recordIds": [
+    "6f776de4-4d38-477c-b40a-e342c4c0f24c"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 176,
+   "page": 176,
+   "opening": "Айби риндон макун, эй зоҳиди покизасиришт!",
+   "leadIn": "Бинобар ин, Ҳофиз дар ғазали «Айби риндон макун…» зоҳидону шайхонро мазаммат намуда… Шоир мегӯд:",
+   "chapterOf": "Ҳофиз",
+   "decision": "accept",
+   "authorId": "d1abb54a-9804-4baf-b238-fd2203d7673e",
+   "author": "Ҳофиз",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "ghazal",
+   "recordIds": [
+    "833fd706-f673-59d7-8398-12494be834cd"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 52,
+   "page": 52,
+   "opening": "Буд курде зи меҳтарони бузург,",
+   "leadIn": "АЗ ОСОРИ НИЗОМИИ ГАНҶАВӢ (grade 6, p. 45): the story of Хайр and Шарр, told in prose between its verse",
+   "chapterOf": "Низомии Ганҷавӣ",
+   "decision": "accept",
+   "authorId": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
+   "author": "Низомии Ганҷавӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "epic",
+   "recordIds": [
+    "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_0323fc7f794f6baa"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 62,
+   "page": 62,
+   "opening": "Аз некуию аз латофату рой,",
+   "leadIn": "Хайр бо давое, ки курд ба вай нишон дода буд, ба беморони муҳтоҷи бисёре ёрӣ расонд. Ин буд, ки:",
+   "chapterOf": "Низомии Ганҷавӣ",
+   "decision": "accept",
+   "authorId": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
+   "author": "Низомии Ганҷавӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "epic",
+   "recordIds": [
+    "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_c6b26665d2d99c09"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 16,
+   "page": 16,
+   "opening": "Дар ақсои олам бигаштам басе,",
+   "leadIn": "Саъдӣ ғарибиро ихтиёр кард. Ӯ дар оғози «Бӯстон» чунин нигоштааст:",
+   "chapterOf": "Саъдӣ",
+   "decision": "accept",
+   "authorId": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
+   "author": "Саъдӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "epic",
+   "recordIds": [
+    "f968b76b-950b-5224-974a-063304188ffc"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 27,
+   "page": 27,
+   "opening": "Ба рӯзи ҳумоюну соли саид,",
+   "leadIn": "Дар ин бора дар оғози «Бӯстон» Шайх Саъдӣ чунин мегӯяд:",
+   "chapterOf": "Саъдӣ",
+   "decision": "accept",
+   "authorId": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
+   "author": "Саъдӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "epic",
+   "recordIds": [
+    "9878132d-0c21-523a-acf3-c4e4a2cd9bad"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 302,
+   "page": 302,
+   "opening": "В-он ки кибр оварад зи илму ҳунар,",
+   "leadIn": "Олим ба ақидаи адиб, бояд аз кибр дурӣ ҷуста, ба тавозуъ ва хоксорӣ рӯ орад, зеро фақат ба ҳамин роҳ ӯ мақбули омма шуда метавонад:",
+   "chapterOf": "Камолиддин Биноӣ",
+   "decision": "accept",
+   "authorId": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
+   "author": "Камолиддин Биноӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "recordIds": [
+    "fde2bb06-979b-541a-b1c7-caa68312fd8c"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 151,
+   "page": 151,
+   "opening": "Та, ки нӯшам наӣ, нешам чароӣ?",
+   "leadIn": "A dubayti printed in the poet's chapter (grade 8, pp. 150-153)",
+   "chapterOf": "Боботоҳири Урён",
+   "decision": "accept",
+   "authorId": "be19709e-c3af-460d-80b9-4c67046e8be3",
+   "author": "Боботоҳири Урён",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "recordIds": [
+    "6ebbfd75-d2be-5abf-9fb1-c2f7b3688996"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 153,
+   "page": 153,
+   "opening": "Му, ки сар дар биёбунум шаву рӯз,",
+   "leadIn": "Аз шеърҳои шоир бармеояд, ки ӯ дар ҷоеву манзиле қарор надошта, ҳамеша дур аз ёру диёр дар ғарибӣ ва бекасӣ умр ба сар мебурдааст.",
+   "chapterOf": "Боботоҳири Урён",
+   "decision": "accept",
+   "authorId": "be19709e-c3af-460d-80b9-4c67046e8be3",
+   "author": "Боботоҳири Урён",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "recordIds": [
+    "955aa139-52c3-5fbd-af61-377d4647a2da"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 41,
+   "page": 41,
+   "opening": "Диже буд, к-аш хондандӣ Сапед,",
+   "leadIn": "РАСИДАНИ СУҲРОБ БА ДИЖИ САФЕД",
+   "chapterOf": "Абулқосими Фирдавсӣ",
+   "decision": "accept",
+   "authorId": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
+   "author": "Абулқосими Фирдавсӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "type": "epic",
+   "closing": "Ки гум шуд Ҳаҷир андар он анҷуман!",
+   "note": "Runs onto p. 42, up to the next section «РАЗМИ СУҲРОБ БО ГУРДОФАРИД».",
+   "recordIds": [
+    "poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_f6cb741c14af1149"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 296,
+   "page": 296,
+   "opening": "Сад шукр, ки шуд пазира ин ганҷ",
+   "leadIn": "Шамсуддини Шоҳин достони «Лайлию Маҷнун»-ро соли 1888 … эҷод кардааст. Оид ба муҳлати таълиф, санаи эҷод ва писанди умум гардидани он мегӯяд:",
+   "chapterOf": "Шоҳин",
+   "decision": "accept",
+   "authorId": "6ab9cd0a-0ff0-4a73-99ba-6604d9c61847",
+   "author": "Шоҳин",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "epic",
+   "recordIds": [
+    "poem_6ab9cd0a-0ff0-4a73-99ba-6604d9c61847_a67499645b9f35b5"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 244,
+   "page": 244,
+   "opening": "Зи анфосатон гашт ҳал мушкилам,",
+   "leadIn": "Ҳатто модари шоҳ дар анҷоми достон ба хирадмандон изҳори миннатдорӣ мекунад.",
+   "chapterOf": "Абдурраҳмони Ҷомӣ",
+   "decision": "accept",
+   "authorId": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
+   "author": "Абдурраҳмони Ҷомӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "epic",
+   "note": "Verse of Ҷомӣ's «Хирадномаи Искандарӣ», a character's speech inside his own masnavi.",
+   "recordIds": [
+    "poem_9debff75-8664-43ab-a7a9-ed1a4725f69b_b69e9c0912d1c53e"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 252,
+   "page": 252,
+   "opening": "Наёяд хушам фарру иқболи ту,",
+   "leadIn": "Искандар … сабаби инро аз дарзӣ пурсид. Дарзӣ дар ҷавоб чунин гуфт:",
+   "chapterOf": "Абдурраҳмони Ҷомӣ",
+   "decision": "accept",
+   "authorId": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
+   "author": "Абдурраҳмони Ҷомӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "epic",
+   "note": "Verse of Ҷомӣ's «Хирадномаи Искандарӣ», a character's speech inside his own masnavi.",
+   "recordIds": [
+    "9c98ddd1-cdef-5279-93bb-40076650b100"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 119,
+   "page": 119,
+   "opening": "Гозуре дар навоҳии Бағдод",
+   "leadIn": "ҚИССАИ КУЛАНГЕ, КИ ҲАВАСИ ШИКОРИ КАБӮТАР КАРДУ ХУД ШИКОРИ ДИГАРЕ ШУД",
+   "chapterOf": "Абдурраҳмони Ҷомӣ",
+   "decision": "accept",
+   "authorId": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
+   "author": "Абдурраҳмони Ҷомӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "type": "epic",
+   "closing": "Ба ҳавои магас кушояд пар.",
+   "note": "Runs onto p. 121, up to the questions; question 4 names the verse «ин байти Ҷомӣ».",
+   "recordIds": [
+    "poem_9debff75-8664-43ab-a7a9-ed1a4725f69b_2f0777bcaa888f9b"
+   ]
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 97,
+   "page": 97,
+   "opening": "Татаббуи сухани кас накардаам ҳаргиз,",
+   "leadIn": "…вале аҳли таҳқиқ ин далелро тасдиқ накардаанд, зеро худи Соиб мегӯяд:",
+   "chapterOf": "Соибои Исфаҳонӣ",
+   "decision": "accept",
+   "authorId": "121ce628-ff4b-44d2-a702-81db93040dee",
+   "author": "Соибои Исфаҳонӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "fragment",
+   "recordIds": [
+    "cc2a3b4c-6b91-59db-9bed-7853c5ae78e0"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 71,
+   "page": 71,
+   "opening": "Паркандагӣ аз нифоқ хезад,",
+   "leadIn": "Бинобар ин, якдилу якмаром шудани инсонҳо гарави муваффақият аст:",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_73a5984a5625909f"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 117,
+   "page": 117,
+   "opening": "Эй шоҳ, ба базл баҳру кони дигарӣ,",
+   "leadIn": "Баъд Авфӣ рубоии зерро навишта ба дасти муқаррабони подшоҳ медиҳад ва илтимос мекунад, ки онро ба подшоҳ расонанд:",
+   "chapterOf": "Муҳаммад Авфии Бухороӣ",
+   "decision": "accept",
+   "authorId": "b2c3d4e5-c6d7-4e8f-9a0b-1c2d3e4f5a6b",
+   "author": "Муҳаммад Авфии Бухороӣ",
+   "reason": "the lead-in makes the chapter's poet the speaker, or introduces the poet's own work",
+   "type": "rubai",
+   "recordIds": [
+    "07dda582-441d-5dc9-82a6-8fb055bb52b1"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 171,
+   "page": 171,
+   "opening": "Карк ин сухан зи фил шуниду қадам ниҳод,",
+   "leadIn": "РАСИДАНИ КАРК",
+   "chapterOf": "Саййидои Насафӣ",
+   "decision": "accept",
+   "authorId": "5633556b-df45-4cab-83dc-760016db1ef2",
+   "author": "Саййидои Насафӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "closing": "Ҳар кас нигоҳ дошт, гурезанд ҷинниён».",
+   "note": "A section of «Баҳориёт»; the next section «РАСИДАНИ МӮРЧА» is published.",
+   "recordIds": [
+    "e4650898-b58e-50c1-b313-b37403af264b"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 171,
+   "page": 171,
+   "opening": "Шер аз камин баромаду омад, ба карк гуфт:",
+   "leadIn": "РАСИДАНИ ШЕР",
+   "chapterOf": "Саййидои Насафӣ",
+   "decision": "accept",
+   "authorId": "5633556b-df45-4cab-83dc-760016db1ef2",
+   "author": "Саййидои Насафӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "closing": "Аз мӯр камтаранд ба чашмам баҳодурон».",
+   "note": "A section of «Баҳориёт»; runs onto p. 172. Repairs the extraction candidate of the same title, which cited p. 160.",
+   "replaces": "poem_5633556b-df45-4cab-83dc-760016db1ef2_2aa3d620173da591",
+   "merges": [
+    "03d56810-7cb3-5151-8d66-55a3aab61893"
+   ],
+   "mergeNote": "it reprints the last 12 lines of the same section («Эй сахтрӯю сустқадам…», spelled so there); grade 7, pp. 171-172 prints the whole section",
+   "recordIds": [
+    "poem_5633556b-df45-4cab-83dc-760016db1ef2_2aa3d620173da591"
+   ]
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 301,
+   "page": 301,
+   "opening": "Наъши хунини падар дар назарам,",
+   "leadIn": "…марсиясароӣ мавқеъ пайдо намояд … Такрору хитоба … қувваи ифоданокии марсияҳои мазкурро афзуда…",
+   "chapterOf": "Лоиқ Шералӣ",
+   "decision": "reject",
+   "reason": "elegy: the lead-in calls it one of the poet's marsiyas"
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 296,
+   "page": 296,
+   "opening": "Эй дидаи дудмони исмат ,",
+   "leadIn": "…баҳонаи эҷоди достон мусибати оилавӣ – вафоти завҷаи шоир аст. Чунончи:",
+   "chapterOf": "Шоҳин",
+   "decision": "reject",
+   "reason": "elegy: a lament for the poet's wife"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 252,
+   "page": 252,
+   "opening": "Зи асп андар омад гави шери нар,",
+   "leadIn": "Рустам … назди чоҳ меояд. Чун ҳафт паҳлавон сангро аз рӯйи чоҳ бардошта наметавонанд, Таҳамтан худ ба кор даст мезанад:",
+   "chapterOf": "Мирсаид Миршакар",
+   "decision": "reject",
+   "reason": "verse_by_other_poet: lines of the «Шоҳнома» story the chapter retells, not Миршакар's"
+  },
+  {
+   "book": "adabiyet sinfi 8",
+   "pdfPage": 30,
+   "page": 30,
+   "opening": "Самарқанди кандманд,",
+   "leadIn": "Шеъри Абулянбағии Самарқандӣ (ваф. 824) низ аз аввалин намунаҳои шеър ба забони порсии дарӣ мебошад … сухан мегӯяд:",
+   "chapterOf": "Абуҳафси Суғдӣ",
+   "decision": "reject",
+   "reason": "verse_by_other_poet: the book gives it to Абулянбағии Самарқандӣ"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 113,
+   "page": 113,
+   "opening": "Ҳама шаҳмиву лаҳм, эй мири аъзам,",
+   "leadIn": "…ва ин қитъа гӯё дар шаъни ӯ воқеъ шуда буд:",
+   "chapterOf": "Зайниддин Маҳмуди Восифӣ",
+   "decision": "reject",
+   "reason": "the book names no author for the qit'a"
+  },
+  {
+   "book": "adabiyet sinfi 9",
+   "pdfPage": 289,
+   "page": 289,
+   "opening": "Дидаи дил аз футувват равшан аст,",
+   "leadIn": "Аттор ба ин маънӣ гуфтааст:",
+   "chapterOf": "Ҳусайн Воизи Кошифӣ",
+   "decision": "reject",
+   "reason": "verse_by_other_poet: Аттор's lines, quoted by Кошифӣ"
+  },
+  {
+   "book": "adabiet sinfi 10",
+   "pdfPage": 79,
+   "page": 79,
+   "opening": "Арбоби ҷудро кафи гавҳарфишон намонд,",
+   "leadIn": "Масалан, «Намонд»-ном мусаммати мухаммаси Саййидо, ки бар ғазали Соиби Табрезӣ (1592 – 1677) баста шудааст:",
+   "chapterOf": "Саййидои Насафӣ",
+   "decision": "reject",
+   "reason": "example: quoted to show the mukhammas form, with Соиб's hemistichs inside"
+  },
+  {
+   "book": "adabiet sinfi 6",
+   "pdfPage": 86,
+   "page": 86,
+   "opening": "Афлотунро гуфтанд:",
+   "leadIn": "ҲИКОЯТ",
+   "chapterOf": "Муҳаммад Авфии Бухороӣ",
+   "decision": "reject",
+   "reason": "prose: a tale in prose, not verse"
+  },
+  {
+   "book": "adabiyet sinfi 11",
+   "pdfPage": 326,
+   "page": 326,
+   "opening": "Нависандаи халқии Тоҷикистон Саттор",
+   "leadIn": "САТТОР ТУРСУН",
+   "chapterOf": "Саттор Турсун",
+   "decision": "reject",
+   "reason": "prose: the chapter of a prose writer"
+  }
+ ]
+}

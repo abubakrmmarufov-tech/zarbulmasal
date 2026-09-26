@@ -49,10 +49,28 @@ class AuditTest(unittest.TestCase):
         _, failures = audit([work(POEM)], {'b': ['', OTHER]}, NAMES, {'w'})
         self.assertEqual(failures, [])
 
-    def test_other_methods_are_not_audited(self):
+    def test_other_methods_are_not_audited_unless_readable(self):
         w = work(POEM)
         w['verification']['verificationMethod'] = 'manualReview'
         self.assertEqual(audit([w], {'b': ['', PAGE]}, NAMES), (0, []))
+
+    def test_a_readable_record_of_any_method_must_match_its_page(self):
+        w = work(POEM.replace('Лайло.', 'Лайло,'))
+        w['verification'] = {'verificationMethod': 'primaryAndSecondaryPdfPageCollation',
+                             'evidenceLevel': 'primaryChecked'}
+        checked, failures = audit([w], {'b': ['', PAGE]}, NAMES)
+        self.assertEqual(checked, 1)
+        self.assertEqual(failures, [('w', 'lines not on the cited pages',
+                                     ['Ба сони чеҳраи Лайло,'])])
+        w['textTajik'] = POEM
+        self.assertEqual(audit([w], {'b': ['', PAGE]}, NAMES), (1, []))
+
+    def test_a_printed_list_number_is_not_part_of_the_line(self):
+        numbered = PAGE.replace('           Бихандад', '        1. Бихандад')
+        w = work(POEM)
+        w['verification'] = {'verificationMethod': 'primaryPdfPageExtractionAndPixMapProof',
+                             'evidenceLevel': 'primaryChecked'}
+        self.assertEqual(audit([w], {'b': ['', numbered]}, NAMES), (1, []))
 
 
 SIGNED = PAGE.replace('           Ба сони дидаи Маҷнун.\n',

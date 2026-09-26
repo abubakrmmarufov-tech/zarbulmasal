@@ -27,7 +27,7 @@ MIN_INDENT = 2           # verse is set indented in these books
 MIN_LINES = 4            # at least two bayts: a poem, not a quoted bayt
 
 # The text layer sometimes doubles a marker ("кафал158158.").
-_footnote = re.compile(rf'(?<=[{CYR}»"])(\d{{1,3}})\1?(?=[\s,.;:!?…»"]|$)')
+_footnote = re.compile(rf'(?<=[{CYR}»"])(\d{{1,3}})\1?(?=[\s,.;:!?…»"\-]|$)')
 _footnote_after_punct = re.compile(r'(?<=[.,;:!?»"])\d{1,3}$')
 # A footnote gloss: one to three words, a dash, the meaning ("Лайло – Лайлӣ.").
 _gloss = re.compile(rf'^[{CYR}\-()]+(?:\s[{CYR}\-()]+){{0,2}} – ')
@@ -57,8 +57,26 @@ def norm(text):
     return re.sub(r'\s+', ' ', text).strip().lower()
 
 
+# Superscript footnote numbers the text layer glues to the verse: in the
+# gap between two words (the print sets no other space there), after a
+# comma, before a word, or after a closing quote at the end.
+_footnote_between_words = re.compile(rf'(?<=[{CYR}])\d{{1,3}}(?=[{CYR}])')
+_footnote_after_comma = re.compile(rf'(?<=[{CYR}][,;:])\d{{1,3}}(?=\s)')
+_footnote_before_word = re.compile(rf'(?<=\s)\d{{1,3}}(?=[{CYR}])')
+_footnote_spaced = re.compile(rf'(?<=[{CYR}]) \d{{1,3}} (?=[{CYR}])')
+_footnote_after_quote = re.compile(r'(?<=[»"])\s+\d{1,3}$')
+# The text layer gives a digit 3 for the letter З in «З-он», «З-ин».
+_three_for_ze = re.compile(r'(?:(?<=^)|(?<=\s))3(?=-(?:он|ин)\b)')
+
+
 def clean_line(line):
-    return _footnote_after_punct.sub('', _footnote.sub('', line.strip()))
+    line = _three_for_ze.sub('З', line.strip())
+    line = _footnote_between_words.sub(' ', line)
+    line = _footnote_spaced.sub(' ', line)
+    line = _footnote_after_comma.sub('', line)
+    line = _footnote_before_word.sub('', line)
+    line = _footnote_after_quote.sub('', line)
+    return _footnote_after_punct.sub('', _footnote.sub('', line))
 
 
 def _indent(line):
@@ -249,7 +267,8 @@ def extract_poem(pages, index, opening):
     poem when there is one, else None.
     """
     lines = pages[index].split('\n')
-    key = norm(opening).rstrip('.… ')[:24]
+    # The opening may be a raw page line with a footnote marker («пайки1»).
+    key = norm(clean_line(opening)).rstrip('.… ')[:24]
     if len(key) < 10:
         return None
     start = None

@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-26",
+  "rule": "No poem is published twice and no poem is given to two poets (test/literature_uniqueness_test.dart). Found by comparing every pair of readable records: 12 pairs shared at least half of the shorter record's lines, all of one poet each. Each was read on its pages. Two were one passage published in overlapping slices and are repaired to the whole passage (EXTRACTION_REVIEW_PHASE11_2026-09-26.json). The rest are below, with one found after those repairs (the excerpt's closing bayts quoted again on p. 50): fragments cut at a page break and reprints in another grade are retired into the record that prints the whole poem; one record that held four separate rubais keeps its own. Applied with tool/literature/resolve_duplicates.py.",
+  "decisions": [
+    {
+      "retire": "poem_savdo_a3233a9b43475aa3",
+      "into": "poem_savdo_0e818de8a05bfc6a",
+      "note": "grade 10, p. 273 prints the rest of the same ghazal («…бинишин», 11 bayts from p. 272); the record began at the page break"
+    },
+    {
+      "retire": "poem_qanoat_42da74c14583f944",
+      "into": "qanoat_mavj_dar_sahro_grade6_2014_p147_148",
+      "note": "grade 6, p. 148 prints the second half of the same poem «Мавҷ дар саҳро» (pp. 147-148); the record began mid-poem"
+    },
+    {
+      "retire": "poem_310a8288-d554-4b9c-9ad1-3273b1edce85_94593de70da82600",
+      "into": "03fc1fae-a91c-5081-95fb-d73cb6cc7b91",
+      "note": "grade 6, p. 143 prints the end of the same ghazal «Ватан вайрона…» (pp. 142-143); the record began at the page break"
+    },
+    {
+      "retire": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_cc1a0073ba9a5bf3",
+      "into": "poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_50ca45468dd21975",
+      "note": "grade 6, p. 47 continues the same story (pp. 45-47) with no heading; the record began at the page break"
+    },
+    {
+      "retire": "1d14d28a-1dd8-5751-8d82-754d231c2b92",
+      "into": "poem_tursunzoda_1f880ec9f4f8a133",
+      "variants": true,
+      "note": "grade 11, p. 166 reprints a passage of the same poem (grade 5, pp. 219-223)"
+    },
+    {
+      "retire": "6062130d-ad62-5009-ab9f-954d209ab54b",
+      "into": "poem_9debff75-8664-43ab-a7a9-ed1a4725f69b_4c05b6fcbeabf187",
+      "variants": true,
+      "note": "grade 9, p. 233 reprints a passage of the same story (grade 7, pp. 116-118)"
+    },
+    {
+      "retire": "226708d7-d89d-5a01-943c-0e39db4e7391",
+      "into": "03fc1fae-a91c-5081-95fb-d73cb6cc7b91",
+      "note": "grade 11, p. 112 reprints two bayts of the same ghazal (grade 6, pp. 142-143)"
+    },
+    {
+      "trim": "cd7a02a9-54cb-4d30-a915-a90a6fd9a2e9",
+      "stanzas": 1,
+      "note": "the record held four rubais printed on grade 8, p. 206; the other three («Ё Раб, ту гилам…», «Нокарда гунаҳ…», «Гӯянд: «Туро биҳишт…»») are published on their own, so it keeps its own rubai «Ман бода хурам…»"
+    },
+    {
+      "retire": "poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_df49023a75ecc484",
+      "into": "poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_0c60645b794593d5",
+      "note": "grade 7, p. 50 quotes the two bayts that close the «Кова ва Заҳҳок» excerpt (p. 40), now published whole"
+    }
+  ]
+}

@@ -28,9 +28,6 @@ class PoetDetailScreen extends ConsumerWidget {
 
     final authorAsync = ref.watch(authorByIdProvider(poetId));
     final worksAsync = ref.watch(worksByAuthorProvider(poetId));
-    final reviewWorksAsync = ref.watch(
-      worksUnderReviewByAuthorProvider(poetId),
-    );
     final canonAsync = ref.watch(schoolCanonByAuthorProvider(poetId));
 
     return Scaffold(
@@ -98,7 +95,6 @@ class PoetDetailScreen extends ConsumerWidget {
           return _PoetDetailContent(
             poet: poet,
             worksAsync: worksAsync,
-            reviewWorksAsync: reviewWorksAsync,
             canonAsync: canonAsync,
           );
         },
@@ -110,13 +106,11 @@ class PoetDetailScreen extends ConsumerWidget {
 class _PoetDetailContent extends ConsumerStatefulWidget {
   final LiteraryAuthor poet;
   final AsyncValue<List<LiteraryWork>> worksAsync;
-  final AsyncValue<List<LiteraryWork>> reviewWorksAsync;
   final AsyncValue<List<dynamic>> canonAsync;
 
   const _PoetDetailContent({
     required this.poet,
     required this.worksAsync,
-    required this.reviewWorksAsync,
     required this.canonAsync,
   });
 
@@ -129,7 +123,6 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
   Widget build(BuildContext context) {
     final poet = widget.poet;
     final worksAsync = widget.worksAsync;
-    final reviewWorksAsync = widget.reviewWorksAsync;
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final isPersian = lang == DisplayLanguage.persian;
@@ -150,17 +143,12 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
     final hasAuditableBiography = isPersian
         ? poet.hasAuditablePersianBiography
         : poet.hasAuditableTajikBiography;
-    final biographySourceLabel = poet.hasAuditableBiographySource
-        ? AppTranslations.get('lit_poet_bio_source_verified', lang)
-        : AppTranslations.get('lit_poet_bio_source_unverified', lang);
     final biographySourceBooks = LiteraryAuthorDisplayText.biographySourceBooks(
       poet.biographySource,
     );
-    final biographySourceText = poet.hasAuditableBiographySource
-        ? biographySourceBooks
-        : AppTranslations.translate('lit_poet_source_tag', lang, [
-            biographySourceBooks,
-          ]);
+    final showBiography =
+        (hasAuditableBiography && biography.trim().isNotEmpty) ||
+        (isPersian && poet.hasAuditableTajikBiography);
     final compactHeader = MediaQuery.sizeOf(context).width < 380;
 
     return CustomScrollView(
@@ -369,21 +357,15 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
                       ],
                     ),
                   ],
-                ] else if (!isPersian &&
-                    (poet.lifespan.isNotEmpty ||
-                        (poet.birthPlace?.isNotEmpty ?? false)))
-                  Text(
-                    AppTranslations.get('lit_poet_header_dates_pending', lang),
-                    style: QalamTypography.meta(
-                      color: colors.onSurfaceVariant,
-                      fontSize: 13,
-                    ),
-                  ),
+                ],
                 const SizedBox(height: 10),
                 // Poem count badge (readable works)
                 worksAsync.maybeWhen(
                   data: (works) {
                     final approvedCount = works.length;
+                    // No badge for a poet with no poem: the works section
+                    // says so in one line.
+                    if (approvedCount == 0) return const SizedBox.shrink();
                     return Wrap(
                       spacing: 8,
                       runSpacing: 8,
@@ -473,74 +455,80 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
                 const SizedBox(height: 20),
                 const Divider(height: 1),
                 const SizedBox(height: 24),
-                // Biography Section
-                Text(
-                  AppTranslations.get('lit_poet_biography', lang),
-                  style: QalamTypography.sectionTitle(
-                    color: colors.onSurface,
-                    fontSize: 22,
-                  ),
-                ),
-                const SizedBox(height: 14),
-                if (hasAuditableBiography && biography.trim().isNotEmpty)
-                  SelectableText(
-                    biography,
-                    textDirection: isPersian
-                        ? TextDirection.rtl
-                        : TextDirection.ltr,
-                    textAlign: isPersian ? TextAlign.right : TextAlign.left,
-                    style: QalamTypography.body(
-                      color: colors.onSurface,
-                      fontSize: 16,
-                      height: 1.75,
-                    ),
-                  )
-                else
+                // Biography, with the book it is copied from. A poet with no
+                // biography text shows none: the reader is never told about
+                // the team's pending page checks.
+                if (showBiography) ...[
                   Text(
-                    AppTranslations.get(
-                      isPersian && poet.hasAuditableTajikBiography
-                          ? 'lit_poet_bio_translation_pending'
-                          : 'lit_poet_bio_pending',
-                      lang,
-                    ),
-                    style: QalamTypography.bodySecondary(
-                      color: colors.onSurfaceVariant,
-                      fontSize: 15,
+                    AppTranslations.get('lit_poet_biography', lang),
+                    style: QalamTypography.sectionTitle(
+                      color: colors.onSurface,
+                      fontSize: 22,
                     ),
                   ),
-                const SizedBox(height: 16),
-                // Biography Source Box
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: colors.surfaceContainerHighest.withValues(
-                      alpha: 0.4,
-                    ),
-                    borderRadius: BorderRadius.circular(4),
-                    border: Border.all(
-                      color: colors.outlineVariant,
-                      width: 0.5,
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        biographySourceLabel,
-                        style: QalamTypography.meta(color: colors.primary),
+                  const SizedBox(height: 14),
+                  if (hasAuditableBiography && biography.trim().isNotEmpty)
+                    SelectableText(
+                      biography,
+                      textDirection: isPersian
+                          ? TextDirection.rtl
+                          : TextDirection.ltr,
+                      textAlign: isPersian ? TextAlign.right : TextAlign.left,
+                      style: QalamTypography.body(
+                        color: colors.onSurface,
+                        fontSize: 16,
+                        height: 1.75,
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        biographySourceText,
-                        style: QalamTypography.bodySecondary(
-                          color: colors.onSurfaceVariant,
-                          fontSize: 12,
+                    )
+                  else
+                    Text(
+                      AppTranslations.get(
+                        'lit_poet_bio_translation_pending',
+                        lang,
+                      ),
+                      style: QalamTypography.bodySecondary(
+                        color: colors.onSurfaceVariant,
+                        fontSize: 15,
+                      ),
+                    ),
+                  if (poet.hasAuditableBiographySource) ...[
+                    const SizedBox(height: 16),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: colors.surfaceContainerHighest.withValues(
+                          alpha: 0.4,
+                        ),
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(
+                          color: colors.outlineVariant,
+                          width: 0.5,
                         ),
                       ),
-                    ],
-                  ),
-                ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppTranslations.get(
+                              'lit_poet_bio_source_verified',
+                              lang,
+                            ),
+                            style: QalamTypography.meta(color: colors.primary),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            biographySourceBooks,
+                            style: QalamTypography.bodySecondary(
+                              color: colors.onSurfaceVariant,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ],
 
                 if (period.isNotEmpty) ...[
                   const SizedBox(height: 24),
@@ -630,16 +618,18 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
                 // Works Section Title
                 worksAsync.maybeWhen(
                   data: (works) => Text(
-                    AppTranslations.translate(
-                      'lit_poet_approved_works_header',
-                      lang,
-                      [
-                        AppTranslations.formatDigits(
-                          works.length.toString(),
-                          lang,
-                        ),
-                      ],
-                    ),
+                    works.isEmpty
+                        ? AppTranslations.get('lit_poet_works_header', lang)
+                        : AppTranslations.translate(
+                            'lit_poet_approved_works_header',
+                            lang,
+                            [
+                              AppTranslations.formatDigits(
+                                works.length.toString(),
+                                lang,
+                              ),
+                            ],
+                          ),
                     style: QalamTypography.sectionTitle(
                       color: colors.onSurface,
                       fontSize: 22,
@@ -659,8 +649,6 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
           ),
         ),
         PoetWorksSliver(poet: poet, worksAsync: worksAsync),
-        // Records still being checked come after the readable poems.
-        PoetReviewWorksSliver(reviewWorksAsync: reviewWorksAsync),
         PoetBooksSliver(poet: poet),
         const SliverToBoxAdapter(child: SizedBox(height: 48)),
       ],

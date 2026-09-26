@@ -206,6 +206,16 @@ class Phase8OptionsTest(unittest.TestCase):
         self.assertIsNone(twin['textTajik'])
         self.assertEqual(len(works), 3)
 
+    def test_a_candidate_named_in_replaces_is_repaired_not_merged_into_itself(self):
+        first = candidate('cand-1', 'Рӯзу шаб дар кӯча-кӯча дар ҷустуҷӯйи нон')
+        works = [published('x'), first]
+        added, _ = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,', replaces='cand-1')],
+            {'b': ['', PAGE]})
+        self.assertIs(added[0], first)
+        self.assertEqual(first['verification']['evidenceLevel'], 'primaryChecked')
+        self.assertEqual(len(first['textTajik'].split('\n')), 4)
+
     def test_a_candidate_from_another_page_is_not_promoted(self):
         far = candidate('far', 'Рӯзу шаб дар кӯча-кӯча дар ҷустуҷӯйи нон', page=90)
         works = [published('x'), far]
@@ -269,6 +279,20 @@ class Phase8OptionsTest(unittest.TestCase):
         self.assertFalse(excerpt['rights']['fullTextAllowed'])
         self.assertIn('c, p. 1', added[0]['editorialNotes'])
 
+    def test_a_fragment_cut_at_a_page_break_is_merged_with_its_own_note(self):
+        fragment = published('Пораҳо бар дӯш аз барги хазон бошад маро.')
+        fragment.update(id='fragment', authorId='sayyido')
+        works = [published('x'), fragment]
+        added, _ = publish(works, [block(
+            'Дар баҳор аз фоқа ранги заъфарон бошад маро,',
+            merges=['fragment'],
+            mergeNote='the rest of the same poem, cut at a page break')],
+            {'b': ['', PAGE]})
+        self.assertIn('the rest of the same poem, cut at a page break',
+                      fragment['editorialNotes'])
+        self.assertNotIn('prints the opening', fragment['editorialNotes'])
+        self.assertNotIn('Its opening is also printed', added[0]['editorialNotes'])
+
     def test_an_unknown_record_to_repair_is_reported(self):
         works = [published('x')]
         _, skipped = publish(works, [block(
@@ -293,7 +317,8 @@ class ShippedReviewTest(unittest.TestCase):
         self.assertTrue(paths)
         for path in paths:
             with open(path, encoding='utf-8') as f:
-                self._check(json.load(f)['blocks'], 50)
+                # A targeted review (Phase 11) may hold only a few blocks.
+                self._check(json.load(f)['blocks'], 0)
 
     def _check(self, blocks, least):
         self.assertGreater(len(blocks), least)

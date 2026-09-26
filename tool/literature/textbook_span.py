@@ -104,6 +104,22 @@ def _matches(line, wanted):
     return bool(key) and norm(clean_line(line)).startswith(key)
 
 
+def _lone_marker(rows, k):
+    """rows[k] is a footnote number alone on its line, with more verse (an
+    indented line that is not a footnote) after it on the page: the text
+    layer set the superscript apart; the page's footnotes come later."""
+    if not re.fullmatch(r'\s*\d{1,3}\s*', rows[k]):
+        return False
+    nxt = next((r for r in rows[k + 1:] if r.strip()), None)
+    return (nxt is not None and not _footnote_line.match(nxt.strip()) and
+            not _gloss_entry.match(nxt.strip()) and
+            len(nxt) - len(nxt.lstrip(' ')) >= 2)
+
+
+# A footnote's gloss under its number: «Пайк – қосид, мухбир, хабар, паём.»
+_gloss_entry = re.compile(r'^\S+(?:\s\S+){0,3}\s[–—-]\s\S')
+
+
 def take_span(pages, index, opening, closing, after=None, lenient=False):
     """((lines, first page, last page), None) or (None, reason).
 
@@ -128,7 +144,10 @@ def take_span(pages, index, opening, closing, after=None, lenient=False):
         rows = pages[page].split('\n')
         if page != index:
             verse_indent = None     # facing pages have their own margins
-        for line in rows[row:]:
+        rest = rows[row:]
+        for k, line in enumerate(rest):
+            if block and _lone_marker(rest, k):
+                continue                # a superscript set on a line of its own
             if block and _footnote_line.match(line.strip()):
                 break                   # the page's footnotes: go on overleaf
             if not line.strip():

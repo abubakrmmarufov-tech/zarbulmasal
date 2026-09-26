@@ -67,6 +67,37 @@ class ExtractTest(unittest.TestCase):
                          'Сояи тозиёнааш ба кафал.')
         self.assertEqual(clean_line('Соли 1938.'), 'Соли 1938.')
 
+    def test_footnote_markers_the_text_layer_glues_to_words_are_removed(self):
+        # In the gap between two words the superscript takes the space.
+        self.assertEqual(clean_line('Аз басити91марғзор афзун бувад.'),
+                         'Аз басити марғзор афзун бувад.')
+        self.assertEqual(clean_line('Бар афсонааш гашт наҳмор 27шод.'),
+                         'Бар афсонааш гашт наҳмор шод.')
+        self.assertEqual(clean_line('Мунъиме,6 к-ӯ дошт меҳмонро наку,'),
+                         'Мунъиме, к-ӯ дошт меҳмонро наку,')
+        self.assertEqual(clean_line('«Муъминам, «Янзур бинуриллаҳ» 112'),
+                         '«Муъминам, «Янзур бинуриллаҳ»')
+        self.assertEqual(clean_line('Нишаст аз бари бодпое 76 чу гард,'),
+                         'Нишаст аз бари бодпое чу гард,')
+
+    def test_a_digit_three_for_ze_is_read_as_ze(self):
+        self.assertEqual(clean_line('3-он чӣ бояд, набуд чизе кам.'),
+                         'З-он чӣ бояд, набуд чизе кам.')
+        self.assertEqual(clean_line('Дар синфи 3-юм хондем.'),
+                         'Дар синфи 3-юм хондем.')
+
+    def test_an_opening_with_a_footnote_marker_is_found(self):
+        page = ('                          ПАЙҒОМИ ДӮСТ\n'
+                '    Марҳабо, эй пайки1 муштоқон, бидеҳ пайғоми дӯст,\n'
+                '    То кунад ҷон аз сари рағбат фидои номи дӯст.\n'
+                '    Волаву шайдост доим ҳамчу булбул дар қафас,\n'
+                '    Тӯтии табъам зи ишқи шаккару бодоми дӯст.\n')
+        result = extract_poem(['', page],
+                              1, 'Марҳабо, эй пайки1 муштоқон, бидеҳ пайғоми дӯст,')
+        self.assertIsNotNone(result)
+        self.assertEqual(result[1][0],
+                         'Марҳабо, эй пайки муштоқон, бидеҳ пайғоми дӯст,')
+
     def test_the_date_under_a_poem_is_not_verse(self):
         page = VERSE + '        Соли 1938.\n'
         _, lines, _, _ = extract_poem(['', page], 1, 'Бихандад лола дар саҳро')

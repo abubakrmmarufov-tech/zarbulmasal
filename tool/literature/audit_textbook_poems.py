@@ -3,7 +3,9 @@
 Usage:
     python3 tool/literature/audit_textbook_poems.py <pages_dir> [<report.json>]
 
-For each work published with verificationMethod textbookPdfTextExtraction:
+For each work published with verificationMethod textbookPdfTextExtraction
+(and, for the text check only, every other readable record citing a
+textbook PDF):
   * text: every line of textTajik must be printed, verbatim after the
     legacy-font map and footnote-marker removal, on the cited pages
     (pageStart..pageEnd, printed numbers);
@@ -69,13 +71,26 @@ def printed_index(pages):
     return index
 
 
+_list_number = re.compile(r'^\s*\d{1,2}\.\s+')
+
+
 def page_lines(pages, first, last):
     lines = set()
     for i in range(max(first, 1), min(last, len(pages) - 1) + 1):
         for line in pages[i].split('\n'):
             if line.strip():
                 lines.add(norm(clean_line(line)))
+                # A numbered rubai («1. Гар бар сари…»): the number is a label.
+                lines.add(norm(clean_line(_list_number.sub('', line))))
     return lines
+
+
+def _readable_from_textbook(work):
+    """A readable record whose source is one of the textbook PDFs."""
+    source = work.get('primarySource') or {}
+    return (work['verification'].get('evidenceLevel') == 'primaryChecked' and
+            bool(work.get('textTajik')) and source.get('pageStart') is not None and
+            (source.get('sourceReference') or '').startswith('docs/literature/pdfs/'))
 
 
 def missing_lines(work, pages, index):
@@ -238,8 +253,9 @@ def audit(works, books, names, confirmed=frozenset()):
     checked = 0
     indexes = {book: printed_index(pages) for book, pages in books.items()}
     for work in works:
-        if work['verification'].get('verificationMethod') != \
-                'textbookPdfTextExtraction':
+        extracted = work['verification'].get('verificationMethod') == \
+            'textbookPdfTextExtraction'
+        if not (extracted or _readable_from_textbook(work)):
             continue
         book = os.path.basename(work['primarySource']['sourceReference'])[:-4]
         if book not in books:
@@ -250,6 +266,8 @@ def audit(works, books, names, confirmed=frozenset()):
         missing = missing_lines(work, pages, index)
         if missing:
             failures.append((work['id'], 'lines not on the cited pages', missing))
+        if not extracted:
+            continue      # older methods: the text check only
         prose = prose_lines(work, pages, index)
         if prose:
             failures.append((work['id'], 'prose lines inside the poem', prose))

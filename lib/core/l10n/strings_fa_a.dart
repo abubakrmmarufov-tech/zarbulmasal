@@ -496,10 +496,8 @@ const Map<String, String> persianStringsA = {
   'lit_poets_search_hint': 'جستجوی شاعر بر اساس نام یا دوره...',
   'lit_works_eyebrow': 'شعرها',
   'lit_works_title': 'آثار منظوم',
-  'lit_works_subtitle':
-      'غزل‌ها، رباعی‌ها و آثار منظومی که با چاپ‌های منبع مقابله شده‌اند',
+  'lit_works_subtitle': 'غزل‌ها، رباعی‌ها و شعرهای دیگر از کتاب‌های درسی',
   'lit_canon_eyebrow': 'برنامهٔ مکتبی',
   'lit_canon_title': 'برنامهٔ مکتبی',
-  'lit_canon_subtitle':
-      'فهرست منبع‌محورِ کتاب‌های درسی؛ هر ارجاع پس از سنجش صفحه تأیید می‌شود',
+  'lit_canon_subtitle': 'فهرست منبع‌محورِ کتاب‌های درسی',
 };

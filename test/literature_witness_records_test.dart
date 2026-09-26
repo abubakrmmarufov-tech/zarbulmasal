@@ -510,6 +510,31 @@ void main() {
           // (pp. 227–229).
           'poem_12fb0e82-f108-4e71-8207-74d0540639d3_3f89fb0bcd1bec1f':
               'poem_12fb0e82-f108-4e71-8207-74d0540639d3_f398887d5a62325b',
+          // Phase 11 (docs/literature/DUPLICATE_DECISIONS_2026-09-26.json):
+          // records that began at a page break or reprint a passage.
+          'poem_savdo_a3233a9b43475aa3': 'poem_savdo_0e818de8a05bfc6a',
+          'poem_qanoat_42da74c14583f944':
+              'qanoat_mavj_dar_sahro_grade6_2014_p147_148',
+          'poem_310a8288-d554-4b9c-9ad1-3273b1edce85_94593de70da82600':
+              '03fc1fae-a91c-5081-95fb-d73cb6cc7b91',
+          '226708d7-d89d-5a01-943c-0e39db4e7391':
+              '03fc1fae-a91c-5081-95fb-d73cb6cc7b91',
+          'poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_cc1a0073ba9a5bf3':
+              'poem_d5abab06-07e9-4247-b8a8-f4801b6a5be4_50ca45468dd21975',
+          '1d14d28a-1dd8-5751-8d82-754d231c2b92':
+              'poem_tursunzoda_1f880ec9f4f8a133',
+          '6062130d-ad62-5009-ab9f-954d209ab54b':
+              'poem_9debff75-8664-43ab-a7a9-ed1a4725f69b_4c05b6fcbeabf187',
+          'poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_df49023a75ecc484':
+              'poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_0c60645b794593d5',
+          // Phase 11 (EXTRACTION_REVIEW_PHASE11*_2026-09-26.json): later
+          // slices of one printed passage, merged into the whole passage.
+          'poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_5e2edd505d640318':
+              'poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_0c60645b794593d5',
+          'poem_0b0f1032-b36a-45e4-9930-8953b067db65_371a7394cb2ba4d7':
+              'poem_0b0f1032-b36a-45e4-9930-8953b067db65_83bde94854fee178',
+          '03d56810-7cb3-5151-8d66-55a3aab61893':
+              'poem_5633556b-df45-4cab-83dc-760016db1ef2_2aa3d620173da591',
         };
         for (final work in rejected) {
           final verification = work['verification'] as Map<String, dynamic>;

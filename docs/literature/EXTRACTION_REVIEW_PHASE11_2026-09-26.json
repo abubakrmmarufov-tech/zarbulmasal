@@ -1,0 +1,52 @@
+{
+ "about": "Phase 11 hand review (26 Sep 2026): readable records that held overlapping slices of one printed passage. Each passage was read on its pages; the record that opens it is repaired to the whole passage ('replaces', taken between 'opening' and 'closing' by textbook_span.take_span), and the record that held a later slice is merged into it ('merges', noted with 'mergeNote'). Published by tool/literature/publish_reviewed_blocks.py, which writes back 'recordIds'.",
+ "reviewedAt": "2026-09-26",
+ "blocks": [
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 33,
+   "page": 33,
+   "opening": "Яке мард буд андар он рӯзгор",
+   "closing": "Ҳамон беҳ, ки некӣ бувад ёдгор.",
+   "leadIn": "ДОСТОНИ «КОВА ВА ЗАҲҲОК»",
+   "chapterOf": "Абулқосими Фирдавсӣ",
+   "decision": "accept",
+   "authorId": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
+   "author": "Абулқосими Фирдавсӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "replaces": "poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_0c60645b794593d5",
+   "merges": [
+    "poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_5e2edd505d640318"
+   ],
+   "mergeNote": "pp. 34-35 of the same excerpt from «Шоҳнома», published on their own and overlapping the record that opens it",
+   "note": "The excerpt runs unbroken from p. 33 to the questions on p. 40; the two records held pp. 33-34 and 34-35, overlapping by 29 lines, and pp. 36-40 were not published.",
+   "recordIds": [
+    "poem_a6dd1c54-753d-4a52-8e5b-5365b7908aa3_0c60645b794593d5"
+   ]
+  },
+  {
+   "book": "adabiyot sinfi 7",
+   "pdfPage": 71,
+   "page": 71,
+   "opening": "Чун шунид он мурғ, к-он тӯтӣ чӣ кард,",
+   "closing": "Қиссаи тӯтиву хоҷа бозгӯ.",
+   "leadIn": "ШУНИДАНИ ТӮТӢ ҲАРАКАТИ ОН ТӮТИРО ВА МУРДАН ВА НАВҲАИ ХОҶА БАР Ӯ",
+   "chapterOf": "Ҷалолуддини Балхӣ",
+   "decision": "accept",
+   "authorId": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "author": "Ҷалолуддини Балхӣ",
+   "reason": "printed under the poet's own title in the chapter",
+   "heading": true,
+   "replaces": "poem_0b0f1032-b36a-45e4-9930-8953b067db65_83bde94854fee178",
+   "merges": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_371a7394cb2ba4d7"
+   ],
+   "mergeNote": "the continuation of the same section on pp. 72-73, published on its own and overlapping it",
+   "note": "The section runs from p. 71 to «Қиссаи тӯтиву хоҷа бозгӯ.» on p. 73, before the heading «БЕРУН АНДОХТАНИ МАРДИ ТОҶИР…»; its record stopped mid-bayt on p. 72 and the next record repeated 35 of its lines.",
+   "recordIds": [
+    "poem_0b0f1032-b36a-45e4-9930-8953b067db65_83bde94854fee178"
+   ]
+  }
+ ]
+}

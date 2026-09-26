@@ -42,17 +42,15 @@ void main() {
     );
 
     testWidgets(
-      'LiteratureHubScreen reports page-cited works still under review',
+      'LiteratureHubScreen never reports records still under review',
       (tester) async {
         await pumpTestApp(
           tester,
           route: '/literature',
           works: [testReviewWork],
         );
-        expect(
-          find.text('Сабтҳои саҳифадори асар дар санҷиш: 1'),
-          findsOneWidget,
-        );
+        expect(find.textContaining('дар санҷиш'), findsNothing);
+        expect(find.textContaining('саҳифадор'), findsNothing);
       },
     );
 
@@ -243,18 +241,11 @@ void main() {
         authors: [uncited],
       );
 
+      // Neither the facts nor a note about the team's pending page checks.
       expect(find.text('858 – 941'), findsNothing);
-      expect(
-        find.text(
-          'Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма дар интизоранд.',
-        ),
-        findsOneWidget,
-      );
       expect(find.text('Маълумоти воридотии санҷиданашуда.'), findsNothing);
-      expect(
-        find.text('Сарчашмаи саҳифадори санҷидашуда сабт нашудааст:'),
-        findsOneWidget,
-      );
+      expect(find.textContaining('санҷиш'), findsNothing);
+      expect(find.textContaining('саҳифадор'), findsNothing);
     });
 
     testWidgets('PoetDetailScreen renders works by author', (tester) async {
@@ -269,97 +260,57 @@ void main() {
       expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
     });
 
-    testWidgets(
-      'PoetDetailScreen collapses pending work list and reveals titles with citations on expand',
-      (tester) async {
-        final pendingWork = testWorkRudaki.copyWith(
-          id: 'rudaki-pending-textbook-work',
-          title: 'Модар',
-          textStatus: TextStatus.needsReview,
-          textTajik: 'Ин матн то санҷиш дастрас нест.',
-          rights: const RightsRecord(
-            status: RightsStatus.excerptOnly,
-            reasoning: 'Pending rights review',
-            fullTextAllowed: false,
-            excerptAllowed: true,
-          ),
-          primarySource: testWorkRudaki.primarySource!.copyWith(
-            pageStart: 216,
-            pageEnd: 216,
-            sourceReference: 'docs/literature/pdfs/review.pdf',
-          ),
-          verification: const VerificationRecord(
-            evidenceLevel: VerificationLevel.needsReview,
-          ),
-        );
-        final pendingNoPageWork = pendingWork.copyWith(
-          id: 'rudaki-pending-no-page',
-          title: 'Асари бе саҳифа',
-          primarySource: const SourceEdition(
-            bookTitle: 'Адабиёти тоҷик',
-            publisher: 'Маориф',
-            city: 'Душанбе',
-            year: '2018',
-            sourceType: SourceEditionType.officialTextbook,
-          ),
-        );
+    testWidgets('PoetDetailScreen never lists records still under review', (
+      tester,
+    ) async {
+      final pendingWork = testWorkRudaki.copyWith(
+        id: 'rudaki-pending-textbook-work',
+        title: 'Модар',
+        textStatus: TextStatus.needsReview,
+        textTajik: 'Ин матн то санҷиш дастрас нест.',
+        rights: const RightsRecord(
+          status: RightsStatus.excerptOnly,
+          reasoning: 'Pending rights review',
+          fullTextAllowed: false,
+          excerptAllowed: true,
+        ),
+        primarySource: testWorkRudaki.primarySource!.copyWith(
+          pageStart: 216,
+          pageEnd: 216,
+          sourceReference: 'docs/literature/pdfs/review.pdf',
+        ),
+        verification: const VerificationRecord(
+          evidenceLevel: VerificationLevel.needsReview,
+        ),
+      );
+      final pendingNoPageWork = pendingWork.copyWith(
+        id: 'rudaki-pending-no-page',
+        title: 'Асари бе саҳифа',
+        primarySource: const SourceEdition(
+          bookTitle: 'Адабиёти тоҷик',
+          publisher: 'Маориф',
+          city: 'Душанбе',
+          year: '2018',
+          sourceType: SourceEditionType.officialTextbook,
+        ),
+      );
 
-        await pumpTestApp(
-          tester,
-          route: '/literature/poet/rudaki',
-          works: [pendingWork, pendingNoPageWork],
-        );
+      await pumpTestApp(
+        tester,
+        route: '/literature/poet/rudaki',
+        works: [pendingWork, pendingNoPageWork],
+      );
 
-        expect(find.text('Осор барои хондан (0)'), findsOneWidget);
-        expect(find.text('Сабтҳои асар дар санҷиш: 2'), findsOneWidget);
-        expect(
-          find.text(
-            '1 сабти дигар то пайдо шудани истиноди саҳифадор дар рӯйхат нишон дода намешавад.',
-          ),
-          findsOneWidget,
-        );
-
-        // The under-review list is collapsed by default; pending titles are
-        // withheld until the count-labeled header is expanded.
-        expect(find.text('Модар'), findsNothing);
-        expect(find.text('Асари бе саҳифа'), findsNothing);
-
-        await tester.scrollUntilVisible(
-          find.text('Сабтҳои асар дар санҷиш: 2'),
-          300,
-          scrollable: find.byType(Scrollable).first,
-        );
-        await tester.tap(find.text('Сабтҳои асар дар санҷиш: 2'));
-        await tester.pumpAndSettle();
-
-        await tester.scrollUntilVisible(
-          find.text('Модар'),
-          300,
-          scrollable: find.byType(Scrollable).first,
-        );
-        expect(find.text('Модар'), findsOneWidget);
-        expect(find.text('Асари бе саҳифа'), findsNothing);
-        expect(
-          find.textContaining(
-            'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
-          ),
-          findsOneWidget,
-        );
-        expect(find.text('Осори Рӯдакӣ (1958)'), findsOneWidget);
-        expect(find.textContaining('с. 216'), findsNothing);
-
-        await tester.scrollUntilVisible(
-          find.text('Модар'),
-          -300,
-          scrollable: find.byType(Scrollable).first,
-        );
-        await tester.tap(find.text('Модар'));
-        await tester.pumpAndSettle();
-        expect(find.byType(PoemReaderScreen), findsOneWidget);
-        expect(find.text('Асар дар санҷиш аст'), findsOneWidget);
-        expect(find.text('Ин матн то санҷиш дастрас нест.'), findsNothing);
-      },
-    );
+      // The records stay in the data for the team; readers see one line.
+      expect(find.text('Модар'), findsNothing);
+      expect(find.text('Асари бе саҳифа'), findsNothing);
+      expect(find.textContaining('дар санҷиш'), findsNothing);
+      expect(find.textContaining('саҳифадор'), findsNothing);
+      expect(
+        find.text('Дар китобҳои дарсӣ шеъре аз ӯ чоп нашудааст.'),
+        findsOneWidget,
+      );
+    });
 
     testWidgets(
       'WorksListScreen renders list of approved works and navigates to reader',
@@ -596,7 +547,8 @@ void main() {
       expect(find.text('СИНФИ 5'), findsOneWidget);
       // The book, grade and year only: no publisher, authors or evidence.
       expect(find.text('Адабиёти тоҷик, синфи 5 (2018)'), findsOneWidget);
-      expect(find.text('Истинод дар санҷиш'), findsOneWidget);
+      // An entry whose citation is not checked yet carries no tag.
+      expect(find.textContaining('дар санҷиш'), findsNothing);
       expect(find.textContaining('Маориф'), findsNothing);
       expect(find.textContaining('Т. Зиёев'), findsNothing);
       expect(find.text('Барномаи таълимӣ барои синфи 5'), findsNothing);
@@ -641,85 +593,44 @@ void main() {
       expect(find.byTooltip('Пок кардани ҷустуҷӯ'), findsOneWidget);
     });
 
-    testWidgets(
-      'LiteratureSearchScreen keeps readable works primary and hides pending behind review header',
-      (tester) async {
-        await pumpTestApp(
-          tester,
-          route: '/literature/search',
-          works: [testWorkRudaki, testReviewWork],
-        );
+    testWidgets('LiteratureSearchScreen shows readable works only', (
+      tester,
+    ) async {
+      await pumpTestApp(
+        tester,
+        route: '/literature/search',
+        works: [testWorkRudaki, testReviewWork],
+      );
 
-        // A readable match stays in the primary works section, unchanged.
-        await tester.enterText(find.byType(TextField), 'Мӯлиён');
-        await tester.pumpAndSettle();
-        expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
-        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
-        expect(find.text('Сабтҳои асар дар санҷиш: 1'), findsNothing);
+      await tester.enterText(find.byType(TextField), 'Мӯлиён');
+      await tester.pumpAndSettle();
+      expect(find.text('Бӯи ҷӯи Мӯлиён'), findsOneWidget);
+      expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
 
-        // A review-only match must not look like a dead end: a compact
-        // readable-empty note plus the collapsed count-labeled review header.
-        await tester.enterText(find.byType(TextField), 'Сабти');
-        await tester.pumpAndSettle();
-        expect(find.text('Мундариҷа ёфт нашуд'), findsNothing);
-        expect(
-          find.textContaining('шеъри хондашаванда ёфт нашуд'),
-          findsOneWidget,
-        );
-        expect(find.text('Сабтҳои асар дар санҷиш: 1'), findsOneWidget);
-        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
-      },
-    );
+      // A record still being checked is not a result.
+      await tester.enterText(find.byType(TextField), 'Сабти');
+      await tester.pumpAndSettle();
+      expect(find.text('Мундариҷа ёфт нашуд'), findsOneWidget);
+      expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
+      expect(find.textContaining('дар санҷиш'), findsNothing);
+    });
 
-    testWidgets(
-      'LiteratureSearchScreen expanding the review header reveals pending rows and routes to pending reader',
-      (tester) async {
-        await pumpTestApp(
-          tester,
-          route: '/literature/search',
-          works: [testWorkRudaki, testReviewWork],
-        );
+    testWidgets('LiteratureSearchScreen finds no pending record in Persian', (
+      tester,
+    ) async {
+      await pumpTestApp(
+        tester,
+        route: '/literature/search',
+        works: [testReviewWork],
+        language: DisplayLanguage.persian,
+      );
 
-        await tester.enterText(find.byType(TextField), 'Сабти');
-        await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'Сабти');
+      await tester.pumpAndSettle();
 
-        await tester.tap(find.text('Сабтҳои асар дар санҷиш: 1'));
-        await tester.pumpAndSettle();
-
-        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsOneWidget);
-        expect(
-          find.textContaining(
-            'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
-          ),
-          findsOneWidget,
-        );
-        expect(find.text('Адабиёти тоҷик, синфи 9 (2026)'), findsOneWidget);
-        expect(find.textContaining('с. 12'), findsNothing);
-
-        await tester.tap(find.text('Сабти санҷишии Рӯдакӣ'));
-        await tester.pumpAndSettle();
-        expect(find.byType(PoemReaderScreen), findsOneWidget);
-        expect(find.text('Асар дар санҷиш аст'), findsOneWidget);
-      },
-    );
-
-    testWidgets(
-      'LiteratureSearchScreen review header localizes count in Persian',
-      (tester) async {
-        await pumpTestApp(
-          tester,
-          route: '/literature/search',
-          works: [testReviewWork],
-          language: DisplayLanguage.persian,
-        );
-
-        await tester.enterText(find.byType(TextField), 'Сабти');
-        await tester.pumpAndSettle();
-
-        expect(find.text('محتوا یافت نشد'), findsNothing);
-        expect(find.text('رکوردهای آثار در بررسی: ۱'), findsOneWidget);
-        expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
-      },
-    );
+      expect(find.text('محتوا یافت نشد'), findsOneWidget);
+      expect(find.textContaining('در بررسی'), findsNothing);
+      expect(find.text('Сабти санҷишии Рӯдакӣ'), findsNothing);
+    });
   });
 }

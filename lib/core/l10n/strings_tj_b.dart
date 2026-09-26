@@ -50,7 +50,7 @@ const Map<String, String> tajikStringsB = {
   'explore_poets_title': 'Шоирон ва нависандагон',
   'explore_poets_sub': 'Зиндагинома ва осор',
   'explore_works_title': 'Шеърҳо ва китобҳо',
-  'explore_works_sub': 'Шеърҳое, ки бо нашри чопӣ муқобала шудаанд',
+  'explore_works_sub': 'Шеърҳо аз китобҳои дарсии адабиёт',
   'explore_school_title': 'Адабиёти мактабӣ',
   'explore_school_sub': 'Барномаи таълимии синфҳои 5–11',
   'explore_hub_title': 'Маркази мероси адабӣ',
@@ -153,7 +153,6 @@ const Map<String, String> tajikStringsB = {
   'lit_canon_empty_title': 'Барномаи таълимӣ ёфт нашуд',
   'lit_subject_tajik': 'Адабиёти тоҷик',
   'lit_subject_reading': 'Хониши адабӣ',
-  'lit_source_pending': 'Истинод дар санҷиш',
 
   // Literature Hub
   'lit_hub_loading_works': 'Осори санҷидашуда боргирӣ мешаванд...',
@@ -165,10 +164,7 @@ const Map<String, String> tajikStringsB = {
       'Номҳо, давлатҳо ва шеърҳои китобҳои синфҳои 5–11',
   'lit_hub_poets_count': 'Зиндагинома ва осори \${0} шоир ва адиби бузург',
   'lit_hub_works_count':
-      'Ғазалҳо, қасидаҳо ва рубоиҳои бо сарчашма муқобалашуда (\${0} асар)',
-  'lit_hub_works_under_review':
-      'Ғазалҳо, қасидаҳо ва рубоиҳо аз сарчашмаҳои китобӣ',
-  'lit_hub_review_works_count': 'Сабтҳои саҳифадори асар дар санҷиш: \${0}',
+      'Ғазалҳо, қасидаҳо ва рубоиҳо аз китобҳои дарсӣ (\${0} асар)',
   'lit_hub_school_canon_count':
       'Осори шомил ба барномаи таълимии мактабҳо (\${0} асар)',
   'lit_hub_oral_count':
@@ -178,30 +174,16 @@ const Map<String, String> tajikStringsB = {
   'lit_hub_read_work': 'Мутолиаи асар',
 
   // Poet Detail
-  'lit_poet_header_dates_pending':
-      'Санаҳо ва зодгоҳ то санҷиши саҳифаи сарчашма дар интизоранд.',
   'lit_poet_approved_works_count': 'Шеърҳо барои хондан: \${0}',
   'lit_poet_review_works_count': 'Сабтҳо таҳти санҷиш: \${0}',
-  'lit_poet_bio_pending':
-      'Матни тарҷумаиҳолӣ то сабт ва санҷиши истиноди саҳифадор дастрас нест.',
   'lit_poet_explore_world': 'Ҷаҳони ӯро бишносед',
   'lit_poet_explore_world_sub':
       'Давлатҳо, чеҳраҳо ва воқеаҳои таърихии ҳамзамон дар таърихи халқи тоҷик',
   'lit_poet_approved_works_header': 'Осор барои хондан (\${0})',
-  'lit_poet_works_in_review_label': 'Сабтҳои асар дар санҷиш: \${0}',
-  'lit_poet_review_unlinked':
-      '\${0} сабти дигар то пайдо шудани истиноди саҳифадор дар рӯйхат нишон дода намешавад.',
-  'lit_poet_works_review_desc':
-      'Матнҳои осори ин шоир дар марҳилаи муқобала ва санҷиши сарчашмаҳо қарор доранд.',
   'lit_poet_bio_source_verified': 'Сарчашмаи истинод:',
-  'lit_poet_bio_source_unverified':
-      'Сарчашмаи саҳифадори санҷидашуда сабт нашудааст:',
   'lit_poet_bio_translation_pending':
       'Тарҷумаи форсии ин зиндагинома ҳанӯз санҷида нашудааст; матни тоҷикӣ намоиш дода намешавад.',
-  'lit_poet_source_tag': 'Барчаспи воридотӣ: \${0}',
   'lit_poet_composition_year': 'Таълиф: \${0}',
-  'lit_poet_work_in_review_sub':
-      'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
 
   // Poem Reader
   'lit_page_image': 'Тасвири саҳифа',
@@ -332,12 +314,8 @@ const Map<String, String> tajikStringsB = {
   // Literature Search
   'lit_search_suggestions': 'Пешниҳодҳои ҷустуҷӯ:',
   'lit_search_no_results_for': 'Бо вожаи «\${0}» шоир ё асаре ёфт нашуд.',
-  'lit_search_dates_pending': 'Санаҳо дар санҷиш',
   'lit_search_poets_section': 'Шоирон',
   'lit_search_works_section': 'Шеърҳо ва осор',
-  'lit_search_review_show_tooltip': 'Нишон додани сабтҳои дар санҷиш',
-  'lit_search_review_hide_tooltip': 'Пинҳон кардани сабтҳои дар санҷиш',
-  'lit_search_readable_empty': 'Барои «\${0}» шеъри хондашаванда ёфт нашуд.',
 
   // Poets & Works Lists
   'lit_poets_error_title': 'Хато ҳангоми боргирии шоирон',
@@ -523,4 +501,5 @@ const Map<String, String> tajikStringsB = {
   'settings_text_sample_label': 'Намунаи андозаи матн',
   'hist_grade_no_catalog_title':
       'Барои синфи \${0} феҳристи муфассал ҳоло дастрас нест',
+  'lit_poet_no_textbook_poem': 'Дар китобҳои дарсӣ шеъре аз ӯ чоп нашудааст.',
 };

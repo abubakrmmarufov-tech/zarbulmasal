@@ -44,6 +44,36 @@ class TakeSpanTest(unittest.TestCase):
         self.assertNotIn('1 Бача – писар.', taken[0])
         self.assertEqual(len(taken[0]), 5)
 
+    def test_a_lone_footnote_number_between_verse_lines_is_not_the_foot(self):
+        page = ('             РАСИДАНИ КАРК\n'
+                '       Карк ин сухан зи фил шуниду қадам ниҳод,\n'
+                '              231\n'
+                '\n'
+                '       Сар то ба пой чину гиреҳ карда абрувон.\n'
+                '       Хартум нест он, ки ба ӯ фахр мекунӣ,\n'
+                '       Андохта ба биният айём ресмон...\n'
+                '231 Карк – ҳайвонест.\n')
+        taken, why = take_span(['', page], 1,
+                               'Карк ин сухан зи фил шуниду қадам ниҳод,',
+                               'Андохта ба биният айём ресмон...')
+        self.assertIsNone(why)
+        self.assertEqual(len([l for l in taken[0] if l]), 4)
+        self.assertNotIn('231', taken[0])
+
+    def test_a_footnote_number_over_its_gloss_is_the_foot(self):
+        page = ('    Марҳабо, эй пайки муштоқон, бидеҳ пайғоми дӯст,\n'
+                '    То кунад ҷон аз сари рағбат фидои номи дӯст.\n'
+                '1\n'
+                '  Пайк – қосид, мухбир, хабар, паём.\n'
+                '                                   99\n')
+        page2 = ('    Волаву шайдост доим ҳамчу булбул дар қафас,\n'
+                 '    Тӯтии табъам зи ишқи шаккару бодоми дӯст.\n')
+        taken, why = take_span(['', page, page2], 1,
+                               'Марҳабо, эй пайки муштоқон, бидеҳ пайғоми дӯст,',
+                               'Тӯтии табъам зи ишқи шаккару бодоми дӯст.')
+        self.assertIsNone(why)
+        self.assertEqual(len([l for l in taken[0] if l]), 4)
+
     def test_stars_between_stanzas_become_a_stanza_break(self):
         page = PAGE_A.replace('Дили ман', '                ***\nДили ман')
         taken, _ = take_span(['', page], 1,

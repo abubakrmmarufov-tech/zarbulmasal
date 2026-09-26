@@ -500,12 +500,10 @@ const Map<String, String> tajikStringsA = {
   'lit_poets_search_hint': 'Ҷустуҷӯи шоир аз рӯи ном ё давр...',
   'lit_works_eyebrow': 'ШЕЪРҲО',
   'lit_works_title': 'Осори манзум',
-  'lit_works_subtitle':
-      'Ғазалҳо, рубоиҳо ва осори манзуме, ки бо нашрҳои чопӣ муқобала шудаанд',
+  'lit_works_subtitle': 'Ғазалҳо, рубоиҳо ва дигар шеърҳо аз китобҳои дарсӣ',
   'lit_canon_eyebrow': 'БАРНОМАИ МАКТАБӢ',
   'lit_canon_title': 'Барномаи мактабӣ',
-  'lit_canon_subtitle':
-      'Феҳристи сарчашмабунёди китобҳои дарсӣ; ҳар истинод баъд аз санҷиши саҳифа тасдиқ мешавад',
+  'lit_canon_subtitle': 'Феҳристи сарчашмабунёди китобҳои дарсӣ',
   'lit_oral_eyebrow': 'МЕРОСИ ШИФОҲӢ',
   'lit_oral_title': 'Мероси шифоҳӣ',
   'lit_oral_subtitle':

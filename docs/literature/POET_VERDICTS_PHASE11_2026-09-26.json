@@ -1,0 +1,2328 @@
+{
+ "date": "2026-09-26",
+ "phase": 11,
+ "sources": {
+  "textbookPdfs": "docs/literature/pdfs/*.pdf (MANIFEST.json), dumped page by page with pdftotext -layout",
+  "maorifTj": "maorif.tj textbook PDFs downloaded for this check only: grade 5 (2025), 6 (2022), 7 (2025), 9 (2023), 10 (2021, 2025), 11 (2025)"
+ },
+ "verdicts": {
+  "poems added": "the permitted books print verse of the poet that is now published",
+  "no further poem found": "the poet has readable poems and the permitted books print no other publishable verse; the needsReview records are extraction candidates that are not poems (reasons given)",
+  "not found in the permitted books": "the permitted books print no publishable poem of the poet"
+ },
+ "reviews": [
+  "docs/literature/EXTRACTION_REVIEW_PHASE11_2026-09-26.json",
+  "docs/literature/EXTRACTION_REVIEW_PHASE11_ROUND2_2026-09-26.json",
+  "docs/literature/DUPLICATE_DECISIONS_2026-09-26.json",
+  "docs/literature/TEXT_CORRECTIONS_2026-09-26.json",
+  "docs/literature/VERSE_MARKS_2026-09-26.json"
+ ],
+ "poets": [
+  {
+   "id": "9debff75-8664-43ab-a7a9-ed1a4725f69b",
+   "name": "Абдурраҳмони Ҷомӣ",
+   "verdict": "poems added",
+   "readableBefore": 65,
+   "readable": 67,
+   "added": [
+    "«Қиссаи куланге, ки ҳаваси шикори кабӯтар карду худ шикори дигаре шуд» (grade 7, pp. 119-121)",
+    "«Зи анфосатон гашт ҳал мушкилам» (grade 9, p. 244)",
+    "«Наёяд хушам фарру иқболи ту» (grade 9, p. 252)"
+   ],
+   "extended": [],
+   "merged": [
+    "«Ин чӣ шоҳию мамлакатдорист»"
+   ],
+   "needsReview": 172,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 144,
+    "a single bayt or less": 14,
+    "the title is a line of prose": 10,
+    "the verse is already published": 2,
+    "the lead-in names another poet": 1,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "a6dd1c54-753d-4a52-8e5b-5365b7908aa3",
+   "name": "Абулқосими Фирдавсӣ",
+   "verdict": "poems added",
+   "readableBefore": 71,
+   "readable": 70,
+   "added": [
+    "«Расидани Суҳроб ба Дижи сафед» (grade 7, pp. 41-42)"
+   ],
+   "extended": [
+    "«Достони «Кова ва Заҳҳок»» (grade 7, pp. 33-40)"
+   ],
+   "merged": [
+    "«Чунон буд, к-Иблис рӯзе пагоҳ»",
+    "«Биё, то ҷаҳонро ба бад наспарем»"
+   ],
+   "needsReview": 170,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 108,
+    "no source": 46,
+    "a single bayt or less": 9,
+    "the title is a line of prose": 3,
+    "title too short to find on the page": 3,
+    "curated record awaiting its own review": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "455f0420-3834-48f0-86b9-7da673a2a684",
+   "name": "Бедил",
+   "verdict": "poems added",
+   "readableBefore": 27,
+   "readable": 29,
+   "added": [
+    "«Ай шамъи базми қудс, надонам, чӣ мазҳарӣ» (grade 10, p. 134)",
+    "«Маоли кор нуқсонҳост ҳар соҳибкамолиро» (grade 10, p. 127)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 86,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 77,
+    "the title is a line of prose": 6,
+    "a single bayt or less": 3
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "be19709e-c3af-460d-80b9-4c67046e8be3",
+   "name": "Боботоҳири Урён",
+   "verdict": "poems added",
+   "readableBefore": 12,
+   "readable": 14,
+   "added": [
+    "«Та, ки нӯшам наӣ, нешам чароӣ» (grade 8, p. 151)",
+    "«Му, ки сар дар биёбунум шаву рӯз» (grade 8, p. 153)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 17,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 8,
+    "a single bayt or less": 5,
+    "the title is a line of prose": 2,
+    "the verse is already published": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "ef0f434c-c5a7-4cdd-b13a-35f999319fbf",
+   "name": "Камолиддин Биноӣ",
+   "verdict": "poems added",
+   "readableBefore": 27,
+   "readable": 28,
+   "added": [
+    "«В-он ки кибр оварад зи илму ҳунар» (grade 9, p. 302)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 63,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 28,
+    "no source": 20,
+    "a single bayt or less": 5,
+    "the title is a line of prose": 5,
+    "the verse is already published": 4,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "b2c3d4e5-c6d7-4e8f-9a0b-1c2d3e4f5a6b",
+   "name": "Муҳаммад Авфии Бухороӣ",
+   "verdict": "poems added",
+   "readableBefore": 0,
+   "readable": 1,
+   "added": [
+    "«Эй шоҳ, ба базл баҳру кони дигарӣ» (grade 9, p. 117)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 84,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 58,
+    "the title is a line of prose": 12,
+    "a single bayt or less": 10,
+    "verse found; not yet reviewed": 2,
+    "title too short to find on the page": 1,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "c",
+   "note": "«Ҷавомеъ-ул-ҳикоёт», prose; the verse inside his tales is not attributed (grade 6, pp. 80–89; grade 9, pp. 116–126). Phase 11 rejected: «Афлотунро гуфтанд» (grade 6, p. 86): prose: a tale in prose, not verse."
+  },
+  {
+   "id": "d5abab06-07e9-4247-b8a8-f4801b6a5be4",
+   "name": "Низомии Ганҷавӣ",
+   "verdict": "poems added",
+   "readableBefore": 50,
+   "readable": 51,
+   "added": [
+    "«Буд курде зи меҳтарони бузург» (grade 6, pp. 52-57)",
+    "«Аз некуию аз латофату рой» (grade 6, pp. 62-64)"
+   ],
+   "extended": [],
+   "merged": [
+    "«Бурданд муваккилони роҳаш»"
+   ],
+   "needsReview": 153,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 134,
+    "a single bayt or less": 8,
+    "the verse is already published": 5,
+    "title too short to find on the page": 2,
+    "the title is a line of prose": 2,
+    "no source": 1,
+    "withdrawn or title only after attribution review": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "47c1dc67-363a-4506-8a9c-bbbb38f98d20",
+   "name": "Садриддин Айнӣ",
+   "verdict": "poems added",
+   "readableBefore": 9,
+   "readable": 11,
+   "added": [
+    "«Эй қуввати ҷисму қути ҷонам» (grade 11, p. 71)",
+    "«Ин боғ зи нахли куҳан оростаам» (grade 11, p. 89)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 249,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 234,
+    "the title is a line of prose": 11,
+    "a single bayt or less": 3,
+    "verse found; not yet reviewed": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "5633556b-df45-4cab-83dc-760016db1ef2",
+   "name": "Саййидои Насафӣ",
+   "verdict": "poems added",
+   "readableBefore": 35,
+   "readable": 36,
+   "added": [
+    "«Расидани шер» (grade 7, pp. 171-172)",
+    "«Расидани карк» (grade 7, p. 171)"
+   ],
+   "extended": [],
+   "merged": [
+    "«Эй сахтрӯю сустқадам, чобукӣ макун»"
+   ],
+   "needsReview": 102,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 88,
+    "a single bayt or less": 7,
+    "the verse is already published": 3,
+    "the title is a line of prose": 3,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Phase 11 rejected: «Арбоби ҷудро кафи гавҳарфишон намонд» (grade 10, p. 79): example: quoted to show the mukhammas form, with Соиб's hemistichs inside."
+  },
+  {
+   "id": "3ec91317-fcfe-4960-9ca0-fd87f3e96875",
+   "name": "Саъдӣ",
+   "verdict": "poems added",
+   "readableBefore": 56,
+   "readable": 58,
+   "added": [
+    "«Дар ақсои олам бигаштам басе» (grade 9, p. 16)",
+    "«Ба рӯзи ҳумоюну соли саид» (grade 9, p. 27)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 228,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 199,
+    "a single bayt or less": 14,
+    "no source": 10,
+    "the title is a line of prose": 4,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "121ce628-ff4b-44d2-a702-81db93040dee",
+   "name": "Соибои Исфаҳонӣ",
+   "verdict": "poems added",
+   "readableBefore": 11,
+   "readable": 12,
+   "added": [
+    "«Татаббуи сухани кас накардаам ҳаргиз» (grade 10, p. 97)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 47,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 36,
+    "the title is a line of prose": 8,
+    "a single bayt or less": 3
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "6ab9cd0a-0ff0-4a73-99ba-6604d9c61847",
+   "name": "Шоҳин",
+   "verdict": "poems added",
+   "readableBefore": 21,
+   "readable": 22,
+   "added": [
+    "«Сад шукр, ки шуд пазира ин ганҷ» (grade 10, p. 296)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 51,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 46,
+    "a single bayt or less": 3,
+    "the title is a line of prose": 1,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Phase 11 rejected: «Эй дидаи дудмони исмат » (grade 10, p. 296): elegy: a lament for the poet's wife."
+  },
+  {
+   "id": "d1abb54a-9804-4baf-b238-fd2203d7673e",
+   "name": "Ҳофиз",
+   "verdict": "poems added",
+   "readableBefore": 20,
+   "readable": 23,
+   "added": [
+    "«Пайғоми дӯст» (grade 6, p. 99)",
+    "«Зи дасти кӯтаҳи худ зери борам» (grade 6, pp. 99-100)",
+    "«Айби риндон макун, эй зоҳиди покизасиришт» (grade 9, p. 176)"
+   ],
+   "extended": [],
+   "merged": [],
+   "needsReview": 88,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 63,
+    "a single bayt or less": 9,
+    "the verse is already published": 9,
+    "the title is a line of prose": 3,
+    "no source": 2,
+    "title too short to find on the page": 1,
+    "the lead-in introduces folk verse, an elegy, a translation or an example": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "0b0f1032-b36a-45e4-9930-8953b067db65",
+   "name": "Ҷалолуддини Балхӣ",
+   "verdict": "poems added",
+   "readableBefore": 49,
+   "readable": 49,
+   "added": [
+    "«Паркандагӣ аз нифоқ хезад» (grade 9, p. 71)"
+   ],
+   "extended": [
+    "«Шунидани тӯтӣ ҳаракати он тӯтиро ва мурдан ва навҳаи хоҷа бар ӯ» (grade 7, pp. 71-73)"
+   ],
+   "merged": [
+    "«Ай дареғо, мурғи хушпарвози ман»"
+   ],
+   "needsReview": 192,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 170,
+    "a single bayt or less": 7,
+    "the title is a line of prose": 6,
+    "the verse is already published": 4,
+    "title too short to find on the page": 4,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "310a8288-d554-4b9c-9ad1-3273b1edce85",
+   "name": "А. Лоҳутӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 21,
+   "readable": 19,
+   "added": [],
+   "extended": [],
+   "merged": [
+    "«Вакил аз хидмати миллат тағофул мекунад амдан»",
+    "«Ватанро фитнаи маснаднишинон дод бар душман»"
+   ],
+   "needsReview": 89,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 72,
+    "the title is a line of prose": 7,
+    "a single bayt or less": 4,
+    "the block does not read as verse": 3,
+    "the verse is already published": 2,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "65bd67be-a18d-4679-8721-cd13818933b1",
+   "name": "АМИНҶОН ШУКӮҲӢ",
+   "verdict": "no further poem found",
+   "readableBefore": 3,
+   "readable": 3,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 4,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 1,
+    "the title is a line of prose": 1,
+    "a single bayt or less": 1,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "7281c3ee-3fe9-4450-9b10-33d0d52f34e5",
+   "name": "АНВАРӢ",
+   "verdict": "no further poem found",
+   "readableBefore": 15,
+   "readable": 15,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 18,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 9,
+    "the title is a line of prose": 5,
+    "a single bayt or less": 2,
+    "no source": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "a4b182d3-1c06-4c82-9858-0e71d95edeb3",
+   "name": "Абдуллоҳи Ансорӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 2,
+   "readable": 2,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 11,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 5,
+    "the title is a line of prose": 4,
+    "title too short to find on the page": 1,
+    "a single bayt or less": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "savdo",
+   "name": "Абдулқодирхоҷаи Савдо",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 4,
+   "added": [],
+   "extended": [],
+   "merged": [
+    "«Нафасе сабр намо, ин ҳама таъҷил макун»"
+   ],
+   "needsReview": 24,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 14,
+    "the title is a line of prose": 6,
+    "the lead-in names another poet": 2,
+    "a single bayt or less": 1,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "1a55efdd-6a1f-43b8-834f-94af060b4329",
+   "name": "Абуалӣ ибни Сино",
+   "verdict": "no further poem found",
+   "readableBefore": 8,
+   "readable": 8,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 57,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 43,
+    "the title is a line of prose": 9,
+    "a single bayt or less": 4,
+    "curated record awaiting its own review": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "rudaki",
+   "name": "Абӯабдуллоҳи Рӯдакӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 26,
+   "readable": 26,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 87,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 63,
+    "a single bayt or less": 10,
+    "the title is a line of prose": 6,
+    "no source": 4,
+    "the verse is already published": 3,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "92753b88-1d31-4f79-aae4-5d36c83ab4a1",
+   "name": "Амир Унсурулмаолии Кайковус",
+   "verdict": "no further poem found",
+   "readableBefore": 1,
+   "readable": 1,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 77,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 60,
+    "the title is a line of prose": 10,
+    "a single bayt or less": 7
+   },
+   "chapterVerdict": "a",
+   "note": "Prose («Қобуснома»); one quatrain inside a passage the book gives as his words (grade 8, p. 176) — team to confirm."
+  },
+  {
+   "id": "7c8e3b4f-d27f-4bb1-9b7c-a2ea436b5482",
+   "name": "Амир Хусрав",
+   "verdict": "no further poem found",
+   "readableBefore": 10,
+   "readable": 10,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 38,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 26,
+    "a single bayt or less": 7,
+    "the title is a line of prose": 3,
+    "the block does not read as verse": 1,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Chapter grade 9, pp. 87–106 (the biography cites only p. 87)."
+  },
+  {
+   "id": "8231eb1a-ac35-46d2-9e39-19d5603bfcec",
+   "name": "Асадии Тӯсӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 5,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 22,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 18,
+    "the title is a line of prose": 3,
+    "a single bayt or less": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "2e7a713f-c3d2-449e-bd6a-a4b5b7350201",
+   "name": "Асирӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 13,
+   "readable": 13,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 25,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 15,
+    "the title is a line of prose": 5,
+    "a single bayt or less": 4,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "ahmad_donish",
+   "name": "Аҳмад Махдум ибни Носир (Аҳмади Дониш)",
+   "verdict": "no further poem found",
+   "readableBefore": 2,
+   "readable": 2,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 134,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 107,
+    "a single bayt or less": 14,
+    "the title is a line of prose": 9,
+    "the block does not read as verse": 3,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Mostly prose («Наводир-ул-вақоеъ»); the verse the chapters print is published."
+  },
+  {
+   "id": "9ab32712-ce1d-4054-a7cc-163ca4a8f11f",
+   "name": "Аҳмади Ҷомӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 2,
+   "readable": 2,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 6,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 3,
+    "the title is a line of prose": 1,
+    "no source": 1,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "f09073cb-33b4-4fcc-abf8-75959350245c",
+   "name": "Бадриддин Ҳилолӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 28,
+   "readable": 28,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 62,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 40,
+    "a single bayt or less": 10,
+    "no source": 6,
+    "the title is a line of prose": 2,
+    "the verse is already published": 2,
+    "verse found; not yet reviewed": 1,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "bozor_sobir",
+   "name": "Бозор Собир",
+   "verdict": "no further poem found",
+   "readableBefore": 12,
+   "readable": 12,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 35,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 23,
+    "a single bayt or less": 6,
+    "the title is a line of prose": 5,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "eff956d5-9b8c-4522-9ac6-8791f15495ce",
+   "name": "Боқӣ Раҳимзода",
+   "verdict": "no further poem found",
+   "readableBefore": 3,
+   "readable": 3,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 6,
+   "needsReviewReasons": {
+    "the verse is already published": 3,
+    "a single bayt or less": 2,
+    "the title is a line of prose": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "gulnazar_keldi",
+   "name": "Гулназар Келдӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 17,
+   "readable": 17,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 61,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 44,
+    "a single bayt or less": 7,
+    "the title is a line of prose": 4,
+    "no source": 4,
+    "the verse is already published": 1,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "gulkhani",
+   "name": "Гулханӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 4,
+   "readable": 4,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 14,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 6,
+    "the title is a line of prose": 5,
+    "a single bayt or less": 3
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "b0133115-7ead-4ec8-bc6d-115f4540bdb2",
+   "name": "Дақиқӣ (Абумансур Муҳаммад бинни Аҳмади Дақиқӣ)",
+   "verdict": "no further poem found",
+   "readableBefore": 15,
+   "readable": 15,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 34,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 24,
+    "the title is a line of prose": 7,
+    "title too short to find on the page": 2,
+    "a single bayt or less": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Chapter grade 8, pp. 65–74 (the biography cites pp. 77–80, which are Фирдавсӣ's)."
+  },
+  {
+   "id": "7c389f92-ffdc-4f8e-b901-1de71acc34a9",
+   "name": "Зайниддин Маҳмуди Восифӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 2,
+   "readable": 2,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 104,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 78,
+    "the title is a line of prose": 10,
+    "a single bayt or less": 10,
+    "title too short to find on the page": 5,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Phase 11 rejected: «Ҳама шаҳмиву лаҳм, эй мири аъзам» (grade 6, p. 113): the book names no author for the qit'a."
+  },
+  {
+   "id": "381f06c4-cdbb-4b34-8a6f-fd16fa167cfa",
+   "name": "Заҳири Форёбӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 1,
+   "readable": 1,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 1,
+   "needsReviewReasons": {
+    "a single bayt or less": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "ec41abdc-c530-4745-825f-a23cd7515ca5",
+   "name": "Зиёуддини Нахшабӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 5,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 34,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 15,
+    "the title is a line of prose": 8,
+    "a single bayt or less": 8,
+    "title too short to find on the page": 2,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "5ec16ef0-b9c8-44e1-a6fc-4a01ee3f7def",
+   "name": "Ибни Ямини Фарюмадӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 13,
+   "readable": 13,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 32,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 20,
+    "the title is a line of prose": 3,
+    "a single bayt or less": 3,
+    "the block does not read as verse": 2,
+    "title too short to find on the page": 2,
+    "the verse is already published": 1,
+    "the lead-in names another poet": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "kamol_khujandi",
+   "name": "Камоли Хуҷандӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 12,
+   "readable": 12,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 43,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 21,
+    "a single bayt or less": 8,
+    "the title is a line of prose": 6,
+    "the verse is already published": 3,
+    "verse found; not yet reviewed": 2,
+    "title too short to find on the page": 1,
+    "curated record awaiting its own review": 1,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "loiq_sherali",
+   "name": "Лоиқ Шералӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 23,
+   "readable": 23,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 79,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 61,
+    "the verse is already published": 8,
+    "a single bayt or less": 5,
+    "the title is a line of prose": 4,
+    "withdrawn or title only after attribution review": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Phase 11 rejected: «Наъши хунини падар дар назарам» (grade 11, p. 301): elegy: the lead-in calls it one of the poet's marsiyas."
+  },
+  {
+   "id": "8c4f8cd7-4ae4-445c-b79b-bd10a6f83b65",
+   "name": "Масъуди Саъди Салмон",
+   "verdict": "no further poem found",
+   "readableBefore": 3,
+   "readable": 3,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 8,
+   "needsReviewReasons": {
+    "a single bayt or less": 4,
+    "the title is a line of prose": 3,
+    "verse found; not yet reviewed": 1
+   },
+   "chapterVerdict": "a",
+   "note": "His chapter (grade 7, pp. 62–67) prints a qasida and a qit'a; Низомии Арӯзӣ's tale quotes a rubai of his (p. 60)."
+  },
+  {
+   "id": "mehmon_bakhti",
+   "name": "Меҳмон Бахтӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 1,
+   "readable": 1,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 49,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 34,
+    "the title is a line of prose": 7,
+    "a single bayt or less": 7,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Prose writer and dramatist; the one song from his play (grade 11, p. 356) is published."
+  },
+  {
+   "id": "228feecd-8a97-4aaf-9b92-b9896c3a7d7d",
+   "name": "Мир Алишер Навоӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 5,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 17,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 10,
+    "a single bayt or less": 5,
+    "the title is a line of prose": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "tursunzoda",
+   "name": "Мирзо Турсунзода",
+   "verdict": "no further poem found",
+   "readableBefore": 36,
+   "readable": 35,
+   "added": [],
+   "extended": [],
+   "merged": [
+    "«Яке фарёд лӯлакпеч мезад»"
+   ],
+   "needsReview": 114,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 92,
+    "no source": 8,
+    "a single bayt or less": 6,
+    "the title is a line of prose": 6,
+    "title too short to find on the page": 1,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "a",
+   "note": "The unreviewed blocks on grade 6, pp. 170-171 are dialogue of Айюбӣ's verse dramas, not published as poems."
+  },
+  {
+   "id": "mirzosodiq",
+   "name": "Мирзосодиқи Муншӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 11,
+   "readable": 11,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 20,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 11,
+    "a single bayt or less": 3,
+    "the verse is already published": 3,
+    "the title is a line of prose": 3
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "a7feaa09-c83f-44f2-a69e-0a46ba957dbc",
+   "name": "Мирсаид Миршакар",
+   "verdict": "no further poem found",
+   "readableBefore": 15,
+   "readable": 15,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 57,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 33,
+    "no source": 10,
+    "a single bayt or less": 8,
+    "the title is a line of prose": 5,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Phase 11 rejected: «Зи асп андар омад гави шери нар» (grade 11, p. 252): verse_by_other_poet: lines of the «Шоҳнома» story the chapter retells, not Миршакар's."
+  },
+  {
+   "id": "92a7c4fa-3191-4301-ba53-8087ce7ef3d8",
+   "name": "Мушфиқӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 32,
+   "readable": 32,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 32,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 21,
+    "a single bayt or less": 7,
+    "the title is a line of prose": 4
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "qanoat",
+   "name": "Муъмин Қаноат",
+   "verdict": "no further poem found",
+   "readableBefore": 21,
+   "readable": 20,
+   "added": [],
+   "extended": [],
+   "merged": [
+    "«Ман зи хурдӣ баҳра аз он бурдаам»"
+   ],
+   "needsReview": 55,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 41,
+    "a single bayt or less": 5,
+    "the title is a line of prose": 4,
+    "the verse is already published": 3,
+    "title too short to find on the page": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "604d62c2-62fc-4aa3-a7d2-8348e714b52d",
+   "name": "Муҳаммадсиддиқи Ҳайрат",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 5,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 13,
+   "needsReviewReasons": {
+    "the title is a line of prose": 6,
+    "the title is not printed on or near the cited page": 4,
+    "the block does not read as verse": 1,
+    "a single bayt or less": 1,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "12fb0e82-f108-4e71-8207-74d0540639d3",
+   "name": "Муҳиддин Аминзода",
+   "verdict": "no further poem found",
+   "readableBefore": 9,
+   "readable": 9,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 5,
+   "needsReviewReasons": {
+    "the title is a line of prose": 2,
+    "the verse is already published": 2,
+    "a single bayt or less": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
+   "name": "Нозими Ҳиротӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 4,
+   "readable": 4,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 5,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 3,
+    "the verse is already published": 1,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "337370dd-7731-490b-9e92-b7f9be6ba695",
+   "name": "Носири Бухороӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 3,
+   "readable": 3,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 14,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 7,
+    "the verse is already published": 4,
+    "title too short to find on the page": 3
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "nasir_khusraw",
+   "name": "Носири Хусрав",
+   "verdict": "no further poem found",
+   "readableBefore": 24,
+   "readable": 24,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 36,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 30,
+    "no source": 3,
+    "a single bayt or less": 2,
+    "the title is a line of prose": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "e859c1ae-03b9-4add-8079-7fa5bcf64ef7",
+   "name": "Пайрав Сулаймонӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 12,
+   "readable": 12,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 36,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 23,
+    "the title is a line of prose": 7,
+    "a single bayt or less": 3,
+    "title too short to find on the page": 2,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "3d5d70c0-6294-4b7d-b830-79db08edd6b8",
+   "name": "Робиаи Балхӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 2,
+   "readable": 2,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 4,
+   "needsReviewReasons": {
+    "the title is a line of prose": 2,
+    "a single bayt or less": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
+   "name": "Сайфи Фарғонӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 7,
+   "readable": 7,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 23,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 13,
+    "the verse is already published": 3,
+    "a single bayt or less": 3,
+    "the title is a line of prose": 3,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "06b70024-a028-43dd-8c23-cdb75e96fac8",
+   "name": "Самандархоҷаи Тирмизӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 4,
+   "readable": 4,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 56,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 33,
+    "a single bayt or less": 13,
+    "the title is a line of prose": 5,
+    "no source": 5
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "94d5f5e3-f9a6-4c3d-bd1b-a72f97a7e06e",
+   "name": "Саноии Ғазнавӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 15,
+   "readable": 15,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 16,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 12,
+    "a single bayt or less": 2,
+    "no source": 1,
+    "the title is a line of prose": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
+   "name": "Сафармуҳаммад Айюбӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 6,
+   "readable": 6,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 126,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 108,
+    "the title is a line of prose": 11,
+    "a single bayt or less": 7
+   },
+   "chapterVerdict": "a",
+   "note": "Most verse in his chapter is dialogue of his verse dramas (grade 6, pp. 163–189), not published as poems. The unreviewed blocks on grade 6, pp. 170-186 are dialogue of Айюбӣ's verse dramas, not published as poems."
+  },
+  {
+   "id": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
+   "name": "Туғрал",
+   "verdict": "no further poem found",
+   "readableBefore": 8,
+   "readable": 8,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 35,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 24,
+    "the title is a line of prose": 6,
+    "a single bayt or less": 4,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "0e91d643-d947-4f0d-b3ac-ec2715a4b87c",
+   "name": "УБАЙДИ ЗОКОНӢ",
+   "verdict": "no further poem found",
+   "readableBefore": 11,
+   "readable": 11,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 47,
+   "needsReviewReasons": {
+    "a single bayt or less": 19,
+    "the title is not printed on or near the cited page": 17,
+    "the title is a line of prose": 10,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "5fc69b51-c38a-4427-a362-5c8a14bca835",
+   "name": "Умари Хайём",
+   "verdict": "no further poem found",
+   "readableBefore": 33,
+   "readable": 33,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 17,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 7,
+    "the title is a line of prose": 5,
+    "the verse is already published": 4,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "c9ea2574-7623-4974-ada0-49c075b2831b",
+   "name": "Фаридуддини Аттори Нишопурӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 16,
+   "readable": 16,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 33,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 14,
+    "no source": 6,
+    "the title is a line of prose": 4,
+    "a single bayt or less": 4,
+    "the verse is already published": 3,
+    "title too short to find on the page": 1,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "282f4c69-1d14-4be2-89d3-d21f867e4964",
+   "name": "Фаррухӣ Систонӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 5,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 12,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 9,
+    "a single bayt or less": 1,
+    "the title is a line of prose": 1,
+    "the verse is already published": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "fd212071-6a30-4b8d-870a-ae784002e8f2",
+   "name": "Халилуллоҳ Халилӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 9,
+   "readable": 9,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 12,
+   "needsReviewReasons": {
+    "the verse is already published": 5,
+    "the title is not printed on or near the cited page": 5,
+    "no source": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "e8ec4440-682a-48f1-ba59-54d8a9595c16",
+   "name": "Хоқонии Шарвонӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 10,
+   "readable": 10,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 20,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 12,
+    "a single bayt or less": 5,
+    "the block does not read as verse": 2,
+    "the title is a line of prose": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "465d3f4a-4924-4ca6-9371-7266ae4393c7",
+   "name": "Шавкати Бухороӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 15,
+   "readable": 15,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 44,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 35,
+    "the title is a line of prose": 4,
+    "no source": 2,
+    "a single bayt or less": 2,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "10a9ad7d-fd0d-462f-8cb4-594a869f8229",
+   "name": "Эраҷ Мирзо",
+   "verdict": "no further poem found",
+   "readableBefore": 3,
+   "readable": 3,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 9,
+   "needsReviewReasons": {
+    "the verse is already published": 4,
+    "the title is not printed on or near the cited page": 4,
+    "no source": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "400b9785-ae80-4957-a653-d65c72cdbf79",
+   "name": "Ғаффор Мирзо",
+   "verdict": "no further poem found",
+   "readableBefore": 2,
+   "readable": 2,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 6,
+   "needsReviewReasons": {
+    "the title is a line of prose": 2,
+    "no source": 2,
+    "a single bayt or less": 1,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Two poems; the stepped «Ибтидои достон» (grade 5, pp. 297–299) cannot be copied from the text layer."
+  },
+  {
+   "id": "qooni",
+   "name": "Қоонӣ (Мирзо Ҳабиби Шерозӣ)",
+   "verdict": "no further poem found",
+   "readableBefore": 6,
+   "readable": 6,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 15,
+   "needsReviewReasons": {
+    "a single bayt or less": 8,
+    "the title is not printed on or near the cited page": 4,
+    "the title is a line of prose": 3
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "vozeh",
+   "name": "Қорӣ Раҳматуллоҳи Возеҳ",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 5,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 15,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 10,
+    "the title is a line of prose": 5
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "26c985a4-88ca-47ea-8981-ba5529b62a7c",
+   "name": "Ҳабиб Юсуфӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 9,
+   "readable": 9,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 31,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 15,
+    "a single bayt or less": 8,
+    "the title is a line of prose": 3,
+    "the verse is already published": 3,
+    "the block does not read as verse": 1,
+    "the lead-in introduces folk verse, an elegy, a translation or an example": 1
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "kangurti",
+   "name": "Ҳоҷӣ Ҳусайни Кангуртӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 5,
+   "readable": 5,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 30,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 18,
+    "a single bayt or less": 10,
+    "the block does not read as verse": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "ea87e35a-6a03-44f2-837e-648d1c84aecc",
+   "name": "Ҳусайн Воизи Кошифӣ",
+   "verdict": "no further poem found",
+   "readableBefore": 3,
+   "readable": 3,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 64,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 39,
+    "a single bayt or less": 13,
+    "the title is a line of prose": 11,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "a",
+   "note": "Phase 11 rejected: «Дидаи дил аз футувват равшан аст» (grade 9, p. 289): verse_by_other_poet: Аттор's lines, quoted by Кошифӣ."
+  },
+  {
+   "id": "hoziq",
+   "name": "Ҷунайдуллоҳи Ҳозиқ",
+   "verdict": "no further poem found",
+   "readableBefore": 21,
+   "readable": 21,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 45,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 38,
+    "a single bayt or less": 5,
+    "the title is a line of prose": 2
+   },
+   "chapterVerdict": "a",
+   "note": ""
+  },
+  {
+   "id": "abdulhamid_samad",
+   "name": "Абдулҳамид Самад",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 23,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 16,
+    "the title is a line of prose": 4,
+    "a single bayt or less": 3
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 11, pp. 381–389). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6f",
+   "name": "Абдумалик Баҳорӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 19,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 8,
+    "the title is a line of prose": 7,
+    "a single bayt or less": 4
+   },
+   "chapterVerdict": "c",
+   "note": "The chapter prints his prose story «Ду моҳи пурмағал» (grade 5, pp. 286–294). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "717847cd-64b0-47e7-9d1c-75866e880647",
+   "name": "Абуабдуллоҳи Ҷайҳонӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "9becac52-2650-408f-8ecf-d496a233d71a",
+   "name": "Абуалии Балъамӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "68bc433e-b316-46e1-bbe8-d53066764834",
+   "name": "Абулаббоси Марвазӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only a lone bayt, signed (grade 8, p. 38). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "nasrulloh",
+   "name": "Абулмаолии Насруллоҳ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 7,
+   "needsReviewReasons": {
+    "the title is a line of prose": 4,
+    "a single bayt or less": 3
+   },
+   "chapterVerdict": "c",
+   "note": "«Калила ва Димна», prose (grade 8, pp. 220–225). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "ed2d18a8-f33e-4a66-8052-65128fe6295a",
+   "name": "Абулмуайяди Балхӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "cfe58486-55c2-474d-b329-248040b519ee",
+   "name": "Абулфазли Балъамӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "A vizier named in surveys (grade 8, pp. 35, 44–45); the lines under his name in grade 6 are a character's in Айюбӣ's verse drama. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "2564937c-eaeb-4faa-a4eb-0c9191a535fb",
+   "name": "Абулфатҳи Бустӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "8648e50d-ff7d-413d-a0fb-e1829ff940bb",
+   "name": "Абутаййиби Мусъабӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "2c8b026f-bab7-4cd8-9d86-26794a1573eb",
+   "name": "Абуҳафси Суғдӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only a lone bayt (grade 8, p. 30); a lone bayt is never published as a work. Phase 11 rejected: «Самарқанди кандманд» (grade 8, p. 30): verse_by_other_poet: the book gives it to Абулянбағии Самарқандӣ. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9e",
+   "name": "Абӯтоҳири Тарсусӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 37,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 28,
+    "a single bayt or less": 5,
+    "the title is a line of prose": 4
+   },
+   "chapterVerdict": "b",
+   "note": "A prose romance («Доробнома», grade 7, pp. 6–21); the verse in it is recited by characters and not attributed — one passage is Масъуди Саъди Салмон's (grade 7, p. 66). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "bda36de4-2636-4079-b473-d8f9f620820a",
+   "name": "Амир Шоҳии Сабзворӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "b",
+   "note": "Named only in the lesson on tazmin (grade 8, p. 233). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "7d0a189b-d704-4c0e-bc8b-8504ffcb4e9f",
+   "name": "Бассоми Курди Хориҷӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the survey of 9th-century poets (grade 8, pp. 31–32); no verse printed. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "buzurgmehr",
+   "name": "Бузургмеҳри Ҳаким",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 5,
+   "needsReviewReasons": {
+    "a single bayt or less": 2,
+    "the title is a line of prose": 1,
+    "the title is not printed on or near the cited page": 1,
+    "the lead-in names another poet": 1
+   },
+   "chapterVerdict": "c",
+   "note": "Pre-Islamic andarz in prose (grade 8, pp. 19–21). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "gulchehra_sulaymoni",
+   "name": "Гулчеҳра Сулаймонӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "No chapter: the biography cites grade 5, pp. 248–255, which are Халилӣ's and Фотеҳ Ниёзӣ's chapters; she is only named on grade 11, p. 58. Team: correct the biography's citation. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "ada69601-01d5-493f-b1a0-9b886be8daa8",
+   "name": "Заҳирии Самарқандӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 22,
+   "needsReviewReasons": {
+    "a single bayt or less": 8,
+    "the title is a line of prose": 6,
+    "the title is not printed on or near the cited page": 5,
+    "verse found; not yet reviewed": 2,
+    "no source": 1
+   },
+   "chapterVerdict": "c",
+   "note": "«Синдбоднома», prose (grade 7, pp. 51–57); the verse there is tashbeh examples by others. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "2b5af239-bce6-4b05-98ad-fbeef1a54c12",
+   "name": "Имораи Марвазӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "karomatullohi_mirzo",
+   "name": "Кароматуллоҳи Мирзо",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 14,
+   "needsReviewReasons": {
+    "the title is a line of prose": 8,
+    "a single bayt or less": 4,
+    "the title is not printed on or near the cited page": 2
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 11, pp. 390–396). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "ec7e9596-18d3-47dc-b952-bcbdfa023934",
+   "name": "Мантиқии Розӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "58010d8f-2575-4b92-89e0-373f05b32929",
+   "name": "Масъуди Марвазӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only three separate bayts set apart by *** (grade 8, pp. 33–34). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "483ec51d-a691-4b78-918a-0fbc13f29a46",
+   "name": "Маъруфии Балхӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "bdca68f7-2ee1-49bf-9780-27da55cea473",
+   "name": "Монӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Pre-Islamic figure (grade 8, p. 5); no verse. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "1b317e1f-83b1-43be-a0c0-4e210809c938",
+   "name": "Мунҷики Тирмизӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "896648b7-c7b7-4451-b8b3-cd37e4710fa1",
+   "name": "Муродӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "d708065a-1337-495f-ae6b-b0b5ce40e90f",
+   "name": "Муҳаммад бинни Васиф ас-Сиҷзӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only a lone bayt, the opening of a qasida (grade 8, p. 31). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "c76a0058-db4d-4bd3-83dd-a66f2b3578b4",
+   "name": "Муҳаммад бинни Мухаллад ас-Сиҷзӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the survey of 9th-century poets (grade 8, pp. 31–32); no verse printed. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "c3d4e5f6-d7e8-4f9a-0b1c-2d3e4f5a6b7c",
+   "name": "Муҳаммад Ғазолӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 28,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 15,
+    "the title is a line of prose": 6,
+    "a single bayt or less": 6,
+    "the block does not read as verse": 1
+   },
+   "chapterVerdict": "c",
+   "note": "Prose tales (grade 6, pp. 69–76). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "6b080d51-336b-48ba-92cd-85fe29149e0d",
+   "name": "Низомии Арӯзӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 7,
+   "needsReviewReasons": {
+    "the title is a line of prose": 4,
+    "a single bayt or less": 3
+   },
+   "chapterVerdict": "c",
+   "note": "«Чаҳор мақола», prose (grade 7, pp. 58–61; grade 8, pp. 232–233); the bayt on grade 5, p. 49 is lone. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "42d303b5-f20f-440d-8079-a8e25ef52d2e",
+   "name": "Низомулмулк",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 27,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 21,
+    "the title is a line of prose": 3,
+    "a single bayt or less": 2,
+    "title too short to find on the page": 1
+   },
+   "chapterVerdict": "c",
+   "note": "«Сиёсатнома», prose (grade 5, pp. 80–88). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "4830f7a5-85aa-4418-8785-40867a995614",
+   "name": "Озарбоди Меҳроспандон",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Pre-Islamic andarz in prose (grade 8, pp. 13–14). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "16d7d64a-fca1-43cc-be01-86d776cde770",
+   "name": "Рашиди Ватвот",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named on grade 8, p. 251 (Хоқонӣ's chapter); no verse of his. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "ef5a57a2-8949-43dd-85eb-8ceaf78335f3",
+   "name": "Раҳим Ҷалил",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 36,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 25,
+    "the title is a line of prose": 5,
+    "a single bayt or less": 4,
+    "no source": 2
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 11, pp. 222–235). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "79049bfd-1f01-4f9d-8e59-851cdbd4bba2",
+   "name": "Садри Зиё",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only lone bayts quoted in the Jadid survey (grade 11, pp. 15–16). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "sayf_rahimzod",
+   "name": "Сайф Раҳимзоди Афардӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 31,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 20,
+    "the title is a line of prose": 6,
+    "a single bayt or less": 5
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 11, pp. 317–325). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "82f30a4e-f468-4a7d-bf03-bd29d3279fe0",
+   "name": "Салмони Соваҷӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "b",
+   "note": "Only a metre example (grade 6, p. 76). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "sattor_tursun",
+   "name": "Саттор Турсун",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 16,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 10,
+    "the title is a line of prose": 4,
+    "a single bayt or less": 2
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 11, pp. 326–333). Phase 11 rejected: «Нависандаи халқии Тоҷикистон Саттор» (grade 11, p. 326): prose: the chapter of a prose writer. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b",
+   "name": "Сотим Улуғзода",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 163,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 142,
+    "a single bayt or less": 11,
+    "the title is a line of prose": 10
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 7, pp. 174–211; grade 11, pp. 182–206). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "4ea4300f-493d-40bd-bf55-a83d9b397bf3",
+   "name": "Тоҳири Чағонӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "a74ea72d-864f-4c25-b42e-95435794a42d",
+   "name": "ФАЗЛИДДИН МУҲАММАДИЕВ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 85,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 66,
+    "a single bayt or less": 9,
+    "the title is a line of prose": 9,
+    "no source": 1
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 7, pp. 231–248; grade 11, pp. 253–269); the verse in his stories is recited by characters. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "faromuz",
+   "name": "Фаромуз ибни Худодод",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 20,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 15,
+    "a single bayt or less": 3,
+    "the title is a line of prose": 2
+   },
+   "chapterVerdict": "c",
+   "note": "«Самаки айёр», prose (grade 8, pp. 226–231). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "cf6c66fa-1c48-4819-a4d9-287225e766b2",
+   "name": "Фирӯзи Машриқӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the survey of 9th-century poets (grade 8, p. 31); no verse printed. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5e",
+   "name": "Фотеҳ Ниёзӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 46,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 34,
+    "the title is a line of prose": 8,
+    "a single bayt or less": 4
+   },
+   "chapterVerdict": "c",
+   "note": "A novel (grade 5, pp. 250–272); the one song in it is a character's. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "91bf5726-5e0a-451e-be4b-7d91650f6cfa",
+   "name": "Хусравонӣ (Хусравӣ)",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only lone bayts (grade 8, p. 36). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "1b50e1c6-7881-47ee-8965-4c19164dbf4a",
+   "name": "Шамси Табрезӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named in Ҷалолуддини Балхӣ's biography (grade 9, pp. 60–61); no verse of his. (The detected grade 10 chapter is Соиби Табрезӣ's, matched by the shared «Табрезӣ».) The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "6866f29f-e813-4843-b346-ad5ff69191e8",
+   "name": "Шокири Бухороӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named only in the list of 10th-century poets (grade 8, p. 35); the books print no verse of theirs. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "cef7fd49-54c8-4e46-9361-123cc52de5eb",
+   "name": "Ғании Кашмирӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "b",
+   "note": "Grade 10, p. 168 names him in a survey; the verse printed there is Толиби Омулӣ's. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "9915eac4-559e-4f20-9bdf-bb7a50e153db",
+   "name": "Қамарии Ҷурҷонӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only a lone bayt, signed (grade 8, p. 38). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "eb037eb9-ba72-49bd-b009-8f9c84d46105",
+   "name": "Қозизода",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "d",
+   "note": "Named in Восифӣ's chapter (grade 6, pp. 108–110); no verse of his. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "7a4cc3dc-3d9c-4cf2-aa27-a9b66f68937f",
+   "name": "Ҳасанбеки Рафеъ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 0,
+   "needsReviewReasons": {},
+   "chapterVerdict": "c",
+   "note": "Only a lone bayt («РУБОӢ (БАЙТ)», grade 7, p. 150). The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c",
+   "name": "Ҷалол Икромӣ",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 38,
+   "needsReviewReasons": {
+    "the title is not printed on or near the cited page": 29,
+    "the title is a line of prose": 4,
+    "a single bayt or less": 3,
+    "the block does not read as verse": 2
+   },
+   "chapterVerdict": "c",
+   "note": "Prose writer (grade 11, pp. 207–221); the epigraph there is Саъдӣ's. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  },
+  {
+   "id": "juma_odina",
+   "name": "Ҷумъа Одина",
+   "verdict": "not found in the permitted books",
+   "readableBefore": 0,
+   "readable": 0,
+   "added": [],
+   "extended": [],
+   "merged": [],
+   "needsReview": 12,
+   "needsReviewReasons": {
+    "the title is a line of prose": 7,
+    "the title is not printed on or near the cited page": 4,
+    "a single bayt or less": 1
+   },
+   "chapterVerdict": "c",
+   "note": "Prose (grade 6, pp. 155–162); the verse after it is Айюбӣ's drama. The unreviewed blocks on grade 6, pp. 170-186 are dialogue of Айюбӣ's verse dramas, not published as poems. The maorif.tj editions (grade 5 2025, 6 2022, 7 2025, 9 2023, 10 2021 and 2025, 11 2025) print no verse of theirs either."
+  }
+ ]
+}

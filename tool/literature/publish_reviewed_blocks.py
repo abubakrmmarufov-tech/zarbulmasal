@@ -24,7 +24,8 @@ Optional fields of an accepted block:
   * replaces -- the id of a published record this block repairs (the record
     held part of the poem); the record keeps its id and gets the full text;
   * merges -- ids of published records that print a shorter excerpt of the
-    same poem (another book reprints its opening); they are merged into
+    same poem (another book reprints its opening, or a fragment was cut at
+    a page break: say so in `mergeNote`); they are merged into
     this record (rejected as `duplicate_canonical_work:<id>`, without text;
     their page named in its note).
 
@@ -342,6 +343,7 @@ def _publish_poem(works, by_id, catalogue, templates, block, lines, pages,
                        printed_page(pages[last], last), lines, block['authorId'])
     if replaces:
         record = by_id[replaces]
+        found = [twin for twin in found if twin is not record]
     elif found:
         record = found.pop(0)
         # Its citation is replaced by the PDF's: a title-only record may
@@ -384,10 +386,14 @@ def _publish_poem(works, by_id, catalogue, templates, block, lines, pages,
         source = excerpt['primarySource']
         where = (f"{os.path.basename(source['sourceReference'])[:-4]}, "
                  f"p. {source['pageStart']}")
-        merge_duplicate(excerpt, record, f'{where} prints the opening '
-                        'of the same poem', canonical=True)
+        note = block.get('mergeNote')
+        merge_duplicate(excerpt, record,
+                        f'{where}: {note}' if note else
+                        f'{where} prints the opening of the same poem',
+                        canonical=True)
         catalogue.texts.pop(excerpt_id, None)
-        record['editorialNotes'] += f' Its opening is also printed in {where}.'
+        if not note:
+            record['editorialNotes'] += f' Its opening is also printed in {where}.'
     catalogue.add(record['id'], lines, block['authorId'])
     return record
 
