@@ -59,6 +59,26 @@ class CompressTest(unittest.TestCase):
         self.assertEqual([r['assetPath'] for r in records],
                          ['img/a.webp', 'img/b.webp'])
 
+    def test_a_second_run_leaves_finished_webp_untouched(self):
+        compress_images.compress(self.root, 80)
+        path = os.path.join(self.folder, 'a.webp')
+        with open(path, 'rb') as handle:
+            first = handle.read()
+        report = compress_images.compress(self.root, 80)
+        with open(path, 'rb') as handle:
+            self.assertEqual(handle.read(), first)
+        self.assertEqual(report[0][1], 0)
+
+    def test_an_oversized_webp_is_still_reduced(self):
+        Image.new('RGB', (900, 1200), 'green').save(
+            os.path.join(self.folder, 'c.webp'), 'WEBP')
+        with open(self.json_path, 'w', encoding='utf-8') as handle:
+            json.dump([{'assetPath': 'img/a.jpeg'}, {'assetPath': 'img/b.jpg'},
+                       {'assetPath': 'img/c.webp'}], handle)
+        compress_images.compress(self.root, 80)
+        with Image.open(os.path.join(self.folder, 'c.webp')) as image:
+            self.assertEqual(image.size, (224, 299))
+
     def test_refuses_an_image_no_record_names(self):
         Image.new('RGB', (10, 10)).save(
             os.path.join(self.folder, 'orphan.png'), 'PNG')

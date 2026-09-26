@@ -134,6 +134,7 @@ step duplicate-portrait-guards duplicate_and_portrait_guards
 step unittest-literature python3 -m unittest discover -s tool/literature -p 'test_*.py'
 step unittest-history python3 -m unittest discover -s tool/history -p 'test_*.py'
 step unittest-design python3 -m unittest discover -s tool/design -p 'test_*.py'
+step unittest-books python3 -m unittest discover -s tool/books -p 'test_*.py'
 step provenance-guards python3 -m unittest tool.test_provenance_detector \
   tool.test_provenance_linter_sources tool.test_validate_literary_content_report
 step deep-browser-audit python3 -m unittest tool.test_deep_browser_audit

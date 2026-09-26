@@ -83,6 +83,9 @@ jobs:
       - name: Test design image tools
         run: python3 -m unittest discover -s tool/design -p "test_*.py" -v
 
+      - name: Test book cover tools
+        run: python3 -m unittest discover -s tool/books -p "test_*.py" -v
+
       - name: Test provenance guards
         run: python3 -m unittest tool.test_provenance_detector tool.test_provenance_linter_sources tool.test_validate_literary_content_report -v
 

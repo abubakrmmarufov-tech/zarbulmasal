@@ -5,7 +5,8 @@ largest box the app draws it in, keeping its aspect ratio:
   * poet portraits: 112 x 144 on the poet page -> at most 224 x 288;
   * book covers: 116 x 170 on the book page -> at most 232 x 340.
 The JSON records that name an image are rewritten to the .webp path and the
-original file is removed.
+original file is removed. A WebP already within its box is left untouched,
+so the tool can be rerun after new images are added.
 
 Usage:
     python3 tool/design/compress_images.py [--quality 80]
@@ -54,6 +55,15 @@ def to_webp(path, box, quality):
     return out
 
 
+def finished(path, limit):
+    """A WebP already within [limit]: re-encoding it would only lose
+    quality, so it is left as it is."""
+    if not path.lower().endswith('.webp'):
+        return False
+    with Image.open(path) as image:
+        return target_size(image.size, limit) == image.size
+
+
 def rewrite_paths(text, renamed):
     """Replaces every old asset path in [text] with its .webp path."""
     for old, new in renamed.items():
@@ -79,6 +89,8 @@ def compress(root, quality):
         before = after = 0
         for name in names:
             path = os.path.join(folder, name)
+            if finished(path, limit):
+                continue
             before += os.path.getsize(path)
             out = to_webp(path, limit, quality)
             after += os.path.getsize(out)

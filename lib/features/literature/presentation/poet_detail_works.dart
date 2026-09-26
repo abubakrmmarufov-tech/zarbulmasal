@@ -417,7 +417,7 @@ class PoetBooksSliver extends ConsumerWidget {
                   book: book,
                   width: 48,
                   height: 68,
-                  placeholderTitle: BookDisplayText.title(book, lang),
+                  placeholderTitle: BookDisplayText.coverTitle(book, lang),
                 ),
                 title: BookDisplayText.title(book, lang),
                 subtitle:

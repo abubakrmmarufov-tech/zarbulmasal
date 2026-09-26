@@ -344,7 +344,8 @@ class _BookListTile extends StatelessWidget {
         children: [
           BookCover(
             book: book,
-            placeholderTitle: BookDisplayText.title(book, lang),
+            placeholderTitle: BookDisplayText.coverTitle(book, lang),
+            placeholderAuthor: book.authorFor(lang),
           ),
           const SizedBox(width: 14),
           Expanded(

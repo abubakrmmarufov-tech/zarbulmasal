@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
@@ -136,7 +137,8 @@ void main() {
         expect(edition.format, BookFormat.html);
         expect(edition.readUri?.host, 'khirad.tj');
         expect(edition.sourceUri?.host, 'khirad.tj');
-        expect(edition.coverUrl, isNull);
+        expect(edition.coverUrl, startsWith('https://khirad.tj/img/books/'));
+        expect(edition.coverAssetPath, isNotNull);
         expect(edition.downloadUrl, isNull);
         expect(edition.publisher, isNotNull);
         expect(edition.publicationYear, isNotNull);
@@ -226,9 +228,34 @@ void main() {
             .where((edition) => edition.coverAssetPath != null)
             .toList(growable: false);
 
-        expect(covered, hasLength(8));
+        // Downloaded at build time from each book's page
+        // (docs/content/BOOK_COVERS_2026-09-26.json); the app never fetches.
+        expect(covered, hasLength(301));
+        final report =
+            jsonDecode(
+                  File(
+                    'docs/content/BOOK_COVERS_2026-09-26.json',
+                  ).readAsStringSync(),
+                )
+                as Map<String, dynamic>;
+        final rows = {
+          for (final row in (report['covers'] as List).cast<Map>())
+            row['editionId']: row,
+        };
         for (final edition in covered) {
-          expect(edition.coverUrl, startsWith('https://kitobkhon.net/'));
+          expect(
+            edition.coverUri?.host,
+            anyOf('kitobkhon.net', 'khirad.tj'),
+            reason: edition.id,
+          );
+          // Kept by the download, or bundled in an earlier phase.
+          final row = rows[edition.id]!;
+          expect(
+            row['alreadyBundled'] == true ||
+                (row['status'] == 'ok' && row['url'] == edition.coverUrl),
+            isTrue,
+            reason: edition.id,
+          );
           expect(
             edition.coverAssetPath,
             startsWith('assets/data/books/covers/'),

@@ -132,7 +132,8 @@ class _BookDetailBody extends ConsumerWidget {
                       book: book,
                       width: 116,
                       height: 170,
-                      placeholderTitle: BookDisplayText.title(book, lang),
+                      placeholderTitle: BookDisplayText.coverTitle(book, lang),
+                      placeholderAuthor: book.authorFor(lang),
                     ),
                     const SizedBox(width: 18),
                     Expanded(

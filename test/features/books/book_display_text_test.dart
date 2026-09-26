@@ -87,4 +87,36 @@ void main() {
       );
     },
   );
+
+  group('coverTitle', () {
+    test('is the title in the interface language', () {
+      expect(
+        BookDisplayText.coverTitle(_translatedBook, DisplayLanguage.persian),
+        'کتاب اصلی',
+      );
+      expect(
+        BookDisplayText.coverTitle(_book, DisplayLanguage.tajik),
+        'Китоби аслӣ',
+      );
+    });
+
+    test('without a Persian title, the category names the cover', () {
+      const poetry = Book(
+        id: 'poetry',
+        canonicalTitle: 'Китоб',
+        titleTj: 'Китоб',
+        descriptionTj: '',
+        language: 'Тоҷикӣ',
+        categoryIds: ['nazm'],
+      );
+      expect(
+        BookDisplayText.coverTitle(poetry, DisplayLanguage.persian),
+        'شعر',
+      );
+      expect(
+        BookDisplayText.coverTitle(_book, DisplayLanguage.persian),
+        AppTranslations.get('books_title', DisplayLanguage.persian),
+      );
+    });
+  });
 }
