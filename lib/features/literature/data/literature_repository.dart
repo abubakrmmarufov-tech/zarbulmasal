@@ -138,7 +138,7 @@ class LiteratureRepository {
   /// Loads official school canon curriculum mappings from [schoolCanonAssetPath].
   Future<List<SchoolCanonEntry>> loadSchoolCanon() async {
     final jsonString = await _bundle.loadString(schoolCanonAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    final dynamic decoded = await decodeJsonOffThread(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
@@ -151,7 +151,7 @@ class LiteratureRepository {
   /// Loads verified folklore oral heritage entries from [oralHeritageAssetPath].
   Future<List<OralHeritageEntry>> loadOralHeritage() async {
     final jsonString = await _bundle.loadString(oralHeritageAssetPath);
-    final dynamic decoded = jsonDecode(jsonString);
+    final dynamic decoded = await decodeJsonOffThread(jsonString);
     if (decoded is! List) return const [];
     return decoded
         .whereType<Map>()
