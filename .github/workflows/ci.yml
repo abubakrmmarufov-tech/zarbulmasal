@@ -70,10 +70,18 @@ jobs:
           python3 tool/literature_pipeline/scripts/discover_pdfs.py
           git diff --exit-code -- docs/literature/SOURCE_INVENTORY.md
 
+      # The portrait and image tools decode images with Pillow, which the
+      # runner image does not ship.
+      - name: Install pinned Python test dependencies
+        run: python3 -m pip install --disable-pip-version-check --user "pillow==12.2.0"
+
       - name: Test literature duplicate and portrait guards
         run: |
           python3 tool/test_merge_duplicate_works.py
           python3 tool/test_extract_portraits.py
+
+      - name: Test design image tools
+        run: python3 -m unittest discover -s tool/design -p "test_*.py" -v
 
       - name: Test provenance guards
         run: python3 -m unittest tool.test_provenance_detector tool.test_provenance_linter_sources tool.test_validate_literary_content_report -v
