@@ -3,13 +3,14 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-/// Share of pixels that may differ before a golden fails. CI renders on
-/// ubuntu-latest and developers on macOS; anti-aliasing differs slightly.
-const goldenTolerance = 0.005;
+/// Share of pixels that may differ before a golden fails. Each platform
+/// compares against its own images (see screens_golden_test.dart), so none.
+const goldenTolerance = 0.0;
 
-/// Goldens use the default test font (Ahem), not the bundled families, so
-/// glyph rasterisation cannot differ between platforms. This file shadows
-/// test/flutter_test_config.dart for this folder only.
+/// Goldens use the default test font, not the bundled families, so they
+/// test layout and colour rather than type. Its glyph edges are still
+/// rasterised by the platform, hence one set of images per platform. This
+/// file shadows test/flutter_test_config.dart for this folder only.
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   TestWidgetsFlutterBinding.ensureInitialized();
   final previous = goldenFileComparator;

@@ -1,6 +1,13 @@
 // Golden images of the main screens in light and dark, with the date frozen
-// so the daily picks never change. Regenerate after an intended visual
-// change with: flutter test --update-goldens test/golden
+// so the daily picks never change.
+//
+// Each platform keeps its own images (goldens/macos, goldens/linux): glyph
+// edges are anti-aliased by CoreText on macOS and FreeType on Linux, so the
+// same screen differs in about 5% of its pixels between the two. After an
+// intended visual change:
+//   * macOS: flutter test --update-goldens test/golden
+//   * Linux: push, check the diff images CI uploads as `golden-failures`,
+//     then bash tool/update_linux_goldens.sh <run id>
 import 'dart:convert';
 import 'dart:io';
 
@@ -16,6 +23,9 @@ import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
 import '../helpers/file_asset_bundle.dart';
 import '../helpers/test_helper.dart';
+
+/// The folder of this platform's golden images.
+final _platform = Platform.operatingSystem;
 
 /// 25 September 2026, morning in Dushanbe (UTC+5).
 final _frozenNow = DateTime.utc(2026, 9, 25, 6);
@@ -60,7 +70,7 @@ void main() {
         await _precacheImages(tester);
         await expectLater(
           find.byType(MaterialApp),
-          matchesGoldenFile('goldens/${name}_$theme.png'),
+          matchesGoldenFile('goldens/$_platform/${name}_$theme.png'),
         );
       });
     }

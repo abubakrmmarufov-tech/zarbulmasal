@@ -33,6 +33,13 @@ double contrast(Color a, Color b) {
 
 const _poem = '/literature/work/rudaki_buyi_juyi_muliyon_grade5_2017_p54';
 
+/// Screens are measured at a phone's pixel density. The contrast guideline
+/// reads each text's colour from the screenshot; at 1x a 12 px stroke is
+/// mostly anti-aliased edge, and FreeType (the Linux CI runner) draws those
+/// edges lighter than CoreText (macOS), so the measured colour depended on
+/// the platform rather than on the theme.
+const _phonePixelRatio = 3.0;
+
 List<dynamic> _json(String path) =>
     jsonDecode(File(path).readAsStringSync()) as List<dynamic>;
 
@@ -113,7 +120,13 @@ void main() {
       testWidgets('$route meets tap-target, label and contrast guidelines '
           '(${dark ? 'dark' : 'light'})', (tester) async {
         final semantics = tester.ensureSemantics();
-        await openApp(tester, route: route, dark: dark, overrides: _overrides);
+        await openApp(
+          tester,
+          route: route,
+          dark: dark,
+          overrides: _overrides,
+          pixelRatio: _phonePixelRatio,
+        );
         await _expectGuidelines(tester);
         semantics.dispose();
       });

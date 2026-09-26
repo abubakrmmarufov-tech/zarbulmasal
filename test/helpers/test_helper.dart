@@ -31,9 +31,10 @@ Future<TestApp> openApp(
   List<Proverb>? catalog,
   List<Override>? overrides,
   bool readingRoom = false,
+  double pixelRatio = 1,
 }) async {
-  tester.view.physicalSize = Size(width, height);
-  tester.view.devicePixelRatio = 1;
+  tester.view.physicalSize = Size(width * pixelRatio, height * pixelRatio);
+  tester.view.devicePixelRatio = pixelRatio;
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
   SharedPreferences.setMockInitialValues({

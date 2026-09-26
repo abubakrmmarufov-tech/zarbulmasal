@@ -73,3 +73,6 @@ __pycache__/
 /docs/literature/chunks*/
 /docs/literature/extracted/
 /docs/content/extracted/
+
+# Golden diff images written by failing golden tests
+test/golden/failures/
