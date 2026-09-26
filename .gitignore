@@ -67,6 +67,9 @@ __pycache__/
 # Textbook PDFs and everything derived from their pages stay local; the
 # repository keeps only docs/literature/pdfs/MANIFEST.json (SHA-256 per file).
 /docs/literature/pdfs/*.pdf
+# Folklore proverb books likewise: only docs/content/pdfs/MANIFEST.json is kept.
+/docs/content/pdfs/*.pdf
 /docs/literature/dumps/
 /docs/literature/chunks*/
 /docs/literature/extracted/
+/docs/content/extracted/

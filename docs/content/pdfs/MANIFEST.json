@@ -1,0 +1,124 @@
+{
+ "note": "Folklore books used as proverb sources (Phase 9). PDFs are local and git-ignored; edition data is from each title page.",
+ "pdfs": [
+  {
+   "key": "asrori1956",
+   "file": "zarbulmasal_va_maqolho.pdf",
+   "sha256": "31533c74cbd86ae567557f328a832fbd99b1c1ab25271ec197c31370af6cb186",
+   "bytes": 12024831,
+   "pdfPages": 97,
+   "textLayer": false,
+   "downloadPage": "https://zarowadk.com/dnld/folklor/zarbulmasal_va_maqolho.php",
+   "downloaded": "2026-09-26",
+   "edition": {
+    "title": "Зарбулмасал ва мақолҳои тоҷикӣ",
+    "author": "В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)",
+    "publisher": "Нашриёти давлатии Тоҷикистон",
+    "city": "Сталинобод",
+    "year": 1956
+   }
+  },
+  {
+   "key": "fozilov1_1975",
+   "file": "fozilov_farh_zarbulmasal_1.pdf",
+   "sha256": "8779394a7205648a2a7fecabfc0c6430c99151d36117ea33789d241762009066",
+   "bytes": 18086875,
+   "pdfPages": 371,
+   "textLayer": false,
+   "downloadPage": "https://zarowadk.com/dnld/folklor/fozilov_farh_zarbulmasal_1.php",
+   "downloaded": "2026-09-26",
+   "edition": {
+    "title": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I",
+    "author": "Муллоҷон Фозилов",
+    "publisher": "Ирфон",
+    "city": "Душанбе",
+    "year": 1975
+   }
+  },
+  {
+   "key": "fozilov1973",
+   "file": "zarbulmasalu_maqolho.pdf",
+   "sha256": "c838695e674b75f4fa714c19792a5c27e297dd0db7cbc8f5cbd7f81d4afac68e",
+   "bytes": 8555828,
+   "pdfPages": 160,
+   "textLayer": false,
+   "downloadPage": "https://zarowadk.com/dnld/folklor/zarbulmasalu_maqolho.php",
+   "downloaded": "2026-09-26",
+   "edition": {
+    "title": "Зарбулмасалу мақолҳо дар тамсилу ҳикояҳо",
+    "author": "М. Фозилов",
+    "publisher": "Дониш",
+    "city": "Душанбе",
+    "year": 1973
+   }
+  },
+  {
+   "key": "bayoz2_1990",
+   "file": "bayozi_ft_2.pdf",
+   "sha256": "c421649c0df1045c42514337564473dfd78a6e5245aa3f13689d2b04bbd4882f",
+   "bytes": 8352138,
+   "pdfPages": 259,
+   "textLayer": true,
+   "downloadPage": "https://zarowadk.com/dnld/folklor/bayozi_ft_2.php",
+   "downloaded": "2026-09-26",
+   "edition": {
+    "title": "Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо",
+    "author": "Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)",
+    "publisher": "Адиб",
+    "city": "Душанбе",
+    "year": 1990
+   }
+  },
+  {
+   "key": "folklori_tojik1954",
+   "file": "folklori_tojik.pdf",
+   "sha256": "c991ea16996c36e98a328b9e2a754ccd2dc36655376ca8d73a89b44e9859feac",
+   "bytes": 19901685,
+   "pdfPages": 511,
+   "textLayer": false,
+   "downloadPage": "https://zarowadk.com/dnld/folklor/folklori_tojik.php",
+   "downloaded": "2026-09-26",
+   "edition": {
+    "title": "Фолклори тоҷик",
+    "author": "М. Турсунзода, А. Н. Болдырев (тартибдиҳандагон)",
+    "publisher": "Нашриёти давлатии Тоҷикистон",
+    "city": "Сталинобод",
+    "year": 1954
+   }
+  },
+  {
+   "key": "roghun2017",
+   "file": "folklori_roghun.pdf",
+   "sha256": "bbf56dc6ec010f4c531f4f5ddf844f6f6e9e379ea09e40c3e1b70fe658c0324b",
+   "bytes": 1887546,
+   "pdfPages": 315,
+   "textLayer": true,
+   "downloadPage": "https://zarowadk.com/dnld/folklor/folklori_roghun.php",
+   "downloaded": "2026-09-26",
+   "edition": {
+    "title": "Фолклори Роғун",
+    "author": "Рӯзии Аҳмад, Салоҳиддин Фатҳуллоев (гирдоварӣ ва тадвин)",
+    "publisher": "ЭР-граф",
+    "city": "Душанбе",
+    "year": 2017
+   }
+  },
+  {
+   "key": "tursunzoda2012",
+   "file": "farh_diyori_tursunzoda.pdf",
+   "sha256": "e160d8e79ef344a87d8c9d3619d81f1972ff17d27de55bd35c2f12f9d6e0b953",
+   "bytes": 22575248,
+   "pdfPages": 92,
+   "textLayer": true,
+   "downloadPage": "https://zarowadk.com/dnld/folklor/farh_diyori_tursunzoda.php",
+   "downloaded": "2026-09-26",
+   "edition": {
+    "title": "Фарҳанги мардуми диёри Турсунзода",
+    "author": "Рӯзии Аҳмад, Дилшод Раҳимов (гирдоварӣ ва тадвин)",
+    "publisher": null,
+    "city": "Душанбе",
+    "year": 2012
+   }
+  }
+ ]
+}
