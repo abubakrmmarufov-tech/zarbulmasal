@@ -1,22 +1,59 @@
 import '../models/proverb.dart';
+import '../models/source_ref.dart';
 
 /// Seed proverbs 97–134; see seed_proverbs.dart.
 const List<Proverb> seedProverbsPart3 = [
   Proverb(
     id: '97',
-    tajikCyrillic: 'Дӯсти нодон аз душмани доно бадтар аст.',
-    persianText: 'دوست نادان از دشمن دانا بدتر است.',
+    tajikCyrillic: 'Аз дӯсти нодон душмани доно беҳ.',
+    persianText: 'از دوست نادان دشمن دانا به.',
     simpleExplanationTj:
         'Дӯсти нодон метавонад аз рӯйи нодонӣ зарари бештар аз душман расонад.',
     meaningTj: 'Нияти хуб кофӣ нест; ақлу фаҳм ҳам муҳиманд.',
     exampleSentenceTj:
-        'Дӯсташ барои ёрӣ коре кард, ки вазъро бадтар намуд; дӯсти нодон аз душмани доно бадтар аст.',
+        'Дӯсташ барои ёрӣ коре кард, ки вазъро бадтар намуд; аз дӯсти нодон душмани доно беҳ.',
     categoryId: 'dusti',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 33',
     canonicalId: '98',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 30,
+        printedPage: 33,
+        printedText: 'Аз дӯсти нодон душмани доно беҳ.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 23,
+        printedPage: 23,
+        printedText: 'Аз дӯсти нодон душмани доно беҳ.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 70,
+        printedPage: 69,
+        printedText: 'АЗ ДӮСТИ НОДОН ДУШМАНИ ДОНО БЕҲ!',
+        note: 'main entry with an example by Ҷалол Икромӣ',
+      ),
+    ],
   ),
   Proverb(
     id: '98',
@@ -31,10 +68,48 @@ const List<Proverb> seedProverbsPart3 = [
     categoryId: 'dusti',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
+    sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 69',
     variants: ['97'],
+    sources: [
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 70,
+        printedPage: 69,
+        printedText: 'ниг. Душмани доно беҳ аз дӯсти нодон.',
+        note: 'cross-reference line under «Аз дӯсти нодон…»',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 147,
+        printedPage: 144,
+        printedText: 'мук. Душмани доно беҳ аз дӯсти нодон!',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 23,
+        printedPage: 23,
+        printedText: 'Душмани доно беҳ аз нодони дӯст. (Саъдии Шерозӣ)',
+        note: 'variant, signed',
+      ),
+    ],
   ),
   Proverb(
     id: '99',
@@ -49,25 +124,92 @@ const List<Proverb> seedProverbsPart3 = [
     categoryId: 'dusti',
     level: 4,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote:
-        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+    sourceStatus: SourceStatus.needsReview,
+    sourceNote: '',
   ),
   Proverb(
     id: '100',
-    tajikCyrillic: 'Бо моҳ шинӣ, моҳ шавӣ; бо дег шинӣ, сиёҳ шавӣ.',
-    persianText: 'با ماه شینی، ماه شوی؛ با دیگ شینی، سیاه شوی.',
+    tajikCyrillic: 'Бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ.',
+    persianText: 'با ماه شینی، ماه شوی، با دیگ شینی، سیاه شوی.',
     simpleExplanationTj:
         'Ҳамнишинӣ ба инсон таъсир мекунад: бо некон некӣ ва бо бадон бадӣ мегирад.',
     meaningTj:
-        'Муҳит ва дӯстони наздик метавонанд хислат, одат ва рафтори инсонро тағйир диҳанд.',
+        '1. Аз некон некӣ сироят кунаду аз бадон бадӣ, 2. феълу хӯи ҳамнишин бетаъсир намемонад.',
     exampleSentenceTj:
-        'Пас аз ҳамнишинӣ бо донишҷӯёни ҷиддӣ худаш ҳам бештар мехонд; бо моҳ шинӣ, моҳ шавӣ.',
+        'Ман дар ин хусус пеш аз ҳама аз раисамон миннатдор, рафиқ Воҳидов, чунки дар паҳлуи ҳамин кас нишастаю хеста хеле чиз ёд гирифтам. Барои ҳамин ҳам оқилон беҳуда нагуфтаанд, ки «бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ».',
     categoryId: 'dusti',
     level: 5,
     type: ProverbType.traditional,
-    sourceStatus: SourceStatus.bookAttested,
-    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+    sourceStatus: SourceStatus.pageVerified,
+    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 42',
+    sources: [
+      SourceRef(
+        bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
+        authorEditor: 'В. Асрорӣ (ҷамъкунанда ва тартибдиҳанда)',
+        year: 1956,
+        publisher: 'Нашриёти давлатии Тоҷикистон',
+        city: 'Сталинобод',
+        pdfPage: 39,
+        printedPage: 42,
+        printedText: 'Бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ.',
+      ),
+      SourceRef(
+        bookTitle:
+            'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+        authorEditor: 'Муллоҷон Фозилов',
+        year: 1975,
+        publisher: 'Ирфон',
+        city: 'Душанбе',
+        pdfPage: 234,
+        printedPage: 231,
+        printedText: 'БО МОҲ ШИНӢ, МОҲ ШАВӢ, / БО ДЕГ ШИНӢ, СИЁҲ ШАВӢ.',
+        note: 'main entry with printed meaning and examples',
+      ),
+      SourceRef(
+        bookTitle:
+            'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо',
+        authorEditor:
+            'Б. Тилавов, Қ. Ҳисомов, Ф. Муродов, Ф. Зеҳниева (мураттибон)',
+        year: 1990,
+        publisher: 'Адиб',
+        city: 'Душанбе',
+        pdfPage: 30,
+        printedPage: 30,
+        printedText: 'Бо моҳ шинӣ, моҳ шавӣ, / Бо дег шинӣ, сиёҳ шавӣ.',
+      ),
+      SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 5',
+        authorEditor: 'Т. Мирзод, Р. Ҳамидов, М. Пирзод',
+        year: 2017,
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        pdfPage: 116,
+        printedPage: 116,
+        printedText: '«Бо моҳ шинӣ моҳ шавӣ, бо дег шинӣ сиёҳ шавӣ»',
+        note: 'cited as a зарбулмасал',
+      ),
+    ],
+    meaningSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 234,
+      printedPage: 231,
+    ),
+    exampleSource: SourceRef(
+      bookTitle:
+          'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I',
+      authorEditor: 'Муллоҷон Фозилов',
+      year: 1975,
+      publisher: 'Ирфон',
+      city: 'Душанбе',
+      pdfPage: 235,
+      printedPage: 232,
+    ),
+    exampleAttribution: 'Фотеҳ Ниёзӣ',
   ),
   Proverb(
     id: '101',

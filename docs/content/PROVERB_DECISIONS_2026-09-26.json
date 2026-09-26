@@ -1500,6 +1500,1419 @@
    "meaningPrinted": false,
    "examplePrinted": false,
    "note": ""
+  },
+  {
+   "id": 61,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Одам аз одам меомӯзад.",
+    "persianText": "آدم از آدم می‌آموزد.",
+    "meaningTj": "Омӯзиш танҳо аз китоб нест; одамон низ барои ҳамдигар устод мешаванд.",
+    "exampleSentenceTj": "Шогирд аз устои калонсол бисёр чиз ёд гирифт; одам аз одам меомӯзад.",
+    "simpleExplanationTj": "Инсон аз таҷриба, сухан ва рафтори дигарон чиз меомӯзад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "Одам аз одам меомӯзад.",
+    "persianText": "آدم از آدم می‌آموزد.",
+    "meaningTj": "Омӯзиш танҳо аз китоб нест; одамон низ барои ҳамдигар устод мешаванд.",
+    "exampleSentenceTj": "Шогирд аз устои калонсол бисёр чиз ёд гирифт; одам аз одам меомӯзад.",
+    "simpleExplanationTj": "Инсон аз таҷриба, сухан ва рафтори дигарон чиз меомӯзад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 62,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Ҳунар беҳ аз симу зар.",
+    "persianText": "هنر به از سیم و زر.",
+    "meaningTj": "Малака сарватест, ки метавонад ҳамеша ба инсон кору рӯзӣ диҳад.",
+    "exampleSentenceTj": "Ӯ ба ҷойи мероси пулӣ касб омӯхт; ҳунар беҳ аз симу зар.",
+    "simpleExplanationTj": "Ҳунар аз нуқраю тилло арзишмандтар аст.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Ҳунар беҳ аз симу зар аст.",
+    "persianText": "هنر به از سیم و زر است.",
+    "meaningTj": "Малака сарватест, ки метавонад ҳамеша ба инсон кору рӯзӣ диҳад.",
+    "exampleSentenceTj": "Ӯ ба ҷойи мероси пулӣ касб омӯхт; ҳунар беҳ аз симу зар аст.",
+    "simpleExplanationTj": "Ҳунар аз нуқраю тилло арзишмандтар аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 41"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 41,
+     "pdfPage": 41,
+     "printed": "Ҳунар беҳ аз симу зар аст."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 63,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Ҳунарманд ҳар ҷо азиз аст.",
+    "persianText": "هنرمند هر جا عزیز است.",
+    "meaningTj": "Маҳорат ва қобилияти фоиданок ба инсон обрӯ ва ҷойгоҳ медиҳанд.",
+    "exampleSentenceTj": "Усто ба шаҳри дигар рафт ва зуд кор ёфт; ҳунарманд ҳар ҷо азиз аст.",
+    "simpleExplanationTj": "Одами ҳунарманд дар ҳар ҷо қадр мешавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Ҳунарманд ҳар ҷо азиз аст.",
+    "persianText": "هنرمند هر جا عزیز است.",
+    "meaningTj": "Маҳорат ва қобилияти фоиданок ба инсон обрӯ ва ҷойгоҳ медиҳанд.",
+    "exampleSentenceTj": "Усто ба шаҳри дигар рафт ва зуд кор ёфт; ҳунарманд ҳар ҷо азиз аст.",
+    "simpleExplanationTj": "Одами ҳунарманд дар ҳар ҷо қадр мешавад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 64,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Ҳунар дошта бошӣ, хор намешавӣ.",
+    "persianText": "هنر داشته باشی، خوار نمی‌شوی.",
+    "meaningTj": "Ҳунар ба инсон истиқлол, рӯзӣ ва обрӯ медиҳад.",
+    "exampleSentenceTj": "Ҳарчанд корашро аз даст дод, бо ҳунараш боз кор ёфт; ҳунар дошта бошӣ, хор намешавӣ.",
+    "simpleExplanationTj": "Касе, ки ҳунар дорад, одатан муҳтоҷу бечора намемонад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Ҳунар дошта бошӣ, хор намешавӣ.",
+    "persianText": "هنر داشته باشی، خوار نمی‌شوی.",
+    "meaningTj": "Ҳунар ба инсон истиқлол, рӯзӣ ва обрӯ медиҳад.",
+    "exampleSentenceTj": "Ҳарчанд корашро аз даст дод, бо ҳунараш боз кор ёфт; ҳунар дошта бошӣ, хор намешавӣ.",
+    "simpleExplanationTj": "Касе, ки ҳунар дорад, одатан муҳтоҷу бечора намемонад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 65,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Ҳар кӣ ранҷ бурд, ганҷ бурд.",
+    "persianText": "هر که رنج برد، گنج برد.",
+    "meaningTj": "Меҳнат ва сабр роҳи расидан ба комёбӣ ва фоидаанд.",
+    "exampleSentenceTj": "Солҳо машқ кард ва ниҳоят ғолиб шуд; ҳар кӣ ранҷ бурд, ганҷ бурд.",
+    "simpleExplanationTj": "Касе, ки заҳмат мекашад, ба натиҷаи арзишманд мерасад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Ранҷ бурдӣ, ганҷ бурдӣ.",
+    "persianText": "رنج بردی، گنج بردی.",
+    "meaningTj": "Меҳнат ва сабр роҳи расидан ба комёбӣ ва фоидаанд.",
+    "exampleSentenceTj": "Солҳо машқ кард ва ниҳоят ғолиб шуд. Мураббӣ табрикаш кард: «Ранҷ бурдӣ, ганҷ бурдӣ».",
+    "simpleExplanationTj": "Касе, ки заҳмат мекашад, ба натиҷаи арзишманд мерасад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 47"
+   },
+   "sources": [
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 47,
+     "pdfPage": 47,
+     "printed": "Ранҷ бурдӣ, ганҷ бурдӣ."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 15,
+     "pdfPage": 15,
+     "printed": "Ранҷ бурдӣ, / Ганҷ бурдӣ."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 66,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "То меҳнат накунӣ, роҳат набинӣ.",
+    "persianText": "تا محنت نکنی، راحت نبینی.",
+    "meaningTj": "Осудагӣ натиҷаи кӯшиш ва кори пешина аст.",
+    "exampleSentenceTj": "Ӯ аввал кори сахтро анҷом дод, баъд истироҳат кард; то меҳнат накунӣ, роҳат набинӣ.",
+    "simpleExplanationTj": "Бе меҳнат ба роҳат ва зиндагии беҳтар расидан душвор аст.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "То меҳнат накунӣ, роҳат набинӣ.",
+    "persianText": "تا محنت نکنی، راحت نبینی.",
+    "meaningTj": "Осудагӣ натиҷаи кӯшиш ва кори пешина аст.",
+    "exampleSentenceTj": "Ӯ аввал кори сахтро анҷом дод, баъд истироҳат кард; то меҳнат накунӣ, роҳат набинӣ.",
+    "simpleExplanationTj": "Бе меҳнат ба роҳат ва зиндагии беҳтар расидан душвор аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "«То меҳнат накунӣ, роҳат набинӣ»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 67,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "То меҳнат накунӣ, санги сиёҳ лаъл нагардад.",
+    "persianText": "تا محنت نکنی، سنگ سیاه لعل نگردد.",
+    "meaningTj": "Қобилияту натиҷаи баланд бе кор ва тарбия ба вуҷуд намеояд.",
+    "exampleSentenceTj": "Шогирд бо машқи зиёд усто шуд; то меҳнат накунӣ, санги сиёҳ лаъл нагардад.",
+    "simpleExplanationTj": "Ҳатто чизи оддӣ танҳо бо заҳмат метавонад ба чизи арзишманд табдил ёбад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "То меҳнат накунӣ, санги сиёҳ лаъл нагардад.",
+    "persianText": "تا محنت نکنی، سنگ سیاه لعل نگردد.",
+    "meaningTj": "Қобилияту натиҷаи баланд бе кор ва тарбия ба вуҷуд намеояд.",
+    "exampleSentenceTj": "Шогирд бо машқи зиёд усто шуд; то меҳнат накунӣ, санги сиёҳ лаъл нагардад.",
+    "simpleExplanationTj": "Ҳатто чизи оддӣ танҳо бо заҳмат метавонад ба чизи арзишманд табдил ёбад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 74"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 74,
+     "pdfPage": 71,
+     "printed": "То меҳнат накунӣ, санги сиёҳ лаъл нагардад."
+    },
+    {
+     "book": "grade5_2017",
+     "printedPage": 41,
+     "pdfPage": 41,
+     "printed": "То меҳнат накунӣ, санги сиёҳ лаъл нагардад."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 68,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Бе меҳнат ганҷ муяссар намешавад.",
+    "persianText": "بی محنت گنج میسر نمی‌شود.",
+    "meaningTj": "Барои комёбӣ кӯшиши воқеӣ лозим аст.",
+    "exampleSentenceTj": "Ӯ ҳар рӯз машқ мекард; бе меҳнат ганҷ муяссар намешавад.",
+    "simpleExplanationTj": "Ганҷ ё натиҷаи калон бе меҳнат ба даст намеояд.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Бе меҳнат роҳат муяссар намешавад.",
+    "persianText": "بی محنت راحت میسر نمی‌شود.",
+    "meaningTj": "Барои комёбӣ кӯшиши воқеӣ лозим аст.",
+    "exampleSentenceTj": "Ӯ аввал корашро тамом кард, баъд истироҳат; бе меҳнат роҳат муяссар намешавад.",
+    "simpleExplanationTj": "Роҳат ва осудагӣ бе меҳнат ба даст намеояд.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 40"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 40,
+     "pdfPage": 37,
+     "printed": "Бе меҳнат роҳат муяссар намешавад."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 47,
+     "pdfPage": 47,
+     "printed": "Нобурда ранҷ ганҷ муяссар намешавад."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Not in Фозилов vol. I (checked p. 207)."
+  },
+  {
+   "id": 69,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "Кор кунӣ, нон мехӯрӣ.",
+    "persianText": "کار کنی، نان می‌خوری.",
+    "meaningTj": "Меҳнат асоси таъмини зиндагӣ аст.",
+    "exampleSentenceTj": "Ӯ аз субҳ кор мекард ва бо пули ҳалол рӯзӣ меёфт; кор кунӣ, нон мехӯрӣ.",
+    "simpleExplanationTj": "Бо кор кардан инсон рӯзии худро пайдо мекунад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "Кор кунӣ, нон мехӯрӣ.",
+    "persianText": "کار کنی، نان می‌خوری.",
+    "meaningTj": "Меҳнат асоси таъмини зиндагӣ аст.",
+    "exampleSentenceTj": "Ӯ аз субҳ кор мекард ва бо пули ҳалол рӯзӣ меёфт; кор кунӣ, нон мехӯрӣ.",
+    "simpleExplanationTj": "Бо кор кардан инсон рӯзии худро пайдо мекунад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 25"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 25,
+     "pdfPage": 24,
+     "printed": "Кор кунӣ, нон мехӯрӣ."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 70,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Кор кори кордон аст.",
+    "persianText": "کار کار کاردان است.",
+    "meaningTj": "Кори махсусро бояд ба шахси соҳибихтисос супорид.",
+    "exampleSentenceTj": "Барои таъмири барқ усто даъват карданд; кор кори кордон аст.",
+    "simpleExplanationTj": "Ҳар корро касе беҳтар анҷом медиҳад, ки онро медонад ва таҷриба дорад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Кор ба кордон осон аст.",
+    "persianText": "کار به کاردان آسان است.",
+    "meaningTj": "Кори махсусро бояд ба шахси соҳибихтисос супорид.",
+    "exampleSentenceTj": "Барои таъмири барқ усто даъват карданд; кор ба кордон осон аст.",
+    "simpleExplanationTj": "Ҳар корро касе беҳтар анҷом медиҳад, ки онро медонад ва таҷриба дорад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Адабиёти тоҷик, синфи 5» (2017), саҳ. 72"
+   },
+   "sources": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 72,
+     "pdfPage": 72,
+     "printed": "«Кор ба кордон осон аст»"
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 46,
+     "pdfPage": 46,
+     "printed": "Кор пеши кордон осон."
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 38,
+     "pdfPage": 35,
+     "printed": "Ба кордон кор осон."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 71,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Ҳар чизе, ки коштӣ, ҳамонро медаравӣ.",
+    "persianText": "هر چیزی که کاشتی، همان را مدروی.",
+    "meaningTj": "Оқибати рафтору кори инсон ба худи ӯ бармегардад.",
+    "exampleSentenceTj": "Ӯ ба ҳама некӣ мекард ва дар рӯзи сахт ҳама ёриаш карданд; ҳар чӣ коштӣ, ҳамонро медаравӣ.",
+    "simpleExplanationTj": "Ҳар тухме, ки мекорӣ, ҳамон навъи ҳосилро мегирӣ.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Ҳар чизе, ки коштӣ, ҳамонро медаравӣ.",
+    "persianText": "هر چیزی که کاشتی، همان را مدروی.",
+    "meaningTj": "Оқибати рафтору кори инсон ба худи ӯ бармегардад.",
+    "exampleSentenceTj": "Ӯ ба ҳама некӣ мекард ва дар рӯзи сахт ҳама ёриаш карданд; ҳар чӣ коштӣ, ҳамонро медаравӣ.",
+    "simpleExplanationTj": "Ҳар тухме, ки мекорӣ, ҳамон навъи ҳосилро мегирӣ.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 72,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Агар бод шинонӣ, тӯфон медаравӣ.",
+    "persianText": "اگر باد نشانی، توفان مدروی.",
+    "meaningTj": "Кина, низоъ ё беадолатии хурд метавонад мушкили калонтар ба вуҷуд орад.",
+    "exampleSentenceTj": "Ӯ ҷанҷолро қасдан оғоз кард ва баъд вазъ аз назорат баромад; агар бод шинонӣ, тӯфон медаравӣ.",
+    "simpleExplanationTj": "Кори бад метавонад оқибати аз худи он ҳам вазнинтар оварад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Агар бод шинонӣ, тӯфон медаравӣ.",
+    "persianText": "اگر باد نشانی، توفان مدروی.",
+    "meaningTj": "Кина, низоъ ё беадолатии хурд метавонад мушкили калонтар ба вуҷуд орад.",
+    "exampleSentenceTj": "Ӯ ҷанҷолро қасдан оғоз кард ва баъд вазъ аз назорат баромад; агар бод шинонӣ, тӯфон медаравӣ.",
+    "simpleExplanationTj": "Кори бад метавонад оқибати аз худи он ҳам вазнинтар оварад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Not in Фозилов vol. I (checked p. 33)."
+  },
+  {
+   "id": 73,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Деҳқон бошад, ҷаҳон обод аст.",
+    "persianText": "دهقان باشد، جهان آباد است.",
+    "meaningTj": "Кишоварзӣ ва меҳнати деҳқон барои таъмини ҷомеа аҳамияти асосӣ доранд.",
+    "exampleSentenceTj": "Деҳқонон заминро кишт карданд ва деҳа серҳосил шуд; деҳқон бошад, ҷаҳон обод аст.",
+    "simpleExplanationTj": "Меҳнати деҳқон замин ва зиндагии мардумро обод мекунад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "Деҳқон бошад, ҷаҳон обод аст.",
+    "persianText": "دهقان باشد، جهان آباد است.",
+    "meaningTj": "Кишоварзӣ ва меҳнати деҳқон барои таъмини ҷомеа аҳамияти асосӣ доранд.",
+    "exampleSentenceTj": "Деҳқонон заминро кишт карданд ва деҳа серҳосил шуд; деҳқон бошад, ҷаҳон обод аст.",
+    "simpleExplanationTj": "Меҳнати деҳқон замин ва зиндагии мардумро обод мекунад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 74,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "Заминро об вайрон мекунад, одамро гап.",
+    "persianText": "زمین را آب ویران می‌کند، آدم را گپ.",
+    "meaningTj": "Ғайбат, туҳмат ё сухани беэҳтиёт метавонад обрӯ ва зиндагии инсонро вайрон кунад.",
+    "exampleSentenceTj": "Як овозаи беасос ба обрӯи ӯ зарар расонд; заминро об вайрон мекунад, одамро гап.",
+    "simpleExplanationTj": "Чунон ки оби зиёдатӣ заминро вайрон мекунад, сухани бад метавонад одамро зарар диҳад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Заминро об вайрон мекунад, одамро гап.",
+    "persianText": "زمین را آب ویران می‌کند، آدم را گپ.",
+    "meaningTj": "Ғайбат, туҳмат ё сухани беэҳтиёт метавонад обрӯ ва зиндагии инсонро вайрон кунад.",
+    "exampleSentenceTj": "Як овозаи беасос ба обрӯи ӯ зарар расонд; заминро об вайрон мекунад, одамро гап.",
+    "simpleExplanationTj": "Чунон ки оби зиёдатӣ заминро вайрон мекунад, сухани бад метавонад одамро зарар диҳад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 54"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 54,
+     "pdfPage": 51,
+     "printed": "Заминро об вайрон мекунад, одамро гап."
+    },
+    {
+     "book": "grade5_2017",
+     "printedPage": 41,
+     "pdfPage": 41,
+     "printed": "Заминро об вайрон мекунад, одамро – гап."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 75,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Об аз сар лой мешавад.",
+    "persianText": "آب از سر لای می‌شود.",
+    "meaningTj": "Бадкорӣ ё бесарусомонӣ аксар вақт аз роҳбарӣ ё қисми болоӣ оғоз мешавад.",
+    "exampleSentenceTj": "Вақте роҳбар қоидаҳоро риоя намекунад, дигарон ҳам беэътино мешаванд; об аз сар лой мешавад.",
+    "simpleExplanationTj": "Агар сарчашма лой бошад, об аз ҳамон ҷо ифлос мешавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Об аз сар лой.",
+    "persianText": "آب از سر لای.",
+    "meaningTj": "Бадкорӣ ё бесарусомонӣ аксар вақт аз роҳбарӣ ё қисми болоӣ оғоз мешавад.",
+    "exampleSentenceTj": "Вақте роҳбар қоидаҳоро риоя намекунад, дигарон ҳам беэътино мешаванд; об аз сар лой.",
+    "simpleExplanationTj": "Агар сарчашма лой бошад, об аз ҳамон ҷо ифлос мешавад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 65"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 65,
+     "pdfPage": 62,
+     "printed": "Об аз сар лой."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 76,
+     "pdfPage": 76,
+     "printed": "Об аз сар лой."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 76,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Қатра-қатра дарё шавад.",
+    "persianText": "قطره‌قطره دریا شود.",
+    "meaningTj": "Кӯшиш ё пасандози кам-кам бо вақт ба натиҷаи калон мерасад.",
+    "exampleSentenceTj": "Ӯ ҳар рӯз андаке пул ҷамъ мекард; қатра-қатра дарё шавад.",
+    "simpleExplanationTj": "Қатраҳои хурд ҷамъ шуда дарё месозанд.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Зарра-зарра мӯл шавад, Қатра-қатра кӯл шавад.",
+    "persianText": "ذره‌ذره مول شود، قطره‌قطره کول شود.",
+    "meaningTj": "Кӯшиш ё пасандози кам-кам бо вақт ба натиҷаи калон мерасад.",
+    "exampleSentenceTj": "Ӯ ҳар рӯз андаке пул ҷамъ мекард; зарра-зарра мӯл шавад, қатра-қатра кӯл шавад.",
+    "simpleExplanationTj": "Зарраҳо ва қатраҳои хурд ҷамъ шуда чизи калон месозанд.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 36"
+   },
+   "sources": [
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 36,
+     "pdfPage": 36,
+     "printed": "Зарра-зарра мӯл шавад, / Қатра-қатра кӯл шавад."
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 83,
+     "pdfPage": 80,
+     "printed": "Қатра-қатра ҷамъ гардад, он гаҳе дарьё шавад."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 77,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Сабр кунӣ, аз ғӯра ҳалво мешавад.",
+    "persianText": "صبر کنی، از غوره حلوا می‌شود.",
+    "meaningTj": "Вақт ва сабр метавонанд ҳолати душвор ё нопухтаро ба натиҷаи хуб расонанд.",
+    "exampleSentenceTj": "Ниҳол солҳои аввал мева надод, вале ӯ нигоҳубинро давом дод; сабр кунӣ, аз ғӯра ҳалво мешавад.",
+    "simpleExplanationTj": "Бо сабр ҳатто ғӯраи турш метавонад ба чизи ширин табдил ёбад — ба маънои маҷозӣ.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Сабр кунӣ, ғӯра ҳалво мешавад.",
+    "persianText": "صبر کنی، غوره حلوا می‌شود.",
+    "meaningTj": "Вақт ва сабр метавонанд ҳолати душвор ё нопухтаро ба натиҷаи хуб расонанд.",
+    "exampleSentenceTj": "Ниҳол солҳои аввал мева надод, вале ӯ нигоҳубинро давом дод; сабр кунӣ, ғӯра ҳалво мешавад.",
+    "simpleExplanationTj": "Бо сабр ҳатто ғӯраи турш метавонад ба чизи ширин табдил ёбад — ба маънои маҷозӣ.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 32"
+   },
+   "sources": [
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 32,
+     "pdfPage": 32,
+     "printed": "Сабр кунӣ, ғӯра ҳалво мешавад."
+    },
+    {
+     "book": "asrori1956",
+     "printedPage": 45,
+     "pdfPage": 42,
+     "printed": "Гар сабр кунӣ, аз ғӯра ҳалво мепазад."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 78,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Сабр талх аст, вале мевааш ширин.",
+    "persianText": "صبر تلخ است، ولی میوه‌اش شیرین.",
+    "meaningTj": "Таҳаммул ва интизорӣ аксар вақт ба натиҷаи хуб меоранд.",
+    "exampleSentenceTj": "Омӯзиш тӯл кашид, вале баъд кори хуб ёфт; сабр талх аст, вале мевааш ширин.",
+    "simpleExplanationTj": "Сабр кардан душвор аст, аммо натиҷаи он метавонад хуш бошад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Сабр талх аст, вале оқибаташ ширин.",
+    "persianText": "صبر تلخ است، ولی عاقبتش شیرین.",
+    "meaningTj": "Таҳаммул ва интизорӣ аксар вақт ба натиҷаи хуб меоранд.",
+    "exampleSentenceTj": "Омӯзиш тӯл кашид, вале баъд кори хуб ёфт; сабр талх аст, вале оқибаташ ширин.",
+    "simpleExplanationTj": "Сабр кардан душвор аст, аммо натиҷаи он метавонад хуш бошад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 70"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 70,
+     "pdfPage": 67,
+     "printed": "Сабр талх аст, вале оқибаташ ширин."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 79,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Шитоб кори шайтон аст.",
+    "persianText": "شتاب کار شیطان است.",
+    "meaningTj": "Пеш аз амал кардан фикр ва эҳтиёт лозим аст; саросемагӣ хатар дорад.",
+    "exampleSentenceTj": "Ӯ пеш аз имзо ҳуҷҷатро боз як бор хонд; шитоб кори шайтон аст.",
+    "simpleExplanationTj": "Шитоби беандеша метавонад боиси хато шавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "Шитоб кори шайтон аст.",
+    "persianText": "شتاب کار شیطان است.",
+    "meaningTj": "Пеш аз амал кардан фикр ва эҳтиёт лозим аст; саросемагӣ хатар дорад.",
+    "exampleSentenceTj": "Ӯ пеш аз имзо ҳуҷҷатро боз як бор хонд; шитоб кори шайтон аст.",
+    "simpleExplanationTj": "Шитоби беандеша метавонад боиси хато шавад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 80,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "Дер ояду шер ояд.",
+    "persianText": "دیر آید و شیر آید.",
+    "meaningTj": "Дерӣ ҳамеша бад нест, агар натиҷаи ниҳоӣ арзанда бошад.",
+    "exampleSentenceTj": "Лоиҳа дертар омода шуд, вале хеле хуб баромад; дер ояду шер ояд.",
+    "simpleExplanationTj": "Беҳтар аст чизе дертар, вале бо қуввату сифати хуб бирасад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Дер ояду шер ояд.",
+    "persianText": "دیر آید و شیر آید.",
+    "meaningTj": "Дерӣ ҳамеша бад нест, агар натиҷаи ниҳоӣ арзанда бошад.",
+    "exampleSentenceTj": "Лоиҳа дертар омода шуд, вале хеле хуб баромад; дер ояду шер ояд.",
+    "simpleExplanationTj": "Беҳтар аст чизе дертар, вале бо қуввату сифати хуб бирасад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 51"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 51,
+     "pdfPage": 48,
+     "printed": "Дер ояду шер ояд."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 33,
+     "pdfPage": 33,
+     "printed": "Дер ояду шер ояд."
+    },
+    {
+     "book": "grade5_2017",
+     "printedPage": 42,
+     "pdfPage": 42,
+     "printed": "«Дер ояду шер ояд»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 81,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Ҳар кор вақти худро дорад.",
+    "persianText": "هر کار وقت خود را دارد.",
+    "meaningTj": "Корро дар вақти дуруст анҷом додан натиҷаро беҳтар мекунад.",
+    "exampleSentenceTj": "Ҳоло вақти баҳс набуд, барои ҳамин суҳбатро ба баъд гузоштанд; ҳар кор вақти худро дорад.",
+    "simpleExplanationTj": "Барои ҳар кор вақти муносиб вуҷуд дорад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Ҳар кор вақту соат дорад.",
+    "persianText": "هر کار وقت و ساعت دارد.",
+    "meaningTj": "Корро дар вақти дуруст анҷом додан натиҷаро беҳтар мекунад.",
+    "exampleSentenceTj": "Ҳоло вақти баҳс набуд, барои ҳамин суҳбатро ба баъд гузоштанд; ҳар кор вақту соат дорад.",
+    "simpleExplanationTj": "Барои ҳар кор вақти муносиб вуҷуд дорад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 105"
+   },
+   "sources": [
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 105,
+     "pdfPage": 105,
+     "printed": "Ҳар кор вақту соат дорад."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 82,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Имрӯзро ба фардо магузор.",
+    "persianText": "امروز را به فردا مگذار.",
+    "meaningTj": "Ба таъхир андохтани кор метавонад мушкилро зиёд кунад; вазифаи имрӯза беҳтараш имрӯз анҷом ёбад.",
+    "exampleSentenceTj": "Вазифаро ҳамон шаб тамом кард; имрӯзро ба фардо магузор.",
+    "simpleExplanationTj": "Кори имрӯзро бе сабаб ба рӯзи дигар нагузор.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Кори имрӯзаро ба фардо магузор.",
+    "persianText": "کار امروزه را به فردا مگذار.",
+    "meaningTj": "Ба таъхир андохтани кор метавонад мушкилро зиёд кунад; вазифаи имрӯза беҳтараш имрӯз анҷом ёбад.",
+    "exampleSentenceTj": "Вазифаро ҳамон шаб тамом кард; кори имрӯзаро ба фардо магузор.",
+    "simpleExplanationTj": "Кори имрӯзро бе сабаб ба рӯзи дигар нагузор.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 57"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 57,
+     "pdfPage": 54,
+     "printed": "Кори имрӯзаро ба фардо магузор."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 46,
+     "pdfPage": 46,
+     "printed": "Кори имрӯзаро ба фардо магузор."
+    },
+    {
+     "book": "grade9_2026",
+     "printedPage": 318,
+     "pdfPage": 318,
+     "printed": "«Кори имрӯзаро ба фардо нагузор»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 83,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Вақт аз тилло қиматтар аст.",
+    "persianText": "وقت از طلا قیمت‌تر است.",
+    "meaningTj": "Пулро метавон дубора ба даст овард, аммо вақти гузашта барнамегардад.",
+    "exampleSentenceTj": "Ӯ вақти холиро беҳуда нагузаронд; вақт аз тилло қиматтар аст.",
+    "simpleExplanationTj": "Вақт аз молу тилло ҳам арзишмандтар аст.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "Вақт аз тилло қиматтар аст.",
+    "persianText": "وقت از طلا قیمت‌تر است.",
+    "meaningTj": "Пулро метавон дубора ба даст овард, аммо вақти гузашта барнамегардад.",
+    "exampleSentenceTj": "Ӯ вақти холиро беҳуда нагузаронд; вақт аз тилло қиматтар аст.",
+    "simpleExplanationTj": "Вақт аз молу тилло ҳам арзишмандтар аст.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Not in Фозилов vol. I (checked pp. 257–259)."
+  },
+  {
+   "id": 84,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Модарашро бину, духтарашро гир.",
+    "persianText": "مادرش را بین و دخترش را گیر.",
+    "meaningTj": "Пеш аз интихоби ҳамсар ба муҳити оилавӣ ва тарбия низ аҳамият медиҳанд; ин қоидаи қатъӣ дар бораи ҳар шахс нест.",
+    "exampleSentenceTj": "Пирон ҳангоми шиносоии ду оила ба муҳити тарбия ҳам менигаристанд: «Модарашро бину, духтарашро гир».",
+    "simpleExplanationTj": "Ин мақоли анъанавӣ монандии тарбия ва одатҳои духтарро ба муҳити модарӣ таъкид мекунад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Роҳаша бину аспаша гир, Очаша бину духтараша гир.",
+    "persianText": "راهشه بین و اسپشه گیر، اوچه‌شه بین و دخترشه گیر.",
+    "meaningTj": "Пеш аз интихоби ҳамсар ба муҳити оилавӣ ва тарбия низ аҳамият медиҳанд; ин қоидаи қатъӣ дар бораи ҳар шахс нест.",
+    "exampleSentenceTj": "Пирон ҳангоми шиносоии ду оила ба муҳити тарбия ҳам менигаристанд: «Очаша бину духтараша гир».",
+    "simpleExplanationTj": "Ин мақоли анъанавӣ монандии тарбия ва одатҳои духтарро ба муҳити модарӣ таъкид мекунад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 92"
+   },
+   "sources": [
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 92,
+     "pdfPage": 92,
+     "printed": "Роҳаша бину аспаша гир, / Очаша бину духтараша гир."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Our text was a standard-orthography paraphrase of the second line."
+  },
+  {
+   "id": 85,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Модар чӣ гуна, духтар намуна.",
+    "persianText": "مادر چه گونه، دختر نمونه.",
+    "meaningTj": "Тарбияи хонаводагӣ ба хислат ва рафтори фарзанд таъсир мерасонад, ҳарчанд ҳар шахс мустақил аст.",
+    "exampleSentenceTj": "Духтар аз модараш меҳмондориро омӯхта буд; модар чӣ гуна, духтар намуна.",
+    "simpleExplanationTj": "Фарзанд бисёр рафтору одатҳоро аз модар ва муҳити хона меомӯзад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Модар чӣ гуна, духтар намуна.",
+    "persianText": "مادر چه گونه، دختر نمونه.",
+    "meaningTj": "Тарбияи хонаводагӣ ба хислат ва рафтори фарзанд таъсир мерасонад, ҳарчанд ҳар шахс мустақил аст.",
+    "exampleSentenceTj": "Духтар аз модараш меҳмондориро омӯхта буд; модар чӣ гуна, духтар намуна.",
+    "simpleExplanationTj": "Фарзанд бисёр рафтору одатҳоро аз модар ва муҳити хона меомӯзад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 92,
+     "pdfPage": 92,
+     "printed": "Арӯс (духтар) чӣ гуна? Очаш намуна."
+    }
+   ],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 86,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Ҳуши оча ба бача, ҳуши бача ба кӯча.",
+    "persianText": "هوش اوچه به بچه، هوش بچه به کوچه.",
+    "meaningTj": "Ғамхории волидайн нисбат ба фарзанд аксар вақт бештар аз он аст, ки кӯдак дарк мекунад.",
+    "exampleSentenceTj": "Модар дер омадани писарашро нигарон буд, аммо ӯ машғули бозӣ буд; ҳуши оча ба бача, ҳуши бача ба кӯча.",
+    "simpleExplanationTj": "Модар ҳамеша дар фикри фарзанд аст, вале кӯдак бештар дар фикри бозӣ ва кӯча мешавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Дили оча ба бача, дили бача ба кӯча.",
+    "persianText": "دل اوچه به بچه، دل بچه به کوچه.",
+    "meaningTj": "Ғамхории волидайн нисбат ба фарзанд аксар вақт бештар аз он аст, ки кӯдак дарк мекунад.",
+    "exampleSentenceTj": "Модар дер омадани писарашро нигарон буд, аммо ӯ машғули бозӣ буд; дили оча ба бача, дили бача ба кӯча.",
+    "simpleExplanationTj": "Модар ҳамеша дар фикри фарзанд аст, вале кӯдак бештар дар фикри бозӣ ва кӯча мешавад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 51"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 51,
+     "pdfPage": 48,
+     "printed": "Дили оча ба бача, дили бача ба кӯча."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 98,
+     "pdfPage": 98,
+     "printed": "Дили оча ба бача, / Дили бача ба кӯча."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 87,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "Духтарам, ба ту мегӯям; келинам, ту шунав.",
+    "persianText": "دخترم، به تو می‌گویم؛ کلینم، تو شنو.",
+    "meaningTj": "Ин тарзи ғайримустақими насиҳат ё танқид аст.",
+    "exampleSentenceTj": "Модар ба духтараш дар бораи тартиб гуфт, то келинаш ҳам ишораро фаҳмад: «Духтарам, ба ту мегӯям; келинам, ту шунав».",
+    "simpleExplanationTj": "Ба як кас мегӯянд, вале мақсад ин аст, ки шахси дигар ҳам пандро бифаҳмад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Духтарам, ба ту мегӯям, келинам ту шунав.",
+    "persianText": "دخترم، به تو می‌گویم، کلینم تو شنو.",
+    "meaningTj": "Суханеро ба касе равона карда, ба тариқи киноя ба каси дигар чизеро гӯшрас карданӣ шаванд, ин зарбулмасалро ба кор мебаранд.",
+    "exampleSentenceTj": "Шумо одами ҳилагар будаед, ба ман ба мисоли «духтарам, ба ту мегӯям, келинам, ту шунав!» гап задед.",
+    "simpleExplanationTj": "Ба як кас мегӯянд, вале мақсад ин аст, ки шахси дигар ҳам пандро бифаҳмад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 53"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 53,
+     "pdfPage": 50,
+     "printed": "Духтарам, ба ту мегӯям, келинам ту шунав."
+    },
+    {
+     "book": "grade5_2017",
+     "printedPage": 40,
+     "pdfPage": 40,
+     "printed": "ДУХТАРАМ, БА ТУ МЕГӮЯМ, КЕЛИНАМ, ТУ ШУНАВ!"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": true,
+   "note": ""
+  },
+  {
+   "id": 88,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Ба ҷанги зану шавҳар остона хандидааст.",
+    "persianText": "به جنگ زن و شوهر آستانه خندیده است.",
+    "meaningTj": "Муноқишаи оилавии кӯтоҳмуддатро набояд зуд ба душмании доимӣ баробар донист; ҳамсарон метавонанд зуд оштӣ кунанд.",
+    "exampleSentenceTj": "Дӯстонашон мехостанд тараф гиранд, вале онҳо худ зуд оштӣ карданд; ба ҷанги зану шавҳар остона хандидааст.",
+    "simpleExplanationTj": "Ҷанҷоли зану шавҳар бисёр вақт зуд мегузарад ва аз берун дахолат кардан метавонад беҳуда бошад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Ба ҷанги зану шӯй остона механдад.",
+    "persianText": "به جنگ زن و شوی آستانه می‌خندد.",
+    "meaningTj": "1. Алами ҷанги зану шӯ тезгузар аст, зану шӯ ҳарчанд бо ҳамдигар сахт биҷанганд ҳам, боз оштӣ мешаванд, 2. натиҷаи ба байни ҷанги зану шӯ даромадан шармандагӣ аст.",
+    "exampleSentenceTj": "— Сангинҷон, аз ман хафа шудӣ? Охир, «сухани рост талх мешавад».\n— Чӣ хафа мешавам? «Ба ҷанги зану шӯ остонаи дари хона механдад» мегӯянд. Ту хурсанд бошӣ, ман хурсанд.",
+    "simpleExplanationTj": "Ҷанҷоли зану шавҳар бисёр вақт зуд мегузарад ва аз берун дахолат кардан метавонад беҳуда бошад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 40"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 40,
+     "pdfPage": 37,
+     "printed": "Ба ҷанги зану шӯй остона механдад."
+    },
+    {
+     "book": "fozilov1_1975",
+     "printedPage": 200,
+     "pdfPage": 203,
+     "printed": "БА ҶАНГИ ЗАНУ ШӮ ОСТОНАИ ДАРИ ХОНА МЕХАНДАД."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": true,
+   "note": ""
+  },
+  {
+   "id": 89,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Хонаи бехушдоман — майдони бе хошок.",
+    "persianText": "خانهٔ بی‌خوشدامن — میدان بی‌خاشاک.",
+    "meaningTj": "Мақол муносибатҳои анъанавии пуртаниши келину хушдоманро ба шакли шӯхиомез инъикос мекунад; онро набояд ҳақиқати умумӣ донист.",
+    "exampleSentenceTj": "Пиразан ин мақоли қадимиро бо шӯхӣ гуфт: «Хонаи бехушдоман — майдони бе хошок».",
+    "simpleExplanationTj": "Ин мақоли кӯҳна бо ҳазлу киноя мегӯяд, ки хона бе хушдоман оромтару камҷанҷолтар менамояд.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Хонаи бехушдоман — майдони бе хошок.",
+    "persianText": "خانهٔ بی‌خوشدامن — میدان بی‌خاشاک.",
+    "meaningTj": "Мақол муносибатҳои анъанавии пуртаниши келину хушдоманро ба шакли шӯхиомез инъикос мекунад; онро набояд ҳақиқати умумӣ донист.",
+    "exampleSentenceTj": "Пиразан ин мақоли қадимиро бо шӯхӣ гуфт: «Хонаи бехушдоман — майдони бе хошок».",
+    "simpleExplanationTj": "Ин мақоли кӯҳна бо ҳазлу киноя мегӯяд, ки хона бе хушдоман оромтару камҷанҷолтар менамояд.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 90,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Фарзанд азиз, одобаш азизтар.",
+    "persianText": "فرزند عزیز، ادبش عزیزتر.",
+    "meaningTj": "Муҳаббат ба фарзанд бояд бо омӯзонидани одоб ва масъулият ҳамроҳ бошад.",
+    "exampleSentenceTj": "Падар ба фарзандаш танҳо тӯҳфа намедод, одоб ҳам меомӯзонд; фарзанд азиз, одобаш азизтар.",
+    "simpleExplanationTj": "Фарзанд азиз аст, вале тарбияи хуби ӯ боз ҳам муҳимтар аст.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "Фарзанд азиз, одобаш азизтар.",
+    "persianText": "فرزند عزیز، ادبش عزیزتر.",
+    "meaningTj": "Муҳаббат ба фарзанд бояд бо омӯзонидани одоб ва масъулият ҳамроҳ бошад.",
+    "exampleSentenceTj": "Падар ба фарзандаш танҳо тӯҳфа намедод, одоб ҳам меомӯзонд; фарзанд азиз, одобаш азизтар.",
+    "simpleExplanationTj": "Фарзанд азиз аст, вале тарбияи хуби ӯ боз ҳам муҳимтар аст.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [
+    {
+     "book": "grade5_2017",
+     "printedPage": 38,
+     "pdfPage": 38,
+     "printed": "Кӯдак азиз аст, адабаш – аз он азизтар."
+    }
+   ],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 91,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Ватан аз остона сар мешавад.",
+    "persianText": "وطن از آستانه سر می‌شود.",
+    "meaningTj": "Ғамхорӣ ба кишвар аз эҳтиром ва обод кардани ҷои зисти худ сар мешавад.",
+    "exampleSentenceTj": "Онҳо аввал кӯчаи худро тоза карданд; Ватан аз остона сар мешавад.",
+    "simpleExplanationTj": "Муҳаббат ба Ватан аз хона, маҳалла ва муҳити наздики инсон оғоз мешавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фолклори тоҷик"
+   },
+   "after": {
+    "tajikCyrillic": "Ватан аз остона сар мешавад.",
+    "persianText": "وطن از آستانه سر می‌شود.",
+    "meaningTj": "Ғамхорӣ ба кишвар аз эҳтиром ва обод кардани ҷои зисти худ сар мешавад.",
+    "exampleSentenceTj": "Онҳо аввал кӯчаи худро тоза карданд; Ватан аз остона сар мешавад.",
+    "simpleExplanationTj": "Муҳаббат ба Ватан аз хона, маҳалла ва муҳити наздики инсон оғоз мешавад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "«Фолклори тоҷик» (1954) has no proverb section; not in Фозилов vol. I."
+  },
+  {
+   "id": 92,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Хоки Ватан аз тахти Сулаймон беҳ.",
+    "persianText": "خاک وطن از تخت سلیمان به.",
+    "meaningTj": "Муҳаббат ба зодгоҳ ва Ватан аз молу мақом болотар аст.",
+    "exampleSentenceTj": "Ӯ дар хориҷ имкони хуб дошт, вале ҳамеша зодгоҳашро ёд мекард; хоки Ватан аз тахти Сулаймон беҳ.",
+    "simpleExplanationTj": "Ҳатто хоки Ватан аз сарвати бузургу шоҳона азизтар дониста мешавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Хоки ватан аз тахти Сулаймон хуштар, Хори ватан аз лолаву райҳон хуштар.",
+    "persianText": "خاک وطن از تخت سلیمان خوشتر، خار وطن از لاله و ریحان خوشتر.",
+    "meaningTj": "Муҳаббат ба зодгоҳ ва Ватан аз молу мақом болотар аст.",
+    "exampleSentenceTj": "Ӯ дар хориҷ имкони хуб дошт, вале ҳамеша зодгоҳашро ёд мекард; хоки ватан аз тахти Сулаймон хуштар.",
+    "simpleExplanationTj": "Ҳатто хоки Ватан аз сарвати бузургу шоҳона азизтар дониста мешавад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 20"
+   },
+   "sources": [
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 20,
+     "pdfPage": 20,
+     "printed": "Хоки ватан аз тахти Сулаймон хуштар, / Хори ватан аз лолаву райҳон хуштар.*"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 93,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Ҷон фидои Ватан.",
+    "persianText": "جان فدای وطن.",
+    "meaningTj": "Ватан арзише дониста мешавад, ки барои ҳифзу ободии он инсон аз манфиати шахсӣ мегузарад.",
+    "exampleSentenceTj": "Сарбозон барои амнияти кишвар хизмат мекарданд: «Ҷон фидои Ватан».",
+    "simpleExplanationTj": "Ин ибора омодагии инсонро барои фидокорӣ ба хотири Ватан ифода мекунад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фолклори тоҷик"
+   },
+   "after": {
+    "tajikCyrillic": "Ҷон фидои Ватан.",
+    "persianText": "جان فدای وطن.",
+    "meaningTj": "Ватан арзише дониста мешавад, ки барои ҳифзу ободии он инсон аз манфиати шахсӣ мегузарад.",
+    "exampleSentenceTj": "Сарбозон барои амнияти кишвар хизмат мекарданд: «Ҷон фидои Ватан».",
+    "simpleExplanationTj": "Ин ибора омодагии инсонро барои фидокорӣ ба хотири Ватан ифода мекунад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "«Фолклори тоҷик» (1954) has no proverb section."
+  },
+  {
+   "id": 94,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Бе Ватан одам булбули бе чаман аст.",
+    "persianText": "بی‌وطن آدم بلبل بی‌چمن است.",
+    "meaningTj": "Инсон бе зодгоҳ ва ҳисси тааллуқ метавонад худро бегонаву бепаноҳ эҳсос кунад.",
+    "exampleSentenceTj": "Дар ғарибӣ ҳамеша зодгоҳашро ёд мекард; бе Ватан одам булбули бе чаман аст.",
+    "simpleExplanationTj": "Одами бе Ватан мисли булбулест, ки чаман надорад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Шахси беватан — булбули бечаман.",
+    "persianText": "شخص بی‌وطن — بلبل بی‌چمن.",
+    "meaningTj": "Инсон бе зодгоҳ ва ҳисси тааллуқ метавонад худро бегонаву бепаноҳ эҳсос кунад.",
+    "exampleSentenceTj": "Дар ғарибӣ ҳамеша зодгоҳашро ёд мекард; шахси беватан — булбули бечаман.",
+    "simpleExplanationTj": "Одами бе Ватан мисли булбулест, ки чаман надорад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 80"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 80,
+     "pdfPage": 77,
+     "printed": "Шахси беватан—булбули бечаман."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 20,
+     "pdfPage": 20,
+     "printed": "Одами беватан — мурдаи бекафан (булбули бечаман)."
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": "Not in Фозилов vol. I (checked p. 204)."
+  },
+  {
+   "id": 95,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Дӯст дар сафар шинохта мешавад.",
+    "persianText": "دوست در سفر شناخته می‌شود.",
+    "meaningTj": "Шароити душвор ё ғайриодӣ нишон медиҳад, ки дӯст то чӣ андоза боэътимод ва ҳамкор аст.",
+    "exampleSentenceTj": "Дар роҳ мошин вайрон шуд ва дӯсташ то охир ёрӣ дод; дӯст дар сафар шинохта мешавад.",
+    "simpleExplanationTj": "Дар сафар хислат ва муносибати дӯстон бештар маълум мешавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Дӯст дар сафар шинохта мешавад.",
+    "persianText": "دوست در سفر شناخته می‌شود.",
+    "meaningTj": "Шароити душвор ё ғайриодӣ нишон медиҳад, ки дӯст то чӣ андоза боэътимод ва ҳамкор аст.",
+    "exampleSentenceTj": "Дар роҳ мошин вайрон шуд ва дӯсташ то охир ёрӣ дод; дӯст дар сафар шинохта мешавад.",
+    "simpleExplanationTj": "Дар сафар хислат ва муносибати дӯстон бештар маълум мешавад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 96,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Дӯстро дар рӯзи сахт шиносанд.",
+    "persianText": "دوست را در روز سخت شناسند.",
+    "meaningTj": "Касе, ки дар рӯзи душвор паҳлӯи ту мемонад, дӯстии худро бо амал нишон медиҳад.",
+    "exampleSentenceTj": "Вақте бемор шуд, дӯсташ ҳар рӯз хабар мегирифт; дӯстро дар рӯзи сахт шиносанд.",
+    "simpleExplanationTj": "Дӯсти ҳақиқӣ дар вақти мушкилӣ маълум мешавад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Баёзи фолклори тоҷик. Ҷилди 2"
+   },
+   "after": {
+    "tajikCyrillic": "Дӯстро дар рӯзи сахт шиносанд.",
+    "persianText": "دوست را در روز سخت شناسند.",
+    "meaningTj": "Касе, ки дар рӯзи душвор паҳлӯи ту мемонад, дӯстии худро бо амал нишон медиҳад.",
+    "exampleSentenceTj": "Вақте бемор шуд, дӯсташ ҳар рӯз хабар мегирифт; дӯстро дар рӯзи сахт шиносанд.",
+    "simpleExplanationTj": "Дӯсти ҳақиқӣ дар вақти мушкилӣ маълум мешавад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 97,
+   "verdict": "variant",
+   "before": {
+    "tajikCyrillic": "Дӯсти нодон аз душмани доно бадтар аст.",
+    "persianText": "دوست نادان از دشمن دانا بدتر است.",
+    "meaningTj": "Нияти хуб кофӣ нест; ақлу фаҳм ҳам муҳиманд.",
+    "exampleSentenceTj": "Дӯсташ барои ёрӣ коре кард, ки вазъро бадтар намуд; дӯсти нодон аз душмани доно бадтар аст.",
+    "simpleExplanationTj": "Дӯсти нодон метавонад аз рӯйи нодонӣ зарари бештар аз душман расонад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Аз дӯсти нодон душмани доно беҳ.",
+    "persianText": "از دوست نادان دشمن دانا به.",
+    "meaningTj": "Нияти хуб кофӣ нест; ақлу фаҳм ҳам муҳиманд.",
+    "exampleSentenceTj": "Дӯсташ барои ёрӣ коре кард, ки вазъро бадтар намуд; аз дӯсти нодон душмани доно беҳ.",
+    "simpleExplanationTj": "Дӯсти нодон метавонад аз рӯйи нодонӣ зарари бештар аз душман расонад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 33"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 33,
+     "pdfPage": 30,
+     "printed": "Аз дӯсти нодон душмани доно беҳ."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 23,
+     "pdfPage": 23,
+     "printed": "Аз дӯсти нодон душмани доно беҳ."
+    },
+    {
+     "book": "fozilov1_1975",
+     "printedPage": 69,
+     "pdfPage": 70,
+     "printed": "АЗ ДӮСТИ НОДОН ДУШМАНИ ДОНО БЕҲ!"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 98,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "Душмани доно беҳ аз дӯсти нодон.",
+    "persianText": "دشمن دانا به از دوست نادان.",
+    "meaningTj": "Ақлу фаҳм дар муносибат муҳиманд; дӯстии беақлона метавонад зарар расонад.",
+    "exampleSentenceTj": "Маслиҳати дӯсти беандеша ба ӯ зиён овард; душмани доно беҳ аз дӯсти нодон.",
+    "simpleExplanationTj": "Душмани оқил баъзан аз дӯсти нодон пешгӯишавандатар ва камзарартар аст.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Душмани доно беҳ аз дӯсти нодон.",
+    "persianText": "دشمن دانا به از دوست نادان.",
+    "meaningTj": "Ақлу фаҳм дар муносибат муҳиманд; дӯстии беақлона метавонад зарар расонад.",
+    "exampleSentenceTj": "Маслиҳати дӯсти беандеша ба ӯ зиён овард; душмани доно беҳ аз дӯсти нодон.",
+    "simpleExplanationTj": "Душмани оқил баъзан аз дӯсти нодон пешгӯишавандатар ва камзарартар аст.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 69"
+   },
+   "sources": [
+    {
+     "book": "fozilov1_1975",
+     "printedPage": 69,
+     "pdfPage": 70,
+     "printed": "ниг. Душмани доно беҳ аз дӯсти нодон."
+    },
+    {
+     "book": "fozilov1_1975",
+     "printedPage": 144,
+     "pdfPage": 147,
+     "printed": "мук. Душмани доно беҳ аз дӯсти нодон!"
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 23,
+     "pdfPage": 23,
+     "printed": "Душмани доно беҳ аз нодони дӯст. (Саъдии Шерозӣ)"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 99,
+   "verdict": "notFound",
+   "before": {
+    "tajikCyrillic": "Дӯст оинаи дӯст аст.",
+    "persianText": "دوست آیینهٔ دوست است.",
+    "meaningTj": "Аз дӯстони инсон бисёр вақт метавон дар бораи худи ӯ ва арзишҳояш чизе фаҳмид.",
+    "exampleSentenceTj": "Ҳарду ба ростгӯӣ аҳамият медоданд; дӯст оинаи дӯст аст.",
+    "simpleExplanationTj": "Дӯсти наздик мисли оина хислат ва рафтори туро нишон медиҳад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I"
+   },
+   "after": {
+    "tajikCyrillic": "Дӯст оинаи дӯст аст.",
+    "persianText": "دوست آیینهٔ دوست است.",
+    "meaningTj": "Аз дӯстони инсон бисёр вақт метавон дар бораи худи ӯ ва арзишҳояш чизе фаҳмид.",
+    "exampleSentenceTj": "Ҳарду ба ростгӯӣ аҳамият медоданд; дӯст оинаи дӯст аст.",
+    "simpleExplanationTj": "Дӯсти наздик мисли оина хислат ва рафтори туро нишон медиҳад.",
+    "sourceStatus": "SourceStatus.needsReview",
+    "sourceNote": ""
+   },
+   "sources": [],
+   "related": [
+    {
+     "book": "asrori1956",
+     "printedPage": 53,
+     "pdfPage": 50,
+     "printed": "Дӯстон оинаи якдигаранд."
+    }
+   ],
+   "meaningPrinted": false,
+   "examplePrinted": false,
+   "note": ""
+  },
+  {
+   "id": 100,
+   "verdict": "exact",
+   "before": {
+    "tajikCyrillic": "Бо моҳ шинӣ, моҳ шавӣ; бо дег шинӣ, сиёҳ шавӣ.",
+    "persianText": "با ماه شینی، ماه شوی؛ با دیگ شینی، سیاه شوی.",
+    "meaningTj": "Муҳит ва дӯстони наздик метавонанд хислат, одат ва рафтори инсонро тағйир диҳанд.",
+    "exampleSentenceTj": "Пас аз ҳамнишинӣ бо донишҷӯёни ҷиддӣ худаш ҳам бештар мехонд; бо моҳ шинӣ, моҳ шавӣ.",
+    "simpleExplanationTj": "Ҳамнишинӣ ба инсон таъсир мекунад: бо некон некӣ ва бо бадон бадӣ мегирад.",
+    "sourceStatus": "SourceStatus.bookAttested",
+    "sourceNote": "Зарбулмасал ва мақолҳои тоҷикӣ"
+   },
+   "after": {
+    "tajikCyrillic": "Бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ.",
+    "persianText": "با ماه شینی، ماه شوی، با دیگ شینی، سیاه شوی.",
+    "meaningTj": "1. Аз некон некӣ сироят кунаду аз бадон бадӣ, 2. феълу хӯи ҳамнишин бетаъсир намемонад.",
+    "exampleSentenceTj": "Ман дар ин хусус пеш аз ҳама аз раисамон миннатдор, рафиқ Воҳидов, чунки дар паҳлуи ҳамин кас нишастаю хеста хеле чиз ёд гирифтам. Барои ҳамин ҳам оқилон беҳуда нагуфтаанд, ки «бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ».",
+    "simpleExplanationTj": "Ҳамнишинӣ ба инсон таъсир мекунад: бо некон некӣ ва бо бадон бадӣ мегирад.",
+    "sourceStatus": "SourceStatus.pageVerified",
+    "sourceNote": "«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 42"
+   },
+   "sources": [
+    {
+     "book": "asrori1956",
+     "printedPage": 42,
+     "pdfPage": 39,
+     "printed": "Бо моҳ шинӣ, моҳ шавӣ, бо дег шинӣ, сиёҳ шавӣ."
+    },
+    {
+     "book": "fozilov1_1975",
+     "printedPage": 231,
+     "pdfPage": 234,
+     "printed": "БО МОҲ ШИНӢ, МОҲ ШАВӢ, / БО ДЕГ ШИНӢ, СИЁҲ ШАВӢ."
+    },
+    {
+     "book": "bayoz2_1990",
+     "printedPage": 30,
+     "pdfPage": 30,
+     "printed": "Бо моҳ шинӣ, моҳ шавӣ, / Бо дег шинӣ, сиёҳ шавӣ."
+    },
+    {
+     "book": "grade5_2017",
+     "printedPage": 116,
+     "pdfPage": 116,
+     "printed": "«Бо моҳ шинӣ моҳ шавӣ, бо дег шинӣ сиёҳ шавӣ»"
+    }
+   ],
+   "related": [],
+   "meaningPrinted": true,
+   "examplePrinted": true,
+   "note": "Punctuation follows Асрорӣ (comma, not semicolon)."
   }
  ]
 }
