@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/script_direction.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../literature/data/literature_providers.dart';
 import '../../literature/presentation/literary_author_display_text.dart';
@@ -151,6 +152,7 @@ class _DiscoverSlip extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             title,
+            textDirection: scriptDirection(title),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: QalamTypography.literaryTitle(
@@ -162,6 +164,7 @@ class _DiscoverSlip extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               detail!,
+              textDirection: scriptDirection(detail!),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: QalamTypography.bodySecondary(

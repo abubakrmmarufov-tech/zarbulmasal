@@ -201,8 +201,10 @@ Future<void> pumpTestApp(
   List<HistoryEntry> historyEntries = const [],
   DisplayLanguage language = DisplayLanguage.tajik,
   bool dark = false,
+  Size size = const Size(400, 1600),
+  double textScale = 1.0,
 }) async {
-  tester.view.physicalSize = const Size(400, 1600);
+  tester.view.physicalSize = size;
   tester.view.devicePixelRatio = 1.0;
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
@@ -287,6 +289,12 @@ Future<void> pumpTestApp(
       child: MaterialApp.router(
         theme: dark ? AppTheme.darkTheme : AppTheme.lightTheme,
         routerConfig: router,
+        builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(
+            context,
+          ).copyWith(textScaler: TextScaler.linear(textScale)),
+          child: child!,
+        ),
       ),
     ),
   );

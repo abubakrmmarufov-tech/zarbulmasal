@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/script_direction.dart';
 import '../../../core/utils/search_field_limits.dart';
 import '../../../core/utils/search_normalizer.dart';
 import '../../../shared/providers/app_providers.dart';
@@ -316,7 +317,11 @@ class _WordCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             range == null
-                ? Text(entry.term, style: termStyle)
+                ? Text(
+                    entry.term,
+                    textDirection: scriptDirection(entry.term),
+                    style: termStyle,
+                  )
                 : Text.rich(
                     TextSpan(
                       children: [
@@ -328,11 +333,13 @@ class _WordCard extends StatelessWidget {
                         TextSpan(text: entry.term.substring(range.end)),
                       ],
                     ),
+                    textDirection: scriptDirection(entry.term),
                     style: termStyle,
                   ),
             const SizedBox(height: 6),
             Text(
               entry.definition,
+              textDirection: scriptDirection(entry.definition),
               style: QalamTypography.body(
                 color: colors.onSurfaceVariant,
                 fontSize: 16,

@@ -189,7 +189,7 @@ class _AuthorLink extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 2),
+            const SizedBox(width: QalamSpacing.iconLabelGap / 2),
             Icon(
               isRtl ? Icons.chevron_left : Icons.chevron_right,
               size: 18,

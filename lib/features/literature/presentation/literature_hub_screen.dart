@@ -473,10 +473,14 @@ class _FeaturedWorksShowcase extends ConsumerWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                AppTranslations.get('lit_hub_featured_verses', lang),
-                style: QalamTypography.eyebrow(color: colors.primary),
+              // Wraps at large text sizes instead of pushing the link off.
+              Flexible(
+                child: Text(
+                  AppTranslations.get('lit_hub_featured_verses', lang),
+                  style: QalamTypography.eyebrow(color: colors.primary),
+                ),
               ),
+              const SizedBox(width: QalamSpacing.metaGap),
               TextButton(
                 onPressed: () => context.push('/literature/works'),
                 child: Text(

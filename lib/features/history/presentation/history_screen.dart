@@ -159,7 +159,9 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                             isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
                           ),
                           style: TextButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: QalamSpacing.iconLabelGap,
+                            ),
                             minimumSize: const Size(48, 48),
                           ),
                         ),

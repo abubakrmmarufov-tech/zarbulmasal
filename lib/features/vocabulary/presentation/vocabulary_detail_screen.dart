@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/script_direction.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/vocabulary_providers.dart';
@@ -184,6 +185,7 @@ class _MeaningBlock extends StatelessWidget {
           ],
           Text(
             primaryText,
+            textDirection: scriptDirection(primaryText),
             style: QalamTypography.body(color: colors.onSurface),
           ),
           if (showSecondary) ...[
@@ -197,6 +199,7 @@ class _MeaningBlock extends StatelessWidget {
               ),
               child: Text(
                 meaning.text,
+                textDirection: scriptDirection(meaning.text),
                 style: QalamTypography.bodySecondary(
                   color: colors.onSurfaceVariant,
                 ),
