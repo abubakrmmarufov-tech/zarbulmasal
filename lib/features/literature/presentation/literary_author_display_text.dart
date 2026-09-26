@@ -1,4 +1,5 @@
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/source_citation.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../domain/literary_author.dart';
 import '../domain/portrait_record.dart';
@@ -53,39 +54,60 @@ abstract final class LiteraryAuthorDisplayText {
         : author.officialTitles;
   }
 
+  /// Where a portrait is printed: the book, grade and year — never the page.
   static String portraitCitation(
     PortraitRecord? portrait,
     DisplayLanguage language,
   ) {
     if (portrait == null) return '';
-    final page = AppTranslations.formatDigits(
-      portrait.sourcePage.toString(),
-      language,
-    );
-    final grade = RegExp(
-      r'sinfi\s*(\d+)',
-    ).firstMatch(portrait.sourceReference)?.group(1);
+    final grade = textbookGrade(portrait.sourceReference);
+    final textbook = grade == null ? null : textbookCitation(grade, language);
     return switch (portrait.sourceType) {
-      PortraitSourceType.uploadedBook when grade != null =>
-        AppTranslations.translate('lit_portrait_source_textbook', language, [
-          AppTranslations.formatDigits(grade, language),
-          page,
+      PortraitSourceType.uploadedBook when textbook != null =>
+        AppTranslations.get('lit_portrait_source_textbook', language, [
+          textbook,
         ]),
-      PortraitSourceType.uploadedBook => AppTranslations.translate(
-        'lit_portrait_source_book_page',
+      PortraitSourceType.uploadedBook => AppTranslations.get(
+        'lit_portrait_source_book',
         language,
-        [page],
       ),
-      PortraitSourceType.maorifTj => AppTranslations.translate(
-        'lit_portrait_source_maorif_page',
+      PortraitSourceType.maorifTj => AppTranslations.get(
+        'lit_portrait_source_maorif',
         language,
-        [page],
       ),
       PortraitSourceType.userProvidedPhoto => AppTranslations.get(
         'lit_portrait_source_user_photo',
         language,
       ),
     };
+  }
+
+  /// The books a biography cites, without their pages:
+  /// «Адабиёти тоҷик», синфи 8 (2026), с. 43–64; синфи 5 (2017), с. 49–56.
+  /// becomes «Адабиёти тоҷик, синфи 8 (2026); синфи 5 (2017)». A citation
+  /// that names no grade is just its title. The full citation stays in the
+  /// data for the checks.
+  static String biographySourceBooks(String citation) {
+    final raw = citation.trim();
+    if (raw.isEmpty) return '';
+    final quoted = RegExp(r'«([^»]+)»').firstMatch(raw)?.group(1);
+    final title = (quoted ?? raw.split(',').first).trim();
+    final grades = RegExp(
+      r'синфи\s*(\d+)(?:\s*\((\d{4})\))?',
+    ).allMatches(raw).toList(growable: false);
+    if (grades.isEmpty) return title;
+    // Pages never reach four digits, so a lone four-digit number is the year
+    // of a single-grade citation written without parentheses.
+    final years = RegExp(r'(?<!\d)\d{4}(?!\d)').allMatches(raw).toList();
+    final loneYear = grades.length == 1 && years.length == 1
+        ? years.single.group(0)
+        : null;
+    final editions = grades.map((match) {
+      final year = match.group(2) ?? loneYear;
+      final grade = 'синфи ${match.group(1)}';
+      return year == null ? grade : '$grade ($year)';
+    });
+    return '$title, ${editions.join('; ')}';
   }
 
   /// Persian receives localized year-only dates; Tajik keeps its source form.

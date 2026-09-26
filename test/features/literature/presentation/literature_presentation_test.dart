@@ -224,10 +224,9 @@ void main() {
       expect(find.text('Абӯабдуллоҳи Рӯдакӣ'), findsWidgets);
       expect(find.text('Сардафтари адабиёти классикии тоҷик.'), findsOneWidget);
       expect(find.text('Сарчашмаи истинод:'), findsOneWidget);
-      expect(
-        find.text('Адабиёти тоҷик, синфи 5, Маориф, Душанбе, 2017, с. 49'),
-        findsOneWidget,
-      );
+      // The book, grade and year only; the page stays in the data.
+      expect(find.text('Адабиёти тоҷик, синфи 5 (2017)'), findsOneWidget);
+      expect(find.textContaining('с. 49'), findsNothing);
       expect(find.text('Одамушшуаро'), findsOneWidget);
     });
 
@@ -346,7 +345,8 @@ void main() {
           ),
           findsOneWidget,
         );
-        expect(find.textContaining('с. 216'), findsOneWidget);
+        expect(find.text('Осори Рӯдакӣ (1958)'), findsOneWidget);
+        expect(find.textContaining('с. 216'), findsNothing);
 
         await tester.scrollUntilVisible(
           find.text('Модар'),
@@ -398,15 +398,15 @@ void main() {
     );
 
     testWidgets(
-      'PoemReaderScreen names its source in one line: book and pages',
+      'PoemReaderScreen names its source in one line: book and year',
       (tester) async {
         await pumpTestApp(
           tester,
           route: '/literature/work/rudaki-boyi-juyi-muliyon',
         );
 
-        expect(find.textContaining('Манбаъ: Осори Рӯдакӣ'), findsOneWidget);
-        expect(find.textContaining('с. 45–46'), findsOneWidget);
+        expect(find.text('Манбаъ: Осори Рӯдакӣ (1958)'), findsOneWidget);
+        expect(find.textContaining('с. 45'), findsNothing);
         // No record button, record tab, or secondary witness detail.
         expect(find.widgetWithText(OutlinedButton, 'Манбаъ'), findsNothing);
         expect(find.text('Сабт'), findsNothing);
@@ -594,12 +594,12 @@ void main() {
       expect(find.byType(SchoolCanonScreen), findsOneWidget);
 
       expect(find.text('СИНФИ 5'), findsOneWidget);
-      expect(
-        find.text('Адабиёти тоҷик (Синфи 5) (2018) — Маориф'),
-        findsOneWidget,
-      );
+      // The book, grade and year only: no publisher, authors or evidence.
+      expect(find.text('Адабиёти тоҷик, синфи 5 (2018)'), findsOneWidget);
       expect(find.text('Истинод дар санҷиш'), findsOneWidget);
-      expect(find.text('Барномаи таълимӣ барои синфи 5'), findsOneWidget);
+      expect(find.textContaining('Маориф'), findsNothing);
+      expect(find.textContaining('Т. Зиёев'), findsNothing);
+      expect(find.text('Барномаи таълимӣ барои синфи 5'), findsNothing);
     });
 
     testWidgets(
@@ -610,10 +610,9 @@ void main() {
         expect(find.byType(OralHeritageScreen), findsOneWidget);
 
         expect(find.text('Офтобро ба домон пӯшида намешавад.'), findsOneWidget);
-        expect(
-          find.textContaining('Б. Шермуҳаммадов. Зарбулмасалҳои тоҷикӣ'),
-          findsOneWidget,
-        );
+        expect(find.text('Зарбулмасалҳои тоҷикӣ (1980)'), findsOneWidget);
+        expect(find.textContaining('Шермуҳаммадов'), findsNothing);
+        expect(find.textContaining('с. 42'), findsNothing);
         final chips = find.byType(FilterChip);
         for (var index = 0; index < chips.evaluate().length; index++) {
           expect(
@@ -694,7 +693,8 @@ void main() {
           ),
           findsOneWidget,
         );
-        expect(find.textContaining('Адабиёти тоҷик — с. 12'), findsOneWidget);
+        expect(find.text('Адабиёти тоҷик, синфи 9 (2026)'), findsOneWidget);
+        expect(find.textContaining('с. 12'), findsNothing);
 
         await tester.tap(find.text('Сабти санҷишии Рӯдакӣ'));
         await tester.pumpAndSettle();

@@ -74,15 +74,9 @@ void main() {
 
     expect(find.byType(LexiconSheet), findsOneWidget);
     expect(find.text('матои нафис, ҳарир.'), findsOneWidget);
-    expect(
-      find.text(
-        AppTranslations.get('lex_sheet_source', DisplayLanguage.tajik, [
-          '5',
-          '54',
-        ]),
-      ),
-      findsOneWidget,
-    );
+    // The book only, never its page.
+    expect(find.text('Адабиёти тоҷик, синфи 5 (2017)'), findsOneWidget);
+    expect(find.textContaining('54'), findsNothing);
   });
 
   testWidgets('a word not in the Lexicon says so and offers the Lexicon', (

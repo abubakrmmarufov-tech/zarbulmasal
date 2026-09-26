@@ -153,10 +153,13 @@ class _PoetDetailContentState extends ConsumerState<_PoetDetailContent> {
     final biographySourceLabel = poet.hasAuditableBiographySource
         ? AppTranslations.get('lit_poet_bio_source_verified', lang)
         : AppTranslations.get('lit_poet_bio_source_unverified', lang);
+    final biographySourceBooks = LiteraryAuthorDisplayText.biographySourceBooks(
+      poet.biographySource,
+    );
     final biographySourceText = poet.hasAuditableBiographySource
-        ? poet.biographySource
+        ? biographySourceBooks
         : AppTranslations.translate('lit_poet_source_tag', lang, [
-            poet.biographySource,
+            biographySourceBooks,
           ]);
     final compactHeader = MediaQuery.sizeOf(context).width < 380;
 

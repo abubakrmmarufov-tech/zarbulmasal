@@ -23,9 +23,9 @@ const Map<String, String> persianStringsB = {
   'lit_poet_sources': 'منابع',
   'lit_portrait_unavailable': 'پرتره در دسترس نیست',
   'lit_author_name_persian_pending': 'نام فارسی ثبت نشده است',
-  'lit_portrait_source_book_page': 'تصویر از کتاب بارگذاری‌شده، ص. \${0}',
-  'lit_portrait_source_textbook': 'تصویر: ادبیات تاجیک، صنف \${0}، ص \${1}',
-  'lit_portrait_source_maorif_page': 'منبع: معارف، ص. \${0}',
+  'lit_portrait_source_book': 'تصویر از کتاب بارگذاری‌شده',
+  'lit_portrait_source_textbook': 'تصویر: \${0}',
+  'lit_portrait_source_maorif': 'منبع: معارف',
   'lit_portrait_source_user_photo': 'عکسِ ارائه‌شده از سوی کاربر',
   'lit_source_panel_title': 'منبع و بررسی اصالت',
   'lit_source_tier_a': 'منبع اصلی (Tier A)',
@@ -157,7 +157,6 @@ const Map<String, String> persianStringsB = {
   'lit_subject_tajik': 'ادبیات تاجیک',
   'lit_subject_reading': 'خوانش ادبی',
   'lit_source_pending': 'ارجاع در دست بررسی',
-  'lit_textbook_authors_label': 'مؤلفان کتاب:',
 
   // Literature Hub
   'lit_hub_loading_works': 'آثار در حال بارگیری هستند...',
@@ -203,7 +202,6 @@ const Map<String, String> persianStringsB = {
   'lit_poet_source_tag': 'برچسب واردشده: \${0}',
   'lit_poet_composition_year': 'سرایش: \${0}',
   'lit_poet_work_in_review_sub': 'در بررسی منبع؛ متن هنوز منتشر نشده است',
-  'lit_poet_page_not_recorded': 'شماره صفحه چاپی هنوز ثبت نشده است',
 
   // Poem Reader
   'lit_page_image': 'تصویر صفحه',
@@ -265,7 +263,7 @@ const Map<String, String> persianStringsB = {
   'end_heading': 'بیشتر بخوانید',
   'lit_source_line': 'منبع: \${0}',
   'lit_source_grade': 'صنف \${0}',
-  'lit_source_pages': 'ص \${0}',
+  'lit_textbook_citation': 'ادبیات تاجیک، صنف \${0} (\${1})',
   'end_previous': 'قبلی',
   'end_next': 'بعدی',
   'end_more_by': 'بیشتر از \${0}',
@@ -464,7 +462,6 @@ const Map<String, String> persianStringsB = {
   'vocab_title': 'لغت‌نامه',
   'lex_sheet_not_found': 'این واژه در لغت‌نامه نیست.',
   'lex_sheet_open': 'لغت‌نامه',
-  'lex_sheet_source': 'ادبیات تاجیک، صنف \${0}، ص. \${1}',
   'lex_sheet_loading': 'لغت‌نامه بارگذاری می‌شود…',
   'reader_word_hint': 'برای معنای واژه روی آن بزنید.',
   'vocab_eyebrow': 'واژه‌نامهٔ مفاهیم',

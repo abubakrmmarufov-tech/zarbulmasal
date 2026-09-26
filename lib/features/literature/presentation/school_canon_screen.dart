@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/source_citation.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../data/literature_providers.dart';
@@ -336,43 +337,22 @@ class _CanonEntryCard extends StatelessWidget {
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
-                    '${entry.textbookTitle} (${AppTranslations.formatDigits(entry.textbookYear, lang)}) — ${entry.textbookPublisher}',
+                    formatBookCitation(
+                      entry.textbookTitle,
+                      lang,
+                      grade: entry.grade,
+                      year: entry.textbookYear,
+                    ),
                     style: QalamTypography.bodySecondary(
                       color: colors.onSurfaceVariant,
                       fontSize: 13,
                     ),
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
             ),
-            if (entry.textbookAuthors.isNotEmpty) ...[
-              const SizedBox(height: 2),
-              Padding(
-                padding: const EdgeInsetsDirectional.only(start: 20),
-                child: Text(
-                  '${AppTranslations.get('lit_textbook_authors_label', lang)} ${entry.textbookAuthors}',
-                  style: QalamTypography.meta(
-                    color: colors.onSurfaceVariant,
-                    fontSize: 11,
-                  ),
-                ),
-              ),
-            ],
-            if (entry.sourceEvidence.isNotEmpty) ...[
-              const SizedBox(height: 6),
-              Padding(
-                padding: const EdgeInsetsDirectional.only(start: 20),
-                child: Text(
-                  entry.sourceEvidence,
-                  style: QalamTypography.meta(
-                    color: colors.onSurfaceVariant,
-                    fontSize: 11,
-                  ),
-                ),
-              ),
-            ],
           ],
         ),
       ),

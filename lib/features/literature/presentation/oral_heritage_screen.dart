@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/source_citation.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/widgets/empty_state.dart';
 import '../../history/data/history_providers.dart';
@@ -478,7 +479,11 @@ class _OralEntryCard extends StatelessWidget {
               const SizedBox(width: 6),
               Expanded(
                 child: Text(
-                  entry.citation,
+                  formatBookCitation(
+                    entry.collectionSource,
+                    lang,
+                    year: entry.year,
+                  ),
                   style: QalamTypography.bodySecondary(
                     color: colors.onSurfaceVariant,
                     fontSize: 12,

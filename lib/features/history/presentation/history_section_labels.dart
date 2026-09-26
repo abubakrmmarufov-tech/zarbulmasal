@@ -11,32 +11,6 @@ abstract final class HistorySectionLabels {
   static String readingTitle(DisplayLanguage language) =>
       language == DisplayLanguage.persian ? 'خوانش تفصیلی' : 'Хониши муфассал';
 
-  /// Footnote tying a section to its printed / PDF page(s) in the source book.
-  ///
-  /// When [printedPageEnd] is present and greater than [printedPage] a page
-  /// range is rendered (e.g. "Саҳифаҳои чопӣ 133–137"), because the section's
-  /// summary draws from several consecutive source pages.
-  static String pageReference(
-    DisplayLanguage language,
-    int printedPage,
-    int? pdfPage, {
-    int? printedPageEnd,
-    int? pdfPageEnd,
-  }) {
-    final hasRange = printedPageEnd != null && printedPageEnd > printedPage;
-    final tailPdf = hasRange
-        ? (pdfPageEnd == null ? '' : ' (PDF $pdfPage–$pdfPageEnd)')
-        : (pdfPage == null ? '' : ' (PDF $pdfPage)');
-    if (hasRange) {
-      return language == DisplayLanguage.persian
-          ? 'صفحات چاپی $printedPage–$printedPageEnd$tailPdf'
-          : 'Саҳифаҳои чопӣ $printedPage–$printedPageEnd$tailPdf';
-    }
-    return language == DisplayLanguage.persian
-        ? 'صفحهٔ چاپی $printedPage$tailPdf'
-        : 'Саҳифаи чопӣ $printedPage$tailPdf';
-  }
-
   /// Marks a Persian rendering as an editorial translation of the Tajik
   /// source witness, never as an independent original text.
   static String editorialNote(DisplayLanguage language) =>

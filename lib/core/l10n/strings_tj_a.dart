@@ -265,8 +265,6 @@ const Map<String, String> tajikStringsA = {
   'proverb_no_printed_source':
       'Манбаи чопӣ ёфт нашуд: ин зарбулмасал дар китобҳои санҷидашуда ҳанӯз пайдо нашудааст.',
   'proverb_persian_translit': 'Хатти форсӣ: транслитератсия',
-  'citation_page': 'саҳ. \${0}',
-  'citation_pdf_page': 'варақи \${0}-и нусхаи PDF',
 
   // Literature
   'literature_title': 'Мероси адабӣ',

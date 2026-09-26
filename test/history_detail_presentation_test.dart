@@ -170,7 +170,9 @@ void main() {
     expect(find.text('دودمان نامدار تاریخ تاجیکان.'), findsOneWidget);
     expect(find.text('بخارا'), findsOneWidget);
     expect(find.text('اسماعیل سامانی'), findsOneWidget);
-    expect(find.text('تاریخ مردم تاجیک (نویسنده)'), findsOneWidget);
+    // The book, grade and year; no author.
+    expect(find.text('تاریخ مردم تاجیک، صنف ۶ (۲۰۱۸)'), findsOneWidget);
+    expect(find.textContaining('نویسنده'), findsNothing);
     expect(find.byType(Directionality), findsWidgets);
   });
 
@@ -248,7 +250,7 @@ void main() {
     expect(find.text('Хато дар боргирии маълумот'), findsOneWidget);
   });
 
-  testWidgets('history detail renders long-form reading sections with pages', (
+  testWidgets('history detail renders long-form reading sections, no pages', (
     tester,
   ) async {
     await _pumpDetail(
@@ -266,8 +268,10 @@ void main() {
     );
     expect(find.text('Охири мубориза'), findsOneWidget);
     expect(find.text('Матни охири мубориза.'), findsOneWidget);
-    expect(find.text('Саҳифаи чопӣ 34 (PDF 34)'), findsOneWidget);
-    expect(find.text('Саҳифаи чопӣ 36 (PDF 36)'), findsOneWidget);
+    // Pages stay in the data for the checks; the reader sees none.
+    expect(_sectionsEntry.sections.first.printedPage, 34);
+    expect(find.textContaining('Саҳифаи чопӣ'), findsNothing);
+    expect(find.textContaining('PDF'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 
@@ -304,12 +308,12 @@ void main() {
 
       expect(find.text('Хониши муфассал'), findsOneWidget);
       expect(find.text('Замин ва пайдоиш'), findsOneWidget);
-      expect(find.text('Саҳифаи чопӣ 34 (PDF 34)'), findsOneWidget);
+      expect(find.text('Матоне дар бораи пайдоиш.'), findsOneWidget);
       expect(tester.takeException(), isNull);
     },
   );
 
-  testWidgets('history detail renders an inclusive page range citation', (
+  testWidgets('history detail shows no page range for a multi-page section', (
     tester,
   ) async {
     const entry = HistoryEntry(
@@ -335,7 +339,9 @@ void main() {
 
     await _pumpDetail(tester, entryId: entry.id, loadEntry: () async => entry);
 
-    expect(find.text('Саҳифаҳои чопӣ 133–137 (PDF 133–137)'), findsOneWidget);
+    expect(find.text('Матни бахш.'), findsOneWidget);
+    expect(find.textContaining('133'), findsNothing);
+    expect(find.textContaining('Саҳифаҳои чопӣ'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 

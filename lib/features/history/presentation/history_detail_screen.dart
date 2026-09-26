@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/source_citation.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../../../shared/providers/reading_position_provider.dart';
 import '../../../shared/providers/recent_activity_provider.dart';
@@ -28,13 +29,14 @@ String _historyRequiredTitle(
       AppTranslations.get('hist_translation_pending', language);
 }
 
-String _historyBookCitation(HistoryBook book, DisplayLanguage language) {
-  final title = _historyRequiredTitle(book.title, book.titlePersian, language);
-  final author = _historyOptionalText(
-    language == DisplayLanguage.persian ? book.authorPersian : book.author,
-  );
-  return author == null ? title : '$title ($author)';
-}
+/// The textbook an entry comes from: title, grade and year, never the page.
+String _historyBookCitation(HistoryBook book, DisplayLanguage language) =>
+    formatBookCitation(
+      _historyRequiredTitle(book.title, book.titlePersian, language),
+      language,
+      grade: book.grade,
+      year: book.year,
+    );
 
 /// Full-screen detail view for a specific historical entry (dynasty, person, event, or site).
 class HistoryDetailScreen extends ConsumerWidget {
@@ -524,30 +526,6 @@ class _ReadingSectionCard extends StatelessWidget {
                     HistorySectionLabels.sourceBookCaption(
                       lang,
                       _sectionBookTitle(),
-                    ),
-                    style: QalamTypography.meta(
-                      color: colors.onSurfaceVariant,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-          if (section.printedPage != null) ...[
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Icon(Icons.numbers, size: 14, color: colors.onSurfaceVariant),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    HistorySectionLabels.pageReference(
-                      lang,
-                      section.printedPage!,
-                      section.pdfPage,
-                      printedPageEnd: section.printedPageEnd,
-                      pdfPageEnd: section.pdfPageEnd,
                     ),
                     style: QalamTypography.meta(
                       color: colors.onSurfaceVariant,

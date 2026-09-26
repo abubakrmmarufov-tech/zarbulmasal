@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/design_system/design_system.dart';
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/source_citation.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../data/words_provider.dart';
 import '../domain/lexicon_index.dart';
@@ -106,6 +107,7 @@ class _Meaning extends ConsumerWidget {
     final colors = Theme.of(context).colorScheme;
     final lang = ref.watch(displayLanguageProvider);
     final grade = LexiconIndex.gradeOf(entry);
+    final source = grade == null ? null : textbookCitation(grade, lang);
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Column(
@@ -125,13 +127,10 @@ class _Meaning extends ConsumerWidget {
             textDirection: TextDirection.ltr,
             style: QalamTypography.body(color: colors.onSurface),
           ),
-          if (grade != null && entry.pdfPage > 0) ...[
+          if (source != null) ...[
             const SizedBox(height: 4),
             Text(
-              AppTranslations.get('lex_sheet_source', lang, [
-                AppTranslations.formatDigits(grade, lang),
-                AppTranslations.formatNumber(entry.pdfPage, lang),
-              ]),
+              source,
               style: QalamTypography.meta(
                 color: colors.onSurfaceVariant,
                 fontSize: 12,

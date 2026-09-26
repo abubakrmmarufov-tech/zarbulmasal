@@ -17,7 +17,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -45,7 +45,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -96,7 +96,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 39',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -145,7 +145,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 39',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -204,7 +204,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 40',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -253,7 +253,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 40',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -321,7 +321,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 41',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -359,7 +359,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 41',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -386,7 +386,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 41',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -435,7 +435,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -482,7 +482,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -537,7 +537,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -584,7 +584,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -621,7 +621,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -659,7 +659,7 @@ const List<Proverb> seedProverbsPart7 = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 42',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',

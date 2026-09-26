@@ -1,4 +1,5 @@
 import '../../../core/l10n/app_translations.dart';
+import '../../../core/l10n/source_citation.dart';
 import '../../../shared/providers/app_providers.dart';
 import '../domain/literary_work.dart';
 import '../domain/source_edition.dart';
@@ -30,49 +31,28 @@ abstract final class LiteraryWorkDisplayText {
     return value.toLowerCase().startsWith(shown) ? null : value;
   }
 
-  /// One short citation for readers: book, grade (for a textbook file named
-  /// "… sinfi N"), year and page — «Адабиёти тоҷик, синфи 5 (2017), с. 153».
-  /// Nothing else from the provenance record is shown. `null` when the work
-  /// has no source title.
-  static String? shortCitation(LiteraryWork work, DisplayLanguage language) {
-    final source = work.primarySource;
-    if (source == null) return null;
-    final title = source.bookTitle.trim();
-    if (title.isEmpty) return null;
-    final grade = RegExp(
-      r'sinfi\s*(\d+)',
-    ).firstMatch(source.sourceReference ?? '')?.group(1);
-    final year = source.year.trim();
-    final buffer = StringBuffer(title);
-    if (grade != null) {
-      buffer.write(
-        ', ${AppTranslations.get('lit_source_grade', language, [grade])}',
-      );
-    }
-    if (year.isNotEmpty) buffer.write(' ($year)');
-    final start = source.pageStart;
-    if (start != null) {
-      final end = source.pageEnd;
-      final pages = end == null || end == start ? '$start' : '$start–$end';
-      buffer.write(
-        ', ${AppTranslations.get('lit_source_pages', language, [pages])}',
-      );
-    }
-    return AppTranslations.formatDigits(buffer.toString(), language);
-  }
+  /// One short citation for readers: the book, its grade (for a textbook file
+  /// named "… sinfi N") and year — «Адабиёти тоҷик, синфи 5 (2017)». No page
+  /// and nothing else from the provenance record is shown. `null` when the
+  /// work has no source title.
+  static String? shortCitation(LiteraryWork work, DisplayLanguage language) =>
+      sourceCitation(work.primarySource, language);
 
-  /// Compact source label for ordinary reading UI: book title plus known page
-  /// numbers only.
-  ///
-  /// Nothing is printed about missing pages, and full bibliographic/provenance
-  /// strings stay in the explicit source panel rather than leaking into the
-  /// reader. Returns `null` when no title is recorded.
-  static String? sourceLabel(SourceEdition? source) {
+  /// [shortCitation] for any source edition; `null` when no title is
+  /// recorded.
+  static String? sourceCitation(
+    SourceEdition? source,
+    DisplayLanguage language,
+  ) {
     if (source == null) return null;
     final title = source.bookTitle.trim();
     if (title.isEmpty) return null;
-    final pages = source.formattedPages;
-    return pages == null ? title : '$title — $pages';
+    return formatBookCitation(
+      title,
+      language,
+      grade: textbookGrade(source.sourceReference),
+      year: source.year,
+    );
   }
 
   /// The forms a reader can browse by, in the order they are offered.

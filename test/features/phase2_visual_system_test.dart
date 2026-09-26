@@ -95,14 +95,17 @@ void main() {
       );
       final work = _works.firstWhere((w) => w.id == _rudakiId);
       final source = work.primarySource!;
-      // Book name and page only: «Манбаъ: Адабиёти тоҷик, синфи 5 (…), с. N».
+      // The book only: «Манбаъ: Адабиёти тоҷик, синфи 5 (2017)», no page.
       expect(
-        find.textContaining(
-          '${tj('lit_source_line').split(' ').first} ${source.bookTitle}',
+        find.text(
+          AppTranslations.get('lit_source_line', DisplayLanguage.tajik, [
+            'Адабиёти тоҷик, синфи 5 (2017)',
+          ]),
         ),
         findsOneWidget,
       );
-      expect(find.textContaining('с. ${source.pageStart}'), findsOneWidget);
+      expect(source.pageStart, isNotNull, reason: 'the page stays in the data');
+      expect(find.textContaining('с. ${source.pageStart}'), findsNothing);
       expect(find.text(tj('record_tab_record')), findsNothing);
       expect(find.textContaining(tj('prov_check_pending')), findsNothing);
     });

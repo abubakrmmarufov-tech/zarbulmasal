@@ -16,10 +16,9 @@ const Map<String, String> tajikStringsB = {
   'lit_poet_sources': 'Сарчашмаҳо',
   'lit_portrait_unavailable': 'Портрет дастрас нест',
   'lit_author_name_persian_pending': 'Номи форсӣ дастрас нест',
-  'lit_portrait_source_book_page': 'Портрет аз китоби боршуда, с. \${0}',
-  'lit_portrait_source_textbook':
-      'Сурат: Адабиёти тоҷик, синфи \${0}, с. \${1}',
-  'lit_portrait_source_maorif_page': 'Сарчашма: Маориф, с. \${0}',
+  'lit_portrait_source_book': 'Портрет аз китоби боршуда',
+  'lit_portrait_source_textbook': 'Сурат: \${0}',
+  'lit_portrait_source_maorif': 'Сарчашма: Маориф',
   'lit_portrait_source_user_photo': 'Акс бо пешниҳоди корбар',
   'lit_source_panel_title': 'Сарчашма ва санҷиш',
   'lit_source_primary_label': 'Сарчашмаи асосӣ',
@@ -155,7 +154,6 @@ const Map<String, String> tajikStringsB = {
   'lit_subject_tajik': 'Адабиёти тоҷик',
   'lit_subject_reading': 'Хониши адабӣ',
   'lit_source_pending': 'Истинод дар санҷиш',
-  'lit_textbook_authors_label': 'Муаллифони китоб:',
 
   // Literature Hub
   'lit_hub_loading_works': 'Осори санҷидашуда боргирӣ мешаванд...',
@@ -204,7 +202,6 @@ const Map<String, String> tajikStringsB = {
   'lit_poet_composition_year': 'Таълиф: \${0}',
   'lit_poet_work_in_review_sub':
       'Дар санҷиши сарчашма; матн ҳанӯз нашр нашудааст',
-  'lit_poet_page_not_recorded': 'Рақами саҳифаи чопӣ ҳанӯз сабт нашудааст',
 
   // Poem Reader
   'lit_page_image': 'Тасвири саҳифа',
@@ -268,7 +265,7 @@ const Map<String, String> tajikStringsB = {
   'end_heading': 'Боз хонед',
   'lit_source_line': 'Манбаъ: \${0}',
   'lit_source_grade': 'синфи \${0}',
-  'lit_source_pages': 'с. \${0}',
+  'lit_textbook_citation': '\${2}, синфи \${0} (\${1})',
   'end_previous': 'Қаблӣ',
   'end_next': 'Баъдӣ',
   'end_more_by': 'Боз аз \${0}',
@@ -473,7 +470,6 @@ const Map<String, String> tajikStringsB = {
   'vocab_title': 'Луғатнома',
   'lex_sheet_not_found': 'Ин калима дар Луғатнома нест.',
   'lex_sheet_open': 'Луғатнома',
-  'lex_sheet_source': 'Адабиёти тоҷик, синфи \${0}, с. \${1}',
   'lex_sheet_loading': 'Луғатнома бор мешавад…',
   'reader_word_hint': 'Барои маънии калима ба он зер кунед.',
   'vocab_eyebrow': 'ФАРҲАНГИ МАФҲУМҲО',

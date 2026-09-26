@@ -295,8 +295,10 @@ class _PoetReviewWorksSliverState extends ConsumerState<PoetReviewWorksSliver> {
                 delegate: SliverChildBuilderDelegate((context, index) {
                   final work = sourcedReviewWorks[index];
                   final workTitle = LiteraryWorkDisplayText.title(work, lang);
-                  final citation = work.primarySource?.citation;
-                  final hasPageCitation = work.primarySource?.pageStart != null;
+                  final citation = LiteraryWorkDisplayText.shortCitation(
+                    work,
+                    lang,
+                  );
 
                   return InkWell(
                     onTap: () => context.push('/literature/work/${work.id}'),
@@ -347,9 +349,7 @@ class _PoetReviewWorksSliverState extends ConsumerState<PoetReviewWorksSliver> {
                                     fontSize: 12,
                                   ),
                                 ),
-                                if (hasPageCitation &&
-                                    citation != null &&
-                                    citation.isNotEmpty) ...[
+                                if (citation != null) ...[
                                   const SizedBox(height: 4),
                                   Text(
                                     citation,
@@ -359,18 +359,6 @@ class _PoetReviewWorksSliverState extends ConsumerState<PoetReviewWorksSliver> {
                                     ),
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
-                                  ),
-                                ] else ...[
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    AppTranslations.get(
-                                      'lit_poet_page_not_recorded',
-                                      lang,
-                                    ),
-                                    style: QalamTypography.meta(
-                                      color: colors.onSurfaceVariant,
-                                      fontSize: 12,
-                                    ),
                                   ),
                                 ],
                               ],

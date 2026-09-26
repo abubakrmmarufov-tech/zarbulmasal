@@ -64,7 +64,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 25',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -106,7 +106,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Адабиёти тоҷик, синфи 5» (2017), саҳ. 38',
+    sourceNote: 'Адабиёти тоҷик, синфи 5 (2017)',
     sources: [
       SourceRef(
         bookTitle: 'Адабиёти тоҷик, синфи 5',
@@ -202,7 +202,7 @@ const List<Proverb> seedProverbsPart1 = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 45',
+        'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо (1990)',
     sources: [
       SourceRef(
         bookTitle:
@@ -309,7 +309,7 @@ const List<Proverb> seedProverbsPart1 = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        '«Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I» (1975), саҳ. 54',
+        'Фарҳанги зарбулмасал, мақол ва афоризмҳои тоҷикию форсӣ. Ҷилди I (1975)',
     sources: [
       SourceRef(
         bookTitle:
@@ -367,7 +367,7 @@ const List<Proverb> seedProverbsPart1 = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 47',
+        'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо (1990)',
     sources: [
       SourceRef(
         bookTitle:
@@ -411,7 +411,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 32',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -450,7 +450,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 71',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -477,7 +477,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 81',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -507,7 +507,7 @@ const List<Proverb> seedProverbsPart1 = [
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
     sourceNote:
-        '«Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо» (1990), саҳ. 45',
+        'Баёзи фолклори тоҷик. Ҷилди 2: Зарбулмасал, мақол, чистонҳо (1990)',
     sources: [
       SourceRef(
         bookTitle:
@@ -566,7 +566,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 4,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 74',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -608,7 +608,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 2,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 65',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -648,7 +648,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 3,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 31',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     sources: [
       SourceRef(
         bookTitle: 'Зарбулмасал ва мақолҳои тоҷикӣ',
@@ -734,7 +734,7 @@ const List<Proverb> seedProverbsPart1 = [
     level: 5,
     type: ProverbType.traditional,
     sourceStatus: SourceStatus.pageVerified,
-    sourceNote: '«Зарбулмасал ва мақолҳои тоҷикӣ» (1956), саҳ. 54',
+    sourceNote: 'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
     variants: ['44'],
     sources: [
       SourceRef(

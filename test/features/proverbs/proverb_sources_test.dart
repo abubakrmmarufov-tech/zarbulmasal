@@ -61,29 +61,18 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('formatSourceCitation', () {
-    test('cites author, title, imprint, year and the printed page', () {
+    test('cites the book and year only, never the page', () {
       expect(
         formatSourceCitation(_asrori, DisplayLanguage.tajik),
-        'В. Асрорӣ, «Зарбулмасал ва мақолҳои тоҷикӣ» '
-        '(Сталинобод: Нашриёти давлатии Тоҷикистон, 1956), саҳ. 25',
+        'Зарбулмасал ва мақолҳои тоҷикӣ (1956)',
       );
     });
 
-    test(
-      'falls back to the scan page, labelled, when no number is printed',
-      () {
-        const scanOnly = SourceRef(bookTitle: 'Китоб', pdfPage: 31);
-        expect(
-          formatSourceCitation(scanOnly, DisplayLanguage.tajik),
-          '«Китоб», варақи 31-и нусхаи PDF',
-        );
-      },
-    );
-
-    test('uses Persian digits and labels in Persian', () {
+    test('uses Persian digits in Persian and shows no page', () {
       final citation = formatSourceCitation(_textbook, DisplayLanguage.persian);
       expect(citation, contains('۲۰۱۷'));
-      expect(citation, contains('ص. ۴۰'));
+      expect(citation, isNot(contains('ص.')));
+      expect(citation, isNot(contains('۴۰')));
       expect(citation, isNot(contains('саҳ.')));
     });
   });
@@ -178,7 +167,7 @@ void main() {
     String tj(String key, [List<Object> args = const []]) =>
         AppTranslations.get(key, DisplayLanguage.tajik, args);
 
-    testWidgets('lists each book with its printed form and page', (
+    testWidgets('lists each book with its printed form, without pages', (
       tester,
     ) async {
       await pumpPage(tester, _proverb(sources: const [_asrori, _textbook]));
@@ -187,10 +176,12 @@ void main() {
       final sources = tester
           .widgetList<SelectableText>(find.byType(SelectableText))
           .map((widget) => widget.data ?? '')
-          .firstWhere((text) => text.contains('саҳ. 25'));
-      expect(sources, contains('«${_asrori.printedText}»'));
-      expect(sources, contains('«Адабиёти тоҷик, синфи 5»'));
-      expect(sources, contains('саҳ. 40'));
+          .firstWhere((text) => text.contains('«${_asrori.printedText}»'));
+      expect(sources, contains('Зарбулмасал ва мақолҳои тоҷикӣ (1956)'));
+      expect(sources, contains('Адабиёти тоҷик, синфи 5 (2017)'));
+      expect(sources, isNot(contains('саҳ.')));
+      expect(sources, isNot(contains('В. Асрорӣ')));
+      expect(find.textContaining('саҳ. '), findsNothing);
       expect(find.text(tj('proverb_no_printed_source')), findsNothing);
     });
 
@@ -204,7 +195,7 @@ void main() {
       expect(find.text(tj('proverb_persian_translit')), findsOneWidget);
     });
 
-    testWidgets('a printed example shows its signature and page', (
+    testWidgets('a printed example shows its signature and book', (
       tester,
     ) async {
       await pumpPage(
@@ -221,6 +212,7 @@ void main() {
         formatSourceCitation(_textbook, DisplayLanguage.tajik),
       ]);
       expect(find.text(printedFrom), findsNWidgets(2));
+      expect(printedFrom, 'Аз китоб: Адабиёти тоҷик, синфи 5 (2017)');
       // Only the simple explanation stays editorial.
       expect(find.text(tj('proverb_editorial')), findsOneWidget);
       expect(find.text('Мисоли озмоишӣ.\n— Сотим Улуғзода'), findsOneWidget);

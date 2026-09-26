@@ -420,7 +420,10 @@ class _LiteratureSearchScreenState
     DisplayLanguage lang,
   ) {
     final colors = Theme.of(context).colorScheme;
-    final sourceLabel = LiteraryWorkDisplayText.sourceLabel(work.primarySource);
+    final sourceLabel = LiteraryWorkDisplayText.sourceCitation(
+      work.primarySource,
+      lang,
+    );
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
       leading: Icon(Icons.hourglass_empty, size: 18, color: colors.primary),

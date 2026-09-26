@@ -34,7 +34,7 @@ String tj(String key, [List<Object> args = const []]) =>
 
 void main() {
   group('source line', () {
-    test('names the textbook, grade, year and pages only', () {
+    test('names the textbook, grade and year only, never the page', () {
       final work = _works.firstWhere(
         (w) =>
             (w.primarySource?.sourceReference ?? '').contains('sinfi 5') &&
@@ -44,10 +44,9 @@ void main() {
         work,
         DisplayLanguage.tajik,
       )!;
-      expect(citation, startsWith(work.primarySource!.bookTitle));
-      expect(citation, contains('синфи 5'));
-      expect(citation, contains('с. ${work.primarySource!.pageStart}'));
-      // Nothing from the provenance record beyond book and page.
+      expect(citation, 'Адабиёти тоҷик, синфи 5 (2017)');
+      expect(citation, isNot(contains('с. ${work.primarySource!.pageStart}')));
+      // Nothing from the provenance record beyond the book.
       expect(citation, isNot(contains('.pdf')));
       expect(citation, isNot(contains('ISBN')));
     });
@@ -143,7 +142,7 @@ void main() {
   });
 
   group('portraits', () {
-    test('a textbook portrait is shown and cited by book and page', () {
+    test('a textbook portrait is shown and cited by its book', () {
       const portrait = PortraitRecord(
         assetPath: 'assets/data/literature/portraits/rudaki.jpeg',
         sourceType: PortraitSourceType.uploadedBook,
@@ -158,7 +157,14 @@ void main() {
           portrait,
           DisplayLanguage.tajik,
         ),
-        'Сурат: Адабиёти тоҷик, синфи 5, с. 49',
+        'Сурат: Адабиёти тоҷик, синфи 5 (2017)',
+      );
+      expect(
+        LiteraryAuthorDisplayText.portraitCitation(
+          portrait,
+          DisplayLanguage.persian,
+        ),
+        'تصویر: ادبیات تاجیک، صنف ۵ (۲۰۱۷)',
       );
     });
 

@@ -162,7 +162,7 @@ const testCanonEntry = SchoolCanonEntry(
   authorId: 'rudaki',
   grade: '5',
   subject: 'Адабиёти тоҷик',
-  textbookTitle: 'Адабиёти тоҷик (Синфи 5)',
+  textbookTitle: 'Адабиёти тоҷик',
   textbookAuthors: 'Т. Зиёев, Х. Шарифов',
   textbookPublisher: 'Маориф',
   textbookYear: '2018',

@@ -1,38 +1,57 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/features/literature/domain/source_edition.dart';
 import 'package:zarbulmasal/features/literature/presentation/literary_work_display_text.dart';
+import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
 void main() {
-  group('LiteraryWorkDisplayText.sourceLabel', () {
+  group('LiteraryWorkDisplayText.sourceCitation', () {
     const source = SourceEdition(
       bookTitle: 'Адабиёти тоҷик',
       publisher: 'Маориф',
       city: 'Душанбе',
       year: '2017',
       pageStart: 153,
+      pageEnd: 154,
       sourceType: SourceEditionType.officialTextbook,
+      sourceReference: 'docs/literature/pdfs/adabiet sinfi 5.pdf',
     );
 
-    test('shows book title and known page numbers', () {
+    test('shows the book, grade and year but never the page', () {
       expect(
-        LiteraryWorkDisplayText.sourceLabel(source),
-        'Адабиёти тоҷик — с. 153',
+        LiteraryWorkDisplayText.sourceCitation(source, DisplayLanguage.tajik),
+        'Адабиёти тоҷик, синфи 5 (2017)',
+      );
+      // The page stays on the record for the checks.
+      expect(source.formattedPages, 'с. 153–154');
+    });
+
+    test('in Persian, labels the grade and uses Persian digits', () {
+      expect(
+        LiteraryWorkDisplayText.sourceCitation(source, DisplayLanguage.persian),
+        'Адабиёти тоҷик، صنف ۵ (۲۰۱۷)',
       );
     });
 
-    test('shows only the book title when pages are unknown', () {
-      const noPages = SourceEdition(
-        bookTitle: 'Адабиёти тоҷик',
-        publisher: 'Маориф',
+    test('a book that is not a textbook PDF shows title and year', () {
+      const book = SourceEdition(
+        bookTitle: 'Девони Рӯдакӣ',
+        publisher: 'Адиб',
         city: 'Душанбе',
-        year: '2017',
-        sourceType: SourceEditionType.officialTextbook,
+        year: '2015',
+        pageStart: 12,
+        sourceType: SourceEditionType.printedBookScan,
       );
-      expect(LiteraryWorkDisplayText.sourceLabel(noPages), 'Адабиёти тоҷик');
+      expect(
+        LiteraryWorkDisplayText.sourceCitation(book, DisplayLanguage.tajik),
+        'Девони Рӯдакӣ (2015)',
+      );
     });
 
     test('returns null for a missing source or blank title', () {
-      expect(LiteraryWorkDisplayText.sourceLabel(null), isNull);
+      expect(
+        LiteraryWorkDisplayText.sourceCitation(null, DisplayLanguage.tajik),
+        isNull,
+      );
       const blankTitle = SourceEdition(
         bookTitle: '  ',
         publisher: 'Маориф',
@@ -40,7 +59,13 @@ void main() {
         year: '2017',
         sourceType: SourceEditionType.officialTextbook,
       );
-      expect(LiteraryWorkDisplayText.sourceLabel(blankTitle), isNull);
+      expect(
+        LiteraryWorkDisplayText.sourceCitation(
+          blankTitle,
+          DisplayLanguage.tajik,
+        ),
+        isNull,
+      );
     });
 
     test('never emits page-missing or provenance chatter', () {
@@ -51,8 +76,12 @@ void main() {
         year: '2017',
         sourceType: SourceEditionType.officialTextbook,
       );
-      final label = LiteraryWorkDisplayText.sourceLabel(noPages)!;
+      final label = LiteraryWorkDisplayText.sourceCitation(
+        noPages,
+        DisplayLanguage.tajik,
+      )!;
       expect(label.toLowerCase(), isNot(contains('page')));
+      expect(label, isNot(contains('с. ')));
       expect(label, isNot(contains('ёфт')));
       expect(label, isNot(contains('намешавад')));
       expect(label, isNot(contains('нашудааст')));
