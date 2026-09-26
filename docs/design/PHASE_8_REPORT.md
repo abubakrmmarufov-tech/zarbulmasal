@@ -242,7 +242,7 @@ Sorted by poems gained. The before-only table is in `POET_COVERAGE_2026-09-26.md
 
 **Crash safety.**
 
-- The API 24 emulator was **not run**. I installed the Android 7.0 arm64 system image and made a 2 GB AVD (`zarb_api24`), but the emulator will not start: it needs 7.4 GB free, and the Mac has 2.2 GB (the disk is 99% full).
+- **On the API 24 emulator** (`zarb_api24`: Android 7.0, arm64, 2 GB RAM, profile build; run on 2026-09-26 after freeing disk space and cutting its data disk to 2 GB): no crash, no ANR, no low-memory kill in logcat. Results are below the phone's.
 - **On the phone** (Xiaomi 2412DPC0AG, Android 16, profile build):
   - no crash and no ANR;
   - the crash log has no entries for the app.
@@ -262,7 +262,7 @@ Sorted by poems gained. The before-only table is in `POET_COVERAGE_2026-09-26.md
 - **No frame reached 700 ms.** The worst was search's first keystroke, at 537 ms.
 - **Cause:** search re-normalised every field of both items inside the sort comparator, which is O(n log n) normalisations per keystroke, and a one-letter query matches most of the catalogue.
 - **Fixed (`2437c54`):** each match is scored once, then sorted, with ties in catalogue order. A test covers the ranking.
-- **Not re-measured on the phone** (see the incident below). On a slow Android 7 phone the old code could have crossed 700 ms.
+- **Not re-measured on the phone** (see the incident below). On the Android 7 emulator, after the fix, search's worst frame is 176 ms (table below).
 
 **Long use.**
 
@@ -301,6 +301,20 @@ Sorted by poems gained. The before-only table is in `POET_COVERAGE_2026-09-26.md
 ```
 adb -s 7H6XHE7LSOQKYH69 install ~/Desktop/Zarbulmasal-preview/Zarbulmasal-1.0.0-preview.1-arm64.apk
 ```
+
+**API 24 emulator** (same check, after the search ranking fix; the emulator draws with a software GPU, SwiftShader, so raster times are the emulator's cost, not the app's):
+
+| Screen | Frames | Worst build | Worst raster | Missed budget (build/raster) |
+|---|---|---|---|---|
+| Poem list, 12 scrolls | 144 | 17.3 ms | 196.3 ms | 1 / 140 |
+| Longest poem, 20 scrolls | 160 | 35.3 ms | 192.4 ms | 1 / 147 |
+| Lexicon, 12 scrolls | 146 | 25.6 ms | 125.0 ms | 2 / 140 |
+| Search, 4 queries | 64 | 175.7 ms | 50.5 ms | 4 / 46 |
+| 100 poems + 30 poet pages | 222 | 14.2 ms | 101.1 ms | 0 / 183 |
+
+- No frame reached 700 ms; the worst was 196 ms. Search's worst build time is 176 ms here, against 537 ms on the phone before the fix.
+- Memory (RSS): 215.6 MB before the soak, 224.7 MB after, 224.8 MB 10 s later. It settles.
+- Cold start (`am start -W`, the driver's profile APK, 4 runs): 1.52, 1.57, 1.55, 2.50 s.
 
 **Tooling note.** `integration_test` could not be used: its Android plugin fails the project's Gradle dependency verification (78 artifacts). The device check uses `flutter_driver` alone, which has no Android plugin.
 
