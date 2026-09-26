@@ -34,13 +34,11 @@ void main() {
         expect(proverb.meaningTj, isNotEmpty);
         expect(proverb.simpleExplanationTj, isNotEmpty);
         expect(proverb.exampleSentenceTj, isNotEmpty);
+        // Phase 9: every record is page-verified or openly needsReview; a
+        // bare book title is no longer accepted as a source.
         expect(
           proverb.sourceStatus,
-          anyOf(
-            SourceStatus.bookAttested,
-            SourceStatus.pageVerified,
-            SourceStatus.needsReview,
-          ),
+          anyOf(SourceStatus.pageVerified, SourceStatus.needsReview),
         );
         expect(proverb.sourceNote, isNot(equals('Сарчашма номаълум.')));
       }

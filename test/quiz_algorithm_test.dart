@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zarbulmasal/data/models/proverb.dart';
+import 'package:zarbulmasal/data/models/source_ref.dart';
 import 'package:zarbulmasal/data/seed/seed_proverbs.dart';
 import 'package:zarbulmasal/features/quiz/quiz_engine.dart';
 
@@ -24,6 +25,7 @@ void main() {
             isNot(equals(SourceStatus.unverified)),
             reason: 'ID ${p.id} cannot be unverified',
           );
+          expect(p.isPageVerified, isTrue, reason: 'ID ${p.id} needs a page');
           expect(p.meaningTj.trim(), isNotEmpty);
         }
 
@@ -186,6 +188,18 @@ void main() {
       final unrelated = _testProverb(id: 'unrelated', tajikCyrillic: 'variant');
 
       expect(QuizEngine.isVariantOrRelated(canonical, unrelated), isFalse);
+    });
+
+    test('a proverb attested only by a book title is not a question', () {
+      final bookOnly = _testProverb(
+        id: 'book-only',
+        meaningTj: 'маънои китобӣ',
+        sourceStatus: SourceStatus.bookAttested,
+      );
+      final paged = _testProverb(id: 'paged', meaningTj: 'маънои саҳифавӣ');
+      expect(QuizEngine.getEligibleQuestionProverbs([bookOnly, paged]), [
+        paged,
+      ]);
     });
 
     test('fallback keeps source and meaning eligibility guarantees', () {
@@ -353,7 +367,7 @@ Proverb _testProverb({
   String meaningTj = 'Маъно',
   String? canonicalId,
   List<String> variants = const [],
-  SourceStatus sourceStatus = SourceStatus.bookAttested,
+  SourceStatus sourceStatus = SourceStatus.pageVerified,
 }) {
   return Proverb(
     id: id,
@@ -369,5 +383,8 @@ Proverb _testProverb({
     sourceNote: 'Test fixture',
     canonicalId: canonicalId,
     variants: variants,
+    sources: sourceStatus == SourceStatus.pageVerified
+        ? const [SourceRef(bookTitle: 'Test fixture', pdfPage: 1)]
+        : const [],
   );
 }

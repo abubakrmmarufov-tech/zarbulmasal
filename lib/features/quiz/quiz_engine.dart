@@ -65,14 +65,14 @@ class QuizEngine {
     return false;
   }
 
-  /// Selects eligible canonical proverbs for questions.
+  /// Selects eligible canonical proverbs for questions: only those a printed
+  /// page attests.
   static List<Proverb> getEligibleQuestionProverbs(List<Proverb> catalog) {
     return catalog
         .where(
           (p) =>
               p.isCanonical &&
-              p.sourceStatus != SourceStatus.needsReview &&
-              p.sourceStatus != SourceStatus.unverified &&
+              p.isPageVerified &&
               p.meaningTj.trim().isNotEmpty,
         )
         .toList();
@@ -114,12 +114,10 @@ class QuizEngine {
     final correctMeaning = proverb.meaningTj.trim();
     final correctWords = _extractWords(correctMeaning);
 
-    // Candidate pool: exclude needsReview, unverified, variants, and exact meanings
+    // Candidate pool: page-verified proverbs only, no variants and no exact
+    // meanings.
     final candidates = allProverbs.where((c) {
-      if (c.sourceStatus == SourceStatus.needsReview ||
-          c.sourceStatus == SourceStatus.unverified) {
-        return false;
-      }
+      if (!c.isPageVerified) return false;
       if (isVariantOrRelated(proverb, c)) return false;
       final cMeaning = c.meaningTj.trim();
       if (cMeaning.isEmpty || cMeaning == correctMeaning) return false;
@@ -167,10 +165,7 @@ class QuizEngine {
     // Fallback if strict criteria yielded fewer than 3: relax category/similarity slightly
     if (chosenDistractors.length < 3) {
       final fallbackPool = allProverbs.where((c) {
-        if (c.sourceStatus == SourceStatus.needsReview ||
-            c.sourceStatus == SourceStatus.unverified) {
-          return false;
-        }
+        if (!c.isPageVerified) return false;
         if (c.id == proverb.id || isVariantOrRelated(proverb, c)) return false;
         final cMeaning = c.meaningTj.trim();
         if (cMeaning.isEmpty || cMeaning == correctMeaning) return false;
