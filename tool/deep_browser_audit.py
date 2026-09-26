@@ -74,7 +74,7 @@ PERSIAN_MARKERS = {
     '/#/flashcards': ('کارت‌های آموزشی',),
     '/#/daily': ('ضرب‌المثل روز',),
     '/#/books': ('کتابخانه',),
-    '/#/books/badi-boron': ('کتابخانه', 'Kitobkhon · kitobkhon.net'),
+    '/#/books/badi-boron': ('کتابخانه', 'منبع: kitobkhon.net'),
 }
 
 def load_persian_route_cases(route_cases=None):
@@ -297,7 +297,9 @@ async def audit():
                     # paragraph whose width is not app layout.
                     await enable_accessibility(page)
                     body_text = await page.locator('body').inner_text()
-                    if expected_marker not in body_text:
+                    # Names the catalogue stores in capitals («АНВАРӢ») are
+                    # shown in title case, so markers ignore case.
+                    if expected_marker.casefold() not in body_text.casefold():
                         raise AssertionError(
                             f'Catalog route {route} is missing its expected marker '
                             f'{expected_marker!r}'

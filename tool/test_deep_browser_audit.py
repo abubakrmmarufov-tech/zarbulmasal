@@ -45,7 +45,7 @@ class DeepBrowserAuditPreferenceTest(unittest.TestCase):
 
         self.assertIn("'/': ('خانه', 'ضرب‌المثل‌ها')", source)
         self.assertIn("'/#/literature': ('میراث ادبی',)", source)
-        self.assertIn("'/#/books/badi-boron': ('کتابخانه', 'Kitobkhon · kitobkhon.net')", source)
+        self.assertIn("'/#/books/badi-boron': ('کتابخانه', 'منبع: kitobkhon.net')", source)
         self.assertIn("if 'Асосӣ' in body_text:", source)
         self.assertIn("await page_fa.locator('body').inner_text()", source)
         self.assertIn("document.querySelector('flt-semantics-placeholder')?.click()", source)
