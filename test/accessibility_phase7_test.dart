@@ -25,6 +25,7 @@ import 'package:zarbulmasal/shared/providers/app_providers.dart';
 
 import 'helpers/file_asset_bundle.dart';
 import 'helpers/test_helper.dart';
+import 'helpers/text_style_contrast.dart';
 
 double contrast(Color a, Color b) {
   final (x, y) = (a.computeLuminance(), b.computeLuminance());
@@ -32,13 +33,6 @@ double contrast(Color a, Color b) {
 }
 
 const _poem = '/literature/work/rudaki_buyi_juyi_muliyon_grade5_2017_p54';
-
-/// Screens are measured at a phone's pixel density. The contrast guideline
-/// reads each text's colour from the screenshot; at 1x a 12 px stroke is
-/// mostly anti-aliased edge, and FreeType (the Linux CI runner) draws those
-/// edges lighter than CoreText (macOS), so the measured colour depended on
-/// the platform rather than on the theme.
-const _phonePixelRatio = 3.0;
 
 List<dynamic> _json(String path) =>
     jsonDecode(File(path).readAsStringSync()) as List<dynamic>;
@@ -111,7 +105,14 @@ Future<void> _tapWord(WidgetTester tester, String word) async {
 Future<void> _expectGuidelines(WidgetTester tester) async {
   await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
   await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-  await expectLater(tester, meetsGuideline(textContrastGuideline));
+  await expectLater(tester, meetsGuideline(textStyleContrastGuideline));
+  // Flutter's own check reads the text colour from anti-aliased glyph
+  // edges, which FreeType on the Linux runner draws lighter than the
+  // theme's colour (see text_style_contrast.dart); it is kept where the
+  // rasteriser reaches the stroke colour.
+  if (!Platform.isLinux) {
+    await expectLater(tester, meetsGuideline(textContrastGuideline));
+  }
 }
 
 void main() {
@@ -120,13 +121,7 @@ void main() {
       testWidgets('$route meets tap-target, label and contrast guidelines '
           '(${dark ? 'dark' : 'light'})', (tester) async {
         final semantics = tester.ensureSemantics();
-        await openApp(
-          tester,
-          route: route,
-          dark: dark,
-          overrides: _overrides,
-          pixelRatio: _phonePixelRatio,
-        );
+        await openApp(tester, route: route, dark: dark, overrides: _overrides);
         await _expectGuidelines(tester);
         semantics.dispose();
       });
