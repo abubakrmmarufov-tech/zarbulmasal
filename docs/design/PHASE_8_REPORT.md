@@ -306,7 +306,7 @@ adb -s 7H6XHE7LSOQKYH69 install ~/Desktop/Zarbulmasal-preview/Zarbulmasal-1.0.0-
 
 ## CONTENT/PROVENANCE — TEAM VERIFICATION REQUIRED
 
-- **Poems attributed by a name or signature outside the poet's own chapter: 53.** In survey chapters and quotations, the lead-in names the poet as the speaker, or the verse is signed with the poet's name. This is new in Phase 8. Each block, with its lead-in, is in the review log (reasons «the lead-in names this poet as the speaker» and «the book signs the verse with this poet's name»).
+- **Poems attributed by a name or signature outside the poet's own chapter: 53.** In survey chapters and quotations, the lead-in names the poet as the speaker, or the verse is signed with the poet's name. This is new in Phase 8. **Owner's decision (2026-09-26): keep them published; one team member spot-checks about ten from the review log, starting with Унсурӣ's «Ғазал рӯдакивор…» and the Кайковус quatrain below.** Each block, with its lead-in, is in the review log (reasons «the lead-in names this poet as the speaker» and «the book signs the verse with this poet's name»).
 - **Phase 7 rejections reversed on the same evidence:**
   - Абусулайк and Варроқ (grade 8, p. 32);
   - Абузироа (8, p. 45);
@@ -324,7 +324,7 @@ adb -s 7H6XHE7LSOQKYH69 install ~/Desktop/Zarbulmasal-preview/Zarbulmasal-1.0.0-
   Titles are their first lines.
 - **Gulistan qit'as.** Саъдӣ's qit'as are published from inside «Гулистон» stories, as his grade 5 chapter prints them.
 - **Titles of repaired records.** The Миршакар record «Духтарони Дарвоз» is now titled by its first line, «Мевазад боди тозаву форам». Its printed headings are «ПАНҶИ НООРОМ (Оғози достон)» and «Духтарони Дарвоз».
-- **Named examples in theory lessons were rejected, as the rules say.** These include Рӯдакӣ's rubai «Юсуфрӯе…» (grade 8, p. 22), Гулрухсор's quatrain (11, p. 377) and Ҷомӣ's qasida lines (10, p. 64). **Decision for the owner:** may a device example be published when the book names its poet?
+- **Named examples in theory lessons were rejected, as the rules say.** These include Рӯдакӣ's rubai «Юсуфрӯе…» (grade 8, p. 22), Гулрухсор's quatrain (11, p. 377) and Ҷомӣ's qasida lines (10, p. 64). **Owner's decision (2026-09-26): no.** They stay rejected; examples are often trimmed or misquoted. They can be added later if the team asks.
 - **Poets the books quote who have no poet record:** Авҳадии Мароғӣ, Хоҷуи Кирмонӣ, Маҷиддини Қумрӣ, Толиби Омулӣ, Маликушшуаро Баҳор, Деҳотӣ, Носеҳи Хатлонӣ, Хумулии Моғиёнӣ, Ашӯр Сафар, Раҳмат Назрӣ, Камол Насрулло, Алимуҳаммад Муродӣ, Убайд Раҷаб, Ҳақназар Ғоиб, Аскар Ҳаким and Сиёвуш. Their verse stays unpublished until records exist. Note that the record «Муродӣ» is the 10th-century poet, not Алимуҳаммад Муродӣ.
 - **The text layer cannot be trusted on these pages; they need reading against the printed page:**
   - Ғаффор Мирзо's stepped «Ибтидои достон» (grade 5, pp. 297–299): the first half of most lines is missing.
