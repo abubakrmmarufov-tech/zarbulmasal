@@ -295,7 +295,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kobusnoma-kitobkhon-2016.webp"
       }
     ]
   },
@@ -851,7 +852,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-devoni-sayidoi-nasafi.webp",
+        "coverUrl": "https://khirad.tj/img/books/devoni-sayidoi-nasafi.jpg"
       }
     ]
   },
@@ -895,7 +898,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-masnavii-maanavi-1.webp",
+        "coverUrl": "https://khirad.tj/img/books/masnavii-maanavi-jildi-1.png"
       }
     ]
   },
@@ -937,7 +942,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-muntahaboti-sadriddin-ayni.webp",
+        "coverUrl": "https://khirad.tj/img/books/muntahaboti-sadriddin-ayni.jpg"
       }
     ]
   },
@@ -979,7 +986,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-ashaori-muntahab-lohuti.webp",
+        "coverUrl": "https://khirad.tj/img/books/ashaori--muntahab.jpg"
       }
     ]
   },
@@ -1022,7 +1031,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-navodiru-l-vaqoea.webp",
+        "coverUrl": "https://khirad.tj/img/books/navodiru-l-vaqoea.jpg"
       }
     ]
   },
@@ -1065,7 +1076,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-navruznoma.webp",
+        "coverUrl": "https://khirad.tj/img/books/navruznoma.jpg"
       }
     ]
   },
@@ -1108,7 +1121,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-devoni-soibi-tabrezi.webp",
+        "coverUrl": "https://khirad.tj/img/books/devoni-soibi-tabrezi.jpg"
       }
     ]
   },
@@ -1151,7 +1166,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-muntahabot-bedil.webp",
+        "coverUrl": "https://khirad.tj/img/books/muntahabot.jpg"
       }
     ]
   },
@@ -1195,7 +1212,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-mantiqu-t-tayr-va-asrornoma.webp",
+        "coverUrl": "https://khirad.tj/img/books/mantiqu--t-tayr-va--asrornoma.jpg"
       }
     ]
   },
@@ -1238,7 +1257,9 @@
         "format": "html",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер."
+        "metadataNote": "Метамаълумот аз саҳифаи провайдер (khirad.tj); хондан тавассути хонандаи онлайни провайдер.",
+        "coverAssetPath": "assets/data/books/covers/khirad-devoni-badriddin-hiloli.webp",
+        "coverUrl": "https://khirad.tj/img/books/devoni-badriddin-hiloli.jpg"
       }
     ]
   },
@@ -1329,7 +1350,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/osori-bedil-4.webp"
       }
     ]
   },
@@ -1635,7 +1657,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-1-b-rahimzoda.webp"
       }
     ]
   },
@@ -1726,7 +1749,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/safarnoma.webp"
       }
     ]
   },
@@ -1823,7 +1847,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/asarhoi-muntakhab-1-f-muhammadiev.webp"
       }
     ]
   },
@@ -1869,7 +1894,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyoti-osor-4-a-gulzoda.webp"
       }
     ]
   },
@@ -1914,7 +1940,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyoti-osor-3-a-gulzoda.webp"
       }
     ]
   },
@@ -1963,7 +1990,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyoti-osor-2-a-gulzoda.webp"
       }
     ]
   },
@@ -2058,7 +2086,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/yakkaburs.webp"
       }
     ]
   },
@@ -2101,7 +2130,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohrohi-istiqlol.webp"
       }
     ]
   },
@@ -2145,7 +2175,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/farishta-dar-duzakh.webp"
       }
     ]
   },
@@ -2235,7 +2266,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/chatri-gul.webp"
       }
     ]
   },
@@ -2322,7 +2354,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/khonume-dar-regzor.webp"
       }
     ]
   },
@@ -2370,7 +2403,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/khiyoboni-nodir.webp"
       }
     ]
   },
@@ -2460,7 +2494,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sultoni-qalbho.webp"
       }
     ]
   },
@@ -3285,7 +3320,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/obshori-zideh.webp"
       }
     ]
   },
@@ -3557,7 +3593,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/mulloyori-vanji.webp"
       }
     ]
   },
@@ -3607,7 +3644,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghunchahoi-khandon.webp"
       }
     ]
   },
@@ -3646,7 +3684,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/rastagori.webp"
       }
     ]
   },
@@ -3995,7 +4034,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/zafar-qissa.webp"
       }
     ]
   },
@@ -4041,7 +4081,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ashor.webp"
       }
     ]
   },
@@ -4181,7 +4222,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/dar-suhbati-sohibdilon.webp"
       }
     ]
   },
@@ -4229,7 +4271,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/davlati-ishq.webp"
       }
     ]
   },
@@ -4359,7 +4402,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/burkhi-vali-dusti-khudo.webp"
       }
     ]
   },
@@ -4501,7 +4545,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shoirahoi-toinqilobii-khujand.webp"
       }
     ]
   },
@@ -4803,7 +4848,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/chehrahoi-mondagor.webp"
       }
     ]
   },
@@ -4890,7 +4936,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bachahoi-lolazor.webp"
       }
     ]
   },
@@ -4933,7 +4980,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/man-zeboyam.webp"
       }
     ]
   },
@@ -4981,7 +5029,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/chahor-gulzor.webp"
       }
     ]
   },
@@ -5286,7 +5335,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/naynoma.webp"
       }
     ]
   },
@@ -5330,7 +5380,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyoti-ashor-furugh.webp"
       }
     ]
   },
@@ -5375,7 +5426,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/furughii-bastomi-va-ghazaliyoti-u.webp"
       }
     ]
   },
@@ -5421,7 +5473,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tavallude-digar-muntakhabi-sherho.webp"
       }
     ]
   },
@@ -5517,7 +5570,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kalila-va-dimna.webp"
       }
     ]
   },
@@ -5603,7 +5657,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/osornomai-farzona.webp"
       }
     ]
   },
@@ -5650,7 +5705,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/mavoi-dil.webp"
       }
     ]
   },
@@ -5860,7 +5916,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/dasti-bolo-hikoyaho.webp"
       }
     ]
   },
@@ -5904,7 +5961,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghamkushta.webp"
       }
     ]
   },
@@ -5954,7 +6012,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/e-ruboiyot-khayyom.webp"
       }
     ]
   },
@@ -6216,7 +6275,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/imtihoni-qismat.webp"
       }
     ]
   },
@@ -6613,7 +6673,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sarbadoroni-samarqand.webp"
       }
     ]
   },
@@ -6700,7 +6761,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/noni-shariki.webp"
       }
     ]
   },
@@ -6744,7 +6806,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/e-namunai-adabiyoti-tojik.webp"
       }
     ]
   },
@@ -6839,7 +6902,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/futuvvatnoma.webp"
       }
     ]
   },
@@ -7462,7 +7526,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/adabiyoti-qadim-to-asri-8.webp"
       }
     ]
   },
@@ -7508,7 +7573,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bahromi-chubin.webp"
       }
     ]
   },
@@ -7637,7 +7703,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/vafo.webp"
       }
     ]
   },
@@ -7728,7 +7795,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/majmuai-osor-munzim.webp"
       }
     ]
   },
@@ -7771,7 +7839,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/mukaddimai-kamolshinosi.webp"
       }
     ]
   },
@@ -7948,7 +8017,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-6.webp"
       }
     ]
   },
@@ -7994,7 +8064,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-5.webp"
       }
     ]
   },
@@ -8040,7 +8111,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-4.webp"
       }
     ]
   },
@@ -8086,7 +8158,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-3.webp"
       }
     ]
   },
@@ -8132,7 +8205,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-2.webp"
       }
     ]
   },
@@ -8178,7 +8252,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-1.webp"
       }
     ]
   },
@@ -8446,7 +8521,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/oftobboron.webp"
       }
     ]
   },
@@ -8490,7 +8566,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/poyho-va-ruyho-roman.webp"
       }
     ]
   },
@@ -8629,7 +8706,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyoti-hoji-husayn.webp"
       }
     ]
   },
@@ -8813,7 +8891,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/guldastai-ghazal.webp"
       }
     ]
   },
@@ -9124,7 +9203,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/guli-sang.webp"
       }
     ]
   },
@@ -9211,7 +9291,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shabi-yaldo.webp"
       }
     ]
   },
@@ -9558,7 +9639,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/gulafshon.webp"
       }
     ]
   },
@@ -10057,7 +10139,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/nihol.webp"
       }
     ]
   },
@@ -10502,7 +10585,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ganji-pareshon.webp"
       }
     ]
   },
@@ -10684,7 +10768,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/lolai-siyoh.webp"
       }
     ]
   },
@@ -10732,7 +10817,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/boghi-momai-angur.webp"
       }
     ]
   },
@@ -10858,7 +10944,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/toru-pud.webp"
       }
     ]
   },
@@ -10945,7 +11032,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/rozhoi-mahtobshab.webp"
       }
     ]
   },
@@ -10984,7 +11072,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/daryoi-mehr.webp"
       }
     ]
   },
@@ -11032,7 +11121,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/davlati-man-sher-va-dostonhoi-muntakhab.webp"
       }
     ]
   },
@@ -11116,7 +11206,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/joni-ocha.webp"
       }
     ]
   },
@@ -11160,7 +11251,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shukufai-ehsos.webp"
       }
     ]
   },
@@ -11201,7 +11293,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/joygohi-ibni-sino-dar-tarikhi-tamadduni-jahon.webp"
       }
     ]
   },
@@ -11246,7 +11339,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/duoi-modar.webp"
       }
     ]
   },
@@ -11330,7 +11424,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tojikistoni-man.webp"
       }
     ]
   },
@@ -11413,7 +11508,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shast-andar-shast.webp"
       }
     ]
   },
@@ -11496,7 +11592,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/asrori-rakamho.webp"
       }
     ]
   },
@@ -12151,7 +12248,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/joni-bobo.webp"
       }
     ]
   },
@@ -12484,7 +12582,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-inkilobi-bukhoro.webp"
       }
     ]
   },
@@ -14576,7 +14675,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/navruzi-jahonafruz.webp"
       }
     ]
   },
@@ -15291,7 +15391,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/az-payi-palang.webp"
       }
     ]
   },
@@ -15376,7 +15477,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masud-va-ozodi.webp"
       }
     ]
   },
@@ -15673,7 +15775,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ru-ba-mehrobi-vatan.webp"
       }
     ]
   },
@@ -16058,7 +16161,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/zanjiri-gusasta.webp"
       }
     ]
   },
@@ -16136,7 +16240,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/darunkub.webp"
       }
     ]
   },
@@ -16178,7 +16283,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/khonavoda-parokanda-shud.webp"
       }
     ]
   },
@@ -17890,7 +17996,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bachahoi-khub.webp"
       }
     ]
   },
@@ -18305,7 +18412,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tafti-dil-sherho.webp"
       }
     ]
   },
@@ -18348,7 +18456,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/subhi-vatan.webp"
       }
     ]
   },
@@ -18477,7 +18586,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-adabiyoti-tojik-2.webp"
       }
     ]
   },
@@ -18520,7 +18630,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-adabiyoti-tojik-1.webp"
       }
     ]
   },
@@ -18562,7 +18673,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/turonnoma.webp"
       }
     ]
   },
@@ -18649,7 +18761,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shamsi-kaysi-rozi-nokidi-sher.webp"
       }
     ]
   },
@@ -18693,7 +18806,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/navodir-ul-vakoe-2.webp"
       }
     ]
   },
@@ -18737,7 +18851,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/navodir-ul-vakoe-1.webp"
       }
     ]
   },
@@ -18782,7 +18897,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/soghari-sahbo.webp"
       }
     ]
   },
@@ -18863,7 +18979,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/falsafa-dar-savolu-javob.webp"
       }
     ]
   },
@@ -18902,7 +19019,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shast-makola.webp"
       }
     ]
   },
@@ -18995,7 +19113,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/rivoyati-sughdi.webp"
       }
     ]
   },
@@ -19079,7 +19198,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muntakhabi-ghazaliyot-iroki.webp"
       }
     ]
   },
@@ -19122,7 +19242,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/zindaginomai-sadriddin-ayni.webp"
       }
     ]
   },
@@ -19164,7 +19285,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/anisi-dilho.webp"
       }
     ]
   },
@@ -19251,7 +19373,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sharhi-ahvol-va-osori-mavlono.webp"
       }
     ]
   },
@@ -19295,7 +19418,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/vorukh-devori-vatan.webp"
       }
     ]
   },
@@ -19335,7 +19459,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/maktabi-odamiyat.webp"
       }
     ]
   },
@@ -19377,7 +19502,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/osor-ul-bokiya.webp"
       }
     ]
   },
@@ -19419,7 +19545,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/koinot-va-jarayoni-donishi-inson.webp"
       }
     ]
   },
@@ -19461,7 +19588,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/dostoni-vatankhohi.webp"
       }
     ]
   },
@@ -19545,7 +19673,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/samurae-ki-shamsher-nadorad.webp"
       }
     ]
   },
@@ -19708,7 +19837,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/mat-oli-baroi-ikhtisoshoi-iktisodi.webp"
       }
     ]
   },
@@ -19751,7 +19881,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/namoishnomaho-s-ulughzoda.webp"
       }
     ]
   },
@@ -19796,7 +19927,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/zhanrhoi-khurdi-folklori-tojik.webp"
       }
     ]
   },
@@ -19835,7 +19967,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/munozara.webp"
       }
     ]
   },
@@ -19876,7 +20009,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/namunai-folklori-diyori-rudaki.webp"
       }
     ]
   },
@@ -19917,7 +20051,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bahisobgirii-bukhgalteri-dar-m-b.webp"
       }
     ]
   },
@@ -19958,7 +20093,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bahisobgirii-muhosibii-idoravi.webp"
       }
     ]
   },
@@ -20003,7 +20139,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bayozi-folklori-tojik-1.webp"
       }
     ]
   },
@@ -20043,7 +20180,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kafan-kisa-nadorad-hikoyaho-povest-va-andeshaho.webp"
       }
     ]
   },
@@ -20086,7 +20224,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devoni-ishk.webp"
       }
     ]
   },
@@ -20128,7 +20267,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/somoniyon-zamon-va-makon.webp"
       }
     ]
   },
@@ -20213,7 +20353,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muntakhabi-ghazaliyot-tojiki-rusi-inglisi.webp"
       }
     ]
   },
@@ -20294,7 +20435,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/nazariyai-iktisod.webp"
       }
     ]
   },
@@ -20338,7 +20480,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/az-temurmalik-chi-medonem.webp"
       }
     ]
   },
@@ -20378,7 +20521,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tasavvuf-dar-adabiyoti-fors-tojik.webp"
       }
     ]
   },
@@ -20461,7 +20605,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarbiya-va-talimi-kudakon-dar-guruhi-gunogunsin.webp"
       }
     ]
   },
@@ -20503,7 +20648,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/vozhanomai-kompyuter.webp"
       }
     ]
   },
@@ -20546,7 +20692,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muhammad-ikbol.webp"
       }
     ]
   },
@@ -20631,7 +20778,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-humoyun.webp"
       }
     ]
   },
@@ -20675,7 +20823,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/dar-orzui-padar.webp"
       }
     ]
   },
@@ -20720,7 +20869,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/karsak-az-du-dast.webp"
       }
     ]
   },
@@ -20760,7 +20910,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghaflatzadagon.webp"
       }
     ]
   },
@@ -20809,7 +20960,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/gulangabini-khirad.webp"
       }
     ]
   },
@@ -20857,7 +21009,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sherho-rudaki.webp"
       }
     ]
   },
@@ -20904,7 +21057,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/joni-shirin.webp"
       }
     ]
   },
@@ -20945,7 +21099,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/hamadon-bosh.webp"
       }
     ]
   },
@@ -20985,7 +21140,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/nasihatnomai-imomi-azam-r-h.webp"
       }
     ]
   },
@@ -21028,7 +21184,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/guli-bodom.webp"
       }
     ]
   },
@@ -21069,7 +21226,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/najvo-dar-gushi-bod.webp"
       }
     ]
   },
@@ -21510,7 +21668,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/khiyonat.webp"
       }
     ]
   },
@@ -21551,7 +21710,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kasos.webp"
       }
     ]
   },
@@ -21597,7 +21757,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ruboiyot-bedil.webp"
       }
     ]
   },
@@ -21640,7 +21801,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/dukhtari-otash.webp"
       }
     ]
   },
@@ -21681,7 +21843,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/risolai-saydiya.webp"
       }
     ]
   },
@@ -21727,7 +21890,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/yusuf-va-zulaykho-jomi.webp"
       }
     ]
   },
@@ -21774,7 +21938,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shirin-va-khusrav-hotifi.webp"
       }
     ]
   },
@@ -21817,7 +21982,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/dokhunda.webp"
       }
     ]
   },
@@ -21859,7 +22025,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/rustam-va-isfandiyor.webp"
       }
     ]
   },
@@ -22039,7 +22206,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghazaliyot-omuli-bastomi.webp"
       }
     ]
   },
@@ -22080,7 +22248,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/khamsat-ul-mutahayirin.webp"
       }
     ]
   },
@@ -22163,7 +22332,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muntakhabi-osor-chopi.webp"
       }
     ]
   },
@@ -22211,7 +22381,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/osori-abuabdulloh-rudaki.webp"
       }
     ]
   },
@@ -22260,7 +22431,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ikbolnoma-makhzan-ul-asror.webp"
       }
     ]
   },
@@ -22309,7 +22481,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sharafnoma.webp"
       }
     ]
   },
@@ -22358,7 +22531,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/haft-paykar.webp"
       }
     ]
   },
@@ -22404,7 +22578,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/layli-va-majnun.webp"
       }
     ]
   },
@@ -22453,7 +22628,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/khusrav-va-shirin.webp"
       }
     ]
   },
@@ -22492,7 +22668,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/jashnnomai-hofiz.webp"
       }
     ]
   },
@@ -22540,7 +22717,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devoni-rudaki.webp"
       }
     ]
   },
@@ -22580,7 +22758,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ovoragard.webp"
       }
     ]
   },
@@ -22626,7 +22805,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/andarznomai-mavlono.webp"
       }
     ]
   },
@@ -22751,7 +22931,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/nisob-us-sibyon.webp"
       }
     ]
   },
@@ -22915,7 +23096,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ajoibnoma.webp"
       }
     ]
   },
@@ -22998,7 +23180,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tojikon.webp"
       }
     ]
   },
@@ -23046,7 +23229,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/avji-zuhal.webp"
       }
     ]
   },
@@ -23089,7 +23273,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/lafzi-shirin.webp"
       }
     ]
   },
@@ -23130,7 +23315,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tuhfat-ul-muluk.webp"
       }
     ]
   },
@@ -23175,7 +23361,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/navruznoma.webp"
       }
     ]
   },
@@ -23216,7 +23403,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/nasihat-ul-muluk.webp"
       }
     ]
   },
@@ -23261,7 +23449,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/navoyi-kibriyo.webp"
       }
     ]
   },
@@ -23302,7 +23491,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/chahor-makola.webp"
       }
     ]
   },
@@ -23392,7 +23582,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/pandho.webp"
       }
     ]
   },
@@ -23438,7 +23629,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/buyi-juyi-muliyon.webp"
       }
     ]
   },
@@ -23480,7 +23672,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bahoriyot.webp"
       }
     ]
   },
@@ -23524,7 +23717,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-khalki-tojik-10.webp"
       }
     ]
   },
@@ -23568,7 +23762,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-umumi-9.webp"
       }
     ]
   },
@@ -23698,7 +23893,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-khalki-tojik-5.webp"
       }
     ]
   },
@@ -23740,7 +23936,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/az-bahoriston.webp"
       }
     ]
   },
@@ -23789,7 +23986,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/az-saodatnoma.webp"
       }
     ]
   },
@@ -23831,7 +24029,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shoiron-va-shohon.webp"
       }
     ]
   },
@@ -23874,7 +24073,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-14.webp"
       }
     ]
   },
@@ -23917,7 +24117,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-13.webp"
       }
     ]
   },
@@ -23960,7 +24161,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-12.webp"
       }
     ]
   },
@@ -24003,7 +24205,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-11.webp"
       }
     ]
   },
@@ -24046,7 +24249,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-9.webp"
       }
     ]
   },
@@ -24089,7 +24293,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-7.webp"
       }
     ]
   },
@@ -24132,7 +24337,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-6.webp"
       }
     ]
   },
@@ -24175,7 +24381,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-5.webp"
       }
     ]
   },
@@ -24218,7 +24425,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-4.webp"
       }
     ]
   },
@@ -24261,7 +24469,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-3.webp"
       }
     ]
   },
@@ -24304,7 +24513,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ayni-1.webp"
       }
     ]
   },
@@ -24390,7 +24600,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/margi-sudkhur.webp"
       }
     ]
   },
@@ -24431,7 +24642,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/guliston-elektroni.webp"
       }
     ]
   },
@@ -24476,7 +24688,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/buston-sadi.webp"
       }
     ]
   },
@@ -25207,7 +25420,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muntakhabot-bedil.webp"
       }
     ]
   },
@@ -25484,7 +25698,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devoni-soib.webp"
       }
     ]
   },
@@ -25572,7 +25787,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devoni-hiloli.webp"
       }
     ]
   },
@@ -25618,7 +25834,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghazaliyoti-jomi.webp"
       }
     ]
   },
@@ -25668,7 +25885,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devoni-k-hujandi.webp"
       }
     ]
   },
@@ -25714,7 +25932,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devoni-hofiz.webp"
       }
     ]
   },
@@ -25759,7 +25978,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muntahabi-ashor-n-buhoroi.webp"
       }
     ]
   },
@@ -25804,7 +26024,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muntahabi-osor-zokoni.webp"
       }
     ]
   },
@@ -25851,7 +26072,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghazaliyot-sadi.webp"
       }
     ]
   },
@@ -25898,7 +26120,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghazaliyot-dehlavi.webp"
       }
     ]
   },
@@ -25945,7 +26168,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-5-6.webp"
       }
     ]
   },
@@ -25992,7 +26216,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-3-4.webp"
       }
     ]
   },
@@ -26039,7 +26264,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/masnavii-manavi-1-2.webp"
       }
     ]
   },
@@ -26545,7 +26771,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-10.webp"
       }
     ]
   },
@@ -26594,7 +26821,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-9.webp"
       }
     ]
   },
@@ -26643,7 +26871,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-7.webp"
       }
     ]
   },
@@ -26692,7 +26921,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-6.webp"
       }
     ]
   },
@@ -26741,7 +26971,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-5.webp"
       }
     ]
   },
@@ -26790,7 +27021,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-4.webp"
       }
     ]
   },
@@ -26839,7 +27071,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-3.webp"
       }
     ]
   },
@@ -26888,7 +27121,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-2.webp"
       }
     ]
   },
@@ -26937,7 +27171,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shohnoma-1.webp"
       }
     ]
   },
@@ -27023,7 +27258,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ashor-ahtaroni-adab-1.webp"
       }
     ]
   },
@@ -27063,7 +27299,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/man-va-pul.webp"
       }
     ]
   },
@@ -27107,7 +27344,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/barguzidai-ashor-shahriyor.webp"
       }
     ]
   },
@@ -27146,7 +27384,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/az-ardasher-to-sheri-panjsher.webp"
       }
     ]
   },
@@ -27190,7 +27429,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/hikoyatho-va-hidoyatho-az-masnavii-manavi.webp"
       }
     ]
   },
@@ -27234,7 +27474,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/osori-barguzida.webp"
       }
     ]
   },
@@ -27320,7 +27561,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/konuni-tib-5.webp"
       }
     ]
   },
@@ -27359,7 +27601,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/pesh-az-shabi-arusi-kitobi-duvvum.webp"
       }
     ]
   },
@@ -27401,7 +27644,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/nidoi-ishk.webp"
       }
     ]
   },
@@ -27441,7 +27685,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/chi-son-alohon-gashtam.webp"
       }
     ]
   },
@@ -27481,7 +27726,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/agar-vaj-mard-mebud-povestho.webp"
       }
     ]
   },
@@ -27525,7 +27771,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-tughral.webp"
       }
     ]
   },
@@ -27569,7 +27816,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-zebunniso.webp"
       }
     ]
   },
@@ -27616,7 +27864,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-kangurti.webp"
       }
     ]
   },
@@ -27660,7 +27909,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-jomi.webp"
       }
     ]
   },
@@ -27704,7 +27954,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-shohin.webp"
       }
     ]
   },
@@ -27748,7 +27999,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-hiloli.webp"
       }
     ]
   },
@@ -27792,7 +28044,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-sadi.webp"
       }
     ]
   },
@@ -27836,7 +28089,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-bedil.webp"
       }
     ]
   },
@@ -27880,7 +28134,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-hofiz.webp"
       }
     ]
   },
@@ -27927,7 +28182,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sadu-yak-ghazal-loik.webp"
       }
     ]
   },
@@ -28011,7 +28267,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/yoddoshtho.webp"
       }
     ]
   },
@@ -28096,7 +28353,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/risolai-dilkusho.webp"
       }
     ]
   },
@@ -28140,7 +28398,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/maktabi-kuhna.webp"
       }
     ]
   },
@@ -28180,7 +28439,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/har-sukhan-joevu-har-nukta-makome-dorad.webp"
       }
     ]
   },
@@ -28224,7 +28484,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/namunai-adabiyoti-tojik.webp"
       }
     ]
   },
@@ -28263,7 +28524,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shami-khotira.webp"
       }
     ]
   },
@@ -28350,7 +28612,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/varta.webp"
       }
     ]
   },
@@ -28392,7 +28655,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarikhi-tojikon-komilan-sirri.webp"
       }
     ]
   },
@@ -28436,7 +28700,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/siyosatnoma.webp"
       }
     ]
   },
@@ -28481,7 +28746,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/pandnomai-anushervon.webp"
       }
     ]
   },
@@ -28523,7 +28789,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ghazaliyot-hofiz.webp"
       }
     ]
   },
@@ -28606,7 +28873,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tojikon-1.webp"
       }
     ]
   },
@@ -28645,7 +28913,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/majmuai-osor-a-hakim-7.webp"
       }
     ]
   },
@@ -28684,7 +28953,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/majmuai-osor-a-hakim-6.webp"
       }
     ]
   },
@@ -28723,7 +28993,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/majmuai-osor-a-hakim-5.webp"
       }
     ]
   },
@@ -28762,7 +29033,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/majmuai-osor-a-hakim-4.webp"
       }
     ]
   },
@@ -28801,7 +29073,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/vezhagihoi-anvoi-sheri-ghinoi.webp"
       }
     ]
   },
@@ -29054,7 +29327,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/saroi-sang-3.webp"
       }
     ]
   },
@@ -29097,7 +29371,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sarguzashti-sobir.webp"
       }
     ]
   },
@@ -29177,7 +29452,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kishtinishastagonem-kishtishikastagonem.webp"
       }
     ]
   },
@@ -29219,7 +29495,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tahzib-us-sibyon.webp"
       }
     ]
   },
@@ -29683,7 +29960,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/se-shikasti-oriyoiho.webp"
       }
     ]
   },
@@ -29728,7 +30006,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sangi-mazor.webp"
       }
     ]
   },
@@ -29770,7 +30049,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/osiyoi-miyona-dar-nomahoi-boston.webp"
       }
     ]
   },
@@ -29855,7 +30135,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devoni-zamon.webp"
       }
     ]
   },
@@ -29900,7 +30181,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/shula-dar-sang.webp"
       }
     ]
   },
@@ -29939,7 +30221,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tarzi-fikrronii-odamoni.webp"
       }
     ]
   },
@@ -29978,7 +30261,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/muhabbat.webp"
       }
     ]
   },
@@ -30019,7 +30303,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/sarguzashti-hotami-tay.webp"
       }
     ]
   },
@@ -30060,7 +30345,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/chor-darvesh.webp"
       }
     ]
   },
@@ -30104,7 +30390,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/piruzinoma.webp"
       }
     ]
   },
@@ -30146,7 +30433,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/bahoriston.webp"
       }
     ]
   },
@@ -30230,7 +30518,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/guliston.webp"
       }
     ]
   },
@@ -30272,7 +30561,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/buston.webp"
       }
     ]
   },
@@ -30313,7 +30603,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/mantiku-t-tayr.webp"
       }
     ]
   },
@@ -30355,7 +30646,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/tazkirat-ul-avliyo.webp"
       }
     ]
   },
@@ -30399,7 +30691,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/futuvvatnomai-sultoni.webp"
       }
     ]
   },
@@ -30444,7 +30737,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kulliyot-ustod-loik.webp"
       }
     ]
   },
@@ -30486,7 +30780,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/ehyoi-ajam.webp"
       }
     ]
   },
@@ -30527,7 +30822,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/aburayhoni-beruni.webp"
       }
     ]
   },
@@ -30651,7 +30947,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/panturkizm-va-sarnavishti-tarikhii-tojikon.webp"
       }
     ]
   },
@@ -30690,7 +30987,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/khuroson-ast-in-jo.webp"
       }
     ]
   },
@@ -30729,7 +31027,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/kame-latra.webp"
       }
     ]
   },
@@ -30772,7 +31071,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/devori-khuroson.webp"
       }
     ]
   },
@@ -30818,7 +31118,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/otash-dar-khonai-kadim.webp"
       }
     ]
   },
@@ -30861,7 +31162,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/saroi-sang-kismi-2.webp"
       }
     ]
   },
@@ -30904,7 +31206,8 @@
         "format": "pdf",
         "availability": "readableExternal",
         "rightsStatus": "rightsUnclear",
-        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст."
+        "metadataNote": "Провайдер PDF-ро мустақим пешниҳод мекунад; иҷозаи бознашр мустақилона тасдиқ нашудааст.",
+        "coverAssetPath": "assets/data/books/covers/saroyi-sang-kismi-1.webp"
       }
     ]
   }
