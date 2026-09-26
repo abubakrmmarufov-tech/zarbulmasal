@@ -96,6 +96,9 @@ jobs:
           bash -n tool/prepare_web_release.sh
           bash -n tool/deploy_gh_pages.sh
           bash -n tool/serve_web.sh
+          bash -n tool/check_all.sh
+          bash -n tool/build_release.sh
+          bash -n tool/update_linux_goldens.sh
 
       - name: Test Android bundle alignment verifier
         run: |

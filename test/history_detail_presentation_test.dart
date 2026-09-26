@@ -156,6 +156,27 @@ void main() {
     expect(find.text('missing-work'), findsNothing);
   });
 
+  testWidgets('the source card names the grade once, in the book line', (
+    tester,
+  ) async {
+    await _pumpDetail(
+      tester,
+      entryId: _entry.id,
+      loadEntry: () async => _entry,
+    );
+
+    // The catalogue line under the app bar keeps the entry's grade.
+    expect(find.text('Синфи 6'), findsOneWidget);
+    // The card's heading is the section; the grade is in the book line only.
+    expect(find.text('Синфи 6 · Давлати Сомониён'), findsNothing);
+    expect(find.text('Давлати Сомониён'), findsOneWidget);
+    expect(find.text('Таърихи халқи тоҷик, синфи 6 (2018)'), findsOneWidget);
+    final gradeMentions = tester
+        .widgetList<Text>(find.byType(Text))
+        .where((text) => (text.data ?? '').toLowerCase().contains('синфи 6'));
+    expect(gradeMentions, hasLength(2));
+  });
+
   testWidgets('history detail switches to Persian fields and direction', (
     tester,
   ) async {

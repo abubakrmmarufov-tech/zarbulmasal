@@ -188,6 +188,29 @@ void main() {
       expect(find.text(tj('proverb_no_printed_source')), findsNothing);
     });
 
+    testWidgets('a printed form the book already quotes is not quoted '
+        'again', (tester) async {
+      const quoted = SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 5',
+        year: 2017,
+        pdfPage: 38,
+        printedPage: 38,
+        printedText: '«Дасти одамизод гул аст» – мегӯяд зарбулмасали тоҷик.',
+      );
+      await pumpPage(tester, _proverb(sources: const [quoted, _asrori]));
+
+      final sources = tester
+          .widgetList<SelectableText>(find.byType(SelectableText))
+          .map((widget) => widget.data ?? '')
+          .firstWhere((text) => text.contains('Дасти одамизод'));
+      expect(sources, isNot(contains('««')));
+      expect(
+        sources,
+        startsWith('«Дасти одамизод гул аст» – мегӯяд зарбулмасали тоҷик.\n'),
+      );
+      expect(sources, contains('«${_asrori.printedText}»'));
+    });
+
     testWidgets('labels editorial sections, not the Persian script', (
       tester,
     ) async {

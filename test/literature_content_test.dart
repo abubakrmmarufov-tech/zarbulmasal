@@ -26,6 +26,28 @@ void main() {
               as List;
     });
 
+    test('biographies keep no line-break hyphen from the PDF', () {
+      for (final poet in poets) {
+        final bio = poet['biographyTj'] as String? ?? '';
+        expect(bio, isNot(contains('\u00ad')), reason: poet['canonicalName']);
+      }
+    });
+
+    test('Айюбӣ\'s biography ends where the textbook\'s does (grade 6, '
+        'p. 163), before the cast list of «Амир Исмоил»', () {
+      final ayyubi = poets.firstWhere(
+        (poet) => poet['canonicalName'] == 'Сафармуҳаммад Айюбӣ',
+      );
+      final bio = ayyubi['biographyTj'] as String;
+      expect(
+        bio,
+        endsWith('барандаи Ҷоизаи давлатии ба номи Абӯабдуллоҳ Рӯдакист.'),
+      );
+      expect(bio, contains('20 декабри соли 1945 дар шаҳри Кӯлоб таваллуд'));
+      expect(bio, isNot(contains('Иштироккунандагон')));
+      expect(bio, isNot(contains('АМИР ИСМОИЛ')));
+    });
+
     test('No duplicate IDs', () {
       final poetIds = poets.map((p) => p['id']).toSet();
       expect(poetIds.length, poets.length, reason: 'Duplicate poet IDs found');

@@ -1,0 +1,443 @@
+{
+  "date": "2026-09-26",
+  "rule": "Biographies are copied from the textbook PDFs; this log records each correction to what the page prints.",
+  "changes": [
+    {
+      "poetId": "ef5a57a2-8949-43dd-85eb-8ceaf78335f3",
+      "poet": "Раҳим Ҷалил",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 222–235",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "бу- данд.",
+              "after": "буданд."
+            },
+            {
+              "before": "Баъ- ди",
+              "after": "Баъди"
+            },
+            {
+              "before": "муал- лимтайёркунии",
+              "after": "муаллимтайёркунии"
+            },
+            {
+              "before": "Ло- ҳу-тӣ,",
+              "after": "Лоҳутӣ,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "a7feaa09-c83f-44f2-a69e-0a46ba957dbc",
+      "poet": "Мирсаид Миршакар",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 236–252; синфи 5 (2017), с. 273–280",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "Мир- шакар",
+              "after": "Миршакар"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "43004ccf-0d32-463c-aad5-b6aaec73fbb4",
+      "poet": "Туғрал",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 22–30",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "забо- ни",
+              "after": "забони"
+            },
+            {
+              "before": "ҳунарман- ди",
+              "after": "ҳунарманди"
+            },
+            {
+              "before": "Гул- шании",
+              "after": "Гулшании"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "2e7a713f-c3d2-449e-bd6a-a4b5b7350201",
+      "poet": "Асирӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 31–39",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "ко- сиб",
+              "after": "косиб"
+            },
+            {
+              "before": "хатто- ти",
+              "after": "хаттоти"
+            },
+            {
+              "before": "меку- над.",
+              "after": "мекунад."
+            },
+            {
+              "before": "ру- сию",
+              "after": "русию"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "cfb751a8-dce3-4553-aef8-bc4574b2b85e",
+      "poet": "Сайфи Фарғонӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 77–79",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "шо- ирони",
+              "after": "шоирони"
+            },
+            {
+              "before": "Таб-рез",
+              "after": "Табрез"
+            },
+            {
+              "before": "мебо- шад.",
+              "after": "мебошад."
+            },
+            {
+              "before": "ис- тилогар",
+              "after": "истилогар"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "337370dd-7731-490b-9e92-b7f9be6ba695",
+      "poet": "Носири Бухороӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 103–106",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "маъ- лум",
+              "after": "маълум"
+            },
+            {
+              "before": "мон- дааст,",
+              "after": "мондааст,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "465d3f4a-4924-4ca6-9371-7266ae4393c7",
+      "poet": "Шавкати Бухороӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 120–121",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "Бу- хоро",
+              "after": "Бухоро"
+            },
+            {
+              "before": "маъ- лум",
+              "after": "маълум"
+            },
+            {
+              "before": "карда- аст.",
+              "after": "кардааст."
+            },
+            {
+              "before": "но- тавонбиниву",
+              "after": "нотавонбиниву"
+            },
+            {
+              "before": "саб- ру",
+              "after": "сабру"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "22097ef5-9ab2-4b03-a971-e62927f2f8c8",
+      "poet": "Нозими Ҳиротӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 122–125",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "та- валлуд",
+              "after": "таваллуд"
+            },
+            {
+              "before": "кар- дааст.",
+              "after": "кардааст."
+            },
+            {
+              "before": "ба- рин",
+              "after": "барин"
+            },
+            {
+              "before": "менавохта- аст",
+              "after": "менавохтааст"
+            },
+            {
+              "before": "масна- вии",
+              "after": "маснавии"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "e859c1ae-03b9-4add-8079-7fa5bcf64ef7",
+      "poet": "Пайрав Сулаймонӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 132–143",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "нав- овар",
+              "after": "навовар"
+            },
+            {
+              "before": "Навзод- ро",
+              "after": "Навзодро"
+            },
+            {
+              "before": "муалли- мони",
+              "after": "муаллимони"
+            },
+            {
+              "before": "мак- таби",
+              "after": "мактаби"
+            },
+            {
+              "before": "меро- си",
+              "after": "мероси"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "26c985a4-88ca-47ea-8981-ba5529b62a7c",
+      "poet": "Ҳабиб Юсуфӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 144–151; синфи 7 (2018), с. 212–216",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "масъулият- шиносиву",
+              "after": "масъулиятшиносиву"
+            },
+            {
+              "before": "мак- табхон",
+              "after": "мактабхон"
+            },
+            {
+              "before": "миё- на",
+              "after": "миёна"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "a74ea72d-864f-4c25-b42e-95435794a42d",
+      "poet": "ФАЗЛИДДИН МУҲАММАДИЕВ",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 253–269; синфи 7 (2018), с. 231–248",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "муто- лиаи",
+              "after": "мутолиаи"
+            },
+            {
+              "before": "Мас- кав",
+              "after": "Маскав"
+            },
+            {
+              "before": "си- фати",
+              "after": "сифати"
+            },
+            {
+              "before": "ме- фиристанд.",
+              "after": "мефиристанд."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b",
+      "poet": "Сотим Улуғзода",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 182–206; синфи 7 (2018), с. 174–211",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "Наман- гони",
+              "after": "Намангони"
+            },
+            {
+              "before": "Мо- дараш",
+              "after": "Модараш"
+            },
+            {
+              "before": "меша- вад.",
+              "after": "мешавад."
+            },
+            {
+              "before": "Дорул- муаллимин",
+              "after": "Дорулмуаллимин"
+            },
+            {
+              "before": "Сотим- хон",
+              "after": "Сотимхон"
+            },
+            {
+              "before": "ши- нос",
+              "after": "шинос"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9c",
+      "poet": "Ҷалол Икромӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 11 (2018), с. 207–221",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "Бу- хоро",
+              "after": "Бухоро"
+            },
+            {
+              "before": "мад- раса",
+              "after": "мадраса"
+            },
+            {
+              "before": "мак- таби",
+              "after": "мактаби"
+            },
+            {
+              "before": "ме-намояд.",
+              "after": "менамояд."
+            },
+            {
+              "before": "Вик- тор",
+              "after": "Виктор"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "b2c3d4e5-c6d7-4e8f-9a0b-1c2d3e4f5a6b",
+      "poet": "Муҳаммад Авфии Бухороӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 80–89",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "Бухо- ро",
+              "after": "Бухоро"
+            },
+            {
+              "before": "вилоя- ти",
+              "after": "вилояти"
+            },
+            {
+              "before": "маълу- мот",
+              "after": "маълумот"
+            },
+            {
+              "before": "Ба- хусус",
+              "after": "Бахусус"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "c3d4e5f6-d7e8-4f9a-0b1c-2d3e4f5a6b7c",
+      "poet": "Муҳаммад Ғазолӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 69–76",
+      "corrections": [
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "кар- дааст.",
+              "after": "кардааст."
+            },
+            {
+              "before": "забо- ни",
+              "after": "забони"
+            },
+            {
+              "before": "мебо- шанд.",
+              "after": "мебошанд."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "poetId": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
+      "poet": "Сафармуҳаммад Айюбӣ",
+      "biographySource": "«Адабиёти тоҷик», синфи 6 (2014), с. 163–187",
+      "corrections": [
+        {
+          "what": "removed text pasted after the biography: the opening of the drama «Амир Исмоил» (title, subtitle and cast list) printed below it on the same page",
+          "source": "Адабиёти тоҷик, синфи 6 (2014), p. 163 (docs/literature/pdfs/adabiet sinfi 6.pdf, PDF page 163)",
+          "removed": "АМИР ИСМОИЛ (Драмаи манзум дар ду баст ва ҳафт намоиш) Иштироккунандагон: Исмоили Сомонӣ – волии Бухоро, минбаъд амири Давла­ ти Сомониён. Насри Сомонӣ – амири Варзрӯд. Абулфазли Бальамӣ – надими дарбори Насри Сомонӣ,"
+        },
+        {
+          "what": "rejoined words the PDF hyphenates at a line end (soft hyphen and space removed)",
+          "words": [
+            {
+              "before": "тавал- луд",
+              "after": "таваллуд"
+            },
+            {
+              "before": "ман- зуми",
+              "after": "манзуми"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

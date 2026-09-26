@@ -486,4 +486,41 @@ const Map<String, String> tajikStringsB = {
   'vocab_tajik_meaning': 'Шарҳ ба тоҷикӣ',
   'explore_vocab_sub': 'Маънии вожаҳо ва мафҳумҳо аз сарчашмаҳо',
   'learn_vocab_desc': 'Маънии вожаҳо, зарбулмасалҳо ва номҳо',
+  'flash_tap_front_hint': 'Барои дидани мақол ламс кунед',
+  'flash_tap_back_hint': 'Барои дидани маъно ламс кунед',
+  'flash_front_label': 'МАҚОЛ',
+  'kind_proverb': 'Зарбулмасал',
+  'proverb_other_forms': 'Шаклҳои дигар',
+  'categories_clear_topic_filter': 'Тоза кардани мавзӯъ',
+  'kind_history': 'Таърих',
+  'hist_books_unavailable': 'Манбаъҳои китобҳо ҳоло дастрас нестанд.',
+  'hist_load_error_title': 'Хато ҳангоми боргирии таърих',
+  'hist_load_error_body':
+      'Феҳристи маҳаллӣ бор нашуд. Баъдтар дубора кӯшиш кунед.',
+  'hist_grade_no_catalog_body':
+      'Китоби манбаъ нигоҳ дошта шудааст, аммо тафсилоти фаслҳо барои сохтани кортҳои боэътимод кофӣ нест.',
+  'hist_no_results_title': 'Мундариҷа ёфт нашуд',
+  'hist_no_results_body': 'Филтр ё ибораи ҷустуҷӯро тағйир диҳед.',
+  'hist_reading_title': 'Хониши муфассал',
+  'hist_editorial_note':
+      'Тарҷумаи таҳрирӣ аз матни тоҷикӣ (сарчашма ба забони тоҷикӣ аст)',
+  'hist_source_language_note': 'Матни аслӣ ба забони тоҷикӣ (кириллӣ) аст',
+  'hist_section_source': 'Сарчашмаи ин бахш: \${0}',
+  'levels_eyebrow_numbered': '03 / БОБҲО',
+  'levels_level_n': 'Сатҳи \${0}',
+  'settings_app_text_size': 'Андозаи матни барнома',
+  'settings_app_text_size_hint': 'Ба ҳамаи матнҳои барнома таъсир мерасонад.',
+  'settings_poem_text_size_hint':
+      'Танҳо ба андозаи матни шеър дар саҳифаи хониши шеър таъсир мерасонад.',
+  'settings_text_smaller': 'Хурд кардан',
+  'settings_text_default': 'Андозаи аввала',
+  'settings_text_larger': 'Калон кардан',
+  'settings_guide_reset_snack':
+      'Дастурамал ҳангоми бозгашт ба саҳифаи аввал намоиш дода мешавад.',
+  'settings_source_text1':
+      'Маҷмӯа мақолҳои анъанавӣ ва матнҳои таълимии муосирро дар бар мегирад. Сарчашма дар саҳифаи ҳар матн нишон дода мешавад.',
+  'settings_text_sample': 'Зарбулмасал — гуфтори кӯтоҳи пандомӯз аст.',
+  'settings_text_sample_label': 'Намунаи андозаи матн',
+  'hist_grade_no_catalog_title':
+      'Барои синфи \${0} феҳристи муфассал ҳоло дастрас нест',
 };

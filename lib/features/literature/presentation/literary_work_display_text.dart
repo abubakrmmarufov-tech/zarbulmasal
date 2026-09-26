@@ -32,9 +32,10 @@ abstract final class LiteraryWorkDisplayText {
   }
 
   /// One short citation for readers: the book, its grade (for a textbook file
-  /// named "… sinfi N") and year — «Адабиёти тоҷик, синфи 5 (2017)». No page
-  /// and nothing else from the provenance record is shown. `null` when the
-  /// work has no source title.
+  /// named "… sinfi N") and year — «Адабиёти тоҷик, синфи 5 (2017)»; in
+  /// Persian a bundled textbook is named in Persian, as portrait captions
+  /// are. No page and nothing else from the provenance record is shown.
+  /// `null` when the work has no source title.
   static String? shortCitation(LiteraryWork work, DisplayLanguage language) =>
       sourceCitation(work.primarySource, language);
 
@@ -47,12 +48,12 @@ abstract final class LiteraryWorkDisplayText {
     if (source == null) return null;
     final title = source.bookTitle.trim();
     if (title.isEmpty) return null;
-    return formatBookCitation(
-      title,
-      language,
-      grade: textbookGrade(source.sourceReference),
-      year: source.year,
-    );
+    final grade = textbookGrade(source.sourceReference);
+    final persianTextbook = grade == null
+        ? null
+        : persianTextbookCitation(grade, source.year, language);
+    return persianTextbook ??
+        formatBookCitation(title, language, grade: grade, year: source.year);
   }
 
   /// The forms a reader can browse by, in the order they are offered.

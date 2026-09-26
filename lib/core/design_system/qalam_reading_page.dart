@@ -79,7 +79,10 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                           ? p.persianText
                           : p.tajikCyrillic)
                     : p.tajikCyrillic,
-                subtitle: persian ? 'ضرب‌المثل' : 'Зарбулмасал',
+                subtitle: AppTranslations.getForIsPersian(
+                  persian,
+                  'kind_proverb',
+                ),
                 titleTajik: p.tajikCyrillic,
                 titlePersian: p.persianText.isNotEmpty ? p.persianText : null,
                 subtitleTajik: 'Зарбулмасал',
@@ -325,7 +328,10 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
                     SliverToBoxAdapter(
                       child: _ReadingSection(
                         number: AppTranslations.formatDigits('04', lang),
-                        title: persian ? 'گونه‌های دیگر' : 'Шаклҳои дигар',
+                        title: AppTranslations.getForIsPersian(
+                          persian,
+                          'proverb_other_forms',
+                        ),
                         text: variantTexts.join('\n\n'),
                         textDirection: heroPersian
                             ? TextDirection.rtl
@@ -404,7 +410,10 @@ class _QalamReadingPageState extends ConsumerState<QalamReadingPage> {
       .map((source) {
         final printed = source.printedText?.trim() ?? '';
         final citation = formatSourceCitation(source, lang);
-        return printed.isEmpty ? citation : '«$printed»\n$citation';
+        if (printed.isEmpty) return citation;
+        // Some books print the saying in quotes already: «…» – мегӯяд ….
+        final quoted = printed.startsWith('«') ? printed : '«$printed»';
+        return '$quoted\n$citation';
       })
       .join('\n\n');
 

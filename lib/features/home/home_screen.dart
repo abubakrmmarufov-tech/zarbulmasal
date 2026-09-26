@@ -114,10 +114,8 @@ class HomeScreen extends ConsumerWidget {
   ) {
     final kind = switch (position.kind) {
       ReadingKind.work => AppTranslations.get('lit_genre_poem', lang),
-      ReadingKind.proverb =>
-        lang == DisplayLanguage.persian ? 'ضرب‌المثل' : 'Зарбулмасал',
-      ReadingKind.history =>
-        lang == DisplayLanguage.persian ? 'تاریخ' : 'Таърих',
+      ReadingKind.proverb => AppTranslations.get('kind_proverb', lang),
+      ReadingKind.history => AppTranslations.get('kind_history', lang),
     };
     final anchor = position.anchor;
     final total = position.anchorTotal;

@@ -99,7 +99,19 @@ void main() {
       );
       expect(
         formatSourceCitation(textbook, DisplayLanguage.persian),
-        'Адабиёти тоҷик, синфи 5 (۲۰۱۷)',
+        'ادبیات تاجیک، صنف ۵ (۲۰۱۷)',
+      );
+    });
+
+    test('in Persian, a textbook of another year keeps its title', () {
+      const other = SourceRef(
+        bookTitle: 'Адабиёти тоҷик, синфи 5',
+        year: 2005,
+        pdfPage: 40,
+      );
+      expect(
+        formatSourceCitation(other, DisplayLanguage.persian),
+        'Адабиёти тоҷик, синфи 5 (۲۰۰۵)',
       );
     });
 

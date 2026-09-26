@@ -30,10 +30,20 @@ String formatBookCitation(
 }
 
 /// A proverb's source: the book and its year. Textbook titles already name
-/// the grade («Адабиёти тоҷик, синфи 5»). The printed and PDF pages stay on
+/// the grade («Адабиёти тоҷик, синфи 5»); in Persian a bundled textbook is
+/// named in Persian ([textbookCitation]). The printed and PDF pages stay on
 /// [SourceRef] for the checks.
-String formatSourceCitation(SourceRef source, DisplayLanguage lang) =>
-    formatBookCitation(source.bookTitle, lang, year: source.year?.toString());
+String formatSourceCitation(SourceRef source, DisplayLanguage lang) {
+  final year = source.year?.toString();
+  final grade = RegExp(
+    r'^Адабиёти тоҷик, синфи (\d+)$',
+  ).firstMatch(source.bookTitle.trim())?.group(1);
+  final persianTextbook = grade == null
+      ? null
+      : persianTextbookCitation(grade, year, lang);
+  return persianTextbook ??
+      formatBookCitation(source.bookTitle, lang, year: year);
+}
 
 /// The literature textbooks in `docs/literature/pdfs`, by grade: each
 /// edition's title and year as `assets/data/literature/sources.json` records
@@ -55,6 +65,8 @@ String? textbookGrade(String? reference) =>
 
 /// «Адабиёти тоҷик, синфи 5 (2017)» for the textbook PDF of [grade]; null when
 /// no such PDF is bundled. Persian names the book in Persian.
+///
+/// See [persianTextbookCitation] for a source that names its own year.
 String? textbookCitation(String grade, DisplayLanguage lang) {
   final edition = uploadedTextbookEditions[grade];
   if (edition == null) return null;
@@ -63,4 +75,18 @@ String? textbookCitation(String grade, DisplayLanguage lang) {
     edition.year,
     edition.title,
   ]);
+}
+
+/// In Persian, the Persian name of the bundled textbook of [grade] when
+/// [year] is that edition's year («ادبیات تاجیک، صنف ۵ (۲۰۱۷)»); null in
+/// Tajik, for another edition, or for a grade with no bundled PDF.
+String? persianTextbookCitation(
+  String grade,
+  String? year,
+  DisplayLanguage lang,
+) {
+  if (lang != DisplayLanguage.persian) return null;
+  final edition = uploadedTextbookEditions[grade];
+  if (edition == null || edition.year != year?.trim()) return null;
+  return textbookCitation(grade, lang);
 }

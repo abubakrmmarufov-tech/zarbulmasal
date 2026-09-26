@@ -74,9 +74,16 @@ class AppTranslations {
     return formatDigits(number.toString(), lang);
   }
 
+  /// Numbers only: a number, or text made of digits and number punctuation
+  /// («5», «2017», «5–7»). Any other text — a Cyrillic title such as
+  /// «синфи 5» — keeps its digits.
   static String _formatArgument(Object argument, DisplayLanguage language) {
-    return formatNumber(argument, language);
+    final isNumeric =
+        argument is num || _numericText.hasMatch(argument.toString());
+    return isNumeric ? formatNumber(argument, language) : argument.toString();
   }
+
+  static final _numericText = RegExp(r'^[0-9\s.,:/–—-]+$');
 
   static const List<String> monthNamesTj = [
     '',

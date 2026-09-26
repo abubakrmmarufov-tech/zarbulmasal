@@ -145,9 +145,10 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          isPersian
-                              ? 'منابع کتاب‌ها فعلاً در دسترس نیستند.'
-                              : 'Манбаъҳои китобҳо ҳоло дастрас нестанд.',
+                          AppTranslations.getForIsPersian(
+                            isPersian,
+                            'hist_books_unavailable',
+                          ),
                           style: QalamTypography.meta(
                             color: Theme.of(context).colorScheme.error,
                           ),
@@ -156,7 +157,10 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                           onPressed: () => ref.invalidate(historyBooksProvider),
                           icon: const Icon(Icons.refresh, size: 17),
                           label: Text(
-                            isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                            AppTranslations.getForIsPersian(
+                              isPersian,
+                              'btn_retry',
+                            ),
                           ),
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
@@ -219,16 +223,18 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
               error: (error, _) => SliverFillRemaining(
                 child: EmptyState(
                   icon: Icons.error_outline,
-                  title: isPersian
-                      ? 'خطا در بارگیری تاریخ'
-                      : 'Хато ҳангоми боргирии таърих',
-                  subtitle: isPersian
-                      ? 'فهرست محلی بارگیری نشد. بعداً دوباره تلاش کنید.'
-                      : 'Феҳристи маҳаллӣ бор нашуд. Баъдтар дубора кӯшиш кунед.',
+                  title: AppTranslations.getForIsPersian(
+                    isPersian,
+                    'hist_load_error_title',
+                  ),
+                  subtitle: AppTranslations.getForIsPersian(
+                    isPersian,
+                    'hist_load_error_body',
+                  ),
                   action: OutlinedButton(
                     onPressed: () => ref.invalidate(historyEntriesProvider),
                     child: Text(
-                      isPersian ? 'تلاش دوباره' : 'Дубора кӯшиш кардан',
+                      AppTranslations.getForIsPersian(isPersian, 'btn_retry'),
                     ),
                   ),
                 ),
@@ -242,12 +248,15 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                     hasScrollBody: false,
                     child: EmptyState(
                       icon: Icons.info_outline,
-                      title: isPersian
-                          ? 'فهرست تفصیلی صنف ${AppTranslations.formatDigits(_grade ?? '8', DisplayLanguage.persian)} فعلاً در دسترس نیست'
-                          : 'Барои синфи ${_grade ?? '8'} феҳристи муфассал ҳоло дастрас нест',
-                      subtitle: isPersian
-                          ? 'کتاب منبع نگه‌داری شده است، اما جزئیات فصل‌ها برای ساختن کارت‌های قابل اعتماد کافی نیست.'
-                          : 'Китоби манбаъ нигоҳ дошта шудааст, аммо тафсилоти фаслҳо барои сохтани кортҳои боэътимод кофӣ нест.',
+                      title: AppTranslations.getForIsPersian(
+                        isPersian,
+                        'hist_grade_no_catalog_title',
+                        [_grade ?? '8'],
+                      ),
+                      subtitle: AppTranslations.getForIsPersian(
+                        isPersian,
+                        'hist_grade_no_catalog_body',
+                      ),
                     ),
                   );
                 }
@@ -265,12 +274,14 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
                     hasScrollBody: false,
                     child: EmptyState(
                       icon: Icons.search_off,
-                      title: isPersian
-                          ? 'چیزی پیدا نشد'
-                          : 'Мундариҷа ёфт нашуд',
-                      subtitle: isPersian
-                          ? 'فیلتر یا عبارت جست‌وجو را تغییر دهید.'
-                          : 'Филтр ё ибораи ҷустуҷӯро тағйир диҳед.',
+                      title: AppTranslations.getForIsPersian(
+                        isPersian,
+                        'hist_no_results_title',
+                      ),
+                      subtitle: AppTranslations.getForIsPersian(
+                        isPersian,
+                        'hist_no_results_body',
+                      ),
                     ),
                   );
                 }
@@ -350,9 +361,11 @@ class _BookStrip extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            isPersian
-                                ? 'صنف ${AppTranslations.formatDigits(book.grade, DisplayLanguage.persian)}'
-                                : 'Синфи ${book.grade}',
+                            AppTranslations.getForIsPersian(
+                              isPersian,
+                              'hist_filter_grade',
+                              [book.grade],
+                            ),
                             style: QalamTypography.eyebrow(
                               color: colors.primary,
                             ),

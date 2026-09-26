@@ -18,7 +18,7 @@ class CategoriesScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          tooltip: AppTranslations.getForIsPersian(isPersian, 'btn_back'),
           icon: const BackButtonIcon(),
           onPressed: () => qalamBack(context),
         ),
@@ -55,9 +55,10 @@ class CategoriesScreen extends ConsumerWidget {
                               null,
                       icon: const Icon(Icons.filter_alt_off_outlined, size: 18),
                       label: Text(
-                        isPersian
-                            ? 'پاک کردن فیلتر موضوع'
-                            : 'Тоза кардани мавзӯъ',
+                        AppTranslations.getForIsPersian(
+                          isPersian,
+                          'categories_clear_topic_filter',
+                        ),
                       ),
                     ),
                   ),

@@ -25,10 +25,27 @@ void main() {
       expect(source.formattedPages, 'с. 153–154');
     });
 
-    test('in Persian, labels the grade and uses Persian digits', () {
+    test('in Persian, a textbook is named in Persian, as portraits are', () {
       expect(
         LiteraryWorkDisplayText.sourceCitation(source, DisplayLanguage.persian),
-        'Адабиёти тоҷик، صنف ۵ (۲۰۱۷)',
+        'ادبیات تاجیک، صنف ۵ (۲۰۱۷)',
+      );
+    });
+
+    test('in Persian, an edition that is not the bundled PDF keeps its '
+        'title', () {
+      const older = SourceEdition(
+        bookTitle: 'Адабиёти тоҷик',
+        publisher: 'Маориф',
+        city: 'Душанбе',
+        year: '2009',
+        pageStart: 10,
+        sourceType: SourceEditionType.officialTextbook,
+        sourceReference: 'docs/literature/pdfs/adabiet sinfi 5.pdf',
+      );
+      expect(
+        LiteraryWorkDisplayText.sourceCitation(older, DisplayLanguage.persian),
+        'Адабиёти тоҷик، صنف ۵ (۲۰۰۹)',
       );
     });
 

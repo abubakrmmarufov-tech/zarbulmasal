@@ -6,7 +6,7 @@ import '../../../../shared/providers/app_providers.dart';
 import '../../domain/domain.dart';
 import '../literary_work_display_text.dart';
 
-/// The one source line under a poem: «Манбаъ: book, grade (year), page».
+/// The one source line under a poem: «Манбаъ: book, grade (year)».
 /// Renders nothing when the work records no source title.
 class SourceLine extends StatelessWidget {
   const SourceLine({super.key, required this.work, required this.lang});

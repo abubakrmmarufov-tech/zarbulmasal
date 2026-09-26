@@ -63,12 +63,14 @@ class _QalamFlashCardState extends State<QalamFlashCard>
   }
 
   String get _hint => widget.showMeaning
-      ? (widget.isPersian
-            ? 'برای دیدن ضرب‌المثل لمس کنید'
-            : 'Барои дидани мақол ламс кунед')
-      : (widget.isPersian
-            ? 'برای دیدن معنی لمس کنید'
-            : 'Барои дидани маъно ламс кунед');
+      ? (AppTranslations.getForIsPersian(
+          widget.isPersian,
+          'flash_tap_front_hint',
+        ))
+      : (AppTranslations.getForIsPersian(
+          widget.isPersian,
+          'flash_tap_back_hint',
+        ));
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +146,10 @@ class _QalamFlashCardState extends State<QalamFlashCard>
                   children: [
                     Text(
                       front
-                          ? (widget.isPersian ? 'ضرب‌المثل' : 'МАҚОЛ')
+                          ? (AppTranslations.getForIsPersian(
+                              widget.isPersian,
+                              'flash_front_label',
+                            ))
                           : AppTranslations.get('flashcards_meaning', lang),
                       style: QalamTypography.eyebrow(color: secondary),
                     ),

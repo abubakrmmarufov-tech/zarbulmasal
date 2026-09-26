@@ -27,7 +27,10 @@ class LevelsScreen extends ConsumerWidget {
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: IconButton(
-                    tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+                    tooltip: AppTranslations.getForIsPersian(
+                      isPersian,
+                      'btn_back',
+                    ),
                     icon: const BackButtonIcon(),
                     onPressed: () =>
                         context.canPop() ? context.pop() : context.go('/'),
@@ -37,7 +40,10 @@ class LevelsScreen extends ConsumerWidget {
             ),
             SliverToBoxAdapter(
               child: QalamPageHeader(
-                eyebrow: isPersian ? '۰۳ / فصل‌ها' : '03 / БОБҲО',
+                eyebrow: AppTranslations.getForIsPersian(
+                  isPersian,
+                  'levels_eyebrow_numbered',
+                ),
                 title: AppTranslations.get('levels_title', language),
                 subtitle: AppTranslations.get('levels_subtitle', language, [
                   availableLevels.length,
@@ -57,7 +63,10 @@ class LevelsScreen extends ConsumerWidget {
                           ref.read(selectedLevelProvider.notifier).state = null,
                       icon: const Icon(Icons.filter_alt_off_outlined, size: 18),
                       label: Text(
-                        isPersian ? 'پاک کردن فیلتر سطح' : 'Тоза кардани сатҳ',
+                        AppTranslations.getForIsPersian(
+                          isPersian,
+                          'levels_clear_filter',
+                        ),
                       ),
                     ),
                   ),
@@ -103,12 +112,15 @@ class LevelsScreen extends ConsumerWidget {
                               RecentActivity(
                                 id: 'level-$level',
                                 type: RecentActivityType.level,
-                                title: isPersian
-                                    ? 'سطح $formattedLevel'
-                                    : 'Сатҳи $level',
-                                subtitle: isPersian
-                                    ? 'آموزش گام به گام'
-                                    : 'Омӯзиши қадам ба қадам',
+                                title: AppTranslations.getForIsPersian(
+                                  isPersian,
+                                  'levels_level_n',
+                                  [level],
+                                ),
+                                subtitle: AppTranslations.getForIsPersian(
+                                  isPersian,
+                                  'levels_step_by_step',
+                                ),
                                 titleTajik: 'Сатҳи $level',
                                 titlePersian: 'سطح $formattedLevel',
                                 subtitleTajik: 'Омӯзиши қадам ба қадам',

@@ -29,7 +29,7 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          tooltip: isPersian ? 'بازگشت' : 'Бозгашт',
+          tooltip: AppTranslations.getForIsPersian(isPersian, 'btn_back'),
           icon: const BackButtonIcon(),
           onPressed: () => qalamBack(context),
         ),
@@ -100,7 +100,10 @@ class SettingsScreen extends ConsumerWidget {
                   // --- Section 2: Reading Controls ---
                   _SectionLabel(title: tr('settings_reading')),
                   Text(
-                    isPersian ? 'اندازهٔ قلم برنامه' : 'Андозаи матни барнома',
+                    AppTranslations.getForIsPersian(
+                      isPersian,
+                      'settings_app_text_size',
+                    ),
                     style: QalamTypography.sectionTitle(
                       color: colors.onSurface,
                       fontSize: 16,
@@ -108,9 +111,10 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    isPersian
-                        ? 'بر تمام متن‌های برنامه اثر می‌گذارد.'
-                        : 'Ба ҳамаи матнҳои барнома таъсир мерасонад.',
+                    AppTranslations.getForIsPersian(
+                      isPersian,
+                      'settings_app_text_size_hint',
+                    ),
                     style: QalamTypography.meta(
                       color: colors.onSurfaceVariant,
                       fontSize: 13,
@@ -166,9 +170,10 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 28),
                   Text(
-                    isPersian
-                        ? 'فقط بر اندازهٔ متن شعر در صفحهٔ خوانش شعر اثر می‌گذارد.'
-                        : 'Танҳо ба андозаи матни шеър дар саҳифаи хониши шеър таъсир мерасонад.',
+                    AppTranslations.getForIsPersian(
+                      isPersian,
+                      'settings_poem_text_size_hint',
+                    ),
                     style: QalamTypography.meta(
                       color: colors.onSurfaceVariant,
                       fontSize: 13,
@@ -184,7 +189,10 @@ class SettingsScreen extends ConsumerWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          tooltip: isPersian ? 'کاهش اندازه' : 'Хурд кардан',
+                          tooltip: AppTranslations.getForIsPersian(
+                            isPersian,
+                            'settings_text_smaller',
+                          ),
                           icon: const Icon(
                             Icons.remove_circle_outline,
                             size: 22,
@@ -196,16 +204,20 @@ class SettingsScreen extends ConsumerWidget {
                               : null,
                         ),
                         IconButton(
-                          tooltip: isPersian
-                              ? 'اندازه پیش‌فرض'
-                              : 'Андозаи аввала',
+                          tooltip: AppTranslations.getForIsPersian(
+                            isPersian,
+                            'settings_text_default',
+                          ),
                           icon: const Icon(Icons.restart_alt, size: 20),
                           onPressed: readerPrefs.fontSizeDelta != 0.0
                               ? () => readerNotifier.resetFontSize()
                               : null,
                         ),
                         IconButton(
-                          tooltip: isPersian ? 'افزایش اندازه' : 'Калон кардан',
+                          tooltip: AppTranslations.getForIsPersian(
+                            isPersian,
+                            'settings_text_larger',
+                          ),
                           icon: const Icon(Icons.add_circle_outline, size: 22),
                           onPressed:
                               readerPrefs.fontSizeDelta <
@@ -361,9 +373,10 @@ class SettingsScreen extends ConsumerWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            isPersian
-                                ? 'راهنمای برنامه در بازگشت به صفحهٔ اصلی نمایش داده می‌شود.'
-                                : 'Дастурамал ҳангоми бозгашт ба саҳифаи аввал намоиш дода мешавад.',
+                            AppTranslations.getForIsPersian(
+                              isPersian,
+                              'settings_guide_reset_snack',
+                            ),
                           ),
                         ),
                       );
@@ -403,9 +416,10 @@ class SettingsScreen extends ConsumerWidget {
                       language,
                       title: tr('settings_source_title'),
                       paragraphs: [
-                        isPersian
-                            ? 'این مجموعه شامل ضرب‌المثل‌های سنتی و متن‌های آموزشی معاصر است. یادداشت منبع در صفحهٔ هر متن نمایش داده می‌شود.'
-                            : 'Маҷмӯа мақолҳои анъанавӣ ва матнҳои таълимии муосирро дар бар мегирад. Сарчашма дар саҳифаи ҳар матн нишон дода мешавад.',
+                        AppTranslations.getForIsPersian(
+                          isPersian,
+                          'settings_source_text1',
+                        ),
                         tr('settings_source_text2'),
                       ],
                     ),
@@ -647,11 +661,15 @@ class _TextScalePreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final sample = isPersian
-        ? 'ضرب‌المثل، گفتار کوتاه پندآموز است.'
-        : 'Зарбулмасал — гуфтори кӯтоҳи пандомӯз аст.';
+    final sample = AppTranslations.getForIsPersian(
+      isPersian,
+      'settings_text_sample',
+    );
     return Semantics(
-      label: isPersian ? 'نمونهٔ اندازهٔ قلم' : 'Намунаи андозаи матн',
+      label: AppTranslations.getForIsPersian(
+        isPersian,
+        'settings_text_sample_label',
+      ),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(14),

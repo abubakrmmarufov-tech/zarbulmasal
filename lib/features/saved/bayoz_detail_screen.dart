@@ -125,9 +125,7 @@ class BayozDetailScreen extends ConsumerWidget {
                 title: title,
                 subtitle: item.kind == BayozItemKind.work
                     ? tr('lit_genre_poem')
-                    : (lang == DisplayLanguage.persian
-                          ? 'ضرب‌المثل'
-                          : 'Зарбулмасал'),
+                    : (AppTranslations.get('kind_proverb', lang)),
                 onTap: () => context.push(route),
                 onRemove: () =>
                     ref.read(bayozProvider.notifier).toggle(bayoz.id, item),

@@ -154,7 +154,10 @@ class HistoryDetailScreen extends ConsumerWidget {
                     id: entry.id,
                     type: RecentActivityType.history,
                     title: title,
-                    subtitle: isPersian ? 'تاریخ' : 'Таърих',
+                    subtitle: AppTranslations.getForIsPersian(
+                      isPersian,
+                      'kind_history',
+                    ),
                     titleTajik: entry.title,
                     titlePersian: entry.titlePersian,
                     subtitleTajik: 'Таърих',
@@ -354,20 +357,24 @@ class HistoryDetailScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
-                      Text(
-                        section == null
-                            ? AppTranslations.get('hist_filter_grade', lang, [
+                      // The section heads the card; the grade is named
+                      // once, in the book line below (or here when no book
+                      // is recorded).
+                      if (section != null || sourceBook == null) ...[
+                        const SizedBox(height: 10),
+                        Text(
+                          section ??
+                              AppTranslations.get('hist_filter_grade', lang, [
                                 entry.grade,
-                              ])
-                            : '${AppTranslations.get('hist_filter_grade', lang, [entry.grade])} · $section',
-                        style: QalamTypography.sectionTitle(
-                          color: colors.onSurface,
-                          fontSize: 16,
+                              ]),
+                          style: QalamTypography.sectionTitle(
+                            color: colors.onSurface,
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
+                      ],
                       if (sourceBook != null) ...[
-                        const SizedBox(height: 4),
+                        SizedBox(height: section != null ? 4 : 10),
                         Text(
                           _historyBookCitation(sourceBook, lang),
                           style: QalamTypography.meta(
