@@ -445,7 +445,8 @@ void main() {
       expect(secureEdition.readUri, isNotNull);
       expect(secureEdition.coverUri, isNotNull);
       expect(secureEdition.canRead, isTrue);
-      expect(secureEdition.hasCover, isTrue);
+      // A web-only cover is provenance, not a cover the offline app draws.
+      expect(secureEdition.hasCover, isFalse);
     });
 
     test('rejects duplicate canonical ids and duplicate edition ids', () {

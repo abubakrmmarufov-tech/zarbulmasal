@@ -87,7 +87,7 @@ class BookEdition {
   final String? downloadUrl;
   final String? coverUrl;
 
-  /// Checked-in copy of the provider cover for web/offline rendering.
+  /// Checked-in copy of the provider cover; the only cover the app draws.
   /// [coverUrl] remains the source/provenance link.
   final String? coverAssetPath;
   final String? publisher;
@@ -135,9 +135,9 @@ class BookEdition {
   Uri? get downloadUri => _secureExternalUri(downloadUrl);
   Uri? get coverUri => _secureExternalUri(coverUrl);
 
-  bool get hasCover =>
-      coverAssetPath != null && coverAssetPath!.trim().isNotEmpty ||
-      coverUri != null;
+  /// Whether a cover is bundled with the app. The app is offline: a cover
+  /// that exists only at [coverUrl] is never fetched.
+  bool get hasCover => coverAssetPath?.trim().isNotEmpty ?? false;
   bool get canRead => readUri != null;
 
   static Uri? _secureExternalUri(String? value) {

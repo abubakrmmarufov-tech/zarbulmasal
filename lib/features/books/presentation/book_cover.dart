@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../core/design_system/design_system.dart';
 import '../domain/book_domain.dart';
@@ -19,70 +18,26 @@ class BookCover extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    final edition = book.primaryEdition;
-    final coverUri = edition?.coverUri;
-    final coverAssetPath = edition?.coverAssetPath;
     final placeholder = _PlaceholderCover(
       book: book,
       width: width,
       height: height,
       title: placeholderTitle ?? book.titleTj,
     );
-
-    if (coverAssetPath != null && coverAssetPath.trim().isNotEmpty) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
-        child: Image.asset(
-          coverAssetPath,
-          width: width,
-          height: height,
-          cacheWidth: (width * MediaQuery.devicePixelRatioOf(context)).round(),
-          fit: BoxFit.cover,
-          errorBuilder: (_, _, _) => placeholder,
-        ),
-      );
-    }
-
-    // Kitobkhon does not send CORS headers for its cover assets. Native
-    // clients can display the verified remote image when no checked-in copy
-    // exists; web safely uses the truthful placeholder rather than emitting
-    // a broken-image request.
-    if (kIsWeb || coverUri == null) {
-      return placeholder;
-    }
+    final coverAssetPath = book.primaryEdition?.coverAssetPath?.trim() ?? '';
+    // The app is offline: only a bundled cover is drawn; a book whose cover
+    // exists only on the provider's site shows the typographic placeholder.
+    if (coverAssetPath.isEmpty) return placeholder;
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(QalamSpacing.radiusSm),
-      child: Image.network(
-        coverUri.toString(),
+      child: Image.asset(
+        coverAssetPath,
         width: width,
         height: height,
-        // Decode at the size shown, not the provider's full-size scan.
         cacheWidth: (width * MediaQuery.devicePixelRatioOf(context)).round(),
         fit: BoxFit.cover,
-        webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
         errorBuilder: (_, _, _) => placeholder,
-        loadingBuilder: (context, child, progress) {
-          if (progress == null) return child;
-          return Container(
-            width: width,
-            height: height,
-            color: colors.surfaceContainerHighest,
-            alignment: Alignment.center,
-            child: SizedBox(
-              width: 18,
-              height: 18,
-              child: CircularProgressIndicator(
-                strokeWidth: 2,
-                value: progress.expectedTotalBytes == null
-                    ? null
-                    : progress.cumulativeBytesLoaded /
-                          progress.expectedTotalBytes!,
-              ),
-            ),
-          );
-        },
       ),
     );
   }
